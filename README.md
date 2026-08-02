@@ -1,12 +1,18 @@
 # Studio 17 website
 
-Static Studio 17 homepage built with semantic HTML, CSS and vanilla JavaScript. The implementation follows the supplied Figma/PDF frame, with the later approved footer-spacing correction bringing the current desktop page to 1920 × 4294px.
+Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The implementation follows the supplied Figma/PDF homepage frame, with the later approved footer-spacing correction bringing the current desktop page to 1920 × 4294px. Careers adds small server-side Vercel Functions solely for its secure Google Drive connection; the frontend remains framework-free.
 
 ## Project structure
 
 - `index.html` — Figma-matched homepage.
 - `sitemap.html` — public website map and planned page structure.
 - `wip.html` — shared multilingual destination for pages that are not built yet.
+- `careers.html` — English-only Careers index with automatic Google Drive role listing.
+- `career-role.html` — reusable role-detail view populated from the selected Google Doc.
+- `careers.js` / `career-role.js` — Careers loading, rendering and failure-state behavior.
+- `api/` — Vercel Functions for authenticated, read-only Drive/Docs access and role validation.
+- `.env.example` — non-secret environment-variable contract for the Careers connection.
+- `vercel.json` — Vercel Function duration configuration.
 - `styles.css` — design tokens, layout, responsive rules and motion.
 - `script.js` — navigation, service selector, carousels and reveal interactions.
 - `wip.js` — identifies and localizes the requested unfinished destination.
@@ -21,6 +27,8 @@ Static Studio 17 homepage built with semantic HTML, CSS and vanilla JavaScript. 
 - `DESIGN_SYSTEM.md` — compact token and geometry reference.
 - `CONTENT_NOTES.md` — content verification and launch notes.
 - `CHANGELOG.md` — dated implementation history.
+- `CAREERS_AUTOMATION.md` — automatic publishing architecture, setup, security and QA guide.
+- `tests/` — parser, API and browser coverage for the Careers automation and responsive states.
 
 ## Local preview
 
@@ -33,6 +41,8 @@ python -m http.server 8080
 Then open `http://localhost:8080`.
 
 Opening `index.html` directly also works, including language switching. A local server is still recommended for normal development previews.
+
+The Careers API requires the Vercel environment variables documented in `CAREERS_AUTOMATION.md`. Static local preview shows the designed API-unavailable state unless the API is run through Vercel or mocked for QA.
 
 After editing any locale JSON file, regenerate the direct-file bundle:
 
@@ -50,11 +60,12 @@ node locales/build-bundle.cjs
 6. Do not publish metrics, testimonials, partner names or case-study claims without confirmation.
 7. Update the sitemap and documentation in the same change as any new page or design rule.
 8. Add every meaningful code, content or design change to `CHANGELOG.md`.
-9. Keep all public copy in sync across `locales/en.json`, `pt-PT.json`, `es.json`, `el.json`, `ru.json` and `he.json`; Hebrew must retain RTL support.
+9. Keep multilingual public copy in sync across `locales/en.json`, `pt-PT.json`, `es.json`, `el.json`, `ru.json` and `he.json`; Hebrew must retain RTL support. Careers and individual role pages are the documented English-only exception.
 10. Point unfinished destinations to `wip.html?for=<destination>` and replace that link with the final file when the page is published.
 11. Header items, promotional CTAs, cards and footer navigation must use WIP until their real HTML page exists. Keep only actual pages, structural anchors and real email addresses as direct destinations.
 12. Treat the 1920px fixed geometry as the English reference only. Translated and responsive text containers must grow naturally; never hide buttons or copy to preserve an English-only height.
 13. Test all six languages at 1920px, 1440px, 1280px, 1024px, 900px, 768px, 390px and the supported 320px minimum width after changing layout or copy.
+14. Keep Careers credentials server-side, rotate keys safely and follow `CAREERS_AUTOMATION.md` whenever the Google/Vercel connection changes.
 
 ## Pre-launch checklist
 
@@ -67,6 +78,7 @@ node locales/build-bundle.cjs
 - Run an accessibility audit and verify keyboard-only navigation.
 - Have a native speaker review every non-English locale before publication.
 - Review `sitemap.html` whenever a page is added, renamed or removed.
+- Complete the one-time service-account and Vercel environment setup before treating Careers as production-ready.
 
 ## Design source
 

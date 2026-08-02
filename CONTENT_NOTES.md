@@ -16,6 +16,7 @@ The homepage structure, service descriptions and contact address are ready for r
 | Legal links | Privacy, cookie and terms destinations open the shared WIP page | Replace them with approved legal pages before launch |
 | Locales | English source plus complete working Portuguese (Portugal), Spanish, Greek, Russian and Hebrew locale files | Native-language editorial and legal review before publication |
 | Unbuilt navigation | Header, CTA, card, footer and sitemap destinations route through WIP | Replace each shared WIP key with the final approved page when published |
+| Careers | English-only Careers and role-detail pages are implemented; roles come from validated Google Docs | Complete the one-time service-account/folder share and Vercel environment setup in `CAREERS_AUTOMATION.md` |
 
 The automotive figures remain design-stage content and are not independently verified claims. Testimonial components contain no attributed claim until approved copy is supplied.
 
@@ -38,3 +39,5 @@ The automotive figures remain design-stage content and are not independently ver
 - Preserve European Portuguese (`pt-PT`) terminology and Hebrew RTL direction; do not substitute Brazilian Portuguese or an LTR Hebrew layout.
 - Keep the generated locale bundle synchronized with the six JSON sources so direct-file language switching remains available.
 - Never shorten, hide or replace approved translated copy solely to fit the English reference height. Layouts and controls must wrap and grow, and Hebrew media/text composition must use the mirrored RTL arrangement.
+- Careers is intentionally English-only. Google Doc filenames and all role content must be approved public English copy; private HR notes and candidate data must never be placed in the publishing folder.
+- A role is public only while its complete native Google Doc remains directly inside `3. Website Open Role`; incomplete documents are withheld instead of being partially published.

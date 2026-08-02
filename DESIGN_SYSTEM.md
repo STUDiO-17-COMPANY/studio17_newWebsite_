@@ -62,6 +62,8 @@ The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px w
 - Navigation contract: only Homepage, Sitemap, WIP, structural accessibility anchors and real email addresses bypass WIP before their final destination page exists.
 - Locale loading: JSON files remain canonical; the generated `locales/locales.js` bundle provides identical behavior over HTTP and direct `file://` access.
 - Internal pages: reuse the 80px header, 32px section gaps, 296px hero, blue lead-phrase headings, closing CTA and shared footer.
+- Careers: the index and role-detail pages reuse the shared header, shell, square cards, navy/blue fields, Lucide icons and footer. Dynamic states include loading, empty, error, populated and closed-role views without layout shift or hidden controls.
+- Careers language: Careers is English-only. Links from every locale explicitly target `lang=en`; entering Careers must not overwrite the visitor's saved language for other pages.
 
 ## Icons
 

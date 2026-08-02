@@ -2,6 +2,18 @@
 
 All meaningful design, code and content changes to the Studio 17 website are recorded here.
 
+## 2026-08-02 — Automatic Google Drive Careers workflow
+
+- Added the English-only `careers.html` page with responsive hero, open-role cards, loading/empty/error states, working-principle cards, candidate-process guidance and the shared Studio 17 footer.
+- Added the reusable `career-role.html` detail page with dynamic role sections, accessible role facts, a verified application action and explicit invalid/removed/API-unavailable states.
+- Added secure Vercel Functions that authenticate to Google with a server-side service account, list native Docs directly inside the approved open-role folder, validate the template contract and withhold incomplete documents.
+- Added folder-membership verification for every role-detail request, HTTPS-only application links, bounded Google request timeouts, sanitized errors and short CDN caching so role additions/removals update automatically.
+- Converted every header, mobile, sitemap and footer Careers destination from WIP to the real English Careers page.
+- Added a forced-English i18n route that preserves the visitor's saved site language and prevents translated pages from breaking the English-only Careers workflow.
+- Populated the Google Doc `HR - Open Role Template` with the canonical fields, instructions, real headings and list containers required by the parser.
+- Created `guidance for role position automatic` in `3. HR` with the complete HR publishing workflow, validation checklist, troubleshooting and one-time developer setup.
+- Added `CAREERS_AUTOMATION.md`, `.env.example` and Vercel Function configuration, and updated the design/content documentation for the new page family.
+
 ## 2026-08-02 — Multilingual layout and interaction hardening
 
 - Replaced English-only fixed-height assumptions with content-driven sizing for translated heroes, service panels, AI cards, news, testimonials, CTAs, sitemap heroes and footer rows.

@@ -32,7 +32,9 @@
     return Object.keys(languages).find(language => language.toLowerCase() === lower) || null;
   };
 
-  const requestedLanguage = normaliseLanguage(new URLSearchParams(location.search).get('lang'))
+  const forcedLanguage = normaliseLanguage(document.documentElement.dataset.forceLanguage);
+  const requestedLanguage = forcedLanguage
+    || normaliseLanguage(new URLSearchParams(location.search).get('lang'))
     || normaliseLanguage(getStoredLanguage())
     || normaliseLanguage(navigator.language)
     || 'en';
@@ -78,8 +80,10 @@
 
       const query = queryIndex >= 0 ? withoutHash.slice(queryIndex + 1) : '';
       const parameters = new URLSearchParams(query);
-      if (language === 'en') parameters.delete('lang');
-      else parameters.set('lang', language);
+      const linkLanguage = normaliseLanguage(anchor.dataset.forceLanguage) || language;
+      if (anchor.dataset.forceLanguage) parameters.set('lang', linkLanguage);
+      else if (linkLanguage === 'en') parameters.delete('lang');
+      else parameters.set('lang', linkLanguage);
       const serialized = parameters.toString();
       anchor.setAttribute('href', `${page}${serialized ? `?${serialized}` : ''}${hash}`);
     });
@@ -96,9 +100,13 @@
       record.element.setAttribute(record.attribute, translate(record.original));
     });
 
-    const page = document.body.classList.contains('sitemap-page')
-      ? 'sitemap'
-      : document.body.classList.contains('wip-page') ? 'wip' : 'home';
+    const page = document.body.classList.contains('careers-page')
+      ? 'careers'
+      : document.body.classList.contains('career-role-page')
+        ? 'careerRole'
+        : document.body.classList.contains('sitemap-page')
+          ? 'sitemap'
+          : document.body.classList.contains('wip-page') ? 'wip' : 'home';
     const metadata = currentData.meta?.[page];
     if (metadata?.title) document.title = metadata.title;
     const description = document.querySelector('meta[name="description"]');
@@ -125,7 +133,8 @@
 
   const updateUrl = language => {
     const url = new URL(location.href);
-    if (language === 'en') url.searchParams.delete('lang');
+    if (forcedLanguage) url.searchParams.set('lang', forcedLanguage);
+    else if (language === 'en') url.searchParams.delete('lang');
     else url.searchParams.set('lang', language);
     history.replaceState({}, '', url);
   };
@@ -140,12 +149,12 @@
   };
 
   const setLanguage = async (language, { updateAddress = true } = {}) => {
-    const normalised = normaliseLanguage(language) || 'en';
+    const normalised = forcedLanguage || normaliseLanguage(language) || 'en';
     currentData = await loadLocale(normalised);
     currentLanguage = normalised;
     document.documentElement.lang = normalised;
     document.documentElement.dir = languages[normalised].dir;
-    storeLanguage(normalised);
+    if (!forcedLanguage) storeLanguage(normalised);
     applyTranslations();
     updateLanguageControl(normalised);
     updateInternalLinks(normalised);
@@ -182,7 +191,8 @@
     if (event.key === 'Escape' && trigger?.getAttribute('aria-expanded') === 'true') closeLanguageMenu({ restoreFocus: true });
   });
 
-  const ready = setLanguage(requestedLanguage, { updateAddress: false }).catch(() => setLanguage('en', { updateAddress: false }));
+  const ready = setLanguage(requestedLanguage, { updateAddress: Boolean(forcedLanguage) })
+    .catch(() => setLanguage('en', { updateAddress: Boolean(forcedLanguage) }));
 
   window.Studio17I18n = {
     languages: Object.keys(languages),

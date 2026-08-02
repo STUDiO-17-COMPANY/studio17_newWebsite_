@@ -196,12 +196,16 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - Regenerate `locales/locales.js` after every locale JSON change; never edit the generated bundle directly.
 - Do not concatenate translated sentences from fragments. Allow text to wrap naturally, and arrange complete RTL components rather than reversing individual strings.
 - Update `sitemap.html` as part of every page addition, rename or removal.
+- Careers and individual role pages are the approved English-only exception to the six-locale content rule. They retain the shared header/footer, display the English-availability label and preserve the visitor's saved language outside Careers.
+- Dynamic Careers content is rendered with text nodes, uses Lucide icons, keeps square component edges and provides designed loading, empty, API-error, invalid-link and closed-role states.
+- Role cards show title, department, location, work model, employment type, summary and one unambiguous detail action. The role page keeps its application action visible in a desktop sticky sidebar and a normal-flow mobile panel.
 
 ## 12. Required QA before handoff
 
 - Compare the 1920px homepage against the complete PDF/Figma reference.
 - Confirm the homepage remains 1920px wide and follows every coordinate in section 4; after the approved compact-footer correction its desktop height is 4294px.
 - Check homepage, sitemap and WIP at 1920px, 1440px, 1280px, 1024px, 900px, 768px, 390px and 320px.
+- Check Careers at the same widths with mocked populated, empty and error API responses; check individual roles with full optional content, required-only content, invalid IDs and removed-role responses.
 - Confirm zero console errors, failed local assets and document-level horizontal overflow.
 - Confirm every `data-lucide` placeholder becomes a Lucide SVG.
 - Test service tabs and previous/next controls, carousel controls, dropdown, mobile menu and Escape.
