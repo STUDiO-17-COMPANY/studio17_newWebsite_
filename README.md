@@ -1,0 +1,72 @@
+# Studio 17 website
+
+Static Studio 17 homepage built with semantic HTML, CSS and vanilla JavaScript. The implementation follows the supplied Figma/PDF frame, with the later approved footer-spacing correction bringing the current desktop page to 1920 × 4294px.
+
+## Project structure
+
+- `index.html` — Figma-matched homepage.
+- `sitemap.html` — public website map and planned page structure.
+- `wip.html` — shared multilingual destination for pages that are not built yet.
+- `styles.css` — design tokens, layout, responsive rules and motion.
+- `script.js` — navigation, service selector, carousels and reveal interactions.
+- `wip.js` — identifies and localizes the requested unfinished destination.
+- `i18n.js` — locale detection, language switching, persistence and RTL handling.
+- `locales/` — English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew content files.
+- `locales/locales.js` — generated browser bundle that makes language switching work when the HTML files are opened directly.
+- `locales/build-bundle.cjs` — regenerates that bundle from the six canonical JSON files.
+- `Vendor/lucide.min.js` — pinned local Lucide 1.24.0 browser package; its licence is stored beside it.
+- `Images/` — supplied brand assets and locally optimised page imagery.
+- `Fonts/` — locally hosted Inter and Plus Jakarta Sans font files with their licences.
+- `DESIGN_GUIDELINES.md` — canonical page, component, icon and QA rules.
+- `DESIGN_SYSTEM.md` — compact token and geometry reference.
+- `CONTENT_NOTES.md` — content verification and launch notes.
+- `CHANGELOG.md` — dated implementation history.
+
+## Local preview
+
+The site has no build step and no package dependencies. From this folder, run:
+
+```powershell
+python -m http.server 8080
+```
+
+Then open `http://localhost:8080`.
+
+Opening `index.html` directly also works, including language switching. A local server is still recommended for normal development previews.
+
+After editing any locale JSON file, regenerate the direct-file bundle:
+
+```powershell
+node locales/build-bundle.cjs
+```
+
+## Maintenance rules
+
+1. Keep the site framework-free unless the scope changes.
+2. Add local images to `Images/`; do not rely on temporary Figma asset URLs.
+3. Follow `DESIGN_GUIDELINES.md`; preserve the documented homepage geometry and build future pages on the same 1440px shell.
+4. Use Lucide for interface pictograms. Keep supplied official artwork for company and social brand marks.
+5. Respect `prefers-reduced-motion` for every new animation.
+6. Do not publish metrics, testimonials, partner names or case-study claims without confirmation.
+7. Update the sitemap and documentation in the same change as any new page or design rule.
+8. Add every meaningful code, content or design change to `CHANGELOG.md`.
+9. Keep all public copy in sync across `locales/en.json`, `pt-PT.json`, `es.json`, `el.json`, `ru.json` and `he.json`; Hebrew must retain RTL support.
+10. Point unfinished destinations to `wip.html?for=<destination>` and replace that link with the final file when the page is published.
+11. Header items, promotional CTAs, cards and footer navigation must use WIP until their real HTML page exists. Keep only actual pages, structural anchors and real email addresses as direct destinations.
+
+## Pre-launch checklist
+
+- Replace the clearly labelled testimonial placeholders with approved client quotations.
+- Confirm case-study outcomes and partner-logo publication rights.
+- Replace article email links with live article URLs when those pages exist.
+- Add separate social links when the official profile URLs are supplied.
+- Replace the WIP destinations for privacy, cookies, terms, articles and case studies as their approved pages are published.
+- Test current Chrome, Safari, Firefox and Edge on desktop and mobile.
+- Run an accessibility audit and verify keyboard-only navigation.
+- Have a native speaker review every non-English locale before publication.
+- Review `sitemap.html` whenever a page is added, renamed or removed.
+
+## Design source
+
+- Figma project: `STUDiO 17`, homepage frame `1725:3411`.
+- Reference export: `Homepage.pdf` supplied on 2026-08-02.

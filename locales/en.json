@@ -1,0 +1,103 @@
+{
+  "locale": "en",
+  "direction": "ltr",
+  "meta": {
+    "home": {
+      "title": "Studio 17 — Marketing agency for business growth",
+      "description": "Studio 17 is a European marketing agency building websites, content, digital systems and AI solutions for modern business growth."
+    },
+    "sitemap": {
+      "title": "Sitemap — Studio 17",
+      "description": "Explore the Studio 17 website structure, services, industries, insights and company pages."
+    },
+    "wip": {
+      "title": "Work in progress — Studio 17",
+      "description": "This Studio 17 page is currently being built. Return to the homepage or explore the sitemap while work continues."
+    }
+  },
+  "strings": {},
+  "services": {
+    "categoryLabels": {
+      "industry": "By industry",
+      "website": "Website",
+      "content": "Content creation",
+      "social": "Social Media",
+      "ads": "Advertisement",
+      "systems": "Digital systems"
+    },
+    "itemLabels": {
+      "automotive": "Automotive",
+      "restaurants": "Restaurants",
+      "health": "Health",
+      "ecommerce": "E-Commerce",
+      "influencers": "Individual Influencers",
+      "fashion": "Clothing Stores",
+      "education": "Education",
+      "local": "Local Businesses",
+      "physicalAdvertising": "Physical Advertising",
+      "websiteDevelopment": "Website Development",
+      "websiteRevamp": "Website Revamp",
+      "freeWebsite": "Free Website",
+      "seo": "SEO",
+      "geo": "GEO",
+      "localization": "Localization and Translation",
+      "maintenance": "Maintenance",
+      "filmingPhotography": "Filming / Photography",
+      "videoGraphicDesign": "Video editing and graphic design",
+      "scripting": "Scripting",
+      "aiGeneratedContent": "AI-generated Content",
+      "socialManagement": "Social Media Management",
+      "socialAutomation": "Social Media Automation",
+      "growthStrategy": "Growth strategy",
+      "communityManagement": "Community management",
+      "metaGoogleAds": "Meta and Google Ads",
+      "socialAds": "Social Media Ads",
+      "influencerAdvertising": "Influencer Advertising",
+      "ugcCreators": "UGC Creators",
+      "emailAdvertising": "Email Advertising",
+      "softwareDevelopment": "Software Development",
+      "crm": "CRM",
+      "internalTools": "Internal Tools",
+      "dashboards": "Dashboards"
+    },
+    "templates": {
+      "industry": {
+        "title": "{item} marketing built around how customers decide.",
+        "body": "We connect positioning, content, digital presence and practical systems around the decisions that matter in this industry.",
+        "result": "Every touchpoint is designed to make the business easier to find, understand, trust and choose."
+      },
+      "website": {
+        "title": "{item} built for clarity, performance and growth.",
+        "body": "Strategy, user experience, content and development work together so the website supports real customer decisions.",
+        "result": "The result is a faster, clearer and easier-to-maintain digital foundation for the business."
+      },
+      "content": {
+        "title": "{item} with a clear purpose and production system.",
+        "body": "We plan every asset around the audience, message, channel and action it needs to support.",
+        "result": "A consistent workflow keeps content recognisable, useful and ready to perform across channels."
+      },
+      "social": {
+        "title": "{item} connected to measurable business goals.",
+        "body": "Channel strategy, publishing, community and automation are organised as one practical social media system.",
+        "result": "The system creates a sustainable rhythm for learning, improving and growing over time."
+      },
+      "ads": {
+        "title": "{item} built around a simple commercial idea.",
+        "body": "We connect the message, creative, targeting and rollout so every campaign has one clear job.",
+        "result": "Campaign thinking stays consistent from the first impression to the final customer action."
+      },
+      "systems": {
+        "title": "{item} designed around the way your team actually works.",
+        "body": "We connect data, tools and workflows to reduce friction and create a more consistent operating system.",
+        "result": "Useful digital systems give the business a stronger base for marketing, service and future growth."
+      }
+    },
+    "featured": {
+      "automotive": {
+        "title": "Car dealership marketing that sells the car before the first visit.",
+        "body": "Before a buyer contacts a dealership, they have already judged the car online. We help automotive businesses make every vehicle easier to understand and trust through useful content, clearer presentation and a more consistent brand presence.",
+        "result": "One dealership client grew from selling up to 4 cars per month to more than 10 cars per month, with some vehicles selling in less than 24 hours after being listed."
+      }
+    }
+  }
+}
