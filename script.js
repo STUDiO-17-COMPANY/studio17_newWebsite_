@@ -9,6 +9,7 @@
   const mobileMenu = document.querySelector('#mobile-menu');
   const dropdown = document.querySelector('.nav-dropdown');
   const dropdownTrigger = document.querySelector('.nav-trigger');
+  const dropdownPanel = document.querySelector('.dropdown-panel');
   const translateText = text => window.Studio17I18n?.translate(text) || text;
 
   const closeMobileMenu = ({ restoreFocus = false } = {}) => {
@@ -33,23 +34,31 @@
     if (event.target.closest('a')) closeMobileMenu();
   });
 
+  const closeDesktopDropdown = ({ restoreFocus = false } = {}) => {
+    dropdownTrigger?.setAttribute('aria-expanded', 'false');
+    dropdown?.classList.remove('is-open');
+    dropdownPanel?.classList.remove('is-open');
+    if (dropdownPanel) dropdownPanel.hidden = true;
+    if (restoreFocus) dropdownTrigger?.focus();
+  };
+
   dropdownTrigger?.addEventListener('click', () => {
     const open = dropdownTrigger.getAttribute('aria-expanded') !== 'true';
     dropdownTrigger.setAttribute('aria-expanded', String(open));
     dropdown?.classList.toggle('is-open', open);
+    dropdownPanel?.classList.toggle('is-open', open);
+    if (dropdownPanel) dropdownPanel.hidden = !open;
   });
 
   document.addEventListener('click', event => {
     if (event.target.closest('.nav-dropdown')) return;
-    dropdownTrigger?.setAttribute('aria-expanded', 'false');
-    dropdown?.classList.remove('is-open');
+    closeDesktopDropdown();
   });
 
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape') return;
     if (menuButton?.getAttribute('aria-expanded') === 'true') closeMobileMenu({ restoreFocus: true });
-    dropdownTrigger?.setAttribute('aria-expanded', 'false');
-    dropdown?.classList.remove('is-open');
+    if (dropdownTrigger?.getAttribute('aria-expanded') === 'true') closeDesktopDropdown({ restoreFocus: true });
   });
 
   const serviceSchema = {
@@ -166,16 +175,23 @@
     };
   };
 
-  const renderService = content => {
+  let serviceRenderTimer;
+  const renderService = (content, { instant = false } = {}) => {
     if (!content || !serviceFeature) return;
-    serviceFeature.classList.add('is-changing');
-    window.setTimeout(() => {
+    window.clearTimeout(serviceRenderTimer);
+    const commit = () => {
       if (serviceTitle) serviceTitle.textContent = content.title;
       if (serviceBody) serviceBody.textContent = content.body;
       if (serviceResult) serviceResult.textContent = content.result;
       if (serviceImage) serviceImage.src = content.image;
       serviceFeature.classList.remove('is-changing');
-    }, 140);
+    };
+    if (instant) {
+      commit();
+      return;
+    }
+    serviceFeature.classList.add('is-changing');
+    serviceRenderTimer = window.setTimeout(commit, 140);
   };
 
   const selectButton = (buttons, selected) => {
@@ -275,11 +291,12 @@
   addTabKeyboardNavigation(serviceTabs);
   renderServiceTabs();
   renderServiceList(activeCategory, selectedItems[activeCategory]);
+  renderService(getServiceContent(activeCategory, selectedItems[activeCategory]), { instant: true });
 
   window.addEventListener('studio17:languagechange', () => {
     renderServiceTabs();
     renderServiceList(activeCategory, selectedItems[activeCategory]);
-    renderService(getServiceContent(activeCategory, selectedItems[activeCategory]));
+    renderService(getServiceContent(activeCategory, selectedItems[activeCategory]), { instant: true });
     if (menuButton) menuButton.setAttribute('aria-label', translateText(menuButton.getAttribute('aria-expanded') === 'true' ? 'Close menu' : 'Open menu'));
   });
 
@@ -289,9 +306,10 @@
       const track = document.getElementById(trackId);
       if (!track) return;
       const direction = button.hasAttribute('data-carousel-prev') ? -1 : 1;
+      const readingDirection = getComputedStyle(track).direction === 'rtl' ? -1 : 1;
       const firstCard = track.firstElementChild;
       const gap = parseFloat(getComputedStyle(track).columnGap) || 48;
-      track.scrollBy({ left: direction * ((firstCard?.getBoundingClientRect().width || 380) + gap), behavior: 'smooth' });
+      track.scrollBy({ left: readingDirection * direction * ((firstCard?.getBoundingClientRect().width || 380) + gap), behavior: 'smooth' });
     });
   });
 
@@ -310,6 +328,7 @@
   }
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 780 && menuButton?.getAttribute('aria-expanded') === 'true') closeMobileMenu();
+    if (window.innerWidth > 900 && menuButton?.getAttribute('aria-expanded') === 'true') closeMobileMenu();
+    if (window.innerWidth <= 900 && dropdownTrigger?.getAttribute('aria-expanded') === 'true') closeDesktopDropdown();
   });
 })();

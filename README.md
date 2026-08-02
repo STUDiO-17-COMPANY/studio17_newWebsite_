@@ -53,6 +53,8 @@ node locales/build-bundle.cjs
 9. Keep all public copy in sync across `locales/en.json`, `pt-PT.json`, `es.json`, `el.json`, `ru.json` and `he.json`; Hebrew must retain RTL support.
 10. Point unfinished destinations to `wip.html?for=<destination>` and replace that link with the final file when the page is published.
 11. Header items, promotional CTAs, cards and footer navigation must use WIP until their real HTML page exists. Keep only actual pages, structural anchors and real email addresses as direct destinations.
+12. Treat the 1920px fixed geometry as the English reference only. Translated and responsive text containers must grow naturally; never hide buttons or copy to preserve an English-only height.
+13. Test all six languages at 1920px, 1440px, 1280px, 1024px, 900px, 768px, 390px and the supported 320px minimum width after changing layout or copy.
 
 ## Pre-launch checklist
 

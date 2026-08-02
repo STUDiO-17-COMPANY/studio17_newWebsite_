@@ -40,10 +40,11 @@ The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px w
 
 ## Responsive behaviour
 
-- At 1200px and above: use the fixed Figma geometry, full navigation, six-column service selector and three-column AI grid.
-- 781–1199px: section heights become content-driven, service controls wrap and AI cards become split horizontal cards.
-- 780px and below: navigation becomes a full-screen menu, content stacks, controls become horizontally scrollable and carousels remain touch-friendly.
-- 500px and below: footer and CTA simplify to a single-column layout.
+- At 1280px and above: use full navigation, the six-column service selector and three-column AI grid. Exact fixed heights belong only to the 1920px English reference; translated content grows vertically.
+- 901–1279px: section heights become content-driven, service controls wrap and AI cards become split horizontal cards.
+- 900px and below: navigation becomes a scroll-safe full-screen menu, content stacks and carousels remain touch-friendly.
+- 600px and below: service category and item controls become fully visible two-column grids.
+- 500px and below: footer and CTA simplify to a single-column layout without hiding copy.
 
 ## Component rules
 
@@ -55,6 +56,7 @@ The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px w
 - Footer: dark field, large grey Plus Jakarta Sans wordmark and compact legal row. It is 395px at the 1920px reference frame, scales before it can be clipped and never intercepts pointer input.
 - Partners: two continuous 24-second linear rows moving in opposite directions. Each has one accessible logo sequence plus one `aria-hidden` seamless-loop clone; artwork remains contained inside every cell.
 - Languages: `en`, `pt-PT`, `es`, `el`, `ru` and `he` share one structural template; Hebrew switches complete page flow to RTL while logos and the Latin wordmark stay unmirrored.
+- Translation safety: text-bearing controls use natural height and wrapping; localized sections may grow beyond English reference heights, and initial service copy always comes from the active locale.
 - Sitemap: every existing page is linked; planned destinations remain labelled and open the shared WIP page until their final files exist.
 - WIP: one reusable route accepts a stable `?for=` destination, keeps the selected language and is replaced link-by-link as final pages launch.
 - Navigation contract: only Homepage, Sitemap, WIP, structural accessibility anchors and real email addresses bypass WIP before their final destination page exists.

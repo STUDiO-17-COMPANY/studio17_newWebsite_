@@ -11,7 +11,7 @@ The homepage structure, service descriptions and contact address are ready for r
 | Testimonials | Clearly labelled neutral placeholders preserve the approved card layout without inventing an endorsement | Replace with written, approved quotations, names, roles and companies |
 | Automotive results | Figma case-study figures are reproduced for design fidelity | Confirm source, period, baseline and permission for every metric |
 | Partner logos | Assets reproduced from the supplied design export | Confirm the exact company names and permission to publish each logo |
-| News links | Open a pre-addressed Studio 17 email | Replace with live article URLs when article pages are available |
+| News links | Open the shared WIP destination for articles or case studies | Replace with live article URLs when those pages are available |
 | Social marks | Supplied brand artwork is displayed without misleading placeholder links | Add separate links when official Instagram, LinkedIn, Facebook and other profile URLs are confirmed |
 | Legal links | Privacy, cookie and terms destinations open the shared WIP page | Replace them with approved legal pages before launch |
 | Locales | English source plus complete working Portuguese (Portugal), Spanish, Greek, Russian and Hebrew locale files | Native-language editorial and legal review before publication |
@@ -37,3 +37,4 @@ The automotive figures remain design-stage content and are not independently ver
 - Treat English as the approved source contract. Update all six locale JSON files together whenever public copy changes.
 - Preserve European Portuguese (`pt-PT`) terminology and Hebrew RTL direction; do not substitute Brazilian Portuguese or an LTR Hebrew layout.
 - Keep the generated locale bundle synchronized with the six JSON sources so direct-file language switching remains available.
+- Never shorten, hide or replace approved translated copy solely to fit the English reference height. Layouts and controls must wrap and grow, and Hebrew media/text composition must use the mirrored RTL arrangement.

@@ -2,6 +2,18 @@
 
 All meaningful design, code and content changes to the Studio 17 website are recorded here.
 
+## 2026-08-02 — Multilingual layout and interaction hardening
+
+- Replaced English-only fixed-height assumptions with content-driven sizing for translated heroes, service panels, AI cards, news, testimonials, CTAs, sitemap heroes and footer rows.
+- Made all six service-category controls and every service item visible as wrapped grids on small screens; longer labels and CTA text now grow instead of being clipped.
+- Rebuilt the mobile service feature as a natural vertical flow so translated descriptions, result copy, digital/physical links and case-study action cannot overlap or disappear.
+- Fixed the desktop Services dropdown by giving its panel an explicit hidden/open state shared by mouse, outside-click and Escape behavior.
+- Fixed initial localized service content, eliminating the English-content flash that remained until a service control was selected.
+- Mirrored the service composition correctly in Hebrew and corrected carousel movement for RTL scroll direction.
+- Made AI labels, footer links, social artwork and the European-brand artwork translation-safe and responsive at the 320px minimum width.
+- Raised the responsive navigation threshold to 900px and made its full-screen menu vertically scrollable without hiding the sales CTA.
+- Verified homepage, sitemap and WIP across six languages and eight viewport profiles, plus direct click-through language cycling on desktop and small mobile.
+
 ## 2026-08-02 — WIP navigation population and direct-file language fix
 
 - Routed header links, service dropdowns, mobile navigation, hero actions, service links, AI actions, article cards, testimonial links, closing CTAs, tags, sitemap entries and footer navigation to stable WIP destinations.

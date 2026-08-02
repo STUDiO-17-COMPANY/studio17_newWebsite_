@@ -41,7 +41,7 @@ The header is part of the document flow. Do not make it sticky: the approved hom
 
 ## 4. Homepage geometry
 
-The supplied 1920px desktop homepage was a 4378px reference composition. The approved compact-footer correction keeps every section coordinate through `y3565` and reduces the current final height to 4294px.
+The supplied 1920px English desktop homepage was a 4378px reference composition. The approved compact-footer correction keeps every section coordinate through `y3565` and reduces the English reference height to 4294px. Translated pages may grow vertically when their copy needs more space; never crop translated content to preserve the English page height.
 
 | Block | Top | Height |
 | --- | ---: | ---: |
@@ -67,7 +67,7 @@ The sitemap establishes the template for non-homepage pages:
 - Start the main content with the blue inline-highlight heading treatment.
 - Use square dark cards, 24px grid gaps and clear link states.
 - Reuse the homepage closing CTA when there is a meaningful contact action.
-- At 780px and below, stack hero content and cards without document-level horizontal overflow.
+- At 900px and below, stack hero content and cards without document-level horizontal overflow.
 
 Future pages may vary their content but not the shell, palette, heading treatment, icon language, CTA or footer contract.
 
@@ -111,7 +111,7 @@ Future pages may vary their content but not the shell, palette, heading treatmen
 
 ### Footer
 
-- Dark 729px desktop field.
+- Dark 729px English reference field. Other locales may grow while preserving the same row order and visual treatment.
 - Five-column information area, large grey wordmark and compact legal row.
 - The large wordmark uses Plus Jakarta Sans ExtraBold (`800`). Keep “Studio” and “17” in separate spans: `Studio` uses `-5%` letter spacing and `17` uses `-12%` letter spacing.
 - Keep a visible word gap between the two spans. At the 1920px reference width the wordmark is 395px; below that it scales fluidly so neither span is clipped.
@@ -143,7 +143,7 @@ The six category lists are the canonical service navigation contract:
 | Advertisement | Meta and Google Ads; Social Media Ads advertisement; Influencers Advertisement; UGC Creators; Email Advertisement |
 | Digital Systems | Software Development; CRM; Internal Tools; Dashboards |
 
-Desktop lists scroll vertically within the fixed Figma panel when necessary. On mobile they become contained horizontal touch tracks. Category tabs, list items and previous/next controls must always operate on the active localized dataset.
+Desktop lists scroll vertically within the fixed English Figma panel when necessary. Between 601px and 900px they become contained horizontal touch tracks. At 600px and below both category tabs and service items use visible two-column grids, so no service disappears off-screen. Category tabs, list items and previous/next controls must always operate on the active localized dataset, and the selected service copy must render in the active language on initial load.
 
 ## 7. Icon policy
 
@@ -178,11 +178,13 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 
 ## 10. Responsive rules
 
-- `1200px+`: fixed desktop reference geometry and full navigation.
-- `781-1199px`: content-driven heights, wrapped service controls and split/stacked cards.
-- `780px and below`: 68px mobile header, full-screen menu, stacked content and touch-scroll collections.
-- `500px and below`: single-column CTA/footer simplification and shorter secondary copy where necessary.
+- `1280px+`: full navigation and the English fixed desktop reference geometry. Non-English content remains free to grow vertically.
+- `901-1279px`: content-driven heights, wrapped service controls and split/stacked cards.
+- `900px and below`: 68px mobile header, full-screen scroll-safe menu, stacked content and touch-scroll collections.
+- `600px and below`: service categories and items become fully visible two-column grids.
+- `500px and below`: single-column CTA/footer simplification; do not hide translated copy to force a shorter page.
 - The document's `scrollWidth` must equal its viewport width at every supported breakpoint. Deliberately scrollable tracks must be clipped by their own container.
+- Fixed heights are permitted only for media crops, icon controls and the approved English 1920px reference. Text-bearing containers must use `min-height` or natural height in translated and responsive layouts.
 
 ## 11. Content rules
 
@@ -199,11 +201,12 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 
 - Compare the 1920px homepage against the complete PDF/Figma reference.
 - Confirm the homepage remains 1920px wide and follows every coordinate in section 4; after the approved compact-footer correction its desktop height is 4294px.
-- Check homepage, sitemap and WIP at 1920px and 390px.
+- Check homepage, sitemap and WIP at 1920px, 1440px, 1280px, 1024px, 900px, 768px, 390px and 320px.
 - Confirm zero console errors, failed local assets and document-level horizontal overflow.
 - Confirm every `data-lucide` placeholder becomes a Lucide SVG.
 - Test service tabs and previous/next controls, carousel controls, dropdown, mobile menu and Escape.
 - Load all six locales, verify locale codes and `html[lang]`, and confirm Hebrew uses RTL without mirroring logos or the footer wordmark.
+- For every locale, confirm the desktop Services dropdown opens, localized service content is present before any service click, all service/CTA buttons remain visible and next/previous carousel movement follows the document direction.
 - Open every planned sitemap link and confirm it reaches WIP with the correct `for` value; changing language must preserve that value.
 - Test language selection once over HTTP and once by opening `index.html` directly; both paths must update copy, locale code, metadata and document direction without console errors.
 - Confirm every partner logo is fully inside the viewport and every service category has its canonical item count: 7, 9, 4, 4, 5 and 4 respectively.
