@@ -16,7 +16,9 @@ The master template and the operating guide live in `3. HR`. Completed copies—
 
 ```text
 Google Drive folder
-  -> Vercel Function with read-only service account
+  -> Vercel Function with a short-lived OIDC token
+    -> Google Workload Identity Federation
+      -> dedicated read-only service account
     -> validates and parses Google Docs
       -> /api/careers for listing cards
       -> /api/career-role?id=<document-id> for one detail page
@@ -27,36 +29,40 @@ The list and detail responses use a 30-second CDN cache plus a 30-second stale-w
 
 ## One-time Google Cloud setup
 
-1. Create or select a Google Cloud project owned by Studio 17.
-2. Enable the Google Drive API and Google Docs API.
-3. Create a dedicated service account for this integration. It needs no project IAM role because access is granted at the Drive folder level.
-4. Create a JSON key for the service account and store it in the approved password/secret manager.
-5. Share only `3. Website Open Role` with the service-account email as Viewer.
-6. Do not share the entire HR folder and do not make either folder public.
+The production setup belongs to `contact@studio17.world` and uses Google Cloud project `studio17-newsletter` (`593805484268`).
 
-The source folder was not shared with a service account when this implementation was created, so these steps are required before the live API can return roles.
+1. Enable the Google Drive API, Google Docs API and IAM Service Account Credentials API.
+2. Use the dedicated service account `studio17-careers-website@studio17-newsletter.iam.gserviceaccount.com`. It needs no project role.
+3. Keep the active Workload Identity Pool and provider IDs as `vercel`.
+4. The provider issuer is `https://oidc.vercel.com/studio-17s-projects`, and its only allowed audience is `https://vercel.com/studio-17s-projects`.
+5. Map `google.subject` to `assertion.sub` and restrict the provider with this CEL condition:
+
+   ```text
+   assertion.sub == 'owner:studio-17s-projects:project:studio17-new-website:environment:production'
+   ```
+
+6. Grant that exact federated subject `roles/iam.workloadIdentityUser` on the dedicated service account.
+7. Share only `3. Website Open Role` with the service-account email as Viewer.
+8. Do not share the entire HR folder and do not make either folder public.
+
+The configuration is keyless. Do not create or download a service-account JSON key. Google organization policy intentionally blocks key creation.
 
 ## One-time Vercel setup
 
-Add the following values in the connected Vercel project's Environment Variables. Apply them to Production and Preview.
+Keep the project OIDC issuer in Team mode. Add the following non-secret values to the connected Vercel project's Production environment:
 
 ```text
-GOOGLE_SERVICE_ACCOUNT_EMAIL
-GOOGLE_PRIVATE_KEY
+GCP_PROJECT_ID=studio17-newsletter
+GCP_PROJECT_NUMBER=593805484268
+GCP_SERVICE_ACCOUNT_EMAIL=studio17-careers-website@studio17-newsletter.iam.gserviceaccount.com
+GCP_WORKLOAD_IDENTITY_POOL_ID=vercel
+GCP_WORKLOAD_IDENTITY_POOL_PROVIDER_ID=vercel
 GOOGLE_DRIVE_OPEN_ROLES_FOLDER_ID=1jbuO2nBYoGwnFP7HLZFTERt_IUmclxGc
 ```
 
-For `GOOGLE_PRIVATE_KEY`, paste the complete PEM key. Vercel may store it with real line breaks or escaped `\n` characters; the function supports both.
+Vercel injects `x-vercel-oidc-token` into the Function request at runtime. The Function exchanges that token for a short-lived Google token and never stores a private key. Preview is deliberately excluded; enabling Preview requires a separate provider condition and IAM subject.
 
-Alternatively, set one base64-encoded full credential object:
-
-```text
-GOOGLE_SERVICE_ACCOUNT_JSON_BASE64
-```
-
-If that value is present, it takes priority over the separate email and private-key values. The folder ID can still be supplied separately. Never add the JSON key, private key or a real `.env` file to Git.
-
-After saving the variables, redeploy the project once. The source code itself does not need a build command.
+After saving the variables, redeploy the project once. The source code itself does not need a build command. Never add a real `.env` file or a copied OIDC token to Git.
 
 ## Publishing contract
 
@@ -97,7 +103,10 @@ Do not rename or duplicate headings. Square-bracket placeholder paragraphs are i
 
 ## Security decisions
 
-- Service-account secrets are read only from server-side Vercel environment variables.
+- Authentication uses Vercel OIDC and short-lived Google credentials; there is no stored Google private key.
+- The Google provider accepts only the Studio 17 Vercel team audience and the exact production deployment subject.
+- The federated subject can impersonate only the dedicated careers service account.
+- The service account has Viewer access only to the open-role folder and no project role.
 - The browser receives normalized public role content, never Google credentials or private Drive URLs.
 - A detail request verifies that the document still belongs directly to the approved folder before returning content.
 - Only native Google Docs are read.
@@ -120,12 +129,12 @@ Do not rename or duplicate headings. Square-bracket placeholder paragraphs are i
 
 | Symptom | Likely cause | Action |
 | --- | --- | --- |
-| API returns `CAREERS_NOT_CONFIGURED` | Missing or invalid Vercel environment variables | Recheck the service-account email/key and redeploy |
-| API returns `GOOGLE_AUTH_FAILED` | Bad key, disabled account or clock/auth issue | Rotate the key, update Vercel and redeploy |
+| API returns `CAREERS_NOT_CONFIGURED` | Missing WIF environment variable or missing Vercel OIDC header | Recheck Production variables, Team issuer mode and redeploy |
+| API returns `GOOGLE_AUTH_FAILED` | Issuer, audience, subject condition or impersonation grant does not match | Compare Vercel project/team/environment names with the WIF provider and IAM subject |
 | API returns `GOOGLE_API_FAILED` | APIs disabled, folder not shared or Google unavailable | Enable Drive/Docs APIs and verify Viewer access |
 | Role is missing but API works | Incomplete template, wrong file type or wrong folder | Validate all required fields and direct folder parent |
 | Role detail returns 404 | Role was removed, incomplete or the URL is invalid | Return to Careers and inspect the source document |
 
-## Key rotation
+## Credential maintenance
 
-Create a new service-account key, update Vercel, deploy, confirm `/api/careers`, and only then revoke the old key. Never leave unused keys active.
+There is no key to rotate. If the Vercel team slug, project name or target environment changes, update the provider issuer/audience/condition and the service-account IAM subject together, then redeploy and verify `/api/careers`.

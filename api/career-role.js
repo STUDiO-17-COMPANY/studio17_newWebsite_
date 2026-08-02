@@ -17,7 +17,7 @@ module.exports = async function careerRoleHandler(request, response) {
   }
 
   try {
-    const role = await getPublishedRole(id);
+    const role = await getPublishedRole(id, request);
     sendJson(response, 200, { role, meta: { language: 'en', generatedAt: new Date().toISOString() } }, { cache: true });
   } catch (error) {
     if (error?.status >= 500) console.error('Career role failed', id, error?.code || error?.message);

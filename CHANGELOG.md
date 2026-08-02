@@ -6,7 +6,7 @@ All meaningful design, code and content changes to the Studio 17 website are rec
 
 - Added the English-only `careers.html` page with responsive hero, open-role cards, loading/empty/error states, working-principle cards, candidate-process guidance and the shared Studio 17 footer.
 - Added the reusable `career-role.html` detail page with dynamic role sections, accessible role facts, a verified application action and explicit invalid/removed/API-unavailable states.
-- Added secure Vercel Functions that authenticate to Google with a server-side service account, list native Docs directly inside the approved open-role folder, validate the template contract and withhold incomplete documents.
+- Added secure Vercel Functions that use short-lived Vercel OIDC credentials through Google Workload Identity Federation, impersonate a dedicated read-only service account, list native Docs directly inside the approved open-role folder, validate the template contract and withhold incomplete documents.
 - Added folder-membership verification for every role-detail request, HTTPS-only application links, bounded Google request timeouts, sanitized errors and short CDN caching so role additions/removals update automatically.
 - Converted every header, mobile, sitemap and footer Careers destination from WIP to the real English Careers page.
 - Added a forced-English i18n route that preserves the visitor's saved site language and prevents translated pages from breaking the English-only Careers workflow.

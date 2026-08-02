@@ -10,7 +10,7 @@ module.exports = async function careersHandler(request, response) {
   }
 
   try {
-    const result = await listPublishedRoles();
+    const result = await listPublishedRoles(request);
     sendJson(response, 200, {
       roles: result.roles,
       meta: {

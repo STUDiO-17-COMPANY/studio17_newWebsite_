@@ -1,13 +1,12 @@
 'use strict';
 
-const { createSign } = require('node:crypto');
-
 const DEFAULT_OPEN_ROLES_FOLDER_ID = '1jbuO2nBYoGwnFP7HLZFTERt_IUmclxGc';
-const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
-const GOOGLE_SCOPE = [
+const GOOGLE_STS_URL = 'https://sts.googleapis.com/v1/token';
+const GOOGLE_SCOPES = [
   'https://www.googleapis.com/auth/drive.readonly',
   'https://www.googleapis.com/auth/documents.readonly'
-].join(' ');
+];
+const GOOGLE_CLOUD_SCOPE = 'https://www.googleapis.com/auth/cloud-platform';
 const GOOGLE_DOC_MIME = 'application/vnd.google-apps.document';
 const REQUEST_TIMEOUT_MS = 9000;
 
@@ -43,29 +42,20 @@ class CareersError extends Error {
   }
 }
 
-const base64Url = value => Buffer.from(value)
-  .toString('base64')
-  .replace(/=/g, '')
-  .replace(/\+/g, '-')
-  .replace(/\//g, '_');
-
-const decodeJsonCredential = encoded => {
-  try {
-    return JSON.parse(Buffer.from(encoded, 'base64').toString('utf8'));
-  } catch {
-    throw new CareersError('CAREERS_NOT_CONFIGURED', 'The Google service-account configuration is invalid.', 503);
-  }
+const getHeader = (request, name) => {
+  const value = request?.headers?.[name] ?? request?.headers?.[name.toLowerCase()];
+  return Array.isArray(value) ? value[0] : value;
 };
 
-const getConfiguration = () => {
-  const bundled = process.env.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64
-    ? decodeJsonCredential(process.env.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64)
-    : null;
-  const email = bundled?.client_email || process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = (bundled?.private_key || process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
+const getConfiguration = request => {
+  const projectNumber = process.env.GCP_PROJECT_NUMBER;
+  const poolId = process.env.GCP_WORKLOAD_IDENTITY_POOL_ID;
+  const providerId = process.env.GCP_WORKLOAD_IDENTITY_POOL_PROVIDER_ID;
+  const email = process.env.GCP_SERVICE_ACCOUNT_EMAIL;
+  const oidcToken = getHeader(request, 'x-vercel-oidc-token') || process.env.VERCEL_OIDC_TOKEN;
   const folderId = process.env.GOOGLE_DRIVE_OPEN_ROLES_FOLDER_ID || DEFAULT_OPEN_ROLES_FOLDER_ID;
 
-  if (!email || !privateKey) {
+  if (!projectNumber || !poolId || !providerId || !email || !oidcToken) {
     throw new CareersError(
       'CAREERS_NOT_CONFIGURED',
       'The Careers connection has not been configured yet.',
@@ -73,55 +63,60 @@ const getConfiguration = () => {
     );
   }
 
-  return { email, privateKey, folderId };
+  const audience = `//iam.googleapis.com/projects/${projectNumber}/locations/global/workloadIdentityPools/${poolId}/providers/${providerId}`;
+  return { audience, email, folderId, oidcToken };
 };
 
 const createAccessToken = async (configuration, forceRefresh = false) => {
   const now = Math.floor(Date.now() / 1000);
   if (!forceRefresh && cachedAccessToken?.expiresAt > now + 60) return cachedAccessToken.value;
 
-  const header = base64Url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
-  const claims = base64Url(JSON.stringify({
-    iss: configuration.email,
-    scope: GOOGLE_SCOPE,
-    aud: GOOGLE_TOKEN_URL,
-    iat: now,
-    exp: now + 3600
-  }));
-  const unsignedToken = `${header}.${claims}`;
-  let signature;
-
-  try {
-    const signer = createSign('RSA-SHA256');
-    signer.update(unsignedToken);
-    signer.end();
-    signature = signer.sign(configuration.privateKey);
-  } catch {
-    throw new CareersError('CAREERS_NOT_CONFIGURED', 'The Google service-account key could not be read.', 503);
-  }
-
-  const assertion = `${unsignedToken}.${base64Url(signature)}`;
-  const response = await fetchWithTimeout(GOOGLE_TOKEN_URL, {
+  const federationResponse = await fetchWithTimeout(GOOGLE_STS_URL, {
     method: 'POST',
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-      assertion
+    headers: { 'content-type': 'application/json', accept: 'application/json' },
+    body: JSON.stringify({
+      audience: configuration.audience,
+      grantType: 'urn:ietf:params:oauth:grant-type:token-exchange',
+      requestedTokenType: 'urn:ietf:params:oauth:token-type:access_token',
+      scope: GOOGLE_CLOUD_SCOPE,
+      subjectTokenType: 'urn:ietf:params:oauth:token-type:jwt',
+      subjectToken: configuration.oidcToken
     })
   });
 
-  if (!response.ok) {
+  if (!federationResponse.ok) {
     throw new CareersError('GOOGLE_AUTH_FAILED', 'The Careers connection could not authenticate with Google.', 502);
   }
 
-  const payload = await response.json();
-  if (!payload.access_token) {
-    throw new CareersError('GOOGLE_AUTH_FAILED', 'Google did not return an access token.', 502);
+  const federation = await federationResponse.json();
+  if (!federation.access_token) {
+    throw new CareersError('GOOGLE_AUTH_FAILED', 'Google did not accept the Vercel identity token.', 502);
   }
 
+  const impersonationUrl = `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${encodeURIComponent(configuration.email)}:generateAccessToken`;
+  const impersonationResponse = await fetchWithTimeout(impersonationUrl, {
+    method: 'POST',
+    headers: {
+      authorization: `Bearer ${federation.access_token}`,
+      'content-type': 'application/json',
+      accept: 'application/json'
+    },
+    body: JSON.stringify({ scope: GOOGLE_SCOPES, lifetime: '3600s' })
+  });
+
+  if (!impersonationResponse.ok) {
+    throw new CareersError('GOOGLE_AUTH_FAILED', 'The Careers connection could not assume its Google identity.', 502);
+  }
+
+  const payload = await impersonationResponse.json();
+  if (!payload.accessToken) {
+    throw new CareersError('GOOGLE_AUTH_FAILED', 'Google did not return a short-lived access token.', 502);
+  }
+
+  const expireTime = Math.floor(Date.parse(payload.expireTime || '') / 1000);
   cachedAccessToken = {
-    value: payload.access_token,
-    expiresAt: now + Math.min(Number(payload.expires_in) || 3600, 3600)
+    value: payload.accessToken,
+    expiresAt: Number.isFinite(expireTime) ? expireTime : now + 3600
   };
   return cachedAccessToken.value;
 };
@@ -362,8 +357,8 @@ const mapWithConcurrency = async (items, limit, mapper) => {
   return results;
 };
 
-const listPublishedRoles = async () => {
-  const configuration = getConfiguration();
+const listPublishedRoles = async request => {
+  const configuration = getConfiguration(request);
   const files = await listRoleFiles(configuration);
   if (!files.length) return { roles: [], invalidCount: 0 };
 
@@ -386,8 +381,8 @@ const listPublishedRoles = async () => {
   return { roles, invalidCount: results.length - roles.length };
 };
 
-const getPublishedRole = async id => {
-  const configuration = getConfiguration();
+const getPublishedRole = async (id, request) => {
+  const configuration = getConfiguration(request);
   const file = await getRoleFile(id, configuration);
   const document = await getRoleDocument(id, configuration);
   const result = buildRole(file, document);
