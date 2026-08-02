@@ -22,6 +22,8 @@ const FIELD_HEADINGS = new Map([
 ]);
 
 const SECTION_HEADINGS = new Map([
+  ['applicant countries (seo)', 'applicantCountries'],
+  ['applicant countries seo', 'applicantCountries'],
   ['about the role', 'about'],
   ['what you will do', 'responsibilities'],
   ['what we are looking for', 'requirements'],
@@ -261,6 +263,10 @@ const parseRoleDocument = document => {
 
   const scalar = key => cleanText((values[key] || []).map(item => item.text).join(' '));
   const paragraphs = key => (values[key] || []).map(item => item.text.trim()).filter(Boolean);
+  const commaSeparated = key => paragraphs(key)
+    .flatMap(value => value.split(','))
+    .map(cleanText)
+    .filter(Boolean);
 
   return {
     department: scalar('department'),
@@ -277,7 +283,8 @@ const parseRoleDocument = document => {
     niceToHave: paragraphs('niceToHave'),
     offer: paragraphs('offer'),
     hiringProcess: paragraphs('hiringProcess'),
-    equalOpportunity: paragraphs('equalOpportunity')
+    equalOpportunity: paragraphs('equalOpportunity'),
+    applicantCountries: commaSeparated('applicantCountries')
   };
 };
 
@@ -394,6 +401,26 @@ const getPublishedRole = async (id, request) => {
   return result.role;
 };
 
+const getPublishedRoleBySlug = async (slug, request) => {
+  const normalisedSlug = slugify(slug || '');
+  if (!slug || normalisedSlug !== slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+    throw new CareersError('INVALID_ROLE_SLUG', 'The role link is invalid.', 400);
+  }
+
+  const configuration = getConfiguration(request);
+  const files = await listRoleFiles(configuration);
+  const file = files.find(candidate => slugify(candidate.name || '') === slug);
+  if (!file) throw new CareersError('ROLE_NOT_FOUND', 'This role is no longer open.', 404);
+
+  const document = await getRoleDocument(file.id, configuration);
+  const result = buildRole(file, document);
+  if (!result.valid) {
+    console.warn('Careers: requested role is incomplete', file.id, result.missing.join(','));
+    throw new CareersError('ROLE_NOT_FOUND', 'This role is no longer open.', 404);
+  }
+  return result.role;
+};
+
 const sendJson = (response, status, payload, { cache = false } = {}) => {
   response.statusCode = status;
   response.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -425,6 +452,7 @@ module.exports = {
   buildRole,
   extractParagraphs,
   getPublishedRole,
+  getPublishedRoleBySlug,
   listPublishedRoles,
   parseRoleDocument,
   sendError,

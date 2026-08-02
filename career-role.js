@@ -9,7 +9,10 @@
   if (!loading || !content || !error) return;
 
   const refreshIcons = () => window.lucide?.createIcons({ attrs: { 'stroke-width': 2 } });
-  const roleId = new URLSearchParams(location.search).get('id') || '';
+  const parameters = new URLSearchParams(location.search);
+  const roleId = parameters.get('id') || '';
+  const pathMatch = location.pathname.match(/^\/careers\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/i);
+  const roleSlug = (pathMatch?.[1] || parameters.get('slug') || '').toLowerCase();
 
   const setText = (selector, value) => {
     const element = document.querySelector(selector);
@@ -48,6 +51,10 @@
     document.title = `${role.title} — Careers — Studio 17`;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.content = role.summary;
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', role.summary);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', document.title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', role.summary);
 
     renderParagraphs('[data-role-about]', role.about);
     renderList('[data-role-responsibilities]', role.responsibilities);
@@ -103,13 +110,25 @@
   };
 
   const loadRole = async () => {
-    if (!/^[A-Za-z0-9_-]{10,200}$/.test(roleId)) {
+    if (window.__STUDIO17_ROLE__) {
+      renderRole(window.__STUDIO17_ROLE__);
+      return;
+    }
+    if (window.__STUDIO17_ROLE_ERROR__) {
+      showError(window.__STUDIO17_ROLE_ERROR__.status || 404, window.__STUDIO17_ROLE_ERROR__.code);
+      return;
+    }
+
+    const validSlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(roleSlug);
+    const validId = /^[A-Za-z0-9_-]{10,200}$/.test(roleId);
+    if (!validSlug && !validId) {
       showError(400, 'INVALID_ROLE_ID');
       return;
     }
 
     try {
-      const response = await fetch(`/api/career-role?id=${encodeURIComponent(roleId)}`, { headers: { accept: 'application/json' } });
+      const query = validSlug ? `slug=${encodeURIComponent(roleSlug)}` : `id=${encodeURIComponent(roleId)}`;
+      const response = await fetch(`/api/career-role?${query}`, { headers: { accept: 'application/json' } });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok || !payload.role) {
         showError(response.status, payload.error?.code);

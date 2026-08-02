@@ -110,6 +110,10 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
   assert.deepEqual(detail.payload.role.about, ['A practical role.']);
   assert.equal(detail.payload.role.equalOpportunity.length, 0);
 
+  const cleanDetail = await call(careerRoleHandler, '/api/career-role?slug=growth-strategist', oidcHeaders);
+  assert.equal(cleanDetail.response.statusCode, 200);
+  assert.equal(cleanDetail.payload.role.slug, 'growth-strategist');
+
   const invalid = await call(careerRoleHandler, '/api/career-role?id=bad', oidcHeaders);
   assert.equal(invalid.response.statusCode, 400);
   assert.equal(invalid.payload.error.code, 'INVALID_ROLE_ID');

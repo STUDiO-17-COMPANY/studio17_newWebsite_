@@ -63,7 +63,7 @@
 
     const link = document.createElement('a');
     link.className = 'role-card-link';
-    link.href = `career-role.html?id=${encodeURIComponent(role.id)}&role=${encodeURIComponent(role.slug)}&lang=en`;
+    link.href = `/careers/${encodeURIComponent(role.slug)}`;
     link.dataset.forceLanguage = 'en';
     link.append(document.createTextNode('View role'), document.createElement('span'));
     link.querySelector('span').append(icon('arrow-up-right'));

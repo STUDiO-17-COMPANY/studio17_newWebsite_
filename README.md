@@ -4,15 +4,17 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 
 ## Project structure
 
-- `index.html` — Figma-matched homepage.
-- `sitemap.html` — public website map and planned page structure.
-- `wip.html` — shared multilingual destination for pages that are not built yet.
-- `careers.html` — English-only Careers index with automatic Google Drive role listing.
-- `career-role.html` — reusable role-detail view populated from the selected Google Doc.
+- `/` (`index.html`) — Figma-matched homepage.
+- `/sitemap` (`sitemap.html`) — public website map and planned page structure.
+- `/wip?for=<destination>` (`wip.html`) — shared multilingual destination for pages that are not built yet.
+- `/careers` (`careers.html`) — English-only Careers index with automatic Google Drive role listing.
+- `/careers/<role-name>` (`career-role.html` template) — clean, server-rendered role route populated from the selected Google Doc.
 - `careers.js` / `career-role.js` — Careers loading, rendering and failure-state behavior.
 - `api/` — Vercel Functions for authenticated, read-only Drive/Docs access and role validation.
 - `.env.example` — non-secret environment-variable contract for the Careers connection.
-- `vercel.json` — Vercel Function duration configuration.
+- `vercel.json` — Vercel Function, redirect and clean-route configuration.
+- `dev-server.cjs` — dependency-free local server that mirrors the production clean routes.
+- `robots.txt` / `/sitemap.xml` — crawler policy and live search-engine sitemap.
 - `styles.css` — design tokens, layout, responsive rules and motion.
 - `script.js` — navigation, service selector, carousels and reveal interactions.
 - `wip.js` — identifies and localizes the requested unfinished destination.
@@ -28,6 +30,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CONTENT_NOTES.md` — content verification and launch notes.
 - `CHANGELOG.md` — dated implementation history.
 - `CAREERS_AUTOMATION.md` — automatic publishing architecture, setup, security and QA guide.
+- `SEO.md` — search metadata, indexing, structured-data and URL maintenance rules.
 - `tests/` — parser, API and browser coverage for the Careers automation and responsive states.
 
 ## Local preview
@@ -35,7 +38,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 The site has no build step and no package dependencies. From this folder, run:
 
 ```powershell
-python -m http.server 8080
+node dev-server.cjs 8080
 ```
 
 Then open `http://localhost:8080`.
@@ -61,11 +64,12 @@ node locales/build-bundle.cjs
 7. Update the sitemap and documentation in the same change as any new page or design rule.
 8. Add every meaningful code, content or design change to `CHANGELOG.md`.
 9. Keep multilingual public copy in sync across `locales/en.json`, `pt-PT.json`, `es.json`, `el.json`, `ru.json` and `he.json`; Hebrew must retain RTL support. Careers and individual role pages are the documented English-only exception.
-10. Point unfinished destinations to `wip.html?for=<destination>` and replace that link with the final file when the page is published.
+10. Point unfinished destinations to `/wip?for=<destination>` and replace that link with the final clean route when the page is published.
 11. Header items, promotional CTAs, cards and footer navigation must use WIP until their real HTML page exists. Keep only actual pages, structural anchors and real email addresses as direct destinations.
 12. Treat the 1920px fixed geometry as the English reference only. Translated and responsive text containers must grow naturally; never hide buttons or copy to preserve an English-only height.
 13. Test all six languages at 1920px, 1440px, 1280px, 1024px, 900px, 768px, 390px and the supported 320px minimum width after changing layout or copy.
 14. Keep Careers credentials server-side, rotate keys safely and follow `CAREERS_AUTOMATION.md` whenever the Google/Vercel connection changes.
+15. Keep one canonical URL per page, exclude WIP pages from indexing, and follow `SEO.md` whenever routes, languages or public pages change.
 
 ## Pre-launch checklist
 
@@ -77,7 +81,7 @@ node locales/build-bundle.cjs
 - Test current Chrome, Safari, Firefox and Edge on desktop and mobile.
 - Run an accessibility audit and verify keyboard-only navigation.
 - Have a native speaker review every non-English locale before publication.
-- Review `sitemap.html` whenever a page is added, renamed or removed.
+- Review `/sitemap` whenever a page is added, renamed or removed.
 - Complete the one-time service-account and Vercel environment setup before treating Careers as production-ready.
 
 ## Design source

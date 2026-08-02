@@ -2,6 +2,26 @@
 
 All meaningful design, code and content changes to the Studio 17 website are recorded here.
 
+## 2026-08-02 — Extensionless public URL structure
+
+- Enabled Vercel clean URLs so source files such as `sitemap.html` and `wip.html` are publicly served as `/sitemap` and `/wip`.
+- Replaced every internal `.html` link across the homepage, sitemap, WIP, Careers and role template with a root-relative clean route.
+- Preserved permanent redirects for previously shared `.html` addresses and the legacy role-detail URL.
+- Updated multilingual link propagation to work with extensionless paths while retaining direct-file local preview support.
+- Added a dependency-free clean-route development server and automated checks that prevent `.html` links from returning.
+- Updated canonical metadata, the XML sitemap, documentation and browser test routes to the new public structure.
+
+## 2026-08-02 — Clean Careers URLs and technical SEO foundation
+
+- Replaced public Google Drive ID query strings with stable vacancy URLs in the form `/careers/<role-name>` while preserving a permanent redirect for previously shared links.
+- Added server-generated vacancy titles, descriptions, canonical URLs, social metadata and breadcrumb markup before browser JavaScript runs, plus standards-compliant `JobPosting` data when remote applicant countries are provided.
+- Added correct `404` and `noindex` behavior for removed or invalid vacancies so closed roles can leave search results cleanly.
+- Added a live XML sitemap at `/sitemap.xml`, automatically populated from the current Google Drive open-role folder, and a root `robots.txt` that advertises it.
+- Standardized public Careers URLs on `/careers`, permanently redirected the apex domain to `https://www.studio17.world`, and moved internal Careers links to the clean route.
+- Added homepage Organization/WebSite structured data, canonical and multilingual alternate links, Open Graph/Twitter metadata, and translation-aware canonical metadata.
+- Marked WIP destinations `noindex,follow` so unfinished pages do not compete in search while their links remain crawlable.
+- Added automated SEO/routing tests and `SEO.md` maintenance guidance.
+
 ## 2026-08-02 — Automatic Google Drive Careers workflow
 
 - Added the English-only `careers.html` page with responsive hero, open-role cards, loading/empty/error states, working-principle cards, candidate-process guidance and the shared Studio 17 footer.

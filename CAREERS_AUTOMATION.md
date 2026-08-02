@@ -94,12 +94,13 @@ Optional headings:
 - What we offer
 - Hiring process
 - Equal opportunity
+- Applicant countries (SEO) — optional for ordinary page publishing, but required for Google Jobs eligibility when the role is fully remote. Enter eligible country names as bullets or a comma-separated list; do not write regions such as `Europe` or `Worldwide`.
 
 Do not rename or duplicate headings. Square-bracket placeholder paragraphs are ignored and therefore do not satisfy required validation. An incomplete role is withheld and logged by the server instead of producing a broken public page.
 
 ## English-only behavior
 
-`careers.html` and `career-role.html` set `data-force-language="en"`. Careers links from every locale carry `lang=en`, and the i18n layer prevents a Careers page from switching away from English without overwriting the visitor's saved preference for the rest of the website.
+`careers.html` and `career-role.html` set `data-force-language="en"`. Every locale links to the language-neutral clean route `/careers`; the i18n layer keeps Careers in English without overwriting the visitor's saved preference for the rest of the website.
 
 ## Security decisions
 
@@ -119,10 +120,10 @@ Do not rename or duplicate headings. Square-bracket placeholder paragraphs are i
 1. Deploy with the three environment variables configured.
 2. Open `/api/careers`; with an empty folder it must return `{"roles":[]}` with HTTP 200.
 3. Copy the master template, complete every required field, rename the file to a test role title and move it into the open-role folder.
-4. Wait up to one minute and confirm the card appears on `/careers.html?lang=en`.
+4. Wait up to one minute and confirm the card appears on `/careers`.
 5. Open the card, confirm every section and role fact, and test the application URL.
 6. Move the test document out of the folder.
-7. Wait up to one minute and confirm both the card and direct role URL are no longer public.
+7. Wait up to one minute and confirm both the card and `/careers/<role-name>` return the closed-role state with HTTP 404.
 8. Remove the test document if it is no longer needed.
 
 ## Troubleshooting

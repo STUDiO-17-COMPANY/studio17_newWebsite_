@@ -1,8 +1,24 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
   "functions": {
     "api/*.js": {
-      "maxDuration": 10
+      "maxDuration": 10,
+      "includeFiles": "career-role.html"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "studio17.world" }],
+      "destination": "https://www.studio17.world/:path*",
+      "permanent": true
+    },
+    { "source": "/index", "destination": "/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/careers/:slug", "destination": "/api/career-page?slug=:slug" },
+    { "source": "/career-role", "destination": "/api/legacy-career" },
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" }
+  ]
 }

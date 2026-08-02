@@ -73,10 +73,10 @@ Future pages may vary their content but not the shell, palette, heading treatmen
 
 ### Work-in-progress page
 
-- `wip.html` is the single shared destination for every page that has not been built yet.
-- Use `wip.html?for=<destination>` so the page can identify and translate the requested destination. Stable keys cover navigation, services, industries, content, company, sales and legal destinations.
+- `/wip` is the single shared public destination for every page that has not been built yet; `wip.html` remains only its source filename.
+- Use `/wip?for=<destination>` so the page can identify and translate the requested destination. Stable keys cover navigation, services, industries, content, company, sales and legal destinations.
 - The WIP page reuses the shared header, footer, language selector, square geometry, blue highlight system and Lucide icon language.
-- When a final page is published, replace its WIP link in `sitemap.html` and update this documentation in the same change.
+- When a final page is published, replace its WIP link in `/sitemap` and update this documentation in the same change.
 - Never create separate WIP HTML files per language; all localized variants use the shared page and locale JSON contract.
 - Until a real page exists, its header link, CTA, card, sitemap entry and footer link must all use the same WIP key.
 

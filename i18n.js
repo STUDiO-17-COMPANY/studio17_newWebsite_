@@ -75,14 +75,18 @@
       const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
       const withoutHash = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
       const queryIndex = withoutHash.indexOf('?');
-      const page = queryIndex >= 0 ? withoutHash.slice(0, queryIndex) : withoutHash;
-      if (!page.toLowerCase().endsWith('.html')) return;
+      let page = queryIndex >= 0 ? withoutHash.slice(0, queryIndex) : withoutHash;
+      if (!page || /\.[a-z0-9]+$/i.test(page)) return;
+
+      if (location.protocol === 'file:') {
+        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/careers': 'careers.html' };
+        page = localPages[page] || page;
+      }
 
       const query = queryIndex >= 0 ? withoutHash.slice(queryIndex + 1) : '';
       const parameters = new URLSearchParams(query);
       const linkLanguage = normaliseLanguage(anchor.dataset.forceLanguage) || language;
-      if (anchor.dataset.forceLanguage) parameters.set('lang', linkLanguage);
-      else if (linkLanguage === 'en') parameters.delete('lang');
+      if (linkLanguage === 'en') parameters.delete('lang');
       else parameters.set('lang', linkLanguage);
       const serialized = parameters.toString();
       anchor.setAttribute('href', `${page}${serialized ? `?${serialized}` : ''}${hash}`);
@@ -133,10 +137,34 @@
 
   const updateUrl = language => {
     const url = new URL(location.href);
-    if (forcedLanguage) url.searchParams.set('lang', forcedLanguage);
+    if (forcedLanguage === 'en') url.searchParams.delete('lang');
+    else if (forcedLanguage) url.searchParams.set('lang', forcedLanguage);
     else if (language === 'en') url.searchParams.delete('lang');
     else url.searchParams.set('lang', language);
     history.replaceState({}, '', url);
+  };
+
+  const updateSeoMetadata = language => {
+    const canonical = document.querySelector('[data-seo-canonical]');
+    const openGraphUrl = document.querySelector('[data-seo-og-url]');
+    if (canonical) {
+      const url = new URL(location.href);
+      url.hash = '';
+      [...url.searchParams.keys()].forEach(key => {
+        if (key !== 'lang') url.searchParams.delete(key);
+      });
+      if (language === 'en') url.searchParams.delete('lang');
+      else url.searchParams.set('lang', language);
+      canonical.href = url.href;
+      if (openGraphUrl) openGraphUrl.content = url.href;
+    }
+
+    const description = document.querySelector('meta[name="description"]')?.content || '';
+    const title = document.title;
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description);
   };
 
   const loadLocale = async language => {
@@ -159,6 +187,7 @@
     updateLanguageControl(normalised);
     updateInternalLinks(normalised);
     if (updateAddress) updateUrl(normalised);
+    updateSeoMetadata(normalised);
     closeLanguageMenu();
     window.dispatchEvent(new CustomEvent('studio17:languagechange', { detail: { language: normalised, data: currentData } }));
     return currentData;
