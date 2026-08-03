@@ -13,6 +13,10 @@
     "wip": {
       "title": "עבודה בתהליך — Studio 17",
       "description": "הדף הזה של Studio 17 נמצא כעת בבנייה. אפשר לחזור לדף הבית או לעיין במפת האתר בזמן שהעבודה נמשכת."
+    },
+    "contact": {
+      "title": "יצירת קשר — Studio 17",
+      "description": "צרו קשר עם Studio 17 כדי לדון בפרויקט אתר, תוכן, פרסום, מערכות דיגיטליות או בינה מלאכותית."
     }
   },
   "strings": {
@@ -163,7 +167,37 @@
     "Consistent experience": "חוויה עקבית",
     "The same navigation, languages and design system remain available.": "אותם ניווט, שפות ומערכת עיצוב נשארים זמינים.",
     "Easy replacement": "החלפה פשוטה",
-    "Each WIP link can be replaced by its final page without changing the rest of the website.": "אפשר להחליף כל קישור WIP בדף הסופי שלו בלי לשנות את שאר האתר."
+    "Each WIP link can be replaced by its final page without changing the rest of the website.": "אפשר להחליף כל קישור WIP בדף הסופי שלו בלי לשנות את שאר האתר.",
+    "Let’s build what comes next.": "בואו נבנה את הדבר הבא.",
+    "Tell us where you want to go.": "ספרו לנו לאן אתם רוצים להגיע.",
+    "Share your goals, challenges and timing. We will use your details only to understand the project and respond to your enquiry.": "שתפו אותנו ביעדים, באתגרים ובלוחות הזמנים שלכם. נשתמש בפרטים שלכם רק כדי להבין את הפרויקט ולהשיב לפנייה.",
+    "Start your enquiry": "התחילו את הפנייה",
+    "A useful first message": "הודעה ראשונה מועילה",
+    "Tell us about the project.": "ספרו לנו על הפרויקט.",
+    "Include what you need, what is not working today, the markets you serve and any important deadline.": "ציינו מה אתם צריכים, מה לא עובד כיום, באילו שווקים אתם פועלים וכל מועד חשוב.",
+    "Prefer email?": "מעדיפים אימייל?",
+    "Working across markets": "עבודה בשווקים שונים",
+    "Europe and worldwide": "אירופה וברחבי העולם",
+    "Your information is sent securely to Studio 17 and is not published on the website.": "המידע שלכם נשלח באופן מאובטח ל-Studio 17 ואינו מתפרסם באתר.",
+    "Name": "שם",
+    "Email": "דוא״ל",
+    "(optional)": "(אופציונלי)",
+    "Phone": "טלפון",
+    "What can we help with?": "במה נוכל לעזור?",
+    "Select a service": "בחרו שירות",
+    "Something else": "משהו אחר",
+    "Indicative budget": "תקציב משוער",
+    "Not sure yet": "עדיין לא בטוחים",
+    "Under €1,000": "פחות מ-€1,000",
+    "Project details": "פרטי הפרויקט",
+    "Please include at least 20 characters.": "אנא כתבו לפחות 20 תווים.",
+    "I agree that Studio 17 may use these details to respond to my enquiry.": "אני מסכים/ה ש-Studio 17 תשתמש בפרטים אלה כדי להשיב לפנייה שלי.",
+    "Send enquiry": "שליחת פנייה",
+    "Please complete the required fields before sending.": "אנא השלימו את שדות החובה לפני השליחה.",
+    "Sending your enquiry…": "הפנייה נשלחת…",
+    "Thank you. Your enquiry has been sent to Studio 17.": "תודה. הפנייה נשלחה ל-Studio 17.",
+    "Too many messages were sent from this connection. Please wait and try again.": "נשלחו יותר מדי הודעות מהחיבור הזה. אנא המתינו ונסו שוב.",
+    "The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.": "טופס יצירת הקשר אינו זמין זמנית. אפשר לכתוב לנו ישירות ל-contact@studio17.world."
   },
   "services": {
     "categoryLabels": {

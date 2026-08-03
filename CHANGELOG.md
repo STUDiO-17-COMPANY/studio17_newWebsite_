@@ -2,6 +2,16 @@
 
 All meaningful design, code and content changes to the Studio 17 website are recorded here.
 
+## 2026-08-03 — Multilingual Contact page and email workflow
+
+- Added the extensionless `/contact` page in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew with translation-safe responsive and RTL layouts.
+- Added an accessible project enquiry form with required-field feedback, contact consent, direct-email fallback and translated sending, success, rate-limit and unavailable states.
+- Added a server-side Vercel Function that validates input, restricts origins, rate-limits repeated requests, absorbs honeypot spam and sends HTML/plain-text enquiries to `contact@studio17.world` through Resend.
+- Added reply-to handling and Resend idempotency keys so Studio 17 can answer the visitor directly without duplicate sends on retries.
+- Replaced Contact, Talk to sales and Start growing WIP links throughout the website with `/contact`.
+- Added Contact to the human and XML sitemaps, canonical/hreflang metadata, the clean-route local server and automated API/locale/URL checks.
+- Added `CONTACT_FORM.md`, environment-variable guidance and maintenance rules for secure delivery.
+
 ## 2026-08-02 — Extensionless public URL structure
 
 - Enabled Vercel clean URLs so source files such as `sitemap.html` and `wip.html` are publicly served as `/sitemap` and `/wip`.

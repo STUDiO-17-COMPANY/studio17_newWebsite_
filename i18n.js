@@ -108,9 +108,11 @@
       ? 'careers'
       : document.body.classList.contains('career-role-page')
         ? 'careerRole'
-        : document.body.classList.contains('sitemap-page')
-          ? 'sitemap'
-          : document.body.classList.contains('wip-page') ? 'wip' : 'home';
+        : document.body.classList.contains('contact-page')
+          ? 'contact'
+          : document.body.classList.contains('sitemap-page')
+            ? 'sitemap'
+            : document.body.classList.contains('wip-page') ? 'wip' : 'home';
     const metadata = currentData.meta?.[page];
     if (metadata?.title) document.title = metadata.title;
     const description = document.querySelector('meta[name="description"]');

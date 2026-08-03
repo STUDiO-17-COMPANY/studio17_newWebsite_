@@ -13,6 +13,10 @@
     "wip": {
       "title": "Work in progress — Studio 17",
       "description": "This Studio 17 page is currently being built. Return to the homepage or explore the sitemap while work continues."
+    },
+    "contact": {
+      "title": "Contact — Studio 17",
+      "description": "Contact Studio 17 to discuss your website, content, advertising, digital systems or AI project."
     }
   },
   "strings": {},

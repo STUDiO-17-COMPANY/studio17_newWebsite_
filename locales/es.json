@@ -13,6 +13,10 @@
     "wip": {
       "title": "Trabajo en curso — Studio 17",
       "description": "Esta página de Studio 17 se está construyendo. Vuelve a la página principal o consulta el mapa del sitio mientras continúa el trabajo."
+    },
+    "contact": {
+      "title": "Contacto — Studio 17",
+      "description": "Contacta con Studio 17 para hablar de tu proyecto web, de contenidos, publicidad, sistemas digitales o IA."
     }
   },
   "strings": {
@@ -130,7 +134,7 @@
     "Start": "Inicio",
     "Homepage": "Página principal",
     "Featured work": "Trabajos destacados",
-    "Contact Studio 17": "Contactar con Studio 17",
+    "Contact Studio 17": "Contacta con Studio 17",
     "Services overview": "Resumen de servicios",
     "Custom websites": "Sitios web personalizados",
     "AI overview": "Resumen de IA",
@@ -163,7 +167,37 @@
     "Consistent experience": "Experiencia coherente",
     "The same navigation, languages and design system remain available.": "La misma navegación, los idiomas y el sistema de diseño siguen disponibles.",
     "Easy replacement": "Sustitución sencilla",
-    "Each WIP link can be replaced by its final page without changing the rest of the website.": "Cada enlace WIP puede sustituirse por su página final sin modificar el resto del sitio web."
+    "Each WIP link can be replaced by its final page without changing the rest of the website.": "Cada enlace WIP puede sustituirse por su página final sin modificar el resto del sitio web.",
+    "Let’s build what comes next.": "Construyamos lo que viene después.",
+    "Tell us where you want to go.": "Cuéntanos adónde quieres llegar.",
+    "Share your goals, challenges and timing. We will use your details only to understand the project and respond to your enquiry.": "Comparte tus objetivos, retos y plazos. Usaremos tus datos únicamente para comprender el proyecto y responder a tu consulta.",
+    "Start your enquiry": "Iniciar consulta",
+    "A useful first message": "Un primer mensaje útil",
+    "Tell us about the project.": "Háblanos del proyecto.",
+    "Include what you need, what is not working today, the markets you serve and any important deadline.": "Incluye lo que necesitas, lo que no funciona actualmente, los mercados en los que trabajas y cualquier fecha importante.",
+    "Prefer email?": "¿Prefieres el email?",
+    "Working across markets": "Trabajamos en distintos mercados",
+    "Europe and worldwide": "Europa y todo el mundo",
+    "Your information is sent securely to Studio 17 and is not published on the website.": "Tu información se envía de forma segura a Studio 17 y no se publica en el sitio web.",
+    "Name": "Nombre",
+    "Email": "Correo electrónico",
+    "(optional)": "(opcional)",
+    "Phone": "Teléfono",
+    "What can we help with?": "¿En qué podemos ayudarte?",
+    "Select a service": "Selecciona un servicio",
+    "Something else": "Otro asunto",
+    "Indicative budget": "Presupuesto orientativo",
+    "Not sure yet": "Aún no lo sé",
+    "Under €1,000": "Menos de 1.000 €",
+    "Project details": "Detalles del proyecto",
+    "Please include at least 20 characters.": "Incluye al menos 20 caracteres.",
+    "I agree that Studio 17 may use these details to respond to my enquiry.": "Acepto que Studio 17 utilice estos datos para responder a mi consulta.",
+    "Send enquiry": "Enviar consulta",
+    "Please complete the required fields before sending.": "Completa los campos obligatorios antes de enviar.",
+    "Sending your enquiry…": "Enviando tu consulta…",
+    "Thank you. Your enquiry has been sent to Studio 17.": "Gracias. Tu consulta se ha enviado a Studio 17.",
+    "Too many messages were sent from this connection. Please wait and try again.": "Se han enviado demasiados mensajes desde esta conexión. Espera y vuelve a intentarlo.",
+    "The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.": "El formulario de contacto no está disponible temporalmente. Puedes escribirnos directamente a contact@studio17.world."
   },
   "services": {
     "categoryLabels": {

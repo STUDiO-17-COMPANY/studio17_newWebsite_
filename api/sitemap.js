@@ -31,6 +31,7 @@ module.exports = async function sitemapHandler(request, response) {
     const { roles } = await listPublishedRoles(request);
     const urls = [
       { loc: `${SITE_URL}/`, changefreq: 'weekly', priority: '1.0' },
+      { loc: `${SITE_URL}/contact`, changefreq: 'monthly', priority: '0.8' },
       { loc: `${SITE_URL}/careers`, changefreq: 'daily', priority: '0.8' },
       { loc: `${SITE_URL}/sitemap`, changefreq: 'monthly', priority: '0.3' },
       ...roles.map(role => ({

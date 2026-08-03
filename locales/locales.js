@@ -15,6 +15,10 @@ window.Studio17LocaleData = {
       "wip": {
         "title": "Work in progress — Studio 17",
         "description": "This Studio 17 page is currently being built. Return to the homepage or explore the sitemap while work continues."
+      },
+      "contact": {
+        "title": "Contact — Studio 17",
+        "description": "Contact Studio 17 to discuss your website, content, advertising, digital systems or AI project."
       }
     },
     "strings": {},
@@ -118,6 +122,10 @@ window.Studio17LocaleData = {
       "wip": {
         "title": "Trabalho em curso — Studio 17",
         "description": "Esta página da Studio 17 está a ser construída. Regresse à homepage ou consulte o mapa do site enquanto o trabalho continua."
+      },
+      "contact": {
+        "title": "Contacto — Studio 17",
+        "description": "Contacte a Studio 17 para falar sobre o seu projeto de website, conteúdos, publicidade, sistemas digitais ou IA."
       }
     },
     "strings": {
@@ -268,7 +276,37 @@ window.Studio17LocaleData = {
       "Consistent experience": "Experiência consistente",
       "The same navigation, languages and design system remain available.": "A mesma navegação, idiomas e sistema visual continuam disponíveis.",
       "Easy replacement": "Substituição simples",
-      "Each WIP link can be replaced by its final page without changing the rest of the website.": "Cada ligação WIP pode ser substituída pela página final sem alterar o restante website."
+      "Each WIP link can be replaced by its final page without changing the rest of the website.": "Cada ligação WIP pode ser substituída pela página final sem alterar o restante website.",
+      "Let’s build what comes next.": "Vamos construir o que vem a seguir.",
+      "Tell us where you want to go.": "Diga-nos onde quer chegar.",
+      "Share your goals, challenges and timing. We will use your details only to understand the project and respond to your enquiry.": "Partilhe os seus objetivos, desafios e prazos. Utilizaremos os seus dados apenas para compreender o projeto e responder ao seu pedido.",
+      "Start your enquiry": "Iniciar pedido",
+      "A useful first message": "Uma primeira mensagem útil",
+      "Tell us about the project.": "Fale-nos sobre o projeto.",
+      "Include what you need, what is not working today, the markets you serve and any important deadline.": "Inclua o que precisa, o que não está a funcionar atualmente, os mercados onde atua e qualquer prazo importante.",
+      "Prefer email?": "Prefere email?",
+      "Working across markets": "Trabalhamos em vários mercados",
+      "Europe and worldwide": "Europa e resto do mundo",
+      "Your information is sent securely to Studio 17 and is not published on the website.": "As suas informações são enviadas de forma segura para a Studio 17 e não são publicadas no website.",
+      "Name": "Nome",
+      "Email": "Email",
+      "(optional)": "(opcional)",
+      "Phone": "Telefone",
+      "What can we help with?": "Em que podemos ajudar?",
+      "Select a service": "Selecione um serviço",
+      "Something else": "Outro assunto",
+      "Indicative budget": "Orçamento indicativo",
+      "Not sure yet": "Ainda não sei",
+      "Under €1,000": "Menos de €1.000",
+      "Project details": "Detalhes do projeto",
+      "Please include at least 20 characters.": "Inclua pelo menos 20 caracteres.",
+      "I agree that Studio 17 may use these details to respond to my enquiry.": "Concordo que a Studio 17 utilize estes dados para responder ao meu pedido.",
+      "Send enquiry": "Enviar pedido",
+      "Please complete the required fields before sending.": "Preencha os campos obrigatórios antes de enviar.",
+      "Sending your enquiry…": "A enviar o seu pedido…",
+      "Thank you. Your enquiry has been sent to Studio 17.": "Obrigado. O seu pedido foi enviado para a Studio 17.",
+      "Too many messages were sent from this connection. Please wait and try again.": "Foram enviadas demasiadas mensagens a partir desta ligação. Aguarde e tente novamente.",
+      "The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.": "O formulário de contacto está temporariamente indisponível. Pode enviar-nos um email diretamente para contact@studio17.world."
     },
     "services": {
       "categoryLabels": {
@@ -370,6 +408,10 @@ window.Studio17LocaleData = {
       "wip": {
         "title": "Trabajo en curso — Studio 17",
         "description": "Esta página de Studio 17 se está construyendo. Vuelve a la página principal o consulta el mapa del sitio mientras continúa el trabajo."
+      },
+      "contact": {
+        "title": "Contacto — Studio 17",
+        "description": "Contacta con Studio 17 para hablar de tu proyecto web, de contenidos, publicidad, sistemas digitales o IA."
       }
     },
     "strings": {
@@ -487,7 +529,7 @@ window.Studio17LocaleData = {
       "Start": "Inicio",
       "Homepage": "Página principal",
       "Featured work": "Trabajos destacados",
-      "Contact Studio 17": "Contactar con Studio 17",
+      "Contact Studio 17": "Contacta con Studio 17",
       "Services overview": "Resumen de servicios",
       "Custom websites": "Sitios web personalizados",
       "AI overview": "Resumen de IA",
@@ -520,7 +562,37 @@ window.Studio17LocaleData = {
       "Consistent experience": "Experiencia coherente",
       "The same navigation, languages and design system remain available.": "La misma navegación, los idiomas y el sistema de diseño siguen disponibles.",
       "Easy replacement": "Sustitución sencilla",
-      "Each WIP link can be replaced by its final page without changing the rest of the website.": "Cada enlace WIP puede sustituirse por su página final sin modificar el resto del sitio web."
+      "Each WIP link can be replaced by its final page without changing the rest of the website.": "Cada enlace WIP puede sustituirse por su página final sin modificar el resto del sitio web.",
+      "Let’s build what comes next.": "Construyamos lo que viene después.",
+      "Tell us where you want to go.": "Cuéntanos adónde quieres llegar.",
+      "Share your goals, challenges and timing. We will use your details only to understand the project and respond to your enquiry.": "Comparte tus objetivos, retos y plazos. Usaremos tus datos únicamente para comprender el proyecto y responder a tu consulta.",
+      "Start your enquiry": "Iniciar consulta",
+      "A useful first message": "Un primer mensaje útil",
+      "Tell us about the project.": "Háblanos del proyecto.",
+      "Include what you need, what is not working today, the markets you serve and any important deadline.": "Incluye lo que necesitas, lo que no funciona actualmente, los mercados en los que trabajas y cualquier fecha importante.",
+      "Prefer email?": "¿Prefieres el email?",
+      "Working across markets": "Trabajamos en distintos mercados",
+      "Europe and worldwide": "Europa y todo el mundo",
+      "Your information is sent securely to Studio 17 and is not published on the website.": "Tu información se envía de forma segura a Studio 17 y no se publica en el sitio web.",
+      "Name": "Nombre",
+      "Email": "Correo electrónico",
+      "(optional)": "(opcional)",
+      "Phone": "Teléfono",
+      "What can we help with?": "¿En qué podemos ayudarte?",
+      "Select a service": "Selecciona un servicio",
+      "Something else": "Otro asunto",
+      "Indicative budget": "Presupuesto orientativo",
+      "Not sure yet": "Aún no lo sé",
+      "Under €1,000": "Menos de 1.000 €",
+      "Project details": "Detalles del proyecto",
+      "Please include at least 20 characters.": "Incluye al menos 20 caracteres.",
+      "I agree that Studio 17 may use these details to respond to my enquiry.": "Acepto que Studio 17 utilice estos datos para responder a mi consulta.",
+      "Send enquiry": "Enviar consulta",
+      "Please complete the required fields before sending.": "Completa los campos obligatorios antes de enviar.",
+      "Sending your enquiry…": "Enviando tu consulta…",
+      "Thank you. Your enquiry has been sent to Studio 17.": "Gracias. Tu consulta se ha enviado a Studio 17.",
+      "Too many messages were sent from this connection. Please wait and try again.": "Se han enviado demasiados mensajes desde esta conexión. Espera y vuelve a intentarlo.",
+      "The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.": "El formulario de contacto no está disponible temporalmente. Puedes escribirnos directamente a contact@studio17.world."
     },
     "services": {
       "categoryLabels": {
@@ -622,6 +694,10 @@ window.Studio17LocaleData = {
       "wip": {
         "title": "Εργασία σε εξέλιξη — Studio 17",
         "description": "Αυτή η σελίδα της Studio 17 κατασκευάζεται. Επιστρέψτε στην αρχική σελίδα ή δείτε τον χάρτη ιστοτόπου όσο συνεχίζεται η εργασία."
+      },
+      "contact": {
+        "title": "Επικοινωνία — Studio 17",
+        "description": "Επικοινωνήστε με τη Studio 17 για το έργο σας σε ιστοσελίδες, περιεχόμενο, διαφήμιση, ψηφιακά συστήματα ή τεχνητή νοημοσύνη."
       }
     },
     "strings": {
@@ -772,7 +848,37 @@ window.Studio17LocaleData = {
       "Consistent experience": "Συνεπής εμπειρία",
       "The same navigation, languages and design system remain available.": "Η ίδια πλοήγηση, οι γλώσσες και το σύστημα σχεδιασμού παραμένουν διαθέσιμα.",
       "Easy replacement": "Εύκολη αντικατάσταση",
-      "Each WIP link can be replaced by its final page without changing the rest of the website.": "Κάθε σύνδεσμος WIP μπορεί να αντικατασταθεί από την τελική του σελίδα χωρίς αλλαγές στον υπόλοιπο ιστότοπο."
+      "Each WIP link can be replaced by its final page without changing the rest of the website.": "Κάθε σύνδεσμος WIP μπορεί να αντικατασταθεί από την τελική του σελίδα χωρίς αλλαγές στον υπόλοιπο ιστότοπο.",
+      "Let’s build what comes next.": "Ας δημιουργήσουμε ό,τι ακολουθεί.",
+      "Tell us where you want to go.": "Πείτε μας πού θέλετε να φτάσετε.",
+      "Share your goals, challenges and timing. We will use your details only to understand the project and respond to your enquiry.": "Μοιραστείτε τους στόχους, τις προκλήσεις και το χρονοδιάγραμμά σας. Θα χρησιμοποιήσουμε τα στοιχεία σας μόνο για να κατανοήσουμε το έργο και να απαντήσουμε στο αίτημά σας.",
+      "Start your enquiry": "Ξεκινήστε το αίτημά σας",
+      "A useful first message": "Ένα χρήσιμο πρώτο μήνυμα",
+      "Tell us about the project.": "Πείτε μας για το έργο.",
+      "Include what you need, what is not working today, the markets you serve and any important deadline.": "Συμπεριλάβετε τι χρειάζεστε, τι δεν λειτουργεί σήμερα, τις αγορές στις οποίες δραστηριοποιείστε και οποιαδήποτε σημαντική προθεσμία.",
+      "Prefer email?": "Προτιμάτε email;",
+      "Working across markets": "Δραστηριοποίηση σε πολλές αγορές",
+      "Europe and worldwide": "Ευρώπη και παγκοσμίως",
+      "Your information is sent securely to Studio 17 and is not published on the website.": "Οι πληροφορίες σας αποστέλλονται με ασφάλεια στη Studio 17 και δεν δημοσιεύονται στην ιστοσελίδα.",
+      "Name": "Όνομα",
+      "Email": "Email",
+      "(optional)": "(προαιρετικό)",
+      "Phone": "Τηλέφωνο",
+      "What can we help with?": "Σε τι μπορούμε να βοηθήσουμε;",
+      "Select a service": "Επιλέξτε υπηρεσία",
+      "Something else": "Κάτι άλλο",
+      "Indicative budget": "Ενδεικτικός προϋπολογισμός",
+      "Not sure yet": "Δεν είμαι ακόμη βέβαιος/η",
+      "Under €1,000": "Κάτω από €1.000",
+      "Project details": "Λεπτομέρειες έργου",
+      "Please include at least 20 characters.": "Παρακαλούμε συμπεριλάβετε τουλάχιστον 20 χαρακτήρες.",
+      "I agree that Studio 17 may use these details to respond to my enquiry.": "Συμφωνώ ότι η Studio 17 μπορεί να χρησιμοποιήσει αυτά τα στοιχεία για να απαντήσει στο αίτημά μου.",
+      "Send enquiry": "Αποστολή αιτήματος",
+      "Please complete the required fields before sending.": "Συμπληρώστε τα υποχρεωτικά πεδία πριν από την αποστολή.",
+      "Sending your enquiry…": "Το αίτημά σας αποστέλλεται…",
+      "Thank you. Your enquiry has been sent to Studio 17.": "Ευχαριστούμε. Το αίτημά σας στάλθηκε στη Studio 17.",
+      "Too many messages were sent from this connection. Please wait and try again.": "Εστάλησαν πάρα πολλά μηνύματα από αυτή τη σύνδεση. Περιμένετε και δοκιμάστε ξανά.",
+      "The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.": "Η φόρμα επικοινωνίας δεν είναι προσωρινά διαθέσιμη. Μπορείτε να μας στείλετε email απευθείας στο contact@studio17.world."
     },
     "services": {
       "categoryLabels": {
@@ -874,6 +980,10 @@ window.Studio17LocaleData = {
       "wip": {
         "title": "В разработке — Studio 17",
         "description": "Эта страница Studio 17 сейчас разрабатывается. Вернитесь на главную страницу или откройте карту сайта, пока работа продолжается."
+      },
+      "contact": {
+        "title": "Контакты — Studio 17",
+        "description": "Свяжитесь со Studio 17, чтобы обсудить сайт, контент, рекламу, цифровые системы или проект с искусственным интеллектом."
       }
     },
     "strings": {
@@ -1024,7 +1134,37 @@ window.Studio17LocaleData = {
       "Consistent experience": "Единый интерфейс",
       "The same navigation, languages and design system remain available.": "Навигация, языки и дизайн-система остаются доступными.",
       "Easy replacement": "Простая замена",
-      "Each WIP link can be replaced by its final page without changing the rest of the website.": "Каждую ссылку WIP можно заменить готовой страницей без изменений остального сайта."
+      "Each WIP link can be replaced by its final page without changing the rest of the website.": "Каждую ссылку WIP можно заменить готовой страницей без изменений остального сайта.",
+      "Let’s build what comes next.": "Давайте создадим то, что будет дальше.",
+      "Tell us where you want to go.": "Расскажите, куда вы хотите прийти.",
+      "Share your goals, challenges and timing. We will use your details only to understand the project and respond to your enquiry.": "Расскажите о целях, задачах и сроках. Мы используем ваши данные только для того, чтобы понять проект и ответить на обращение.",
+      "Start your enquiry": "Начать обращение",
+      "A useful first message": "Полезное первое сообщение",
+      "Tell us about the project.": "Расскажите о проекте.",
+      "Include what you need, what is not working today, the markets you serve and any important deadline.": "Укажите, что вам нужно, что сейчас не работает, на каких рынках вы работаете и какие сроки важны.",
+      "Prefer email?": "Предпочитаете почту?",
+      "Working across markets": "Работаем на разных рынках",
+      "Europe and worldwide": "Европа и весь мир",
+      "Your information is sent securely to Studio 17 and is not published on the website.": "Ваши данные безопасно отправляются в Studio 17 и не публикуются на сайте.",
+      "Name": "Имя",
+      "Email": "Электронная почта",
+      "(optional)": "(необязательно)",
+      "Phone": "Телефон",
+      "What can we help with?": "Чем мы можем помочь?",
+      "Select a service": "Выберите услугу",
+      "Something else": "Другое",
+      "Indicative budget": "Ориентировочный бюджет",
+      "Not sure yet": "Пока не определились",
+      "Under €1,000": "До €1 000",
+      "Project details": "Детали проекта",
+      "Please include at least 20 characters.": "Введите не менее 20 символов.",
+      "I agree that Studio 17 may use these details to respond to my enquiry.": "Я согласен(-на), что Studio 17 может использовать эти данные, чтобы ответить на моё обращение.",
+      "Send enquiry": "Отправить обращение",
+      "Please complete the required fields before sending.": "Заполните обязательные поля перед отправкой.",
+      "Sending your enquiry…": "Обращение отправляется…",
+      "Thank you. Your enquiry has been sent to Studio 17.": "Спасибо. Ваше обращение отправлено в Studio 17.",
+      "Too many messages were sent from this connection. Please wait and try again.": "С этого подключения отправлено слишком много сообщений. Подождите и попробуйте снова.",
+      "The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.": "Форма связи временно недоступна. Вы можете написать нам напрямую на contact@studio17.world."
     },
     "services": {
       "categoryLabels": {
@@ -1126,6 +1266,10 @@ window.Studio17LocaleData = {
       "wip": {
         "title": "עבודה בתהליך — Studio 17",
         "description": "הדף הזה של Studio 17 נמצא כעת בבנייה. אפשר לחזור לדף הבית או לעיין במפת האתר בזמן שהעבודה נמשכת."
+      },
+      "contact": {
+        "title": "יצירת קשר — Studio 17",
+        "description": "צרו קשר עם Studio 17 כדי לדון בפרויקט אתר, תוכן, פרסום, מערכות דיגיטליות או בינה מלאכותית."
       }
     },
     "strings": {
@@ -1276,7 +1420,37 @@ window.Studio17LocaleData = {
       "Consistent experience": "חוויה עקבית",
       "The same navigation, languages and design system remain available.": "אותם ניווט, שפות ומערכת עיצוב נשארים זמינים.",
       "Easy replacement": "החלפה פשוטה",
-      "Each WIP link can be replaced by its final page without changing the rest of the website.": "אפשר להחליף כל קישור WIP בדף הסופי שלו בלי לשנות את שאר האתר."
+      "Each WIP link can be replaced by its final page without changing the rest of the website.": "אפשר להחליף כל קישור WIP בדף הסופי שלו בלי לשנות את שאר האתר.",
+      "Let’s build what comes next.": "בואו נבנה את הדבר הבא.",
+      "Tell us where you want to go.": "ספרו לנו לאן אתם רוצים להגיע.",
+      "Share your goals, challenges and timing. We will use your details only to understand the project and respond to your enquiry.": "שתפו אותנו ביעדים, באתגרים ובלוחות הזמנים שלכם. נשתמש בפרטים שלכם רק כדי להבין את הפרויקט ולהשיב לפנייה.",
+      "Start your enquiry": "התחילו את הפנייה",
+      "A useful first message": "הודעה ראשונה מועילה",
+      "Tell us about the project.": "ספרו לנו על הפרויקט.",
+      "Include what you need, what is not working today, the markets you serve and any important deadline.": "ציינו מה אתם צריכים, מה לא עובד כיום, באילו שווקים אתם פועלים וכל מועד חשוב.",
+      "Prefer email?": "מעדיפים אימייל?",
+      "Working across markets": "עבודה בשווקים שונים",
+      "Europe and worldwide": "אירופה וברחבי העולם",
+      "Your information is sent securely to Studio 17 and is not published on the website.": "המידע שלכם נשלח באופן מאובטח ל-Studio 17 ואינו מתפרסם באתר.",
+      "Name": "שם",
+      "Email": "דוא״ל",
+      "(optional)": "(אופציונלי)",
+      "Phone": "טלפון",
+      "What can we help with?": "במה נוכל לעזור?",
+      "Select a service": "בחרו שירות",
+      "Something else": "משהו אחר",
+      "Indicative budget": "תקציב משוער",
+      "Not sure yet": "עדיין לא בטוחים",
+      "Under €1,000": "פחות מ-€1,000",
+      "Project details": "פרטי הפרויקט",
+      "Please include at least 20 characters.": "אנא כתבו לפחות 20 תווים.",
+      "I agree that Studio 17 may use these details to respond to my enquiry.": "אני מסכים/ה ש-Studio 17 תשתמש בפרטים אלה כדי להשיב לפנייה שלי.",
+      "Send enquiry": "שליחת פנייה",
+      "Please complete the required fields before sending.": "אנא השלימו את שדות החובה לפני השליחה.",
+      "Sending your enquiry…": "הפנייה נשלחת…",
+      "Thank you. Your enquiry has been sent to Studio 17.": "תודה. הפנייה נשלחה ל-Studio 17.",
+      "Too many messages were sent from this connection. Please wait and try again.": "נשלחו יותר מדי הודעות מהחיבור הזה. אנא המתינו ונסו שוב.",
+      "The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.": "טופס יצירת הקשר אינו זמין זמנית. אפשר לכתוב לנו ישירות ל-contact@studio17.world."
     },
     "services": {
       "categoryLabels": {

@@ -80,6 +80,14 @@ Future pages may vary their content but not the shell, palette, heading treatmen
 - Never create separate WIP HTML files per language; all localized variants use the shared page and locale JSON contract.
 - Until a real page exists, its header link, CTA, card, sitemap entry and footer link must all use the same WIP key.
 
+### Contact page
+
+- `/contact` is the shared multilingual destination for Contact, Talk to sales and Start growing actions.
+- Keep the two-column project brief and form composition on desktop; stack details before the form at 900px and below.
+- Preserve visible labels, keyboard focus, native field semantics, translated success/error feedback and the direct email fallback.
+- Never expose email-provider credentials or accept a browser-supplied recipient address.
+- Update `CONTACT_FORM.md`, all six locales, the human sitemap and XML sitemap whenever the contact workflow changes.
+
 ## 6. Components
 
 ### Header

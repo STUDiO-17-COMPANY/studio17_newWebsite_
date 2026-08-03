@@ -13,6 +13,10 @@
     "wip": {
       "title": "Εργασία σε εξέλιξη — Studio 17",
       "description": "Αυτή η σελίδα της Studio 17 κατασκευάζεται. Επιστρέψτε στην αρχική σελίδα ή δείτε τον χάρτη ιστοτόπου όσο συνεχίζεται η εργασία."
+    },
+    "contact": {
+      "title": "Επικοινωνία — Studio 17",
+      "description": "Επικοινωνήστε με τη Studio 17 για το έργο σας σε ιστοσελίδες, περιεχόμενο, διαφήμιση, ψηφιακά συστήματα ή τεχνητή νοημοσύνη."
     }
   },
   "strings": {
@@ -163,7 +167,37 @@
     "Consistent experience": "Συνεπής εμπειρία",
     "The same navigation, languages and design system remain available.": "Η ίδια πλοήγηση, οι γλώσσες και το σύστημα σχεδιασμού παραμένουν διαθέσιμα.",
     "Easy replacement": "Εύκολη αντικατάσταση",
-    "Each WIP link can be replaced by its final page without changing the rest of the website.": "Κάθε σύνδεσμος WIP μπορεί να αντικατασταθεί από την τελική του σελίδα χωρίς αλλαγές στον υπόλοιπο ιστότοπο."
+    "Each WIP link can be replaced by its final page without changing the rest of the website.": "Κάθε σύνδεσμος WIP μπορεί να αντικατασταθεί από την τελική του σελίδα χωρίς αλλαγές στον υπόλοιπο ιστότοπο.",
+    "Let’s build what comes next.": "Ας δημιουργήσουμε ό,τι ακολουθεί.",
+    "Tell us where you want to go.": "Πείτε μας πού θέλετε να φτάσετε.",
+    "Share your goals, challenges and timing. We will use your details only to understand the project and respond to your enquiry.": "Μοιραστείτε τους στόχους, τις προκλήσεις και το χρονοδιάγραμμά σας. Θα χρησιμοποιήσουμε τα στοιχεία σας μόνο για να κατανοήσουμε το έργο και να απαντήσουμε στο αίτημά σας.",
+    "Start your enquiry": "Ξεκινήστε το αίτημά σας",
+    "A useful first message": "Ένα χρήσιμο πρώτο μήνυμα",
+    "Tell us about the project.": "Πείτε μας για το έργο.",
+    "Include what you need, what is not working today, the markets you serve and any important deadline.": "Συμπεριλάβετε τι χρειάζεστε, τι δεν λειτουργεί σήμερα, τις αγορές στις οποίες δραστηριοποιείστε και οποιαδήποτε σημαντική προθεσμία.",
+    "Prefer email?": "Προτιμάτε email;",
+    "Working across markets": "Δραστηριοποίηση σε πολλές αγορές",
+    "Europe and worldwide": "Ευρώπη και παγκοσμίως",
+    "Your information is sent securely to Studio 17 and is not published on the website.": "Οι πληροφορίες σας αποστέλλονται με ασφάλεια στη Studio 17 και δεν δημοσιεύονται στην ιστοσελίδα.",
+    "Name": "Όνομα",
+    "Email": "Email",
+    "(optional)": "(προαιρετικό)",
+    "Phone": "Τηλέφωνο",
+    "What can we help with?": "Σε τι μπορούμε να βοηθήσουμε;",
+    "Select a service": "Επιλέξτε υπηρεσία",
+    "Something else": "Κάτι άλλο",
+    "Indicative budget": "Ενδεικτικός προϋπολογισμός",
+    "Not sure yet": "Δεν είμαι ακόμη βέβαιος/η",
+    "Under €1,000": "Κάτω από €1.000",
+    "Project details": "Λεπτομέρειες έργου",
+    "Please include at least 20 characters.": "Παρακαλούμε συμπεριλάβετε τουλάχιστον 20 χαρακτήρες.",
+    "I agree that Studio 17 may use these details to respond to my enquiry.": "Συμφωνώ ότι η Studio 17 μπορεί να χρησιμοποιήσει αυτά τα στοιχεία για να απαντήσει στο αίτημά μου.",
+    "Send enquiry": "Αποστολή αιτήματος",
+    "Please complete the required fields before sending.": "Συμπληρώστε τα υποχρεωτικά πεδία πριν από την αποστολή.",
+    "Sending your enquiry…": "Το αίτημά σας αποστέλλεται…",
+    "Thank you. Your enquiry has been sent to Studio 17.": "Ευχαριστούμε. Το αίτημά σας στάλθηκε στη Studio 17.",
+    "Too many messages were sent from this connection. Please wait and try again.": "Εστάλησαν πάρα πολλά μηνύματα από αυτή τη σύνδεση. Περιμένετε και δοκιμάστε ξανά.",
+    "The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.": "Η φόρμα επικοινωνίας δεν είναι προσωρινά διαθέσιμη. Μπορείτε να μας στείλετε email απευθείας στο contact@studio17.world."
   },
   "services": {
     "categoryLabels": {

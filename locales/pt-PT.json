@@ -13,6 +13,10 @@
     "wip": {
       "title": "Trabalho em curso — Studio 17",
       "description": "Esta página da Studio 17 está a ser construída. Regresse à homepage ou consulte o mapa do site enquanto o trabalho continua."
+    },
+    "contact": {
+      "title": "Contacto — Studio 17",
+      "description": "Contacte a Studio 17 para falar sobre o seu projeto de website, conteúdos, publicidade, sistemas digitais ou IA."
     }
   },
   "strings": {
@@ -163,7 +167,37 @@
     "Consistent experience": "Experiência consistente",
     "The same navigation, languages and design system remain available.": "A mesma navegação, idiomas e sistema visual continuam disponíveis.",
     "Easy replacement": "Substituição simples",
-    "Each WIP link can be replaced by its final page without changing the rest of the website.": "Cada ligação WIP pode ser substituída pela página final sem alterar o restante website."
+    "Each WIP link can be replaced by its final page without changing the rest of the website.": "Cada ligação WIP pode ser substituída pela página final sem alterar o restante website.",
+    "Let’s build what comes next.": "Vamos construir o que vem a seguir.",
+    "Tell us where you want to go.": "Diga-nos onde quer chegar.",
+    "Share your goals, challenges and timing. We will use your details only to understand the project and respond to your enquiry.": "Partilhe os seus objetivos, desafios e prazos. Utilizaremos os seus dados apenas para compreender o projeto e responder ao seu pedido.",
+    "Start your enquiry": "Iniciar pedido",
+    "A useful first message": "Uma primeira mensagem útil",
+    "Tell us about the project.": "Fale-nos sobre o projeto.",
+    "Include what you need, what is not working today, the markets you serve and any important deadline.": "Inclua o que precisa, o que não está a funcionar atualmente, os mercados onde atua e qualquer prazo importante.",
+    "Prefer email?": "Prefere email?",
+    "Working across markets": "Trabalhamos em vários mercados",
+    "Europe and worldwide": "Europa e resto do mundo",
+    "Your information is sent securely to Studio 17 and is not published on the website.": "As suas informações são enviadas de forma segura para a Studio 17 e não são publicadas no website.",
+    "Name": "Nome",
+    "Email": "Email",
+    "(optional)": "(opcional)",
+    "Phone": "Telefone",
+    "What can we help with?": "Em que podemos ajudar?",
+    "Select a service": "Selecione um serviço",
+    "Something else": "Outro assunto",
+    "Indicative budget": "Orçamento indicativo",
+    "Not sure yet": "Ainda não sei",
+    "Under €1,000": "Menos de €1.000",
+    "Project details": "Detalhes do projeto",
+    "Please include at least 20 characters.": "Inclua pelo menos 20 caracteres.",
+    "I agree that Studio 17 may use these details to respond to my enquiry.": "Concordo que a Studio 17 utilize estes dados para responder ao meu pedido.",
+    "Send enquiry": "Enviar pedido",
+    "Please complete the required fields before sending.": "Preencha os campos obrigatórios antes de enviar.",
+    "Sending your enquiry…": "A enviar o seu pedido…",
+    "Thank you. Your enquiry has been sent to Studio 17.": "Obrigado. O seu pedido foi enviado para a Studio 17.",
+    "Too many messages were sent from this connection. Please wait and try again.": "Foram enviadas demasiadas mensagens a partir desta ligação. Aguarde e tente novamente.",
+    "The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.": "O formulário de contacto está temporariamente indisponível. Pode enviar-nos um email diretamente para contact@studio17.world."
   },
   "services": {
     "categoryLabels": {

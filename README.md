@@ -7,9 +7,11 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/` (`index.html`) — Figma-matched homepage.
 - `/sitemap` (`sitemap.html`) — public website map and planned page structure.
 - `/wip?for=<destination>` (`wip.html`) — shared multilingual destination for pages that are not built yet.
+- `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.
 - `/careers` (`careers.html`) — English-only Careers index with automatic Google Drive role listing.
 - `/careers/<role-name>` (`career-role.html` template) — clean, server-rendered role route populated from the selected Google Doc.
 - `careers.js` / `career-role.js` — Careers loading, rendering and failure-state behavior.
+- `contact.js` / `api/contact.js` — contact-form interaction, validation and Resend delivery.
 - `api/` — Vercel Functions for authenticated, read-only Drive/Docs access and role validation.
 - `.env.example` — non-secret environment-variable contract for the Careers connection.
 - `vercel.json` — Vercel Function, redirect and clean-route configuration.
@@ -30,6 +32,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CONTENT_NOTES.md` — content verification and launch notes.
 - `CHANGELOG.md` — dated implementation history.
 - `CAREERS_AUTOMATION.md` — automatic publishing architecture, setup, security and QA guide.
+- `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
 - `SEO.md` — search metadata, indexing, structured-data and URL maintenance rules.
 - `tests/` — parser, API and browser coverage for the Careers automation and responsive states.
 
@@ -45,7 +48,7 @@ Then open `http://localhost:8080`.
 
 Opening `index.html` directly also works, including language switching. A local server is still recommended for normal development previews.
 
-The Careers API requires the Vercel environment variables documented in `CAREERS_AUTOMATION.md`. Static local preview shows the designed API-unavailable state unless the API is run through Vercel or mocked for QA.
+The Careers and contact APIs require the Vercel environment variables documented in `CAREERS_AUTOMATION.md` and `CONTACT_FORM.md`. Static local preview shows the designed unavailable states unless the APIs are run through Vercel or mocked for QA.
 
 After editing any locale JSON file, regenerate the direct-file bundle:
 
@@ -70,6 +73,7 @@ node locales/build-bundle.cjs
 13. Test all six languages at 1920px, 1440px, 1280px, 1024px, 900px, 768px, 390px and the supported 320px minimum width after changing layout or copy.
 14. Keep Careers credentials server-side, rotate keys safely and follow `CAREERS_AUTOMATION.md` whenever the Google/Vercel connection changes.
 15. Keep one canonical URL per page, exclude WIP pages from indexing, and follow `SEO.md` whenever routes, languages or public pages change.
+16. Keep contact credentials server-side and follow `CONTACT_FORM.md` whenever the form, recipient or email provider changes.
 
 ## Pre-launch checklist
 
@@ -83,6 +87,7 @@ node locales/build-bundle.cjs
 - Have a native speaker review every non-English locale before publication.
 - Review `/sitemap` whenever a page is added, renamed or removed.
 - Complete the one-time service-account and Vercel environment setup before treating Careers as production-ready.
+- Install Resend, verify the sender domain and publish an approved privacy policy before treating the contact form as production-ready.
 
 ## Design source
 
