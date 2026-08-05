@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-08-05 — Shared Studio 17 media hero
+
+- Rebuilt Sitemap, WIP, Careers, individual role and Contact heroes on one reusable `page-hero` system derived from the homepage `hero-media` treatment.
+- Standardized the internal-page English desktop hero to 296px with the homepage shell, 55.7% / 44.3% split, edge fades, media overlay and restrained hover scale.
+- Replaced the unrelated abstract hero artwork and oversized page-specific hero heights with existing Studio 17 photography.
+- Added shared 360px tablet and 560px mobile hero behavior while allowing translated and dynamic content to grow without clipping.
+- Tightened the WIP hero content so it fits the shared model without hiding its destination or navigation actions.
+- Added `TASKS.md` as the living development backlog and documented the postponed contact-form production checklist.
+
 All meaningful design, code and content changes to the Studio 17 website are recorded here.
 
 ## 2026-08-03 — Multilingual Contact page and email workflow

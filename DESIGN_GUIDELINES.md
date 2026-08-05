@@ -1,7 +1,7 @@
 # Studio 17 website design guidelines
 
 Status: canonical implementation standard  
-Last reviewed: 2026-08-02  
+Last reviewed: 2026-08-05
 Design source: Figma homepage frame `1725:3411` and the supplied `Homepage.pdf`
 
 These rules are the baseline for the homepage, sitemap and every future Studio 17 page. If a later approved Figma frame conflicts with this document, the approved frame wins and this document must be updated in the same change.
@@ -31,7 +31,7 @@ Every public page uses this order:
 
 1. Shared 80px header.
 2. A 32px gap.
-3. A page hero using the 1440px content alignment and the homepage's 55.7% / 44.3% split when two columns are required.
+3. A media-backed page hero using the homepage's `hero-media` signature, 1440px content alignment and 55.7% / 44.3% split.
 4. Content sections separated by 32px at desktop.
 5. The shared 298px closing CTA when the page has a commercial journey.
 6. A 32px gap.
@@ -62,14 +62,17 @@ The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px w
 The sitemap establishes the template for non-homepage pages:
 
 - Reuse the exact header and footer structure from `index.html`.
-- Use a 296px desktop hero after the 32px top gap.
-- Align hero columns to the homepage split and shell.
+- Use the shared `page-hero` structure with a `hero-media` image after the 32px top gap.
+- Keep the English desktop hero at exactly 296px and align its columns to the homepage's 55.7% / 44.3% split and shell.
+- Reuse the homepage edge fades, dark media overlay and restrained image-scale hover; abstract standalone hero treatments are not part of the page system.
+- At 901–1279px use the shared 360px minimum hero; at 900px and below use the same stacked 560px minimum model as the homepage.
+- Let translated text increase the minimum height when necessary. Never crop copy, controls or dynamic role titles to preserve a fixed reference height.
 - Start the main content with the blue inline-highlight heading treatment.
 - Use square dark cards, 24px grid gaps and clear link states.
 - Reuse the homepage closing CTA when there is a meaningful contact action.
 - At 900px and below, stack hero content and cards without document-level horizontal overflow.
 
-Future pages may vary their content but not the shell, palette, heading treatment, icon language, CTA or footer contract.
+Future pages may vary their content and hero image but not the shared hero geometry, shell, media treatment, palette, heading treatment, icon language, CTA or footer contract.
 
 ### Work-in-progress page
 

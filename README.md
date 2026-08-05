@@ -33,6 +33,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CHANGELOG.md` — dated implementation history.
 - `CAREERS_AUTOMATION.md` — automatic publishing architecture, setup, security and QA guide.
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
+- `TASKS.md` — living development backlog, including postponed and blocked production work.
 - `SEO.md` — search metadata, indexing, structured-data and URL maintenance rules.
 - `tests/` — parser, API and browser coverage for the Careers automation and responsive states.
 
@@ -74,6 +75,7 @@ node locales/build-bundle.cjs
 14. Keep Careers credentials server-side, rotate keys safely and follow `CAREERS_AUTOMATION.md` whenever the Google/Vercel connection changes.
 15. Keep one canonical URL per page, exclude WIP pages from indexing, and follow `SEO.md` whenever routes, languages or public pages change.
 16. Keep contact credentials server-side and follow `CONTACT_FORM.md` whenever the form, recipient or email provider changes.
+17. Keep `TASKS.md` current whenever work is planned, postponed, completed or blocked.
 
 ## Pre-launch checklist
 
