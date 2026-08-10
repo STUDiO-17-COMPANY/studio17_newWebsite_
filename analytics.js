@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const measurementId = 'G-6VWS39DSNX';
+  const measurementId = 'G-GVWS39DSNX';
   const consentKey = 'studio17-analytics-consent-v1';
   const granted = 'granted';
   const denied = 'denied';

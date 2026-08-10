@@ -2,7 +2,7 @@
 
 Status: implemented in code; production verification requires deployment
 Last reviewed: 2026-08-10
-Google Analytics 4 Measurement ID: `G-6VWS39DSNX`
+Google Analytics 4 Measurement ID: `G-GVWS39DSNX`
 
 ## Implementation
 
@@ -28,7 +28,7 @@ After an approved deployment:
 
 1. Open `https://www.studio17.world/` in a fresh private window.
 2. Before making a choice, confirm that no request is made to `googletagmanager.com` and no `_ga` cookie exists.
-3. Accept Analytics. Confirm that `gtag/js?id=G-6VWS39DSNX` loads and Analytics collection requests begin.
+3. Accept Analytics. Confirm that `gtag/js?id=G-GVWS39DSNX` loads and Analytics collection requests begin.
 4. Open Google Analytics Realtime and confirm the visit appears. Google notes that initial collection can take up to 30 minutes.
 5. Change the website language and confirm one new `page_view` uses the translated `?lang=` URL.
 6. Open Analytics settings in the footer, continue without Analytics and confirm the consent state changes to denied and `_ga` cookies are removed.

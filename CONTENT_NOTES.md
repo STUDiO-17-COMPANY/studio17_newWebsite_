@@ -29,7 +29,7 @@ The automotive figures remain design-stage content and are not independently ver
 - Core offer shown in the approved design: websites, content, social media, advertising, digital systems and AI solutions.
 - Confirmed social profiles: Instagram `studio17.world`, the supplied Studio 17 Facebook profile and LinkedIn company page `studio17world`.
 - The company presentation is hosted on the supplied Google Drive link and is currently in Greek; every website locale intentionally opens the same file.
-- Google Analytics 4 uses the confirmed Measurement ID `G-6VWS39DSNX`; collection remains disabled until the visitor accepts Analytics.
+- Google Analytics 4 uses the confirmed Measurement ID `G-GVWS39DSNX`; collection remains disabled until the visitor accepts Analytics.
 
 ## Editorial standard
 

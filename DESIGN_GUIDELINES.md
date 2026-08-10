@@ -262,7 +262,7 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - Check all 20 FAQ questions and answers in every locale and verify native disclosure controls by keyboard.
 - Confirm heroes and major sections begin directly with meaningful headings and contain no decorative eyebrow or mini-title labels.
 - Confirm the About opening statement stays balanced at desktop widths and stacks without overflow at 900px and below.
-- Confirm no Google request or `_ga` cookie exists before consent, acceptance loads only `G-6VWS39DSNX`, withdrawal restores denied consent, and the footer control reopens settings.
+- Confirm no Google request or `_ga` cookie exists before consent, acceptance loads only `G-GVWS39DSNX`, withdrawal restores denied consent, and the footer control reopens settings.
 - Check the Analytics consent panel in every language at desktop, 900px, 390px and 320px; confirm Hebrew follows RTL and both actions remain visible.
 - Confirm every complete mobile menu contains exactly Services, Work, About, News and Careers, in that order.
 - Test regional browser-language detection, an unsupported primary preference followed by a supported secondary preference, URL priority, saved-choice priority, the English-only Careers override and Hebrew RTL.

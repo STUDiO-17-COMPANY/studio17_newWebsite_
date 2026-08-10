@@ -2,7 +2,7 @@
 
 ## 2026-08-10 — Consent-first Google Analytics 4
 
-- Added the Studio 17 GA4 web stream `G-6VWS39DSNX` through one shared controller on all eight public page sources.
+- Corrected the Studio 17 GA4 web stream from the mistyped `G-6VWS39DSNX` to the confirmed `G-GVWS39DSNX` in the shared controller used by all eight public page sources.
 - Implemented basic consent behavior: Google code is not downloaded and Analytics storage remains denied until the visitor explicitly accepts.
 - Kept advertising storage, advertising user data, advertising personalization and Google signals disabled after Analytics consent.
 - Added square, responsive consent controls and a permanent footer Analytics settings action in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew.

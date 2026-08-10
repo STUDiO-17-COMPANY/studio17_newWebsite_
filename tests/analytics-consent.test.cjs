@@ -25,7 +25,7 @@ for (const file of htmlFiles) {
 }
 
 const analytics = fs.readFileSync(path.join(root, 'analytics.js'), 'utf8');
-assert.match(analytics, /const measurementId = 'G-6VWS39DSNX'/);
+assert.match(analytics, /const measurementId = 'G-GVWS39DSNX'/);
 assert.match(analytics, /studio17-analytics-consent-v1/);
 assert.match(analytics, /'consent', 'default'/);
 assert.match(analytics, /analytics_storage:\s*analyticsStorage/);
