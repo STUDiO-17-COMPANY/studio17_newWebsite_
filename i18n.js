@@ -9,6 +9,15 @@
     ru: { file: 'ru.json', code: 'RU', dir: 'ltr' },
     he: { file: 'he.json', code: 'HE', dir: 'rtl' }
   };
+  const languageAliases = {
+    en: 'en',
+    pt: 'pt-PT',
+    es: 'es',
+    el: 'el',
+    ru: 'ru',
+    he: 'he',
+    iw: 'he'
+  };
 
   const textRecords = [];
   const attributeRecords = [];
@@ -25,18 +34,30 @@
 
   const normaliseLanguage = value => {
     if (!value) return null;
-    if (languages[value]) return value;
-    const lower = value.toLowerCase();
-    if (lower === 'pt' || lower === 'pt-pt') return 'pt-PT';
-    if (lower === 'es' || lower.startsWith('es-')) return 'es';
-    return Object.keys(languages).find(language => language.toLowerCase() === lower) || null;
+    const candidate = String(value).trim().replace(/_/g, '-');
+    if (!candidate) return null;
+    const lower = candidate.toLowerCase();
+    const exact = Object.keys(languages).find(language => language.toLowerCase() === lower);
+    if (exact) return exact;
+    return languageAliases[lower.split('-')[0]] || null;
+  };
+
+  const getBrowserLanguage = () => {
+    if (typeof navigator === 'undefined') return null;
+    const preferences = Array.from(navigator.languages || []);
+    if (navigator.language && !preferences.includes(navigator.language)) preferences.push(navigator.language);
+    for (const preference of preferences) {
+      const supported = normaliseLanguage(preference);
+      if (supported) return supported;
+    }
+    return null;
   };
 
   const forcedLanguage = normaliseLanguage(document.documentElement.dataset.forceLanguage);
   const requestedLanguage = forcedLanguage
     || normaliseLanguage(new URLSearchParams(location.search).get('lang'))
     || normaliseLanguage(getStoredLanguage())
-    || normaliseLanguage(navigator.language)
+    || getBrowserLanguage()
     || 'en';
 
   const captureTranslatableContent = () => {

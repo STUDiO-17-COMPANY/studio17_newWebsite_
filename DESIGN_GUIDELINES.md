@@ -1,6 +1,6 @@
 # Studio 17 website design guidelines
 
-Status: canonical implementation standard  
+Status: canonical implementation standard
 Last reviewed: 2026-08-05
 Design source: Figma homepage frame `1725:3411` and the supplied `Homepage.pdf`
 
@@ -135,6 +135,8 @@ Future pages may vary their content and hero image but not the shared hero geome
 ### Language selector
 
 - Every shared header exposes English (`en`), Portuguese from Portugal (`pt-PT`), Spanish (`es`), Greek (`el`), Russian (`ru`) and Hebrew (`he`).
+- Resolve the initial locale in this order: page-enforced language, valid `?lang=`, saved visitor choice, first supported value in the browser's ordered language preferences, then English.
+- Normalize regional browser codes by their base language: examples include `en-GB` → `en`, `pt-BR` → `pt-PT`, `es-MX` → `es`, `el-GR` → `el`, `ru-RU` → `ru` and `he-IL`/legacy `iw-IL` → `he`.
 - The selected locale is reflected in `html[lang]`, persisted locally and shareable through the `?lang=` URL parameter.
 - `locales/locales.js` is generated from the canonical JSON files and loads before `i18n.js`, allowing all six languages to work over both `file://` and HTTP.
 - Internal HTML links automatically inherit the active `lang` parameter while retaining WIP `for` values and fragments.
@@ -224,6 +226,7 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - For every locale, confirm the desktop Services dropdown opens, localized service content is present before any service click, all service/CTA buttons remain visible and next/previous carousel movement follows the document direction.
 - Open every planned sitemap link and confirm it reaches WIP with the correct `for` value; changing language must preserve that value.
 - Test language selection once over HTTP and once by opening `index.html` directly; both paths must update copy, locale code, metadata and document direction without console errors.
+- Test regional browser-language detection, an unsupported primary preference followed by a supported secondary preference, URL priority, saved-choice priority, the English-only Careers override and Hebrew RTL.
 - Confirm every partner logo is fully inside the viewport and every service category has its canonical item count: 7, 9, 4, 4, 5 and 4 respectively.
 - Verify keyboard focus, heading order, alt text and reduced-motion behaviour.
 - Update `CHANGELOG.md`, `CONTENT_NOTES.md` and these guidelines whenever the implementation contract changes.

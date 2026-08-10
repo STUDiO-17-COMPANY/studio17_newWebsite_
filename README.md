@@ -20,7 +20,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `styles.css` — design tokens, layout, responsive rules and motion.
 - `script.js` — navigation, service selector, carousels and reveal interactions.
 - `wip.js` — identifies and localizes the requested unfinished destination.
-- `i18n.js` — locale detection, language switching, persistence and RTL handling.
+- `i18n.js` — URL/saved/browser locale detection, regional-code normalization, language switching, persistence and RTL handling.
 - `locales/` — English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew content files.
 - `locales/locales.js` — generated browser bundle that makes language switching work when the HTML files are opened directly.
 - `locales/build-bundle.cjs` — regenerates that bundle from the six canonical JSON files.
@@ -35,7 +35,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
 - `TASKS.md` — living development backlog, including postponed and blocked production work.
 - `SEO.md` — search metadata, indexing, structured-data and URL maintenance rules.
-- `tests/` — parser, API and browser coverage for the Careers automation and responsive states.
+- `tests/` — parser, API, language-detection and browser coverage for the website workflows and responsive states.
 
 ## Local preview
 

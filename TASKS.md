@@ -12,6 +12,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 ## Current priorities
 
 - [x] Standardize Sitemap, WIP, Careers, career-role and Contact heroes on the homepage media-hero model.
+- [x] Make first-visit language detection regional-code aware and use the browser's ordered language preferences.
 - [ ] Complete and publish the contact-form email workflow.
 - [ ] Create the approved Privacy Policy page before treating the contact form as production-ready.
 
@@ -46,4 +47,3 @@ When a task creates or publishes a page:
 - [ ] Update the human sitemap, XML sitemap, metadata and documentation.
 - [ ] Verify desktop, mobile, keyboard, RTL, reduced motion and zero horizontal overflow.
 - [ ] Replace the related WIP link only after the final page works.
-

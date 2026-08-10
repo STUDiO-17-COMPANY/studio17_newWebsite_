@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-08-10 — Regional browser-language detection
+
+- Expanded first-visit language detection to use the browser's ordered language-preference list instead of only one locale value.
+- Added base-language normalization for regional codes including `en-GB`, `pt-BR`, `es-MX`, `el-GR`, `ru-RU`, `he-IL` and legacy Hebrew `iw-IL`.
+- Preserved the established priority of forced page language, valid URL language, saved visitor choice, browser preferences and English fallback.
+- Added automated regression coverage for regional codes, secondary supported preferences, URL/saved priority, Careers English enforcement and Hebrew RTL.
+
 ## 2026-08-05 — Shared Studio 17 media hero
 
 - Rebuilt Sitemap, WIP, Careers, individual role and Contact heroes on one reusable `page-hero` system derived from the homepage `hero-media` treatment.
