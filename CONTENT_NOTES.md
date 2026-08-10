@@ -12,7 +12,7 @@ The homepage structure, service descriptions and contact address are ready for r
 | Automotive results | Figma case-study figures are reproduced for design fidelity | Confirm source, period, baseline and permission for every metric |
 | Partner logos | Assets reproduced from the supplied design export | Confirm the exact company names and permission to publish each logo |
 | News links | Open the shared WIP destination for articles or case studies | Replace with live article URLs when those pages are available |
-| Legal links | Privacy, Cookie Policy and terms destinations remain WIP; the footer Cookie settings control manages the live Analytics preference | Publish approved legal pages before treating the consent workflow as legally complete |
+| Legal links | Privacy, Cookie Policy and terms destinations remain WIP; the footer Analytics settings control manages the live measurement preference | Publish approved legal pages before treating the consent workflow as legally complete |
 | Locales | English source plus complete working Portuguese (Portugal), Spanish, Greek, Russian and Hebrew locale files | Native-language editorial and legal review before publication |
 | Unbuilt navigation | Header, CTA, card, footer and sitemap destinations route through WIP | Replace each shared WIP key with the final approved page when published |
 | Careers | English-only Careers and role-detail pages are implemented; roles come from validated Google Docs | Complete the one-time service-account/folder share and Vercel environment setup in `CAREERS_AUTOMATION.md` |

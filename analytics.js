@@ -75,12 +75,12 @@
 
   const renderCopy = () => {
     if (!consentBanner) return;
-    consentBanner.querySelector('[data-analytics-consent-title]').textContent = translate('Your privacy choices');
-    consentBanner.querySelector('[data-analytics-consent-copy]').textContent = translate('We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.');
-    consentBanner.querySelector('[data-analytics-consent-accept]').textContent = translate('Accept analytics');
-    consentBanner.querySelector('[data-analytics-consent-reject]').textContent = translate('Reject analytics');
-    settingsButton.textContent = translate('Cookie settings');
-    settingsButton.setAttribute('aria-label', translate('Review cookie settings'));
+    consentBanner.querySelector('[data-analytics-consent-title]').textContent = translate('Help us improve the website');
+    consentBanner.querySelector('[data-analytics-consent-copy]').textContent = translate('With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.');
+    consentBanner.querySelector('[data-analytics-consent-accept]').textContent = translate('Allow analytics');
+    consentBanner.querySelector('[data-analytics-consent-reject]').textContent = translate('Continue without analytics');
+    settingsButton.textContent = translate('Analytics settings');
+    settingsButton.setAttribute('aria-label', translate('Review analytics settings'));
   };
 
   const showConsent = ({ focus = false } = {}) => {
@@ -112,12 +112,12 @@
     consentBanner.setAttribute('data-i18n-skip', '');
     consentBanner.innerHTML = `
       <div class="analytics-consent-copy">
-        <h2 id="analytics-consent-title" data-analytics-consent-title>Your privacy choices</h2>
-        <p id="analytics-consent-copy" data-analytics-consent-copy>We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.</p>
+        <h2 id="analytics-consent-title" data-analytics-consent-title>Help us improve the website</h2>
+        <p id="analytics-consent-copy" data-analytics-consent-copy>With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.</p>
       </div>
       <div class="analytics-consent-actions">
-        <button class="analytics-consent-button analytics-consent-accept" type="button" data-analytics-consent-accept>Accept analytics</button>
-        <button class="analytics-consent-button analytics-consent-reject" type="button" data-analytics-consent-reject>Reject analytics</button>
+        <button class="analytics-consent-button analytics-consent-accept" type="button" data-analytics-consent-accept>Allow analytics</button>
+        <button class="analytics-consent-button analytics-consent-reject" type="button" data-analytics-consent-reject>Continue without analytics</button>
       </div>`;
     document.body.append(consentBanner);
 
@@ -125,7 +125,7 @@
     settingsButton.className = 'footer-cookie-settings';
     settingsButton.type = 'button';
     settingsButton.setAttribute('data-i18n-skip', '');
-    settingsButton.textContent = 'Cookie settings';
+    settingsButton.textContent = 'Analytics settings';
 
     const legalCopy = document.querySelector('.footer-bottom > p');
     if (legalCopy) {

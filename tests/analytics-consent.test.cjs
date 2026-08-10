@@ -8,12 +8,12 @@ const root = path.resolve(__dirname, '..');
 const htmlFiles = ['index.html', 'sitemap.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'careers.html', 'career-role.html'];
 const languages = ['pt-PT', 'es', 'el', 'ru', 'he'];
 const consentStrings = [
-  'Your privacy choices',
-  'We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.',
-  'Accept analytics',
-  'Reject analytics',
-  'Cookie settings',
-  'Review cookie settings'
+  'Help us improve the website',
+  'With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.',
+  'Allow analytics',
+  'Continue without analytics',
+  'Analytics settings',
+  'Review analytics settings'
 ];
 
 for (const file of htmlFiles) {
@@ -41,6 +41,7 @@ assert.match(analytics, /data-analytics-consent-reject/);
 assert.match(analytics, /clearAnalyticsCookies/);
 assert.match(analytics, /studio17:languagechange/);
 assert.match(analytics, /studio17:analyticsconsent/);
+assert.doesNotMatch(analytics, />We use Google Analytics|translate\('We use Google Analytics/, 'visitor-facing consent copy should describe the analytics purpose without leading with the vendor name');
 
 for (const language of languages) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'locales', `${language}.json`), 'utf8'));
@@ -52,6 +53,7 @@ for (const key of consentStrings) assert.ok(bundle.includes(JSON.stringify(key))
 
 const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 assert.match(css, /\.analytics-consent\s*\{/);
+assert.match(css, /\.analytics-consent\s*\{[^}]*border:\s*4px solid var\(--blue\)[^}]*background:\s*var\(--white\)/, 'consent panel must use the approved white surface and blue outline');
 assert.match(css, /\.analytics-consent\[hidden\]\s*\{\s*display:\s*none/);
 assert.match(css, /\.footer-cookie-settings\s*\{/);
 assert.match(css, /@media \(max-width: 600px\)[\s\S]*?\.analytics-consent-actions\s*\{[^}]*grid-template-columns:\s*1fr/);

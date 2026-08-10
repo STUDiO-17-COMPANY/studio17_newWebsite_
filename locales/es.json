@@ -28,12 +28,12 @@
     }
   },
   "strings": {
-    "Your privacy choices": "Tus opciones de privacidad",
-    "We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.": "Utilizamos Google Analytics para entender cómo se usa nuestro sitio web y mejorarlo. Analytics permanece desactivado salvo que lo aceptes.",
-    "Accept analytics": "Aceptar Analytics",
-    "Reject analytics": "Rechazar Analytics",
-    "Cookie settings": "Configuración de cookies",
-    "Review cookie settings": "Revisar la configuración de cookies",
+    "Help us improve the website": "Ayúdanos a mejorar el sitio web",
+    "With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.": "Con tu permiso, utilizamos una herramienta de análisis para comprender de dónde procede el tráfico de nuestro sitio web y cómo lo utilizan los visitantes. Esto nos ayuda a mejorar la experiencia. La herramienta permanece desactivada salvo que la aceptes.",
+    "Allow analytics": "Permitir analítica",
+    "Continue without analytics": "Continuar sin analítica",
+    "Analytics settings": "Configuración de analítica",
+    "Review analytics settings": "Revisar la configuración de analítica",
     "About Studio 17": "Sobre Studio 17",
     "Growth works better": "El crecimiento funciona mejor",
     "when the business works as one system.": "cuando la empresa trabaja como un único sistema.",

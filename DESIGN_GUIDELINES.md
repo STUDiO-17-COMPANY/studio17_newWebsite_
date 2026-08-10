@@ -170,9 +170,9 @@ Future pages may vary their content and hero image but not the shared hero geome
 
 - Every public page loads the shared `analytics.js` controller after `i18n.js`; never paste a second Google tag directly into page HTML.
 - Analytics remains off and the Google tag remains unloaded until the visitor explicitly accepts.
-- The consent panel uses the shared ink, blue, square-corner and focus-state language without obscuring page controls at the 320px minimum width.
+- The consent panel uses a white surface, strong blue outline, square corners and the shared focus-state language without obscuring page controls at the 320px minimum width.
 - Accept and reject actions remain equally clear, keyboard accessible and fully translated across the six public languages.
-- The footer always exposes Cookie settings so a visitor can review or withdraw the saved choice.
+- The footer always exposes Analytics settings so a visitor can review or withdraw the saved choice.
 - Advertising storage, user data, personalization and Google signals stay disabled unless a future approved privacy scope explicitly changes them.
 - Local, preview and non-production hosts never send traffic to the production GA4 property.
 
