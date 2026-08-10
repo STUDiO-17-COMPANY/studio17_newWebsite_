@@ -9,6 +9,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/wip?for=<destination>` (`wip.html`) — shared multilingual destination for pages that are not built yet.
 - `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.
 - `/faq` (`faq.html`) — multilingual, search-intent FAQ with accessible native disclosure controls.
+- `/about` (`about.html`) — multilingual Studio 17 positioning, methodology, presentation and official social links.
 - `/careers` (`careers.html`) — English-only Careers index with automatic Google Drive role listing.
 - `/careers/<role-name>` (`career-role.html` template) — clean, server-rendered role route populated from the selected Google Doc.
 - `careers.js` / `career-role.js` — Careers loading, rendering and failure-state behavior.
@@ -79,13 +80,14 @@ node locales/build-bundle.cjs
 17. Keep `TASKS.md` current whenever work is planned, postponed, completed or blocked.
 18. Keep the complete mobile menu limited to Services, Work, About, News and Careers. Do not add a CTA, FAQ, Sitemap or another link without explicit approval.
 19. Update FAQ copy in all six canonical locale files, then regenerate `locales/locales.js` and update both sitemaps in the same change.
+20. Keep footer social links limited to the confirmed Studio 17 Instagram, Facebook and LinkedIn profiles unless the user approves another channel.
+21. Start every hero and major section with its meaningful heading; do not add decorative eyebrow or mini-title labels. Preserve only functional labels and metadata.
 
 ## Pre-launch checklist
 
 - Replace the clearly labelled testimonial placeholders with approved client quotations.
 - Confirm case-study outcomes and partner-logo publication rights.
 - Replace article email links with live article URLs when those pages exist.
-- Add separate social links when the official profile URLs are supplied.
 - Replace the WIP destinations for privacy, cookies, terms, articles and case studies as their approved pages are published.
 - Test current Chrome, Safari, Firefox and Edge on desktop and mobile.
 - Run an accessibility audit and verify keyboard-only navigation.

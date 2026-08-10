@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-08-10 — Page hierarchy and About layout refinement
+
+- Removed decorative eyebrow and mini-title labels from About, Contact, FAQ, Careers, Sitemap and WIP so each section starts directly with its meaningful heading.
+- Removed the decorative FAQ group ordinals while retaining functional sequence numbers, status labels, form labels and role metadata.
+- Rebuilt the About opening content around a full-width highlighted heading followed by a balanced copy-and-principle grid that stacks cleanly on smaller screens.
+- Restyled the dynamic Careers department as functional metadata rather than a decorative eyebrow.
+- Added regression coverage and updated the design standard to prevent decorative mini-titles from returning.
+
+## 2026-08-10 — Multilingual About page and official social links
+
+- Added the clean `/about` page in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew using the shared media hero and Studio 17 design system.
+- Explained Studio 17 through its business-first positioning, connected capabilities, four-step approach and European/international perspective without inventing people, clients or results.
+- Added a translated external CTA to the same Greek Studio 17 presentation on Google Drive in every locale.
+- Replaced every About WIP destination with `/about` and added the page to clean routing, direct-file localization, human/XML sitemaps, metadata and regression tests.
+- Activated the confirmed Instagram, Facebook and LinkedIn links across every footer and removed the visible WhatsApp, Google, X and Threads marks.
+- Reworked every main About section title to reuse the homepage-sized `design-heading` component and its blue inline emphasis across all six languages.
+
 ## 2026-08-10 — Multilingual FAQ and mobile navigation cleanup
 
 - Restricted every complete mobile menu to the approved Services, Work, About, News and Careers links; removed the FAQ and sales CTA from that menu.

@@ -7,6 +7,7 @@ This document is the maintenance contract for search visibility. It covers techn
 - Homepage: `https://www.studio17.world/`
 - Contact: `https://www.studio17.world/contact`
 - FAQ: `https://www.studio17.world/faq`
+- About: `https://www.studio17.world/about`
 - Careers: `https://www.studio17.world/careers`
 - Vacancy: `https://www.studio17.world/careers/<role-name>`
 - Human-readable sitemap: `https://www.studio17.world/sitemap`
@@ -56,6 +57,7 @@ Studio 17 is not currently an eligible government or health authority for Google
 7. Monitor Search Console indexing, enhancements and Core Web Vitals; fix errors before adding more page families.
 8. Confirm `/faq` returns HTTP 200, has one canonical, exposes all six reciprocal language alternatives and appears in both the human and XML sitemaps.
 9. Confirm no FAQ link still points to WIP and the complete mobile menu remains limited to Services, Work, About, News and Careers.
+10. Confirm `/about` returns HTTP 200, uses reciprocal six-language alternates, appears in both sitemaps and has replaced every About WIP link.
 
 ## Files to update together
 

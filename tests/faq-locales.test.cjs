@@ -6,7 +6,7 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const languages = ['en', 'pt-PT', 'es', 'el', 'ru', 'he'];
-const htmlFiles = ['index.html', 'sitemap.html', 'wip.html', 'contact.html', 'faq.html', 'careers.html', 'career-role.html'];
+const htmlFiles = ['index.html', 'sitemap.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'careers.html', 'career-role.html'];
 const faq = fs.readFileSync(path.join(root, 'faq.html'), 'utf8');
 
 const questions = [...faq.matchAll(/<summary><span>([^<]+)<\/span>/g)].map(match => match[1]);
@@ -38,7 +38,7 @@ for (const file of htmlFiles) {
   assert.deepEqual(mobileLinks, [
     '/wip?for=services',
     '/wip?for=work',
-    '/wip?for=about',
+    '/about',
     '/wip?for=news',
     '/careers'
   ], `${file} mobile navigation must contain only the five approved links in the approved order`);

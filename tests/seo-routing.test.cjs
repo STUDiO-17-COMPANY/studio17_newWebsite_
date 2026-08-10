@@ -99,6 +99,7 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
   assert.equal(sitemap.statusCode, 200);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/careers\/growth-strategist/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/faq/);
+  assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/about/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/sitemap</);
   assert.doesNotMatch(sitemap.body, /career-role\.html|\?id=/);
 

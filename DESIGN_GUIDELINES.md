@@ -67,7 +67,7 @@ The sitemap establishes the template for non-homepage pages:
 - Reuse the homepage edge fades, dark media overlay and restrained image-scale hover; abstract standalone hero treatments are not part of the page system.
 - At 901–1279px use the shared 360px minimum hero; at 900px and below use the same stacked 560px minimum model as the homepage.
 - Let translated text increase the minimum height when necessary. Never crop copy, controls or dynamic role titles to preserve a fixed reference height.
-- Start the main content with the blue inline-highlight heading treatment.
+- Use the homepage `design-heading` pattern for every major internal-page section: one purposeful phrase receives the blue inline highlight while the remainder stays in the normal heading flow.
 - Use square dark cards, 24px grid gaps and clear link states.
 - Reuse the homepage closing CTA when there is a meaningful contact action.
 - At 900px and below, stack hero content and cards without document-level horizontal overflow.
@@ -100,6 +100,16 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Do not add `FAQPage` structured data unless Google eligibility changes and Studio 17 clearly qualifies under the then-current documentation.
 - Review the page using real enquiries and Search Console query evidence; useful answers take priority over keyword repetition.
 
+### About page
+
+- `/about` is the shared multilingual company page and replaces every former About WIP destination.
+- Explain Studio 17 through the business constraint, connected-system approach, operating method and European/international perspective; do not present a generic agency biography or invent team members.
+- Keep the Google Drive presentation as one external link across all locales. Translate the CTA and clearly state that the presentation itself is in Greek.
+- The company page may link to service categories that remain WIP, but it must not imply unverified results, clients, offices or awards.
+- Reuse the shared media hero, square geometry, restrained hover motion, closing CTA and footer contract.
+- Every main About section heading reuses the homepage blue inline-highlight treatment; do not substitute oversized unaccented display headings.
+- The opening About statement uses a full-width heading above a two-column copy-and-principle composition; it stacks to one column at 900px and below.
+
 ## 6. Components
 
 ### Header
@@ -115,6 +125,8 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Main section headings use a blue inline block behind the lead phrase.
 - Preserve tight line-height and keep the highlighted phrase meaningful.
 - Each page has exactly one `h1`; section levels must remain logical.
+- Start sections directly with the meaningful heading. Do not add decorative eyebrow, overline or mini-title text above it.
+- Keep labels only when they communicate functional information, such as a form field, status, role department or ordered process step.
 
 ### Buttons and links
 
@@ -140,7 +152,8 @@ Future pages may vary their content and hero image but not the shared hero geome
 - The display wordmark never receives pointer events. The legal row sits in the interactive foreground so Sitemap and legal links always remain clickable.
 - Email uses Lucide `mail`.
 - Social brand marks use the supplied official artwork because Lucide does not contain brand logos.
-- Do not turn placeholder social marks into misleading links. Add separate links only after official profile URLs are supplied.
+- Footer social navigation contains only the confirmed Instagram, Facebook and LinkedIn profiles. WhatsApp, Google, X and Threads are not displayed.
+- Every social link opens the confirmed external profile in a new tab with a visible focus state and an accessible platform label.
 
 ### Language selector
 
@@ -237,6 +250,8 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - Open every planned sitemap link and confirm it reaches WIP with the correct `for` value; changing language must preserve that value.
 - Test language selection once over HTTP and once by opening `index.html` directly; both paths must update copy, locale code, metadata and document direction without console errors.
 - Check all 20 FAQ questions and answers in every locale and verify native disclosure controls by keyboard.
+- Confirm heroes and major sections begin directly with meaningful headings and contain no decorative eyebrow or mini-title labels.
+- Confirm the About opening statement stays balanced at desktop widths and stacks without overflow at 900px and below.
 - Confirm every complete mobile menu contains exactly Services, Work, About, News and Careers, in that order.
 - Test regional browser-language detection, an unsupported primary preference followed by a supported secondary preference, URL priority, saved-choice priority, the English-only Careers override and Hebrew RTL.
 - Confirm every partner logo is fully inside the viewport and every service category has its canonical item count: 7, 9, 4, 4, 5 and 4 respectively.
