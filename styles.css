@@ -545,6 +545,60 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .contact-form-status { flex-basis: auto; }
 }
 
+/* FAQ — multilingual, search-oriented answers */
+.faq-main { overflow: hidden; }
+.faq-eyebrow { margin: 0 0 8px; color: #a8c0ff; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.faq-directory { margin-top: var(--section-gap); padding: 70px 0 90px; }
+.faq-intro-grid { display: grid; grid-template-columns: minmax(0,1fr) 430px; align-items: end; gap: 56px; }
+.faq-intro-grid p { max-width: 430px; margin: 0; color: #596477; font-size: 15px; line-height: 1.65; }
+.faq-category-nav { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px; margin: 38px 0 72px; }
+.faq-category-nav a { display: flex; min-height: 64px; align-items: center; justify-content: space-between; padding: 15px 20px; color: var(--white); background: var(--ink); font-size: 15px; font-weight: 750; line-height: 1.3; transition: color .2s ease, background .2s ease, transform .25s var(--ease); }
+.faq-category-nav a::after { content: ""; width: 10px; height: 10px; flex: 0 0 auto; margin-inline-start: 16px; background: var(--blue); }
+.faq-category-nav a:hover { background: var(--blue); transform: translateY(-3px); }
+.faq-category-nav a:hover::after { background: var(--white); }
+.faq-groups { display: grid; gap: 78px; }
+.faq-group { display: grid; grid-template-columns: minmax(260px,.38fr) minmax(0,.62fr); gap: 80px; border-top: 1px solid #cad2df; padding-top: 35px; scroll-margin-top: 24px; }
+.faq-group-heading { align-self: start; }
+.faq-group-heading > p { margin: 0 0 18px; color: var(--blue); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+.faq-group-heading h2 { max-width: 390px; margin: 0; color: var(--ink); font-size: clamp(30px,2.7vw,44px); line-height: 1.06; letter-spacing: -.045em; text-wrap: balance; }
+.faq-list { min-width: 0; }
+.faq-item { border-top: 1px solid #cad2df; }
+.faq-item:last-child { border-bottom: 1px solid #cad2df; }
+.faq-item summary { display: grid; grid-template-columns: minmax(0,1fr) 36px; gap: 28px; align-items: start; padding: 24px 0; color: var(--ink); cursor: pointer; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary > span { font-size: 21px; font-weight: 760; line-height: 1.3; letter-spacing: -.025em; transition: color .2s ease; }
+.faq-item summary .lucide { width: 24px; height: 24px; justify-self: end; color: var(--blue); transition: transform .3s var(--ease); }
+.faq-item summary:hover > span { color: var(--blue); }
+.faq-item summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
+.faq-item[open] summary .lucide { transform: rotate(180deg); }
+.faq-answer { max-width: 760px; padding: 0 64px 28px 0; }
+.faq-answer p { margin: 0; color: #4f5a6c; font-size: 16px; line-height: 1.72; }
+.faq-cta { margin-top: var(--section-gap); }
+
+@media (max-width: 1279px) {
+  .faq-group { gap: 45px; }
+}
+
+@media (max-width: 900px) {
+  .faq-directory { padding-block: 54px 68px; }
+  .faq-intro-grid { grid-template-columns: 1fr; gap: 18px; }
+  .faq-intro-grid p { max-width: 700px; }
+  .faq-category-nav { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin: 30px 0 54px; }
+  .faq-groups { gap: 58px; }
+  .faq-group { grid-template-columns: 1fr; gap: 28px; padding-top: 28px; }
+  .faq-group-heading h2 { max-width: 680px; }
+}
+
+@media (max-width: 600px) {
+  .faq-category-nav { grid-template-columns: 1fr; gap: 10px; }
+  .faq-category-nav a { min-height: 56px; }
+  .faq-item summary { grid-template-columns: minmax(0,1fr) 28px; gap: 16px; padding: 20px 0; }
+  .faq-item summary > span { font-size: 18px; }
+  .faq-item summary .lucide { width: 21px; height: 21px; }
+  .faq-answer { padding: 0 0 24px; }
+  .faq-answer p { font-size: 15px; }
+}
+
 /* Bidirectional language support */
 html[dir="rtl"] body { text-align: right; }
 html[dir="rtl"] .brand, html[dir="rtl"] .footer-logo, html[dir="rtl"] .footer-bottom > img { direction: ltr; }
@@ -558,9 +612,14 @@ html[dir="rtl"] .wip-copy { padding-right: 0; padding-left: 0; }
 html[dir="rtl"] .wip-destination { border-right: 4px solid var(--blue); border-left: 0; padding-right: 16px; padding-left: 0; }
 html[dir="rtl"] .contact-hero-copy { padding-right: 0; padding-left: 0; }
 html[dir="rtl"] .contact-form-status { padding-right: 14px; padding-left: 0; border-right: 3px solid #88a8ff; border-left: 0; }
+html[dir="rtl"] .faq-answer { padding-right: 0; padding-left: 64px; }
 
 @media (max-width: 900px) {
   html[dir="rtl"] .contact-hero-copy { padding: 0; }
+}
+
+@media (max-width: 600px) {
+  html[dir="rtl"] .faq-answer { padding-left: 0; }
 }
 
 /* Translation-safe sizing: English keeps the exact Figma desktop rhythm while

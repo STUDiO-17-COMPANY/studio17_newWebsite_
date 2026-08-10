@@ -1,7 +1,7 @@
 # Studio 17 website design guidelines
 
 Status: canonical implementation standard
-Last reviewed: 2026-08-05
+Last reviewed: 2026-08-10
 Design source: Figma homepage frame `1725:3411` and the supplied `Homepage.pdf`
 
 These rules are the baseline for the homepage, sitemap and every future Studio 17 page. If a later approved Figma frame conflicts with this document, the approved frame wins and this document must be updated in the same change.
@@ -91,6 +91,15 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Never expose email-provider credentials or accept a browser-supplied recipient address.
 - Update `CONTACT_FORM.md`, all six locales, the human sitemap and XML sitemap whenever the contact workflow changes.
 
+### FAQ page
+
+- `/faq` is the shared multilingual destination for questions that prospective clients commonly ask before contacting an agency and while searching online.
+- Use semantic native `details` and `summary` disclosures so answers remain keyboard-accessible and usable without page-specific JavaScript.
+- Keep questions grouped by decision intent: agency fit, websites/SEO/GEO, content/advertising, and AI/digital systems/results.
+- State pricing, timing and expected outcomes conditionally; never invent fixed quotes, guarantees or unsupported performance claims.
+- Do not add `FAQPage` structured data unless Google eligibility changes and Studio 17 clearly qualifies under the then-current documentation.
+- Review the page using real enquiries and Search Console query evidence; useful answers take priority over keyword repetition.
+
 ## 6. Components
 
 ### Header
@@ -99,6 +108,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Uppercase navigation with the blue selected/action square.
 - Desktop service dropdown supports mouse, keyboard and Escape.
 - Mobile menu uses Lucide `menu` and `x`; it opens full-screen below the 68px mobile header.
+- The complete mobile menu is restricted to Services, Work, About, News and Careers. Do not add a CTA, FAQ, Sitemap or another link without explicit approval.
 
 ### Headings
 
@@ -226,6 +236,8 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - For every locale, confirm the desktop Services dropdown opens, localized service content is present before any service click, all service/CTA buttons remain visible and next/previous carousel movement follows the document direction.
 - Open every planned sitemap link and confirm it reaches WIP with the correct `for` value; changing language must preserve that value.
 - Test language selection once over HTTP and once by opening `index.html` directly; both paths must update copy, locale code, metadata and document direction without console errors.
+- Check all 20 FAQ questions and answers in every locale and verify native disclosure controls by keyboard.
+- Confirm every complete mobile menu contains exactly Services, Work, About, News and Careers, in that order.
 - Test regional browser-language detection, an unsupported primary preference followed by a supported secondary preference, URL priority, saved-choice priority, the English-only Careers override and Hebrew RTL.
 - Confirm every partner logo is fully inside the viewport and every service category has its canonical item count: 7, 9, 4, 4, 5 and 4 respectively.
 - Verify keyboard focus, heading order, alt text and reduced-motion behaviour.

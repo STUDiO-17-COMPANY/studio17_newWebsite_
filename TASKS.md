@@ -13,6 +13,8 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 
 - [x] Standardize Sitemap, WIP, Careers, career-role and Contact heroes on the homepage media-hero model.
 - [x] Make first-visit language detection regional-code aware and use the browser's ordered language preferences.
+- [x] Restrict every complete mobile menu to Services, Work, About, News and Careers.
+- [x] Publish the multilingual FAQ content and clean `/faq` route.
 - [ ] Complete and publish the contact-form email workflow.
 - [ ] Create the approved Privacy Policy page before treating the contact form as production-ready.
 

@@ -11,6 +11,7 @@ const cleanPages = new Map([
   ['/sitemap', 'sitemap.html'],
   ['/wip', 'wip.html'],
   ['/contact', 'contact.html'],
+  ['/faq', 'faq.html'],
   ['/careers', 'careers.html'],
   ['/career-role', 'career-role.html']
 ]);
@@ -19,6 +20,7 @@ const legacyPages = new Map([
   ['/sitemap.html', '/sitemap'],
   ['/wip.html', '/wip'],
   ['/contact.html', '/contact'],
+  ['/faq.html', '/faq'],
   ['/careers.html', '/careers'],
   ['/career-role.html', '/career-role']
 ]);

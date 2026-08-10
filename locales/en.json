@@ -17,6 +17,10 @@
     "contact": {
       "title": "Contact — Studio 17",
       "description": "Contact Studio 17 to discuss your website, content, advertising, digital systems or AI project."
+    },
+    "faq": {
+      "title": "Frequently asked questions — Studio 17",
+      "description": "Clear answers to common questions about websites, SEO, GEO, content, social media, advertising, AI systems and working with Studio 17."
     }
   },
   "strings": {},

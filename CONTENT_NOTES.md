@@ -1,6 +1,6 @@
 # Content notes
 
-Last reviewed: 2026-08-02
+Last reviewed: 2026-08-10
 
 ## Publication status
 
@@ -17,8 +17,9 @@ The homepage structure, service descriptions and contact address are ready for r
 | Locales | English source plus complete working Portuguese (Portugal), Spanish, Greek, Russian and Hebrew locale files | Native-language editorial and legal review before publication |
 | Unbuilt navigation | Header, CTA, card, footer and sitemap destinations route through WIP | Replace each shared WIP key with the final approved page when published |
 | Careers | English-only Careers and role-detail pages are implemented; roles come from validated Google Docs | Complete the one-time service-account/folder share and Vercel environment setup in `CAREERS_AUTOMATION.md` |
+| FAQ | 20 people-first answers are available in all six public languages | Native-language editorial review, then refine the questions using real enquiries and Search Console evidence |
 
-The automotive figures remain design-stage content and are not independently verified claims. Testimonial components contain no attributed claim until approved copy is supplied.
+The automotive figures remain design-stage content and are not independently verified claims. Testimonial components contain no attributed claim until approved copy is supplied. FAQ prices, timelines and performance statements are general guidance, not fixed quotations or guarantees.
 
 ## Confirmed information used
 
@@ -38,6 +39,7 @@ The automotive figures remain design-stage content and are not independently ver
 - Treat English as the approved source contract. Update all six locale JSON files together whenever public copy changes.
 - Preserve European Portuguese (`pt-PT`) terminology and Hebrew RTL direction; do not substitute Brazilian Portuguese or an LTR Hebrew layout.
 - Keep the generated locale bundle synchronized with the six JSON sources so direct-file language switching remains available.
+- Keep FAQ questions tied to real visitor decisions and search intent. Avoid keyword stuffing, duplicate variants and answers written only for search engines.
 - Never shorten, hide or replace approved translated copy solely to fit the English reference height. Layouts and controls must wrap and grow, and Hebrew media/text composition must use the mirrored RTL arrangement.
 - Careers is intentionally English-only. Google Doc filenames and all role content must be approved public English copy; private HR notes and candidate data must never be placed in the publishing folder.
 - A role is public only while its complete native Google Doc remains directly inside `3. Website Open Role`; incomplete documents are withheld instead of being partially published.

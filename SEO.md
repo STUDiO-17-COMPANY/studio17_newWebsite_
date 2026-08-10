@@ -5,6 +5,8 @@ This document is the maintenance contract for search visibility. It covers techn
 ## Canonical public URLs
 
 - Homepage: `https://www.studio17.world/`
+- Contact: `https://www.studio17.world/contact`
+- FAQ: `https://www.studio17.world/faq`
 - Careers: `https://www.studio17.world/careers`
 - Vacancy: `https://www.studio17.world/careers/<role-name>`
 - Human-readable sitemap: `https://www.studio17.world/sitemap`
@@ -30,7 +32,7 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 - Every indexable page needs one descriptive title, one meta description and one canonical link.
 - Use `https://www.studio17.world` consistently; do not mix apex and `www` URLs.
 - Public page URLs never expose `.html`; Vercel redirects legacy filenames to their extensionless canonical routes.
-- Homepage translations use separate `?lang=` URLs plus reciprocal `hreflang` alternates. English is the default and `x-default` version.
+- Homepage, Contact, FAQ and other multilingual pages use separate `?lang=` URLs plus reciprocal `hreflang` alternates. English is the default and `x-default` version.
 - Careers and role pages are English-only and must not advertise translated alternatives.
 - WIP pages stay `noindex,follow` until real, approved content replaces them.
 - Never add unsupported review ratings, awards, locations or business claims to structured data.
@@ -38,6 +40,10 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 ## Content priorities
 
 Technical SEO enables crawling; useful pages create ranking opportunities. As final pages replace WIP, each service and industry page should answer a specific search intent with original copy, clear evidence, relevant internal links, meaningful headings and a distinct title/description. Avoid creating many near-duplicate location or keyword pages.
+
+FAQ answers must be written for people making real business decisions, then refined using recurring enquiries and Search Console query evidence. Do not keyword-stuff or turn near-identical queries into separate questions.
+
+Studio 17 is not currently an eligible government or health authority for Google's restricted FAQ rich results. Keep the visible semantic FAQ content, but do not add `FAQPage` JSON-LD unless Google's eligibility rules change and Studio 17 qualifies.
 
 ## Release checklist
 
@@ -48,6 +54,8 @@ Technical SEO enables crawling; useful pages create ranking opportunities. As fi
 5. Check that the sitemap contains current roles only and never contains `career-role.html` or `?id=`.
 6. After the first release, add the domain property in Google Search Console and submit `https://www.studio17.world/sitemap.xml` once. Google will then revisit it automatically.
 7. Monitor Search Console indexing, enhancements and Core Web Vitals; fix errors before adding more page families.
+8. Confirm `/faq` returns HTTP 200, has one canonical, exposes all six reciprocal language alternatives and appears in both the human and XML sitemaps.
+9. Confirm no FAQ link still points to WIP and the complete mobile menu remains limited to Services, Work, About, News and Careers.
 
 ## Files to update together
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-08-10 — Multilingual FAQ and mobile navigation cleanup
+
+- Restricted every complete mobile menu to the approved Services, Work, About, News and Careers links; removed the FAQ and sales CTA from that menu.
+- Added the clean `/faq` page with 20 decision- and search-intent questions and complete English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew copy.
+- Built accessible native `details`/`summary` disclosures with Lucide chevrons, responsive layouts and Hebrew RTL support.
+- Added canonical, social and reciprocal `hreflang` metadata, plus FAQ entries in the human and XML sitemaps.
+- Deliberately omitted ineligible `FAQPage` rich-result markup under Google's current government/health authority restrictions.
+- Added FAQ locale, route, navigation and sitemap regression coverage and updated the maintenance documentation.
+
 ## 2026-08-10 — Regional browser-language detection
 
 - Expanded first-visit language detection to use the browser's ordered language-preference list instead of only one locale value.

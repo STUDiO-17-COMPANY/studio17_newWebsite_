@@ -100,7 +100,7 @@
       if (!page || /\.[a-z0-9]+$/i.test(page)) return;
 
       if (location.protocol === 'file:') {
-        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/careers': 'careers.html' };
+        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/careers': 'careers.html' };
         page = localPages[page] || page;
       }
 
@@ -126,14 +126,16 @@
     });
 
     const page = document.body.classList.contains('careers-page')
-      ? 'careers'
+        ? 'careers'
       : document.body.classList.contains('career-role-page')
         ? 'careerRole'
         : document.body.classList.contains('contact-page')
           ? 'contact'
-          : document.body.classList.contains('sitemap-page')
-            ? 'sitemap'
-            : document.body.classList.contains('wip-page') ? 'wip' : 'home';
+          : document.body.classList.contains('faq-page')
+            ? 'faq'
+            : document.body.classList.contains('sitemap-page')
+              ? 'sitemap'
+              : document.body.classList.contains('wip-page') ? 'wip' : 'home';
     const metadata = currentData.meta?.[page];
     if (metadata?.title) document.title = metadata.title;
     const description = document.querySelector('meta[name="description"]');

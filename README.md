@@ -8,6 +8,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/sitemap` (`sitemap.html`) — public website map and planned page structure.
 - `/wip?for=<destination>` (`wip.html`) — shared multilingual destination for pages that are not built yet.
 - `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.
+- `/faq` (`faq.html`) — multilingual, search-intent FAQ with accessible native disclosure controls.
 - `/careers` (`careers.html`) — English-only Careers index with automatic Google Drive role listing.
 - `/careers/<role-name>` (`career-role.html` template) — clean, server-rendered role route populated from the selected Google Doc.
 - `careers.js` / `career-role.js` — Careers loading, rendering and failure-state behavior.
@@ -35,7 +36,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
 - `TASKS.md` — living development backlog, including postponed and blocked production work.
 - `SEO.md` — search metadata, indexing, structured-data and URL maintenance rules.
-- `tests/` — parser, API, language-detection and browser coverage for the website workflows and responsive states.
+- `tests/` — parser, API, language-detection, FAQ, routing and browser coverage for the website workflows and responsive states.
 
 ## Local preview
 
@@ -76,6 +77,8 @@ node locales/build-bundle.cjs
 15. Keep one canonical URL per page, exclude WIP pages from indexing, and follow `SEO.md` whenever routes, languages or public pages change.
 16. Keep contact credentials server-side and follow `CONTACT_FORM.md` whenever the form, recipient or email provider changes.
 17. Keep `TASKS.md` current whenever work is planned, postponed, completed or blocked.
+18. Keep the complete mobile menu limited to Services, Work, About, News and Careers. Do not add a CTA, FAQ, Sitemap or another link without explicit approval.
+19. Update FAQ copy in all six canonical locale files, then regenerate `locales/locales.js` and update both sitemaps in the same change.
 
 ## Pre-launch checklist
 
