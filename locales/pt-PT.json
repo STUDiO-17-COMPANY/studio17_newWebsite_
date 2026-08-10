@@ -28,6 +28,12 @@
     }
   },
   "strings": {
+    "Your privacy choices": "As suas escolhas de privacidade",
+    "We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.": "Utilizamos o Google Analytics para compreender como o nosso website é utilizado e melhorá-lo. O Analytics permanece desativado até aceitar.",
+    "Accept analytics": "Aceitar Analytics",
+    "Reject analytics": "Recusar Analytics",
+    "Cookie settings": "Definições de cookies",
+    "Review cookie settings": "Rever definições de cookies",
     "About Studio 17": "Sobre a Studio 17",
     "Growth works better": "O crescimento funciona melhor",
     "when the business works as one system.": "quando a empresa funciona como um só sistema.",

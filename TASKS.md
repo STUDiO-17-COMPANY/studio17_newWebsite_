@@ -17,8 +17,10 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Publish the multilingual FAQ content and clean `/faq` route.
 - [x] Publish the multilingual About page, Greek presentation link and confirmed social profiles.
 - [x] Remove decorative mini-titles across public pages and rebalance the About opening statement layout.
+- [x] Add consent-first Google Analytics 4 across all public pages in all six languages.
 - [ ] Complete and publish the contact-form email workflow.
 - [ ] Create the approved Privacy Policy page before treating the contact form as production-ready.
+- [ ] Create approved Privacy and Cookie Policy pages before treating Analytics consent as legally complete.
 
 ## Contact form — postponed
 

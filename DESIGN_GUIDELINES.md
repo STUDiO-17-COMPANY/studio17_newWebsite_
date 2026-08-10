@@ -166,6 +166,16 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Hebrew sets the document to `dir="rtl"`; brand artwork, media and the Latin footer wordmark remain visually unmirrored.
 - The selector must work with mouse, keyboard, Escape and outside-click dismissal on both desktop and mobile.
 
+### Analytics consent
+
+- Every public page loads the shared `analytics.js` controller after `i18n.js`; never paste a second Google tag directly into page HTML.
+- Analytics remains off and the Google tag remains unloaded until the visitor explicitly accepts.
+- The consent panel uses the shared ink, blue, square-corner and focus-state language without obscuring page controls at the 320px minimum width.
+- Accept and reject actions remain equally clear, keyboard accessible and fully translated across the six public languages.
+- The footer always exposes Cookie settings so a visitor can review or withdraw the saved choice.
+- Advertising storage, user data, personalization and Google signals stay disabled unless a future approved privacy scope explicitly changes them.
+- Local, preview and non-production hosts never send traffic to the production GA4 property.
+
 ### Services browser
 
 The six category lists are the canonical service navigation contract:
@@ -252,6 +262,8 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - Check all 20 FAQ questions and answers in every locale and verify native disclosure controls by keyboard.
 - Confirm heroes and major sections begin directly with meaningful headings and contain no decorative eyebrow or mini-title labels.
 - Confirm the About opening statement stays balanced at desktop widths and stacks without overflow at 900px and below.
+- Confirm no Google request or `_ga` cookie exists before consent, acceptance loads only `G-6VWS39DSNX`, withdrawal restores denied consent, and the footer control reopens settings.
+- Check the Analytics consent panel in every language at desktop, 900px, 390px and 320px; confirm Hebrew follows RTL and both actions remain visible.
 - Confirm every complete mobile menu contains exactly Services, Work, About, News and Careers, in that order.
 - Test regional browser-language detection, an unsupported primary preference followed by a supported secondary preference, URL priority, saved-choice priority, the English-only Careers override and Hebrew RTL.
 - Confirm every partner logo is fully inside the viewport and every service category has its canonical item count: 7, 9, 4, 4, 5 and 4 respectively.

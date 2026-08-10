@@ -145,6 +145,12 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "Your privacy choices": "As suas escolhas de privacidade",
+      "We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.": "Utilizamos o Google Analytics para compreender como o nosso website é utilizado e melhorá-lo. O Analytics permanece desativado até aceitar.",
+      "Accept analytics": "Aceitar Analytics",
+      "Reject analytics": "Recusar Analytics",
+      "Cookie settings": "Definições de cookies",
+      "Review cookie settings": "Rever definições de cookies",
       "About Studio 17": "Sobre a Studio 17",
       "Growth works better": "O crescimento funciona melhor",
       "when the business works as one system.": "quando a empresa funciona como um só sistema.",
@@ -552,6 +558,12 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "Your privacy choices": "Tus opciones de privacidad",
+      "We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.": "Utilizamos Google Analytics para entender cómo se usa nuestro sitio web y mejorarlo. Analytics permanece desactivado salvo que lo aceptes.",
+      "Accept analytics": "Aceptar Analytics",
+      "Reject analytics": "Rechazar Analytics",
+      "Cookie settings": "Configuración de cookies",
+      "Review cookie settings": "Revisar la configuración de cookies",
       "About Studio 17": "Sobre Studio 17",
       "Growth works better": "El crecimiento funciona mejor",
       "when the business works as one system.": "cuando la empresa trabaja como un único sistema.",
@@ -959,6 +971,12 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "Your privacy choices": "Οι επιλογές απορρήτου σας",
+      "We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.": "Χρησιμοποιούμε το Google Analytics για να κατανοούμε πώς χρησιμοποιείται ο ιστότοπός μας και να τον βελτιώνουμε. Τα Analytics παραμένουν απενεργοποιημένα, εκτός αν τα αποδεχθείτε.",
+      "Accept analytics": "Αποδοχή Analytics",
+      "Reject analytics": "Απόρριψη Analytics",
+      "Cookie settings": "Ρυθμίσεις cookies",
+      "Review cookie settings": "Επανεξέταση ρυθμίσεων cookies",
       "About Studio 17": "Σχετικά με τη Studio 17",
       "Growth works better": "Η ανάπτυξη λειτουργεί καλύτερα",
       "when the business works as one system.": "όταν η επιχείρηση λειτουργεί ως ένα σύστημα.",
@@ -1366,6 +1384,12 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "Your privacy choices": "Ваши настройки конфиденциальности",
+      "We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.": "Мы используем Google Analytics, чтобы понимать, как используется наш сайт, и улучшать его. Аналитика останется отключённой, пока вы не дадите согласие.",
+      "Accept analytics": "Разрешить аналитику",
+      "Reject analytics": "Отклонить аналитику",
+      "Cookie settings": "Настройки файлов cookie",
+      "Review cookie settings": "Изменить настройки файлов cookie",
       "About Studio 17": "О Studio 17",
       "Growth works better": "Рост становится эффективнее",
       "when the business works as one system.": "когда бизнес работает как единая система.",
@@ -1773,6 +1797,12 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "Your privacy choices": "אפשרויות הפרטיות שלכם",
+      "We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.": "אנו משתמשים ב-Google Analytics כדי להבין כיצד נעשה שימוש באתר ולשפר אותו. שירותי הניתוח יישארו כבויים אלא אם תאשרו.",
+      "Accept analytics": "אישור Analytics",
+      "Reject analytics": "דחיית Analytics",
+      "Cookie settings": "הגדרות קובצי Cookie",
+      "Review cookie settings": "בדיקת הגדרות קובצי Cookie",
       "About Studio 17": "אודות Studio 17",
       "Growth works better": "צמיחה עובדת טוב יותר",
       "when the business works as one system.": "כשהעסק פועל כמערכת אחת.",

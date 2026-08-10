@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-08-10 — Consent-first Google Analytics 4
+
+- Added the Studio 17 GA4 web stream `G-6VWS39DSNX` through one shared controller on all eight public page sources.
+- Implemented basic consent behavior: Google code is not downloaded and Analytics storage remains denied until the visitor explicitly accepts.
+- Kept advertising storage, advertising user data, advertising personalization and Google signals disabled after Analytics consent.
+- Added square, responsive consent controls and a permanent footer Cookie settings action in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew.
+- Restricted production measurement to `studio17.world` and `www.studio17.world` so local and preview traffic cannot pollute reports.
+- Added translated language-change page views, withdrawal handling, `_ga` cookie cleanup, regression coverage and `ANALYTICS.md` maintenance guidance.
+
 ## 2026-08-10 — Page hierarchy and About layout refinement
 
 - Removed decorative eyebrow and mini-title labels from About, Contact, FAQ, Careers, Sitemap and WIP so each section starts directly with its meaningful heading.

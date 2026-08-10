@@ -28,6 +28,12 @@
     }
   },
   "strings": {
+    "Your privacy choices": "Οι επιλογές απορρήτου σας",
+    "We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.": "Χρησιμοποιούμε το Google Analytics για να κατανοούμε πώς χρησιμοποιείται ο ιστότοπός μας και να τον βελτιώνουμε. Τα Analytics παραμένουν απενεργοποιημένα, εκτός αν τα αποδεχθείτε.",
+    "Accept analytics": "Αποδοχή Analytics",
+    "Reject analytics": "Απόρριψη Analytics",
+    "Cookie settings": "Ρυθμίσεις cookies",
+    "Review cookie settings": "Επανεξέταση ρυθμίσεων cookies",
     "About Studio 17": "Σχετικά με τη Studio 17",
     "Growth works better": "Η ανάπτυξη λειτουργεί καλύτερα",
     "when the business works as one system.": "όταν η επιχείρηση λειτουργεί ως ένα σύστημα.",

@@ -21,6 +21,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `robots.txt` / `/sitemap.xml` — crawler policy and live search-engine sitemap.
 - `styles.css` — design tokens, layout, responsive rules and motion.
 - `script.js` — navigation, service selector, carousels and reveal interactions.
+- `analytics.js` — consent-first Google Analytics 4 loading, preferences and page-view handling.
 - `wip.js` — identifies and localizes the requested unfinished destination.
 - `i18n.js` — URL/saved/browser locale detection, regional-code normalization, language switching, persistence and RTL handling.
 - `locales/` — English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew content files.
@@ -35,6 +36,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CHANGELOG.md` — dated implementation history.
 - `CAREERS_AUTOMATION.md` — automatic publishing architecture, setup, security and QA guide.
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
+- `ANALYTICS.md` — GA4 Measurement ID, consent behavior, verification and maintenance guide.
 - `TASKS.md` — living development backlog, including postponed and blocked production work.
 - `SEO.md` — search metadata, indexing, structured-data and URL maintenance rules.
 - `tests/` — parser, API, language-detection, FAQ, routing and browser coverage for the website workflows and responsive states.
@@ -82,6 +84,7 @@ node locales/build-bundle.cjs
 19. Update FAQ copy in all six canonical locale files, then regenerate `locales/locales.js` and update both sitemaps in the same change.
 20. Keep footer social links limited to the confirmed Studio 17 Instagram, Facebook and LinkedIn profiles unless the user approves another channel.
 21. Start every hero and major section with its meaningful heading; do not add decorative eyebrow or mini-title labels. Preserve only functional labels and metadata.
+22. Keep Google Analytics behind explicit consent, preserve the production-host restriction and follow `ANALYTICS.md` whenever the Measurement ID, collected events or consent behavior changes.
 
 ## Pre-launch checklist
 
@@ -95,6 +98,7 @@ node locales/build-bundle.cjs
 - Review `/sitemap` whenever a page is added, renamed or removed.
 - Complete the one-time service-account and Vercel environment setup before treating Careers as production-ready.
 - Install Resend, verify the sender domain and publish an approved privacy policy before treating the contact form as production-ready.
+- Publish approved Privacy and Cookie Policy pages before treating the Analytics consent workflow as legally complete.
 
 ## Design source
 

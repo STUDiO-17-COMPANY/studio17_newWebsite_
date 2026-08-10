@@ -28,6 +28,12 @@
     }
   },
   "strings": {
+    "Your privacy choices": "Ваши настройки конфиденциальности",
+    "We use Google Analytics to understand how our website is used and improve it. Analytics remains off unless you accept.": "Мы используем Google Analytics, чтобы понимать, как используется наш сайт, и улучшать его. Аналитика останется отключённой, пока вы не дадите согласие.",
+    "Accept analytics": "Разрешить аналитику",
+    "Reject analytics": "Отклонить аналитику",
+    "Cookie settings": "Настройки файлов cookie",
+    "Review cookie settings": "Изменить настройки файлов cookie",
     "About Studio 17": "О Studio 17",
     "Growth works better": "Рост становится эффективнее",
     "when the business works as one system.": "когда бизнес работает как единая система.",
