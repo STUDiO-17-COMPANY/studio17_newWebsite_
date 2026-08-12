@@ -200,6 +200,8 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - Use `arrow-up-right` for outbound/action affordances, `chevron-left/right` for previous/next, `chevron-down` for disclosure, `languages` for locale, `menu/x` for mobile navigation and `mail` for email.
 - Do not use Unicode arrows, CSS triangles or hand-authored SVG paths as substitutes.
 - Brand logos are not interface pictograms. Preserve supplied or official brand artwork for Studio 17, clients, partners and social networks.
+- Partner logos are linked brand elements: preserve their aspect ratio, reveal the partner name on hover or keyboard focus, pause the marquee during interaction, and show a visible blue focus treatment.
+- Only the primary marquee set participates in keyboard navigation; repeated sets used to create the seamless loop must use `tabindex="-1"`.
 - Decorative icons are hidden from assistive technology. Interactive icon-only controls require an `aria-label` on their parent control.
 
 ## 8. Imagery

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-08-12 — Interactive partner carousel
+
+- Added Selene Island using `Images/partner-07.png` and replaced the obsolete PHÓS placeholder in the homepage carousel.
+- Added the supplied external URL and accessible partner name to partners 01–07.
+- Added partner-name labels on hover and keyboard focus, plus a paused carousel state while a logo is being interacted with.
+- Added visible keyboard focus styling and excluded the duplicated marquee sets from the tab order.
+
 ## 2026-08-12 — Automatic multilingual Articles and News
 
 - Created the `contact@studio17.world` Drive article template, automatic-publishing guidance and isolated Article Media folder.
