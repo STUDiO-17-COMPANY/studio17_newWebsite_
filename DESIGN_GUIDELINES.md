@@ -245,6 +245,9 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - Careers and individual role pages are the approved English-only exception to the six-locale content rule. They retain the shared header/footer, display the English-availability label and preserve the visitor's saved language outside Careers.
 - Dynamic Careers content is rendered with text nodes, uses Lucide icons, keeps square component edges and provides designed loading, empty, API-error, invalid-link and closed-role states.
 - Role cards show title, department, location, work model, employment type, summary and one unambiguous detail action. The role page keeps its application action visible in a desktop sticky sidebar and a normal-flow mobile panel.
+- Editorial pages use the shared header/footer and media-led visual language, one prominent title with a blue emphasis treatment, clear author/date/read-time metadata, a readable long-form column, optional sticky contents, accessible captions and a closing CTA.
+- Article statistics, quotations, results and attribution must be verified before indexing. Prototype values must be visibly labelled and the page must remain `noindex` until approved.
+- Article language controls expose only translations that exist and pass required-field validation; a missing translation must never create a thin or empty indexed page.
 
 ## 12. Required QA before handoff
 

@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-08-12 — Automatic multilingual Articles and News
+
+- Created the `contact@studio17.world` Drive article template, automatic-publishing guidance and isolated Article Media folder.
+- Added validated Google Docs parsing for shared setup plus EN, PT-PT, ES, EL, RU and HE tabs; incomplete translations never generate public links.
+- Added clean `/insights/<slug>` server-rendered pages, independent social-share images, restricted Drive image delivery, Article structured data, canonical/`hreflang` metadata and automatic sitemap entries.
+- Replaced static homepage cards with the live newest-first article feed and added the multilingual `/news` archive with category filters and designed loading, empty and error states.
+- Updated every existing News navigation link, the human sitemap, locale bundle, documentation and regression/browser coverage.
+
+## 2026-08-12 — Editorial article prototype (superseded)
+
+- Added a responsive, SEO-ready article detail prototype at `/insights/how-car-dealerships-can-increase-monthly-sales` and connected the first homepage insight card to it.
+- Modelled the future Drive fields in the interface: category, dates, author, role, reading time, language availability, summary, table of contents, rich sections, images, statistics, quote, callout, CTA, sharing and related content.
+- Kept the prototype out of search indexes until its editorial content and automated Drive workflow are approved.
+
 ## 2026-08-10 — Consent-first Google Analytics 4
 
 - Corrected the Studio 17 GA4 web stream from the mistyped `G-6VWS39DSNX` to the confirmed `G-GVWS39DSNX` in the shared controller used by all eight public page sources.

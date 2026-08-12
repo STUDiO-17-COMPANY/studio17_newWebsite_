@@ -100,7 +100,7 @@
       if (!page || /\.[a-z0-9]+$/i.test(page)) return;
 
       if (location.protocol === 'file:') {
-        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/careers': 'careers.html' };
+        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/news': 'news.html', '/careers': 'careers.html' };
         page = localPages[page] || page;
       }
 
@@ -133,9 +133,13 @@
           ? 'contact'
           : document.body.classList.contains('faq-page')
             ? 'faq'
-            : document.body.classList.contains('about-page')
-              ? 'about'
-              : document.body.classList.contains('sitemap-page')
+          : document.body.classList.contains('about-page')
+            ? 'about'
+            : document.body.classList.contains('news-page')
+              ? 'news'
+            : document.body.classList.contains('article-page')
+              ? 'article'
+            : document.body.classList.contains('sitemap-page')
               ? 'sitemap'
               : document.body.classList.contains('wip-page') ? 'wip' : 'home';
     const metadata = currentData.meta?.[page];
@@ -172,6 +176,7 @@
   };
 
   const updateSeoMetadata = language => {
+    if (document.body.classList.contains('article-page')) return;
     const canonical = document.querySelector('[data-seo-canonical]');
     const openGraphUrl = document.querySelector('[data-seo-og-url]');
     if (canonical) {

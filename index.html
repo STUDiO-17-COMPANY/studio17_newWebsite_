@@ -31,6 +31,7 @@
   <script src="i18n.js" defer></script>
   <script src="analytics.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="article-feed.js" defer></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -82,7 +83,7 @@
         </div>
         <a class="nav-link" href="/wip?for=work">Work</a>
         <a class="nav-link" href="/about">About</a>
-        <a class="nav-link" href="/wip?for=news">News</a>
+        <a class="nav-link" href="/news">News</a>
         <a class="nav-link" href="/careers" data-force-language="en">Careers</a>
       </nav>
 
@@ -113,7 +114,7 @@
         <a href="/wip?for=services">Services</a>
         <a href="/wip?for=work">Work</a>
         <a href="/about">About</a>
-        <a href="/wip?for=news">News</a>
+        <a href="/news">News</a>
         <a href="/careers" data-force-language="en">Careers</a>
       </nav>
     </div>
@@ -277,40 +278,10 @@
           <button type="button" class="triangle-next" data-carousel-next="news-track" aria-label="Next articles"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
         </div>
       </div>
-      <div class="edge-track horizontal-track" id="news-track">
-        <article class="news-card">
-          <a href="/wip?for=case-studies">
-            <div class="news-image"><img src="Images/news-partnership.webp" alt="A car dealership representative handing over a vehicle"><span>Case Studies</span></div>
-            <h3>How Car Dealerships Can Increase Monthly Sales</h3>
-            <p>Explore how a car dealership can improve its online presence through better vehicle content and presentation.</p>
-            <small>June 22, 2026&nbsp;&nbsp;•&nbsp;&nbsp;Hugo Filipe | Founder of Studio 17</small>
-          </a>
-        </article>
-        <article class="news-card">
-          <a href="/wip?for=articles">
-            <div class="news-image"><img src="Images/news-social.webp" alt="A person working with social-media platforms"><span>News</span></div>
-            <h3>Latest Digital Marketing News for Small Businesses</h3>
-            <p>Stay updated with the latest digital marketing news, AI marketing trends, website updates and practical ideas.</p>
-            <small>Jun 18, 2026&nbsp;&nbsp;•&nbsp;&nbsp;Pedro Leonardo | CMO</small>
-          </a>
-        </article>
-        <article class="news-card">
-          <a href="/wip?for=case-studies">
-            <div class="news-image"><img src="Images/news-partnership.webp" alt="A car dealership representative handing over a vehicle"><span>Case Studies</span></div>
-            <h3>How Car Dealerships Can Increase Monthly Sales</h3>
-            <p>Explore how a car dealership can improve its online presence through better vehicle content and presentation.</p>
-            <small>Jun 14, 2026&nbsp;&nbsp;•&nbsp;&nbsp;Hugo Filipe | Founder of Studio 17</small>
-          </a>
-        </article>
-        <article class="news-card">
-          <a href="/wip?for=articles">
-            <div class="news-image"><img src="Images/news-ai.webp" alt="A human hand reaching towards a robotic hand"><span>Case Studies</span></div>
-            <h3>AI Marketing Trends Every Business Should Understand</h3>
-            <p>Explore the latest AI marketing trends, from automation and content creation to AI agents and systems.</p>
-            <small>May 28, 2026&nbsp;&nbsp;•&nbsp;&nbsp;Tiago Sousa | CTO</small>
-          </a>
-        </article>
+      <div class="edge-track horizontal-track article-feed" id="news-track" data-article-feed="home" aria-live="polite">
+        <div class="article-feed-state"><span class="article-feed-spinner" aria-hidden="true"></span><p>Loading articles…</p></div>
       </div>
+      <div class="shell news-section-link"><a class="design-link" href="/news">View all articles <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>
     </section>
 
     <section class="testimonials-section" id="about" aria-labelledby="testimonials-title">

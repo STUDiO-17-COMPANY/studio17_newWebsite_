@@ -25,6 +25,10 @@
     "about": {
       "title": "About Studio 17 — Business growth systems",
       "description": "Meet Studio 17, a European business growth systems company connecting strategy, marketing, technology, sales and operations."
+    },
+    "news": {
+      "title": "Insights, Case Studies & News | Studio 17",
+      "description": "Explore Studio 17 insights, case studies and news about websites, content, advertising, digital systems and business growth."
     }
   },
   "strings": {},

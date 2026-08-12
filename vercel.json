@@ -4,7 +4,7 @@
   "functions": {
     "api/*.js": {
       "maxDuration": 10,
-      "includeFiles": "career-role.html"
+      "includeFiles": "*.html"
     }
   },
   "redirects": [
@@ -14,9 +14,11 @@
       "destination": "https://www.studio17.world/:path*",
       "permanent": true
     },
-    { "source": "/index", "destination": "/", "permanent": true }
+    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/article", "destination": "/news", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/insights/:slug", "destination": "/api/article-page?slug=:slug" },
     { "source": "/careers/:slug", "destination": "/api/career-page?slug=:slug" },
     { "source": "/career-role", "destination": "/api/legacy-career" },
     { "source": "/sitemap.xml", "destination": "/api/sitemap" }

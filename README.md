@@ -1,6 +1,6 @@
 # Studio 17 website
 
-Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The implementation follows the supplied Figma/PDF homepage frame, with the later approved footer-spacing correction bringing the current desktop page to 1920 × 4294px. Careers adds small server-side Vercel Functions solely for its secure Google Drive connection; the frontend remains framework-free.
+Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The implementation follows the supplied Figma/PDF homepage frame. Careers and Articles add small Vercel Functions for secure, read-only Google Drive publishing; the frontend remains framework-free.
 
 ## Project structure
 
@@ -10,11 +10,14 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.
 - `/faq` (`faq.html`) — multilingual, search-intent FAQ with accessible native disclosure controls.
 - `/about` (`about.html`) — multilingual Studio 17 positioning, methodology, presentation and official social links.
+- `/news` (`news.html`) — multilingual live archive for Insights, Case Studies and News.
+- `/insights/<article-slug>` (`article.html` template) — clean, server-rendered multilingual article route.
 - `/careers` (`careers.html`) — English-only Careers index with automatic Google Drive role listing.
 - `/careers/<role-name>` (`career-role.html` template) — clean, server-rendered role route populated from the selected Google Doc.
 - `careers.js` / `career-role.js` — Careers loading, rendering and failure-state behavior.
 - `contact.js` / `api/contact.js` — contact-form interaction, validation and Resend delivery.
-- `api/` — Vercel Functions for authenticated, read-only Drive/Docs access and role validation.
+- `article-feed.js` — homepage and News archive loading, language handling, categories and publication states.
+- `api/` — Vercel Functions for authenticated, read-only Drive/Docs access, role validation, article rendering and restricted article-media delivery.
 - `.env.example` — non-secret environment-variable contract for the Careers connection.
 - `vercel.json` — Vercel Function, redirect and clean-route configuration.
 - `dev-server.cjs` — dependency-free local server that mirrors the production clean routes.
@@ -37,6 +40,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CAREERS_AUTOMATION.md` — automatic publishing architecture, setup, security and QA guide.
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
 - `ANALYTICS.md` — GA4 Measurement ID, consent behavior, verification and maintenance guide.
+- `ARTICLES.md` — live multilingual Google Drive article contract, security, SEO, image and maintenance workflow.
 - `TASKS.md` — living development backlog, including postponed and blocked production work.
 - `SEO.md` — search metadata, indexing, structured-data and URL maintenance rules.
 - `tests/` — parser, API, language-detection, FAQ, routing and browser coverage for the website workflows and responsive states.
@@ -85,6 +89,7 @@ node locales/build-bundle.cjs
 20. Keep footer social links limited to the confirmed Studio 17 Instagram, Facebook and LinkedIn profiles unless the user approves another channel.
 21. Start every hero and major section with its meaningful heading; do not add decorative eyebrow or mini-title labels. Preserve only functional labels and metadata.
 22. Keep Google Analytics behind explicit consent, preserve the production-host restriction and follow `ANALYTICS.md` whenever the Measurement ID, collected events or consent behavior changes.
+23. Publish articles only through completed copies of the Drive template; keep cover and social-share images separate and follow `ARTICLES.md`.
 
 ## Pre-launch checklist
 

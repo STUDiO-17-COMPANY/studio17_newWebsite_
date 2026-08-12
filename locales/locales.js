@@ -27,6 +27,10 @@ window.Studio17LocaleData = {
       "about": {
         "title": "About Studio 17 — Business growth systems",
         "description": "Meet Studio 17, a European business growth systems company connecting strategy, marketing, technology, sales and operations."
+      },
+      "news": {
+        "title": "Insights, Case Studies & News | Studio 17",
+        "description": "Explore Studio 17 insights, case studies and news about websites, content, advertising, digital systems and business growth."
       }
     },
     "strings": {},
@@ -142,9 +146,24 @@ window.Studio17LocaleData = {
       "about": {
         "title": "Sobre a Studio 17 — Sistemas para o crescimento empresarial",
         "description": "Conheça a Studio 17, uma empresa europeia de sistemas de crescimento que liga estratégia, marketing, tecnologia, vendas e operações."
+      },
+      "news": {
+        "title": "Perspetivas, Casos de Estudo e Notícias | Studio 17",
+        "description": "Explore perspetivas, casos de estudo e notícias da Studio 17 sobre websites, conteúdo, publicidade, sistemas digitais e crescimento empresarial."
       }
     },
     "strings": {
+      "Insights,": "Perspetivas,",
+      "Case Studies & News": "Estudos de caso e notícias",
+      "Useful thinking for businesses that want to move forward.": "Ideias úteis para empresas que querem avançar.",
+      "Explore practical perspectives, real work and Studio 17 updates across marketing, technology, content and business systems.": "Explore perspetivas práticas, trabalho real e novidades da Studio 17 sobre marketing, tecnologia, conteúdo e sistemas empresariais.",
+      "Explore the articles": "Explorar os artigos",
+      "All articles": "Todos os artigos",
+      "Choose a category or browse everything in publication order.": "Escolha uma categoria ou veja tudo por ordem de publicação.",
+      "All": "Todos",
+      "Insights": "Perspetivas",
+      "Case Studies": "Estudos de caso",
+      "View all articles": "Ver todos os artigos",
       "Help us improve the website": "Ajude-nos a melhorar o website",
       "With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.": "Com a sua autorização, utilizamos uma ferramenta de análise para compreender a origem do tráfego do nosso website e como os visitantes o utilizam. Isto ajuda-nos a melhorar a experiência. A ferramenta permanece desativada até aceitar.",
       "Allow analytics": "Permitir análise",
@@ -268,9 +287,6 @@ window.Studio17LocaleData = {
       "AI marketing system": "Sistema de marketing com IA",
       "AI dashboard system": "Sistema de dashboards com IA",
       "Complete AI-powered system": "Sistema completo com IA",
-      "Insights,": "Perspetivas,",
-      "Case Studies & News": "Estudos de caso e notícias",
-      "Case Studies": "Estudos de caso",
       "How Car Dealerships Can Increase Monthly Sales": "Como os concessionários podem aumentar as vendas mensais",
       "Latest Digital Marketing News for Small Businesses": "Últimas notícias de marketing digital para pequenas empresas",
       "AI Marketing Trends Every Business Should Understand": "Tendências de marketing com IA que todas as empresas devem conhecer",
@@ -555,9 +571,24 @@ window.Studio17LocaleData = {
       "about": {
         "title": "Sobre Studio 17 — Sistemas de crecimiento empresarial",
         "description": "Conoce Studio 17, una empresa europea de sistemas de crecimiento que conecta estrategia, marketing, tecnología, ventas y operaciones."
+      },
+      "news": {
+        "title": "Perspectivas, casos de estudio y noticias | Studio 17",
+        "description": "Explora perspectivas, casos de estudio y noticias de Studio 17 sobre sitios web, contenido, publicidad, sistemas digitales y crecimiento empresarial."
       }
     },
     "strings": {
+      "Insights,": "Ideas,",
+      "Case Studies & News": "Casos de estudio y noticias",
+      "Useful thinking for businesses that want to move forward.": "Ideas útiles para empresas que quieren avanzar.",
+      "Explore practical perspectives, real work and Studio 17 updates across marketing, technology, content and business systems.": "Explora perspectivas prácticas, trabajo real y novedades de Studio 17 sobre marketing, tecnología, contenido y sistemas empresariales.",
+      "Explore the articles": "Explorar los artículos",
+      "All articles": "Todos los artículos",
+      "Choose a category or browse everything in publication order.": "Elige una categoría o consulta todo por orden de publicación.",
+      "All": "Todos",
+      "Insights": "Perspectivas",
+      "Case Studies": "Casos de estudio",
+      "View all articles": "Ver todos los artículos",
       "Help us improve the website": "Ayúdanos a mejorar el sitio web",
       "With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.": "Con tu permiso, utilizamos una herramienta de análisis para comprender de dónde procede el tráfico de nuestro sitio web y cómo lo utilizan los visitantes. Esto nos ayuda a mejorar la experiencia. La herramienta permanece desactivada salvo que la aceptes.",
       "Allow analytics": "Permitir analítica",
@@ -681,9 +712,6 @@ window.Studio17LocaleData = {
       "AI marketing system": "Sistema de marketing con IA",
       "AI dashboard system": "Sistema de paneles con IA",
       "Complete AI-powered system": "Sistema completo con IA",
-      "Insights,": "Ideas,",
-      "Case Studies & News": "Casos de estudio y noticias",
-      "Case Studies": "Casos de estudio",
       "How Car Dealerships Can Increase Monthly Sales": "Cómo pueden los concesionarios aumentar las ventas mensuales",
       "Latest Digital Marketing News for Small Businesses": "Últimas noticias de marketing digital para pequeñas empresas",
       "AI Marketing Trends Every Business Should Understand": "Tendencias de marketing con IA que toda empresa debería conocer",
@@ -968,9 +996,24 @@ window.Studio17LocaleData = {
       "about": {
         "title": "Σχετικά με τη Studio 17 — Συστήματα επιχειρηματικής ανάπτυξης",
         "description": "Γνωρίστε τη Studio 17, μια ευρωπαϊκή εταιρεία συστημάτων ανάπτυξης που συνδέει στρατηγική, μάρκετινγκ, τεχνολογία, πωλήσεις και λειτουργίες."
+      },
+      "news": {
+        "title": "Απόψεις, Μελέτες Περιπτώσεων & Νέα | Studio 17",
+        "description": "Ανακαλύψτε απόψεις, μελέτες περιπτώσεων και νέα της Studio 17 για ιστοσελίδες, περιεχόμενο, διαφήμιση, ψηφιακά συστήματα και επιχειρηματική ανάπτυξη."
       }
     },
     "strings": {
+      "Insights,": "Απόψεις,",
+      "Case Studies & News": "Μελέτες περίπτωσης και νέα",
+      "Useful thinking for businesses that want to move forward.": "Χρήσιμες ιδέες για επιχειρήσεις που θέλουν να προχωρήσουν.",
+      "Explore practical perspectives, real work and Studio 17 updates across marketing, technology, content and business systems.": "Ανακαλύψτε πρακτικές απόψεις, πραγματικά έργα και νέα της Studio 17 για το μάρκετινγκ, την τεχνολογία, το περιεχόμενο και τα επιχειρηματικά συστήματα.",
+      "Explore the articles": "Δείτε τα άρθρα",
+      "All articles": "Όλα τα άρθρα",
+      "Choose a category or browse everything in publication order.": "Επιλέξτε κατηγορία ή δείτε τα πάντα με σειρά δημοσίευσης.",
+      "All": "Όλα",
+      "Insights": "Απόψεις",
+      "Case Studies": "Μελέτες περίπτωσης",
+      "View all articles": "Δείτε όλα τα άρθρα",
       "Help us improve the website": "Βοηθήστε μας να βελτιώσουμε τον ιστότοπο",
       "With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.": "Με την άδειά σας, χρησιμοποιούμε ένα εργαλείο ανάλυσης για να κατανοούμε από πού προέρχεται η επισκεψιμότητα του ιστοτόπου μας και πώς τον χρησιμοποιούν οι επισκέπτες. Αυτό μας βοηθά να βελτιώνουμε την εμπειρία. Το εργαλείο παραμένει απενεργοποιημένο, εκτός αν το αποδεχθείτε.",
       "Allow analytics": "Να επιτρέπεται η ανάλυση",
@@ -1094,9 +1137,6 @@ window.Studio17LocaleData = {
       "AI marketing system": "Σύστημα μάρκετινγκ με ΤΝ",
       "AI dashboard system": "Σύστημα πινάκων ελέγχου με ΤΝ",
       "Complete AI-powered system": "Ολοκληρωμένο σύστημα με ΤΝ",
-      "Insights,": "Απόψεις,",
-      "Case Studies & News": "Μελέτες περίπτωσης και νέα",
-      "Case Studies": "Μελέτες περίπτωσης",
       "How Car Dealerships Can Increase Monthly Sales": "Πώς οι αντιπροσωπείες αυτοκινήτων μπορούν να αυξήσουν τις μηνιαίες πωλήσεις",
       "Latest Digital Marketing News for Small Businesses": "Τελευταία νέα ψηφιακού μάρκετινγκ για μικρές επιχειρήσεις",
       "AI Marketing Trends Every Business Should Understand": "Τάσεις μάρκετινγκ ΤΝ που πρέπει να γνωρίζει κάθε επιχείρηση",
@@ -1381,9 +1421,24 @@ window.Studio17LocaleData = {
       "about": {
         "title": "О Studio 17 — Системы роста бизнеса",
         "description": "Познакомьтесь со Studio 17 — европейской компанией, которая объединяет стратегию, маркетинг, технологии, продажи и операционную деятельность в системы роста."
+      },
+      "news": {
+        "title": "Идеи, кейсы и новости | Studio 17",
+        "description": "Изучайте идеи, кейсы и новости Studio 17 о сайтах, контенте, рекламе, цифровых системах и росте бизнеса."
       }
     },
     "strings": {
+      "Insights,": "Аналитика,",
+      "Case Studies & News": "Кейсы и новости",
+      "Useful thinking for businesses that want to move forward.": "Полезные идеи для бизнеса, который хочет двигаться вперёд.",
+      "Explore practical perspectives, real work and Studio 17 updates across marketing, technology, content and business systems.": "Изучайте практические идеи, реальные проекты и новости Studio 17 о маркетинге, технологиях, контенте и бизнес-системах.",
+      "Explore the articles": "Перейти к статьям",
+      "All articles": "Все статьи",
+      "Choose a category or browse everything in publication order.": "Выберите категорию или просмотрите все материалы по дате публикации.",
+      "All": "Все",
+      "Insights": "Идеи",
+      "Case Studies": "Кейсы",
+      "View all articles": "Все статьи",
       "Help us improve the website": "Помогите нам улучшить сайт",
       "With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.": "С вашего разрешения мы используем инструмент аналитики, чтобы понимать, откуда приходит трафик на наш сайт и как посетители используют его. Это помогает нам улучшать сайт. Инструмент останется отключённым, пока вы не дадите согласие.",
       "Allow analytics": "Разрешить аналитику",
@@ -1507,9 +1562,6 @@ window.Studio17LocaleData = {
       "AI marketing system": "Маркетинговая система с ИИ",
       "AI dashboard system": "Система дашбордов с ИИ",
       "Complete AI-powered system": "Полная система с ИИ",
-      "Insights,": "Аналитика,",
-      "Case Studies & News": "Кейсы и новости",
-      "Case Studies": "Кейсы",
       "How Car Dealerships Can Increase Monthly Sales": "Как автосалонам увеличить ежемесячные продажи",
       "Latest Digital Marketing News for Small Businesses": "Последние новости цифрового маркетинга для малого бизнеса",
       "AI Marketing Trends Every Business Should Understand": "Тренды ИИ-маркетинга, которые важно знать каждому бизнесу",
@@ -1794,9 +1846,24 @@ window.Studio17LocaleData = {
       "about": {
         "title": "אודות Studio 17 — מערכות לצמיחה עסקית",
         "description": "הכירו את Studio 17, חברה אירופית למערכות צמיחה המחברת אסטרטגיה, שיווק, טכנולוגיה, מכירות ותפעול."
+      },
+      "news": {
+        "title": "תובנות, מקרי בוחן וחדשות | Studio 17",
+        "description": "גלו תובנות, מקרי בוחן וחדשות של Studio 17 על אתרים, תוכן, פרסום, מערכות דיגיטליות וצמיחה עסקית."
       }
     },
     "strings": {
+      "Insights,": "תובנות,",
+      "Case Studies & News": "מקרי בוחן וחדשות",
+      "Useful thinking for businesses that want to move forward.": "חשיבה שימושית לעסקים שרוצים להתקדם.",
+      "Explore practical perspectives, real work and Studio 17 updates across marketing, technology, content and business systems.": "גלו נקודות מבט מעשיות, עבודות אמיתיות ועדכונים של Studio 17 בתחומי שיווק, טכנולוגיה, תוכן ומערכות עסקיות.",
+      "Explore the articles": "לכל המאמרים",
+      "All articles": "כל המאמרים",
+      "Choose a category or browse everything in publication order.": "בחרו קטגוריה או עיינו בכל התכנים לפי סדר הפרסום.",
+      "All": "הכול",
+      "Insights": "תובנות",
+      "Case Studies": "מקרי בוחן",
+      "View all articles": "לכל המאמרים",
       "Help us improve the website": "עזרו לנו לשפר את האתר",
       "With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.": "באישורך, אנו משתמשים בכלי ניתוח כדי להבין מהיכן מגיעה התנועה לאתר וכיצד מבקרים משתמשים בו. מידע זה עוזר לנו לשפר את החוויה. הכלי יישאר כבוי אלא אם תאשרו.",
       "Allow analytics": "אישור ניתוח",
@@ -1920,9 +1987,6 @@ window.Studio17LocaleData = {
       "AI marketing system": "מערכת שיווק עם בינה מלאכותית",
       "AI dashboard system": "מערכת לוחות מחוונים עם בינה מלאכותית",
       "Complete AI-powered system": "מערכת מלאה עם בינה מלאכותית",
-      "Insights,": "תובנות,",
-      "Case Studies & News": "מקרי בוחן וחדשות",
-      "Case Studies": "מקרי בוחן",
       "How Car Dealerships Can Increase Monthly Sales": "כיצד סוכנויות רכב יכולות להגדיל מכירות חודשיות",
       "Latest Digital Marketing News for Small Businesses": "חדשות השיווק הדיגיטלי האחרונות לעסקים קטנים",
       "AI Marketing Trends Every Business Should Understand": "מגמות שיווק עם בינה מלאכותית שכל עסק צריך להכיר",

@@ -25,9 +25,24 @@
     "about": {
       "title": "Sobre a Studio 17 — Sistemas para o crescimento empresarial",
       "description": "Conheça a Studio 17, uma empresa europeia de sistemas de crescimento que liga estratégia, marketing, tecnologia, vendas e operações."
+    },
+    "news": {
+      "title": "Perspetivas, Casos de Estudo e Notícias | Studio 17",
+      "description": "Explore perspetivas, casos de estudo e notícias da Studio 17 sobre websites, conteúdo, publicidade, sistemas digitais e crescimento empresarial."
     }
   },
   "strings": {
+    "Insights,": "Perspetivas,",
+    "Case Studies & News": "Casos de Estudo e Notícias",
+    "Useful thinking for businesses that want to move forward.": "Ideias úteis para empresas que querem avançar.",
+    "Explore practical perspectives, real work and Studio 17 updates across marketing, technology, content and business systems.": "Explore perspetivas práticas, trabalho real e novidades da Studio 17 sobre marketing, tecnologia, conteúdo e sistemas empresariais.",
+    "Explore the articles": "Explorar os artigos",
+    "All articles": "Todos os artigos",
+    "Choose a category or browse everything in publication order.": "Escolha uma categoria ou veja tudo por ordem de publicação.",
+    "All": "Todos",
+    "Insights": "Perspetivas",
+    "Case Studies": "Casos de Estudo",
+    "View all articles": "Ver todos os artigos",
     "Help us improve the website": "Ajude-nos a melhorar o website",
     "With your permission, we use an analytics tool to understand where our website traffic comes from and how visitors use the site. This helps us improve the experience. The tool remains off unless you accept.": "Com a sua autorização, utilizamos uma ferramenta de análise para compreender a origem do tráfego do nosso website e como os visitantes o utilizam. Isto ajuda-nos a melhorar a experiência. A ferramenta permanece desativada até aceitar.",
     "Allow analytics": "Permitir análise",

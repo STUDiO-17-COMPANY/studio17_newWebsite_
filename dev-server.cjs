@@ -3,6 +3,8 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
+const { buildSeo, renderArticleMain } = require('./api/_article-render');
+const demoArticle = require('./article-demo.cjs');
 
 const root = __dirname;
 const port = Number(process.argv[2] || process.env.PORT || 8080);
@@ -13,6 +15,7 @@ const cleanPages = new Map([
   ['/contact', 'contact.html'],
   ['/faq', 'faq.html'],
   ['/about', 'about.html'],
+  ['/news', 'news.html'],
   ['/careers', 'careers.html'],
   ['/career-role', 'career-role.html']
 ]);
@@ -23,6 +26,8 @@ const legacyPages = new Map([
   ['/contact.html', '/contact'],
   ['/faq.html', '/faq'],
   ['/about.html', '/about'],
+  ['/news.html', '/news'],
+  ['/article.html', '/news'],
   ['/careers.html', '/careers'],
   ['/career-role.html', '/career-role']
 ]);
@@ -53,6 +58,17 @@ const sendFile = (response, relativePath) => {
   fs.createReadStream(filePath).pipe(response);
 };
 
+const sendDemoArticle = response => {
+  const template = fs.readFileSync(path.join(root, 'article.html'), 'utf8');
+  const body = renderArticleMain(demoArticle).replace('/api/article-image?id=local-demo-image', '/Images/news-partnership.webp');
+  const html = template
+    .replace('<!-- ARTICLE_SEO -->', buildSeo(demoArticle))
+    .replace('<!-- ARTICLE_MAIN -->', body)
+    .replace('</head>', '<script>window.__STUDIO17_ARTICLE_LANGUAGES__=["en"];</script></head>');
+  response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+  response.end(html);
+};
+
 const server = http.createServer((request, response) => {
   const url = new URL(request.url || '/', 'http://localhost');
   const pathname = decodeURIComponent(url.pathname).replace(/\/+$/, '') || '/';
@@ -66,11 +82,26 @@ const server = http.createServer((request, response) => {
     sendFile(response, cleanPages.get(pathname));
     return;
   }
+  if (pathname === '/insights/how-car-dealerships-can-increase-monthly-sales') {
+    sendDemoArticle(response);
+    return;
+  }
   if (/^\/careers\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(pathname)) {
     sendFile(response, 'career-role.html');
     return;
   }
   if (pathname.startsWith('/api/')) {
+    if (pathname === '/api/articles') {
+      const summary = {
+        slug: demoArticle.slug, category: demoArticle.category, publishedDate: demoArticle.publishedDate,
+        modifiedDate: null, authorName: demoArticle.authorName, authorRole: demoArticle.authorRole,
+        readTime: demoArticle.readTime, coverImage: demoArticle.coverImage, coverAlt: demoArticle.content.coverAlt,
+        title: demoArticle.content.title, summary: demoArticle.content.summary, availableLanguages: ['en']
+      };
+      response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      response.end(JSON.stringify({ articles: url.searchParams.get('lang') && url.searchParams.get('lang') !== 'en' ? [] : [summary], locale: url.searchParams.get('lang') || 'en' }));
+      return;
+    }
     response.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8' });
     response.end(JSON.stringify({ error: { code: 'LOCAL_API_UNAVAILABLE' } }));
     return;

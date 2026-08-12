@@ -1,6 +1,7 @@
 'use strict';
 
 const { listPublishedRoles } = require('./_google-careers');
+const { listPublishedArticles } = require('./_google-articles');
 
 const SITE_URL = 'https://www.studio17.world';
 const escapeXml = value => String(value || '')
@@ -28,12 +29,20 @@ module.exports = async function sitemapHandler(request, response) {
   }
 
   try {
-    const { roles } = await listPublishedRoles(request);
+    const [rolesResult, articlesResult] = await Promise.allSettled([
+      listPublishedRoles(request),
+      listPublishedArticles(request, 'en')
+    ]);
+    const roles = rolesResult.status === 'fulfilled' ? rolesResult.value.roles : [];
+    const articles = articlesResult.status === 'fulfilled' ? articlesResult.value.articles : [];
+    if (rolesResult.status === 'rejected') console.warn('Sitemap: Careers entries unavailable', rolesResult.reason?.code || rolesResult.reason?.message);
+    if (articlesResult.status === 'rejected') console.warn('Sitemap: article entries unavailable', articlesResult.reason?.code || articlesResult.reason?.message);
     const urls = [
       { loc: `${SITE_URL}/`, changefreq: 'weekly', priority: '1.0' },
       { loc: `${SITE_URL}/contact`, changefreq: 'monthly', priority: '0.8' },
       { loc: `${SITE_URL}/faq`, changefreq: 'monthly', priority: '0.8' },
       { loc: `${SITE_URL}/about`, changefreq: 'monthly', priority: '0.8' },
+      { loc: `${SITE_URL}/news`, changefreq: 'daily', priority: '0.9' },
       { loc: `${SITE_URL}/careers`, changefreq: 'daily', priority: '0.8' },
       { loc: `${SITE_URL}/sitemap`, changefreq: 'monthly', priority: '0.3' },
       ...roles.map(role => ({
@@ -41,7 +50,13 @@ module.exports = async function sitemapHandler(request, response) {
         lastmod: role.modifiedTime || undefined,
         changefreq: 'weekly',
         priority: '0.7'
-      }))
+      })),
+      ...articles.flatMap(article => article.availableLanguages.map(locale => ({
+        loc: `${SITE_URL}/insights/${encodeURIComponent(article.slug)}${locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`}`,
+        lastmod: article.modifiedDate || article.publishedDate || undefined,
+        changefreq: 'monthly',
+        priority: locale === 'en' ? '0.8' : '0.7'
+      })))
     ];
     const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(entry).join('\n')}\n</urlset>\n`;
     response.statusCode = 200;

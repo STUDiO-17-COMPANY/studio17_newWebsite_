@@ -18,6 +18,9 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Publish the multilingual About page, Greek presentation link and confirmed social profiles.
 - [x] Remove decorative mini-titles across public pages and rebalance the About opening statement layout.
 - [x] Add consent-first Google Analytics 4 across all public pages in all six languages.
+- [x] Approve the article-detail layout and content-field model.
+- [x] Create the Drive template, guidance, dedicated media folder, parser, multilingual article pages, dynamic homepage feed and `/news` archive described in `ARTICLES.md`.
+- [-] Grant the production Google service account Reader access to the Article folders, deploy and verify one real published Doc end to end.
 - [ ] Complete and publish the contact-form email workflow.
 - [ ] Create the approved Privacy Policy page before treating the contact form as production-ready.
 - [ ] Create approved Privacy and Cookie Policy pages before treating Analytics consent as legally complete.
@@ -41,6 +44,16 @@ The multilingual `/contact` page and its server-side `/api/contact` endpoint exi
 - [ ] Update `CONTACT_FORM.md`, `README.md`, `CHANGELOG.md` and this task list after production verification.
 
 BLOCKED: The Vercel/Resend account connection requires explicit authorization before Studio 17 credentials or hosted settings are changed.
+
+## Articles — production handoff
+
+- [ ] Share the article root folder with `studio17-careers-website@studio17-newsletter.iam.gserviceaccount.com` as Reader from `contact@studio17.world`.
+- [ ] Deploy the article Functions, clean route and News archive.
+- [ ] Copy the master template, upload separate cover/social images, and publish one English test article.
+- [ ] Verify the homepage card, `/news`, article page, social preview image and `/sitemap.xml` in production.
+- [ ] Add one optional translation and verify that incomplete language tabs remain hidden.
+
+BLOCKED: The connected Drive editor cannot change folder permissions and the available browser session is not signed in. Permission changes also require confirmation at the final action.
 
 ## Page-development rule
 
