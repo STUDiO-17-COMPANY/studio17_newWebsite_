@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-13 — Event Studio Cyprus partner
+
+- Added Event Studio Cyprus as `partner-09` to both animated partner rows, with its supplied Instagram link, hover label and accessible name.
+
 ## 2026-08-13 — Testimonial action spacing
 
 - Replaced the flexible testimonial-link spacer with a consistent 13px gap so each “Learn more” action sits directly beneath its review on desktop and mobile.
