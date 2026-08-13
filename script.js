@@ -11,6 +11,25 @@
   const dropdownTrigger = document.querySelector('.nav-trigger');
   const dropdownPanel = document.querySelector('.dropdown-panel');
   const translateText = text => window.Studio17I18n?.translate(text) || text;
+  const googleProfileUrl = 'https://share.google/B3qQDpUvLnv5UAZ4G';
+
+  const updateGoogleProfileLabels = () => {
+    document.querySelectorAll('.footer-social-link.social-google').forEach(link => {
+      link.setAttribute('aria-label', translateText('Studio 17 on Google'));
+    });
+  };
+
+  document.querySelectorAll('.footer-social-links').forEach(links => {
+    if (links.querySelector('.social-google')) return;
+    const googleLink = document.createElement('a');
+    googleLink.className = 'footer-social-link social-google';
+    googleLink.href = googleProfileUrl;
+    googleLink.target = '_blank';
+    googleLink.rel = 'noopener noreferrer';
+    googleLink.innerHTML = '<span aria-hidden="true"></span>';
+    links.appendChild(googleLink);
+  });
+  updateGoogleProfileLabels();
 
   const closeMobileMenu = ({ restoreFocus = false } = {}) => {
     if (!menuButton || !mobileMenu) return;
@@ -298,6 +317,7 @@
     renderServiceList(activeCategory, selectedItems[activeCategory]);
     renderService(getServiceContent(activeCategory, selectedItems[activeCategory]), { instant: true });
     if (menuButton) menuButton.setAttribute('aria-label', translateText(menuButton.getAttribute('aria-expanded') === 'true' ? 'Close menu' : 'Open menu'));
+    updateGoogleProfileLabels();
   });
 
   document.querySelectorAll('[data-carousel-prev], [data-carousel-next]').forEach(button => {

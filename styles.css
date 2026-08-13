@@ -116,7 +116,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .partner-track { display: flex; width: max-content; height: 100%; gap: var(--partner-track-gap); animation: partner-marquee 24s linear infinite; will-change: transform; }
 .partner-marquee:hover .partner-track, .partner-marquee:focus-within .partner-track { animation-play-state: paused; }
 .partner-marquee-reverse .partner-track { animation-direction: reverse; }
-.partner-set { display: grid; width: var(--partner-row-width); height: 100%; flex: 0 0 var(--partner-row-width); grid-template-columns: repeat(7,minmax(0,1fr)); align-items: center; gap: 24px; padding: 0; }
+.partner-set { display: grid; width: var(--partner-row-width); height: 100%; flex: 0 0 var(--partner-row-width); grid-template-columns: repeat(8,minmax(0,1fr)); align-items: center; gap: 24px; padding: 0; }
 .partner-item { position: relative; display: grid; width: 100%; height: 108px; place-items: center; color: var(--ink); text-decoration: none; outline: none; }
 .partner-item img { width: 150px; height: 90px; max-width: 100%; object-fit: contain; transition: transform .25s var(--ease), filter .25s ease; }
 .partner-item[data-partner="02"] img { width: 100px; height: 105px; }
@@ -125,6 +125,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .partner-item[data-partner="03"] img { width: 96px; }
 .partner-item[data-partner="01"] img { width: 86px; }
 .partner-item[data-partner="07"] img { width: 150px; }
+.partner-item[data-partner="08"] img { width: 142px; }
 .partner-item span { position: absolute; z-index: 2; left: 50%; bottom: 2px; max-width: calc(100% - 8px); padding: 5px 9px; border-radius: 3px; color: var(--white); background: var(--blue); font-size: 12px; font-weight: 700; line-height: 1.2; text-align: center; white-space: nowrap; opacity: 0; pointer-events: none; transform: translate(-50%, 6px); transition: opacity .2s ease, transform .2s var(--ease); }
 .partner-item:hover img, .partner-item:focus-visible img { filter: drop-shadow(0 5px 10px rgba(17,27,49,.15)); transform: translateY(-7px) scale(1.05); }
 .partner-item:hover span, .partner-item:focus-visible span { opacity: 1; transform: translate(-50%, 0); }
@@ -214,10 +215,10 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .news-card small { display: block; overflow: hidden; font-size: 11px; white-space: nowrap; }
 
 /* Testimonials — Figma: y2886, 1920 × 317 */
-.testimonials-section { height: 317px; margin-top: 32px; padding-top: 23px; overflow: hidden; }
+.testimonials-section { height: 397px; margin-top: 32px; padding-top: 23px; overflow: hidden; }
 .testimonials-section .section-title-line { gap: 32px; }
-.testimonials-section .horizontal-track { grid-auto-columns: 388px; height: 214px; gap: 48px; margin-top: 27px; }
-.testimonial-card { width: 388px; min-width: 0; }
+.testimonials-section .horizontal-track { grid-auto-columns: 388px; height: 294px; gap: 48px; margin-top: 27px; }
+.testimonial-card { display: flex; width: 388px; min-width: 0; height: 294px; flex-direction: column; }
 .testimonial-person { display: flex; align-items: center; gap: 10px; }
 .testimonial-person h3 { margin: 0 0 1px; font-size: 16px; font-weight: 400; }
 .testimonial-person p { margin: 0; font-size: 12px; }
@@ -226,7 +227,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .quote-icon { display: block; width: 34px; height: 33px; margin-top: 6px; color: #79a2ff; }
 .quote-icon .lucide { width: 31px; height: 31px; fill: currentColor; stroke-width: 1.5; }
 .testimonial-card > p { margin: 0; font-size: 15px; line-height: 1.52; }
-.testimonial-card > a { display: inline-flex; align-items: center; gap: 4px; margin-top: 13px; font-size: 12px; font-weight: 800; }
+.testimonial-card > a { display: inline-flex; align-items: center; align-self: flex-start; gap: 4px; margin-top: auto; padding-top: 13px; font-size: 12px; font-weight: 800; }
 .testimonial-card > a .lucide { width: 12px; height: 12px; }
 
 /* CTA — Figma: y3235, 1920 × 298 */
@@ -257,6 +258,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .footer-social-link.social-instagram span { background-position: -48px center; }
 .footer-social-link.social-facebook span { background-position: -98px center; }
 .footer-social-link.social-linkedin span { background-position: -147px center; }
+.footer-social-link.social-google span { background-position: -196px center; }
 .eu-brand { width: min(303px,100%); height: auto; object-fit: contain; }
 .footer-column h2 { margin: 0 0 17px; font-size: 13px; text-transform: uppercase; }
 .footer-column a { display: block; width: fit-content; max-width: 100%; margin-bottom: 12px; color: #eef1f6; font-size: 12px; overflow-wrap: anywhere; transition: color .2s ease, transform .2s ease; }

@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-08-13 — Google footer profile
+
+- Added the Studio 17 Google profile to both footer social groups across every page through the shared footer enhancement.
+- Reused the supplied white Google brand mark from the existing footer sprite and retained the established hover and keyboard-focus behavior.
+- Added localized accessibility labels for Portuguese, Spanish, Greek, Russian and Hebrew.
+
+## 2026-08-13 — Client testimonials and Phós Optics
+
+- Replaced the homepage testimonial placeholders with approved feedback from Rita Braz, Pantelis Petrou, Miguel Ângelo and Natalia Ioannou.
+- Linked the three testimonials with supplied source or company URLs and retained Natalia's testimonial without an external link.
+- Expanded the testimonial carousel height so the complete approved quotes remain readable without clipping.
+- Added Phós Optics as `partner-08`, including its hover label and external website link in both animated partner rows.
+
 ## 2026-08-12 — Interactive partner carousel
 
 - Added Selene Island using `Images/partner-07.png` and replaced the obsolete PHÓS placeholder in the homepage carousel.

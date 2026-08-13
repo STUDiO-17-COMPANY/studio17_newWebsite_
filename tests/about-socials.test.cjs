@@ -60,7 +60,8 @@ const aboutStrings = [
   'Studio 17 social media profiles',
   'Studio 17 on Instagram',
   'Studio 17 on Facebook',
-  'Studio 17 on LinkedIn'
+  'Studio 17 on LinkedIn',
+  'Studio 17 on Google'
 ];
 
 assert.match(about, /<body class="about-page">/);
@@ -95,5 +96,11 @@ for (const language of languages) {
 const i18n = fs.readFileSync(path.join(root, 'i18n.js'), 'utf8');
 assert.match(i18n, /classList\.contains\('about-page'\)/);
 assert.match(i18n, /'\/about': 'about\.html'/);
+
+const sharedScript = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
+assert.match(sharedScript, /https:\/\/share\.google\/B3qQDpUvLnv5UAZ4G/);
+assert.match(sharedScript, /footer-social-link social-google/);
+assert.match(sharedScript, /target = '_blank'/);
+assert.match(sharedScript, /rel = 'noopener noreferrer'/);
 
 console.log('About page, presentation and social-link tests passed.');

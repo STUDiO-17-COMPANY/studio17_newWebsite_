@@ -13,7 +13,8 @@ const partners = [
   ['04', 'For Social Media Lovers', 'https://forsocialmedialovers.com/'],
   ['05', 'Chome Rats', 'https://www.chromerats.com/'],
   ['06', 'Lodgify', 'https://www.lodgify.com'],
-  ['07', 'Selene Island', 'https://www.instagram.com/seleneisland/']
+  ['07', 'Selene Island', 'https://www.instagram.com/seleneisland/'],
+  ['08', 'Phós Optics', 'https://www.phosoptics.com/en']
 ];
 
 for (const [number, name, url] of partners) {
