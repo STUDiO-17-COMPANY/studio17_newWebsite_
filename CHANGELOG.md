@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-13 — Testimonial action spacing
+
+- Replaced the flexible testimonial-link spacer with a consistent 13px gap so each “Learn more” action sits directly beneath its review on desktop and mobile.
+
 ## 2026-08-13 — Google footer profile
 
 - Added the Studio 17 Google profile to both footer social groups across every page through the shared footer enhancement.

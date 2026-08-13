@@ -227,7 +227,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .quote-icon { display: block; width: 34px; height: 33px; margin-top: 6px; color: #79a2ff; }
 .quote-icon .lucide { width: 31px; height: 31px; fill: currentColor; stroke-width: 1.5; }
 .testimonial-card > p { margin: 0; font-size: 15px; line-height: 1.52; }
-.testimonial-card > a { display: inline-flex; align-items: center; align-self: flex-start; gap: 4px; margin-top: auto; padding-top: 13px; font-size: 12px; font-weight: 800; }
+.testimonial-card > a { display: inline-flex; align-items: center; align-self: flex-start; gap: 4px; margin-top: 13px; font-size: 12px; font-weight: 800; }
 .testimonial-card > a .lucide { width: 12px; height: 12px; }
 
 /* CTA — Figma: y3235, 1920 × 298 */
