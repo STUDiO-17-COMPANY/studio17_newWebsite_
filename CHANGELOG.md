@@ -3,6 +3,7 @@
 ## 2026-08-13 — Event Studio Cyprus partner
 
 - Added Event Studio Cyprus as `partner-09` to both animated partner rows, with its supplied Instagram link, hover label and accessible name.
+- Expanded the marquee grid from eight to nine columns so the new partner remains visible inside the fixed-height carousel.
 
 ## 2026-08-13 — Testimonial action spacing
 

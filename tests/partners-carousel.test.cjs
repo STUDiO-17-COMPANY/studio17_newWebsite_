@@ -26,6 +26,7 @@ for (const [number, name, url] of partners) {
 }
 
 assert.equal((html.match(/data-partner="09"/g) || []).length, 4, 'partner-09 must appear once in every marquee set');
+assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(9,/s, 'the partner grid must expose all nine partners in one row');
 
 assert.doesNotMatch(html, /partner-phos\.png/);
 assert.match(css, /\.partner-marquee:hover \.partner-track/);
