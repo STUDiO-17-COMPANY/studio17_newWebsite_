@@ -17,6 +17,9 @@ const cleanPages = new Map([
   ['/about', 'about.html'],
   ['/news', 'news.html'],
   ['/careers', 'careers.html'],
+  ['/privacy-policy', 'privacy-policy.html'],
+  ['/cookie-policy', 'cookie-policy.html'],
+  ['/terms', 'terms.html'],
   ['/career-role', 'career-role.html']
 ]);
 const legacyPages = new Map([
@@ -29,6 +32,9 @@ const legacyPages = new Map([
   ['/news.html', '/news'],
   ['/article.html', '/news'],
   ['/careers.html', '/careers'],
+  ['/privacy-policy.html', '/privacy-policy'],
+  ['/cookie-policy.html', '/cookie-policy'],
+  ['/terms.html', '/terms'],
   ['/career-role.html', '/career-role']
 ]);
 const mimeTypes = {

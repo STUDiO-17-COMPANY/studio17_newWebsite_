@@ -22,8 +22,8 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Create the Drive template, guidance, dedicated media folder, parser, multilingual article pages, dynamic homepage feed and `/news` archive described in `ARTICLES.md`.
 - [-] Grant the production Google service account Reader access to the Article folders, deploy and verify one real published Doc end to end.
 - [ ] Complete and publish the contact-form email workflow.
-- [ ] Create the approved Privacy Policy page before treating the contact form as production-ready.
-- [ ] Create approved Privacy and Cookie Policy pages before treating Analytics consent as legally complete.
+- [x] Create multilingual Privacy Policy, Cookie Policy and Terms pages based on the website's implemented processing.
+- [ ] Obtain qualified Cyprus/EU legal review of the three informative legal drafts before treating them as final legal advice.
 
 ## Contact form — postponed
 
@@ -39,7 +39,7 @@ The multilingual `/contact` page and its server-side `/api/contact` endpoint exi
 - [ ] Confirm that every message reaches `contact@studio17.world` and that Reply answers the visitor's email address.
 - [ ] Test required-field errors, invalid email, consent, rate limiting, provider failure and duplicate-submit prevention.
 - [ ] Test keyboard use, screen-reader labels, mobile layouts, translated text wrapping and Hebrew RTL behavior.
-- [ ] Add the approved Privacy Policy link beside the consent language.
+- [x] Add the live Privacy Policy route to the shared footer and contact consent language.
 - [ ] Review provider logs without exposing visitor messages or personal data in application logs.
 - [ ] Update `CONTACT_FORM.md`, `README.md`, `CHANGELOG.md` and this task list after production verification.
 

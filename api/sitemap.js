@@ -45,6 +45,9 @@ module.exports = async function sitemapHandler(request, response) {
       { loc: `${SITE_URL}/news`, changefreq: 'daily', priority: '0.9' },
       { loc: `${SITE_URL}/careers`, changefreq: 'daily', priority: '0.8' },
       { loc: `${SITE_URL}/sitemap`, changefreq: 'monthly', priority: '0.3' },
+      { loc: `${SITE_URL}/privacy-policy`, changefreq: 'monthly', priority: '0.4' },
+      { loc: `${SITE_URL}/cookie-policy`, changefreq: 'monthly', priority: '0.4' },
+      { loc: `${SITE_URL}/terms`, changefreq: 'monthly', priority: '0.4' },
       ...roles.map(role => ({
         loc: `${SITE_URL}/careers/${encodeURIComponent(role.slug)}`,
         lastmod: role.modifiedTime || undefined,

@@ -65,7 +65,7 @@
       acceptNode(node) {
         const parent = node.parentElement;
         if (!parent || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-        if (parent.closest('script, style, noscript, .language-menu, [data-i18n-skip]')) return NodeFilter.FILTER_REJECT;
+        if (parent.closest('script, style, noscript, .language-menu, [data-i18n-skip], [data-legal-key]')) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
@@ -100,7 +100,7 @@
       if (!page || /\.[a-z0-9]+$/i.test(page)) return;
 
       if (location.protocol === 'file:') {
-        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/news': 'news.html', '/careers': 'careers.html' };
+        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/news': 'news.html', '/careers': 'careers.html', '/privacy-policy': 'privacy-policy.html', '/cookie-policy': 'cookie-policy.html', '/terms': 'terms.html' };
         page = localPages[page] || page;
       }
 
@@ -125,7 +125,7 @@
       record.element.setAttribute(record.attribute, translate(record.original));
     });
 
-    const page = document.body.classList.contains('careers-page')
+    const page = document.body?.dataset?.legalPage || (document.body.classList.contains('careers-page')
         ? 'careers'
       : document.body.classList.contains('career-role-page')
         ? 'careerRole'
@@ -141,7 +141,7 @@
               ? 'article'
             : document.body.classList.contains('sitemap-page')
               ? 'sitemap'
-              : document.body.classList.contains('wip-page') ? 'wip' : 'home';
+              : document.body.classList.contains('wip-page') ? 'wip' : 'home');
     const metadata = currentData.meta?.[page];
     if (metadata?.title) document.title = metadata.title;
     const description = document.querySelector('meta[name="description"]');

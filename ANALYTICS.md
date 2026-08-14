@@ -1,7 +1,7 @@
 # Google Analytics
 
 Status: implemented in code; production verification requires deployment
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-14
 Google Analytics 4 Measurement ID: `G-GVWS39DSNX`
 
 ## Implementation
@@ -41,4 +41,4 @@ After an approved deployment:
 - Never paste a second Google tag directly into an HTML page.
 - Keep consent copy synchronized in the five translated locale JSON files and regenerate `locales/locales.js`.
 - Treat changes to collected events, user properties, Google signals, advertising features or consent storage as privacy-impacting changes that require documented review.
-- The consent control is not a substitute for an approved Privacy Policy and Cookie Policy. Those legal pages remain required before the website is treated as fully production-ready.
+- The consent control is documented by the live `/privacy-policy` and `/cookie-policy` pages. Re-review those pages whenever collected events, retention, providers or consent behavior changes, and obtain qualified legal review before treating the texts as final legal advice.

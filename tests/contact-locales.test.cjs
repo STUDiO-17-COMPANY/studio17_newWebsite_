@@ -37,4 +37,10 @@ for (const locale of locales) {
 const bundle = fs.readFileSync(path.join(root, 'locales', 'locales.js'), 'utf8');
 assert.match(bundle, /"contact":\s*\{/);
 
+const contact = fs.readFileSync(path.join(root, 'contact.html'), 'utf8');
+const styles = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
+assert.match(contact, /class="contact-privacy-note"[\s\S]*?href="\/privacy-policy"/);
+assert.match(styles, /\.contact-honeypot[^{]*\{[^}]*clip-path:\s*inset\(50%\)/);
+assert.doesNotMatch(styles, /\.contact-honeypot[^{]*\{[^}]*-10000px/);
+
 console.log('Contact locale tests passed.');

@@ -89,6 +89,16 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Keep the two-column project brief and form composition on desktop; stack details before the form at 900px and below.
 - Preserve visible labels, keyboard focus, native field semantics, translated success/error feedback and the direct email fallback.
 - Never expose email-provider credentials or accept a browser-supplied recipient address.
+
+### Legal information pages
+
+- `/privacy-policy`, `/cookie-policy` and `/terms` use the shared internal-page hero, blue inline emphasis, header, language selector and footer.
+- Long-form content uses a readable main column with a sticky contents/related-documents sidebar on desktop; the sidebar returns to normal flow at 900px and below.
+- Policy tables may scroll inside their own bordered container on narrow screens. The document itself must never create horizontal overflow.
+- Legal copy lives in `legal-locales/`; update all five translated JSON sources, regenerate `legal-locales/locales.js`, and retain the complete English HTML fallback.
+- Each legal page publishes canonical and six-language `hreflang` metadata. Hebrew uses the shared RTL behavior without mirroring brand artwork.
+- The Cookie Policy's Analytics-settings controls must reopen the shared consent panel and remain keyboard accessible.
+- Content must describe the actual website implementation. Any provider, form field, analytics behavior, storage key, retention promise or company detail change requires a same-change review of the legal pages and `LEGAL_PAGES.md`.
 - Update `CONTACT_FORM.md`, all six locales, the human sitemap and XML sitemap whenever the contact workflow changes.
 
 ### FAQ page
@@ -154,6 +164,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Social brand marks use the supplied official artwork because Lucide does not contain brand logos.
 - Footer social navigation contains only the confirmed Instagram, Facebook and LinkedIn profiles. WhatsApp, Google, X and Threads are not displayed.
 - Every social link opens the confirmed external profile in a new tab with a visible focus state and an accessible platform label.
+- The Company column exposes Privacy policy, Cookie policy and Terms and conditions on every page. These links inherit the selected language but are not added to the mobile menu.
 
 ### Language selector
 
@@ -272,6 +283,7 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - Confirm no Google request or `_ga` cookie exists before consent, acceptance loads only `G-GVWS39DSNX`, withdrawal restores denied consent, and the footer control reopens settings.
 - Check the Analytics consent panel in every language at desktop, 900px, 390px and 320px; confirm Hebrew follows RTL and both actions remain visible.
 - Confirm every complete mobile menu contains exactly Services, Work, About, News and Careers, in that order.
+- Check all three legal routes in all six languages, including translated metadata, contents links, related-document links, Analytics settings, table overflow and Hebrew RTL.
 - Test regional browser-language detection, an unsupported primary preference followed by a supported secondary preference, URL priority, saved-choice priority, the English-only Careers override and Hebrew RTL.
 - Confirm every partner logo is fully inside the viewport and every service category has its canonical item count: 7, 9, 4, 4, 5 and 4 respectively.
 - Verify keyboard focus, heading order, alt text and reduced-motion behaviour.

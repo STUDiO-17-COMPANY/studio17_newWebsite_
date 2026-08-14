@@ -10,6 +10,9 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.
 - `/faq` (`faq.html`) — multilingual, search-intent FAQ with accessible native disclosure controls.
 - `/about` (`about.html`) — multilingual Studio 17 positioning, methodology, presentation and official social links.
+- `/privacy-policy` (`privacy-policy.html`) — multilingual privacy information covering website, enquiry and analytics processing.
+- `/cookie-policy` (`cookie-policy.html`) — multilingual browser-storage and consent information with a working Analytics-settings control.
+- `/terms` (`terms.html`) — multilingual terms governing use of the public Studio 17 website.
 - `/news` (`news.html`) — multilingual live archive for Insights, Case Studies and News.
 - `/insights/<article-slug>` (`article.html` template) — clean, server-rendered multilingual article route.
 - `/careers` (`careers.html`) — English-only Careers index with automatic Google Drive role listing.
@@ -40,6 +43,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CAREERS_AUTOMATION.md` — automatic publishing architecture, setup, security and QA guide.
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
 - `ANALYTICS.md` — GA4 Measurement ID, consent behavior, verification and maintenance guide.
+- `LEGAL_PAGES.md` — legal-page data inventory, publishing contract, review limits and maintenance checklist.
 - `ARTICLES.md` — live multilingual Google Drive article contract, security, SEO, image and maintenance workflow.
 - `TASKS.md` — living development backlog, including postponed and blocked production work.
 - `SEO.md` — search metadata, indexing, structured-data and URL maintenance rules.
@@ -76,7 +80,7 @@ node locales/build-bundle.cjs
 7. Update the sitemap and documentation in the same change as any new page or design rule.
 8. Add every meaningful code, content or design change to `CHANGELOG.md`.
 9. Keep multilingual public copy in sync across `locales/en.json`, `pt-PT.json`, `es.json`, `el.json`, `ru.json` and `he.json`; Hebrew must retain RTL support. Careers and individual role pages are the documented English-only exception.
-10. Point unfinished destinations to `/wip?for=<destination>` and replace that link with the final clean route when the page is published.
+10. Point unfinished destinations to `/wip?for=<destination>` and replace that link with the final clean route when the page is published. Privacy, Cookies and Terms now use their live routes.
 11. Header items, promotional CTAs, cards and footer navigation must use WIP until their real HTML page exists. Keep only actual pages, structural anchors and real email addresses as direct destinations.
 12. Treat the 1920px fixed geometry as the English reference only. Translated and responsive text containers must grow naturally; never hide buttons or copy to preserve an English-only height.
 13. Test all six languages at 1920px, 1440px, 1280px, 1024px, 900px, 768px, 390px and the supported 320px minimum width after changing layout or copy.
@@ -96,14 +100,14 @@ node locales/build-bundle.cjs
 - Replace the clearly labelled testimonial placeholders with approved client quotations.
 - Confirm case-study outcomes and partner-logo publication rights.
 - Replace article email links with live article URLs when those pages exist.
-- Replace the WIP destinations for privacy, cookies, terms, articles and case studies as their approved pages are published.
+- Replace remaining WIP destinations for services, portfolio and case studies as their approved pages are published.
 - Test current Chrome, Safari, Firefox and Edge on desktop and mobile.
 - Run an accessibility audit and verify keyboard-only navigation.
 - Have a native speaker review every non-English locale before publication.
 - Review `/sitemap` whenever a page is added, renamed or removed.
 - Complete the one-time service-account and Vercel environment setup before treating Careers as production-ready.
 - Install Resend, verify the sender domain and publish an approved privacy policy before treating the contact form as production-ready.
-- Publish approved Privacy and Cookie Policy pages before treating the Analytics consent workflow as legally complete.
+- Have qualified Cyprus/EU counsel review the informative Privacy Policy, Cookie Policy and Terms before relying on them as final legal advice.
 
 ## Design source
 

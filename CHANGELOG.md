@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-08-14 — Multilingual legal information pages
+
+- Added clean `/privacy-policy`, `/cookie-policy` and `/terms` pages using the shared Studio 17 media hero, header, long-form reading layout and footer.
+- Documented the website's current contact-form, hosting, security, analytics, language-preference and Google Workspace processing, including provider disclosures, retention, rights and consent controls.
+- Added complete Portuguese (Portugal), Spanish, Greek, Russian and Hebrew variants with translated metadata and RTL support.
+- Kept dedicated legal translations isolated from the generic string translator so switching from any initial locale back to English cannot leave mixed-language fragments; translated the contents-navigation labels for assistive technology.
+- Added the live legal routes to the Company footer column, human sitemap, XML sitemap, direct-file routing and local development server without changing the five-item mobile menu.
+- Linked the Contact privacy notice to the new policy and replaced its off-screen spam-trap positioning so Hebrew RTL no longer creates document-level horizontal overflow.
+- Added legal-page regression coverage and the `LEGAL_PAGES.md` maintenance and legal-review guide.
+
 ## 2026-08-13 — Event Studio Cyprus partner
 
 - Added Event Studio Cyprus as `partner-09` to both animated partner rows, with its supplied Instagram link, hover label and accessible name.

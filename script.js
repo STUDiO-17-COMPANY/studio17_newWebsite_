@@ -12,6 +12,37 @@
   const dropdownPanel = document.querySelector('.dropdown-panel');
   const translateText = text => window.Studio17I18n?.translate(text) || text;
   const googleProfileUrl = 'https://share.google/B3qQDpUvLnv5UAZ4G';
+  const legalFooterItems = [
+    { page: 'privacy', href: '/privacy-policy', label: 'Privacy policy' },
+    { page: 'cookies', href: '/cookie-policy', label: 'Cookie policy' },
+    { page: 'terms', href: '/terms', label: 'Terms and conditions' }
+  ];
+
+  const updateLegalFooterLinks = () => {
+    const language = window.Studio17I18n?.getLanguage?.() || 'en';
+    document.querySelectorAll('[data-footer-legal]').forEach(link => {
+      const item = legalFooterItems.find(candidate => candidate.page === link.dataset.footerLegal);
+      if (!item) return;
+      const localPage = location.protocol === 'file:' ? `${item.href.slice(1)}.html` : item.href;
+      const url = new URL(localPage, location.href);
+      if (language === 'en') url.searchParams.delete('lang');
+      else url.searchParams.set('lang', language);
+      link.setAttribute('href', location.protocol === 'file:' ? `${url.pathname.split('/').pop()}${url.search}` : `${url.pathname}${url.search}`);
+      link.textContent = translateText(item.label);
+    });
+  };
+
+  document.querySelectorAll('.footer-grid > .footer-column:last-child').forEach(column => {
+    legalFooterItems.forEach(item => {
+      if (column.querySelector(`[data-footer-legal="${item.page}"]`)) return;
+      const link = document.createElement('a');
+      link.className = 'footer-legal-link';
+      link.dataset.footerLegal = item.page;
+      if (document.body.dataset.legalPage === item.page) link.setAttribute('aria-current', 'page');
+      column.appendChild(link);
+    });
+  });
+  updateLegalFooterLinks();
 
   const updateGoogleProfileLabels = () => {
     document.querySelectorAll('.footer-social-link.social-google').forEach(link => {
@@ -318,6 +349,7 @@
     renderService(getServiceContent(activeCategory, selectedItems[activeCategory]), { instant: true });
     if (menuButton) menuButton.setAttribute('aria-label', translateText(menuButton.getAttribute('aria-expanded') === 'true' ? 'Close menu' : 'Open menu'));
     updateGoogleProfileLabels();
+    updateLegalFooterLinks();
   });
 
   document.querySelectorAll('[data-carousel-prev], [data-carousel-next]').forEach(button => {

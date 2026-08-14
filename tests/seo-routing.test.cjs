@@ -101,6 +101,9 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/faq/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/about/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/sitemap</);
+  assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/privacy-policy/);
+  assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/cookie-policy/);
+  assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/terms/);
   assert.doesNotMatch(sitemap.body, /career-role\.html|\?id=/);
 
   console.log('SEO routing tests passed.');
