@@ -68,6 +68,14 @@ The sitemap establishes the template for non-homepage pages:
 - At 901–1279px use the shared 360px minimum hero; at 900px and below use the same stacked 560px minimum model as the homepage.
 - Let translated text increase the minimum height when necessary. Never crop copy, controls or dynamic role titles to preserve a fixed reference height.
 - Use the homepage `design-heading` pattern for every major internal-page section: one purposeful phrase receives the blue inline highlight while the remainder stays in the normal heading flow.
+
+### Services page patterns
+
+- Use square, high-contrast cards and the shared blue emphasis; do not introduce rounded SaaS pricing components.
+- Use native `details`/`summary` for service groups and FAQs, with a Lucide plus icon and visible keyboard focus.
+- Website package cards may grow with translated copy. The Starter card alone carries the blue “Most bought” banner.
+- Keep portfolio imagery at its intrinsic aspect ratio with explicit dimensions and `object-fit: cover`; the complete image remains available through its project link.
+- At mobile widths, stack service, package, project and process grids into one column and retain the approved five-item mobile menu.
 - Use square dark cards, 24px grid gaps and clear link states.
 - Reuse the homepage closing CTA when there is a meaningful contact action.
 - At 900px and below, stack hero content and cards without document-level horizontal overflow.

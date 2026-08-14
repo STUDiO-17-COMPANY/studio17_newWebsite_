@@ -8,6 +8,8 @@ This document is the maintenance contract for search visibility. It covers techn
 - Contact: `https://www.studio17.world/contact`
 - FAQ: `https://www.studio17.world/faq`
 - About: `https://www.studio17.world/about`
+- Services catalogue: `https://www.studio17.world/services`
+- Website Development: `https://www.studio17.world/services/website-development`
 - Careers: `https://www.studio17.world/careers`
 - Vacancy: `https://www.studio17.world/careers/<role-name>`
 - Human-readable sitemap: `https://www.studio17.world/sitemap`
@@ -37,6 +39,8 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 - Careers and role pages are English-only and must not advertise translated alternatives.
 - WIP pages stay `noindex,follow` until real, approved content replaces them.
 - Never add unsupported review ratings, awards, locations or business claims to structured data.
+- Keep the Website Development `Service`/`OfferCatalog` structured data synchronized with visible package names and prices. The catalogue page remains price-free.
+- Preserve descriptive project alternative text, explicit image dimensions and crawlable project links; do not replace useful visible copy with image-only case studies.
 
 ## Content priorities
 
@@ -58,6 +62,7 @@ Studio 17 is not currently an eligible government or health authority for Google
 8. Confirm `/faq` returns HTTP 200, has one canonical, exposes all six reciprocal language alternatives and appears in both the human and XML sitemaps.
 9. Confirm no FAQ link still points to WIP and the complete mobile menu remains limited to Services, Work, About, News and Careers.
 10. Confirm `/about` returns HTTP 200, uses reciprocal six-language alternates, appears in both sitemaps and has replaced every About WIP link.
+11. Confirm `/services` and `/services/website-development` return HTTP 200, expose reciprocal six-language alternatives, appear in both sitemaps and contain no internal service codes.
 
 ## Files to update together
 

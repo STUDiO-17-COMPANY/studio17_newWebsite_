@@ -23,6 +23,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [-] Grant the production Google service account Reader access to the Article folders, deploy and verify one real published Doc end to end.
 - [ ] Complete and publish the contact-form email workflow.
 - [x] Create multilingual Privacy Policy, Cookie Policy and Terms pages based on the website's implemented processing.
+- [x] Publish the multilingual, price-free Services catalogue and the five-package Website Development page with proof projects, clean routes and sales CTAs.
 - [ ] Obtain qualified Cyprus/EU legal review of the three informative legal drafts before treating them as final legal advice.
 
 ## Contact form — postponed

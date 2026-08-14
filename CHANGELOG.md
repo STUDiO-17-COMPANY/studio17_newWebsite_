@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-08-14 — Services catalogue and Website Development
+
+- Added the clean, price-free `/services` catalogue with 43 services in five accessible expandable groups and no public internal service codes.
+- Added `/services/website-development` with five priced packages, Website – Starter marked as the most bought option, shared SEO/GEO/Technical SEO foundations, proof projects, process, FAQs and sales CTAs.
+- Added complete Portuguese (Portugal), Spanish, Greek, Russian and Hebrew page content, dedicated metadata, RTL support and a maintainable service locale bundle.
+- Replaced the former Services and Website WIP destinations across the shared header, approved five-link mobile menu, footer, homepage and human sitemap.
+- Added clean local and Vercel routing, XML sitemap entries, structured Service/Offer data, responsive styling, documentation and regression tests.
+
 ## 2026-08-14 — Multilingual legal information pages
 
 - Added clean `/privacy-policy`, `/cookie-policy` and `/terms` pages using the shared Studio 17 media hero, header, long-form reading layout and footer.

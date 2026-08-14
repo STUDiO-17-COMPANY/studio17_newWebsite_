@@ -10,6 +10,8 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.
 - `/faq` (`faq.html`) — multilingual, search-intent FAQ with accessible native disclosure controls.
 - `/about` (`about.html`) — multilingual Studio 17 positioning, methodology, presentation and official social links.
+- `/services` (`services.html`) — multilingual, price-free catalogue of all Studio 17 service areas.
+- `/services/website-development` (`website-development.html`) — multilingual Website Development packages, inclusions, proof projects, process and FAQs.
 - `/privacy-policy` (`privacy-policy.html`) — multilingual privacy information covering website, enquiry and analytics processing.
 - `/cookie-policy` (`cookie-policy.html`) — multilingual browser-storage and consent information with a working Analytics-settings control.
 - `/terms` (`terms.html`) — multilingual terms governing use of the public Studio 17 website.
@@ -33,6 +35,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `locales/` — English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew content files.
 - `locales/locales.js` — generated browser bundle that makes language switching work when the HTML files are opened directly.
 - `locales/build-bundle.cjs` — regenerates that bundle from the six canonical JSON files.
+- `service-locales/` / `service-pages.js` — dedicated six-language content and rendering contract for the Services pages.
 - `Vendor/lucide.min.js` — pinned local Lucide 1.24.0 browser package; its licence is stored beside it.
 - `Images/` — supplied brand assets and locally optimised page imagery.
 - `Fonts/` — locally hosted Inter and Plus Jakarta Sans font files with their licences.
@@ -44,6 +47,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
 - `ANALYTICS.md` — GA4 Measurement ID, consent behavior, verification and maintenance guide.
 - `LEGAL_PAGES.md` — legal-page data inventory, publishing contract, review limits and maintenance checklist.
+- `SERVICES.md` — service catalogue, package, pricing, translation, proof-project and update contract.
 - `ARTICLES.md` — live multilingual Google Drive article contract, security, SEO, image and maintenance workflow.
 - `TASKS.md` — living development backlog, including postponed and blocked production work.
 - `SEO.md` — search metadata, indexing, structured-data and URL maintenance rules.
@@ -67,6 +71,7 @@ After editing any locale JSON file, regenerate the direct-file bundle:
 
 ```powershell
 node locales/build-bundle.cjs
+node service-locales/build-bundle.cjs
 ```
 
 ## Maintenance rules
@@ -94,6 +99,7 @@ node locales/build-bundle.cjs
 21. Start every hero and major section with its meaningful heading; do not add decorative eyebrow or mini-title labels. Preserve only functional labels and metadata.
 22. Keep Google Analytics behind explicit consent, preserve the production-host restriction and follow `ANALYTICS.md` whenever the Measurement ID, collected events or consent behavior changes.
 23. Publish articles only through completed copies of the Drive template; keep cover and social-share images separate and follow `ARTICLES.md`.
+24. Keep public service codes private, preserve the five website packages and follow `SERVICES.md` whenever service names, prices, inclusions or proof projects change.
 
 ## Pre-launch checklist
 

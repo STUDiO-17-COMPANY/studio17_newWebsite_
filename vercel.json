@@ -15,9 +15,11 @@
       "permanent": true
     },
     { "source": "/index", "destination": "/", "permanent": true },
-    { "source": "/article", "destination": "/news", "permanent": true }
+    { "source": "/article", "destination": "/news", "permanent": true },
+    { "source": "/website-development", "destination": "/services/website-development", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/services/website-development", "destination": "/website-development" },
     { "source": "/insights/:slug", "destination": "/api/article-page?slug=:slug" },
     { "source": "/careers/:slug", "destination": "/api/career-page?slug=:slug" },
     { "source": "/career-role", "destination": "/api/legacy-career" },
