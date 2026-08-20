@@ -41,6 +41,10 @@
       "ads": "Advertisement",
       "systems": "Digital systems"
     },
+    "controls": {
+      "category": "Service area",
+      "item": "Service"
+    },
     "itemLabels": {
       "automotive": "Automotive",
       "restaurants": "Restaurants",

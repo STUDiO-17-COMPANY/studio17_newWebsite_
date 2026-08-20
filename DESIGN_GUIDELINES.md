@@ -161,6 +161,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 - One selected service and one selected industry at a time.
 - Every selector item must explain a distinct offer: use an outcome-led headline, a concrete description of what Studio 17 provides and a service-specific outcome. Do not reuse a generic body or closing outcome across multiple items.
 - Keep verified client performance proof only where evidence exists. Other selections should describe deliverables and intended outcomes without guarantees or invented metrics.
+- On phone widths, expose the service selector as two native, labelled controls (service area, then service) instead of showing the full category and item button matrices. Keep both controls synchronized with the content card and previous/next image controls.
 
 ### Footer
 

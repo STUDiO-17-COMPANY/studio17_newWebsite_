@@ -380,6 +380,10 @@
       "ads": "Publicidade",
       "systems": "Sistemas digitais"
     },
+    "controls": {
+      "category": "Área de serviços",
+      "item": "Serviço"
+    },
     "itemLabels": {
       "automotive": "Automóvel",
       "restaurants": "Restaurantes",

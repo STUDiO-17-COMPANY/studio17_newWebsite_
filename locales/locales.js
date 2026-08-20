@@ -43,6 +43,10 @@ window.Studio17LocaleData = {
         "ads": "Advertisement",
         "systems": "Digital systems"
       },
+      "controls": {
+        "category": "Service area",
+        "item": "Service"
+      },
       "itemLabels": {
         "automotive": "Automotive",
         "restaurants": "Restaurants",
@@ -566,6 +570,10 @@ window.Studio17LocaleData = {
         "social": "Redes sociais",
         "ads": "Publicidade",
         "systems": "Sistemas digitais"
+      },
+      "controls": {
+        "category": "Área de serviços",
+        "item": "Serviço"
       },
       "itemLabels": {
         "automotive": "Automóvel",
@@ -1091,6 +1099,10 @@ window.Studio17LocaleData = {
         "ads": "Publicidad",
         "systems": "Sistemas digitales"
       },
+      "controls": {
+        "category": "Área de servicios",
+        "item": "Servicio"
+      },
       "itemLabels": {
         "automotive": "Automoción",
         "restaurants": "Restaurantes",
@@ -1614,6 +1626,10 @@ window.Studio17LocaleData = {
         "social": "Κοινωνικά δίκτυα",
         "ads": "Διαφήμιση",
         "systems": "Ψηφιακά συστήματα"
+      },
+      "controls": {
+        "category": "Τομέας υπηρεσιών",
+        "item": "Υπηρεσία"
       },
       "itemLabels": {
         "automotive": "Αυτοκίνητο",
@@ -2139,6 +2155,10 @@ window.Studio17LocaleData = {
         "ads": "Реклама",
         "systems": "Цифровые системы"
       },
+      "controls": {
+        "category": "Направление услуг",
+        "item": "Услуга"
+      },
       "itemLabels": {
         "automotive": "Автомобильный бизнес",
         "restaurants": "Рестораны",
@@ -2662,6 +2682,10 @@ window.Studio17LocaleData = {
         "social": "רשתות חברתיות",
         "ads": "פרסום",
         "systems": "מערכות דיגיטליות"
+      },
+      "controls": {
+        "category": "תחום שירות",
+        "item": "שירות"
       },
       "itemLabels": {
         "automotive": "רכב",

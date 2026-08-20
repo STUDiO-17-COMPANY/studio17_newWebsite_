@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-20 — Mobile service-selector UX
+
+- Replaced the homepage service section’s phone-sized category and item button grids with two compact native select controls.
+- Kept the selected category, service, translated labels, content card and previous/next controls synchronized.
+- Preserved the desktop tab interface and added mobile interaction regression coverage across the six-language content contract.
+
 ## 2026-08-20 — Homepage service-selector sales content
 
 - Replaced generic repeated selector copy with a distinct, concrete sales description for all 33 industry and service choices.

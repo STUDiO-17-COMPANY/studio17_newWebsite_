@@ -380,6 +380,10 @@
       "ads": "Реклама",
       "systems": "Цифровые системы"
     },
+    "controls": {
+      "category": "Направление услуг",
+      "item": "Услуга"
+    },
     "itemLabels": {
       "automotive": "Автомобильный бизнес",
       "restaurants": "Рестораны",

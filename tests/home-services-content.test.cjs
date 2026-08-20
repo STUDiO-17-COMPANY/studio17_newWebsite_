@@ -45,6 +45,8 @@ test('every homepage service selector item has distinct sales content', () => {
 test('all public locales provide the same 33 distinct offer descriptions', () => {
   for (const locale of ['en', 'pt-PT', 'es', 'el', 'ru', 'he']) {
     const services = require(path.join(root, 'locales', `${locale}.json`)).services;
+    assert.ok(services.controls.category, `${locale}: mobile category label`);
+    assert.ok(services.controls.item, `${locale}: mobile item label`);
     assert.deepEqual(Object.keys(services.descriptions), expectedItems, locale);
     assert.equal(new Set(Object.values(services.descriptions)).size, expectedItems.length, locale);
     for (const key of expectedItems) assert.ok(services.descriptions[key].length >= 55, `${locale}: ${key}`);
@@ -52,6 +54,23 @@ test('all public locales provide the same 33 distinct offer descriptions', () =>
     assert.equal(new Set(Object.values(services.outcomes)).size, expectedItems.length, `${locale}: outcomes`);
     for (const key of expectedItems) assert.ok(services.outcomes[key].length >= 40, `${locale}: outcome ${key}`);
   }
+});
+
+test('mobile service discovery uses two synchronized selects instead of a wall of buttons', () => {
+  const html = read('index.html');
+  const css = read('styles.css');
+  const script = read('script.js');
+  assert.match(html, /class="service-mobile-selector"/);
+  assert.match(html, /data-service-category-select/);
+  assert.match(html, /data-service-item-select/);
+  assert.match(html, /data-lucide="chevron-down"/);
+  assert.match(css, /\.service-mobile-selector \{ display: none; \}/);
+  assert.match(css, /@media \(max-width: 600px\)[\s\S]*\.service-mobile-selector \{ display: grid;/);
+  assert.match(css, /\.service-tabs, \.industry-list \{ display: none; \}/);
+  assert.match(script, /serviceCategorySelect\?\.addEventListener\('change'/);
+  assert.match(script, /serviceItemSelect\?\.addEventListener\('change'/);
+  assert.match(script, /serviceItemSelect\.replaceChildren/);
+  assert.match(script, /serviceCategorySelect\.value = category/);
 });
 
 test('selector rendering prioritizes item-specific descriptions and verified proof', () => {

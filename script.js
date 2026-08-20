@@ -146,6 +146,10 @@
     categoryLabels: {
       industry: 'By industry', website: 'Website', content: 'Content creation', social: 'Social Media', ads: 'Advertisement', systems: 'Digital systems'
     },
+    controls: {
+      category: 'Service area',
+      item: 'Service'
+    },
     itemLabels: {
       automotive: 'Automotive', restaurants: 'Restaurants', health: 'Health', ecommerce: 'E-Commerce', influencers: 'Individual Influencers',
       fashion: 'Clothing Stores', education: 'Education', local: 'Local Businesses', physicalAdvertising: 'Physical Advertising',
@@ -275,6 +279,10 @@
   const serviceResult = document.querySelector('[data-service-result]');
   const serviceList = document.querySelector('.industry-list');
   const serviceTabs = [...document.querySelectorAll('[data-service-tab]')];
+  const serviceCategorySelect = document.querySelector('[data-service-category-select]');
+  const serviceItemSelect = document.querySelector('[data-service-item-select]');
+  const serviceCategoryLabel = document.querySelector('[data-service-category-label]');
+  const serviceItemLabel = document.querySelector('[data-service-item-label]');
   const selectedItems = Object.fromEntries(Object.entries(serviceSchema).map(([category, config]) => [category, config.items[0]]));
   let activeCategory = 'industry';
 
@@ -327,20 +335,31 @@
   };
 
   const renderServiceList = (category, selectedItem = selectedItems[category]) => {
-    if (!serviceList) return;
     const locale = getServiceLocale();
-    serviceList.setAttribute('aria-label', locale.categoryLabels?.[category] || englishServices.categoryLabels[category]);
-    serviceList.replaceChildren(...serviceSchema[category].items.map(item => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.setAttribute('role', 'tab');
-      button.dataset.serviceItem = item;
-      button.textContent = locale.itemLabels?.[item] || englishServices.itemLabels[item] || item;
-      const active = item === selectedItem;
-      button.setAttribute('aria-selected', String(active));
-      button.tabIndex = active ? 0 : -1;
-      return button;
-    }));
+    const items = serviceSchema[category].items;
+    if (serviceList) {
+      serviceList.setAttribute('aria-label', locale.categoryLabels?.[category] || englishServices.categoryLabels[category]);
+      serviceList.replaceChildren(...items.map(item => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.setAttribute('role', 'tab');
+        button.dataset.serviceItem = item;
+        button.textContent = locale.itemLabels?.[item] || englishServices.itemLabels[item] || item;
+        const active = item === selectedItem;
+        button.setAttribute('aria-selected', String(active));
+        button.tabIndex = active ? 0 : -1;
+        return button;
+      }));
+    }
+    if (serviceItemSelect) {
+      serviceItemSelect.replaceChildren(...items.map(item => {
+        const option = document.createElement('option');
+        option.value = item;
+        option.textContent = locale.itemLabels?.[item] || englishServices.itemLabels[item] || item;
+        return option;
+      }));
+      serviceItemSelect.value = selectedItem;
+    }
   };
 
   const renderServiceTabs = () => {
@@ -348,12 +367,21 @@
     serviceTabs.forEach(button => {
       button.textContent = locale.categoryLabels?.[button.dataset.serviceTab] || englishServices.categoryLabels[button.dataset.serviceTab];
     });
+    if (serviceCategorySelect) {
+      [...serviceCategorySelect.options].forEach(option => {
+        option.textContent = locale.categoryLabels?.[option.value] || englishServices.categoryLabels[option.value];
+      });
+      serviceCategorySelect.value = activeCategory;
+    }
+    if (serviceCategoryLabel) serviceCategoryLabel.textContent = locale.controls?.category || englishServices.controls.category;
+    if (serviceItemLabel) serviceItemLabel.textContent = locale.controls?.item || englishServices.controls.item;
   };
 
   const selectService = (category, item = selectedItems[category]) => {
     activeCategory = category;
     selectedItems[category] = item;
     selectButton(serviceTabs, serviceTabs.find(tab => tab.dataset.serviceTab === category));
+    if (serviceCategorySelect) serviceCategorySelect.value = category;
     renderServiceList(category, item);
     renderService(getServiceContent(category, item));
   };
@@ -362,6 +390,14 @@
     button.addEventListener('click', () => {
       selectService(button.dataset.serviceTab);
     });
+  });
+
+  serviceCategorySelect?.addEventListener('change', event => {
+    selectService(event.target.value);
+  });
+
+  serviceItemSelect?.addEventListener('change', event => {
+    selectService(activeCategory, event.target.value);
   });
 
   serviceList?.addEventListener('click', event => {

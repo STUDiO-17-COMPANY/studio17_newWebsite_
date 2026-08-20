@@ -380,6 +380,10 @@
       "ads": "Διαφήμιση",
       "systems": "Ψηφιακά συστήματα"
     },
+    "controls": {
+      "category": "Τομέας υπηρεσιών",
+      "item": "Υπηρεσία"
+    },
     "itemLabels": {
       "automotive": "Αυτοκίνητο",
       "restaurants": "Εστιατόρια",

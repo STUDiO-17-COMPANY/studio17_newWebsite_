@@ -380,6 +380,10 @@
       "ads": "פרסום",
       "systems": "מערכות דיגיטליות"
     },
+    "controls": {
+      "category": "תחום שירות",
+      "item": "שירות"
+    },
     "itemLabels": {
       "automotive": "רכב",
       "restaurants": "מסעדות",
