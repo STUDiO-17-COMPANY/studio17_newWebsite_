@@ -1,7 +1,7 @@
 # Studio 17 website design guidelines
 
 Status: canonical implementation standard
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-20
 Design source: Figma homepage frame `1725:3411` and the supplied `Homepage.pdf`
 
 These rules are the baseline for the homepage, sitemap and every future Studio 17 page. If a later approved Figma frame conflicts with this document, the approved frame wins and this document must be updated in the same change.
@@ -41,7 +41,7 @@ The header is part of the document flow. Do not make it sticky: the approved hom
 
 ## 4. Homepage geometry
 
-The supplied 1920px English desktop homepage was a 4378px reference composition. The approved compact-footer correction keeps every section coordinate through `y3565` and reduces the English reference height to 4294px. Translated pages may grow vertically when their copy needs more space; never crop translated content to preserve the English page height.
+The supplied 1920px English desktop homepage established the fixed geometry through the Services section. The approved 2026-08-20 replacement of the former AI block with selected website work makes the remainder of the homepage content-driven. Translated pages may grow vertically when their copy needs more space; never crop translated content to preserve a legacy page height.
 
 | Block | Top | Height |
 | --- | ---: | ---: |
@@ -49,13 +49,13 @@ The supplied 1920px English desktop homepage was a 4378px reference composition.
 | Hero | 112px | 296px |
 | Trusted by | 440px | 341px |
 | Services | 813px | 633px |
-| AI | 1478px | 891px |
-| News | 2401px | 453px |
-| Testimonials | 2886px | 317px |
-| Closing CTA | 3235px | 298px |
-| Footer | 3565px | 729px |
+| Selected website work | After the 32px section gap | Content-driven |
+| News | After the 32px section gap | 453px English desktop reference |
+| Testimonials | After the 32px section gap | Content-driven |
+| Closing CTA | After the 32px section gap | 298px English desktop reference |
+| Footer | After the 32px section gap | 729px English desktop reference |
 
-The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px with 24px gaps. The three AI cards are 464 × 757px with 24px gaps. Do not change these desktop dimensions without an approved design update.
+The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px with 24px gaps. The selected client-work section uses four project cards at desktop, two at intermediate widths and one at 900px and below, preserving supplied image aspect ratios throughout.
 
 ## 5. Internal-page template
 
@@ -275,7 +275,7 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 ## 12. Required QA before handoff
 
 - Compare the 1920px homepage against the complete PDF/Figma reference.
-- Confirm the homepage remains 1920px wide and follows every coordinate in section 4; after the approved compact-footer correction its desktop height is 4294px.
+- Confirm the homepage remains 1920px wide, follows the fixed coordinates through Services and uses the documented content-driven flow below it.
 - Check homepage, sitemap and WIP at 1920px, 1440px, 1280px, 1024px, 900px, 768px, 390px and 320px.
 - Check Careers at the same widths with mocked populated, empty and error API responses; check individual roles with full optional content, required-only content, invalid IDs and removed-role responses.
 - Confirm zero console errors, failed local assets and document-level horizontal overflow.

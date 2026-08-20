@@ -4,7 +4,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 
 ## Project structure
 
-- `/` (`index.html`) — Figma-matched homepage.
+- `/` (`index.html`) — Figma-based homepage with a multilingual selected website-work showcase.
 - `/sitemap` (`sitemap.html`) — public website map and planned page structure.
 - `/wip?for=<destination>` (`wip.html`) — shared multilingual destination for pages that are not built yet.
 - `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.

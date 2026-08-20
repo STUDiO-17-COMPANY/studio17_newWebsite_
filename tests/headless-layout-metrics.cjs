@@ -22,6 +22,16 @@ const height = Number(process.argv[4] || 844);
         title: document.title,
         packages: document.querySelectorAll('.website-package-card').length,
         serviceRows: document.querySelectorAll('.service-row').length,
+        homeWorkCards: document.querySelectorAll('.home-work-showcase .website-project-card').length,
+        homeWorkColumns: getComputedStyle(document.querySelector('.home-work-showcase .website-work-grid')).gridTemplateColumns,
+        oldAiSections: document.querySelectorAll('.ai-section').length,
+        homeWorkHeading: document.querySelector('#home-work-title')?.textContent.trim() || '',
+        homeWorkMeta: [...document.querySelectorAll('.home-work-showcase .website-project-meta')].map(element => element.textContent.trim()),
+        homeWorkActions: [...document.querySelectorAll('.home-work-showcase .website-project-card > div > a')].map(element => element.textContent.trim()),
+        homeWorkInternalLinks: [...document.querySelectorAll('.home-work-showcase a[href^="/"]')].map(link => link.getAttribute('href')),
+        homeWorkImages: [...document.querySelectorAll('.home-work-showcase img')].map(image => ({
+          src: image.getAttribute('src'), complete: image.complete, naturalWidth: image.naturalWidth
+        })),
         mobileLinks: [...document.querySelectorAll('.mobile-menu a')].map(link => link.textContent.trim()),
         offenders: [...document.querySelectorAll('body *')].map(element => {
           const rect = element.getBoundingClientRect();

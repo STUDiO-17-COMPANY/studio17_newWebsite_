@@ -165,31 +165,6 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .image-control-left { inset-inline-start: 49%; }
 .image-control-right { inset-inline-end: 0; }
 
-/* AI — Figma: y1478, 1920 × 891; cards 464 × 757 */
-.ai-section { height: 891px; margin-top: 32px; padding-top: 20px; overflow: hidden; }
-.ai-heading { height: 82px; }
-.ai-grid { height: 757px; display: grid; grid-template-columns: repeat(3, 464px); gap: 24px; margin-top: 32px; }
-.ai-card { height: 757px; padding: 24px; color: var(--white); background: var(--ink); overflow: hidden; transition: transform .35s var(--ease), box-shadow .35s ease; }
-.ai-card:hover { z-index: 2; transform: translateY(-7px); box-shadow: 0 22px 48px rgba(15,23,42,.22); }
-.ai-card > h3 { height: 33px; margin: 0 0 20px; text-align: center; font-size: 24px; line-height: 33px; }
-.ai-image { position: relative; height: 232px; overflow: hidden; }
-.ai-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 68%; transition: transform .6s var(--ease), filter .3s ease; }
-.ai-card:hover .ai-image img { transform: scale(1.035); filter: brightness(1.06); }
-.ai-image .image-control { top: 50%; transform: translateY(-50%); pointer-events: none; }
-.ai-image .image-control-left { left: 18px; }
-.ai-image .image-control-right { right: 18px; }
-.ai-card-body { height: 424px; display: flex; flex-direction: column; padding-top: 24px; }
-.ai-card-body h4 { min-height: 49px; margin: 0 0 19px; font-size: 17px; line-height: 1.5; }
-.ai-card-body > p { min-height: 116px; margin: 0 0 16px; font-size: 15px; line-height: 1.55; }
-.ai-links { display: flex; align-content: flex-start; flex-wrap: wrap; gap: 7px 25px; margin: 0; padding: 0; font-size: 12px; line-height: 1.45; list-style: none; }
-.ai-links li { display: inline-flex; max-width: 100%; align-items: center; gap: 3px; white-space: normal; overflow-wrap: anywhere; }
-.ai-links .lucide { width: 10px; height: 10px; }
-.ai-button { display: flex; width: 100%; min-height: 48px; align-items: center; justify-content: center; gap: 18px; margin-top: auto; padding: 10px 12px; color: var(--ink); background: var(--paper); font-size: 18px; font-weight: 800; line-height: 1.25; text-align: center; transition: color .2s ease, background .2s ease; }
-.ai-button span { color: var(--blue); transition: transform .25s var(--ease); }
-.ai-button span .lucide { width: 18px; height: 18px; }
-.ai-button:hover { color: var(--white); background: var(--blue); }
-.ai-button:hover span { color: var(--white); transform: translate(3px,-3px); }
-
 /* News — Figma: y2401, 1920 × 453 */
 .news-section { height: 453px; margin-top: 32px; padding-top: 24px; overflow: hidden; }
 .section-title-line { display: flex; height: 48px; align-items: center; gap: 28px; }
@@ -517,6 +492,10 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .article-feed-spinner { width: 32px; height: 32px; border: 3px solid #dbe4f5; border-top-color: var(--blue); border-radius: 50%; animation: article-feed-spin .8s linear infinite; }
 .article-feed-error button { border: 1px solid var(--blue); padding: 10px 17px; color: var(--blue); background: #fff; font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; }
 .news-section-link { display: flex; justify-content: flex-end; margin-top: 32px; }
+.home-work-showcase { overflow: hidden; }
+.home-work-showcase .service-page-heading { grid-template-columns: minmax(0,1fr) 400px; }
+.home-work-showcase .website-work-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.home-work-link { display: flex; justify-content: flex-end; margin-top: 36px; }
 .news-page-hero .page-hero-title h1 span { color: var(--white); background: var(--blue); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .news-archive { padding-block: 92px 120px; background: var(--paper); }
 .news-archive-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 42px; }
@@ -822,10 +801,6 @@ html[lang]:not([lang="en"]) .services-section,
 html[lang]:not([lang="en"]) .service-panel,
 html[lang]:not([lang="en"]) .service-main,
 html[lang]:not([lang="en"]) .service-feature,
-html[lang]:not([lang="en"]) .ai-section,
-html[lang]:not([lang="en"]) .ai-grid,
-html[lang]:not([lang="en"]) .ai-card,
-html[lang]:not([lang="en"]) .ai-card-body,
 html[lang]:not([lang="en"]) .news-section,
 html[lang]:not([lang="en"]) .news-section .horizontal-track,
 html[lang]:not([lang="en"]) .testimonials-section,
@@ -845,20 +820,12 @@ html[lang]:not([lang="en"]) .hero-copy,
 html[lang]:not([lang="en"]) .page-hero-title,
 html[lang]:not([lang="en"]) .page-hero-copy { padding-bottom: 28px; }
 html[lang]:not([lang="en"]) .trusted { padding-bottom: 51px; }
-html[lang]:not([lang="en"]) .services-section,
-html[lang]:not([lang="en"]) .ai-section { padding-bottom: 20px; }
-html[lang]:not([lang="en"]) .services-section .design-heading,
-html[lang]:not([lang="en"]) .ai-heading,
-html[lang]:not([lang="en"]) .ai-card > h3 { height: auto; }
+html[lang]:not([lang="en"]) .services-section { padding-bottom: 20px; }
+html[lang]:not([lang="en"]) .services-section .design-heading { height: auto; }
 html[lang]:not([lang="en"]) .service-panel { min-height: 538px; padding-bottom: 24px; }
 html[lang]:not([lang="en"]) .service-main,
 html[lang]:not([lang="en"]) .service-feature { min-height: 434px; }
 html[lang]:not([lang="en"]) .service-copy { padding-bottom: 94px; }
-html[lang]:not([lang="en"]) .ai-grid { align-items: stretch; }
-html[lang]:not([lang="en"]) .ai-card { min-height: 757px; display: flex; flex-direction: column; }
-html[lang]:not([lang="en"]) .ai-card > h3,
-html[lang]:not([lang="en"]) .ai-image { flex: 0 0 auto; }
-html[lang]:not([lang="en"]) .ai-card-body { min-height: 424px; flex: 1 1 auto; }
 html[lang]:not([lang="en"]) .news-section,
 html[lang]:not([lang="en"]) .testimonials-section,
 html[lang]:not([lang="en"]) .closing-cta { padding-bottom: 24px; }
@@ -873,6 +840,7 @@ html[lang]:not([lang="en"]) .footer-bottom { min-height: 80px; padding-block: 14
 .js .reveal.is-visible { animation: reveal-once .65s var(--ease) both; }
 .js .reveal[data-delay="1"].is-visible { animation-delay: .08s; }
 .js .reveal[data-delay="2"].is-visible { animation-delay: .16s; }
+.js .reveal[data-delay="3"].is-visible { animation-delay: .24s; }
 @keyframes reveal-once { from { opacity: 1; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes partner-marquee { from { transform: translateX(0); } to { transform: translateX(calc(0px - var(--partner-row-width) - var(--partner-track-gap))); } }
 
@@ -880,7 +848,7 @@ html[lang]:not([lang="en"]) .footer-bottom { min-height: 80px; padding-block: 14
   .shell { width: min(calc(100% - 40px), var(--shell)); }
   .legal-layout { grid-template-columns: 230px minmax(0,1fr); gap: 50px; }
   .home-page main > section, .home-page .site-footer { height: auto; min-height: 0; margin-top: 28px; overflow: hidden; }
-  .trusted, .services-section, .ai-section, .news-section, .testimonials-section, .closing-cta { padding-block: 60px; }
+  .trusted, .services-section, .news-section, .testimonials-section, .closing-cta { padding-block: 60px; }
   .services-section .design-heading { height: auto; }
   .hero { min-height: 360px; }
   .hero-grid { height: 360px; grid-template-columns: 1fr 1fr; gap: 35px; }
@@ -895,12 +863,6 @@ html[lang]:not([lang="en"]) .footer-bottom { min-height: 80px; padding-block: 14
   .service-main { height: 456px; }
   .service-feature { height: 456px; }
   .service-photo { left: 340px; }
-  .ai-heading { height: auto; }
-  .ai-grid { height: auto; grid-template-columns: 1fr; }
-  .ai-card, html[lang]:not([lang="en"]) .ai-card { width: 100%; height: auto; min-height: 0; display: grid; grid-template-columns: 300px 1fr; grid-template-rows: auto 1fr; }
-  .ai-card > h3 { grid-column: 1/-1; }
-  .ai-image { height: 100%; min-height: 350px; }
-  .ai-card-body, html[lang]:not([lang="en"]) .ai-card-body { height: auto; min-height: 0; padding: 0 0 0 26px; }
   .edge-track { width: calc(100vw - 20px); margin-left: 20px; }
   .news-section .horizontal-track, .testimonials-section .horizontal-track { height: auto; }
   .cta-grid { grid-template-columns: 1fr; }
@@ -973,12 +935,6 @@ html[lang]:not([lang="en"]) .footer-bottom { min-height: 80px; padding-block: 14
   .case-link { position: relative; inset: auto; align-self: flex-end; margin-top: auto; }
   .service-feature > .image-control { top: 145px; }
   .image-control-left { left: 18px; }
-  .ai-heading br { display: none; }
-  .ai-card, html[lang]:not([lang="en"]) .ai-card { display: block; padding: 20px; }
-  .ai-image { height: 230px; min-height: 0; }
-  .ai-card-body, html[lang]:not([lang="en"]) .ai-card-body { padding: 22px 0 0; }
-  .ai-card-body > p { min-height: 0; }
-  .ai-button { margin-top: 28px; }
   .section-title-line { height: auto; align-items: flex-start; justify-content: space-between; }
   .triangle-controls { gap: 28px; }
   .news-section .horizontal-track { grid-auto-columns: min(412px,84vw); }
@@ -1286,6 +1242,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 @media (max-width: 1279px) {
   .service-family-grid, .website-package-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .website-work-grid { gap: 22px; }
+  .home-work-showcase .website-work-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .website-package-card { min-height: 580px; }
   .website-foundation-grid, .website-faq-grid { gap: 54px; }
 }
@@ -1301,6 +1258,8 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .website-foundation-grid ul { grid-template-columns: 1fr; }
   .website-foundation-grid li { min-height: 130px; }
   .website-work-grid { grid-template-columns: 1fr; gap: 46px; }
+  .home-work-showcase .service-page-heading { grid-template-columns: 1fr; }
+  .home-work-showcase .website-work-grid { grid-template-columns: 1fr; }
   .website-project-card { max-width: 680px; }
   .website-process ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }

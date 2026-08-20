@@ -19,7 +19,7 @@ The primary typeface is the locally hosted Inter family in `Fonts/`, with Arial 
 ## Composition
 
 - Desktop content is centred in a 1440px shell, producing 240px margins at the 1920px reference width.
-- The homepage desktop frame is 1920 × 4294px after the approved compact-footer correction. Sections are separated by 32px and use the reference geometry below.
+- The homepage keeps the supplied 1920px fixed geometry through Services. After the approved selected-work replacement, later sections are content-driven and remain separated by 32px.
 - Section headings use a blue inline highlight behind the lead phrase.
 - Content-heavy cards and panels use dark navy against the off-white page.
 - Edges remain square to match the approved design; avoid adding arbitrary rounded cards.
@@ -30,18 +30,18 @@ The primary typeface is the locally hosted Inter family in `Fonts/`, with Arial 
 | Hero | 112px | 296px |
 | Trusted by | 440px | 341px |
 | Services | 813px | 633px |
-| AI | 1478px | 891px |
-| News | 2401px | 453px |
-| Testimonials | 2886px | 317px |
-| Final CTA | 3235px | 298px |
-| Footer | 3565px | 729px |
+| Selected website work | After Services | Content-driven |
+| News | In normal flow | 453px English desktop reference |
+| Testimonials | In normal flow | Content-driven |
+| Final CTA | In normal flow | 298px English desktop reference |
+| Footer | In normal flow | 729px English desktop reference |
 
-The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px with 24px gaps. The three AI cards are 464 × 757px with 24px gaps.
+The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px with 24px gaps. Selected client work uses four cards at desktop, two at intermediate widths and one at mobile widths.
 
 ## Responsive behaviour
 
-- At 1280px and above: use full navigation, the six-column service selector and three-column AI grid. Exact fixed heights belong only to the 1920px English reference; translated content grows vertically.
-- 901–1279px: section heights become content-driven, service controls wrap and AI cards become split horizontal cards.
+- At 1280px and above: use full navigation, the six-column service selector and four-column selected-work grid. Exact fixed heights through Services belong only to the 1920px English reference; translated content grows vertically.
+- 901–1279px: section heights become content-driven and service controls wrap.
 - 900px and below: navigation becomes a scroll-safe full-screen menu, content stacks and carousels remain touch-friendly.
 - 600px and below: service category and item controls become fully visible two-column grids.
 - 500px and below: footer and CTA simplify to a single-column layout without hiding copy.

@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-08-20 — Broader homepage client-work showcase
+
+- Reframed the homepage section as “Selected client work in web development and marketing” so the heading describes both the proof shown and the relevant service categories without keyword stuffing.
+- Added RG Automotive as a fourth client-work card for automotive marketing, social media promotion and campaign design, linked to the official Instagram profile.
+- Created and optimized a dedicated blue RG Automotive campaign cover from the supplied automotive photograph.
+- Changed the homepage showcase to a responsive four-, two- and one-column grid and moved its translations into the shared homepage locale contract.
+
+## 2026-08-20 — Homepage selected website work
+
+- Removed the former AI-solutions card section from the homepage.
+- Added a three-project website showcase for 100 Pratos, PHÓS Optics and Terrassi Villa between Services and News, with supplied imagery, project links and a Website Development CTA.
+- Reused the dedicated service locale content so the showcase, image descriptions and links work in Portuguese (Portugal), Spanish, Greek, Russian and Hebrew as well as English.
+- Removed obsolete AI-section styling and updated the homepage design contract, maintenance notes and regression coverage for the new content-driven flow.
+
 ## 2026-08-20 — Services page layout refinement
 
 - Moved selected Website Development work directly below the hero, followed by packages and then the shared build foundations.
