@@ -157,36 +157,106 @@
       influencerAdvertising: 'Influencer Advertising', ugcCreators: 'UGC Creators', emailAdvertising: 'Email Advertising',
       softwareDevelopment: 'Software Development', crm: 'CRM', internalTools: 'Internal Tools', dashboards: 'Dashboards'
     },
+    descriptions: {
+      automotive: 'We combine vehicle presentation, photography, video, social media, advertising and lead journeys to help dealerships earn trust before the first visit.',
+      restaurants: 'We combine reservation-ready websites, menu design, food photography, short-form video, local SEO and campaigns to turn nearby discovery into bookings and orders.',
+      health: 'We build clear, privacy-conscious patient journeys with trustworthy websites, educational content, local search visibility and practical enquiry or booking flows.',
+      ecommerce: 'We connect store design, product pages, content, SEO, paid acquisition, email and reporting to help more shoppers discover products and complete purchases.',
+      influencers: 'We develop personal-brand positioning, content systems, media kits, partnership pages and campaign support that help creators grow audiences and win stronger commercial opportunities.',
+      fashion: 'We create visually consistent stores, product launches, campaign content, social media and advertising that turn collections into desire and make purchasing simple.',
+      education: 'We clarify programmes, courses and outcomes through accessible websites, useful content, search visibility and effective enquiry or enrolment journeys.',
+      local: 'We strengthen local discovery with a credible website, Google presence, reviews, social content and campaigns designed to generate calls, visits and enquiries.',
+      physicalAdvertising: 'We plan and design billboards, print, signage and offline campaigns with clear messages, production-ready files and digital follow-up journeys.',
+      websiteDevelopment: 'We design and build responsive, conversion-focused websites with SEO, GEO and technical SEO foundations, clear customer journeys and measurable contact actions.',
+      websiteRevamp: 'We improve an existing website’s structure, messaging, design, speed, accessibility and conversion path while protecting useful content and search value.',
+      freeWebsite: 'Eligible small businesses can receive a focused starter website under our Free Website offer, with scope, requirements and ongoing costs confirmed before work begins.',
+      seo: 'We improve site structure, on-page content, internal linking and technical signals so search engines understand the business and relevant customers can find it.',
+      geo: 'We structure entities, expertise and answer-ready content so AI-powered search and answer engines can understand, trust and cite the business more easily.',
+      localization: 'We adapt language, tone, search intent, metadata and customer journeys for each market instead of simply translating words.',
+      maintenance: 'We keep websites secure, updated, monitored and improving through backups, content support, performance checks and agreed technical care.',
+      filmingPhotography: 'We plan and capture brand, product, team, venue and campaign photography or video in formats prepared for websites, social media and advertising.',
+      videoGraphicDesign: 'We turn raw material into platform-ready videos and graphics with clear pacing, branding, captions, formats and calls to action.',
+      scripting: 'We write hooks, narratives, interview guides and conversion scripts that give every video, advertisement or presentation a clear purpose.',
+      aiGeneratedContent: 'We use AI as a directed production tool for scalable concepts and assets, with human review for accuracy, brand fit and quality.',
+      socialManagement: 'We manage strategy, calendars, publishing, creative coordination, reporting and continuous improvement across the channels that matter to the business.',
+      socialAutomation: 'We automate approved scheduling, routing, responses and reporting tasks so social media runs consistently without removing human oversight.',
+      growthStrategy: 'We build a testable growth plan around audience, positioning, content pillars, distribution, collaborations and metrics tied to business value.',
+      communityManagement: 'We monitor and respond to comments, messages and community signals with clear guidelines that protect the brand and strengthen customer relationships.',
+      metaGoogleAds: 'We plan, launch and optimize Meta and Google campaigns around search intent, audiences, creative, landing pages, tracking and a defined commercial goal.',
+      socialAds: 'We create platform-specific paid social campaigns with attention-earning creative, relevant targeting and a clear path from impression to action.',
+      influencerAdvertising: 'We identify suitable creators, define deliverables, coordinate campaigns and connect creator reach to an offer, landing journey and measurement plan.',
+      ugcCreators: 'We source and direct UGC creators to produce authentic assets for organic publishing and paid testing, with deliverables and usage terms defined.',
+      emailAdvertising: 'We plan newsletters, promotional sequences and automated follow-ups with useful segmentation, persuasive copy, clear design and measurable actions.',
+      softwareDevelopment: 'We design and develop purpose-built software around a validated workflow, user need and maintainable technical scope.',
+      crm: 'We configure CRM structure, pipelines, forms, automation and reporting so leads and customer follow-up stop getting lost between tools.',
+      internalTools: 'We build focused internal tools that replace repetitive spreadsheets, manual handoffs and fragmented processes with one clearer workflow.',
+      dashboards: 'We connect approved data sources into decision-ready dashboards that show the metrics, trends and actions each team actually needs.'
+    },
+    outcomes: {
+      automotive: 'Give buyers the information and confidence to enquire about the right vehicle before visiting the dealership.',
+      restaurants: 'Give diners a clear path from local search or social discovery to a confident reservation or order.',
+      health: 'Make it easier for patients to understand services, trust the provider and take the correct next step.',
+      ecommerce: 'Reduce friction between product discovery and checkout while giving the team clearer acquisition and sales signals.',
+      influencers: 'Present audience value professionally and give brands a clearer reason to start a partnership.',
+      fashion: 'Carry the same visual story from campaign discovery through product selection and purchase.',
+      education: 'Help prospective learners compare options, understand outcomes and complete an enquiry or enrolment.',
+      local: 'Turn nearby searches and recommendations into measurable calls, directions, visits and enquiries.',
+      physicalAdvertising: 'Make every physical placement instantly understandable and connect offline attention to a trackable next action.',
+      websiteDevelopment: 'Launch a responsive website that supports search visibility and guides visitors toward enquiry, booking or purchase.',
+      websiteRevamp: 'Keep what already works while removing the design, performance and messaging friction holding conversion back.',
+      freeWebsite: 'Give an eligible business a credible starting point online with the agreed essentials clearly defined.',
+      seo: 'Build stronger relevance and crawlability around the searches that matter to the business.',
+      geo: 'Make expertise easier for AI answer engines to interpret, verify and reference.',
+      localization: 'Give each market language and customer journey that feel native rather than copied.',
+      maintenance: 'Protect continuity with planned updates, monitoring, backups and responsive technical support.',
+      filmingPhotography: 'Create a reusable visual library sized and framed for campaigns, websites and daily publishing.',
+      videoGraphicDesign: 'Deliver finished assets that are recognisable, accessible and ready for each platform.',
+      scripting: 'Give presenters, creators and campaigns a stronger opening, logical flow and decisive call to action.',
+      aiGeneratedContent: 'Increase production capacity while retaining human approval over facts, tone and brand quality.',
+      socialManagement: 'Replace irregular posting with an accountable calendar, coordinated creative and useful performance reporting.',
+      socialAutomation: 'Save time on repeatable social tasks while keeping sensitive conversations and approvals with people.',
+      growthStrategy: 'Create a prioritised testing roadmap that shows what to publish, distribute, measure and improve next.',
+      communityManagement: 'Turn timely, on-brand replies into stronger relationships and clearer customer insight.',
+      metaGoogleAds: 'Direct search demand and audience attention to dedicated landing journeys with conversion tracking in place.',
+      socialAds: 'Test messages, creatives and audiences systematically so paid social learning compounds instead of resetting.',
+      influencerAdvertising: 'Build creator campaigns around audience fit, agreed usage, accountable delivery and a measurable destination.',
+      ugcCreators: 'Produce a varied bank of authentic creative that can be tested organically and in paid campaigns.',
+      emailAdvertising: 'Move subscribers and leads toward the next relevant action through segmented campaigns and follow-up sequences.',
+      softwareDevelopment: 'Deliver a maintainable application designed around the people, permissions and workflow that will use it.',
+      crm: 'Give every lead a visible owner, stage, history and next action inside one organised pipeline.',
+      internalTools: 'Reduce manual handoffs and give the team one reliable place to complete recurring operational work.',
+      dashboards: 'Replace scattered reports with a shared view of the signals that require attention and decisions.'
+    },
     templates: {
       industry: {
-        title: '{item} marketing built around how customers decide.',
+        title: '{item} marketing designed to turn discovery into customers.',
         body: 'We connect positioning, content, digital presence and practical systems around the decisions that matter in this industry.',
-        result: 'Every touchpoint is designed to make the business easier to find, understand, trust and choose.'
+        result: 'Choose the right mix of website, content, social media, advertising and systems for one connected customer journey.'
       },
       website: {
-        title: '{item} built for clarity, performance and growth.',
+        title: '{item} that helps customers find, trust and contact you.',
         body: 'Strategy, user experience, content and development work together so the website supports real customer decisions.',
-        result: 'The result is a faster, clearer and easier-to-maintain digital foundation for the business.'
+        result: 'You receive a clear, responsive and search-ready foundation built around the next customer action.'
       },
       content: {
-        title: '{item} with a clear purpose and production system.',
+        title: '{item} created to earn attention and move people to act.',
         body: 'We plan every asset around the audience, message, channel and action it needs to support.',
-        result: 'A consistent workflow keeps content recognisable, useful and ready to perform across channels.'
+        result: 'You receive channel-ready assets with a repeatable production workflow, not disconnected posts.'
       },
       social: {
-        title: '{item} connected to measurable business goals.',
+        title: '{item} that gives your brand a reason to be followed.',
         body: 'Channel strategy, publishing, community and automation are organised as one practical social media system.',
-        result: 'The system creates a sustainable rhythm for learning, improving and growing over time.'
+        result: 'Strategy, publishing, community and reporting work together to build useful attention over time.'
       },
       ads: {
-        title: '{item} built around a simple commercial idea.',
+        title: '{item} that connects budget to a clear customer action.',
         body: 'We connect the message, creative, targeting and rollout so every campaign has one clear job.',
-        result: 'Campaign thinking stays consistent from the first impression to the final customer action.'
+        result: 'Creative, targeting, landing journey and measurement are planned as one campaign.'
       },
       systems: {
-        title: '{item} designed around the way your team actually works.',
+        title: '{item} that removes repetitive work and makes decisions clearer.',
         body: 'We connect data, tools and workflows to reduce friction and create a more consistent operating system.',
-        result: 'Useful digital systems give the business a stronger base for marketing, service and future growth.'
+        result: 'Your team gets a practical system with defined data, ownership and workflows.'
       }
     },
     featured: {
@@ -208,7 +278,9 @@
   const selectedItems = Object.fromEntries(Object.entries(serviceSchema).map(([category, config]) => [category, config.items[0]]));
   let activeCategory = 'industry';
 
-  const getServiceLocale = () => window.Studio17I18n?.getData()?.services || englishServices;
+  const getServiceLocale = () => window.Studio17I18n?.getLanguage?.() === 'en'
+    ? englishServices
+    : (window.Studio17I18n?.getData()?.services || englishServices);
   const formatServiceText = (template, item) => (template || '').replaceAll('{item}', item);
 
   const getServiceContent = (category, item) => {
@@ -216,11 +288,13 @@
     const featured = locale.featured?.[item];
     const templates = locale.templates?.[category] || englishServices.templates[category];
     const label = locale.itemLabels?.[item] || englishServices.itemLabels[item] || item;
+    const description = locale.descriptions?.[item] || englishServices.descriptions[item] || templates.body;
+    const outcome = locale.outcomes?.[item] || englishServices.outcomes[item] || templates.result;
     const schema = serviceSchema[category];
     return {
       title: featured?.title || formatServiceText(templates.title, label),
-      body: featured?.body || templates.body,
-      result: featured?.result || templates.result,
+      body: featured?.body || description,
+      result: featured?.result || outcome,
       image: schema.images?.[item] || schema.image
     };
   };

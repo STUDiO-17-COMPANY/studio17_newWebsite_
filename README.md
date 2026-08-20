@@ -28,7 +28,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `dev-server.cjs` — dependency-free local server that mirrors the production clean routes.
 - `robots.txt` / `/sitemap.xml` — crawler policy and live search-engine sitemap.
 - `styles.css` — design tokens, layout, responsive rules and motion.
-- `script.js` — navigation, service selector, carousels and reveal interactions.
+- `script.js` — navigation, the 33-offer multilingual service selector, carousels and reveal interactions.
 - `analytics.js` — consent-first Google Analytics 4 loading, preferences and page-view handling.
 - `wip.js` — identifies and localizes the requested unfinished destination.
 - `i18n.js` — URL/saved/browser locale detection, regional-code normalization, language switching, persistence and RTL handling.

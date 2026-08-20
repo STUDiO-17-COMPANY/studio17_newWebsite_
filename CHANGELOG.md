@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-08-20 — Homepage service-selector sales content
+
+- Replaced generic repeated selector copy with a distinct, concrete sales description for all 33 industry and service choices.
+- Replaced the six repeated category endings with 33 service-specific outcome statements in every supported language.
+- Rewrote all six service-family headline and outcome templates around customer actions, channel-ready deliverables and practical business value.
+- Added complete Portuguese (Portugal), Spanish, Greek, Russian and Hebrew descriptions while preserving the dedicated, evidence-backed automotive result.
+- Documented the no-generic-copy and no-invented-metrics rules and added regression coverage for content completeness, uniqueness and locale parity.
+
 ## 2026-08-20 — Broader homepage client-work showcase
 
 - Reframed the homepage section as “Selected client work in web development and marketing” so the heading describes both the proof shown and the relevant service categories without keyword stuffing.

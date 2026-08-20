@@ -159,6 +159,8 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Use contrast and spacing as the default separation method.
 - Shadows are interaction feedback, not permanent decoration.
 - One selected service and one selected industry at a time.
+- Every selector item must explain a distinct offer: use an outcome-led headline, a concrete description of what Studio 17 provides and a service-specific outcome. Do not reuse a generic body or closing outcome across multiple items.
+- Keep verified client performance proof only where evidence exists. Other selections should describe deliverables and intended outcomes without guarantees or invented metrics.
 
 ### Footer
 

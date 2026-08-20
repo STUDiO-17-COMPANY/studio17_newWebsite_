@@ -415,36 +415,106 @@
       "internalTools": "Ferramentas internas",
       "dashboards": "Dashboards"
     },
+    "descriptions": {
+      "automotive": "Combinamos apresentação de viaturas, fotografia, vídeo, redes sociais, publicidade e percursos de contacto para ajudar stands a ganhar confiança antes da primeira visita.",
+      "restaurants": "Combinamos websites preparados para reservas, design de menus, fotografia gastronómica, vídeo curto, SEO local e campanhas para transformar descoberta em reservas e pedidos.",
+      "health": "Criamos percursos claros e atentos à privacidade, com websites credíveis, conteúdos educativos, visibilidade local e fluxos práticos de contacto ou marcação.",
+      "ecommerce": "Ligamos design de loja, páginas de produto, conteúdos, SEO, aquisição paga, email e reporting para ajudar mais pessoas a descobrir e comprar produtos.",
+      "influencers": "Desenvolvemos posicionamento de marca pessoal, sistemas de conteúdo, media kits, páginas de parceria e campanhas para crescer audiências e conquistar melhores oportunidades comerciais.",
+      "fashion": "Criamos lojas, lançamentos, conteúdos de campanha, redes sociais e publicidade visualmente consistentes para gerar desejo e simplificar a compra.",
+      "education": "Clarificamos programas, cursos e resultados através de websites acessíveis, conteúdos úteis, visibilidade na pesquisa e percursos eficazes de contacto ou inscrição.",
+      "local": "Reforçamos a descoberta local com um website credível, presença Google, avaliações, conteúdos sociais e campanhas para gerar chamadas, visitas e pedidos.",
+      "physicalAdvertising": "Planeamos e desenhamos outdoors, impressão, sinalética e campanhas offline com mensagens claras, ficheiros prontos para produção e continuidade digital.",
+      "websiteDevelopment": "Desenhamos e desenvolvemos websites responsivos e orientados para conversão, com bases de SEO, GEO e SEO técnico, percursos claros e ações mensuráveis.",
+      "websiteRevamp": "Melhoramos estrutura, mensagem, design, velocidade, acessibilidade e conversão de um website existente, protegendo conteúdos úteis e valor de pesquisa.",
+      "freeWebsite": "Pequenas empresas elegíveis podem receber um website inicial focado através da nossa oferta Website Gratuito, com âmbito, requisitos e custos contínuos confirmados antes do início.",
+      "seo": "Melhoramos estrutura, conteúdo on-page, ligações internas e sinais técnicos para que os motores de pesquisa compreendam o negócio e os clientes certos o encontrem.",
+      "geo": "Estruturamos entidades, conhecimento e conteúdos prontos para resposta para que sistemas de pesquisa com IA compreendam, confiem e citem o negócio com maior facilidade.",
+      "localization": "Adaptamos idioma, tom, intenção de pesquisa, metadados e percursos do cliente a cada mercado, em vez de apenas traduzir palavras.",
+      "maintenance": "Mantemos websites seguros, atualizados, monitorizados e em melhoria através de backups, apoio de conteúdos, verificações de desempenho e manutenção técnica acordada.",
+      "filmingPhotography": "Planeamos e captamos fotografia ou vídeo de marca, produto, equipa, espaço e campanha em formatos preparados para websites, redes sociais e publicidade.",
+      "videoGraphicDesign": "Transformamos material bruto em vídeos e elementos gráficos prontos para cada plataforma, com ritmo, marca, legendas, formatos e chamadas para ação claros.",
+      "scripting": "Escrevemos ganchos, narrativas, guiões de entrevista e textos de conversão que dão um objetivo claro a cada vídeo, anúncio ou apresentação.",
+      "aiGeneratedContent": "Usamos IA como ferramenta de produção dirigida para conceitos e recursos escaláveis, com revisão humana de precisão, adequação à marca e qualidade.",
+      "socialManagement": "Gerimos estratégia, calendários, publicação, coordenação criativa, reporting e melhoria contínua nos canais relevantes para o negócio.",
+      "socialAutomation": "Automatizamos agendamento, encaminhamento, respostas e reporting aprovados para manter consistência sem retirar a supervisão humana.",
+      "growthStrategy": "Criamos um plano de crescimento testável com base em público, posicionamento, pilares de conteúdo, distribuição, colaborações e métricas ligadas ao valor empresarial.",
+      "communityManagement": "Monitorizamos e respondemos a comentários, mensagens e sinais da comunidade com orientações claras que protegem a marca e reforçam relações.",
+      "metaGoogleAds": "Planeamos, lançamos e otimizamos campanhas Meta e Google com base na intenção, público, criatividade, landing pages, medição e objetivo comercial.",
+      "socialAds": "Criamos campanhas pagas específicas para cada plataforma, com criatividade capaz de captar atenção, segmentação relevante e um caminho claro até à ação.",
+      "influencerAdvertising": "Identificamos criadores adequados, definimos entregáveis, coordenamos campanhas e ligamos o alcance a uma oferta, percurso e plano de medição.",
+      "ugcCreators": "Selecionamos e orientamos criadores UGC para produzir conteúdos autênticos para publicação orgânica e testes pagos, com entregáveis e direitos de utilização definidos.",
+      "emailAdvertising": "Planeamos newsletters, sequências promocionais e follow-ups automáticos com segmentação útil, copy persuasiva, design claro e ações mensuráveis.",
+      "softwareDevelopment": "Desenhamos e desenvolvemos software à medida de um fluxo validado, uma necessidade real do utilizador e um âmbito técnico sustentável.",
+      "crm": "Configuramos estrutura, pipelines, formulários, automação e reporting de CRM para que leads e acompanhamentos deixem de se perder entre ferramentas.",
+      "internalTools": "Criamos ferramentas internas focadas que substituem folhas de cálculo repetitivas, passagens manuais e processos fragmentados por um fluxo mais claro.",
+      "dashboards": "Ligamos fontes de dados aprovadas a dashboards prontos para decisão, com as métricas, tendências e ações de que cada equipa realmente precisa."
+    },
+    "outcomes": {
+      "automotive": "Dê aos compradores informação e confiança para pedir detalhes sobre a viatura certa antes de visitar o stand.",
+      "restaurants": "Conduza quem descobre o restaurante na pesquisa local ou nas redes sociais até uma reserva ou encomenda segura.",
+      "health": "Facilite a compreensão dos serviços, a confiança no prestador e a escolha do passo seguinte por parte dos pacientes.",
+      "ecommerce": "Reduza a fricção entre a descoberta do produto e o checkout, com sinais mais claros de aquisição e vendas.",
+      "influencers": "Apresente o valor da audiência de forma profissional e dê às marcas uma razão clara para iniciar uma parceria.",
+      "fashion": "Mantenha a mesma narrativa visual desde a descoberta da campanha até à escolha e compra do produto.",
+      "education": "Ajude futuros alunos a comparar opções, compreender resultados e concluir um pedido ou inscrição.",
+      "local": "Transforme pesquisas e recomendações locais em chamadas, direções, visitas e pedidos mensuráveis.",
+      "physicalAdvertising": "Torne cada suporte físico imediatamente compreensível e ligue a atenção offline a uma ação rastreável.",
+      "websiteDevelopment": "Lance um website responsivo que apoia a visibilidade na pesquisa e orienta para contacto, marcação ou compra.",
+      "websiteRevamp": "Preserve o que funciona e elimine os bloqueios de design, desempenho e mensagem que prejudicam a conversão.",
+      "freeWebsite": "Dê a uma empresa elegível um ponto de partida credível online, com os elementos essenciais acordados.",
+      "seo": "Reforce a relevância e a capacidade de rastreio nas pesquisas que realmente importam ao negócio.",
+      "geo": "Torne a experiência da empresa mais fácil de interpretar, verificar e referenciar por motores de resposta com IA.",
+      "localization": "Dê a cada mercado uma linguagem e um percurso de cliente que parecem nativos, não copiados.",
+      "maintenance": "Proteja a continuidade com atualizações planeadas, monitorização, backups e suporte técnico responsivo.",
+      "filmingPhotography": "Crie uma biblioteca visual reutilizável, enquadrada e dimensionada para campanhas, websites e publicação diária.",
+      "videoGraphicDesign": "Receba conteúdos finais reconhecíveis, acessíveis e preparados para cada plataforma.",
+      "scripting": "Dê a apresentadores, criadores e campanhas uma abertura mais forte, sequência lógica e chamada à ação decisiva.",
+      "aiGeneratedContent": "Aumente a capacidade de produção mantendo aprovação humana sobre factos, tom e qualidade da marca.",
+      "socialManagement": "Substitua publicações irregulares por um calendário responsável, criatividade coordenada e relatórios úteis.",
+      "socialAutomation": "Poupe tempo em tarefas sociais repetitivas, mantendo conversas sensíveis e aprovações com pessoas.",
+      "growthStrategy": "Crie um roteiro de testes prioritário que define o que publicar, distribuir, medir e melhorar a seguir.",
+      "communityManagement": "Transforme respostas rápidas e alinhadas com a marca em relações mais fortes e melhores insights de clientes.",
+      "metaGoogleAds": "Direcione procura e atenção para percursos de landing page dedicados, com acompanhamento de conversões.",
+      "socialAds": "Teste mensagens, criativos e audiências de forma sistemática para acumular aprendizagem em publicidade paga.",
+      "influencerAdvertising": "Construa campanhas com criadores baseadas na afinidade da audiência, utilização acordada, entrega responsável e destino mensurável.",
+      "ugcCreators": "Produza um banco variado de conteúdos autênticos para testar organicamente e em campanhas pagas.",
+      "emailAdvertising": "Conduza subscritores e leads à ação relevante seguinte através de campanhas segmentadas e sequências de acompanhamento.",
+      "softwareDevelopment": "Receba uma aplicação sustentável, desenhada para as pessoas, permissões e fluxo de trabalho que a vão utilizar.",
+      "crm": "Dê a cada lead um responsável, etapa, histórico e próxima ação visíveis num único pipeline organizado.",
+      "internalTools": "Reduza passagens manuais e dê à equipa um local fiável para concluir trabalho operacional recorrente.",
+      "dashboards": "Substitua relatórios dispersos por uma visão partilhada dos sinais que exigem atenção e decisão."
+    },
     "templates": {
       "industry": {
-        "title": "Marketing para {item} pensado para a forma como os clientes decidem.",
+        "title": "{item}: marketing para transformar descoberta em clientes.",
         "body": "Ligamos posicionamento, conteúdos, presença digital e sistemas práticos às decisões que importam neste setor.",
-        "result": "Cada ponto de contacto torna a empresa mais fácil de encontrar, compreender, confiar e escolher."
+        "result": "Escolha a combinação certa de website, conteúdos, redes sociais, publicidade e sistemas para um percurso de cliente conectado."
       },
       "website": {
-        "title": "{item} criado para clareza, desempenho e crescimento.",
+        "title": "{item}: mais visibilidade, confiança e contactos.",
         "body": "Estratégia, experiência do utilizador, conteúdos e desenvolvimento trabalham em conjunto para apoiar decisões reais dos clientes.",
-        "result": "O resultado é uma base digital mais rápida, clara e fácil de manter."
+        "result": "Recebe uma base clara, responsiva e preparada para pesquisa, construída em torno da próxima ação do cliente."
       },
       "content": {
-        "title": "{item} com um objetivo e um sistema de produção claros.",
+        "title": "{item}: atenção com um caminho claro para a ação.",
         "body": "Planeamos cada elemento em torno do público, mensagem, canal e ação que deve apoiar.",
-        "result": "Um fluxo consistente mantém o conteúdo reconhecível, útil e preparado para todos os canais."
+        "result": "Recebe conteúdos prontos para cada canal e um fluxo de produção repetível, não publicações isoladas."
       },
       "social": {
-        "title": "{item} ligado a objetivos empresariais mensuráveis.",
+        "title": "{item}: uma razão consistente para seguir a marca.",
         "body": "Estratégia de canais, publicação, comunidade e automação são organizadas como um único sistema prático.",
-        "result": "O sistema cria um ritmo sustentável para aprender, melhorar e crescer ao longo do tempo."
+        "result": "Estratégia, publicação, comunidade e reporting trabalham em conjunto para criar atenção útil ao longo do tempo."
       },
       "ads": {
-        "title": "{item} construído em torno de uma ideia comercial simples.",
+        "title": "{item}: orçamento ligado a uma ação clara do cliente.",
         "body": "Ligamos mensagem, criatividade, segmentação e execução para que cada campanha tenha uma função clara.",
-        "result": "O pensamento da campanha mantém-se consistente desde a primeira impressão até à ação final."
+        "result": "Criatividade, segmentação, percurso de destino e medição são planeados como uma única campanha."
       },
       "systems": {
-        "title": "{item} desenhado para a forma como a sua equipa trabalha.",
+        "title": "{item}: menos trabalho repetitivo e decisões mais claras.",
         "body": "Ligamos dados, ferramentas e fluxos de trabalho para reduzir fricção e criar uma operação mais consistente.",
-        "result": "Sistemas digitais úteis criam uma base mais forte para marketing, serviço e crescimento futuro."
+        "result": "A equipa recebe um sistema prático com dados, responsabilidades e fluxos de trabalho definidos."
       }
     },
     "featured": {
