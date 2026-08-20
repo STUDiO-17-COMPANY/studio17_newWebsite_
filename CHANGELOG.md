@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-20 — Services page layout refinement
+
+- Moved selected Website Development work directly below the hero, followed by packages and then the shared build foundations.
+- Renamed the portfolio section to “Some of the websites we developed” and synchronized the shorter supporting copy across all six languages.
+- Unified the Website capability card with the other service cards and removed the exposed accordion background beneath odd and expanded catalogue rows.
+
 ## 2026-08-14 — Services catalogue and Website Development
 
 - Added the clean, price-free `/services` catalogue with 43 services in five accessible expandable groups and no public internal service codes.

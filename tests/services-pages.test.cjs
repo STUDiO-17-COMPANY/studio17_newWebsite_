@@ -30,9 +30,19 @@ test('website development page preserves commercial and portfolio requirements',
   assert.ok(html.includes('https://www.100pratos.pt/'));
   assert.ok(html.includes('https://www.phosoptics.com/en'));
   assert.ok(html.includes('/insights/terrassivilla-accessible-tourism-in-the-azores'));
+  assert.match(html, /<span>Some of the websites<\/span> we developed\.<\/h2><p>Selected websites across our clients\.<\/p>/);
+  const sectionOrder = ['website-work', 'website-packages', 'website-foundation'].map(className => html.indexOf(`class="${className}"`));
+  assert.ok(sectionOrder.every((position, index) => position >= 0 && (index === 0 || position > sectionOrder[index - 1])), 'portfolio, packages and foundations must appear in the approved order');
   const structured = jsonLd(html)[0];
   assert.equal(structured['@type'], 'Service');
   assert.equal(structured.hasOfferCatalog.itemListElement.length, 5);
+});
+
+test('service cards and catalogue rows use seamless matching surfaces', () => {
+  const css = read('styles.css');
+  assert.doesNotMatch(css, /\.service-family-card-featured\s*\{[^}]*background:\s*var\(--blue\)/);
+  assert.match(css, /\.service-category-body\s*\{[^}]*padding:\s*0;/);
+  assert.match(css, /\.service-row:last-child:nth-child\(odd\)\s*\{\s*grid-column:\s*1\s*\/\s*-1;/);
 });
 
 test('all service locales preserve the page schema and content counts', () => {
