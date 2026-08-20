@@ -21,30 +21,28 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Approve the article-detail layout and content-field model.
 - [x] Create the Drive template, guidance, dedicated media folder, parser, multilingual article pages, dynamic homepage feed and `/news` archive described in `ARTICLES.md`.
 - [-] Grant the production Google service account Reader access to the Article folders, deploy and verify one real published Doc end to end.
-- [ ] Complete and publish the contact-form email workflow.
+- [x] Complete and publish the contact-form email workflow.
 - [x] Create multilingual Privacy Policy, Cookie Policy and Terms pages based on the website's implemented processing.
 - [x] Publish the multilingual, price-free Services catalogue and the five-package Website Development page with proof projects, clean routes and sales CTAs.
 - [ ] Obtain qualified Cyprus/EU legal review of the three informative legal drafts before treating them as final legal advice.
 
-## Contact form — postponed
+## Contact form — production delivery
 
-The multilingual `/contact` page and its server-side `/api/contact` endpoint exist, but production delivery is not complete. Resume this checklist when the contact workflow becomes the active task.
+The multilingual `/contact` page and its server-side `/api/contact` endpoint are live. Production email delivery was verified on 2026-08-20.
 
-- [ ] Confirm that the Vercel project is accessed with `contact@studio17.world` only.
-- [ ] Connect Resend to the correct Studio 17 Vercel project.
-- [ ] Verify `studio17.world` as a sending domain and complete the required DNS records.
-- [ ] Configure `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` and `CONTACT_TO_EMAIL` for Production, Preview and Development as appropriate.
-- [ ] Confirm that the sender and recipient are both approved Studio 17 addresses.
-- [ ] Deploy the contact page and serverless endpoint.
+- [x] Use the explicitly approved Vercel owner account only for Vercel administration; use `contact@studio17.world` for Resend and contact delivery.
+- [x] Connect Resend to the correct Studio 17 Vercel project with a domain-restricted, sending-only key.
+- [x] Verify `studio17.world` as the sending domain without changing Google Workspace inbound-mail routing.
+- [x] Configure the sensitive API key for Production and Preview, and the non-secret sender/recipient values for Production, Preview and Development.
+- [x] Confirm that the sender and recipient are approved Studio 17 addresses at `contact@studio17.world`.
+- [x] Deploy the contact page and serverless endpoint to `www.studio17.world`.
 - [ ] Submit one test enquiry in each language: English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew.
-- [ ] Confirm that every message reaches `contact@studio17.world` and that Reply answers the visitor's email address.
+- [-] Confirm delivery from all six public languages. English production delivery is verified; `reply_to` is covered by the API regression test.
 - [ ] Test required-field errors, invalid email, consent, rate limiting, provider failure and duplicate-submit prevention.
 - [ ] Test keyboard use, screen-reader labels, mobile layouts, translated text wrapping and Hebrew RTL behavior.
 - [x] Add the live Privacy Policy route to the shared footer and contact consent language.
-- [ ] Review provider logs without exposing visitor messages or personal data in application logs.
-- [ ] Update `CONTACT_FORM.md`, `README.md`, `CHANGELOG.md` and this task list after production verification.
-
-BLOCKED: The Vercel/Resend account connection requires explicit authorization before Studio 17 credentials or hosted settings are changed.
+- [x] Review provider logs without exposing visitor messages or personal data in application logs.
+- [x] Update `CONTACT_FORM.md`, `README.md`, `CHANGELOG.md` and this task list after production verification.
 
 ## Articles — production handoff
 

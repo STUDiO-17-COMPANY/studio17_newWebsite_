@@ -23,7 +23,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `contact.js` / `api/contact.js` — contact-form interaction, validation and Resend delivery.
 - `article-feed.js` — homepage and News archive loading, language handling, categories and publication states.
 - `api/` — Vercel Functions for authenticated, read-only Drive/Docs access, role validation, article rendering and restricted article-media delivery.
-- `.env.example` — non-secret environment-variable contract for the Careers connection.
+- `.env.example` — non-secret environment-variable contract for Careers, Articles and contact delivery.
 - `vercel.json` — Vercel Function, redirect and clean-route configuration.
 - `dev-server.cjs` — dependency-free local server that mirrors the production clean routes.
 - `robots.txt` / `/sitemap.xml` — crawler policy and live search-engine sitemap.
@@ -65,7 +65,7 @@ Then open `http://localhost:8080`.
 
 Opening `index.html` directly also works, including language switching. A local server is still recommended for normal development previews.
 
-The Careers and contact APIs require the Vercel environment variables documented in `CAREERS_AUTOMATION.md` and `CONTACT_FORM.md`. Static local preview shows the designed unavailable states unless the APIs are run through Vercel or mocked for QA.
+The Careers and contact APIs require the Vercel environment variables documented in `CAREERS_AUTOMATION.md` and `CONTACT_FORM.md`. Production contact delivery is configured; static local preview still shows the designed unavailable states unless the APIs are run through Vercel, supplied with ignored local credentials or mocked for QA.
 
 After editing any locale JSON file, regenerate the direct-file bundle:
 
@@ -112,7 +112,7 @@ node service-locales/build-bundle.cjs
 - Have a native speaker review every non-English locale before publication.
 - Review `/sitemap` whenever a page is added, renamed or removed.
 - Complete the one-time service-account and Vercel environment setup before treating Careers as production-ready.
-- Install Resend, verify the sender domain and publish an approved privacy policy before treating the contact form as production-ready.
+- Complete six-language, mobile and accessibility QA for the live contact form; Resend delivery and the verified sender domain are already production-ready.
 - Have qualified Cyprus/EU counsel review the informative Privacy Policy, Cookie Policy and Terms before relying on them as final legal advice.
 
 ## Design source

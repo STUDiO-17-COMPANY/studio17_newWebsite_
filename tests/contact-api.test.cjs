@@ -1,7 +1,15 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const contactHandler = require('../api/contact');
+
+const envExample = fs.readFileSync(path.join(__dirname, '..', '.env.example'), 'utf8');
+assert.match(envExample, /^RESEND_API_KEY=$/m);
+assert.match(envExample, /^CONTACT_FROM_EMAIL="Studio 17 Website <contact@studio17\.world>"$/m);
+assert.match(envExample, /^CONTACT_TO_EMAIL=contact@studio17\.world$/m);
+assert.doesNotMatch(envExample, /RESEND_API_KEY=re_/);
 
 const createResponse = () => {
   const headers = new Map();
@@ -84,6 +92,7 @@ const validSubmission = {
   assert.equal(sentRequest.options.headers.authorization, 'Bearer re_test_key');
   assert.equal(sentRequest.options.headers['user-agent'], 'Studio17-Website/1.0');
   assert.match(sentRequest.options.headers['idempotency-key'], /^contact\//);
+  assert.equal(sentRequest.body.from, 'Studio 17 Website <contact@studio17.world>');
   assert.deepEqual(sentRequest.body.to, ['contact@studio17.world']);
   assert.equal(sentRequest.body.reply_to, 'alex@example.com');
   assert.match(sentRequest.body.html, /&lt;Acme &amp; Co&gt;/);

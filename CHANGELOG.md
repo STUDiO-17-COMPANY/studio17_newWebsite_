@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-08-20 — Contact email delivery launched
+
+- Added a tracked, secret-free `.env.example` contract for Resend delivery to `contact@studio17.world`.
+- Strengthened contact API regression coverage for the approved sender, recipient and absence of committed API-key values.
+- Created a dedicated Resend sending-only key restricted to the already verified `studio17.world` domain and stored it as a Sensitive Vercel variable for Production and Preview.
+- Configured the approved sender and recipient values across Vercel environments without changing Google Workspace inbound-mail routing.
+- Deployed production to `www.studio17.world`; the live endpoint returned HTTP 200 and Resend marked the verification message to `contact@studio17.world` as Delivered.
+- Documented DNS safety, environment scope, failure behavior and the completed production verification.
+
 ## 2026-08-20 — Mobile service-selector UX
 
 - Replaced the homepage service section’s phone-sized category and item button grids with two compact native select controls.

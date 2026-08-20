@@ -12,18 +12,19 @@ The public page is `/contact`. It is available in English, Portuguese (Portugal)
 
 The API key never reaches the browser. Form submissions are not written to the repository, browser storage or Google Drive.
 
-## One-time Vercel setup
+## Production configuration
 
-The code is complete, but real delivery requires the Resend integration and a verified sender domain.
+Production delivery was configured and verified on 2026-08-20. The tracked `.env.example` documents the required variable names and safe non-secret sender/recipient values; it must never contain a real API key.
 
-1. Install Resend for the Vercel project `studio17-new-website` through Vercel Marketplace.
-2. Verify `studio17.world` in Resend using the DNS records supplied by Resend.
-3. Confirm the Vercel project has `RESEND_API_KEY` for Production and Preview.
-4. Set `CONTACT_FROM_EMAIL` to `Studio 17 Website <contact@studio17.world>` or another address on the verified domain.
-5. Keep `CONTACT_TO_EMAIL=contact@studio17.world`.
+1. Resend is connected to the Vercel project `studio17-new-website` with a dedicated sending-only key restricted to `studio17.world`.
+2. `studio17.world` is verified in Resend.
+   Preserve the existing Google Workspace inbound-mail records. Add only the exact Resend sending records and hosts shown during verification; do not replace the root domain's inbound MX configuration.
+3. `RESEND_API_KEY` is stored as a Sensitive Vercel variable for Production and Preview. Local development must use an ignored local environment file when real delivery is required.
+4. `CONTACT_FROM_EMAIL` is `Studio 17 Website <contact@studio17.world>`.
+5. `CONTACT_TO_EMAIL` is `contact@studio17.world`.
 6. Redeploy after changing environment variables.
 
-Until `RESEND_API_KEY` is present, the form displays its translated unavailable message and the page retains the direct `mailto:contact@studio17.world` fallback.
+If `RESEND_API_KEY` is absent in any environment, the form displays its translated unavailable message and retains the direct `mailto:contact@studio17.world` fallback.
 
 ## Accepted fields
 
@@ -51,9 +52,12 @@ After deployment:
 4. Confirm an invalid form does not send and that the direct email fallback opens correctly.
 5. Check Vercel Function logs for `Contact email failed` without recording visitor content.
 
+Production verification on 2026-08-20 returned HTTP 200 from `/api/contact`; Resend recorded the request as 200 and the test message to `contact@studio17.world` as `Delivered`.
+
 ## Maintenance rules
 
 - Never place `RESEND_API_KEY` in HTML, JavaScript sent to the browser, documentation values or Git.
+- Never print or paste the live API key into terminal output, screenshots, issue text or test fixtures.
 - Keep `contact@studio17.world` as the recipient unless Studio 17 explicitly changes the operational inbox.
 - Update all six locale JSON files and regenerate `locales/locales.js` whenever contact copy changes.
 - Keep a working direct-email fallback.

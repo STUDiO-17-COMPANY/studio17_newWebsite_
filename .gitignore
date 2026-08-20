@@ -3,3 +3,4 @@
 !.env.example
 .vercel/
 test-artifacts/
+.vercel-npm-cache/
