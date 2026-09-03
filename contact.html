@@ -97,22 +97,22 @@
         </aside>
 
         <div class="contact-form-card reveal" data-delay="1">
-          <form class="contact-form" id="contact-form" action="/api/contact" method="post" data-contact-form novalidate>
+          <form class="contact-form" id="contact-form" action="/api/contact" method="post" data-contact-form aria-describedby="contact-form-status" novalidate>
             <div class="contact-field-grid">
-              <label class="contact-field"><span>Name <b aria-hidden="true">*</b></span><input type="text" name="name" autocomplete="name" minlength="2" maxlength="100" required></label>
-              <label class="contact-field"><span>Email <b aria-hidden="true">*</b></span><input type="email" name="email" autocomplete="email" maxlength="254" required></label>
+              <label class="contact-field"><span>Name <b aria-hidden="true">*</b></span><input type="text" name="name" autocomplete="name" minlength="2" maxlength="100" aria-required="true" required></label>
+              <label class="contact-field"><span>Email <b aria-hidden="true">*</b></span><input type="email" name="email" autocomplete="email" maxlength="254" aria-required="true" required></label>
               <label class="contact-field"><span>Company <small>(optional)</small></span><input type="text" name="company" autocomplete="organization" maxlength="120"></label>
               <label class="contact-field"><span>Phone <small>(optional)</small></span><input type="tel" name="phone" autocomplete="tel" maxlength="50"></label>
-              <label class="contact-field"><span>What can we help with? <b aria-hidden="true">*</b></span><select name="service" required><option value="">Select a service</option><option value="website">Website</option><option value="content">Content creation</option><option value="social-media">Social Media</option><option value="advertising">Advertisement</option><option value="digital-systems">Digital systems</option><option value="ai-solutions">AI solutions</option><option value="other">Something else</option></select></label>
+              <label class="contact-field"><span>What can we help with? <b aria-hidden="true">*</b></span><select name="service" aria-required="true" required><option value="">Select a service</option><option value="website">Website</option><option value="content">Content creation</option><option value="social-media">Social Media</option><option value="advertising">Advertisement</option><option value="digital-systems">Digital systems</option><option value="ai-solutions">AI solutions</option><option value="other">Something else</option></select></label>
               <label class="contact-field"><span>Indicative budget</span><select name="budget"><option value="not-sure">Not sure yet</option><option value="under-1k">Under €1,000</option><option value="1k-3k">€1,000–€3,000</option><option value="3k-10k">€3,000–€10,000</option><option value="10k-plus">€10,000+</option></select></label>
             </div>
-            <label class="contact-field contact-message-field"><span>Project details <b aria-hidden="true">*</b></span><textarea name="message" rows="8" minlength="20" maxlength="5000" required></textarea><small class="contact-field-hint">Please include at least 20 characters.</small></label>
-            <label class="contact-consent"><input type="checkbox" name="consent" value="yes" required><span>I agree that Studio 17 may use these details to respond to my enquiry.</span></label>
+            <label class="contact-field contact-message-field"><span>Project details <b aria-hidden="true">*</b></span><textarea name="message" rows="8" minlength="20" maxlength="5000" aria-required="true" aria-describedby="contact-message-hint" required></textarea><small class="contact-field-hint" id="contact-message-hint">Please include at least 20 characters.</small></label>
+            <label class="contact-consent"><input type="checkbox" name="consent" value="yes" aria-required="true" required><span>I agree that Studio 17 may use these details to respond to my enquiry.</span></label>
             <label class="contact-honeypot" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
             <input type="hidden" name="startedAt" data-contact-started-at>
             <div class="contact-form-footer">
               <button class="solid-button contact-submit" type="submit" data-contact-submit>Send enquiry <span aria-hidden="true"><i data-lucide="send"></i></span></button>
-              <p class="contact-form-status" data-contact-status role="status" aria-live="polite" hidden></p>
+              <p class="contact-form-status" id="contact-form-status" data-contact-status role="status" aria-live="polite" aria-atomic="true" hidden></p>
             </div>
           </form>
         </div>

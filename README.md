@@ -112,7 +112,7 @@ node service-locales/build-bundle.cjs
 - Have a native speaker review every non-English locale before publication.
 - Review `/sitemap` whenever a page is added, renamed or removed.
 - Complete the one-time service-account and Vercel environment setup before treating Careers as production-ready.
-- Complete six-language, mobile and accessibility QA for the live contact form; Resend delivery and the verified sender domain are already production-ready.
+- Re-run the six-language contact browser/API suites whenever form fields, translations, delivery behavior or responsive styles change.
 - Have qualified Cyprus/EU counsel review the informative Privacy Policy, Cookie Policy and Terms before relying on them as final legal advice.
 
 ## Design source

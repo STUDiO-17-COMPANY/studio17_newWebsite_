@@ -36,7 +36,7 @@ No attachments or arbitrary recipients are accepted. The destination, sender con
 
 ## Verification
 
-Run these dependency-free checks from the project root:
+Run the dependency-free API and locale checks from the project root:
 
 ```powershell
 node tests/contact-api.test.cjs
@@ -44,15 +44,27 @@ node tests/contact-locales.test.cjs
 node tests/clean-urls.test.cjs
 ```
 
+With Playwright available, start `node dev-server.cjs 8765` in one terminal and run the full interaction suite in another:
+
+```powershell
+node tests/contact-browser.test.cjs http://127.0.0.1:8765 test-artifacts
+```
+
+The browser suite covers English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew at 1440px, 390px and the supported 320px minimum. It checks translated status copy, mobile wrapping, Hebrew RTL, document overflow, image loading, keyboard focus order, accessible required/error state, invalid email, short project details, missing consent, success, rate limiting, provider failure and concurrent duplicate-submit locking.
+
 After deployment:
 
-1. Submit one test message from `/contact?lang=en` and confirm it arrives at `contact@studio17.world`.
-2. Reply to it and confirm the response is addressed to the visitor's email.
-3. Repeat from one non-English language and Hebrew to verify translated states and RTL layout.
+1. Submit one clearly labelled test message from every public language and confirm each is accepted and arrives at `contact@studio17.world`.
+2. Reply to one message and confirm the response is addressed to the visitor's email.
+3. Verify translated states in every language and RTL layout in Hebrew.
 4. Confirm an invalid form does not send and that the direct email fallback opens correctly.
 5. Check Vercel Function logs for `Contact email failed` without recording visitor content.
 
 Production verification on 2026-08-20 returned HTTP 200 from `/api/contact`; Resend recorded the request as 200 and the test message to `contact@studio17.world` as `Delivered`.
+
+The expanded automated QA suite passed on 2026-09-03 across all six languages and the supported desktop/mobile layouts. It also verifies server-side validation, origin restrictions, spam absorption, the five-request rate limit, provider/network failure handling, HTML escaping, `reply_to`, language/service tags and stable Resend idempotency keys without exposing a real API key.
+
+Production acceptance QA on 2026-09-03 submitted one clearly labelled enquiry for each of `en`, `pt-PT`, `es`, `el`, `ru` and `he`. The public endpoint returned HTTP 200 for all six. The sixth request initially demonstrated the configured HTTP 429 limit after five rapid submissions; Hebrew was retried after the protection cleared and was accepted without weakening the limit.
 
 ## Maintenance rules
 
@@ -62,3 +74,4 @@ Production verification on 2026-08-20 returned HTTP 200 from `/api/contact`; Res
 - Update all six locale JSON files and regenerate `locales/locales.js` whenever contact copy changes.
 - Keep a working direct-email fallback.
 - Publish an approved privacy policy before treating the form as fully launched for public data collection.
+- Keep the concurrent-submit lock and stable `submissionId`; the first protects the browser session and the second lets Resend deduplicate retried requests.

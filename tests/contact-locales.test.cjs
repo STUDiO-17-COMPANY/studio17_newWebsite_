@@ -18,9 +18,13 @@ const requiredKeys = [
   'Select a service',
   'Indicative budget',
   'Project details',
+  'Please include at least 20 characters.',
+  'I agree that Studio 17 may use these details to respond to my enquiry.',
   'Send enquiry',
+  'Please complete the required fields before sending.',
   'Sending your enquiry…',
   'Thank you. Your enquiry has been sent to Studio 17.',
+  'Too many messages were sent from this connection. Please wait and try again.',
   'The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.'
 ];
 
@@ -40,6 +44,10 @@ assert.match(bundle, /"contact":\s*\{/);
 const contact = fs.readFileSync(path.join(root, 'contact.html'), 'utf8');
 const styles = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 assert.match(contact, /class="contact-privacy-note"[\s\S]*?href="\/privacy-policy"/);
+assert.match(contact, /<form[^>]+aria-describedby="contact-form-status"/);
+assert.match(contact, /name="message"[^>]+aria-describedby="contact-message-hint"/);
+assert.equal((contact.match(/aria-required="true"/g) || []).length, 5);
+assert.match(contact, /id="contact-form-status"[\s\S]*?role="status"[\s\S]*?aria-live="polite"[\s\S]*?aria-atomic="true"/);
 assert.match(styles, /\.contact-honeypot[^{]*\{[^}]*clip-path:\s*inset\(50%\)/);
 assert.doesNotMatch(styles, /\.contact-honeypot[^{]*\{[^}]*-10000px/);
 

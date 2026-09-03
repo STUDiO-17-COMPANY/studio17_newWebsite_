@@ -16,6 +16,7 @@
     unavailable: 'The contact form is temporarily unavailable. You can email us directly at contact@studio17.world.'
   };
   let currentStatus = '';
+  let isSubmitting = false;
 
   const resetTimer = () => { startedAt.value = String(Date.now()); };
   const showStatus = (key, state) => {
@@ -29,8 +30,25 @@
     if (currentStatus) status.textContent = translate(messages[currentStatus]);
   });
 
+  form.addEventListener('invalid', event => {
+    event.target.setAttribute('aria-invalid', 'true');
+  }, true);
+
+  form.addEventListener('input', event => {
+    if (event.target.matches('input, select, textarea') && event.target.validity?.valid) {
+      event.target.removeAttribute('aria-invalid');
+    }
+  });
+
+  form.addEventListener('change', event => {
+    if (event.target.matches('input, select, textarea') && event.target.validity?.valid) {
+      event.target.removeAttribute('aria-invalid');
+    }
+  });
+
   form.addEventListener('submit', async event => {
     event.preventDefault();
+    if (isSubmitting) return;
     if (!form.checkValidity()) {
       form.reportValidity();
       showStatus('invalid', 'error');
@@ -41,6 +59,7 @@
     payload.language = window.Studio17I18n?.getLanguage() || document.documentElement.lang || 'en';
     payload.submissionId = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
+    isSubmitting = true;
     submit.disabled = true;
     submit.setAttribute('aria-busy', 'true');
     showStatus('sending', 'sending');
@@ -63,6 +82,7 @@
     } catch {
       showStatus('unavailable', 'error');
     } finally {
+      isSubmitting = false;
       submit.disabled = false;
       submit.removeAttribute('aria-busy');
     }

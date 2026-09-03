@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-03 — Six-language contact form QA and accessibility
+
+- Completed automated contact-form coverage in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew at desktop, mobile and the supported 320px minimum width.
+- Added accessible required-state metadata, live-status relationships and programmatic invalid-state handling while retaining visible labels and native browser validation.
+- Added a concurrent-submit lock in the browser alongside the existing stable Resend idempotency key to prevent duplicate enquiries during slow responses or repeated activation.
+- Expanded server tests across every accepted language, required field, origin restriction, honeypot, rate limit, provider/network failure, HTML escaping, reply-to, tags and duplicate idempotency behavior.
+- Verified translated invalid/sending/success/rate-limit/unavailable states, keyboard focus order, Hebrew RTL, image loading and overflow-free layouts with browser automation and visual desktop/mobile captures.
+- Submitted six clearly labelled production enquiries, one per public language; the endpoint accepted every locale and correctly enforced its five-request burst limit before accepting the Hebrew retry after the protection cleared.
+
 ## 2026-09-03 — Nerouppos Barber Shop partner
 
 - Added Nerouppos Barber Shop as `partner-10` to every animated homepage partner set using the supplied logo and Google business link.
