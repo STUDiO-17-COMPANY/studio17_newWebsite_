@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-03 — Nerouppos Barber Shop partner
+
+- Added Nerouppos Barber Shop as `partner-10` to every animated homepage partner set using the supplied logo and Google business link.
+- Preserved the hover/focus name label, accessible link, complete-logo presentation and seamless duplicated marquee structure.
+- Expanded the partner grid and regression coverage from nine to ten partners.
+
 ## 2026-08-20 — Contact email delivery launched
 
 - Added a tracked, secret-free `.env.example` contract for Resend delivery to `contact@studio17.world`.

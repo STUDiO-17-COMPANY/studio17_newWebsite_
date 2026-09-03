@@ -15,7 +15,8 @@ const partners = [
   ['06', 'Lodgify', 'https://www.lodgify.com'],
   ['07', 'Selene Island', 'https://www.instagram.com/seleneisland/'],
   ['08', 'Phós Optics', 'https://www.phosoptics.com/en'],
-  ['09', 'Event Studio Cyprus', 'https://www.instagram.com/eventstudiocy/']
+  ['09', 'Event Studio Cyprus', 'https://www.instagram.com/eventstudiocy/'],
+  ['10', 'Nerouppos Barber Shop', 'https://share.google/qqDIgdgsQUuOc6XeN']
 ];
 
 for (const [number, name, url] of partners) {
@@ -25,8 +26,8 @@ for (const [number, name, url] of partners) {
   assert.ok(fs.existsSync(path.join(root, 'Images', `partner-${number}.png`)), `Missing partner-${number}.png`);
 }
 
-assert.equal((html.match(/data-partner="09"/g) || []).length, 4, 'partner-09 must appear once in every marquee set');
-assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(9,/s, 'the partner grid must expose all nine partners in one row');
+assert.equal((html.match(/data-partner="10"/g) || []).length, 4, 'partner-10 must appear once in every marquee set');
+assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(10,/s, 'the partner grid must expose all ten partners in one row');
 
 assert.doesNotMatch(html, /partner-phos\.png/);
 assert.match(css, /\.partner-marquee:hover \.partner-track/);

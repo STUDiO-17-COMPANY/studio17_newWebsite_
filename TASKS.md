@@ -22,9 +22,17 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Create the Drive template, guidance, dedicated media folder, parser, multilingual article pages, dynamic homepage feed and `/news` archive described in `ARTICLES.md`.
 - [-] Grant the production Google service account Reader access to the Article folders, deploy and verify one real published Doc end to end.
 - [x] Complete and publish the contact-form email workflow.
+- [-] Review and publish the staged Vercel country-access rule before changing it from Log to Deny.
 - [x] Create multilingual Privacy Policy, Cookie Policy and Terms pages based on the website's implemented processing.
 - [x] Publish the multilingual, price-free Services catalogue and the five-package Website Development page with proof projects, clean routes and sales CTAs.
 - [ ] Obtain qualified Cyprus/EU legal review of the three informative legal drafts before treating them as final legal advice.
+
+## Vercel firewall — country restriction
+
+- [-] Publish the staged `Restrict selected countries` rule in Log mode for India, Pakistan, Iran, Iraq, Bangladesh, Myanmar, Thailand and North Korea.
+- [ ] Review matched traffic and confirm the rule does not affect legitimate visitors, SEO crawlers or internal tools.
+- [ ] Change the rule to Deny in Preview, publish it and verify the expected 403 response from a matching test location.
+- [ ] Change the validated rule to Deny for Production and have the user publish the final firewall change.
 
 ## Contact form — production delivery
 
