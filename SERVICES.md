@@ -29,6 +29,8 @@ Project images must keep descriptive alternative text, explicit dimensions, lazy
 
 The general Services page closing CTA uses `CTA_Question_Image.webp` instead of an icon. Display it in a responsive media window up to 520 × 260px, aligned with the CTA copy and using the approved close crop, intrinsic dimensions and localised alternative text. It must remain compact enough to preserve the shared CTA height.
 
+The CTA keeps **Talk to sales** as the primary contact action and includes **See our work** as the secondary action. Until the portfolio page is published, the secondary action must use `/wip?for=portfolio` and preserve the active locale.
+
 ## Translation workflow
 
 English source content lives in the two HTML pages. Dedicated translations live in `service-locales/<locale>.json` for `pt-PT`, `es`, `el`, `ru`, and `he`. After editing a locale, run `node service-locales/build-bundle.cjs` and commit the regenerated `service-locales/locales.js`. Do not change or remove `data-service-key` values; they are the stable translation contract.

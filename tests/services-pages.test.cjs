@@ -19,6 +19,7 @@ test('services catalogue exposes every service without internal codes', () => {
   for (const count of ['8 services', '13 services', '11 services', '7 services', '4 services']) assert.match(html, new RegExp(count));
   assert.match(html, /class="services-cta-media"><img src="\/Images\/CTA_Question_Image\.webp"/);
   assert.doesNotMatch(html, /class="cta-mark"[\s\S]*?messages-square/);
+  assert.match(html, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/wip\?for=portfolio"[\s\S]*?See our work/);
 });
 
 test('website development page preserves commercial and portfolio requirements', () => {
@@ -59,6 +60,7 @@ test('all service locales preserve the page schema and content counts', () => {
     assert.equal((data.pages.services.catalogue.match(/service-row/g) || []).length, 43, locale);
     assert.equal((data.pages.websiteDevelopment.packages.match(/website-package-card/g) || []).length, 5, locale);
     assert.doesNotMatch(data.pages.services.catalogue, /WEB-\d+/, locale);
+    assert.match(data.pages.services.closing, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/wip\?for=portfolio"/, locale);
   }
 });
 

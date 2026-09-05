@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-05 — Services CTA portfolio action
+
+- Added a secondary `See our work` action beside `Talk to sales` in the general Services closing CTA.
+- Routed the new action to `/wip?for=portfolio` until the portfolio page is published.
+- Added the action to all six language variants and allowed the action row to wrap safely for longer translations.
+
 ## 2026-09-05 — Services closing CTA image
 
 - Replaced the decorative Services CTA icon with the approved `CTA_Question_Image.webp` artwork.
