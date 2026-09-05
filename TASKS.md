@@ -18,6 +18,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Publish the multilingual About page, Greek presentation link and confirmed social profiles.
 - [x] Remove decorative mini-titles across public pages and rebalance the About opening statement layout.
 - [x] Add consent-first Google Analytics 4 across all public pages in all six languages.
+- [x] Verify the `studio17.world` Google Search Console Domain property under `contact@studio17.world`, submit the XML sitemap and associate the Studio 17 GA4 data stream.
 - [x] Approve the article-detail layout and content-field model.
 - [x] Create the Drive template, guidance, dedicated media folder, parser, multilingual article pages, dynamic homepage feed and `/news` archive described in `ARTICLES.md`.
 - [-] Grant the production Google service account Reader access to the Article folders, deploy and verify one real published Doc end to end.

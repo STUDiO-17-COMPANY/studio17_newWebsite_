@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-05 — Google Search Console launch
+
+- Verified the `studio17.world` Domain property in Google Search Console under the approved `contact@studio17.world` account.
+- Submitted `https://www.studio17.world/sitemap.xml`; Google processed it successfully and discovered 23 URLs on the initial read.
+- Associated Search Console with the existing `H&P Domus Creative Ltd.` Google Analytics 4 property and its `Studio 17` web data stream for joined organic-search reporting.
+- Documented account ownership, processing expectations and the ongoing Search Console release check in `SEO.md`.
+
 ## 2026-09-03 — Six-language contact form QA and accessibility
 
 - Completed automated contact-form coverage in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew at desktop, mobile and the supported 320px minimum width.

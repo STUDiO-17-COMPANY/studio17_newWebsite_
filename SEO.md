@@ -2,6 +2,14 @@
 
 This document is the maintenance contract for search visibility. It covers technical discoverability and page quality; it does not promise rankings, which also depend on competition, authority, useful content and time.
 
+## Google Search Console
+
+- The Domain property `studio17.world` was verified on 2026-09-05 using the `contact@studio17.world` account.
+- `https://www.studio17.world/sitemap.xml` was submitted and processed successfully; Google discovered 23 URLs on the initial read.
+- The property is associated with the Google Analytics 4 property `H&P Domus Creative Ltd.` and its `Studio 17` web data stream for combined organic-search and on-site reporting.
+- Search Console processing is asynchronous. Newly discovered URLs, query data, indexing reports and Core Web Vitals can take several days to appear.
+- Keep ownership and reporting administration on `contact@studio17.world`; do not add the retired Studio 17 Gmail account or personal accounts as maintainers.
+
 ## Canonical public URLs
 
 - Homepage: `https://www.studio17.world/`
@@ -57,7 +65,7 @@ Studio 17 is not currently an eligible government or health authority for Google
 3. Confirm one current role URL returns HTTP 200, a unique canonical and valid `JobPosting` JSON-LD.
 4. Confirm an invented/removed role returns HTTP 404 and `noindex,follow`.
 5. Check that the sitemap contains current roles only and never contains `career-role.html` or `?id=`.
-6. After the first release, add the domain property in Google Search Console and submit `https://www.studio17.world/sitemap.xml` once. Google will then revisit it automatically.
+6. Confirm the verified `studio17.world` Search Console property still reports `https://www.studio17.world/sitemap.xml` as successfully processed. Google revisits the submitted sitemap automatically.
 7. Monitor Search Console indexing, enhancements and Core Web Vitals; fix errors before adding more page families.
 8. Confirm `/faq` returns HTTP 200, has one canonical, exposes all six reciprocal language alternatives and appears in both the human and XML sitemaps.
 9. Confirm no FAQ link still points to WIP and the complete mobile menu remains limited to Services, Work, About, News and Careers.
