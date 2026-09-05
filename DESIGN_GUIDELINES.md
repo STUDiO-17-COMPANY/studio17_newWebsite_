@@ -77,7 +77,7 @@ The sitemap establishes the template for non-homepage pages:
 - Keep portfolio imagery at its intrinsic aspect ratio with explicit dimensions and `object-fit: cover`; the complete image remains available through its project link.
 - At mobile widths, stack service, package, project and process grids into one column and retain the approved five-item mobile menu.
 - Use square dark cards, 24px grid gaps and clear link states.
-- Reuse the homepage closing CTA when there is a meaningful contact action.
+- Reuse the homepage closing CTA when there is a meaningful contact action. The general Services page is the approved media-led variation: a 16:9 image replaces the decorative icon, appears beside the copy on desktop and stacks above it below 1280px.
 - At 900px and below, stack hero content and cards without document-level horizontal overflow.
 
 Future pages may vary their content and hero image but not the shared hero geometry, shell, media treatment, palette, heading treatment, icon language, CTA or footer contract.

@@ -21,7 +21,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Verify the `studio17.world` Google Search Console Domain property under `contact@studio17.world`, submit the XML sitemap and associate the Studio 17 GA4 data stream.
 - [x] Approve the article-detail layout and content-field model.
 - [x] Create the Drive template, guidance, dedicated media folder, parser, multilingual article pages, dynamic homepage feed and `/news` archive described in `ARTICLES.md`.
-- [-] Grant the production Google service account Reader access to the Article folders, deploy and verify one real published Doc end to end.
+- [x] Grant the production Google service account Reader access to the Article folders, deploy and verify a real multilingual published Doc with separate social-sharing media end to end.
 - [x] Complete and publish the contact-form email workflow.
 - [-] Review and publish the staged Vercel country-access rule before changing it from Log to Deny.
 - [x] Create multilingual Privacy Policy, Cookie Policy and Terms pages based on the website's implemented processing.
@@ -55,13 +55,20 @@ The multilingual `/contact` page and its server-side `/api/contact` endpoint are
 
 ## Articles — production handoff
 
-- [ ] Share the article root folder with `studio17-careers-website@studio17-newsletter.iam.gserviceaccount.com` as Reader from `contact@studio17.world`.
-- [ ] Deploy the article Functions, clean route and News archive.
-- [ ] Copy the master template, upload separate cover/social images, and publish one English test article.
-- [ ] Verify the homepage card, `/news`, article page, social preview image and `/sitemap.xml` in production.
-- [ ] Add one optional translation and verify that incomplete language tabs remain hidden.
+- [x] Share the article root folder with `studio17-careers-website@studio17-newsletter.iam.gserviceaccount.com` as Reader from `contact@studio17.world`.
+- [x] Deploy the article Functions, clean route and News archive.
+- [x] Copy the master template, upload separate cover/social images, and publish the Terrassi Villa article.
+- [x] Verify the homepage card, `/news`, article page, independent social preview image and `/sitemap.xml` in production.
+- [x] Publish and verify Portuguese (Portugal) and Greek translations while keeping incomplete language tabs hidden.
 
-BLOCKED: The connected Drive editor cannot change folder permissions and the available browser session is not signed in. Permission changes also require confirmation at the final action.
+Production was rechecked on 2026-09-05: the Terrassi Villa article returned HTTP 200, exposed English, Portuguese (Portugal) and Greek alternates, and used a dedicated `/api/article-image` Open Graph image.
+
+## Trustpilot integration
+
+- [x] Replace every Trustpilot WIP destination with the official Studio 17 Trustpilot profile.
+- [x] Confirm the free-plan brand restriction: use plain-text profile links and do not publish the logo, stars, TrustScore or review-showcase widgets.
+- [x] Add the approved plain-text Trustpilot profile action beneath the homepage testimonials in all six languages.
+- [ ] Optionally add Trustpilot's official Review Collector to a post-project or client-only review-request flow after its placement and generated code are approved.
 
 ## Page-development rule
 

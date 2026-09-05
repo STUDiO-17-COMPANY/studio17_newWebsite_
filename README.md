@@ -46,6 +46,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CAREERS_AUTOMATION.md` — automatic publishing architecture, setup, security and QA guide.
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
 - `ANALYTICS.md` — GA4 Measurement ID, consent behavior, verification and maintenance guide.
+- `TRUSTPILOT.md` — official profile link, TrustBox integration contract, privacy safeguards and QA checklist.
 - `LEGAL_PAGES.md` — legal-page data inventory, publishing contract, review limits and maintenance checklist.
 - `SERVICES.md` — service catalogue, package, pricing, translation, proof-project and update contract.
 - `ARTICLES.md` — live multilingual Google Drive article contract, security, SEO, image and maintenance workflow.
@@ -100,6 +101,7 @@ node service-locales/build-bundle.cjs
 22. Keep Google Analytics behind explicit consent, preserve the production-host restriction and follow `ANALYTICS.md` whenever the Measurement ID, collected events or consent behavior changes.
 23. Publish articles only through completed copies of the Drive template; keep cover and social-share images separate and follow `ARTICLES.md`.
 24. Keep public service codes private, preserve the five website packages and follow `SERVICES.md` whenever service names, prices, inclusions or proof projects change.
+25. While Studio 17 uses Trustpilot's free plan, keep public promotion to plain-text profile links and any official Review Collector supplied in the Business Account; never scrape reviews or display the logo, stars or TrustScore outside the plan entitlement.
 
 ## Pre-launch checklist
 

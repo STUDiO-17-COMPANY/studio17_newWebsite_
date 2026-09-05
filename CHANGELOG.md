@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-09-05 — Services closing CTA image
+
+- Replaced the decorative Services CTA icon with the approved `CTA_Question_Image.webp` artwork.
+- Preserved the image's 16:9 composition in a responsive two-column desktop layout and stacked mobile layout.
+- Added intrinsic dimensions, lazy loading and descriptive alternative text.
+
+## 2026-09-05 — Homepage Trustpilot review link
+
+- Added a plain-text `See all our reviews on Trustpilot` action beneath the homepage testimonials.
+- Localised the action for English, Portuguese, Spanish, Greek, Russian and Hebrew.
+- Kept the free-plan implementation clear of Trustpilot logos, stars, scores and review widgets.
+
+## 2026-09-05 — Trustpilot links and route repair
+
+- Replaced every Trustpilot WIP destination with the official `studio17.world` Trustpilot profile and safe external-link behavior.
+- Removed visitor-specific tracking parameters from the shared profile destination and documented the free-plan restriction against displaying Trustpilot logos, stars, scores or review-showcase widgets.
+- Scoped the optional free Review Collector to an appropriate post-project or client-only review-request flow.
+- Corrected the pluralised `/services/website-developments` CTA typo on the homepage, About, FAQ and human sitemap pages.
+- Added a permanent redirect from the mistyped plural route to `/services/website-development` so previously shared links remain recoverable.
+- Reverified the live Terrassi Villa article workflow, its three published language variants and its independent social-sharing image, then reconciled the stale article backlog.
+- Added the official TrustBox implementation, consent and QA contract in `TRUSTPILOT.md`.
+
 ## 2026-09-05 — Google Search Console launch
 
 - Verified the `studio17.world` Domain property in Google Search Console under the approved `contact@studio17.world` account.

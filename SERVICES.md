@@ -27,6 +27,8 @@ The Legal Pages Setup entry means technical publication of approved text. It is 
 
 Project images must keep descriptive alternative text, explicit dimensions, lazy loading, and the approved destination.
 
+The general Services page closing CTA uses `CTA_Question_Image.webp` instead of an icon. Preserve its 16:9 composition, two-column desktop layout, stacked responsive layout, intrinsic dimensions and localised alternative text.
+
 ## Translation workflow
 
 English source content lives in the two HTML pages. Dedicated translations live in `service-locales/<locale>.json` for `pt-PT`, `es`, `el`, `ru`, and `he`. After editing a locale, run `node service-locales/build-bundle.cjs` and commit the regenerated `service-locales/locales.js`. Do not change or remove `data-service-key` values; they are the stable translation contract.

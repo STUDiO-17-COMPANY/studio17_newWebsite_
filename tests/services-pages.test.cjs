@@ -17,6 +17,8 @@ test('services catalogue exposes every service without internal codes', () => {
   assert.doesNotMatch(html, /WEB-\d+/);
   assert.equal(jsonLd(html)[0]['@type'], 'CollectionPage');
   for (const count of ['8 services', '13 services', '11 services', '7 services', '4 services']) assert.match(html, new RegExp(count));
+  assert.match(html, /class="services-cta-media"><img src="\/Images\/CTA_Question_Image\.webp"/);
+  assert.doesNotMatch(html, /class="cta-mark"[\s\S]*?messages-square/);
 });
 
 test('website development page preserves commercial and portfolio requirements', () => {
@@ -43,6 +45,7 @@ test('service cards and catalogue rows use seamless matching surfaces', () => {
   assert.doesNotMatch(css, /\.service-family-card-featured\s*\{[^}]*background:\s*var\(--blue\)/);
   assert.match(css, /\.service-category-body\s*\{[^}]*padding:\s*0;/);
   assert.match(css, /\.service-row:last-child:nth-child\(odd\)\s*\{\s*grid-column:\s*1\s*\/\s*-1;/);
+  assert.match(css, /\.services-cta-media\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9;/);
 });
 
 test('all service locales preserve the page schema and content counts', () => {

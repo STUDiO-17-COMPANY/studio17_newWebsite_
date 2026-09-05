@@ -10,6 +10,7 @@ const htmlFiles = ['index.html', 'sitemap.html', 'wip.html', 'contact.html', 'fa
 for (const file of htmlFiles) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
   assert.doesNotMatch(source, /(?:href|action)="[^"]*\.html(?:[?#"])/i, `${file} contains a public .html link`);
+  assert.doesNotMatch(source, /href="\/services\/website-developments(?:[?#"])/i, `${file} contains the obsolete plural Website Development route`);
 }
 
 const configuration = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));

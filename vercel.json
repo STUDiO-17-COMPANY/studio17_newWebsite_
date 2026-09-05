@@ -16,6 +16,7 @@
     },
     { "source": "/index", "destination": "/", "permanent": true },
     { "source": "/article", "destination": "/news", "permanent": true },
+    { "source": "/services/website-developments", "destination": "/services/website-development", "permanent": true },
     { "source": "/website-development", "destination": "/services/website-development", "permanent": true }
   ],
   "rewrites": [
