@@ -45,8 +45,8 @@ test('service cards and catalogue rows use seamless matching surfaces', () => {
   assert.doesNotMatch(css, /\.service-family-card-featured\s*\{[^}]*background:\s*var\(--blue\)/);
   assert.match(css, /\.service-category-body\s*\{[^}]*padding:\s*0;/);
   assert.match(css, /\.service-row:last-child:nth-child\(odd\)\s*\{\s*grid-column:\s*1\s*\/\s*-1;/);
-  assert.match(css, /\.services-cta-media\s*\{[^}]*width:\s*292px;[^}]*height:\s*164px;/);
-  assert.match(css, /\.services-cta-media img\s*\{[^}]*object-fit:\s*cover;[^}]*transform:\s*scale\(1\.75\);/);
+  assert.match(css, /\.services-cta-media\s*\{[^}]*width:\s*min\(520px,100%\);[^}]*aspect-ratio:\s*2\s*\/\s*1;/);
+  assert.match(css, /\.services-cta-media img\s*\{[^}]*object-fit:\s*cover;[^}]*transform:\s*scale\(1\.55\);/);
 });
 
 test('all service locales preserve the page schema and content counts', () => {

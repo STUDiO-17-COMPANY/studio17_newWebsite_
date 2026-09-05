@@ -3,7 +3,7 @@
 ## 2026-09-05 — Services closing CTA image
 
 - Replaced the decorative Services CTA icon with the approved `CTA_Question_Image.webp` artwork.
-- Matched the homepage CTA's compact 292 × 164px media window and applied a closer subject-focused crop instead of showing the full source image.
+- Enlarged the Services CTA media window to a responsive 520 × 260px maximum, aligned it with the copy and retained a close subject-focused crop without increasing the section height.
 - Added intrinsic dimensions, lazy loading and descriptive alternative text.
 
 ## 2026-09-05 — Homepage Trustpilot review link
