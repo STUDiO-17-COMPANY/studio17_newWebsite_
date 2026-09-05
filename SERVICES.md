@@ -27,7 +27,7 @@ The Legal Pages Setup entry means technical publication of approved text. It is 
 
 Project images must keep descriptive alternative text, explicit dimensions, lazy loading, and the approved destination.
 
-The general Services page closing CTA uses `CTA_Question_Image.webp` instead of an icon. Preserve its 16:9 composition, two-column desktop layout, stacked responsive layout, intrinsic dimensions and localised alternative text.
+The general Services page closing CTA uses `CTA_Question_Image.webp` instead of an icon. Display it in the same compact 292 × 164px media window as the homepage CTA, with the approved close crop, intrinsic dimensions and localised alternative text. Do not expand it to fill half of the CTA.
 
 ## Translation workflow
 
