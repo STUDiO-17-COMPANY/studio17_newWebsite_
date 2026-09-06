@@ -14,6 +14,67 @@
     description: document.querySelector('meta[name="description"]')?.content || ''
   };
 
+  const enhanceSeoCapabilities = () => {
+    if (page !== 'seo') return;
+
+    const grid = document.querySelector('.seo-capability-grid');
+    if (!grid) return;
+
+    grid.classList.add('is-interactive');
+    [...grid.querySelectorAll(':scope > article')].forEach((card, index) => {
+      const heading = card.querySelector('h3');
+      const description = card.querySelector(':scope > p');
+      const list = card.querySelector(':scope > ul');
+      if (!heading || !description || !list) return;
+
+      const titleId = `seo-capability-title-${index + 1}`;
+      const detailId = `seo-capability-detail-${index + 1}`;
+      card.tabIndex = capabilityDesktopQuery.matches ? 0 : -1;
+      heading.id = titleId;
+
+      const detail = document.createElement('div');
+      detail.className = 'seo-capability-detail';
+      detail.id = detailId;
+      detail.append(description, list);
+
+      const toggle = document.createElement('button');
+      toggle.className = 'seo-capability-toggle';
+      toggle.type = 'button';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-controls', detailId);
+      toggle.setAttribute('aria-labelledby', titleId);
+      toggle.innerHTML = '<i data-lucide="chevron-down" aria-hidden="true"></i>';
+
+      card.append(toggle, detail);
+    });
+  };
+
+  const capabilityGrid = page === 'seo' ? document.querySelector('.seo-capability-grid') : null;
+  const capabilityDesktopQuery = window.matchMedia('(min-width: 901px)');
+  capabilityDesktopQuery.addEventListener?.('change', event => {
+    capabilityGrid?.querySelectorAll(':scope > article').forEach(card => {
+      card.tabIndex = event.matches ? 0 : -1;
+      if (event.matches) {
+        card.classList.remove('is-expanded');
+        card.querySelector('.seo-capability-toggle')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  capabilityGrid?.addEventListener('click', event => {
+    if (capabilityDesktopQuery.matches) return;
+
+    const card = event.target.closest('article');
+    if (!card || !capabilityGrid.contains(card)) return;
+
+    const shouldExpand = !card.classList.contains('is-expanded');
+    capabilityGrid.querySelectorAll(':scope > article').forEach(item => {
+      const isExpanded = item === card && shouldExpand;
+      item.classList.toggle('is-expanded', isExpanded);
+      item.querySelector('.seo-capability-toggle')?.setAttribute('aria-expanded', String(isExpanded));
+    });
+  });
+
   const updateMetadata = metadata => {
     document.title = metadata.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', metadata.description);
@@ -51,6 +112,7 @@
     });
     updateMetadata(language === 'en' ? englishMetadata : (locale?.meta || englishMetadata));
     updateInsertedLinks(language);
+    enhanceSeoCapabilities();
     window.lucide?.createIcons({ attrs: { 'stroke-width': 2 } });
   };
 

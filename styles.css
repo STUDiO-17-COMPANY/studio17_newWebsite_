@@ -1428,6 +1428,26 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-capability-grid ul { display: grid; gap: 9px; margin: auto 0 0; padding: 19px 0 0; border-top: 1px solid #d5dce7; list-style: none; }
 .seo-capability-grid li { position: relative; padding-inline-start: 18px; color: #435064; font-size: 13px; line-height: 1.42; }
 .seo-capability-grid li::before { content: ""; position: absolute; top: .48em; inset-inline-start: 0; width: 7px; height: 7px; background: var(--blue); }
+.seo-capability-toggle { display: none; }
+
+@media (min-width: 901px) {
+  .seo-capability-grid.is-interactive { height: 440px; display: flex; gap: 1px; overflow: hidden; padding: 1px; background: #cbd4e1; }
+  .seo-capability-grid.is-interactive > article { position: relative; min-width: 0; min-height: 0; flex: 1 1 0; overflow: hidden; padding: 28px 24px; border: 0; background: var(--paper); transform: none; transition: flex-grow .48s var(--ease), background .28s ease; }
+  .seo-capability-grid.is-interactive:hover > article,
+  .seo-capability-grid.is-interactive:focus-within > article { flex-grow: .75; }
+  .seo-capability-grid.is-interactive > article:hover,
+  .seo-capability-grid.is-interactive > article:focus-within { z-index: 1; flex-grow: 3; background: var(--white); }
+  .seo-capability-grid.is-interactive > article:focus-visible { outline: 2px solid var(--blue); outline-offset: -3px; }
+  .seo-capability-grid.is-interactive > article > .lucide { flex: 0 0 auto; margin-bottom: 32px; }
+  .seo-capability-grid.is-interactive h3 { max-width: 250px; margin-bottom: 0; font-size: clamp(17px,1.3vw,21px); overflow-wrap: anywhere; transition: font-size .35s var(--ease); }
+  .seo-capability-grid.is-interactive > article:hover h3,
+  .seo-capability-grid.is-interactive > article:focus-within h3 { font-size: 23px; }
+  .seo-capability-detail { min-width: 0; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(12px); transition: opacity .18s ease, transform .35s var(--ease); }
+  .seo-capability-grid.is-interactive > article:hover .seo-capability-detail,
+  .seo-capability-grid.is-interactive > article:focus-within .seo-capability-detail { max-height: 320px; opacity: 1; transform: translateY(0); transition-delay: .1s; }
+  .seo-capability-detail > p { margin: 12px 0 20px; color: #596477; font-size: 14px; line-height: 1.55; }
+  .seo-capability-detail > ul { margin-top: 0; }
+}
 
 .seo-method { background: #edf2f9; }
 .seo-method ol { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; margin: 0; padding: 1px; background: #cbd4e1; list-style: none; }
@@ -1502,6 +1522,19 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-problem-grid article { min-height: 220px; }
   .seo-growth-map { grid-template-columns: 1fr; }
   .seo-growth-principle { min-height: 360px; }
+  .seo-capability-grid.is-interactive { display: grid; grid-template-columns: 1fr; gap: 1px; padding: 1px; background: #cbd4e1; }
+  .seo-capability-grid.is-interactive > article { position: relative; min-height: 94px; display: grid; grid-template-columns: 34px minmax(0,1fr) 34px; gap: 16px; align-items: center; padding: 24px; border: 0; background: var(--paper); transform: none; }
+  .seo-capability-grid.is-interactive > article:hover { border: 0; transform: none; }
+  .seo-capability-grid.is-interactive > article > .lucide { width: 28px; height: 28px; margin: 0; }
+  .seo-capability-grid.is-interactive h3 { margin: 0; font-size: 19px; }
+  .seo-capability-detail { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .42s var(--ease), opacity .24s ease, padding-top .42s var(--ease); }
+  .seo-capability-grid.is-interactive > article.is-expanded .seo-capability-detail { max-height: 420px; padding-top: 10px; opacity: 1; }
+  .seo-capability-detail > p { margin: 0 0 18px; color: #596477; font-size: 14px; line-height: 1.55; }
+  .seo-capability-detail > ul { margin-top: 0; }
+  .seo-capability-toggle { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #cbd4e1; color: var(--blue); background: var(--white); }
+  .seo-capability-toggle .lucide { width: 18px; height: 18px; transition: transform .3s var(--ease); }
+  .seo-capability-grid.is-interactive > article.is-expanded .seo-capability-toggle .lucide { transform: rotate(180deg); }
+  .seo-capability-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
   .seo-method ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .seo-ai-grid { grid-template-columns: 1fr; }
   .seo-ai-media { min-height: 360px; }
@@ -1528,8 +1561,9 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-growth-principle h3 { font-size: 27px; }
   .seo-growth-decisions article { grid-template-columns: 36px minmax(0,1fr); gap: 12px; padding: 23px 20px; }
   .seo-growth-route li:not(:last-child)::after { top: auto; right: auto; bottom: -6px; left: 28px; }
-  .seo-capability-grid article { min-height: 0; padding: 24px; }
-  .seo-capability-grid article > .lucide { margin-bottom: 28px; }
+  .seo-capability-grid:not(.is-interactive) article { min-height: 0; padding: 24px; }
+  .seo-capability-grid:not(.is-interactive) article > .lucide { margin-bottom: 28px; }
+  .seo-capability-grid.is-interactive > article { grid-template-columns: 30px minmax(0,1fr) 32px; gap: 13px; padding: 21px 18px; }
   .seo-method li { min-height: 250px; }
   .seo-ai-media { min-height: 260px; }
   .seo-ai-copy { padding: 36px 24px; }

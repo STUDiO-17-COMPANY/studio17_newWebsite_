@@ -75,6 +75,7 @@ test('SEO page is an international, evidence-safe commercial service page', () =
 
 test('service cards and catalogue rows use seamless matching surfaces', () => {
   const css = read('styles.css');
+  const behavior = read('service-pages.js');
   assert.doesNotMatch(css, /\.service-family-card-featured\s*\{[^}]*background:\s*var\(--blue\)/);
   assert.match(css, /\.service-category-body\s*\{[^}]*padding:\s*0;/);
   assert.match(css, /\.service-row:last-child:nth-child\(odd\)\s*\{\s*grid-column:\s*1\s*\/\s*-1;/);
@@ -82,6 +83,11 @@ test('service cards and catalogue rows use seamless matching surfaces', () => {
   assert.match(css, /\.services-cta-media img\s*\{[^}]*object-fit:\s*cover;[^}]*transform:\s*scale\(1\.55\);/);
   assert.match(css, /\.seo-growth-principle\s*\{[^}]*Every_priority_query_needs_a_purpose_image\.webp[^}]*cover no-repeat;/);
   assert.match(css, /\.seo-growth-principle > a\s*\{[^}]*position:\s*absolute;[^}]*inset-inline-end:\s*0;[^}]*bottom:\s*0;[^}]*backdrop-filter:\s*blur\(8px\);/);
+  assert.match(css, /\.seo-capability-grid\.is-interactive\s*\{[^}]*height:\s*440px;[^}]*display:\s*flex;[^}]*overflow:\s*hidden;/);
+  assert.match(css, /\.seo-capability-grid\.is-interactive > article:hover[\s\S]*?flex-grow:\s*3;/);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*?\.seo-capability-grid\.is-interactive > article\.is-expanded \.seo-capability-detail/);
+  assert.match(behavior, /enhanceSeoCapabilities[\s\S]*?seo-capability-toggle[\s\S]*?aria-expanded/);
+  assert.match(behavior, /matchMedia\('\(min-width: 901px\)'\)[\s\S]*?is-expanded/);
 });
 
 test('all service locales preserve the page schema and content counts', () => {
