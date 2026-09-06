@@ -6,6 +6,7 @@
 - Structured the page as a visual growth journey with evidence-safe proof, clear process, decision-focused FAQs and SEO-preselected contact CTAs without ranking guarantees or invented results.
 - Published English, Greek and Russian content with page-scoped language enforcement, reciprocal metadata, `Service` structured data, human/XML sitemap coverage and clean Vercel/local routes.
 - Replaced the SEO WIP destination in shared desktop/mobile service navigation, added SEO to the contact allowlist and documented the page contract and tests.
+- Replaced the generic growth-system strip with a specific demand, website-experience and business-outcome decision map, and applied the supplied `SEO_heroimage.webp` and `CTA_SEO_MainIMAGE.webp` assets at their intended hero and CTA placements.
 
 ## 2026-09-06 — Snapdrop partner
 

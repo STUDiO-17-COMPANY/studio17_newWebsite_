@@ -239,10 +239,11 @@ Desktop lists scroll vertically within the fixed English Figma panel when necess
 ### Commercial SEO page
 
 - Use the shared media hero and strong blue title emphasis; do not add eyebrow or mini-title labels.
-- Present the commercial journey visually: demand → visibility → qualified traffic → website experience → conversion → business growth.
+- Present the commercial logic through the query/page/action decision map: demand identifies the right opportunity, website experience determines what must change, and meaningful actions determine the next priority. Follow it with the four-step research, roadmap, implementation and measurement route.
 - Keep capability, method, proof and process sections scannable through square cards, numbered steps and strong alternating surfaces rather than a long wall of text.
 - SEO proof must be verifiable. Link real work and independent feedback without inventing rankings, traffic gains, case-study outcomes or ratings.
 - The page language selector exposes only English, Greek and Russian. Unsupported language URLs normalize to an available language so URL, metadata and visible copy stay aligned.
+- Use the supplied 1744 × 296 SEO hero without changing the shared hero height. Use the supplied CTA asset in the established 520 × 260 service-CTA media window with a restrained hover scale and responsive natural crop.
 
 ## 7. Icon policy
 

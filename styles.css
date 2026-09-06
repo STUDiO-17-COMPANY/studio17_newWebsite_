@@ -1390,12 +1390,24 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-problem-grid p { margin: 0; color: #596477; font-size: 15px; line-height: 1.62; }
 
 .seo-growth-system { margin-top: var(--section-gap); padding-block: 82px 96px; color: var(--white); background: var(--ink); }
-.seo-growth-chain { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 1px; margin: 0; padding: 1px; background: rgba(255,255,255,.18); list-style: none; counter-reset: seo-chain; }
-.seo-growth-chain li { position: relative; min-height: 176px; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; background: #121d33; counter-increment: seo-chain; }
-.seo-growth-chain li::before { content: "0" counter(seo-chain); position: absolute; top: 21px; inset-inline-start: 24px; color: #8fb1ff; font-size: 11px; font-weight: 850; letter-spacing: .08em; }
-.seo-growth-chain li:not(:last-child)::after { content: ""; position: absolute; z-index: 1; top: 38px; inset-inline-end: -8px; width: 15px; height: 15px; background: var(--blue); transform: rotate(45deg); }
-.seo-growth-chain strong { margin-bottom: 8px; font-size: 18px; line-height: 1.2; letter-spacing: -.02em; }
-.seo-growth-chain span { color: #aebbd0; font-size: 12px; line-height: 1.4; }
+.seo-growth-map { display: grid; grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr); gap: 1px; padding: 1px; background: rgba(255,255,255,.18); }
+.seo-growth-principle { min-height: 432px; display: flex; flex-direction: column; padding: 34px; background: var(--blue); }
+.seo-growth-principle > .lucide { width: 36px; height: 36px; margin-bottom: auto; }
+.seo-growth-principle h3 { max-width: 410px; margin: 58px 0 15px; font-size: 30px; line-height: 1.1; letter-spacing: -.04em; }
+.seo-growth-principle p { max-width: 480px; margin: 0 0 28px; color: rgba(255,255,255,.9); font-size: 16px; line-height: 1.62; }
+.seo-growth-principle a { display: inline-flex; width: fit-content; align-items: center; gap: 10px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.32); font-size: 14px; font-weight: 800; }
+.seo-growth-principle a .lucide { width: 17px; height: 17px; }
+.seo-growth-decisions { display: grid; gap: 1px; background: rgba(255,255,255,.18); }
+.seo-growth-decisions article { display: grid; grid-template-columns: 48px minmax(0,1fr); gap: 20px; align-items: start; padding: 25px 28px; background: #121d33; }
+.seo-growth-decisions article > span { padding-top: 5px; color: #8fb1ff; font-size: 12px; font-weight: 850; letter-spacing: .08em; }
+.seo-growth-decisions h3 { margin: 0 0 7px; font-size: 21px; line-height: 1.15; letter-spacing: -.03em; }
+.seo-growth-decisions p { margin: 0 0 9px; color: #b5c1d3; font-size: 14px; line-height: 1.52; }
+.seo-growth-decisions strong { color: var(--white); font-size: 14px; line-height: 1.45; }
+.seo-growth-route { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; margin: 24px 0 0; padding: 1px; background: rgba(255,255,255,.18); list-style: none; }
+.seo-growth-route li { position: relative; min-height: 112px; display: flex; flex-direction: column; justify-content: center; padding: 22px 25px; background: #121d33; }
+.seo-growth-route li:not(:last-child)::after { content: ""; position: absolute; z-index: 1; top: 49px; inset-inline-end: -7px; width: 13px; height: 13px; background: var(--blue); transform: rotate(45deg); }
+.seo-growth-route strong { margin-bottom: 7px; font-size: 17px; line-height: 1.2; }
+.seo-growth-route span { color: #aebbd0; font-size: 14px; line-height: 1.4; }
 
 .seo-capabilities { background: var(--white); }
 .seo-capability-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
@@ -1455,11 +1467,12 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-process h3 { margin: 0 0 11px; font-size: 20px; line-height: 1.18; letter-spacing: -.03em; }
 .seo-process p { margin: 0; color: #596477; font-size: 13px; line-height: 1.58; }
 .seo-closing-cta { margin-top: var(--section-gap); }
+.seo-cta-media { width: min(520px,100%); aspect-ratio: 2 / 1; overflow: hidden; background: var(--ink); }
+.seo-cta-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .45s var(--ease); }
+.seo-closing-cta:hover .seo-cta-media img { transform: scale(1.025); }
 .seo-closing-cta .cta-actions { flex-wrap: wrap; }
 
 @media (max-width: 1279px) {
-  .seo-growth-chain { grid-template-columns: repeat(3,minmax(0,1fr)); }
-  .seo-growth-chain li:nth-child(3)::after { display: none; }
   .seo-capability-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .seo-ai-copy { padding: 48px 44px; }
   .seo-why-grid, .seo-process ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -1478,9 +1491,8 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-process, .seo-faq { padding-block: 60px 76px; }
   .seo-problem-grid, .seo-proof-grid { grid-template-columns: 1fr; }
   .seo-problem-grid article { min-height: 220px; }
-  .seo-growth-chain { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .seo-growth-chain li:nth-child(3)::after { display: block; }
-  .seo-growth-chain li:nth-child(even)::after { display: none; }
+  .seo-growth-map { grid-template-columns: 1fr; }
+  .seo-growth-principle { min-height: 360px; }
   .seo-method ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .seo-ai-grid { grid-template-columns: 1fr; }
   .seo-ai-media { min-height: 360px; }
@@ -1502,9 +1514,11 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 }
 
 @media (max-width: 600px) {
-  .seo-growth-chain, .seo-capability-grid, .seo-method ol, .seo-why-grid, .seo-process ol { grid-template-columns: 1fr; }
-  .seo-growth-chain li { min-height: 142px; }
-  .seo-growth-chain li:not(:last-child)::after, .seo-growth-chain li:nth-child(3)::after { top: auto; right: auto; bottom: -7px; left: 28px; display: block; }
+  .seo-growth-route, .seo-capability-grid, .seo-method ol, .seo-why-grid, .seo-process ol { grid-template-columns: 1fr; }
+  .seo-growth-principle { min-height: 390px; padding: 26px; }
+  .seo-growth-principle h3 { font-size: 27px; }
+  .seo-growth-decisions article { grid-template-columns: 36px minmax(0,1fr); gap: 12px; padding: 23px 20px; }
+  .seo-growth-route li:not(:last-child)::after { top: auto; right: auto; bottom: -6px; left: 28px; }
   .seo-capability-grid article { min-height: 0; padding: 24px; }
   .seo-capability-grid article > .lucide { margin-bottom: 28px; }
   .seo-method li { min-height: 250px; }

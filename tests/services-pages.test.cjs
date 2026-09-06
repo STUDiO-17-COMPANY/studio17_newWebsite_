@@ -49,12 +49,17 @@ test('SEO page is an international, evidence-safe commercial service page', () =
   for (const language of ['x-default', 'en', 'el', 'ru']) assert.match(html, new RegExp(`hreflang="${language}"`));
   for (const language of ['pt-PT', 'es', 'he']) assert.doesNotMatch(html, new RegExp(`hreflang="${language}"`));
   assert.match(html, /<h1[^>]*><span>SEO services<\/span> that connect search demand to growth\.<\/h1>/);
+  assert.match(html, /<div class="hero-media"[^>]*><img src="\/Images\/SEO_heroimage\.webp" alt="" width="1744" height="296">/);
   assert.equal((html.match(/class="seo-capability-grid"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<article>/g) || []).length, 9);
-  assert.equal((html.match(/class="seo-growth-chain"[\s\S]*?<\/ol>/)?.[0].match(/<li>/g) || []).length, 6);
+  assert.match(html, /<span>We connect the query,<\/span> the page and the business action\./);
+  assert.doesNotMatch(html, /SEO is a growth system/);
+  assert.equal((html.match(/class="seo-growth-decisions"[\s\S]*?<\/div><\/div><ol class="seo-growth-route"/)?.[0].match(/<article>/g) || []).length, 3);
+  assert.equal((html.match(/class="seo-growth-route"[\s\S]*?<\/ol>/)?.[0].match(/<li>/g) || []).length, 4);
   assert.equal((html.match(/class="seo-process"[\s\S]*?<\/section>/)?.[0].match(/<li>/g) || []).length, 5);
   assert.equal((html.match(/class="website-faq-list"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<details>/g) || []).length, 7);
   for (const destination of ['/contact?service=seo', '/services/website-development', '/news', 'https://www.trustpilot.com/review/studio17.world']) assert.ok(html.includes(destination), destination);
   assert.match(html, /We do not present broader client work as invented SEO results/);
+  assert.match(html, /class="seo-cta-media"[^>]*>[\s\S]*?src="\/Images\/CTA_SEO_MainIMAGE\.webp"[^>]*width="462" height="260"/);
   assert.doesNotMatch(html, /aggregateRating|"review"\s*:/);
 
   const structured = jsonLd(html)[0];
@@ -94,7 +99,9 @@ test('SEO page translations are complete only for the approved Greek and Russian
     const page = require(path.join(root, 'service-locales', `${locale}.json`)).pages.seo;
     assert.deepEqual(Object.keys(page), englishKeys, locale);
     assert.equal((page.capabilities.match(/<article>/g) || []).length, 9, locale);
-    assert.equal((page.growthSystem.match(/<li>/g) || []).length, 6, locale);
+    assert.equal((page.growthSystem.match(/seo-growth-decisions/g) || []).length, 1, locale);
+    assert.equal((page.growthSystem.match(/<article\b/g) || []).length, 4, locale);
+    assert.equal((page.growthSystem.match(/<li>/g) || []).length, 4, locale);
     assert.equal((page.method.match(/<li>/g) || []).length, 4, locale);
     assert.equal((page.process.match(/<li>/g) || []).length, 5, locale);
     assert.equal((page.faq.match(/<details>/g) || []).length, 7, locale);

@@ -22,7 +22,9 @@ The Legal Pages Setup entry means technical publication of approved text. It is 
 
 ## SEO service page
 
-The SEO page is an international, high-intent landing page. It presents SEO as a connected path from search demand and visibility to qualified traffic, website experience, conversion and business growth. Its scope covers strategy and keyword research, Technical SEO, On-page SEO, Local SEO, Content SEO, International SEO, Google Business Profile and Maps, Analytics and Search Console, AI Search/GEO, and continuous SEO.
+The SEO page is an international, high-intent landing page. Its decision map connects each priority query to a useful page and measurable business action through three concrete lenses: demand, website experience and outcome. The delivery route then moves through research, roadmap, implementation and measurement. Its scope covers strategy and keyword research, Technical SEO, On-page SEO, Local SEO, Content SEO, International SEO, Google Business Profile and Maps, Analytics and Search Console, AI Search/GEO, and continuous SEO.
+
+Use `SEO_heroimage.webp` as the page hero at its native 1744 × 296 ratio. The final CTA uses `CTA_SEO_MainIMAGE.webp` inside the same 520 × 260 visual window established for service CTAs; keep it cropped with `object-fit: cover` and never stretch the source.
 
 Keep the page commercially useful without unsupported promises. Never guarantee rankings, invent client SEO results, ratings or review data, or imply location-specific expertise that has not been approved. Proof may link only to real published work, the official Trustpilot profile and approved Studio 17 insights. Visible FAQs remain semantic HTML; do not add `FAQPage` structured data while the site is not eligible for that Google rich result.
 
