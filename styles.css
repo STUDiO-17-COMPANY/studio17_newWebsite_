@@ -645,12 +645,10 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .about-team-card > h3 { margin-top: 19px; }
 .about-team-card > p { margin: 0; color: #657084; font-size: 14px; }
 .about-team-socials { display: flex; flex: 0 0 auto; gap: 8px; }
-.about-team-social-link { display: block; width: 40px; height: 40px; overflow: hidden; background: var(--ink); transition: background-color .2s ease, transform .2s var(--ease); }
-.about-team-social-link:hover { background: var(--blue); transform: translateY(-3px); }
+.about-team-social-link { display: grid; width: 34px; height: 40px; place-items: center; background: transparent; transition: opacity .2s ease, transform .2s var(--ease); }
+.about-team-social-link:hover { opacity: .62; transform: translateY(-3px); }
 .about-team-social-link:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-.about-team-social-link span { display: block; width: 40px; height: 40px; background-image: url("Images/footer-socials.png"); background-repeat: no-repeat; background-size: 327px 51px; }
-.about-team-social-link.social-instagram span { background-position: -48px center; }
-.about-team-social-link.social-linkedin span { background-position: -147px center; }
+.about-team-social-link img { display: block; width: 24px; height: 28px; object-fit: contain; }
 .about-team-link { display: flex; justify-content: flex-end; margin-top: 34px; }
 .about-culture { margin-top: var(--section-gap); padding: 82px 0 90px; background: var(--paper); }
 .about-culture-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }

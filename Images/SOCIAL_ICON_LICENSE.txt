@@ -1,0 +1,7 @@
+LinkedIn and Instagram brand glyphs used in the About founder card are from Font Awesome Free.
+
+Source: https://github.com/FortAwesome/Font-Awesome/tree/6.x/svgs/brands
+License: CC BY 4.0
+License text: https://creativecommons.org/licenses/by/4.0/
+
+The icons are stored locally as transparent SVG files and are not loaded from a third-party CDN.

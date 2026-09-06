@@ -3,7 +3,7 @@
 ## 2026-09-06 — Founder social profile actions
 
 - Added the approved Hugo Filipe LinkedIn and Instagram destinations beside his name and role in the About founders carousel.
-- Reused the website's existing social brand artwork, added translated accessible labels and safe external-link behavior.
+- Replaced the navy-backed footer sprite with locally stored transparent brand SVGs, added translated accessible labels and safe external-link behavior.
 - Kept Pedro's card free of empty or assumed profile links until his official destinations are supplied.
 
 ## 2026-09-06 — About, Our Story and Team
