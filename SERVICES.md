@@ -31,7 +31,7 @@ Domain, hosting, licences, paid tools, copywriting, photography, translations, e
 
 Every application CTA uses `/contact?service=free-website`, which is accepted by the server-side contact allowlist and labelled as a Free Website application. The page uses all six published languages and retains Hebrew RTL support.
 
-The page order is fixed: shared hero; separated four-point credibility section; three supplied showcase images in a horizontal carousel; Who it is for with an application CTA; exact inclusions; €0 statement; real Studio 17 work carousel; five-step timeline with an application CTA; applicant handover with Domain and Google Business Profile support actions; Free versus Paid comparison; value statement; two-column desktop FAQ; compact image-led CTA. The real-work carousel currently contains Terrassi Villa and PHÓS Optics. The final CTA uses `Free Website CTA Imaghe.webp` as supplied and should retain a wide crop.
+The page order is fixed: shared hero; separated four-point credibility section; three supplied showcase images in uncropped 16:9 carousel frames with controls beside the title; Who it is for with an application CTA; exact inclusions in four unnumbered groups; €0 statement; real Studio 17 work carousel; five-step timeline with an application CTA; applicant handover with Domain and Google Business Profile support actions; Free versus Paid comparison; value statement; two-column desktop FAQ; compact image-led CTA. The real-work carousel currently contains Terrassi Villa and PHÓS Optics. The final CTA uses `Free Website CTA Imaghe.webp` as supplied and includes both the Free Website application and website-quote contact routes.
 
 ## SEO service page
 

@@ -53,12 +53,14 @@ test('free website page is transparent, lead-ready and translated in all site la
   assert.equal((html.match(/class="edge-track horizontal-track free-showcase-track"[\s\S]*?<\/section>/)?.[0].match(/<figure>/g) || []).length, 3);
   assert.match(html, /data-carousel-prev="free-showcase-track"/);
   assert.match(html, /data-carousel-next="free-showcase-track"/);
+  assert.doesNotMatch(html, /Three visual directions show/);
   assert.equal((html.match(/class="free-work-card"/g) || []).length, 2);
   assert.match(html, /data-carousel-prev="free-work-track"/);
   assert.match(html, /data-carousel-next="free-work-track"/);
   const inclusions = html.match(/class="free-inclusion-grid"[\s\S]*?<\/section>/)?.[0] || '';
   assert.equal((inclusions.match(/<article>/g) || []).length, 4);
   assert.equal((inclusions.match(/<li>/g) || []).length, 21);
+  assert.doesNotMatch(inclusions, /<span>0[1-4]<\/span>/);
   assert.equal((html.match(/class="website-faq-list[^"]*"[\s\S]*?<\/section>/)?.[0].match(/<details>/g) || []).length, 8);
   assert.match(html, /Applying does not guarantee selection/);
   assert.match(html, /External and ongoing costs may apply/);
@@ -69,6 +71,8 @@ test('free website page is transparent, lead-ready and translated in all site la
   assert.match(html, /data-service-key="processAction"[\s\S]*?contact\?service=free-website/);
   assert.match(html, /data-service-key="preparationActions"[\s\S]*?contact\?service=website[\s\S]*?contact\?service=seo/);
   assert.ok(html.includes('/contact?service=free-website'));
+  assert.match(html, /Get your Quoted website/);
+  assert.match(html, /href="\/contact\?service=website">Get your Quoted website/);
   const structured = jsonLd(html)[0];
   assert.equal(structured['@type'], 'Service');
   assert.equal(structured.offers, undefined);
@@ -82,6 +86,9 @@ test('free website page is transparent, lead-ready and translated in all site la
     const page = context.window.Studio17ServiceLocaleData[locale].freeWebsite;
     for (const key of expectedKeys) assert.ok(page[key], `${locale}: missing ${key}`);
     assert.equal((page.inclusions.match(/<li>/g) || []).length, 21, locale);
+    assert.doesNotMatch(page.inclusions, /<span>0[1-4]<\/span>/, locale);
+    assert.doesNotMatch(page.showcaseHeading, /<p>/, locale);
+    assert.match(page.closing, /\/contact\?service=website/, locale);
     assert.equal((page.faq.match(/<details>/g) || []).length, 8, locale);
   }
 });

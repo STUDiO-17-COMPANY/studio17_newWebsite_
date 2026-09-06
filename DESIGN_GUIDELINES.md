@@ -252,15 +252,15 @@ Desktop lists scroll vertically within the fixed English Figma panel when necess
 ### Free Website page
 
 - Treat the page as a qualification journey: explain who fits, enumerate the exact scope, show what the applicant must prepare, explain the process and state boundaries before the final CTA.
-- Keep the 21 inclusions visible in four numbered groups and preserve their 6 + 7 + 4 + 4 structure in every language.
+- Keep the 21 inclusions visible in four unnumbered, icon-led groups and preserve their 6 + 7 + 4 + 4 structure in every language.
 - Never imply that every applicant will be selected. State that the Studio 17 design and development fee is waived only for selected suitable businesses and the agreed one-page scope.
 - Separate external and ongoing costs from the free scope. Do not promise legal compliance; the client supplies accurate approved business and legal information.
 - Send every application action to `/contact?service=free-website`. The contact workflow must keep that exact value in its visible option list and server-side allowlist.
 - Publish the same complete content in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew, including metadata and RTL layout support.
-- Place the credibility strip one standard section gap below the hero so it reads as an independent section. Present all three supplied showcase images in one keyboard-operable horizontal carousel. Follow with audience fit, inclusions, the strong €0 statement, real-work carousel, process, applicant requirements, comparison, value, FAQ and final CTA in that order.
+- Place the credibility strip one standard section gap below the hero so it reads as an independent section. Present all three supplied showcase images uncropped in 16:9 frames inside one keyboard-operable horizontal carousel; keep its controls directly beside the title and do not add supporting copy to that heading row. Follow with audience fit, inclusions, the strong €0 statement, real-work carousel, process, applicant requirements, comparison, value, FAQ and final CTA in that order.
 - Keep the FAQ in two equal desktop columns with four questions per side. Collapse to one logical reading column at 900px and below.
 - The value statement uses the existing €950 Website – Starter offer only as a crossed-out comparable reference; €0 must be the dominant number and unmistakably presented as the applicant’s Studio 17 design and development fee. State that third-party costs are excluded.
-- Use `Free Website CTA Imaghe.webp` in the established compact 520 × 260 service-CTA window without artificial zoom. Keep Terrassi Villa and PHÓS Optics in the real-work carousel until more approved projects are supplied.
+- Use `Free Website CTA Imaghe.webp` in the established compact 520 × 260 service-CTA window without artificial zoom. Keep both the free application action and the website quote contact action visible. Keep Terrassi Villa and PHÓS Optics in the real-work carousel until more approved projects are supplied.
 - Keep an application CTA after Who it is for and after How it works. Under applicant requirements, offer separate Domain and Google Business Profile assistance actions through the relevant contact routes.
 
 ## 7. Icon policy

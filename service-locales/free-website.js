@@ -219,3 +219,38 @@ Object.entries(window.Studio17FreeWebsiteCorrections || {}).forEach(([locale, co
   Object.assign(window.Studio17ServiceLocaleData?.[locale]?.freeWebsite || {}, content);
 });
 delete window.Studio17FreeWebsiteCorrections;
+
+/* Final design pass: keep the showcase heading concise, remove decorative card
+   numbering, and expose both the free application and paid quote routes. */
+(() => {
+  const pages = window.Studio17ServiceLocaleData || {};
+  const content = {
+    'pt-PT': {
+      showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>Um website real,</span> criado à volta da sua marca.</h2>',
+      closing: '<h2 class="design-heading" id="free-website-cta-title">O seu próximo website pode custar <span>€0.</span></h2><p>Conte-nos sobre o seu negócio. Nós construímo-lo.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">Candidatar-me a um website gratuito <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">Pedir orçamento para o meu website <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
+    },
+    es: {
+      showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>Un sitio web real,</span> creado alrededor de tu marca.</h2>',
+      closing: '<h2 class="design-heading" id="free-website-cta-title">Tu próximo sitio web podría costar <span>€0.</span></h2><p>Cuéntanos sobre tu negocio. Nosotros lo construiremos.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">Solicitar un sitio web gratuito <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">Pedir presupuesto para mi sitio web <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
+    },
+    el: {
+      showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>Μια πραγματική ιστοσελίδα,</span> σχεδιασμένη γύρω από το brand σας.</h2>',
+      closing: '<h2 class="design-heading" id="free-website-cta-title">Η επόμενη ιστοσελίδα σας μπορεί να κοστίσει <span>€0.</span></h2><p>Μιλήστε μας για την επιχείρησή σας. Εμείς θα τη δημιουργήσουμε.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">Αίτηση για δωρεάν ιστοσελίδα <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">Ζητήστε προσφορά ιστοσελίδας <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
+    },
+    ru: {
+      showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>Настоящий сайт,</span> созданный вокруг вашего бренда.</h2>',
+      closing: '<h2 class="design-heading" id="free-website-cta-title">Ваш следующий сайт может стоить <span>€0.</span></h2><p>Расскажите нам о вашем бизнесе. Мы создадим сайт.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">Подать заявку на бесплатный сайт <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">Получить предложение на сайт <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
+    },
+    he: {
+      showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>אתר אמיתי,</span> שמעוצב סביב המותג שלכם.</h2>',
+      closing: '<h2 class="design-heading" id="free-website-cta-title">האתר הבא שלכם יכול לעלות <span>€0.</span></h2><p>ספרו לנו על העסק שלכם. אנחנו נבנה אותו.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">הגישו בקשה לאתר ללא עלות <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">קבלו הצעת מחיר לאתר <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
+    }
+  };
+
+  Object.entries(content).forEach(([locale, updates]) => {
+    const page = pages[locale]?.freeWebsite;
+    if (!page) return;
+    Object.assign(page, updates);
+    page.inclusions = page.inclusions?.replace(/<span>0[1-4]<\/span>/g, '');
+  });
+})();
