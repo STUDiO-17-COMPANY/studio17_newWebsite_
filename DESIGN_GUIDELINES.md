@@ -257,10 +257,11 @@ Desktop lists scroll vertically within the fixed English Figma panel when necess
 - Separate external and ongoing costs from the free scope. Do not promise legal compliance; the client supplies accurate approved business and legal information.
 - Send every application action to `/contact?service=free-website`. The contact workflow must keep that exact value in its visible option list and server-side allowlist.
 - Publish the same complete content in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew, including metadata and RTL layout support.
-- Use the credibility strip and supplied three-image showcase immediately after the hero. Follow with audience fit, inclusions, the strong €0 statement, real-work carousel, process, applicant requirements, comparison, value, FAQ and final CTA in that order.
+- Place the credibility strip one standard section gap below the hero so it reads as an independent section. Present all three supplied showcase images in one keyboard-operable horizontal carousel. Follow with audience fit, inclusions, the strong €0 statement, real-work carousel, process, applicant requirements, comparison, value, FAQ and final CTA in that order.
 - Keep the FAQ in two equal desktop columns with four questions per side. Collapse to one logical reading column at 900px and below.
-- The value statement uses the existing €950 Website – Starter offer as the comparable reference and must state that third-party costs are excluded.
-- Use `Free Website CTA Imaghe.webp` in a large 16:9 final-CTA window without the former artificial zoom. Keep Terrassi Villa and PHÓS Optics in the real-work carousel until more approved projects are supplied.
+- The value statement uses the existing €950 Website – Starter offer only as a crossed-out comparable reference; €0 must be the dominant number and unmistakably presented as the applicant’s Studio 17 design and development fee. State that third-party costs are excluded.
+- Use `Free Website CTA Imaghe.webp` in the established compact 520 × 260 service-CTA window without artificial zoom. Keep Terrassi Villa and PHÓS Optics in the real-work carousel until more approved projects are supplied.
+- Keep an application CTA after Who it is for and after How it works. Under applicant requirements, offer separate Domain and Google Business Profile assistance actions through the relevant contact routes.
 
 ## 7. Icon policy
 

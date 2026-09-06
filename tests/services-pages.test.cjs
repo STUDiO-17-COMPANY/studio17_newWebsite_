@@ -50,7 +50,9 @@ test('free website page is transparent, lead-ready and translated in all site la
   const sectionOrder = ['free-credibility-strip', 'free-showcase', 'free-website-fit', 'free-website-included', 'free-zero-statement', 'free-real-work', 'free-website-process', 'free-website-preparation', 'free-comparison', 'free-value', 'free-website-faq', 'free-website-cta'].map(className => html.search(new RegExp(`<section class="[^"]*${className}`)));
   assert.ok(sectionOrder.every((position, index) => position >= 0 && (index === 0 || position > sectionOrder[index - 1])), 'Free Website sections must follow the approved sales journey');
   for (const asset of ['/Images/Showcase1.webp', '/Images/Showcase2.webp', '/Images/Showcase3.webp', '/Images/Free%20Website%20CTA%20Imaghe.webp']) assert.ok(html.includes(asset), asset);
-  assert.equal((html.match(/class="free-showcase-grid"[\s\S]*?<\/section>/)?.[0].match(/<figure>/g) || []).length, 3);
+  assert.equal((html.match(/class="edge-track horizontal-track free-showcase-track"[\s\S]*?<\/section>/)?.[0].match(/<figure>/g) || []).length, 3);
+  assert.match(html, /data-carousel-prev="free-showcase-track"/);
+  assert.match(html, /data-carousel-next="free-showcase-track"/);
   assert.equal((html.match(/class="free-work-card"/g) || []).length, 2);
   assert.match(html, /data-carousel-prev="free-work-track"/);
   assert.match(html, /data-carousel-next="free-work-track"/);
@@ -60,6 +62,12 @@ test('free website page is transparent, lead-ready and translated in all site la
   assert.equal((html.match(/class="website-faq-list[^"]*"[\s\S]*?<\/section>/)?.[0].match(/<details>/g) || []).length, 8);
   assert.match(html, /Applying does not guarantee selection/);
   assert.match(html, /External and ongoing costs may apply/);
+  assert.doesNotMatch(html, />Design \+ development fee<\/p>/);
+  assert.match(html, /class="free-value-reference"[\s\S]*?<s>€950<\/s>/);
+  assert.match(html, /class="free-value-offer"[\s\S]*?<h2 id="free-value-title">€0<\/h2>/);
+  assert.match(html, /data-service-key="fitAction"[\s\S]*?contact\?service=free-website/);
+  assert.match(html, /data-service-key="processAction"[\s\S]*?contact\?service=free-website/);
+  assert.match(html, /data-service-key="preparationActions"[\s\S]*?contact\?service=website[\s\S]*?contact\?service=seo/);
   assert.ok(html.includes('/contact?service=free-website'));
   const structured = jsonLd(html)[0];
   assert.equal(structured['@type'], 'Service');
@@ -69,7 +77,7 @@ test('free website page is transparent, lead-ready and translated in all site la
   const vm = require('node:vm');
   const context = { window: { Studio17ServiceLocaleData: {} } };
   vm.runInNewContext(source, context);
-  const expectedKeys = ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'fit', 'inclusionsHeading', 'inclusions', 'preparation', 'process', 'faqHeading', 'faq', 'credibility', 'showcaseHeading', 'showcase', 'costStatement', 'realWorkHeading', 'realWork', 'comparisonHeading', 'comparison', 'valuation', 'closing'];
+  const expectedKeys = ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'fit', 'fitAction', 'inclusionsHeading', 'inclusions', 'preparation', 'preparationActions', 'process', 'processAction', 'faqHeading', 'faq', 'credibility', 'showcaseHeading', 'showcase', 'costStatement', 'realWorkHeading', 'realWork', 'comparisonHeading', 'comparison', 'valuation', 'closing'];
   for (const locale of ['pt-PT', 'es', 'el', 'ru', 'he']) {
     const page = context.window.Studio17ServiceLocaleData[locale].freeWebsite;
     for (const key of expectedKeys) assert.ok(page[key], `${locale}: missing ${key}`);

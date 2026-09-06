@@ -95,6 +95,51 @@
   });
 })();
 
+/* CTA and value refinements shared by the final page structure. */
+(() => {
+  const corrections = window.Studio17FreeWebsiteCorrections = {
+    'pt-PT': {
+      fitAction: '<a class="solid-button" href="/contact?service=free-website">Fale-nos da sua empresa <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      processAction: '<a class="solid-button" href="/contact?service=free-website">Iniciar candidatura <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      preparationActions: '<p>Falta alguma parte da configuração? A Studio 17 pode ajudar.</p><a href="/contact?service=website">Preciso de um domínio <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><a href="/contact?service=seo">Preciso de um Perfil de Empresa no Google <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      costStatement: '<h2 id="free-zero-title"><span>€0</span> significa €0.</h2><p>Para empresas selecionadas, a Studio 17 não cobra o trabalho do âmbito acordado de uma página. Domínio, alojamento, ferramentas pagas e manutenção futura são separados quando necessários.</p><a class="solid-button" href="/contact?service=free-website">Candidatar-se ao website gratuito <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      valuation: '<div class="free-value-reference"><p class="free-value-label">Valor comparável de um projeto Studio 17</p><s>€950</s><p>Com base na oferta Website – Starter atual. Custos de terceiros permanecem separados.</p></div><div class="free-value-offer"><p>A sua taxa de design + desenvolvimento Studio 17</p><h2 id="free-value-title">€0</h2><h3>Recebe uma fundação completa de uma página.</h3><ul><li><i data-lucide="check" aria-hidden="true"></i>Design personalizado e desenvolvimento responsivo</li><li><i data-lucide="check" aria-hidden="true"></i>Formulário, chamadas, mapas e percursos sociais</li><li><i data-lucide="check" aria-hidden="true"></i>Bases de SEO, Analytics e Search Console</li><li><i data-lucide="check" aria-hidden="true"></i>Desempenho, SSL, consentimento e QA de lançamento</li></ul></div>'
+    },
+    es: {
+      fitAction: '<a class="solid-button" href="/contact?service=free-website">Cuéntanos sobre tu negocio <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      processAction: '<a class="solid-button" href="/contact?service=free-website">Empezar la solicitud <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      preparationActions: '<p>¿Te falta parte de la configuración? Studio 17 puede ayudarte.</p><a href="/contact?service=website">Necesito un dominio <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><a href="/contact?service=seo">Necesito un Perfil de Empresa en Google <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      costStatement: '<h2 id="free-zero-title"><span>€0</span> significa €0.</h2><p>Para empresas seleccionadas, Studio 17 elimina el coste del alcance acordado de una página. Dominio, alojamiento, herramientas de pago y mantenimiento futuro se tratan por separado cuando sean necesarios.</p><a class="solid-button" href="/contact?service=free-website">Solicitar un sitio gratuito <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      valuation: '<div class="free-value-reference"><p class="free-value-label">Valor comparable de un proyecto Studio 17</p><s>€950</s><p>Basado en la oferta Website – Starter actual. Los costes de terceros se mantienen separados.</p></div><div class="free-value-offer"><p>Tu coste de diseño + desarrollo Studio 17</p><h2 id="free-value-title">€0</h2><h3>Recibes una base completa de una página.</h3><ul><li><i data-lucide="check" aria-hidden="true"></i>Diseño personalizado y desarrollo responsive</li><li><i data-lucide="check" aria-hidden="true"></i>Formulario, llamadas, mapas y recorridos sociales</li><li><i data-lucide="check" aria-hidden="true"></i>Bases de SEO, Analytics y Search Console</li><li><i data-lucide="check" aria-hidden="true"></i>Rendimiento, SSL, consentimiento y QA de lanzamiento</li></ul></div>'
+    },
+    el: {
+      fitAction: '<a class="solid-button" href="/contact?service=free-website">Πείτε μας για την επιχείρησή σας <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      processAction: '<a class="solid-button" href="/contact?service=free-website">Ξεκινήστε την αίτηση <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      preparationActions: '<p>Σας λείπει μέρος της υποδομής; Η Studio 17 μπορεί να βοηθήσει.</p><a href="/contact?service=website">Χρειάζομαι domain <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><a href="/contact?service=seo">Χρειάζομαι Google Business Profile <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      costStatement: '<h2 id="free-zero-title"><span>€0</span> σημαίνει €0.</h2><p>Για επιλεγμένες επιχειρήσεις, η Studio 17 δεν χρεώνει το συμφωνημένο αντικείμενο μίας σελίδας. Domain, hosting, πληρωμένα εργαλεία και μελλοντική συντήρηση παραμένουν ξεχωριστά όταν χρειάζονται.</p><a class="solid-button" href="/contact?service=free-website">Κάντε αίτηση <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      valuation: '<div class="free-value-reference"><p class="free-value-label">Συγκρίσιμη αξία έργου Studio 17</p><s>€950</s><p>Με βάση την τρέχουσα προσφορά Website – Starter. Τα κόστη τρίτων παραμένουν ξεχωριστά.</p></div><div class="free-value-offer"><p>Η χρέωση σχεδιασμού + ανάπτυξης Studio 17</p><h2 id="free-value-title">€0</h2><h3>Λαμβάνετε μια ολοκληρωμένη βάση μίας σελίδας.</h3><ul><li><i data-lucide="check" aria-hidden="true"></i>Custom σχεδιασμός και responsive ανάπτυξη</li><li><i data-lucide="check" aria-hidden="true"></i>Φόρμα, κλήσεις, χάρτες και social διαδρομές</li><li><i data-lucide="check" aria-hidden="true"></i>Βάσεις SEO, Analytics και Search Console</li><li><i data-lucide="check" aria-hidden="true"></i>Απόδοση, SSL, consent και QA λανσαρίσματος</li></ul></div>'
+    },
+    ru: {
+      fitAction: '<a class="solid-button" href="/contact?service=free-website">Расскажите о вашем бизнесе <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      processAction: '<a class="solid-button" href="/contact?service=free-website">Начать заявку <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      preparationActions: '<p>Не хватает части настроек? Studio 17 поможет.</p><a href="/contact?service=website">Мне нужен домен <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><a href="/contact?service=seo">Мне нужен Google Business Profile <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      costStatement: '<h2 id="free-zero-title"><span>€0</span> означает €0.</h2><p>Для отобранных компаний Studio 17 отменяет оплату согласованного одностраничного объёма. Домен, хостинг, платные инструменты и дальнейшее обслуживание оплачиваются отдельно при необходимости.</p><a class="solid-button" href="/contact?service=free-website">Подать заявку <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      valuation: '<div class="free-value-reference"><p class="free-value-label">Сопоставимая стоимость проекта Studio 17</p><s>€950</s><p>На основе текущего предложения Website – Starter. Сторонние расходы оплачиваются отдельно.</p></div><div class="free-value-offer"><p>Ваша стоимость дизайна + разработки Studio 17</p><h2 id="free-value-title">€0</h2><h3>Вы получаете полноценную одностраничную основу.</h3><ul><li><i data-lucide="check" aria-hidden="true"></i>Индивидуальный дизайн и адаптивная разработка</li><li><i data-lucide="check" aria-hidden="true"></i>Форма, звонки, карты и пути из соцсетей</li><li><i data-lucide="check" aria-hidden="true"></i>Основы SEO, Analytics и Search Console</li><li><i data-lucide="check" aria-hidden="true"></i>Скорость, SSL, consent и проверка запуска</li></ul></div>'
+    },
+    he: {
+      fitAction: '<a class="solid-button" href="/contact?service=free-website">ספרו לנו על העסק שלכם <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      processAction: '<a class="solid-button" href="/contact?service=free-website">התחילו בקשה <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      preparationActions: '<p>חסר לכם חלק מההגדרה? Studio 17 יכולה לעזור.</p><a href="/contact?service=website">אני צריך דומיין <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><a href="/contact?service=seo">אני צריך Google Business Profile <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      costStatement: '<h2 id="free-zero-title"><span>€0</span> הם €0.</h2><p>לעסקים נבחרים Studio 17 מוותרת על התשלום עבור היקף מוסכם של עמוד אחד. דומיין, אחסון, כלים בתשלום ותחזוקה עתידית נשארים נפרדים בעת הצורך.</p><a class="solid-button" href="/contact?service=free-website">הגישו בקשה <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>',
+      valuation: '<div class="free-value-reference"><p class="free-value-label">שווי מקביל של פרויקט Studio 17</p><s>€950</s><p>מבוסס על חבילת Website – Starter הנוכחית. עלויות צד שלישי נשארות נפרדות.</p></div><div class="free-value-offer"><p>עלות העיצוב + הפיתוח שלכם ב-Studio 17</p><h2 id="free-value-title">€0</h2><h3>אתם מקבלים תשתית מלאה של עמוד אחד.</h3><ul><li><i data-lucide="check" aria-hidden="true"></i>עיצוב מותאם ופיתוח רספונסיבי</li><li><i data-lucide="check" aria-hidden="true"></i>טופס, שיחות, מפות ומסלולים חברתיים</li><li><i data-lucide="check" aria-hidden="true"></i>יסודות SEO, Analytics ו-Search Console</li><li><i data-lucide="check" aria-hidden="true"></i>ביצועים, SSL, consent ובדיקות השקה</li></ul></div>'
+    }
+  };
+
+  Object.entries(corrections).forEach(([locale, content]) => {
+    Object.assign(window.Studio17ServiceLocaleData?.[locale]?.freeWebsite || {}, content);
+  });
+})();
+
 /* Expanded page sections introduced by the visual lead-generation layout. */
 (() => {
   const additions = {
@@ -169,3 +214,8 @@
     Object.assign(window.Studio17ServiceLocaleData?.[locale]?.freeWebsite || {}, content);
   });
 })();
+
+Object.entries(window.Studio17FreeWebsiteCorrections || {}).forEach(([locale, content]) => {
+  Object.assign(window.Studio17ServiceLocaleData?.[locale]?.freeWebsite || {}, content);
+});
+delete window.Studio17FreeWebsiteCorrections;
