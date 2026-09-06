@@ -127,6 +127,18 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Reuse the shared media hero, square geometry, restrained hover motion, closing CTA and footer contract.
 - Every main About section heading reuses the homepage blue inline-highlight treatment; do not substitute oversized unaccented display headings.
 - The opening About statement uses a full-width heading above a two-column copy-and-principle composition; it stacks to one column at 900px and below.
+- Use the approved About order documented in `COMPANY_PAGES.md`: media hero, origin, connected method, European presence, founders, culture, presentation/social proof and closing CTA.
+- The origin summary links to `/our-story`; do not repeat all seven chapters on `/about`.
+- The founders carousel must remain usable with keyboard and touch, use visible previous/next controls and expose only confirmed people and titles.
+- Trustpilot proof remains plain text while the free plan is active; do not hard-code a changing score or reproduce restricted Trustpilot artwork.
+
+### Our Story and Team pages
+
+- `/our-story` preserves the approved seven-chapter hierarchy and uses alternating surfaces to keep long-form reading scannable without decorative mini-titles.
+- `/team` may publish only confirmed names, roles, portraits, biographies and external profiles. Designed initials are the approved neutral fallback when a portrait has not been supplied.
+- Both pages inherit the shared media hero, blue inline title emphasis, clean routing, footer, language selector, analytics consent and responsive rules.
+- Never add Team or Our Story to the mobile menu without explicit approval; discovery comes from About, the desktop/footer navigation and Sitemap.
+- Maintain factual and translation decisions in `COMPANY_PAGES.md`.
 
 ## 6. Components
 

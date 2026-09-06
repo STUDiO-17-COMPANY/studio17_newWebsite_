@@ -6,7 +6,7 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const languages = ['en', 'pt-PT', 'es', 'el', 'ru', 'he'];
-const htmlFiles = ['index.html', 'sitemap.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'careers.html', 'career-role.html'];
+const htmlFiles = ['index.html', 'sitemap.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'careers.html', 'career-role.html'];
 const about = fs.readFileSync(path.join(root, 'about.html'), 'utf8');
 const presentationUrl = 'https://drive.google.com/file/d/1k4c9pzEhKLeXVNI-v90OiolOpS2H_235/view?usp=sharing';
 const approvedSocialUrls = [
@@ -16,14 +16,14 @@ const approvedSocialUrls = [
 ];
 const aboutStrings = [
   'About Studio 17',
-  'Growth works better',
-  'when the business works as one system.',
+  'Our origin:',
+  'one growth strategy, connected.',
   'From constraint',
   'to connected system.',
   'Selected by purpose,',
   'not sold as a package.',
-  'A European foundation',
-  'with an international outlook.',
+  'European roots,',
+  'international outlook.',
   'See Studio 17',
   'in more detail.',
   'What is currently',
@@ -32,10 +32,8 @@ const aboutStrings = [
   'We start with the business, not the deliverable.',
   'Studio 17 identifies commercial, operational and customer-experience constraints, then connects the capabilities required to solve them.',
   'See how we work',
-  'Growth works better when the business works as one system.',
-  'A website, campaign, CRM, content programme or AI workflow can each be useful. Their value increases when they support the same customer journey and business objective.',
-  'That is why Studio 17 begins by understanding the constraint. We then select and connect the right capabilities instead of forcing every business into a predetermined package.',
-  'Every component must justify its role in the wider system.',
+  'Studio 17 was born from a simple idea: businesses shouldn’t need five different companies to make one growth strategy work.',
+  'Read the full Studio 17 Story',
   'From constraint to connected system.',
   'Strategy and execution stay connected from the first question to the working solution.',
   'Understand the business',
@@ -48,8 +46,12 @@ const aboutStrings = [
   'We implement the system, observe how it performs and improve it using useful evidence.',
   'Selected by purpose, not sold as a package.',
   'The combination changes with the business problem. Each capability has a defined role and must support the same outcome.',
-  'A European foundation with an international outlook.',
-  'Studio 17 works across languages, markets and disciplines. The objective remains the same: understand the business clearly and build a system that people can use.',
+  'Studio 17 is headquartered in Limassol, Cyprus, with one of our operations hubs in Portugal. From these two European bases, we work across languages, markets and disciplines while keeping the same principle: understand the business first, then build what it actually needs.',
+  'Trusted by businesses across Europe.',
+  'The people behind',
+  'Meet the full team',
+  'Culture & values:',
+  'Want to build with us? View open roles',
   'See Studio 17 in more detail.',
   'Our company presentation introduces Studio 17 and the thinking behind our work. The presentation opens in Greek on Google Drive.',
   'View the presentation',
@@ -66,11 +68,17 @@ const aboutStrings = [
 
 assert.match(about, /<body class="about-page">/);
 assert.equal((about.match(/<h1\b/g) || []).length, 1, 'About must have one h1');
-assert.equal((about.match(/class="design-heading about-display-heading"/g) || []).length, 6, 'About must reuse the homepage highlighted heading component for every main content section');
+assert.equal((about.match(/class="design-heading about-display-heading"/g) || []).length, 7, 'About must reuse the homepage highlighted heading component for every main content section');
 assert.match(about, /<h2 id="about-cta-title">What is currently <span>limiting your business\?<\/span><\/h2>/, 'About closing CTA must reuse the homepage highlighted heading treatment');
 assert.match(about, /rel="canonical" href="https:\/\/www\.studio17\.world\/about"/);
 assert.equal((about.match(/hreflang=/g) || []).length, 7, 'About must expose x-default and six language alternates');
 assert.match(about, new RegExp(`href="${presentationUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" target="_blank" rel="noopener noreferrer"`));
+assert.match(about, /Images\/About_heroimage\.webp/);
+assert.match(about, /href="\/our-story"[^>]*>Read the full Studio 17 Story/);
+assert.match(about, /id="about-team-track"[\s\S]*?Hugo Filipe[\s\S]*?Pedro/);
+assert.match(about, /href="\/team"[^>]*>Meet the full team/);
+assert.match(about, /href="\/careers" data-force-language="en">Want to build with us\? View open roles/);
+assert.doesNotMatch(about, /4\.8\/5|TrustScore|trustpilot[^<]*logo/i, 'About must not hard-code restricted or changing Trustpilot rating assets');
 
 for (const file of htmlFiles) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');

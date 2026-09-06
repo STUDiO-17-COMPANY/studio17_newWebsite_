@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-06 — About, Our Story and Team
+
+- Rebuilt the About page around the approved hero image, concise Studio 17 origin, Limassol headquarters and Portugal operations hub.
+- Added a compliant plain-text Trustpilot proof link without a hard-coded rating, stars, score or restricted brand artwork.
+- Added a keyboard-accessible founders carousel, four culture and values principles, `/team`, `/our-story` and the English Careers action.
+- Published clean Team and seven-chapter Our Story pages with shared navigation, responsive design, consent-first analytics, sitemaps, metadata and language-aware routing.
+- Used deliberate initials in place of founder portraits because no approved individual images or public profile details were supplied; documented the content needed to expand the profiles safely.
+- Added Portuguese long-form story translation and all six-language About and Team interface translations, then recorded the remaining native editorial review in the task list.
+- Added company-page regression tests and the maintenance contract in `COMPANY_PAGES.md`.
+
 ## 2026-09-05 — Services CTA portfolio action
 
 - Added a secondary `See our work` action beside `Talk to sales` in the general Services closing CTA.

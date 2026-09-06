@@ -10,6 +10,8 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.
 - `/faq` (`faq.html`) — multilingual, search-intent FAQ with accessible native disclosure controls.
 - `/about` (`about.html`) — multilingual Studio 17 positioning, methodology, presentation and official social links.
+- `/our-story` (`our-story.html`) — the approved seven-chapter Studio 17 origin and evolution narrative.
+- `/team` (`team.html`) — confirmed Studio 17 founders and leadership introduction without unapproved personal details.
 - `/services` (`services.html`) — multilingual, price-free catalogue of all Studio 17 service areas.
 - `/services/website-development` (`website-development.html`) — multilingual Website Development packages, inclusions, proof projects, process and FAQs.
 - `/privacy-policy` (`privacy-policy.html`) — multilingual privacy information covering website, enquiry and analytics processing.
@@ -47,6 +49,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.
 - `ANALYTICS.md` — GA4 Measurement ID, consent behavior, verification and maintenance guide.
 - `TRUSTPILOT.md` — official profile link, TrustBox integration contract, privacy safeguards and QA checklist.
+- `COMPANY_PAGES.md` — About, Our Story and Team content, translation, evidence and maintenance contract.
 - `LEGAL_PAGES.md` — legal-page data inventory, publishing contract, review limits and maintenance checklist.
 - `SERVICES.md` — service catalogue, package, pricing, translation, proof-project and update contract.
 - `ARTICLES.md` — live multilingual Google Drive article contract, security, SEO, image and maintenance workflow.
@@ -102,6 +105,7 @@ node service-locales/build-bundle.cjs
 23. Publish articles only through completed copies of the Drive template; keep cover and social-share images separate and follow `ARTICLES.md`.
 24. Keep public service codes private, preserve the five website packages and follow `SERVICES.md` whenever service names, prices, inclusions or proof projects change.
 25. While Studio 17 uses Trustpilot's free plan, keep public promotion to plain-text profile links and any official Review Collector supplied in the Business Account; never scrape reviews or display the logo, stars or TrustScore outside the plan entitlement.
+26. Keep `/about`, `/our-story` and `/team` aligned with `COMPANY_PAGES.md`; do not invent biographies, portraits, profile URLs, offices, ratings or company-history claims.
 
 ## Pre-launch checklist
 

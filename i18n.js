@@ -100,7 +100,7 @@
       if (!page || /\.[a-z0-9]+$/i.test(page)) return;
 
       if (location.protocol === 'file:') {
-        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/news': 'news.html', '/careers': 'careers.html', '/services': 'services.html', '/services/website-development': 'website-development.html', '/privacy-policy': 'privacy-policy.html', '/cookie-policy': 'cookie-policy.html', '/terms': 'terms.html' };
+        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/our-story': 'our-story.html', '/team': 'team.html', '/news': 'news.html', '/careers': 'careers.html', '/services': 'services.html', '/services/website-development': 'website-development.html', '/privacy-policy': 'privacy-policy.html', '/cookie-policy': 'cookie-policy.html', '/terms': 'terms.html' };
         page = localPages[page] || page;
       }
 
@@ -133,8 +133,12 @@
           ? 'contact'
           : document.body.classList.contains('faq-page')
             ? 'faq'
-          : document.body.classList.contains('about-page')
+            : document.body.classList.contains('about-page')
             ? 'about'
+            : document.body.classList.contains('our-story-page')
+              ? 'ourStory'
+              : document.body.classList.contains('team-page')
+                ? 'team'
             : document.body.classList.contains('news-page')
               ? 'news'
             : document.body.classList.contains('article-page')

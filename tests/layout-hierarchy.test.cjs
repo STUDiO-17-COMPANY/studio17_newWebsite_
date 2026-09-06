@@ -12,6 +12,8 @@ const publicHtmlFiles = [
   'contact.html',
   'faq.html',
   'about.html',
+  'team.html',
+  'our-story.html',
   'careers.html',
   'career-role.html'
 ];
@@ -35,7 +37,7 @@ for (const file of publicHtmlFiles) {
 
 const about = fs.readFileSync(path.join(root, 'about.html'), 'utf8');
 assert.match(about, /class="about-intro-heading reveal"[\s\S]*?<h2 class="design-heading about-display-heading" id="about-intro-title">/);
-assert.match(about, /class="about-intro-copy reveal"[\s\S]*?class="about-intro-text"[\s\S]*?<blockquote>Every component must justify its role in the wider system\.<\/blockquote>/);
+assert.match(about, /class="about-intro-copy reveal"[\s\S]*?class="about-intro-text"[\s\S]*?<blockquote>Businesses should not need five disconnected suppliers to make one growth strategy work\.<\/blockquote>/);
 assert.doesNotMatch(about, />Our point of view<|>The principle</, 'About still contains decorative mini-title copy');
 
 const faq = fs.readFileSync(path.join(root, 'faq.html'), 'utf8');
