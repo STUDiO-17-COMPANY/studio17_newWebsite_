@@ -25,7 +25,8 @@
         ['socialManagement', 'Social Media management', '/wip?for=social-media-management'],
         ['socialAutomation', 'Social Media automation', '/wip?for=social-media-automation'],
         ['growthStrategy', 'Growth strategy', '/wip?for=growth-strategy'],
-        ['communityManagement', 'Community management', '/wip?for=community-management']
+        ['communityManagement', 'Community management', '/wip?for=community-management'],
+        ['freeAudit', 'Free Audit', '/wip?for=free-social-media-audit']
       ]
     },
     {
@@ -34,6 +35,7 @@
       items: [
         ['websiteDevelopment', 'Website development', '/services/website-development'],
         ['websiteRevamp', 'Website revamp', '/wip?for=website-revamp'],
+        ['freeWebsite', 'Free Website', '/services/free-website'],
         ['seo', 'SEO', '/services/seo'],
         ['geo', 'GEO', '/wip?for=geo'],
         [null, 'Copywriting', '/wip?for=copywriting'],
@@ -92,7 +94,7 @@
   const localiseServicesMenuHref = href => {
     const language = window.Studio17I18n?.getLanguage?.() || 'en';
     const [pathname, query = ''] = href.split('?');
-    const localPages = { '/wip': 'wip.html', '/services/website-development': 'website-development.html', '/services/seo': 'seo.html' };
+    const localPages = { '/wip': 'wip.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html' };
     const target = location.protocol === 'file:' ? `${localPages[pathname] || pathname.replace(/^\//, '')}${query ? `?${query}` : ''}` : href;
     const url = new URL(target, location.href);
     if (language === 'en') url.searchParams.delete('lang');
@@ -239,32 +241,47 @@
     window.lucide?.createIcons?.({ attrs: { 'stroke-width': 2 } });
   };
 
-  const updateSeoFooterLinks = () => {
+  const updateServiceFooterLinks = () => {
+    const serviceItems = window.Studio17I18n?.getData?.()?.services?.itemLabels || {};
     document.querySelectorAll('.footer-grid').forEach(grid => {
       const servicesColumn = [...grid.children].find(element => element.matches('nav.footer-column'));
       if (!servicesColumn) return;
-      let link = servicesColumn.querySelector('.footer-services-seo, a[href^="/services/seo"]');
-      if (!link) {
-        link = document.createElement('a');
-        link.className = 'footer-services-seo';
-        link.textContent = 'SEO';
-        const websiteLink = servicesColumn.querySelector('a[href^="/services/website-development"]');
-        if (websiteLink) websiteLink.insertAdjacentElement('afterend', link);
-        else servicesColumn.appendChild(link);
+      const websiteLink = servicesColumn.querySelector('a[href^="/services/website-development"]');
+      let freeWebsiteLink = servicesColumn.querySelector('.footer-services-free-website, a[href^="/services/free-website"]');
+      if (!freeWebsiteLink) {
+        freeWebsiteLink = document.createElement('a');
+        freeWebsiteLink.className = 'footer-services-free-website';
+        freeWebsiteLink.textContent = serviceItems.freeWebsite || translateText('Free Website');
+        if (websiteLink) websiteLink.insertAdjacentElement('afterend', freeWebsiteLink);
+        else servicesColumn.appendChild(freeWebsiteLink);
       }
-      link.classList.add('footer-services-seo');
-      link.href = localiseServicesMenuHref('/services/seo');
-      if (document.body.classList.contains('seo-service-page')) link.setAttribute('aria-current', 'page');
+      freeWebsiteLink.classList.add('footer-services-free-website');
+      freeWebsiteLink.textContent = serviceItems.freeWebsite || translateText('Free Website');
+      freeWebsiteLink.href = localiseServicesMenuHref('/services/free-website');
+      if (document.body.classList.contains('free-website-page')) freeWebsiteLink.setAttribute('aria-current', 'page');
+      else freeWebsiteLink.removeAttribute('aria-current');
+
+      let seoLink = servicesColumn.querySelector('.footer-services-seo, a[href^="/services/seo"]');
+      if (!seoLink) {
+        seoLink = document.createElement('a');
+        seoLink.className = 'footer-services-seo';
+        seoLink.textContent = 'SEO';
+        freeWebsiteLink.insertAdjacentElement('afterend', seoLink);
+      }
+      seoLink.classList.add('footer-services-seo');
+      seoLink.href = localiseServicesMenuHref('/services/seo');
+      if (document.body.classList.contains('seo-service-page')) seoLink.setAttribute('aria-current', 'page');
+      else seoLink.removeAttribute('aria-current');
     });
   };
 
   updateServicesMegaMenu();
   updateMobileServicesMenu();
-  updateSeoFooterLinks();
+  updateServiceFooterLinks();
   window.Studio17I18n?.ready?.then(() => {
     updateServicesMegaMenu();
     updateMobileServicesMenu();
-    updateSeoFooterLinks();
+    updateServiceFooterLinks();
   }).catch(() => {});
 
   const updateLegalFooterLinks = () => {
@@ -706,7 +723,7 @@
   window.addEventListener('studio17:languagechange', () => {
     updateServicesMegaMenu();
     updateMobileServicesMenu();
-    updateSeoFooterLinks();
+    updateServiceFooterLinks();
     renderServiceTabs();
     renderServiceList(activeCategory, selectedItems[activeCategory]);
     renderService(getServiceContent(activeCategory, selectedItems[activeCategory]), { instant: true });

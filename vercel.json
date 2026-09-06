@@ -18,10 +18,12 @@
     { "source": "/article", "destination": "/news", "permanent": true },
     { "source": "/services/website-developments", "destination": "/services/website-development", "permanent": true },
     { "source": "/website-development", "destination": "/services/website-development", "permanent": true },
+    { "source": "/free-website", "destination": "/services/free-website", "permanent": true },
     { "source": "/seo", "destination": "/services/seo", "permanent": true }
   ],
   "rewrites": [
     { "source": "/services/website-development", "destination": "/website-development" },
+    { "source": "/services/free-website", "destination": "/free-website" },
     { "source": "/services/seo", "destination": "/seo" },
     { "source": "/insights/:slug", "destination": "/api/article-page?slug=:slug" },
     { "source": "/careers/:slug", "destination": "/api/career-page?slug=:slug" },

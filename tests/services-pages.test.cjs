@@ -41,6 +41,36 @@ test('website development page preserves commercial and portfolio requirements',
   assert.equal(structured.hasOfferCatalog.itemListElement.length, 5);
 });
 
+test('free website page is transparent, lead-ready and translated in all site languages', () => {
+  const html = read('free-website.html');
+  assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
+  assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/free-website"/);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
+  assert.match(html, /data-service-page="freeWebsite"/);
+  const inclusions = html.match(/class="free-inclusion-grid"[\s\S]*?<\/section>/)?.[0] || '';
+  assert.equal((inclusions.match(/<article>/g) || []).length, 4);
+  assert.equal((inclusions.match(/<li>/g) || []).length, 21);
+  assert.equal((html.match(/class="website-faq-list"[\s\S]*?<\/section>/)?.[0].match(/<details>/g) || []).length, 8);
+  assert.match(html, /Applying does not guarantee selection/);
+  assert.match(html, /External and ongoing costs may apply/);
+  assert.ok(html.includes('/contact?service=free-website'));
+  const structured = jsonLd(html)[0];
+  assert.equal(structured['@type'], 'Service');
+  assert.equal(structured.offers, undefined);
+
+  const source = read('service-locales/free-website.js');
+  const vm = require('node:vm');
+  const context = { window: { Studio17ServiceLocaleData: {} } };
+  vm.runInNewContext(source, context);
+  const expectedKeys = ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'fit', 'inclusionsHeading', 'inclusions', 'preparation', 'process', 'boundaries', 'faqHeading', 'faq', 'closing'];
+  for (const locale of ['pt-PT', 'es', 'el', 'ru', 'he']) {
+    const page = context.window.Studio17ServiceLocaleData[locale].freeWebsite;
+    assert.deepEqual(Object.keys(page), expectedKeys, locale);
+    assert.equal((page.inclusions.match(/<li>/g) || []).length, 21, locale);
+    assert.equal((page.faq.match(/<details>/g) || []).length, 8, locale);
+  }
+});
+
 test('SEO page is an international, evidence-safe commercial service page', () => {
   const html = read('seo.html');
   assert.match(html, /<html lang="en" data-supported-languages="en,el,ru">/);
@@ -133,17 +163,21 @@ test('clean routes and sitemaps include every published service page', () => {
   const sitemap = read('api/sitemap.js');
   assert.ok(server.includes("['/services', 'services.html']"));
   assert.ok(server.includes("['/services/website-development', 'website-development.html']"));
+  assert.ok(server.includes("['/services/free-website', 'free-website.html']"));
   assert.ok(server.includes("['/services/seo', 'seo.html']"));
   assert.ok(vercel.includes('"source": "/services/website-development"'));
+  assert.ok(vercel.includes('"source": "/services/free-website"'));
   assert.ok(vercel.includes('"source": "/services/seo"'));
   assert.ok(sitemap.includes('`${SITE_URL}/services`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/website-development`'));
+  assert.ok(sitemap.includes('`${SITE_URL}/services/free-website`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/seo`'));
+  assert.match(read('sitemap.html'), /href="\/services\/free-website">Free Website\s*<i/);
   assert.match(read('sitemap.html'), /href="\/services\/seo">SEO services\s*<i/);
 });
 
 test('mobile menu remains limited to the approved five destinations', () => {
-  for (const file of ['services.html', 'website-development.html', 'seo.html']) {
+  for (const file of ['services.html', 'website-development.html', 'free-website.html', 'seo.html']) {
     const html = read(file);
     const menu = html.match(/<div class="mobile-menu"[\s\S]*?<\/div>\s*<\/header>/)?.[0] || '';
     assert.equal((menu.match(/<a /g) || []).length, 5, file);
@@ -158,4 +192,10 @@ test('SEO entry is accepted and preselected by the contact workflow', () => {
   assert.match(read('contact.js'), /new URLSearchParams\(location\.search\)\.get\('service'\)/);
   assert.match(read('api/contact.js'), /'seo'/);
   assert.match(read('api/contact.js'), /seo:\s*'SEO'/);
+});
+
+test('Free Website applications are accepted and labelled by the contact workflow', () => {
+  assert.match(read('contact.html'), /<option value="free-website">Free Website<\/option>/);
+  assert.match(read('api/contact.js'), /'free-website'/);
+  assert.match(read('api/contact.js'), /'free-website':\s*'Free Website application'/);
 });

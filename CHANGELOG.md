@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-06 — Free Website lead page
+
+- Added Free Website to the Website group and Free Audit to Social Media across the shared desktop and mobile Services menus; Free Audit uses its localized WIP destination.
+- Published `/services/free-website` in all six site languages as a transparent qualification journey with eligibility, the exact 21-item one-page scope, applicant preparation, delivery process, boundaries, FAQs and repeated application actions.
+- Connected Free Website applications to the contact workflow, footer, homepage, human/XML sitemaps, clean local and Vercel routes, canonical metadata and structured service data.
+- Added responsive styling, Hebrew RTL-compatible content, documentation and regression coverage without presenting external costs or legal compliance as included guarantees.
+
 ## 2026-09-06 — SEO service page
 
 - Published `/services/seo` in English, Greek and Russian with clean routing, reciprocal metadata, valid `Service` structured data and human/XML sitemap coverage.

@@ -4,9 +4,10 @@
 
 - `/services` is the price-free catalogue of Studio 17 capabilities.
 - `/services/website-development` is the commercial Website Development page.
+- `/services/free-website` is the multilingual application page for the selected-business Free Website offer.
 - `/services/seo` is the international commercial SEO page.
 
-All routes use clean URLs, canonical metadata, the shared header/footer, and the approved five-link mobile menu. The catalogue and Website Development page retain their existing six-language coverage. The SEO page follows the current new-page scope: English, Greek and Russian only, with reciprocal `hreflang` links for those versions plus `x-default`.
+All routes use clean URLs, canonical metadata, the shared header/footer, and the approved five-link mobile menu. The catalogue, Website Development and Free Website pages support all six site languages. The SEO page follows the current new-page scope: English, Greek and Russian only, with reciprocal `hreflang` links for those versions plus `x-default`.
 
 ## Website packages
 
@@ -19,6 +20,16 @@ Every package includes an SEO foundation, GEO foundation, Technical SEO, respons
 The catalogue contains 43 services across Website Builds; Domain & Website Add-ons; SEO, Performance & Accessibility; AI & Automation; and Website Care. Internal service codes must never appear on the public site. Use native `details`/`summary` controls so the catalogue stays accessible without JavaScript.
 
 The Legal Pages Setup entry means technical publication of approved text. It is not legal advice.
+
+## Free Website offer
+
+The Free Website page is a qualification and application journey, not an unconditional giveaway. It clearly states that Studio 17 waives its design and development fee only for selected suitable businesses and only for the agreed one-page scope. Applying does not guarantee selection.
+
+The published scope contains exactly 21 inclusions: brand-led responsive structure; hero, company, service, benefit and contact content; form, call, optional WhatsApp, Maps and social actions; essential footer information; basic SEO, Analytics, Search Console and performance setup; SSL/security, basic cookie implementation, one revision and the required “Website by Studio 17” footer credit. The free scope covers one page in one agreed language.
+
+Domain, hosting, licences, paid tools, copywriting, photography, translations, extra pages, e-commerce, booking systems, integrations and ongoing maintenance are separate when required. The client remains responsible for accurate approved content and appropriate legal advice; basic consent implementation is not a compliance guarantee.
+
+Every application CTA uses `/contact?service=free-website`, which is accepted by the server-side contact allowlist and labelled as a Free Website application. The page uses all six published languages and retains Hebrew RTL support.
 
 ## SEO service page
 
@@ -50,7 +61,7 @@ The CTA keeps **Talk to sales** as the primary contact action and includes **See
 
 ## Translation workflow
 
-English source content lives in the HTML pages. The catalogue and Website Development translations live in all five `service-locales/<locale>.json` files. SEO translations live only in `el.json` and `ru.json` until another language is explicitly approved. After editing a locale, run `node service-locales/build-bundle.cjs` and commit the regenerated `service-locales/locales.js`. Do not change or remove `data-service-key` values; they are the stable translation contract.
+English source content lives in the HTML pages. The catalogue and Website Development translations live in all five `service-locales/<locale>.json` files. Free Website translations live in the page-specific browser module `service-locales/free-website.js` for Portuguese (Portugal), Spanish, Greek, Russian and Hebrew. SEO translations live only in `el.json` and `ru.json` until another language is explicitly approved. After editing the canonical JSON service locales, run `node service-locales/build-bundle.cjs` and commit the regenerated `service-locales/locales.js`; the page-specific Free Website module does not require that build step. Do not change or remove `data-service-key` values; they are the stable translation contract.
 
 ## Update checklist
 

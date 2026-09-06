@@ -148,7 +148,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Uppercase navigation with the blue selected/action square.
 - Desktop Services navigation is a viewport-wide horizontal mega-menu with six ordered groups: Social Media, Website, Content creation, Advertisement, By Industry and Events.
 - Do not include `All services` in the mega-menu. `/services` remains a supporting catalogue reached through contextual links and the mobile Services overview link.
-- Group names are non-clickable headings; individual services are links. Only Website Development uses its published route and every unfinished service uses a specific `/wip?for=<service>` destination.
+- Group names are non-clickable headings; individual services are links. Website Development, Free Website and SEO use their published routes; every unfinished service uses a specific `/wip?for=<service>` destination. Free Audit remains a localized WIP destination until its page is approved.
 - The desktop service dropdown supports mouse, keyboard and Escape, preserves visible focus, and collapses from six to three columns before the approved mobile breakpoint.
 - Mobile menu uses Lucide `menu`, `x` and `chevron-down`; it opens full-screen below the 68px mobile header.
 - The mobile menu is restricted to five top-level entries: Services, Work, About, News and Careers. Do not add a CTA, FAQ, Sitemap or another top-level link without explicit approval.
@@ -247,6 +247,15 @@ Desktop lists scroll vertically within the fixed English Figma panel when necess
 - The page language selector exposes only English, Greek and Russian. Unsupported language URLs normalize to an available language so URL, metadata and visible copy stay aligned.
 - Use the supplied 1744 × 296 SEO hero without changing the shared hero height. Use the supplied CTA asset in the established 520 × 260 service-CTA media window with a restrained hover scale and responsive natural crop.
 - The purpose card in the SEO decision map uses the supplied full-bleed team image, a strong bottom gradient for copy contrast and a translucent bottom-inline capability button modelled on the homepage service case-study control.
+
+### Free Website page
+
+- Treat the page as a qualification journey: explain who fits, enumerate the exact scope, show what the applicant must prepare, explain the process and state boundaries before the final CTA.
+- Keep the 21 inclusions visible in four numbered groups and preserve their 6 + 7 + 4 + 4 structure in every language.
+- Never imply that every applicant will be selected. State that the Studio 17 design and development fee is waived only for selected suitable businesses and the agreed one-page scope.
+- Separate external and ongoing costs from the free scope. Do not promise legal compliance; the client supplies accurate approved business and legal information.
+- Send every application action to `/contact?service=free-website`. The contact workflow must keep that exact value in its visible option list and server-side allowlist.
+- Publish the same complete content in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew, including metadata and RTL layout support.
 
 ## 7. Icon policy
 

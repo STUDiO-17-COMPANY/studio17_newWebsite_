@@ -9,11 +9,12 @@ const RATE_WINDOW_MS = 15 * 60 * 1000;
 const RATE_LIMIT = 5;
 const attempts = new Map();
 
-const allowedServices = new Set(['website', 'seo', 'content', 'social-media', 'advertising', 'digital-systems', 'ai-solutions', 'other']);
+const allowedServices = new Set(['website', 'free-website', 'seo', 'content', 'social-media', 'advertising', 'digital-systems', 'ai-solutions', 'other']);
 const allowedBudgets = new Set(['not-sure', 'under-1k', '1k-3k', '3k-10k', '10k-plus']);
 const allowedLanguages = new Set(['en', 'pt-PT', 'es', 'el', 'ru', 'he']);
 const serviceLabels = {
   website: 'Website',
+  'free-website': 'Free Website application',
   seo: 'SEO',
   content: 'Content creation',
   'social-media': 'Social Media',

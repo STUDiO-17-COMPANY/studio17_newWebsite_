@@ -14,6 +14,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/team` (`team.html`) — confirmed Studio 17 founders and leadership introduction without unapproved personal details.
 - `/services` (`services.html`) — multilingual, price-free catalogue of all Studio 17 service areas.
 - `/services/website-development` (`website-development.html`) — multilingual Website Development packages, inclusions, proof projects, process and FAQs.
+- `/services/free-website` (`free-website.html`) — six-language lead page for selected businesses applying for a professional one-page website without a Studio 17 design or development fee.
 - `/services/seo` (`seo.html`) — international SEO strategy and delivery page in English, Greek and Russian.
 - `/privacy-policy` (`privacy-policy.html`) — multilingual privacy information covering website, enquiry and analytics processing.
 - `/cookie-policy` (`cookie-policy.html`) — multilingual browser-storage and consent information with a working Analytics-settings control.
@@ -31,14 +32,14 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `dev-server.cjs` — dependency-free local server that mirrors the production clean routes.
 - `robots.txt` / `/sitemap.xml` — crawler policy and live search-engine sitemap.
 - `styles.css` — design tokens, layout, responsive rules and motion.
-- `script.js` — navigation, the 33-offer multilingual service selector, carousels and reveal interactions.
+- `script.js` — navigation, the 36-item multilingual Services directory, homepage service selector, carousels and reveal interactions.
 - `analytics.js` — consent-first Google Analytics 4 loading, preferences and page-view handling.
 - `wip.js` — identifies and localizes the requested unfinished destination.
 - `i18n.js` — URL/saved/browser locale detection, regional-code normalization, language switching, persistence and RTL handling.
 - `locales/` — English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew content files.
 - `locales/locales.js` — generated browser bundle that makes language switching work when the HTML files are opened directly.
 - `locales/build-bundle.cjs` — regenerates that bundle from the six canonical JSON files.
-- `service-locales/` / `service-pages.js` — page-scoped service translations and rendering contract; existing service pages retain six languages while new pages use their explicitly approved language set.
+- `service-locales/` / `service-pages.js` — page-scoped service translations and rendering contract; the dedicated Free Website module covers all six languages while other new pages use their explicitly approved language set.
 - `Vendor/lucide.min.js` — pinned local Lucide 1.24.0 browser package; its licence is stored beside it.
 - `Images/` — supplied brand assets and locally optimised page imagery.
 - `Fonts/` — locally hosted Inter and Plus Jakarta Sans font files with their licences.

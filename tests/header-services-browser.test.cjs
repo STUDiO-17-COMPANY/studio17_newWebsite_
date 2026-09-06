@@ -44,16 +44,16 @@ let activeBrowser;
       assert.equal(await toggle.getAttribute('aria-label'), translate(locale, 'Hide services'));
       assert.equal(await page.locator('.mobile-services-panel').isVisible(), true);
       assert.equal(await page.locator('.mobile-services-category').count(), 6);
-      assert.equal(await page.locator('.mobile-services-list a').count(), 34);
+      assert.equal(await page.locator('.mobile-services-list a').count(), 36);
 
       const categories = page.locator('.mobile-services-category');
       await categories.nth(0).click();
       assert.equal(await page.locator('.mobile-services-list').nth(0).isVisible(), true);
-      assert.equal(await page.locator('.mobile-services-list').nth(0).locator('a').count(), 4);
+      assert.equal(await page.locator('.mobile-services-list').nth(0).locator('a').count(), 5);
       await categories.nth(1).click();
       assert.equal(await page.locator('.mobile-services-list').nth(0).isHidden(), true);
       assert.equal(await page.locator('.mobile-services-list').nth(1).isVisible(), true);
-      assert.equal(await page.locator('.mobile-services-list').nth(1).locator('a').count(), 7);
+      assert.equal(await page.locator('.mobile-services-list').nth(1).locator('a').count(), 8);
 
       const websiteDevelopmentHref = await page.locator('.mobile-services-list').nth(1).locator('a').first().getAttribute('href');
       assert.ok(websiteDevelopmentHref.includes('/services/website-development'));
