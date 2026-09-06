@@ -29,6 +29,13 @@ The approved public founder records currently are:
 - Hugo Filipe — Founder & Director.
 - Pedro — Co-founder.
 
+Approved Hugo Filipe profiles:
+
+- LinkedIn: `https://www.linkedin.com/in/hugodm-filipe/`
+- Instagram: `https://www.instagram.com/hugodmfilipe02/`
+
+The About founder card displays these as compact brand actions beside Hugo's name and role. Pedro's card must remain without social actions until his links are supplied and approved.
+
 Initials are used as intentional temporary portraits because no approved individual photographs were available in the project. Replace them only with supplied, approved portraits. Longer biographies, LinkedIn links and personal facts remain pending source content; never infer them from search results or another person with a similar name.
 
 ## Translation contract
@@ -47,4 +54,3 @@ Initials are used as intentional temporary portraits because no approved individ
 - Update `/sitemap`, `/sitemap.xml`, metadata and documentation when routes change.
 - Check desktop, 900px, 390px and 320px layouts, keyboard navigation, carousel controls, translated wrapping, reduced motion and RTL.
 - Keep the Careers link on these pages forced to English until the Careers workflow changes.
-

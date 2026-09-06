@@ -76,6 +76,9 @@ assert.match(about, new RegExp(`href="${presentationUrl.replace(/[.*+?^${}()|[\]
 assert.match(about, /Images\/About_heroimage\.webp/);
 assert.match(about, /href="\/our-story"[^>]*>Read the full Studio 17 Story/);
 assert.match(about, /id="about-team-track"[\s\S]*?Hugo Filipe[\s\S]*?Pedro/);
+assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/hugodm-filipe\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Hugo Filipe on LinkedIn"/);
+assert.match(about, /href="https:\/\/www\.instagram\.com\/hugodmfilipe02\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Hugo Filipe on Instagram"/);
+assert.equal((about.match(/class="about-team-social-link/g) || []).length, 2, 'only approved founder profile links should be published');
 assert.match(about, /href="\/team"[^>]*>Meet the full team/);
 assert.match(about, /href="\/careers" data-force-language="en">Want to build with us\? View open roles/);
 assert.doesNotMatch(about, /4\.8\/5|TrustScore|trustpilot[^<]*logo/i, 'About must not hard-code restricted or changing Trustpilot rating assets');
