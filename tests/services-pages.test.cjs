@@ -57,6 +57,8 @@ test('free website page is transparent, lead-ready and translated in all site la
   assert.equal((html.match(/class="free-work-card"/g) || []).length, 2);
   assert.match(html, /data-carousel-prev="free-work-track"/);
   assert.match(html, /data-carousel-next="free-work-track"/);
+  assert.match(html, /class="free-carousel-heading free-real-work-heading"/);
+  assert.doesNotMatch(html, /Explore selected website projects already created/);
   const inclusions = html.match(/class="free-inclusion-grid"[\s\S]*?<\/section>/)?.[0] || '';
   assert.equal((inclusions.match(/<article>/g) || []).length, 4);
   assert.equal((inclusions.match(/<li>/g) || []).length, 21);
@@ -81,13 +83,15 @@ test('free website page is transparent, lead-ready and translated in all site la
   const vm = require('node:vm');
   const context = { window: { Studio17ServiceLocaleData: {} } };
   vm.runInNewContext(source, context);
-  const expectedKeys = ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'fit', 'fitAction', 'inclusionsHeading', 'inclusions', 'preparation', 'preparationActions', 'process', 'processAction', 'faqHeading', 'faq', 'credibility', 'showcaseHeading', 'showcase', 'costStatement', 'realWorkHeading', 'realWork', 'comparisonHeading', 'comparison', 'valuation', 'closing'];
+  const expectedKeys = ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'fit', 'fitAction', 'inclusionsHeading', 'inclusions', 'preparation', 'preparationActions', 'process', 'processAction', 'faqHeading', 'faq', 'credibility', 'showcaseHeading', 'showcase', 'costStatement', 'realWorkHeading', 'realWorkControls', 'realWork', 'comparisonHeading', 'comparison', 'valuation', 'closing'];
   for (const locale of ['pt-PT', 'es', 'el', 'ru', 'he']) {
     const page = context.window.Studio17ServiceLocaleData[locale].freeWebsite;
     for (const key of expectedKeys) assert.ok(page[key], `${locale}: missing ${key}`);
     assert.equal((page.inclusions.match(/<li>/g) || []).length, 21, locale);
     assert.doesNotMatch(page.inclusions, /<span>0[1-4]<\/span>/, locale);
     assert.doesNotMatch(page.showcaseHeading, /<p>/, locale);
+    assert.doesNotMatch(page.realWorkHeading, /<p>/, locale);
+    assert.match(page.realWorkControls, /data-carousel-prev="free-work-track"/, locale);
     assert.match(page.closing, /\/contact\?service=website/, locale);
     assert.equal((page.faq.match(/<details>/g) || []).length, 8, locale);
   }

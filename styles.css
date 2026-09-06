@@ -1437,14 +1437,14 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .free-carousel-heading > div:first-child { max-width: 950px; }
 .free-carousel-heading h2 { margin: 0; }
 .free-carousel-heading p { max-width: 560px; margin: 20px 0 0; color: #596477; font-size: 16px; line-height: 1.6; }
-.free-showcase-heading { justify-content: flex-start; align-items: center; gap: 30px; }
-.free-showcase-heading > div:first-child { max-width: none; }
+.free-showcase-heading, .free-real-work-heading { justify-content: flex-start; align-items: center; gap: 30px; }
+.free-showcase-heading > div:first-child, .free-real-work-heading > div:first-child { max-width: none; }
 .free-work-track { grid-auto-columns: minmax(560px,720px); gap: 28px; margin-top: 42px; padding-inline-end: max(24px,(100vw - var(--shell))/2); }
-.free-work-card { display: grid; grid-template-columns: 1.18fr .82fr; min-height: 390px; overflow: hidden; background: var(--white); }
-.free-work-card > a:first-child { min-width: 0; overflow: hidden; }
-.free-work-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s var(--ease); }
+.free-work-card { display: flex; min-height: 0; flex-direction: column; overflow: hidden; background: var(--white); }
+.free-work-card > a:first-child { display: block; min-width: 0; aspect-ratio: 16 / 9; overflow: hidden; background: var(--white); }
+.free-work-card img { width: 100%; height: 100%; object-fit: contain; transition: transform .55s var(--ease); }
 .free-work-card:hover img { transform: scale(1.035); }
-.free-work-card > div { display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; }
+.free-work-card > div { min-height: 190px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; }
 .free-work-card > div > p { margin: 0 0 12px; color: var(--blue); font-size: 11px; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
 .free-work-card h3 { margin: 0 0 28px; font-size: 31px; line-height: 1.08; letter-spacing: -.045em; }
 .free-work-card > div > a { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; border-bottom: 2px solid var(--blue); padding-bottom: 4px; font-size: 13px; font-weight: 850; }
@@ -1694,8 +1694,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .free-zero-statement .shell { grid-template-columns: .65fr 1fr; padding-block: 45px; }
   .free-zero-statement .solid-button { justify-self: start; }
   .free-work-track { grid-auto-columns: minmax(520px,76vw); }
-  .free-work-card { grid-template-columns: 1fr; }
-  .free-work-card > a:first-child { min-height: 290px; }
+  .free-work-card > a:first-child { min-height: 0; }
   .free-value-grid { grid-template-columns: 1fr; gap: 55px; }
   .free-value-reference { border-inline-end: 0; border-bottom: 1px solid rgba(255,255,255,.2); padding: 0 0 42px; }
   .free-support-actions { grid-template-columns: 1fr 1fr; }
@@ -1756,7 +1755,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .free-carousel-heading p { font-size: 15px; }
   .free-work-track { grid-auto-columns: calc(100vw - 48px); gap: 18px; }
   .free-work-card { min-height: 0; }
-  .free-work-card > a:first-child { min-height: 230px; }
+  .free-work-card > a:first-child { min-height: 0; }
   .free-work-card > div { padding: 24px; }
   .free-comparison-row { min-width: 680px; }
   .free-comparison-row > * { padding: 13px 16px; }

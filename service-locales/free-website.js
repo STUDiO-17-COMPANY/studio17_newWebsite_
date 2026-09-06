@@ -227,22 +227,32 @@ delete window.Studio17FreeWebsiteCorrections;
   const content = {
     'pt-PT': {
       showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>Um website real,</span> criado à volta da sua marca.</h2>',
+      realWorkHeading: '<h2 class="design-heading" id="free-real-work-title"><span>Trabalho real da Studio 17,</span> criado para empresas reais.</h2>',
+      realWorkControls: '<button type="button" class="triangle-prev" data-carousel-prev="free-work-track" aria-label="Projeto anterior"><i data-lucide="chevron-left" aria-hidden="true"></i></button><button type="button" class="triangle-next" data-carousel-next="free-work-track" aria-label="Projeto seguinte"><i data-lucide="chevron-right" aria-hidden="true"></i></button>',
       closing: '<h2 class="design-heading" id="free-website-cta-title">O seu próximo website pode custar <span>€0.</span></h2><p>Conte-nos sobre o seu negócio. Nós construímo-lo.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">Candidatar-me a um website gratuito <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">Pedir orçamento para o meu website <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
     },
     es: {
       showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>Un sitio web real,</span> creado alrededor de tu marca.</h2>',
+      realWorkHeading: '<h2 class="design-heading" id="free-real-work-title"><span>Trabajo real de Studio 17,</span> creado para negocios reales.</h2>',
+      realWorkControls: '<button type="button" class="triangle-prev" data-carousel-prev="free-work-track" aria-label="Proyecto anterior"><i data-lucide="chevron-left" aria-hidden="true"></i></button><button type="button" class="triangle-next" data-carousel-next="free-work-track" aria-label="Proyecto siguiente"><i data-lucide="chevron-right" aria-hidden="true"></i></button>',
       closing: '<h2 class="design-heading" id="free-website-cta-title">Tu próximo sitio web podría costar <span>€0.</span></h2><p>Cuéntanos sobre tu negocio. Nosotros lo construiremos.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">Solicitar un sitio web gratuito <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">Pedir presupuesto para mi sitio web <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
     },
     el: {
       showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>Μια πραγματική ιστοσελίδα,</span> σχεδιασμένη γύρω από το brand σας.</h2>',
+      realWorkHeading: '<h2 class="design-heading" id="free-real-work-title"><span>Πραγματική δουλειά της Studio 17,</span> για πραγματικές επιχειρήσεις.</h2>',
+      realWorkControls: '<button type="button" class="triangle-prev" data-carousel-prev="free-work-track" aria-label="Προηγούμενο έργο"><i data-lucide="chevron-left" aria-hidden="true"></i></button><button type="button" class="triangle-next" data-carousel-next="free-work-track" aria-label="Επόμενο έργο"><i data-lucide="chevron-right" aria-hidden="true"></i></button>',
       closing: '<h2 class="design-heading" id="free-website-cta-title">Η επόμενη ιστοσελίδα σας μπορεί να κοστίσει <span>€0.</span></h2><p>Μιλήστε μας για την επιχείρησή σας. Εμείς θα τη δημιουργήσουμε.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">Αίτηση για δωρεάν ιστοσελίδα <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">Ζητήστε προσφορά ιστοσελίδας <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
     },
     ru: {
       showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>Настоящий сайт,</span> созданный вокруг вашего бренда.</h2>',
+      realWorkHeading: '<h2 class="design-heading" id="free-real-work-title"><span>Реальные работы Studio 17,</span> созданные для реального бизнеса.</h2>',
+      realWorkControls: '<button type="button" class="triangle-prev" data-carousel-prev="free-work-track" aria-label="Предыдущий проект"><i data-lucide="chevron-left" aria-hidden="true"></i></button><button type="button" class="triangle-next" data-carousel-next="free-work-track" aria-label="Следующий проект"><i data-lucide="chevron-right" aria-hidden="true"></i></button>',
       closing: '<h2 class="design-heading" id="free-website-cta-title">Ваш следующий сайт может стоить <span>€0.</span></h2><p>Расскажите нам о вашем бизнесе. Мы создадим сайт.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">Подать заявку на бесплатный сайт <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">Получить предложение на сайт <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
     },
     he: {
       showcaseHeading: '<h2 class="design-heading" id="free-showcase-title"><span>אתר אמיתי,</span> שמעוצב סביב המותג שלכם.</h2>',
+      realWorkHeading: '<h2 class="design-heading" id="free-real-work-title"><span>עבודות אמיתיות של Studio 17,</span> לעסקים אמיתיים.</h2>',
+      realWorkControls: '<button type="button" class="triangle-prev" data-carousel-prev="free-work-track" aria-label="הפרויקט הקודם"><i data-lucide="chevron-left" aria-hidden="true"></i></button><button type="button" class="triangle-next" data-carousel-next="free-work-track" aria-label="הפרויקט הבא"><i data-lucide="chevron-right" aria-hidden="true"></i></button>',
       closing: '<h2 class="design-heading" id="free-website-cta-title">האתר הבא שלכם יכול לעלות <span>€0.</span></h2><p>ספרו לנו על העסק שלכם. אנחנו נבנה אותו.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=free-website">הגישו בקשה לאתר ללא עלות <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/contact?service=website">קבלו הצעת מחיר לאתר <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
     }
   };

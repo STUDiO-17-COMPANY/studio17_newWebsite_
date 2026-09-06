@@ -4,6 +4,7 @@
 
 - Normalized all light Free Website surfaces to the shared Studio 17 paper palette, removing one-off pale-blue and white section backgrounds.
 - Rebuilt the first showcase as an uncropped 16:9 horizontal carousel with controls beside its title and no redundant supporting sentence.
+- Applied the same carousel contract to Real Studio 17 Work, including full 16:9 project media, adjacent controls and localized accessible control labels.
 - Removed the 01–04 decoration from inclusion groups and added a Website Development quote route beside the free application in the compact final CTA across all six languages.
 - Added Free Website to the Website group and Free Audit to Social Media across the shared desktop and mobile Services menus; both offers now appear last in their group as high-contrast white cards, while Free Audit uses its localized WIP destination.
 - Published `/services/free-website` in all six site languages as a visual qualification journey with a separated credibility section, a three-image horizontal showcase, audience fit, the exact 21-item scope, a €0 statement, real-work carousel, process, applicant preparation, Free-versus-Paid comparison, crossed-out €950 reference and dominant €0 price.
