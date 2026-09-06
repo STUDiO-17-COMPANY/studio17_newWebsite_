@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-06 — Snapdrop partner
+
+- Added Snapdrop as `partner-11` to all four homepage marquee sets using the supplied WebP logo and approved website link.
+- Preserved the hover/focus name label, accessible primary link, decorative duplicate semantics and seamless marquee loop.
+- Expanded the partner grid and regression coverage from ten to eleven partners.
+
 ## 2026-09-06 — Mobile Services directory
 
 - Added an accessible Services disclosure to the approved five-item mobile menu without adding another top-level destination.

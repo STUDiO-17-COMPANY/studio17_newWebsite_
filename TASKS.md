@@ -14,6 +14,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Standardize Sitemap, WIP, Careers, career-role and Contact heroes on the homepage media-hero model.
 - [x] Make first-visit language detection regional-code aware and use the browser's ordered language preferences.
 - [x] Restrict every complete mobile menu to Services, Work, About, News and Careers.
+- [x] Add Snapdrop as partner 11 to every homepage marquee set with its supplied logo and approved website link.
 - [x] Add the complete six-category service directory as a usable nested accordion under the approved mobile Services item.
 - [x] Replace the vertical desktop Services dropdown with the shared six-group horizontal mega-menu, remove All services and map every unfinished item to WIP.
 - [x] Set the default language scope for future pages to English, Greek and Russian; retain additional languages only when explicitly requested.

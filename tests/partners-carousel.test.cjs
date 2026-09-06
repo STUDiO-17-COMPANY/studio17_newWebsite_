@@ -16,18 +16,20 @@ const partners = [
   ['07', 'Selene Island', 'https://www.instagram.com/seleneisland/'],
   ['08', 'Phós Optics', 'https://www.phosoptics.com/en'],
   ['09', 'Event Studio Cyprus', 'https://www.instagram.com/eventstudiocy/'],
-  ['10', 'Nerouppos Barber Shop', 'https://share.google/qqDIgdgsQUuOc6XeN']
+  ['10', 'Nerouppos Barber Shop', 'https://share.google/qqDIgdgsQUuOc6XeN'],
+  ['11', 'Snapdrop', 'https://www.snappdrop.com']
 ];
 
 for (const [number, name, url] of partners) {
   assert.match(html, new RegExp(`data-partner="${number}"[^>]+href="${url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
   assert.match(html, new RegExp(`aria-label="Visit ${name}"`));
   assert.match(html, new RegExp(`<span>${name}</span>`));
-  assert.ok(fs.existsSync(path.join(root, 'Images', `partner-${number}.png`)), `Missing partner-${number}.png`);
+  const extension = number === '11' ? 'webp' : 'png';
+  assert.ok(fs.existsSync(path.join(root, 'Images', `partner-${number}.${extension}`)), `Missing partner-${number}.${extension}`);
 }
 
-assert.equal((html.match(/data-partner="10"/g) || []).length, 4, 'partner-10 must appear once in every marquee set');
-assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(10,/s, 'the partner grid must expose all ten partners in one row');
+assert.equal((html.match(/data-partner="11"/g) || []).length, 4, 'partner-11 must appear once in every marquee set');
+assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(11,/s, 'the partner grid must expose all eleven partners in one row');
 
 assert.doesNotMatch(html, /partner-phos\.png/);
 assert.match(css, /\.partner-marquee:hover \.partner-track/);
