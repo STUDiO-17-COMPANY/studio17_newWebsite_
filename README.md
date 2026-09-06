@@ -88,7 +88,7 @@ node service-locales/build-bundle.cjs
 6. Do not publish metrics, testimonials, partner names or case-study claims without confirmation.
 7. Update the sitemap and documentation in the same change as any new page or design rule.
 8. Add every meaningful code, content or design change to `CHANGELOG.md`.
-9. Keep multilingual public copy in sync across `locales/en.json`, `pt-PT.json`, `es.json`, `el.json`, `ru.json` and `he.json`; Hebrew must retain RTL support. Careers and individual role pages are the documented English-only exception.
+9. Existing multilingual pages remain supported in their published languages. New page development defaults to English, Greek and Russian; add Portuguese (Portugal), Spanish or Hebrew only when explicitly requested. Hebrew must retain RTL support wherever it is published. Careers and individual role pages remain the documented English-only exception.
 10. Point unfinished destinations to `/wip?for=<destination>` and replace that link with the final clean route when the page is published. Privacy, Cookies and Terms now use their live routes.
 11. Header items, promotional CTAs, cards and footer navigation must use WIP until their real HTML page exists. Keep only actual pages, structural anchors and real email addresses as direct destinations.
 12. Treat the 1920px fixed geometry as the English reference only. Translated and responsive text containers must grow naturally; never hide buttons or copy to preserve an English-only height.
@@ -97,7 +97,7 @@ node service-locales/build-bundle.cjs
 15. Keep one canonical URL per page, exclude WIP pages from indexing, and follow `SEO.md` whenever routes, languages or public pages change.
 16. Keep contact credentials server-side and follow `CONTACT_FORM.md` whenever the form, recipient or email provider changes.
 17. Keep `TASKS.md` current whenever work is planned, postponed, completed or blocked.
-18. Keep the complete mobile menu limited to Services, Work, About, News and Careers. Do not add a CTA, FAQ, Sitemap or another link without explicit approval.
+18. Keep the mobile menu limited to the five approved top-level entries: Services, Work, About, News and Careers. Services may reveal the shared six-group service directory through its accessible nested accordion; do not add a CTA, FAQ, Sitemap or another top-level link without explicit approval.
 19. Update FAQ copy in all six canonical locale files, then regenerate `locales/locales.js` and update both sitemaps in the same change.
 20. Keep footer social links limited to the confirmed Studio 17 Instagram, Facebook and LinkedIn profiles unless the user approves another channel.
 21. Start every hero and major section with its meaningful heading; do not add decorative eyebrow or mini-title labels. Preserve only functional labels and metadata.
@@ -106,6 +106,8 @@ node service-locales/build-bundle.cjs
 24. Keep public service codes private, preserve the five website packages and follow `SERVICES.md` whenever service names, prices, inclusions or proof projects change.
 25. While Studio 17 uses Trustpilot's free plan, keep public promotion to plain-text profile links and any official Review Collector supplied in the Business Account; never scrape reviews or display the logo, stars or TrustScore outside the plan entitlement.
 26. Keep `/about`, `/our-story` and `/team` aligned with `COMPANY_PAGES.md`; do not invent biographies, portraits, profile URLs, offices, ratings or company-history claims.
+27. Build the desktop Services navigation from the shared horizontal mega-menu in `script.js`; keep `/services` as a supporting catalogue rather than a mega-menu item, and route every unpublished service to a specific WIP destination.
+28. Build the mobile Services directory from the same shared configuration as desktop, keep only one category expanded at a time, and preserve keyboard, translated-label and RTL behavior.
 
 ## Pre-launch checklist
 

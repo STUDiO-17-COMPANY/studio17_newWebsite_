@@ -146,9 +146,20 @@ Future pages may vary their content and hero image but not the shared hero geome
 
 - Black Studio 17 logo on paper.
 - Uppercase navigation with the blue selected/action square.
-- Desktop service dropdown supports mouse, keyboard and Escape.
-- Mobile menu uses Lucide `menu` and `x`; it opens full-screen below the 68px mobile header.
-- The complete mobile menu is restricted to Services, Work, About, News and Careers. Do not add a CTA, FAQ, Sitemap or another link without explicit approval.
+- Desktop Services navigation is a viewport-wide horizontal mega-menu with six ordered groups: Social Media, Website, Content creation, Advertisement, By Industry and Events.
+- Do not include `All services` in the mega-menu. `/services` remains a supporting catalogue reached through contextual links and the mobile Services overview link.
+- Group names are non-clickable headings; individual services are links. Only Website Development uses its published route and every unfinished service uses a specific `/wip?for=<service>` destination.
+- The desktop service dropdown supports mouse, keyboard and Escape, preserves visible focus, and collapses from six to three columns before the approved mobile breakpoint.
+- Mobile menu uses Lucide `menu`, `x` and `chevron-down`; it opens full-screen below the 68px mobile header.
+- The mobile menu is restricted to five top-level entries: Services, Work, About, News and Careers. Do not add a CTA, FAQ, Sitemap or another top-level link without explicit approval.
+- Services retains its `/services` overview link and uses an adjacent disclosure control to reveal the same six groups as the desktop mega-menu. Each group is a second-level accordion, only one group opens at a time, and all unfinished items retain their specific WIP destination.
+
+### Page-language scope
+
+- Existing published translations remain available and maintained.
+- New pages default to English, Greek and Russian.
+- Add Portuguese (Portugal), Spanish or Hebrew to a new page only when explicitly requested.
+- Shared navigation and WIP labels remain translated across every language already available on the surrounding page so navigation never falls back to an unrelated label.
 
 ### Headings
 

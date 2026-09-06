@@ -17,6 +17,234 @@
     { page: 'cookies', href: '/cookie-policy', label: 'Cookie policy' },
     { page: 'terms', href: '/terms', label: 'Terms and conditions' }
   ];
+  const servicesMegaMenu = [
+    {
+      categoryKey: 'social',
+      label: 'Social Media',
+      items: [
+        ['socialManagement', 'Social Media management', '/wip?for=social-media-management'],
+        ['socialAutomation', 'Social Media automation', '/wip?for=social-media-automation'],
+        ['growthStrategy', 'Growth strategy', '/wip?for=growth-strategy'],
+        ['communityManagement', 'Community management', '/wip?for=community-management']
+      ]
+    },
+    {
+      categoryKey: 'website',
+      label: 'Website',
+      items: [
+        ['websiteDevelopment', 'Website development', '/services/website-development'],
+        ['websiteRevamp', 'Website revamp', '/wip?for=website-revamp'],
+        ['seo', 'SEO', '/wip?for=seo'],
+        ['geo', 'GEO', '/wip?for=geo'],
+        [null, 'Copywriting', '/wip?for=copywriting'],
+        ['localization', 'Localization and Translation', '/wip?for=localization-and-translation'],
+        ['maintenance', 'Maintenance', '/wip?for=maintenance']
+      ]
+    },
+    {
+      categoryKey: 'content',
+      label: 'Content creation',
+      items: [
+        [null, 'Filming', '/wip?for=filming'],
+        [null, 'Photography', '/wip?for=photography'],
+        [null, 'Video editing', '/wip?for=video-editing'],
+        [null, 'Graphic design', '/wip?for=graphic-design'],
+        [null, 'Digital design', '/wip?for=digital-design'],
+        ['scripting', 'Scripting', '/wip?for=scripting'],
+        [null, 'AI generation', '/wip?for=ai-generation']
+      ]
+    },
+    {
+      categoryKey: 'ads',
+      label: 'Advertisement',
+      items: [
+        [null, 'Meta ads', '/wip?for=meta-ads'],
+        [null, 'Google ads', '/wip?for=google-ads'],
+        ['socialAds', 'Social Media ads', '/wip?for=social-media-ads'],
+        [null, 'Influencer ads', '/wip?for=influencer-ads'],
+        ['ugcCreators', 'UGC creators', '/wip?for=ugc-creators'],
+        ['emailAdvertising', 'Email ads', '/wip?for=email-ads']
+      ]
+    },
+    {
+      categoryKey: 'industry',
+      label: 'By Industry',
+      items: [
+        ['automotive', 'Automotive', '/wip?for=automotive'],
+        ['restaurants', 'Restaurants', '/wip?for=restaurants'],
+        [null, 'Health care', '/wip?for=health-care'],
+        ['ecommerce', 'E-Commerce', '/wip?for=ecommerce'],
+        ['influencers', 'Individual Influencers', '/wip?for=individual-influencers'],
+        ['education', 'Education', '/wip?for=education'],
+        [null, 'Local Business', '/wip?for=local-business'],
+        [null, 'SMEs', '/wip?for=smes']
+      ]
+    },
+    {
+      label: 'Events',
+      items: [
+        [null, 'Presential Events', '/wip?for=presential-events'],
+        [null, 'Online Events', '/wip?for=online-events']
+      ]
+    }
+  ];
+
+  const localiseServicesMenuHref = href => {
+    const language = window.Studio17I18n?.getLanguage?.() || 'en';
+    const [pathname, query = ''] = href.split('?');
+    const localPages = { '/wip': 'wip.html', '/services/website-development': 'website-development.html' };
+    const target = location.protocol === 'file:' ? `${localPages[pathname] || pathname.replace(/^\//, '')}${query ? `?${query}` : ''}` : href;
+    const url = new URL(target, location.href);
+    if (language === 'en') url.searchParams.delete('lang');
+    else url.searchParams.set('lang', language);
+    return location.protocol === 'file:' ? `${url.pathname.split('/').pop()}${url.search}` : `${url.pathname}${url.search}`;
+  };
+
+  const updateServicesMegaMenu = () => {
+    if (!dropdownPanel) return;
+    const locale = window.Studio17I18n?.getData?.();
+    const categories = locale?.services?.categoryLabels || {};
+    const items = locale?.services?.itemLabels || {};
+    dropdownPanel.id = 'services-mega-menu';
+    dropdownTrigger?.setAttribute('aria-controls', 'services-mega-menu');
+    dropdownPanel.classList.add('services-mega-menu');
+    dropdownPanel.replaceChildren(...servicesMegaMenu.map(group => {
+      const section = document.createElement('section');
+      section.className = 'services-mega-group';
+      const title = document.createElement('p');
+      title.className = 'services-mega-title';
+      title.textContent = (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
+      const list = document.createElement('ul');
+      group.items.forEach(([itemKey, label, href]) => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = localiseServicesMenuHref(href);
+        link.textContent = (itemKey && items[itemKey]) || translateText(label);
+        listItem.appendChild(link);
+        list.appendChild(listItem);
+      });
+      section.append(title, list);
+      return section;
+    }));
+  };
+
+  const closeMobileServicesDirectory = () => {
+    const toggle = mobileMenu?.querySelector('.mobile-services-toggle');
+    const panel = mobileMenu?.querySelector('.mobile-services-panel');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', translateText('Show services'));
+    }
+    if (panel) panel.hidden = true;
+    mobileMenu?.querySelectorAll('.mobile-services-category').forEach(button => button.setAttribute('aria-expanded', 'false'));
+    mobileMenu?.querySelectorAll('.mobile-services-list').forEach(list => { list.hidden = true; });
+  };
+
+  const updateMobileServicesMenu = () => {
+    const nav = mobileMenu?.querySelector('nav');
+    if (!nav) return;
+
+    let menu = nav.querySelector('.mobile-services-menu');
+    if (!menu) {
+      const servicesLink = [...nav.children].find(element => {
+        if (!element.matches('a')) return false;
+        return /(^|\/)services(?:\.html)?(?:[?#]|$)/.test(element.getAttribute('href') || '');
+      });
+      if (!servicesLink) return;
+
+      menu = document.createElement('div');
+      menu.className = 'mobile-services-menu';
+      const primaryRow = document.createElement('div');
+      primaryRow.className = 'mobile-services-primary-row';
+      nav.insertBefore(menu, servicesLink);
+      menu.appendChild(primaryRow);
+      servicesLink.classList.add('mobile-services-overview-link');
+      primaryRow.appendChild(servicesLink);
+
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'mobile-services-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-controls', 'mobile-services-panel');
+      toggle.setAttribute('aria-label', translateText('Show services'));
+      toggle.innerHTML = '<i data-lucide="chevron-down" aria-hidden="true"></i>';
+      primaryRow.appendChild(toggle);
+
+      const panel = document.createElement('div');
+      panel.id = 'mobile-services-panel';
+      panel.className = 'mobile-services-panel';
+      panel.hidden = true;
+      menu.appendChild(panel);
+
+      toggle.addEventListener('click', () => {
+        const opening = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(opening));
+        toggle.setAttribute('aria-label', translateText(opening ? 'Hide services' : 'Show services'));
+        panel.hidden = !opening;
+        if (opening) panel.querySelector('.mobile-services-category')?.focus();
+      });
+    }
+
+    const locale = window.Studio17I18n?.getData?.();
+    const categories = locale?.services?.categoryLabels || {};
+    const items = locale?.services?.itemLabels || {};
+    const overviewLink = menu.querySelector('.mobile-services-overview-link');
+    if (overviewLink) overviewLink.textContent = translateText('Services');
+    const toggle = menu.querySelector('.mobile-services-toggle');
+    if (toggle) toggle.setAttribute('aria-label', translateText(toggle.getAttribute('aria-expanded') === 'true' ? 'Hide services' : 'Show services'));
+
+    const panel = menu.querySelector('.mobile-services-panel');
+    if (!panel) return;
+    panel.replaceChildren(...servicesMegaMenu.map((group, groupIndex) => {
+      const section = document.createElement('section');
+      section.className = 'mobile-services-group';
+
+      const button = document.createElement('button');
+      const listId = `mobile-services-list-${groupIndex + 1}`;
+      button.type = 'button';
+      button.className = 'mobile-services-category';
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-controls', listId);
+      const title = document.createElement('span');
+      title.textContent = (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
+      const icon = document.createElement('i');
+      icon.dataset.lucide = 'chevron-down';
+      icon.setAttribute('aria-hidden', 'true');
+      button.append(title, icon);
+
+      const list = document.createElement('ul');
+      list.id = listId;
+      list.className = 'mobile-services-list';
+      list.hidden = true;
+      group.items.forEach(([itemKey, label, href]) => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = localiseServicesMenuHref(href);
+        link.textContent = (itemKey && items[itemKey]) || translateText(label);
+        listItem.appendChild(link);
+        list.appendChild(listItem);
+      });
+
+      button.addEventListener('click', () => {
+        const opening = button.getAttribute('aria-expanded') !== 'true';
+        panel.querySelectorAll('.mobile-services-category').forEach(otherButton => otherButton.setAttribute('aria-expanded', 'false'));
+        panel.querySelectorAll('.mobile-services-list').forEach(otherList => { otherList.hidden = true; });
+        button.setAttribute('aria-expanded', String(opening));
+        list.hidden = !opening;
+      });
+
+      section.append(button, list);
+      return section;
+    }));
+    window.lucide?.createIcons?.({ attrs: { 'stroke-width': 2 } });
+  };
+
+  updateServicesMegaMenu();
+  updateMobileServicesMenu();
+  window.Studio17I18n?.ready?.then(() => {
+    updateServicesMegaMenu();
+    updateMobileServicesMenu();
+  }).catch(() => {});
 
   const updateLegalFooterLinks = () => {
     const language = window.Studio17I18n?.getLanguage?.() || 'en';
@@ -64,6 +292,7 @@
 
   const closeMobileMenu = ({ restoreFocus = false } = {}) => {
     if (!menuButton || !mobileMenu) return;
+    closeMobileServicesDirectory();
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', translateText('Open menu'));
     mobileMenu.hidden = true;
@@ -454,6 +683,8 @@
   renderService(getServiceContent(activeCategory, selectedItems[activeCategory]), { instant: true });
 
   window.addEventListener('studio17:languagechange', () => {
+    updateServicesMegaMenu();
+    updateMobileServicesMenu();
     renderServiceTabs();
     renderServiceList(activeCategory, selectedItems[activeCategory]);
     renderService(getServiceContent(activeCategory, selectedItems[activeCategory]), { instant: true });

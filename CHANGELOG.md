@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-09-06 — Mobile Services directory
+
+- Added an accessible Services disclosure to the approved five-item mobile menu without adding another top-level destination.
+- Reused the desktop service configuration to expose all six categories and their published or specific WIP destinations on mobile.
+- Kept one service category open at a time, added Lucide chevron feedback, keyboard focus states, localized control labels and Hebrew RTL alignment.
+- Added responsive navigation regression coverage and documented the nested mobile-menu contract.
+
+## 2026-09-06 — Horizontal Services mega-menu
+
+- Replaced the narrow vertical Services dropdown with a shared horizontal mega-menu organized into Social Media, Website, Content creation, Advertisement, By Industry and Events.
+- Removed All services from the desktop dropdown while retaining `/services` as a supporting catalogue and the approved mobile Services destination.
+- Linked the published Website Development page directly and routed every unfinished service or industry to a specific WIP destination with an accurate localized label.
+- Added six-column desktop and three-column compact-desktop layouts, keyboard focus states, language-aware links and translations for every newly introduced label.
+- Recorded English, Greek and Russian as the default scope for new pages while preserving existing translations and shared navigation in already supported languages.
+
 ## 2026-09-06 — Founder social profile actions
 
 - Added the approved Hugo Filipe LinkedIn and Instagram destinations beside his name and role in the About founders carousel.

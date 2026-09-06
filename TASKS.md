@@ -14,6 +14,9 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Standardize Sitemap, WIP, Careers, career-role and Contact heroes on the homepage media-hero model.
 - [x] Make first-visit language detection regional-code aware and use the browser's ordered language preferences.
 - [x] Restrict every complete mobile menu to Services, Work, About, News and Careers.
+- [x] Add the complete six-category service directory as a usable nested accordion under the approved mobile Services item.
+- [x] Replace the vertical desktop Services dropdown with the shared six-group horizontal mega-menu, remove All services and map every unfinished item to WIP.
+- [x] Set the default language scope for future pages to English, Greek and Russian; retain additional languages only when explicitly requested.
 - [x] Publish the multilingual FAQ content and clean `/faq` route.
 - [x] Publish the multilingual About page, Greek presentation link and confirmed social profiles.
 - [x] Rebuild About with the approved hero, origin summary, European presence, Trustpilot proof, founders carousel, culture and Careers action.
