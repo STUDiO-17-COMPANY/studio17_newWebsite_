@@ -7,6 +7,7 @@
 - Published English, Greek and Russian content with page-scoped language enforcement, reciprocal metadata, `Service` structured data, human/XML sitemap coverage and clean Vercel/local routes.
 - Replaced the SEO WIP destination in shared desktop/mobile service navigation, added SEO to the contact allowlist and documented the page contract and tests.
 - Replaced the generic growth-system strip with a specific demand, website-experience and business-outcome decision map, and applied the supplied `SEO_heroimage.webp` and `CTA_SEO_MainIMAGE.webp` assets at their intended hero and CTA placements.
+- Turned the decision map's purpose panel into an image-led card using `Every_priority_query_needs_a_purpose_image.webp`, with a contrast-safe overlay and a translucent bottom-corner capability button matching the homepage service-card language.
 
 ## 2026-09-06 — Snapdrop partner
 

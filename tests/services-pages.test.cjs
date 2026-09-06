@@ -53,6 +53,8 @@ test('SEO page is an international, evidence-safe commercial service page', () =
   assert.equal((html.match(/class="seo-capability-grid"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<article>/g) || []).length, 9);
   assert.match(html, /<span>We connect the query,<\/span> the page and the business action\./);
   assert.doesNotMatch(html, /SEO is a growth system/);
+  assert.match(html, /class="seo-growth-principle"[\s\S]*?src="\/Images\/Every_priority_query_needs_a_purpose_image\.webp"[^>]*width="1920" height="1086"/);
+  assert.match(html, /class="seo-growth-capability-link" href="#seo-capabilities">Explore the complete SEO capability/);
   assert.equal((html.match(/class="seo-growth-decisions"[\s\S]*?<\/div><\/div><ol class="seo-growth-route"/)?.[0].match(/<article>/g) || []).length, 3);
   assert.equal((html.match(/class="seo-growth-route"[\s\S]*?<\/ol>/)?.[0].match(/<li>/g) || []).length, 4);
   assert.equal((html.match(/class="seo-process"[\s\S]*?<\/section>/)?.[0].match(/<li>/g) || []).length, 5);
@@ -77,6 +79,8 @@ test('service cards and catalogue rows use seamless matching surfaces', () => {
   assert.match(css, /\.service-row:last-child:nth-child\(odd\)\s*\{\s*grid-column:\s*1\s*\/\s*-1;/);
   assert.match(css, /\.services-cta-media\s*\{[^}]*width:\s*min\(520px,100%\);[^}]*aspect-ratio:\s*2\s*\/\s*1;/);
   assert.match(css, /\.services-cta-media img\s*\{[^}]*object-fit:\s*cover;[^}]*transform:\s*scale\(1\.55\);/);
+  assert.match(css, /\.seo-growth-principle\s*\{[^}]*Every_priority_query_needs_a_purpose_image\.webp[^}]*cover no-repeat;/);
+  assert.match(css, /\.seo-growth-principle > a\s*\{[^}]*position:\s*absolute;[^}]*inset-inline-end:\s*0;[^}]*bottom:\s*0;[^}]*backdrop-filter:\s*blur\(8px\);/);
 });
 
 test('all service locales preserve the page schema and content counts', () => {

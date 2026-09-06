@@ -26,6 +26,8 @@ The SEO page is an international, high-intent landing page. Its decision map con
 
 Use `SEO_heroimage.webp` as the page hero at its native 1744 × 296 ratio. The final CTA uses `CTA_SEO_MainIMAGE.webp` inside the same 520 × 260 visual window established for service CTAs; keep it cropped with `object-fit: cover` and never stretch the source.
 
+The “Every priority query needs a purpose” panel uses `Every_priority_query_needs_a_purpose_image.webp` as a full-bleed crop with a dark readability gradient. Its capability link stays over the bottom-inline corner as a translucent, keyboard-accessible button; do not return this panel to a flat empty colour block.
+
 Keep the page commercially useful without unsupported promises. Never guarantee rankings, invent client SEO results, ratings or review data, or imply location-specific expertise that has not been approved. Proof may link only to real published work, the official Trustpilot profile and approved Studio 17 insights. Visible FAQs remain semantic HTML; do not add `FAQPage` structured data while the site is not eligible for that Google rich result.
 
 Every SEO enquiry CTA uses `/contact?service=seo`. The contact page must keep `seo` in the server-side service allowlist and preselect it only when the query value matches a valid option.
