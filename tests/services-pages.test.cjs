@@ -58,7 +58,8 @@ test('SEO page is an international, evidence-safe commercial service page', () =
   assert.equal((html.match(/class="seo-growth-decisions"[\s\S]*?<\/div><\/div><ol class="seo-growth-route"/)?.[0].match(/<article>/g) || []).length, 3);
   assert.equal((html.match(/class="seo-growth-route"[\s\S]*?<\/ol>/)?.[0].match(/<li>/g) || []).length, 4);
   assert.equal((html.match(/class="seo-process"[\s\S]*?<\/section>/)?.[0].match(/<li>/g) || []).length, 5);
-  assert.equal((html.match(/class="website-faq-list"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<details>/g) || []).length, 7);
+  assert.equal((html.match(/class="website-faq-list"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<details>/g) || []).length, 8);
+  assert.match(html, /What is included in your SEO services\?[\s\S]*?strategy and keyword research[\s\S]*?AI Search\/GEO/);
   for (const destination of ['/contact?service=seo', '/services/website-development', '/news', 'https://www.trustpilot.com/review/studio17.world']) assert.ok(html.includes(destination), destination);
   assert.match(html, /We do not present broader client work as invented SEO results/);
   assert.match(html, /class="seo-cta-media"[^>]*>[\s\S]*?src="\/Images\/CTA_SEO_MainIMAGE\.webp"[^>]*width="462" height="260"/);
@@ -98,7 +99,7 @@ test('all service locales preserve the page schema and content counts', () => {
 });
 
 test('SEO page translations are complete only for the approved Greek and Russian scope', () => {
-  const englishKeys = ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'opportunity', 'growthSystem', 'capabilitiesHeading', 'capabilities', 'method', 'aiSearch', 'proof', 'why', 'process', 'faqHeading', 'faq', 'closing'];
+  const englishKeys = ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'opportunity', 'growthSystem', 'capabilitiesHeading', 'capabilities', 'method', 'aiSearch', 'proof', 'why', 'process', 'faqHeading', 'faqIncluded', 'faq', 'closing'];
   for (const locale of ['el', 'ru']) {
     const page = require(path.join(root, 'service-locales', `${locale}.json`)).pages.seo;
     assert.deepEqual(Object.keys(page), englishKeys, locale);
@@ -108,12 +109,14 @@ test('SEO page translations are complete only for the approved Greek and Russian
     assert.equal((page.growthSystem.match(/<li>/g) || []).length, 4, locale);
     assert.equal((page.method.match(/<li>/g) || []).length, 4, locale);
     assert.equal((page.process.match(/<li>/g) || []).length, 5, locale);
-    assert.equal((page.faq.match(/<details>/g) || []).length, 7, locale);
+    assert.equal((page.faqIncluded.match(/<details>/g) || []).length, 1, locale);
+    assert.equal((page.faq.match(/<details>/g) || []).length + (page.faqIncluded.match(/<details>/g) || []).length, 8, locale);
   }
   for (const locale of ['pt-PT', 'es', 'he']) {
     const pages = require(path.join(root, 'service-locales', `${locale}.json`)).pages;
     assert.equal(pages.seo, undefined, `${locale} should not advertise an unapproved SEO translation`);
   }
+  assert.match(read('service-pages.js'), /page === 'seo' && record\.key === 'faq'[\s\S]*?faqIncluded/);
 });
 
 test('clean routes and sitemaps include every published service page', () => {

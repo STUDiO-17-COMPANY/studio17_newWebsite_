@@ -1,13 +1,11 @@
 # Changelog
 
-## 2026-09-06 — International SEO service page
+## 2026-09-06 — SEO service page
 
-- Added the commercial `/services/seo` page with strategy, technical, on-page, local, content, international, Maps, measurement, AI Search/GEO and continuous SEO capabilities.
-- Structured the page as a visual growth journey with evidence-safe proof, clear process, decision-focused FAQs and SEO-preselected contact CTAs without ranking guarantees or invented results.
-- Published English, Greek and Russian content with page-scoped language enforcement, reciprocal metadata, `Service` structured data, human/XML sitemap coverage and clean Vercel/local routes.
-- Replaced the SEO WIP destination in shared desktop/mobile service navigation, added SEO to the contact allowlist and documented the page contract and tests.
-- Replaced the generic growth-system strip with a specific demand, website-experience and business-outcome decision map, and applied the supplied `SEO_heroimage.webp` and `CTA_SEO_MainIMAGE.webp` assets at their intended hero and CTA placements.
-- Turned the decision map's purpose panel into an image-led card using `Every_priority_query_needs_a_purpose_image.webp`, with a contrast-safe overlay and a translucent bottom-corner capability button matching the homepage service-card language.
+- Published `/services/seo` in English, Greek and Russian with clean routing, reciprocal metadata, valid `Service` structured data and human/XML sitemap coverage.
+- Added the complete international SEO offer, evidence-safe proof, eight decision-focused FAQs and SEO-preselected contact actions without guarantees or invented results.
+- Built the commercial journey around demand, website experience and measurable actions, supported by the approved SEO hero, decision-card and closing-CTA images.
+- Connected the page to shared desktop/mobile navigation and the footer, regenerated its translation bundle, updated the service documentation and added regression coverage.
 
 ## 2026-09-06 — Snapdrop partner
 

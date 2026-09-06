@@ -88,7 +88,7 @@ node service-locales/build-bundle.cjs
 5. Respect `prefers-reduced-motion` for every new animation.
 6. Do not publish metrics, testimonials, partner names or case-study claims without confirmation.
 7. Update the sitemap and documentation in the same change as any new page or design rule.
-8. Add every meaningful code, content or design change to `CHANGELOG.md`.
+8. Add every meaningful code, content or design change to `CHANGELOG.md`, keeping one concise entry per coherent feature and consolidating follow-up refinements instead of logging every small iteration separately.
 9. Existing multilingual pages remain supported in their published languages. New page development defaults to English, Greek and Russian; add Portuguese (Portugal), Spanish or Hebrew only when explicitly requested. Hebrew must retain RTL support wherever it is published. Careers and individual role pages remain the documented English-only exception.
 10. Point unfinished destinations to `/wip?for=<destination>` and replace that link with the final clean route when the page is published. Privacy, Cookies and Terms now use their live routes.
 11. Header items, promotional CTAs, cards and footer navigation must use WIP until their real HTML page exists. Keep only actual pages, structural anchors and real email addresses as direct destinations.

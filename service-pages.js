@@ -42,7 +42,12 @@
   const render = language => {
     const locale = window.Studio17ServiceLocaleData?.[language]?.[page];
     records.forEach(record => {
-      record.element.innerHTML = language === 'en' ? record.original : (locale?.[record.key] || record.original);
+      if (language === 'en') {
+        record.element.innerHTML = record.original;
+        return;
+      }
+      const supplemental = page === 'seo' && record.key === 'faq' ? (locale?.faqIncluded || '') : '';
+      record.element.innerHTML = `${supplemental}${locale?.[record.key] || record.original}`;
     });
     updateMetadata(language === 'en' ? englishMetadata : (locale?.meta || englishMetadata));
     updateInsertedLinks(language);

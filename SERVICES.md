@@ -32,6 +32,8 @@ Keep the page commercially useful without unsupported promises. Never guarantee 
 
 Every SEO enquiry CTA uses `/contact?service=seo`. The contact page must keep `seo` in the server-side service allowlist and preselect it only when the query value matches a valid option.
 
+The SEO FAQ starts by answering what the service can include, then addresses timing, guarantees, ongoing work, website rebuilds, local/international SEO, GEO and measurement. Keep all eight answers synchronized across English, Greek and Russian.
+
 ## Proof projects
 
 - 100 Pratos links to `https://www.100pratos.pt/`.
