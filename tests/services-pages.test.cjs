@@ -83,7 +83,7 @@ test('service cards and catalogue rows use seamless matching surfaces', () => {
   assert.match(css, /\.services-cta-media img\s*\{[^}]*object-fit:\s*cover;[^}]*transform:\s*scale\(1\.55\);/);
   assert.match(css, /\.seo-growth-principle\s*\{[^}]*Every_priority_query_needs_a_purpose_image\.webp[^}]*cover no-repeat;/);
   assert.match(css, /\.seo-growth-principle > a\s*\{[^}]*position:\s*absolute;[^}]*inset-inline-end:\s*0;[^}]*bottom:\s*0;[^}]*backdrop-filter:\s*blur\(8px\);/);
-  assert.match(css, /\.seo-capability-grid\.is-interactive\s*\{[^}]*height:\s*440px;[^}]*display:\s*flex;[^}]*overflow:\s*hidden;/);
+  assert.match(css, /\.seo-capability-grid\.is-interactive\s*\{[^}]*height:\s*396px;[^}]*display:\s*flex;[^}]*overflow:\s*hidden;/);
   assert.match(css, /\.seo-capability-grid\.is-interactive > article:hover[\s\S]*?flex-grow:\s*3;/);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*?\.seo-capability-grid\.is-interactive > article\.is-expanded \.seo-capability-detail/);
   assert.match(behavior, /enhanceSeoCapabilities[\s\S]*?seo-capability-toggle[\s\S]*?aria-expanded/);

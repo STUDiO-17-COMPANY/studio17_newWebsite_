@@ -1431,15 +1431,15 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-capability-toggle { display: none; }
 
 @media (min-width: 901px) {
-  .seo-capability-grid.is-interactive { height: 440px; display: flex; gap: 1px; overflow: hidden; padding: 1px; background: #cbd4e1; }
-  .seo-capability-grid.is-interactive > article { position: relative; min-width: 0; min-height: 0; flex: .75 1 0; overflow: hidden; padding: 28px 24px; border: 0; background: var(--paper); transform: none; transition: flex-grow .48s var(--ease), background .28s ease; }
+  .seo-capability-grid.is-interactive { height: 396px; display: flex; gap: 1px; overflow: hidden; padding: 1px; background: #cbd4e1; }
+  .seo-capability-grid.is-interactive > article { position: relative; min-width: 0; min-height: 0; flex: .75 1 0; overflow: hidden; padding: 24px 22px; border: 0; background: var(--paper); transform: none; transition: flex-grow .48s var(--ease), background .28s ease; }
   .seo-capability-grid.is-interactive > article.is-expanded { z-index: 1; flex-grow: 3; background: var(--white); }
   .seo-capability-grid.is-interactive:hover > article,
   .seo-capability-grid.is-interactive:focus-within > article { flex-grow: .75; }
   .seo-capability-grid.is-interactive > article:hover,
   .seo-capability-grid.is-interactive > article:focus-within { z-index: 1; flex-grow: 3; background: var(--white); }
   .seo-capability-grid.is-interactive > article:focus-visible { outline: 2px solid var(--blue); outline-offset: -3px; }
-  .seo-capability-grid.is-interactive > article > .lucide { flex: 0 0 auto; margin-bottom: 32px; }
+  .seo-capability-grid.is-interactive > article > .lucide { flex: 0 0 auto; margin-bottom: 24px; }
   .seo-capability-grid.is-interactive h3 { max-width: 250px; margin-bottom: 0; font-size: clamp(17px,1.3vw,21px); overflow-wrap: anywhere; transition: font-size .35s var(--ease); }
   .seo-capability-grid.is-interactive > article:hover h3,
   .seo-capability-grid.is-interactive > article:focus-within h3,
@@ -1450,8 +1450,8 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-capability-grid.is-interactive > article.is-expanded .seo-capability-detail { max-height: 320px; opacity: 1; transform: translateY(0); transition-delay: .1s; }
   .seo-capability-grid.is-interactive:hover > article.is-expanded:not(:hover) .seo-capability-detail,
   .seo-capability-grid.is-interactive:focus-within > article.is-expanded:not(:focus-within) .seo-capability-detail { max-height: 0; opacity: 0; transform: translateY(12px); transition-delay: 0s; }
-  .seo-capability-detail > p { margin: 12px 0 20px; color: #596477; font-size: 14px; line-height: 1.55; }
-  .seo-capability-detail > ul { margin-top: 0; }
+  .seo-capability-detail > p { margin: 10px 0 14px; color: #596477; font-size: 14px; line-height: 1.48; }
+  .seo-capability-detail > ul { gap: 7px; margin-top: 0; padding-top: 14px; }
 }
 
 .seo-method { background: #edf2f9; }
