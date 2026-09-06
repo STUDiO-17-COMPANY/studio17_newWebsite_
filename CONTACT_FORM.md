@@ -34,6 +34,8 @@ If `RESEND_API_KEY` is absent in any environment, the form displays its translat
 
 No attachments or arbitrary recipients are accepted. The destination, sender contract, allowed services and allowed budgets are controlled server-side.
 
+Published service pages may pass a validated `?service=` value to preselect the enquiry type. `/contact?service=seo` selects SEO; unknown values are ignored and never bypass the server-side allowlist.
+
 ## Verification
 
 Run the dependency-free API and locale checks from the project root:

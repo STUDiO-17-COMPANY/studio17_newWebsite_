@@ -14,6 +14,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/team` (`team.html`) — confirmed Studio 17 founders and leadership introduction without unapproved personal details.
 - `/services` (`services.html`) — multilingual, price-free catalogue of all Studio 17 service areas.
 - `/services/website-development` (`website-development.html`) — multilingual Website Development packages, inclusions, proof projects, process and FAQs.
+- `/services/seo` (`seo.html`) — international SEO strategy and delivery page in English, Greek and Russian.
 - `/privacy-policy` (`privacy-policy.html`) — multilingual privacy information covering website, enquiry and analytics processing.
 - `/cookie-policy` (`cookie-policy.html`) — multilingual browser-storage and consent information with a working Analytics-settings control.
 - `/terms` (`terms.html`) — multilingual terms governing use of the public Studio 17 website.
@@ -37,7 +38,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `locales/` — English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew content files.
 - `locales/locales.js` — generated browser bundle that makes language switching work when the HTML files are opened directly.
 - `locales/build-bundle.cjs` — regenerates that bundle from the six canonical JSON files.
-- `service-locales/` / `service-pages.js` — dedicated six-language content and rendering contract for the Services pages.
+- `service-locales/` / `service-pages.js` — page-scoped service translations and rendering contract; existing service pages retain six languages while new pages use their explicitly approved language set.
 - `Vendor/lucide.min.js` — pinned local Lucide 1.24.0 browser package; its licence is stored beside it.
 - `Images/` — supplied brand assets and locally optimised page imagery.
 - `Fonts/` — locally hosted Inter and Plus Jakarta Sans font files with their licences.

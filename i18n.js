@@ -42,21 +42,33 @@
     return languageAliases[lower.split('-')[0]] || null;
   };
 
+  const pageSupportedLanguages = (document.documentElement.dataset?.supportedLanguages || '')
+    .split(',')
+    .map(language => normaliseLanguage(language))
+    .filter(Boolean);
+  const normalisePageLanguage = value => {
+    const language = normaliseLanguage(value);
+    if (!language) return null;
+    return !pageSupportedLanguages.length || pageSupportedLanguages.includes(language) ? language : null;
+  };
+
   const getBrowserLanguage = () => {
     if (typeof navigator === 'undefined') return null;
     const preferences = Array.from(navigator.languages || []);
     if (navigator.language && !preferences.includes(navigator.language)) preferences.push(navigator.language);
     for (const preference of preferences) {
-      const supported = normaliseLanguage(preference);
+      const supported = normalisePageLanguage(preference);
       if (supported) return supported;
     }
     return null;
   };
 
-  const forcedLanguage = normaliseLanguage(document.documentElement.dataset.forceLanguage);
+  const forcedLanguage = normalisePageLanguage(document.documentElement.dataset?.forceLanguage);
+  const addressLanguage = normaliseLanguage(new URLSearchParams(location.search).get('lang'));
+  const unsupportedAddressLanguage = Boolean(addressLanguage && pageSupportedLanguages.length && !pageSupportedLanguages.includes(addressLanguage));
   const requestedLanguage = forcedLanguage
-    || normaliseLanguage(new URLSearchParams(location.search).get('lang'))
-    || normaliseLanguage(getStoredLanguage())
+    || normalisePageLanguage(addressLanguage)
+    || normalisePageLanguage(getStoredLanguage())
     || getBrowserLanguage()
     || 'en';
 
@@ -100,7 +112,7 @@
       if (!page || /\.[a-z0-9]+$/i.test(page)) return;
 
       if (location.protocol === 'file:') {
-        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/our-story': 'our-story.html', '/team': 'team.html', '/news': 'news.html', '/careers': 'careers.html', '/services': 'services.html', '/services/website-development': 'website-development.html', '/privacy-policy': 'privacy-policy.html', '/cookie-policy': 'cookie-policy.html', '/terms': 'terms.html' };
+        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/our-story': 'our-story.html', '/team': 'team.html', '/news': 'news.html', '/careers': 'careers.html', '/services': 'services.html', '/services/website-development': 'website-development.html', '/services/seo': 'seo.html', '/privacy-policy': 'privacy-policy.html', '/cookie-policy': 'cookie-policy.html', '/terms': 'terms.html' };
         page = localPages[page] || page;
       }
 
@@ -212,13 +224,13 @@
     return response.json();
   };
 
-  const setLanguage = async (language, { updateAddress = true } = {}) => {
-    const normalised = forcedLanguage || normaliseLanguage(language) || 'en';
+  const setLanguage = async (language, { updateAddress = true, persist = true } = {}) => {
+    const normalised = forcedLanguage || normalisePageLanguage(language) || 'en';
     currentData = await loadLocale(normalised);
     currentLanguage = normalised;
     document.documentElement.lang = normalised;
     document.documentElement.dir = languages[normalised].dir;
-    if (!forcedLanguage) storeLanguage(normalised);
+    if (!forcedLanguage && persist) storeLanguage(normalised);
     applyTranslations();
     updateLanguageControl(normalised);
     updateInternalLinks(normalised);
@@ -256,8 +268,10 @@
     if (event.key === 'Escape' && trigger?.getAttribute('aria-expanded') === 'true') closeLanguageMenu({ restoreFocus: true });
   });
 
-  const ready = setLanguage(requestedLanguage, { updateAddress: Boolean(forcedLanguage) })
-    .catch(() => setLanguage('en', { updateAddress: Boolean(forcedLanguage) }));
+  const shouldNormaliseAddress = Boolean(forcedLanguage || unsupportedAddressLanguage);
+  const preserveUnsupportedPreference = Boolean(pageSupportedLanguages.length && (unsupportedAddressLanguage || (getStoredLanguage() && !normalisePageLanguage(getStoredLanguage()))));
+  const ready = setLanguage(requestedLanguage, { updateAddress: shouldNormaliseAddress, persist: !preserveUnsupportedPreference })
+    .catch(() => setLanguage('en', { updateAddress: shouldNormaliseAddress, persist: !preserveUnsupportedPreference }));
 
   window.Studio17I18n = {
     languages: Object.keys(languages),

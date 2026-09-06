@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-06 — International SEO service page
+
+- Added the commercial `/services/seo` page with strategy, technical, on-page, local, content, international, Maps, measurement, AI Search/GEO and continuous SEO capabilities.
+- Structured the page as a visual growth journey with evidence-safe proof, clear process, decision-focused FAQs and SEO-preselected contact CTAs without ranking guarantees or invented results.
+- Published English, Greek and Russian content with page-scoped language enforcement, reciprocal metadata, `Service` structured data, human/XML sitemap coverage and clean Vercel/local routes.
+- Replaced the SEO WIP destination in shared desktop/mobile service navigation, added SEO to the contact allowlist and documented the page contract and tests.
+
 ## 2026-09-06 — Snapdrop partner
 
 - Added Snapdrop as `partner-11` to all four homepage marquee sets using the supplied WebP logo and approved website link.

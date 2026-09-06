@@ -19,12 +19,17 @@ const detectLanguage = async ({
   stored = null,
   browserLanguages = [],
   browserLanguage = '',
-  forcedLanguage = ''
+  forcedLanguage = '',
+  pageLanguages = ''
 } = {}) => {
   let savedLanguage = stored;
+  let updatedUrl = null;
   const location = new URL(`https://www.studio17.world/${search}`);
   const documentElement = {
-    dataset: forcedLanguage ? { forceLanguage: forcedLanguage } : {},
+    dataset: {
+      ...(forcedLanguage ? { forceLanguage: forcedLanguage } : {}),
+      ...(pageLanguages ? { supportedLanguages: pageLanguages } : {})
+    },
     lang: 'en',
     dir: 'ltr'
   };
@@ -50,7 +55,7 @@ const detectLanguage = async ({
       setItem: (key, value) => { if (key === 'studio17-language') savedLanguage = value; }
     },
     location,
-    history: { replaceState: () => {} },
+    history: { replaceState: (_state, _title, url) => { updatedUrl = String(url); } },
     URL,
     URLSearchParams,
     CustomEvent: class CustomEvent {
@@ -64,7 +69,8 @@ const detectLanguage = async ({
   return {
     language: window.Studio17I18n.getLanguage(),
     direction: documentElement.dir,
-    savedLanguage
+    savedLanguage,
+    updatedUrl
   };
 };
 
@@ -113,6 +119,29 @@ const detectLanguage = async ({
   });
   assert.equal(forcedChoice.language, 'en', 'an English-only page should ignore other preferences');
   assert.equal(forcedChoice.savedLanguage, 'ru', 'an English-only page should not overwrite the saved website language');
+
+  const limitedPage = await detectLanguage({
+    search: '?lang=pt-PT',
+    stored: 'ru',
+    browserLanguages: ['el-GR'],
+    pageLanguages: 'en,el,ru'
+  });
+  assert.equal(limitedPage.language, 'ru', 'a page-specific language scope should ignore unsupported URL languages and use the next supported preference');
+  assert.match(limitedPage.updatedUrl, /\?lang=ru$/, 'the address should be normalised to the language actually displayed');
+
+  const preservedGlobalPreference = await detectLanguage({
+    stored: 'pt-PT',
+    browserLanguages: ['el-GR'],
+    pageLanguages: 'en,el,ru'
+  });
+  assert.equal(preservedGlobalPreference.language, 'el', 'a restricted page may use the next supported browser language');
+  assert.equal(preservedGlobalPreference.savedLanguage, 'pt-PT', 'a restricted page must not overwrite a valid global preference it cannot display');
+
+  const limitedBrowserPage = await detectLanguage({
+    browserLanguages: ['es-ES', 'el-GR'],
+    pageLanguages: 'en,el,ru'
+  });
+  assert.equal(limitedBrowserPage.language, 'el', 'page-specific language detection should skip unsupported browser preferences');
 
   const hebrew = await detectLanguage({ browserLanguage: 'he-IL' });
   assert.equal(hebrew.direction, 'rtl', 'Hebrew should enable RTL layout');

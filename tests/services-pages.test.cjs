@@ -41,6 +41,30 @@ test('website development page preserves commercial and portfolio requirements',
   assert.equal(structured.hasOfferCatalog.itemListElement.length, 5);
 });
 
+test('SEO page is an international, evidence-safe commercial service page', () => {
+  const html = read('seo.html');
+  assert.match(html, /<html lang="en" data-supported-languages="en,el,ru">/);
+  assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/seo"/);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 4);
+  for (const language of ['x-default', 'en', 'el', 'ru']) assert.match(html, new RegExp(`hreflang="${language}"`));
+  for (const language of ['pt-PT', 'es', 'he']) assert.doesNotMatch(html, new RegExp(`hreflang="${language}"`));
+  assert.match(html, /<h1[^>]*><span>SEO services<\/span> that connect search demand to growth\.<\/h1>/);
+  assert.equal((html.match(/class="seo-capability-grid"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<article>/g) || []).length, 9);
+  assert.equal((html.match(/class="seo-growth-chain"[\s\S]*?<\/ol>/)?.[0].match(/<li>/g) || []).length, 6);
+  assert.equal((html.match(/class="seo-process"[\s\S]*?<\/section>/)?.[0].match(/<li>/g) || []).length, 5);
+  assert.equal((html.match(/class="website-faq-list"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<details>/g) || []).length, 7);
+  for (const destination of ['/contact?service=seo', '/services/website-development', '/news', 'https://www.trustpilot.com/review/studio17.world']) assert.ok(html.includes(destination), destination);
+  assert.match(html, /We do not present broader client work as invented SEO results/);
+  assert.doesNotMatch(html, /aggregateRating|"review"\s*:/);
+
+  const structured = jsonLd(html)[0];
+  assert.equal(structured['@type'], 'Service');
+  assert.equal(structured.areaServed, 'Worldwide');
+  assert.equal(structured.hasOfferCatalog.itemListElement.length, 10);
+  assert.equal(structured.aggregateRating, undefined);
+  assert.equal(jsonLd(html).some(entry => entry['@type'] === 'FAQPage'), false);
+});
+
 test('service cards and catalogue rows use seamless matching surfaces', () => {
   const css = read('styles.css');
   assert.doesNotMatch(css, /\.service-family-card-featured\s*\{[^}]*background:\s*var\(--blue\)/);
@@ -64,19 +88,40 @@ test('all service locales preserve the page schema and content counts', () => {
   }
 });
 
-test('clean routes and sitemaps include both service pages', () => {
+test('SEO page translations are complete only for the approved Greek and Russian scope', () => {
+  const englishKeys = ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'opportunity', 'growthSystem', 'capabilitiesHeading', 'capabilities', 'method', 'aiSearch', 'proof', 'why', 'process', 'faqHeading', 'faq', 'closing'];
+  for (const locale of ['el', 'ru']) {
+    const page = require(path.join(root, 'service-locales', `${locale}.json`)).pages.seo;
+    assert.deepEqual(Object.keys(page), englishKeys, locale);
+    assert.equal((page.capabilities.match(/<article>/g) || []).length, 9, locale);
+    assert.equal((page.growthSystem.match(/<li>/g) || []).length, 6, locale);
+    assert.equal((page.method.match(/<li>/g) || []).length, 4, locale);
+    assert.equal((page.process.match(/<li>/g) || []).length, 5, locale);
+    assert.equal((page.faq.match(/<details>/g) || []).length, 7, locale);
+  }
+  for (const locale of ['pt-PT', 'es', 'he']) {
+    const pages = require(path.join(root, 'service-locales', `${locale}.json`)).pages;
+    assert.equal(pages.seo, undefined, `${locale} should not advertise an unapproved SEO translation`);
+  }
+});
+
+test('clean routes and sitemaps include every published service page', () => {
   const server = read('dev-server.cjs');
   const vercel = read('vercel.json');
   const sitemap = read('api/sitemap.js');
   assert.ok(server.includes("['/services', 'services.html']"));
   assert.ok(server.includes("['/services/website-development', 'website-development.html']"));
+  assert.ok(server.includes("['/services/seo', 'seo.html']"));
   assert.ok(vercel.includes('"source": "/services/website-development"'));
+  assert.ok(vercel.includes('"source": "/services/seo"'));
   assert.ok(sitemap.includes('`${SITE_URL}/services`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/website-development`'));
+  assert.ok(sitemap.includes('`${SITE_URL}/services/seo`'));
+  assert.match(read('sitemap.html'), /href="\/services\/seo">SEO services\s*<i/);
 });
 
 test('mobile menu remains limited to the approved five destinations', () => {
-  for (const file of ['services.html', 'website-development.html']) {
+  for (const file of ['services.html', 'website-development.html', 'seo.html']) {
     const html = read(file);
     const menu = html.match(/<div class="mobile-menu"[\s\S]*?<\/div>\s*<\/header>/)?.[0] || '';
     assert.equal((menu.match(/<a /g) || []).length, 5, file);
@@ -84,4 +129,11 @@ test('mobile menu remains limited to the approved five destinations', () => {
     assert.ok(menu.includes('href="/services"'));
     assert.doesNotMatch(menu, /Sitemap|FAQ/);
   }
+});
+
+test('SEO entry is accepted and preselected by the contact workflow', () => {
+  assert.match(read('contact.html'), /<option value="seo">SEO<\/option>/);
+  assert.match(read('contact.js'), /new URLSearchParams\(location\.search\)\.get\('service'\)/);
+  assert.match(read('api/contact.js'), /'seo'/);
+  assert.match(read('api/contact.js'), /seo:\s*'SEO'/);
 });

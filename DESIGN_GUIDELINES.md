@@ -236,6 +236,14 @@ The six category lists are the canonical service navigation contract:
 
 Desktop lists scroll vertically within the fixed English Figma panel when necessary. Between 601px and 900px they become contained horizontal touch tracks. At 600px and below both category tabs and service items use visible two-column grids, so no service disappears off-screen. Category tabs, list items and previous/next controls must always operate on the active localized dataset, and the selected service copy must render in the active language on initial load.
 
+### Commercial SEO page
+
+- Use the shared media hero and strong blue title emphasis; do not add eyebrow or mini-title labels.
+- Present the commercial journey visually: demand → visibility → qualified traffic → website experience → conversion → business growth.
+- Keep capability, method, proof and process sections scannable through square cards, numbered steps and strong alternating surfaces rather than a long wall of text.
+- SEO proof must be verifiable. Link real work and independent feedback without inventing rankings, traffic gains, case-study outcomes or ratings.
+- The page language selector exposes only English, Greek and Russian. Unsupported language URLs normalize to an available language so URL, metadata and visible copy stay aligned.
+
 ## 7. Icon policy
 
 All interface pictograms come from the locally stored Lucide `1.24.0` browser package at `Vendor/lucide.min.js`.

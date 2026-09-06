@@ -18,6 +18,12 @@
   let currentStatus = '';
   let isSubmitting = false;
 
+  const requestedService = new URLSearchParams(location.search).get('service');
+  const serviceField = form.elements.namedItem('service');
+  if (serviceField instanceof HTMLSelectElement && [...serviceField.options].some(option => option.value === requestedService)) {
+    serviceField.value = requestedService;
+  }
+
   const resetTimer = () => { startedAt.value = String(Date.now()); };
   const showStatus = (key, state) => {
     currentStatus = key;

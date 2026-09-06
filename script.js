@@ -34,7 +34,7 @@
       items: [
         ['websiteDevelopment', 'Website development', '/services/website-development'],
         ['websiteRevamp', 'Website revamp', '/wip?for=website-revamp'],
-        ['seo', 'SEO', '/wip?for=seo'],
+        ['seo', 'SEO', '/services/seo'],
         ['geo', 'GEO', '/wip?for=geo'],
         [null, 'Copywriting', '/wip?for=copywriting'],
         ['localization', 'Localization and Translation', '/wip?for=localization-and-translation'],
@@ -92,7 +92,7 @@
   const localiseServicesMenuHref = href => {
     const language = window.Studio17I18n?.getLanguage?.() || 'en';
     const [pathname, query = ''] = href.split('?');
-    const localPages = { '/wip': 'wip.html', '/services/website-development': 'website-development.html' };
+    const localPages = { '/wip': 'wip.html', '/services/website-development': 'website-development.html', '/services/seo': 'seo.html' };
     const target = location.protocol === 'file:' ? `${localPages[pathname] || pathname.replace(/^\//, '')}${query ? `?${query}` : ''}` : href;
     const url = new URL(target, location.href);
     if (language === 'en') url.searchParams.delete('lang');
@@ -239,11 +239,32 @@
     window.lucide?.createIcons?.({ attrs: { 'stroke-width': 2 } });
   };
 
+  const updateSeoFooterLinks = () => {
+    document.querySelectorAll('.footer-grid').forEach(grid => {
+      const servicesColumn = [...grid.children].find(element => element.matches('nav.footer-column'));
+      if (!servicesColumn) return;
+      let link = servicesColumn.querySelector('.footer-services-seo, a[href^="/services/seo"]');
+      if (!link) {
+        link = document.createElement('a');
+        link.className = 'footer-services-seo';
+        link.textContent = 'SEO';
+        const websiteLink = servicesColumn.querySelector('a[href^="/services/website-development"]');
+        if (websiteLink) websiteLink.insertAdjacentElement('afterend', link);
+        else servicesColumn.appendChild(link);
+      }
+      link.classList.add('footer-services-seo');
+      link.href = localiseServicesMenuHref('/services/seo');
+      if (document.body.classList.contains('seo-service-page')) link.setAttribute('aria-current', 'page');
+    });
+  };
+
   updateServicesMegaMenu();
   updateMobileServicesMenu();
+  updateSeoFooterLinks();
   window.Studio17I18n?.ready?.then(() => {
     updateServicesMegaMenu();
     updateMobileServicesMenu();
+    updateSeoFooterLinks();
   }).catch(() => {});
 
   const updateLegalFooterLinks = () => {
@@ -685,6 +706,7 @@
   window.addEventListener('studio17:languagechange', () => {
     updateServicesMegaMenu();
     updateMobileServicesMenu();
+    updateSeoFooterLinks();
     renderServiceTabs();
     renderServiceList(activeCategory, selectedItems[activeCategory]);
     renderService(getServiceContent(activeCategory, selectedItems[activeCategory]), { instant: true });

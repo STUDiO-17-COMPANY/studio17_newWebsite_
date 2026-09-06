@@ -30,7 +30,7 @@
       url.searchParams.delete('lang');
       if (language !== 'en') url.searchParams.set('lang', language);
       if (location.protocol === 'file:') {
-        const localPages = { '/': 'index.html', '/services': 'services.html', '/services/website-development': 'website-development.html', '/contact': 'contact.html', '/news': 'news.html' };
+        const localPages = { '/': 'index.html', '/services': 'services.html', '/services/website-development': 'website-development.html', '/services/seo': 'seo.html', '/contact': 'contact.html', '/news': 'news.html' };
         const localPath = localPages[url.pathname] || url.pathname.replace(/^\//, '');
         link.setAttribute('href', `${localPath}${url.search}${url.hash}`);
       } else {

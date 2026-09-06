@@ -18,6 +18,7 @@ This document is the maintenance contract for search visibility. It covers techn
 - About: `https://www.studio17.world/about`
 - Services catalogue: `https://www.studio17.world/services`
 - Website Development: `https://www.studio17.world/services/website-development`
+- SEO services: `https://www.studio17.world/services/seo`
 - Careers: `https://www.studio17.world/careers`
 - Vacancy: `https://www.studio17.world/careers/<role-name>`
 - Human-readable sitemap: `https://www.studio17.world/sitemap`
@@ -48,6 +49,8 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 - WIP pages stay `noindex,follow` until real, approved content replaces them.
 - Never add unsupported review ratings, awards, locations or business claims to structured data.
 - Keep the Website Development `Service`/`OfferCatalog` structured data synchronized with visible package names and prices. The catalogue page remains price-free.
+- Keep the SEO page's `Service`/`OfferCatalog` data synchronized with its ten visible capabilities. It is international, price-free and available only in English, Greek and Russian until another translation is approved.
+- Do not add SEO guarantees, invented performance results, unsupported ratings or `FAQPage` markup. Use Search Console and consent-aware analytics as measurement tools, not as claims of results.
 - Preserve descriptive project alternative text, explicit image dimensions and crawlable project links; do not replace useful visible copy with image-only case studies.
 
 ## Content priorities
@@ -71,6 +74,7 @@ Studio 17 is not currently an eligible government or health authority for Google
 9. Confirm no FAQ link still points to WIP and the complete mobile menu remains limited to Services, Work, About, News and Careers.
 10. Confirm `/about` returns HTTP 200, uses reciprocal six-language alternates, appears in both sitemaps and has replaced every About WIP link.
 11. Confirm `/services` and `/services/website-development` return HTTP 200, expose reciprocal six-language alternatives, appear in both sitemaps and contain no internal service codes.
+12. Confirm `/services/seo` returns HTTP 200, exposes only English, Greek, Russian and `x-default` alternatives, appears in both sitemaps, and preselects SEO at `/contact?service=seo`.
 
 ## Files to update together
 

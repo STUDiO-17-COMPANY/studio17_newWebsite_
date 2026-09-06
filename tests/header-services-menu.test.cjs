@@ -23,7 +23,7 @@ for (const group of groups) {
 const requiredDestinations = [
   '/services/website-development',
   '/wip?for=social-media-management', '/wip?for=social-media-automation', '/wip?for=growth-strategy', '/wip?for=community-management',
-  '/wip?for=website-revamp', '/wip?for=seo', '/wip?for=geo', '/wip?for=copywriting', '/wip?for=localization-and-translation', '/wip?for=maintenance',
+  '/wip?for=website-revamp', '/services/seo', '/wip?for=geo', '/wip?for=copywriting', '/wip?for=localization-and-translation', '/wip?for=maintenance',
   '/wip?for=filming', '/wip?for=photography', '/wip?for=video-editing', '/wip?for=graphic-design', '/wip?for=digital-design', '/wip?for=scripting', '/wip?for=ai-generation',
   '/wip?for=meta-ads', '/wip?for=google-ads', '/wip?for=social-media-ads', '/wip?for=influencer-ads', '/wip?for=ugc-creators', '/wip?for=email-ads',
   '/wip?for=automotive', '/wip?for=restaurants', '/wip?for=health-care', '/wip?for=ecommerce', '/wip?for=individual-influencers', '/wip?for=education', '/wip?for=local-business', '/wip?for=smes',

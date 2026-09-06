@@ -34,6 +34,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [-] Review and publish the staged Vercel country-access rule before changing it from Log to Deny.
 - [x] Create multilingual Privacy Policy, Cookie Policy and Terms pages based on the website's implemented processing.
 - [x] Publish the multilingual, price-free Services catalogue and the five-package Website Development page with proof projects, clean routes and sales CTAs.
+- [x] Publish the international SEO service page at `/services/seo` in English, Greek and Russian with technical/commercial scope, evidence-safe proof, clean routing and contact preselection.
 - [ ] Obtain qualified Cyprus/EU legal review of the three informative legal drafts before treating them as final legal advice.
 
 ## Vercel firewall — country restriction
@@ -84,7 +85,7 @@ When a task creates or publishes a page:
 
 - [ ] Use a clean URL without `.html`.
 - [ ] Reuse the shared header, `page-hero`, closing CTA where relevant and footer.
-- [ ] Add all six public languages unless the page is an approved English-only exception.
+- [ ] Use English, Greek and Russian for new pages by default; add Portuguese (Portugal), Spanish or Hebrew only when explicitly requested, while preserving existing published translations.
 - [ ] Use Lucide for interface icons.
 - [ ] Update the human sitemap, XML sitemap, metadata and documentation.
 - [ ] Verify desktop, mobile, keyboard, RTL, reduced motion and zero horizontal overflow.
