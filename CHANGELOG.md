@@ -4,7 +4,7 @@
 
 - Published `/services/seo` in English, Greek and Russian with clean routing, reciprocal metadata, valid `Service` structured data and human/XML sitemap coverage.
 - Added the complete international SEO offer, evidence-safe proof, eight decision-focused FAQs and SEO-preselected contact actions without guarantees or invented results.
-- Built the commercial journey around demand, website experience and measurable actions, supported by the approved imagery and a unified nine-card capability explorer that expands by hover or keyboard on desktop and by tap on mobile.
+- Built the commercial journey around demand, website experience and measurable actions, supported by the approved imagery and a unified nine-card capability explorer with the first service open by default, hover or keyboard expansion on desktop and tap expansion on mobile.
 - Connected the page to shared desktop/mobile navigation and the footer, regenerated its translation bundle, updated the service documentation and added regression coverage.
 
 ## 2026-09-06 — Snapdrop partner

@@ -88,6 +88,8 @@ test('service cards and catalogue rows use seamless matching surfaces', () => {
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*?\.seo-capability-grid\.is-interactive > article\.is-expanded \.seo-capability-detail/);
   assert.match(behavior, /enhanceSeoCapabilities[\s\S]*?seo-capability-toggle[\s\S]*?aria-expanded/);
   assert.match(behavior, /matchMedia\('\(min-width: 901px\)'\)[\s\S]*?is-expanded/);
+  assert.match(behavior, /isInitiallyExpanded\s*=\s*index\s*===\s*0[\s\S]*?classList\.toggle\('is-expanded', isInitiallyExpanded\)/);
+  assert.match(css, /\.seo-capability-grid\.is-interactive > article\.is-expanded\s*\{[^}]*flex-grow:\s*3;/);
 });
 
 test('all service locales preserve the page schema and content counts', () => {

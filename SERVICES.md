@@ -28,7 +28,7 @@ Use `SEO_heroimage.webp` as the page hero at its native 1744 × 296 ratio. The f
 
 The “Every priority query needs a purpose” panel uses `Every_priority_query_needs_a_purpose_image.webp` as a full-bleed crop with a dark readability gradient. Its capability link stays over the bottom-inline corner as a translucent, keyboard-accessible button; do not return this panel to a flat empty colour block.
 
-The nine-item capability explorer is one connected container. On desktop, pointer hover and keyboard focus expand the active capability while the remaining cards contract; on mobile, its Lucide-chevron disclosures open one at a time by tap. The unenhanced HTML must continue to show all nine complete cards.
+The nine-item capability explorer is one connected container with “SEO strategy & keyword research” open by default so its behaviour is immediately clear. On desktop, pointer hover and keyboard focus expand the active capability while the remaining cards contract; on mobile, its Lucide-chevron disclosures open one at a time by tap. The unenhanced HTML must continue to show all nine complete cards.
 
 Keep the page commercially useful without unsupported promises. Never guarantee rankings, invent client SEO results, ratings or review data, or imply location-specific expertise that has not been approved. Proof may link only to real published work, the official Trustpilot profile and approved Studio 17 insights. Visible FAQs remain semantic HTML; do not add `FAQPage` structured data while the site is not eligible for that Google rich result.
 

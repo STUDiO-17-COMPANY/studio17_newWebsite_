@@ -1432,7 +1432,8 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 
 @media (min-width: 901px) {
   .seo-capability-grid.is-interactive { height: 440px; display: flex; gap: 1px; overflow: hidden; padding: 1px; background: #cbd4e1; }
-  .seo-capability-grid.is-interactive > article { position: relative; min-width: 0; min-height: 0; flex: 1 1 0; overflow: hidden; padding: 28px 24px; border: 0; background: var(--paper); transform: none; transition: flex-grow .48s var(--ease), background .28s ease; }
+  .seo-capability-grid.is-interactive > article { position: relative; min-width: 0; min-height: 0; flex: .75 1 0; overflow: hidden; padding: 28px 24px; border: 0; background: var(--paper); transform: none; transition: flex-grow .48s var(--ease), background .28s ease; }
+  .seo-capability-grid.is-interactive > article.is-expanded { z-index: 1; flex-grow: 3; background: var(--white); }
   .seo-capability-grid.is-interactive:hover > article,
   .seo-capability-grid.is-interactive:focus-within > article { flex-grow: .75; }
   .seo-capability-grid.is-interactive > article:hover,
@@ -1441,10 +1442,14 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-capability-grid.is-interactive > article > .lucide { flex: 0 0 auto; margin-bottom: 32px; }
   .seo-capability-grid.is-interactive h3 { max-width: 250px; margin-bottom: 0; font-size: clamp(17px,1.3vw,21px); overflow-wrap: anywhere; transition: font-size .35s var(--ease); }
   .seo-capability-grid.is-interactive > article:hover h3,
-  .seo-capability-grid.is-interactive > article:focus-within h3 { font-size: 23px; }
+  .seo-capability-grid.is-interactive > article:focus-within h3,
+  .seo-capability-grid.is-interactive > article.is-expanded h3 { font-size: 23px; }
   .seo-capability-detail { min-width: 0; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(12px); transition: opacity .18s ease, transform .35s var(--ease); }
   .seo-capability-grid.is-interactive > article:hover .seo-capability-detail,
-  .seo-capability-grid.is-interactive > article:focus-within .seo-capability-detail { max-height: 320px; opacity: 1; transform: translateY(0); transition-delay: .1s; }
+  .seo-capability-grid.is-interactive > article:focus-within .seo-capability-detail,
+  .seo-capability-grid.is-interactive > article.is-expanded .seo-capability-detail { max-height: 320px; opacity: 1; transform: translateY(0); transition-delay: .1s; }
+  .seo-capability-grid.is-interactive:hover > article.is-expanded:not(:hover) .seo-capability-detail,
+  .seo-capability-grid.is-interactive:focus-within > article.is-expanded:not(:focus-within) .seo-capability-detail { max-height: 0; opacity: 0; transform: translateY(12px); transition-delay: 0s; }
   .seo-capability-detail > p { margin: 12px 0 20px; color: #596477; font-size: 14px; line-height: 1.55; }
   .seo-capability-detail > ul { margin-top: 0; }
 }
@@ -1528,7 +1533,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-capability-grid.is-interactive > article > .lucide { width: 28px; height: 28px; margin: 0; }
   .seo-capability-grid.is-interactive h3 { margin: 0; font-size: 19px; }
   .seo-capability-detail { grid-column: 1 / -1; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .42s var(--ease), opacity .24s ease, padding-top .42s var(--ease); }
-  .seo-capability-grid.is-interactive > article.is-expanded .seo-capability-detail { max-height: 420px; padding-top: 10px; opacity: 1; }
+  .seo-capability-grid.is-interactive > article.is-expanded .seo-capability-detail { max-height: 420px; padding-top: 10px; opacity: 1; transform: none; }
   .seo-capability-detail > p { margin: 0 0 18px; color: #596477; font-size: 14px; line-height: 1.55; }
   .seo-capability-detail > ul { margin-top: 0; }
   .seo-capability-toggle { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #cbd4e1; color: var(--blue); background: var(--white); }

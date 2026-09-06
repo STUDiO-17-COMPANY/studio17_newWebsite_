@@ -29,7 +29,9 @@
 
       const titleId = `seo-capability-title-${index + 1}`;
       const detailId = `seo-capability-detail-${index + 1}`;
+      const isInitiallyExpanded = index === 0;
       card.tabIndex = capabilityDesktopQuery.matches ? 0 : -1;
+      card.classList.toggle('is-expanded', isInitiallyExpanded);
       heading.id = titleId;
 
       const detail = document.createElement('div');
@@ -40,7 +42,7 @@
       const toggle = document.createElement('button');
       toggle.className = 'seo-capability-toggle';
       toggle.type = 'button';
-      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-expanded', String(isInitiallyExpanded));
       toggle.setAttribute('aria-controls', detailId);
       toggle.setAttribute('aria-labelledby', titleId);
       toggle.innerHTML = '<i data-lucide="chevron-down" aria-hidden="true"></i>';
@@ -52,12 +54,11 @@
   const capabilityGrid = page === 'seo' ? document.querySelector('.seo-capability-grid') : null;
   const capabilityDesktopQuery = window.matchMedia('(min-width: 901px)');
   capabilityDesktopQuery.addEventListener?.('change', event => {
-    capabilityGrid?.querySelectorAll(':scope > article').forEach(card => {
+    capabilityGrid?.querySelectorAll(':scope > article').forEach((card, index) => {
       card.tabIndex = event.matches ? 0 : -1;
-      if (event.matches) {
-        card.classList.remove('is-expanded');
-        card.querySelector('.seo-capability-toggle')?.setAttribute('aria-expanded', 'false');
-      }
+      const isInitiallyExpanded = index === 0;
+      card.classList.toggle('is-expanded', isInitiallyExpanded);
+      card.querySelector('.seo-capability-toggle')?.setAttribute('aria-expanded', String(isInitiallyExpanded));
     });
   });
 
