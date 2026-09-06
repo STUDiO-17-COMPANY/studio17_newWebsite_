@@ -18,7 +18,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Publish the multilingual About page, Greek presentation link and confirmed social profiles.
 - [x] Rebuild About with the approved hero, origin summary, European presence, Trustpilot proof, founders carousel, culture and Careers action.
 - [x] Publish clean `/our-story` and `/team` routes, add them to both sitemaps and cover them with regression tests.
-- [ ] Obtain approved founder portraits, Pedro's full public name, longer biographies, LinkedIn URLs and optional personal facts before expanding `/team`.
+- [ ] Obtain approved founder portraits, longer biographies and optional personal facts before expanding `/team`; Pedro Leonardo's Instagram is intentionally omitted at present.
 - [ ] Complete native-language editorial review of the long-form Our Story narrative for Spanish, Greek, Russian and Hebrew before replacing the approved English fallback.
 - [x] Remove decorative mini-titles across public pages and rebalance the About opening statement layout.
 - [x] Add consent-first Google Analytics 4 across all public pages in all six languages.

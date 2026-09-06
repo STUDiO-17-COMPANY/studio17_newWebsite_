@@ -22,7 +22,7 @@ test('Team page identifies only the approved founders and does not invent profil
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/team"/);
   assert.equal((html.match(/class="team-profile-card/g) || []).length, 2);
   assert.match(html, /Founder &amp; Director[\s\S]*?Hugo Filipe/);
-  assert.match(html, /Co-founder[\s\S]*?Pedro/);
+  assert.match(html, /Co-founder[\s\S]*?Pedro Leonardo/);
   assert.doesNotMatch(html, /linkedin\.com\/in\//i);
   assert.equal((html.match(/hreflang=/g) || []).length, 7);
 });

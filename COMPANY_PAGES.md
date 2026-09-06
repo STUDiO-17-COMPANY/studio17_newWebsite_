@@ -27,16 +27,21 @@ The Trustpilot proof is intentionally a plain-text link. While Studio 17 uses th
 The approved public founder records currently are:
 
 - Hugo Filipe — Founder & Director.
-- Pedro — Co-founder.
+- Pedro Leonardo — Co-founder.
 
 Approved Hugo Filipe profiles:
 
 - LinkedIn: `https://www.linkedin.com/in/hugodm-filipe/`
 - Instagram: `https://www.instagram.com/hugodmfilipe02/`
 
-The About founder card displays these as compact brand actions beside Hugo's name and role. Pedro's card must remain without social actions until his links are supplied and approved.
+Approved Pedro Leonardo profile:
 
-Initials are used as intentional temporary portraits because no approved individual photographs were available in the project. Replace them only with supplied, approved portraits. Longer biographies, LinkedIn links and personal facts remain pending source content; never infer them from search results or another person with a similar name.
+- LinkedIn: `https://www.linkedin.com/in/pedro-leonardo-375478330/`
+- Instagram: intentionally not displayed at present.
+
+The About founder cards display only these approved profiles as compact brand actions beside each person's name and role.
+
+Initials are used as intentional temporary portraits because no approved individual photographs were available in the project. Replace them only with supplied, approved portraits. Longer biographies and personal facts remain pending source content; never infer them from search results or another person with a similar name.
 
 ## Translation contract
 
