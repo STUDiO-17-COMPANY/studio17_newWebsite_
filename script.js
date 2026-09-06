@@ -35,12 +35,12 @@
       items: [
         ['websiteDevelopment', 'Website development', '/services/website-development'],
         ['websiteRevamp', 'Website revamp', '/wip?for=website-revamp'],
-        ['freeWebsite', 'Free Website', '/services/free-website'],
         ['seo', 'SEO', '/services/seo'],
         ['geo', 'GEO', '/wip?for=geo'],
         [null, 'Copywriting', '/wip?for=copywriting'],
         ['localization', 'Localization and Translation', '/wip?for=localization-and-translation'],
-        ['maintenance', 'Maintenance', '/wip?for=maintenance']
+        ['maintenance', 'Maintenance', '/wip?for=maintenance'],
+        ['freeWebsite', 'Free Website', '/services/free-website']
       ]
     },
     {
@@ -122,6 +122,7 @@
         const link = document.createElement('a');
         link.href = localiseServicesMenuHref(href);
         link.textContent = (itemKey && items[itemKey]) || translateText(label);
+        if (itemKey === 'freeAudit' || itemKey === 'freeWebsite') link.classList.add('services-mega-offer');
         listItem.appendChild(link);
         list.appendChild(listItem);
       });
@@ -223,6 +224,7 @@
         const link = document.createElement('a');
         link.href = localiseServicesMenuHref(href);
         link.textContent = (itemKey && items[itemKey]) || translateText(label);
+        if (itemKey === 'freeAudit' || itemKey === 'freeWebsite') link.classList.add('services-mega-offer');
         listItem.appendChild(link);
         list.appendChild(listItem);
       });
@@ -732,17 +734,17 @@
     updateLegalFooterLinks();
   });
 
-  document.querySelectorAll('[data-carousel-prev], [data-carousel-next]').forEach(button => {
-    button.addEventListener('click', () => {
-      const trackId = button.dataset.carouselPrev || button.dataset.carouselNext;
-      const track = document.getElementById(trackId);
-      if (!track) return;
-      const direction = button.hasAttribute('data-carousel-prev') ? -1 : 1;
-      const readingDirection = getComputedStyle(track).direction === 'rtl' ? -1 : 1;
-      const firstCard = track.firstElementChild;
-      const gap = parseFloat(getComputedStyle(track).columnGap) || 48;
-      track.scrollBy({ left: readingDirection * direction * ((firstCard?.getBoundingClientRect().width || 380) + gap), behavior: 'smooth' });
-    });
+  document.addEventListener('click', event => {
+    const button = event.target.closest('[data-carousel-prev], [data-carousel-next]');
+    if (!button) return;
+    const trackId = button.dataset.carouselPrev || button.dataset.carouselNext;
+    const track = document.getElementById(trackId);
+    if (!track) return;
+    const direction = button.hasAttribute('data-carousel-prev') ? -1 : 1;
+    const readingDirection = getComputedStyle(track).direction === 'rtl' ? -1 : 1;
+    const firstCard = track.firstElementChild;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 48;
+    track.scrollBy({ left: readingDirection * direction * ((firstCard?.getBoundingClientRect().width || 380) + gap), behavior: 'smooth' });
   });
 
   const revealItems = document.querySelectorAll('.reveal');

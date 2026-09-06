@@ -30,6 +30,11 @@ const requiredDestinations = [
   '/wip?for=presential-events', '/wip?for=online-events'
 ];
 for (const destination of requiredDestinations) assert.ok(menu.includes(destination), destination);
+for (const category of ['social', 'website']) {
+  const group = menu.match(new RegExp(`categoryKey: '${category}'[\\s\\S]*?items: \\[[\\s\\S]*?\\n      \\]`))?.[0] || '';
+  assert.ok(group, `${category} menu group is missing`);
+  assert.match(group, category === 'social' ? /freeAudit[^\]]+\]\s*$/m : /freeWebsite[^\]]+\]\s*$/m, `${category} free offer must be last`);
+}
 
 assert.match(css, /\.services-mega-menu\s*\{[^}]*grid-template-columns:\s*repeat\(6,minmax\(0,1fr\)\)/);
 assert.match(css, /\.dropdown-panel\s*\{[^}]*width:\s*min\(1360px,calc\(100vw - 48px\)\)/);
@@ -43,6 +48,7 @@ assert.match(script, /closeMobileMenu[\s\S]*?closeMobileServicesDirectory\(\)/);
 assert.match(css, /\.mobile-services-primary-row\s*\{[^}]*grid-template-columns:\s*minmax\(0,1fr\) 54px/);
 assert.match(css, /\.mobile-services-panel\[hidden\], \.mobile-services-list\[hidden\]/);
 assert.match(css, /html\[dir="rtl"\] \.mobile-services-toggle/);
+assert.match(css, /a\.services-mega-offer\s*\{[^}]*background:\s*var\(--white\)/);
 
 for (const locale of ['pt-PT', 'es', 'el', 'ru', 'he']) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'locales', `${locale}.json`), 'utf8'));

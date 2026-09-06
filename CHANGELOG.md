@@ -2,10 +2,10 @@
 
 ## 2026-09-06 — Free Website lead page
 
-- Added Free Website to the Website group and Free Audit to Social Media across the shared desktop and mobile Services menus; Free Audit uses its localized WIP destination.
-- Published `/services/free-website` in all six site languages as a transparent qualification journey with eligibility, the exact 21-item one-page scope, applicant preparation, delivery process, boundaries, FAQs and repeated application actions.
+- Added Free Website to the Website group and Free Audit to Social Media across the shared desktop and mobile Services menus; both offers now appear last in their group as high-contrast white cards, while Free Audit uses its localized WIP destination.
+- Published `/services/free-website` in all six site languages as a visual qualification journey with a credibility strip, three supplied showcase images, audience fit, the exact 21-item scope, a €0 statement, real-work carousel, process, applicant preparation, Free-versus-Paid comparison, transparent €950 comparable value and repeated application actions.
 - Connected Free Website applications to the contact workflow, footer, homepage, human/XML sitemaps, clean local and Vercel routes, canonical metadata and structured service data.
-- Added responsive styling, Hebrew RTL-compatible content, documentation and regression coverage without presenting external costs or legal compliance as included guarantees.
+- Added the supplied wide final-CTA image, a four-by-four desktop FAQ layout, delegated carousel controls, responsive styling, Hebrew RTL-compatible content, documentation and regression coverage without presenting external costs or legal compliance as included guarantees.
 
 ## 2026-09-06 — SEO service page
 

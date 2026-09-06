@@ -23,13 +23,15 @@ The Legal Pages Setup entry means technical publication of approved text. It is 
 
 ## Free Website offer
 
-The Free Website page is a qualification and application journey, not an unconditional giveaway. It clearly states that Studio 17 waives its design and development fee only for selected suitable businesses and only for the agreed one-page scope. Applying does not guarantee selection.
+The Free Website page is a qualification and application journey, not an unconditional giveaway. It clearly states that Studio 17 waives its design and development fee only for selected suitable businesses and only for the agreed one-page scope. Applying does not guarantee selection. The page anchors the comparable scope to the existing €950 Website – Starter offer while clearly excluding third-party costs.
 
 The published scope contains exactly 21 inclusions: brand-led responsive structure; hero, company, service, benefit and contact content; form, call, optional WhatsApp, Maps and social actions; essential footer information; basic SEO, Analytics, Search Console and performance setup; SSL/security, basic cookie implementation, one revision and the required “Website by Studio 17” footer credit. The free scope covers one page in one agreed language.
 
 Domain, hosting, licences, paid tools, copywriting, photography, translations, extra pages, e-commerce, booking systems, integrations and ongoing maintenance are separate when required. The client remains responsible for accurate approved content and appropriate legal advice; basic consent implementation is not a compliance guarantee.
 
 Every application CTA uses `/contact?service=free-website`, which is accepted by the server-side contact allowlist and labelled as a Free Website application. The page uses all six published languages and retains Hebrew RTL support.
+
+The page order is fixed: shared hero; four-point credibility strip; three supplied showcase images; Who it is for; exact inclusions; €0 statement; real Studio 17 work carousel; five-step timeline; applicant handover; Free versus Paid comparison; value statement; two-column desktop FAQ; final image-led CTA. The real-work carousel currently contains Terrassi Villa and PHÓS Optics. The final CTA uses `Free Website CTA Imaghe.webp` as supplied and should retain a wide crop.
 
 ## SEO service page
 

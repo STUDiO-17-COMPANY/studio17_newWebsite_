@@ -149,6 +149,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Desktop Services navigation is a viewport-wide horizontal mega-menu with six ordered groups: Social Media, Website, Content creation, Advertisement, By Industry and Events.
 - Do not include `All services` in the mega-menu. `/services` remains a supporting catalogue reached through contextual links and the mobile Services overview link.
 - Group names are non-clickable headings; individual services are links. Website Development, Free Website and SEO use their published routes; every unfinished service uses a specific `/wip?for=<service>` destination. Free Audit remains a localized WIP destination until its page is approved.
+- Free Website and Free Audit are always the final item in their respective Website and Social Media lists. Render both as white, high-contrast offer cards in desktop and mobile service directories, with the standard blue hover/focus state.
 - The desktop service dropdown supports mouse, keyboard and Escape, preserves visible focus, and collapses from six to three columns before the approved mobile breakpoint.
 - Mobile menu uses Lucide `menu`, `x` and `chevron-down`; it opens full-screen below the 68px mobile header.
 - The mobile menu is restricted to five top-level entries: Services, Work, About, News and Careers. Do not add a CTA, FAQ, Sitemap or another top-level link without explicit approval.
@@ -256,6 +257,10 @@ Desktop lists scroll vertically within the fixed English Figma panel when necess
 - Separate external and ongoing costs from the free scope. Do not promise legal compliance; the client supplies accurate approved business and legal information.
 - Send every application action to `/contact?service=free-website`. The contact workflow must keep that exact value in its visible option list and server-side allowlist.
 - Publish the same complete content in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew, including metadata and RTL layout support.
+- Use the credibility strip and supplied three-image showcase immediately after the hero. Follow with audience fit, inclusions, the strong €0 statement, real-work carousel, process, applicant requirements, comparison, value, FAQ and final CTA in that order.
+- Keep the FAQ in two equal desktop columns with four questions per side. Collapse to one logical reading column at 900px and below.
+- The value statement uses the existing €950 Website – Starter offer as the comparable reference and must state that third-party costs are excluded.
+- Use `Free Website CTA Imaghe.webp` in a large 16:9 final-CTA window without the former artificial zoom. Keep Terrassi Villa and PHÓS Optics in the real-work carousel until more approved projects are supplied.
 
 ## 7. Icon policy
 
