@@ -91,6 +91,17 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Never create separate WIP HTML files per language; all localized variants use the shared page and locale JSON contract.
 - Until a real page exists, its header link, CTA, card, sitemap entry and footer link must all use the same WIP key.
 
+### SEO location landing pages
+
+- `/seo/cyprus` and `/seo/limassol` are focused commercial landing pages, not condensed copies of `/services/seo`.
+- Keep the shared 296px media hero, blue inline emphasis, 1440px shell, square geometry, Lucide icons and 32px separation between sections.
+- Follow the homepage-density rhythm: compact 52px/64px section interiors on desktop and 44px/54px at 900px and below.
+- Use a short evidence strip immediately after the separated hero, visual journeys, scannable cards and no decorative eyebrow copy above major headings.
+- Give both pages an immediate primary and secondary action, one compact mid-page conversion panel and one media-led closing CTA. Repetition must help action without interrupting reading.
+- Cyprus visualizes demand → findable pages → qualified visits → enquiries. Limassol visualizes nearby search → Search/Maps presence → fit evaluation → call or enquiry.
+- The two pages may share primitives but must keep different content architecture, FAQs and market framing. Never create geographic variants by replacing location names in identical text.
+- Stack action groups and all card/journey grids into a usable one-column flow at phone widths; do not expose horizontally scrolling copy or clipped translated buttons.
+
 ### Contact page
 
 - `/contact` is the shared multilingual destination for Contact, Talk to sales and Start growing actions.

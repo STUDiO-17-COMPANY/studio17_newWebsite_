@@ -16,6 +16,8 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/services/website-development` (`website-development.html`) — multilingual Website Development packages, inclusions, proof projects, process and FAQs.
 - `/services/free-website` (`free-website.html`) — six-language lead page for selected businesses applying for a professional one-page website without a Studio 17 design or development fee.
 - `/services/seo` (`seo.html`) — international SEO strategy and delivery page in English, Greek and Russian.
+- `/seo/cyprus` (`seo-cyprus.html`) — Cyprus-wide commercial SEO landing page for organic, local, multilingual and AI-search enquiries.
+- `/seo/limassol` (`seo-limassol.html`) — Limassol local SEO landing page focused on Search, Maps, Google Business Profile and qualified local enquiries.
 - `/privacy-policy` (`privacy-policy.html`) — multilingual privacy information covering website, enquiry and analytics processing.
 - `/cookie-policy` (`cookie-policy.html`) — multilingual browser-storage and consent information with a working Analytics-settings control.
 - `/terms` (`terms.html`) — multilingual terms governing use of the public Studio 17 website.
@@ -40,6 +42,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `locales/locales.js` — generated browser bundle that makes language switching work when the HTML files are opened directly.
 - `locales/build-bundle.cjs` — regenerates that bundle from the six canonical JSON files.
 - `service-locales/` / `service-pages.js` — page-scoped service translations and rendering contract; the dedicated Free Website module covers all six languages while other new pages use their explicitly approved language set.
+- `service-locales/seo-locations.js` — Greek and Russian content for the two geographically specific SEO lead-generation pages.
 - `Vendor/lucide.min.js` — pinned local Lucide 1.24.0 browser package; its licence is stored beside it.
 - `Images/` — supplied brand assets and locally optimised page imagery.
 - `Fonts/` — locally hosted Inter and Plus Jakarta Sans font files with their licences.
@@ -108,8 +111,9 @@ node service-locales/build-bundle.cjs
 24. Keep public service codes private, preserve the five website packages and follow `SERVICES.md` whenever service names, prices, inclusions or proof projects change.
 25. While Studio 17 uses Trustpilot's free plan, keep public promotion to plain-text profile links and any official Review Collector supplied in the Business Account; never scrape reviews or display the logo, stars or TrustScore outside the plan entitlement.
 26. Keep `/about`, `/our-story` and `/team` aligned with `COMPANY_PAGES.md`; do not invent biographies, portraits, profile URLs, offices, ratings or company-history claims.
-27. Build the desktop Services navigation from the shared horizontal mega-menu in `script.js`; keep `/services` as a supporting catalogue rather than a mega-menu item, and route every unpublished service to a specific WIP destination.
-28. Build the mobile Services directory from the same shared configuration as desktop, keep only one category expanded at a time, and preserve keyboard, translated-label and RTL behavior.
+27. Keep `/services/seo`, `/seo/cyprus` and `/seo/limassol` distinct by search intent. The service page explains the complete capability; the Cyprus and Limassol pages sell that capability through original market-specific decision journeys.
+28. Build the desktop Services navigation from the shared horizontal mega-menu in `script.js`; keep `/services` as a supporting catalogue rather than a mega-menu item, and route every unpublished service to a specific WIP destination.
+29. Build the mobile Services directory from the same shared configuration as desktop, keep only one category expanded at a time, and preserve keyboard, translated-label and RTL behavior.
 
 ## Pre-launch checklist
 

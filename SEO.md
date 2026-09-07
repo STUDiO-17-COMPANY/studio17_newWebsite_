@@ -19,6 +19,8 @@ This document is the maintenance contract for search visibility. It covers techn
 - Services catalogue: `https://www.studio17.world/services`
 - Website Development: `https://www.studio17.world/services/website-development`
 - SEO services: `https://www.studio17.world/services/seo`
+- SEO agency Cyprus: `https://www.studio17.world/seo/cyprus`
+- SEO company Limassol: `https://www.studio17.world/seo/limassol`
 - Careers: `https://www.studio17.world/careers`
 - Vacancy: `https://www.studio17.world/careers/<role-name>`
 - Human-readable sitemap: `https://www.studio17.world/sitemap`
@@ -50,6 +52,8 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 - Never add unsupported review ratings, awards, locations or business claims to structured data.
 - Keep the Website Development `Service`/`OfferCatalog` structured data synchronized with visible package names and prices. The catalogue page remains price-free.
 - Keep the SEO page's `Service`/`OfferCatalog` data synchronized with its ten visible capabilities. It is international, price-free and available only in English, Greek and Russian until another translation is approved.
+- Keep both geographic SEO landing pages available only in English, Greek and Russian until another translation is approved. Each needs a location-specific canonical, reciprocal four-link `hreflang` set, unique title, description, H1, visible FAQs and truthful `Service` area coverage.
+- `/seo/cyprus` serves Cyprus-wide commercial agency intent across organic, local, multilingual and AI search. `/seo/limassol` serves local agency intent with an explicit Search, Maps, Google Business Profile and enquiry journey. Do not reuse one page by swapping place names.
 - Do not add SEO guarantees, invented performance results, unsupported ratings or `FAQPage` markup. Use Search Console and consent-aware analytics as measurement tools, not as claims of results.
 - Preserve descriptive project alternative text, explicit image dimensions and crawlable project links; do not replace useful visible copy with image-only case studies.
 
@@ -75,6 +79,7 @@ Studio 17 is not currently an eligible government or health authority for Google
 10. Confirm `/about` returns HTTP 200, uses reciprocal six-language alternates, appears in both sitemaps and has replaced every About WIP link.
 11. Confirm `/services` and `/services/website-development` return HTTP 200, expose reciprocal six-language alternatives, appear in both sitemaps and contain no internal service codes.
 12. Confirm `/services/seo` returns HTTP 200, exposes only English, Greek, Russian and `x-default` alternatives, appears in both sitemaps, and preselects SEO at `/contact?service=seo`.
+13. Confirm `/seo/cyprus` and `/seo/limassol` return HTTP 200, use unique metadata and location `Service` data, expose only EN/EL/RU plus `x-default`, contain eight relevant FAQs, link to `/services/seo`, and preserve both lead CTAs.
 
 ## Files to update together
 

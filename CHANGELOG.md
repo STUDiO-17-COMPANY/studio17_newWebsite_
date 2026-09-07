@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-07 — Cyprus and Limassol SEO landing pages
+
+- Published `/seo/cyprus` and `/seo/limassol` as distinct high-intent lead-generation pages rather than location-swapped copies of the complete `/services/seo` capability page.
+- Built the Cyprus journey around organic, local, multilingual and AI-search visibility, and the Limassol journey around Google Search, Maps, Business Profile, useful local pages and qualified calls or enquiries.
+- Added immediate, mid-page and closing conversion opportunities using the approved free-analysis and sales actions, plus internal links to the complete SEO service.
+- Added English, Greek and Russian page content, unique canonical/social metadata, reciprocal language alternates, truthful location-specific `Service` structured data, eight decision FAQs per market and no unsupported ratings, results or guarantees.
+- Added clean Vercel and local-preview routes, legacy redirects, human/XML sitemap discovery, responsive Studio 17 styling, documentation and static regression coverage.
+
 ## 2026-09-06 — Free Website lead page
 
 - Tightened the repeated Free Website and SEO section interiors to the homepage rhythm while preserving the shared 32px separation between distinct sections.

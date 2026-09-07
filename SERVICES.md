@@ -6,8 +6,19 @@
 - `/services/website-development` is the commercial Website Development page.
 - `/services/free-website` is the multilingual application page for the selected-business Free Website offer.
 - `/services/seo` is the international commercial SEO page.
+- `/seo/cyprus` is the Cyprus-wide SEO lead-generation page.
+- `/seo/limassol` is the Limassol local SEO lead-generation page.
 
-All routes use clean URLs, canonical metadata, the shared header/footer, and the approved five-link mobile menu. The catalogue, Website Development and Free Website pages support all six site languages. The SEO page follows the current new-page scope: English, Greek and Russian only, with reciprocal `hreflang` links for those versions plus `x-default`.
+All routes use clean URLs, canonical metadata, the shared header/footer, and the approved five-link mobile menu. The catalogue, Website Development and Free Website pages support all six site languages. The main SEO page and both SEO location landing pages follow the current new-page scope: English, Greek and Russian only, with reciprocal `hreflang` links for those versions plus `x-default`.
+
+## SEO page roles
+
+- `/services/seo` explains the complete international capability and remains the detailed service reference.
+- `/seo/cyprus` answers high-commercial-intent agency selection across Cyprus. Its conversion journey covers national organic visibility, local discovery, multilingual/international structure and Google/AI search.
+- `/seo/limassol` answers local agency selection in Limassol. Its conversion journey centres on Google Search, Maps, Business Profile, useful local pages and calls/enquiries.
+- Both location pages use the same approved Studio 17 visual system but not the same section narrative. Keep their headings, FAQs, structured data and commercial framing original.
+- Preserve “Get Your Free SEO Analysis” as the primary action and “Talk to Sales” as the secondary action in English. Both routes must link to `/services/seo` for full capability detail.
+- Do not add keyword-stuffed place-name repetitions, rankings, guarantees, fabricated performance results, ratings or testimonials.
 
 ## Website packages
 
