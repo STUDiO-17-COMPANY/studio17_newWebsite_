@@ -23,6 +23,8 @@ The Legal Pages Setup entry means technical publication of approved text. It is 
 
 ## Free Website offer
 
+The Free Website and SEO pages retain the shared 32px section break while using compact section interiors: 52px top and 64px bottom on desktop, reducing to 44px and 54px at 900px and below. This keeps their long-form sales journeys aligned with the homepage rhythm without compressing card content.
+
 The Free Website page is a qualification and application journey, not an unconditional giveaway. It clearly states that Studio 17 waives its design and development fee only for selected suitable businesses and only for the agreed one-page scope. Applying does not guarantee selection. The page anchors the comparable scope to the existing €950 Website – Starter offer while clearly excluding third-party costs.
 
 The published scope contains exactly 21 inclusions: brand-led responsive structure; hero, company, service, benefit and contact content; form, call, optional WhatsApp, Maps and social actions; essential footer information; basic SEO, Analytics, Search Console and performance setup; SSL/security, basic cookie implementation, one revision and the required “Website by Studio 17” footer credit. The free scope covers one page in one agreed language.

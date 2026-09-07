@@ -2,6 +2,7 @@
 
 ## 2026-09-06 — Free Website lead page
 
+- Tightened the repeated Free Website and SEO section interiors to the homepage rhythm while preserving the shared 32px separation between distinct sections.
 - Normalized all light Free Website surfaces to the shared Studio 17 paper palette, removing one-off pale-blue and white section backgrounds.
 - Rebuilt the first showcase as an uncropped 16:9 horizontal carousel with controls beside its title and no redundant supporting sentence.
 - Applied the same carousel contract to Real Studio 17 Work, including full 16:9 project media, adjacent controls and localized accessible control labels.

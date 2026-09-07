@@ -251,6 +251,7 @@ Desktop lists scroll vertically within the fixed English Figma panel when necess
 
 ### Free Website page
 
+- Keep the standard 32px separation between sections, but use the tighter 52px top and 64px bottom content padding established for the Free Website and SEO sales pages. At 900px and below, reduce this to 44px and 54px so adjacent sections do not create oversized blank areas.
 - Treat the page as a qualification journey: explain who fits, enumerate the exact scope, show what the applicant must prepare, explain the process and state boundaries before the final CTA.
 - Keep the 21 inclusions visible in four unnumbered, icon-led groups and preserve their 6 + 7 + 4 + 4 structure in every language.
 - Never imply that every applicant will be selected. State that the Studio 17 design and development fee is waived only for selected suitable businesses and the agreed one-page scope.

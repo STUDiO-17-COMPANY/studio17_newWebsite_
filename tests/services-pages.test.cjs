@@ -43,6 +43,7 @@ test('website development page preserves commercial and portfolio requirements',
 
 test('free website page is transparent, lead-ready and translated in all site languages', () => {
   const html = read('free-website.html');
+  const css = read('styles.css');
   assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/free-website"/);
   assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
@@ -75,6 +76,8 @@ test('free website page is transparent, lead-ready and translated in all site la
   assert.ok(html.includes('/contact?service=free-website'));
   assert.match(html, /Get your Quoted website/);
   assert.match(html, /href="\/contact\?service=website">Get your Quoted website/);
+  assert.match(css, /\.free-showcase,[^{]+\{[^}]*padding-block: 52px 64px;/);
+  assert.match(css, /\.free-website-process\.website-process \{ padding-block: 52px 64px; \}/);
   const structured = jsonLd(html)[0];
   assert.equal(structured['@type'], 'Service');
   assert.equal(structured.offers, undefined);
@@ -99,6 +102,7 @@ test('free website page is transparent, lead-ready and translated in all site la
 
 test('SEO page is an international, evidence-safe commercial service page', () => {
   const html = read('seo.html');
+  const css = read('styles.css');
   assert.match(html, /<html lang="en" data-supported-languages="en,el,ru">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/seo"/);
   assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 4);
@@ -120,6 +124,8 @@ test('SEO page is an international, evidence-safe commercial service page', () =
   assert.match(html, /We do not present broader client work as invented SEO results/);
   assert.match(html, /class="seo-cta-media"[^>]*>[\s\S]*?src="\/Images\/CTA_SEO_MainIMAGE\.webp"[^>]*width="462" height="260"/);
   assert.doesNotMatch(html, /aggregateRating|"review"\s*:/);
+  assert.match(css, /\.seo-opportunity,[^{]+\{[^}]*padding-block: 52px 64px;/);
+  assert.match(css, /\.seo-growth-system \{[^}]*padding-block: 52px 64px;/);
 
   const structured = jsonLd(html)[0];
   assert.equal(structured['@type'], 'Service');

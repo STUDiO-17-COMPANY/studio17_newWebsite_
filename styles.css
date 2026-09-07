@@ -1386,7 +1386,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 
 /* Free Website lead page */
 .free-website-main { background: var(--paper); }
-.free-showcase, .free-website-fit, .free-website-included, .free-real-work, .free-website-preparation, .free-comparison, .free-value, .free-website-faq { margin-top: var(--section-gap); padding-block: 82px 96px; }
+.free-showcase, .free-website-fit, .free-website-included, .free-real-work, .free-website-preparation, .free-comparison, .free-value, .free-website-faq { margin-top: var(--section-gap); padding-block: 52px 64px; }
 .free-showcase, .free-website-fit, .free-website-preparation, .free-comparison, .free-website-faq { background: var(--paper); }
 .free-credibility-strip { margin-top: var(--section-gap); border-top: 1px solid #cad3df; border-bottom: 1px solid #cad3df; background: var(--paper); }
 .free-credibility-strip .shell { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); padding-block: 0; }
@@ -1462,6 +1462,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .free-support-actions a:hover, .free-support-actions a:focus-visible { background: var(--blue); }
 .free-support-actions .lucide { width: 16px; height: 16px; }
 .free-website-process.website-process ol { grid-template-columns: repeat(5,minmax(0,1fr)); }
+.free-website-process.website-process { padding-block: 52px 64px; }
 .free-website-process.website-process li { min-height: 310px; padding: 24px; }
 .free-website-process.website-process li > .lucide { margin-top: 42px; }
 .free-comparison { background: var(--paper); }
@@ -1498,7 +1499,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .free-website-cta .cta-copy > p { width: auto; margin-bottom: 24px; font-size: 16px; }
 
 /* International SEO service page */
-.seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-process, .seo-faq { margin-top: var(--section-gap); padding-block: 82px 96px; }
+.seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-process, .seo-faq { margin-top: var(--section-gap); padding-block: 52px 64px; }
 .seo-problem-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
 .seo-problem-grid article { min-height: 260px; padding: 30px; border-top: 6px solid var(--blue); color: var(--ink); background: var(--white); box-shadow: 0 14px 35px rgba(15,23,42,.07); transition: transform .25s var(--ease), box-shadow .25s ease; }
 .seo-problem-grid article:hover { transform: translateY(-5px); box-shadow: 0 22px 46px rgba(15,23,42,.13); }
@@ -1506,7 +1507,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-problem-grid h3 { margin: 0 0 12px; font-size: 24px; line-height: 1.15; letter-spacing: -.035em; }
 .seo-problem-grid p { margin: 0; color: #596477; font-size: 15px; line-height: 1.62; }
 
-.seo-growth-system { margin-top: var(--section-gap); padding-block: 82px 96px; color: var(--white); background: var(--ink); }
+.seo-growth-system { margin-top: var(--section-gap); padding-block: 52px 64px; color: var(--white); background: var(--ink); }
 .seo-growth-map { display: grid; grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr); gap: 1px; padding: 1px; background: rgba(255,255,255,.18); }
 .seo-growth-principle { position: relative; min-height: 432px; display: flex; flex-direction: column; overflow: hidden; padding: 34px 34px 78px; background: #263349 url("Images/Every_priority_query_needs_a_purpose_image.webp") center 54% / cover no-repeat; }
 .seo-growth-principle::before { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg,rgba(7,13,27,.08) 0%,rgba(7,13,27,.28) 36%,rgba(7,13,27,.94) 100%); }
@@ -1641,7 +1642,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 }
 
 @media (max-width: 900px) {
-  .seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-process, .seo-faq { padding-block: 60px 76px; }
+  .seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-process, .seo-faq, .seo-growth-system { padding-block: 44px 54px; }
   .seo-problem-grid, .seo-proof-grid { grid-template-columns: 1fr; }
   .seo-problem-grid article { min-height: 220px; }
   .seo-growth-map { grid-template-columns: 1fr; }
@@ -1664,7 +1665,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-ai-media { min-height: 360px; }
   .seo-ai-copy { padding: 48px 38px; }
   .service-families, .website-foundation, .website-packages, .website-work, .website-faq { padding-block: 60px 76px; }
-  .free-showcase, .free-website-fit, .free-website-included, .free-real-work, .free-website-preparation, .free-comparison, .free-value, .free-website-faq { padding-block: 60px 76px; }
+  .free-showcase, .free-website-fit, .free-website-included, .free-real-work, .free-website-preparation, .free-comparison, .free-value, .free-website-faq, .free-website-process.website-process { padding-block: 44px 54px; }
   .service-page-heading { grid-template-columns: 1fr; align-items: start; gap: 20px; }
   .service-family-grid { grid-template-columns: 1fr; }
   .service-family-card { min-height: 270px; }
