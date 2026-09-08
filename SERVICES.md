@@ -18,6 +18,7 @@ All routes use clean URLs, canonical metadata, the shared header/footer, and the
 - `/seo/limassol` answers local agency selection in Limassol. Its conversion journey centres on Google Search, Maps, Business Profile, useful local pages and calls/enquiries.
 - Both location pages use the same approved Studio 17 visual system but not the same section narrative. Keep their headings, FAQs, structured data and commercial framing original.
 - Preserve “Get Your Free SEO Analysis” as the primary action and “Talk to Sales” as the secondary action in English. Both routes must link to `/services/seo` for full capability detail.
+- Preserve the reciprocal market directory on `/services/seo`: it is the crawlable, user-visible route to both geographic pages. The homepage footer must keep a normal HTML link to `/services/seo` so this service family is discoverable without JavaScript.
 - Do not add keyword-stuffed place-name repetitions, rankings, guarantees, fabricated performance results, ratings or testimonials.
 
 ## Website packages

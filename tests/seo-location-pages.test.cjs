@@ -66,4 +66,8 @@ const sitemap = read(path.join('api', 'sitemap.js'));
 assert.match(sitemap, /SITE_URL}\/seo\/cyprus/);
 assert.match(sitemap, /SITE_URL}\/seo\/limassol/);
 
+const seoServicePage = read('seo.html');
+assert.match(seoServicePage, /class="seo-market-directory"[\s\S]*?href="\/seo\/cyprus"[\s\S]*?href="\/seo\/limassol"/);
+assert.match(read('index.html'), /aria-label="Services"[\s\S]*?href="\/services\/seo"/);
+
 console.log('SEO location landing page tests passed.');

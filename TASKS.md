@@ -36,6 +36,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Publish the multilingual, price-free Services catalogue and the five-package Website Development page with proof projects, clean routes and sales CTAs.
 - [x] Publish the international SEO service page at `/services/seo` in English, Greek and Russian with technical/commercial scope, evidence-safe proof, clean routing and contact preselection.
 - [x] Publish distinct Cyprus-wide and Limassol local SEO lead-generation pages in English, Greek and Russian with clean routing, market-specific structured data, internal SEO links and conversion-focused journeys.
+- [x] Strengthen SEO-page discovery with a static homepage-to-SEO path and reciprocal `/services/seo` links to the Cyprus and Limassol market pages.
 - [ ] Obtain qualified Cyprus/EU legal review of the three informative legal drafts before treating them as final legal advice.
 
 ## Vercel firewall — country restriction

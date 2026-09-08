@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-08 — SEO discovery and indexing architecture
+
+- Added a visible, reciprocal market directory to `/services/seo` so crawlers and visitors can reach the distinct Cyprus and Limassol SEO landing pages through standard HTML links.
+- Added the main SEO service to the homepage footer, creating a stable crawl path from the strongest site entry point without depending on JavaScript navigation.
+- Localized the new market directory in Greek and Russian, preserved the approved three-language scope, and regenerated the service locale bundle.
+- Expanded regression coverage for homepage-to-service and service-to-location discovery, then rechecked canonical, sitemap, robots and production response requirements.
+
 ## 2026-09-07 — Cyprus and Limassol SEO landing pages
 
 - Published `/seo/cyprus` and `/seo/limassol` as distinct high-intent lead-generation pages rather than location-swapped copies of the complete `/services/seo` capability page.

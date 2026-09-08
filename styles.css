@@ -1499,7 +1499,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .free-website-cta .cta-copy > p { width: auto; margin-bottom: 24px; font-size: 16px; }
 
 /* International SEO service page */
-.seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-process, .seo-faq { margin-top: var(--section-gap); padding-block: 52px 64px; }
+.seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-market-directory, .seo-process, .seo-faq { margin-top: var(--section-gap); padding-block: 52px 64px; }
 .seo-problem-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
 .seo-problem-grid article { min-height: 260px; padding: 30px; border-top: 6px solid var(--blue); color: var(--ink); background: var(--white); box-shadow: 0 14px 35px rgba(15,23,42,.07); transition: transform .25s var(--ease), box-shadow .25s ease; }
 .seo-problem-grid article:hover { transform: translateY(-5px); box-shadow: 0 22px 46px rgba(15,23,42,.13); }
@@ -1611,6 +1611,20 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-why-grid strong { display: block; margin-bottom: 58px; color: #8fb1ff; font-size: 11px; letter-spacing: .08em; }
 .seo-why-grid h3 { margin: 0 0 12px; font-size: 22px; line-height: 1.16; letter-spacing: -.03em; }
 .seo-why-grid p { margin: 0; color: #acb9cd; font-size: 14px; line-height: 1.58; }
+
+.seo-market-directory { background: var(--white); }
+.seo-market-directory-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.seo-market-card { min-height: 286px; display: flex; flex-direction: column; justify-content: space-between; gap: 44px; padding: 30px; border: 1px solid #ccd5e2; color: var(--ink); background: var(--paper); transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s var(--ease); }
+.seo-market-card > .lucide { width: 34px; height: 34px; color: var(--blue); transition: color .25s ease, transform .25s var(--ease); }
+.seo-market-card p { margin: 0 0 11px; color: #596477; font-size: 13px; font-weight: 700; line-height: 1.45; }
+.seo-market-card h3 { margin: 0 0 26px; font-size: clamp(26px,2.2vw,34px); line-height: 1.08; letter-spacing: -.045em; }
+.seo-market-card span { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 17px; border-top: 1px solid #cbd4e1; font-size: 14px; font-weight: 850; }
+.seo-market-card span .lucide { width: 18px; height: 18px; flex: 0 0 auto; }
+.seo-market-card:hover, .seo-market-card:focus-visible { border-color: var(--blue); color: var(--white); background: var(--blue); transform: translateY(-4px); }
+.seo-market-card:hover > .lucide, .seo-market-card:focus-visible > .lucide, .seo-market-card:hover p, .seo-market-card:focus-visible p { color: var(--white); }
+.seo-market-card:hover > .lucide, .seo-market-card:focus-visible > .lucide { transform: translate(3px,-3px); }
+.seo-market-card:hover span, .seo-market-card:focus-visible span { border-color: rgba(255,255,255,.38); }
+.seo-market-card:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 
 .seo-process { background: var(--white); }
 .seo-process ol { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 1px; margin: 0; padding: 1px; background: #ccd5e2; list-style: none; }
@@ -1725,7 +1739,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 }
 
 @media (max-width: 900px) {
-  .seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-process, .seo-faq, .seo-growth-system { padding-block: 44px 54px; }
+  .seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-market-directory, .seo-process, .seo-faq, .seo-growth-system { padding-block: 44px 54px; }
   .seo-problem-grid, .seo-proof-grid { grid-template-columns: 1fr; }
   .seo-problem-grid article { min-height: 220px; }
   .seo-growth-map { grid-template-columns: 1fr; }
@@ -1804,7 +1818,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 }
 
 @media (max-width: 600px) {
-  .seo-growth-route, .seo-capability-grid, .seo-method ol, .seo-why-grid, .seo-process ol { grid-template-columns: 1fr; }
+  .seo-growth-route, .seo-capability-grid, .seo-method ol, .seo-why-grid, .seo-market-directory-grid, .seo-process ol { grid-template-columns: 1fr; }
   .seo-growth-principle { min-height: 390px; padding: 26px; }
   .seo-growth-principle h3 { font-size: 27px; }
   .seo-growth-decisions article { grid-template-columns: 36px minmax(0,1fr); gap: 12px; padding: 23px 20px; }
@@ -1816,6 +1830,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-ai-media { min-height: 260px; }
   .seo-ai-copy { padding: 36px 24px; }
   .seo-ai-copy > .lucide { margin-bottom: 28px; }
+  .seo-market-card { min-height: 240px; padding: 24px; }
   .seo-location-hero .page-hero-copy h2 { font-size: 25px; }
   .seo-location-actions { align-items: flex-start; flex-direction: column; gap: 18px; }
   .seo-location-actions .solid-button { width: 100%; min-width: 0; }

@@ -57,6 +57,13 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 - Do not add SEO guarantees, invented performance results, unsupported ratings or `FAQPage` markup. Use Search Console and consent-aware analytics as measurement tools, not as claims of results.
 - Preserve descriptive project alternative text, explicit image dimensions and crawlable project links; do not replace useful visible copy with image-only case studies.
 
+## Internal discovery architecture
+
+- Important indexable pages must be reachable through normal `<a href>` links; do not depend only on JavaScript-rendered menus, XML sitemap discovery or manual URL submission.
+- The homepage footer links to `/services/seo`. The main SEO page then links contextually and reciprocally to `/seo/cyprus` and `/seo/limassol` through its visible market directory.
+- Both market pages link back to `/services/seo`. Keep this small service cluster intact when changing navigation or page layouts.
+- The XML sitemap supports discovery but does not guarantee crawling, indexing or ranking. Search Console inspection and indexing requests are follow-up signals, not substitutes for internal links and useful original content.
+
 ## Content priorities
 
 Technical SEO enables crawling; useful pages create ranking opportunities. As final pages replace WIP, each service and industry page should answer a specific search intent with original copy, clear evidence, relevant internal links, meaningful headings and a distinct title/description. Avoid creating many near-duplicate location or keyword pages.
