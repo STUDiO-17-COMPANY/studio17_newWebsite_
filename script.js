@@ -32,9 +32,11 @@
     {
       categoryKey: 'website',
       label: 'Website',
+      href: '/services/website',
       items: [
         ['websiteDevelopment', 'Website development', '/services/website-development'],
         ['websiteRevamp', 'Website revamp', '/wip?for=website-revamp'],
+        [null, 'Website design', '/wip?for=website-design'],
         ['seo', 'SEO', '/services/seo'],
         ['geo', 'GEO', '/wip?for=geo'],
         [null, 'Copywriting', '/wip?for=copywriting'],
@@ -94,7 +96,7 @@
   const localiseServicesMenuHref = href => {
     const language = window.Studio17I18n?.getLanguage?.() || 'en';
     const [pathname, query = ''] = href.split('?');
-    const localPages = { '/wip': 'wip.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html' };
+    const localPages = { '/wip': 'wip.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html' };
     const target = location.protocol === 'file:' ? `${localPages[pathname] || pathname.replace(/^\//, '')}${query ? `?${query}` : ''}` : href;
     const url = new URL(target, location.href);
     if (language === 'en') url.searchParams.delete('lang');
@@ -113,9 +115,10 @@
     dropdownPanel.replaceChildren(...servicesMegaMenu.map(group => {
       const section = document.createElement('section');
       section.className = 'services-mega-group';
-      const title = document.createElement('p');
+      const title = document.createElement(group.href ? 'a' : 'p');
       title.className = 'services-mega-title';
       title.textContent = (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
+      if (group.href) title.href = localiseServicesMenuHref(group.href);
       const list = document.createElement('ul');
       group.items.forEach(([itemKey, label, href]) => {
         const listItem = document.createElement('li');
@@ -219,6 +222,15 @@
       list.id = listId;
       list.className = 'mobile-services-list';
       list.hidden = true;
+      if (group.href) {
+        const overviewItem = document.createElement('li');
+        const overviewLink = document.createElement('a');
+        overviewLink.href = localiseServicesMenuHref(group.href);
+        overviewLink.className = 'mobile-services-category-overview';
+        overviewLink.textContent = translateText('Explore website services');
+        overviewItem.appendChild(overviewLink);
+        list.appendChild(overviewItem);
+      }
       group.items.forEach(([itemKey, label, href]) => {
         const listItem = document.createElement('li');
         const link = document.createElement('a');

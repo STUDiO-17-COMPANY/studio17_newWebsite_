@@ -3,6 +3,7 @@
 ## Public routes
 
 - `/services` is the price-free catalogue of Studio 17 capabilities.
+- `/services/website` is the Website service-family overview in English, Greek and Russian.
 - `/services/website-development` is the commercial Website Development page.
 - `/services/free-website` is the multilingual application page for the selected-business Free Website offer.
 - `/services/seo` is the international commercial SEO page.
@@ -10,6 +11,12 @@
 - `/seo/limassol` is the Limassol local SEO lead-generation page.
 
 All routes use clean URLs, canonical metadata, the shared header/footer, and the approved five-link mobile menu. The catalogue, Website Development and Free Website pages support all six site languages. The main SEO page and both SEO location landing pages follow the current new-page scope: English, Greek and Russian only, with reciprocal `hreflang` links for those versions plus `x-default`.
+
+## Website service family
+
+`/services/website` helps visitors choose between Website Development, Website Revamp, Website Design, SEO, GEO, Copywriting, Localization and Translation, and Maintenance. Its interactive selector uses a vertical desktop service menu and one native mobile select, with complete content available in English, Greek and Russian. Development and SEO use their published routes; unfinished services use specific WIP destinations.
+
+Free Website is deliberately excluded from the selector. It has a dedicated high-contrast CTA immediately before the FAQ, linking to `/services/free-website`, so the offer remains prominent without being confused with the standard service family.
 
 ## SEO page roles
 

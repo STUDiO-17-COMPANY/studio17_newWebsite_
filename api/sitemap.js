@@ -45,6 +45,7 @@ module.exports = async function sitemapHandler(request, response) {
       { loc: `${SITE_URL}/our-story`, changefreq: 'monthly', priority: '0.7' },
       { loc: `${SITE_URL}/team`, changefreq: 'monthly', priority: '0.7' },
       { loc: `${SITE_URL}/services`, changefreq: 'monthly', priority: '0.9' },
+      { loc: `${SITE_URL}/services/website`, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/services/website-development`, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/services/free-website`, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/services/seo`, changefreq: 'monthly', priority: '0.9' },

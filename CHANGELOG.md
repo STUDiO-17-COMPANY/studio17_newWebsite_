@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-08 — Website service-family page and homepage work refinement
+
+- Published `/services/website` as the English, Greek and Russian Website family overview, separating service selection from the more detailed Website Development package page.
+- Added an accessible desktop tab and mobile select experience for Website Development, Website Revamp, Website Design, SEO, GEO, Copywriting, Localization and Translation, with real routes where published and precise WIP destinations elsewhere.
+- Added a dedicated pre-FAQ Free Website CTA, decision FAQs, connected-value section, canonical metadata, structured service data, clean routing and sitemap discovery.
+- Removed the white card surfaces and excess lower spacing from the homepage client-work section, changed its CTA to “See more of our work” and routed it to the portfolio WIP page.
+- Corrected the footer-bottom logo to its native aspect ratio and added the Website family route to the shared Services navigation.
+
 ## 2026-09-08 — SEO discovery and indexing architecture
 
 - Added a visible, reciprocal market directory to `/services/seo` so crawlers and visitors can reach the distinct Cyprus and Limassol SEO landing pages through standard HTML links.

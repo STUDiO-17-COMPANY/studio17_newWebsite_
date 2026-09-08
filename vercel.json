@@ -16,6 +16,7 @@
     },
     { "source": "/index", "destination": "/", "permanent": true },
     { "source": "/article", "destination": "/news", "permanent": true },
+    { "source": "/website-services", "destination": "/services/website", "permanent": true },
     { "source": "/services/website-developments", "destination": "/services/website-development", "permanent": true },
     { "source": "/website-development", "destination": "/services/website-development", "permanent": true },
     { "source": "/free-website", "destination": "/services/free-website", "permanent": true },
@@ -24,6 +25,7 @@
     { "source": "/seo", "destination": "/services/seo", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/services/website", "destination": "/website-services" },
     { "source": "/services/website-development", "destination": "/website-development" },
     { "source": "/services/free-website", "destination": "/free-website" },
     { "source": "/services/seo", "destination": "/seo" },

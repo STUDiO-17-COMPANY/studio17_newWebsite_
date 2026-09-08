@@ -68,6 +68,7 @@
     'ugc-creators': { service: 'ugcCreators' },
     'video-editing': { label: 'Video editing' },
     'website-revamp': { service: 'websiteRevamp' },
+    'website-design': { label: 'Website design' },
     'digital-design': { label: 'Digital design' },
     'online-events': { label: 'Online Events' },
     'photography': { label: 'Photography' },

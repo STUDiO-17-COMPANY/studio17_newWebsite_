@@ -51,6 +51,41 @@
     });
   };
 
+  const enhanceWebsiteServices = () => {
+    if (page !== 'websiteServices') return;
+    const selector = document.querySelector('.website-service-selector');
+    if (!selector) return;
+    const buttons = [...selector.querySelectorAll('[data-website-service]')];
+    const panels = [...selector.querySelectorAll('[data-website-service-panel]')];
+    const select = selector.querySelector('[data-website-service-select]');
+    const available = new Set(panels.map(panel => panel.dataset.websiteServicePanel));
+
+    const activate = service => {
+      const next = available.has(service) ? service : panels[0]?.dataset.websiteServicePanel;
+      if (!next) return;
+      buttons.forEach(button => {
+        const active = button.dataset.websiteService === next;
+        button.setAttribute('aria-selected', String(active));
+        button.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach(panel => { panel.hidden = panel.dataset.websiteServicePanel !== next; });
+      if (select) select.value = next;
+    };
+
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => activate(button.dataset.websiteService));
+      button.addEventListener('keydown', event => {
+        if (!['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const targetIndex = event.key === 'Home' ? 0 : event.key === 'End' ? buttons.length - 1 : (index + (event.key === 'ArrowDown' ? 1 : -1) + buttons.length) % buttons.length;
+        buttons[targetIndex]?.focus();
+        activate(buttons[targetIndex]?.dataset.websiteService);
+      });
+    });
+    select?.addEventListener('change', event => activate(event.target.value));
+    activate(buttons.find(button => button.getAttribute('aria-selected') === 'true')?.dataset.websiteService || select?.value);
+  };
+
   const capabilityGrid = page === 'seo' ? document.querySelector('.seo-capability-grid') : null;
   const capabilityDesktopQuery = window.matchMedia('(min-width: 901px)');
   capabilityDesktopQuery.addEventListener?.('change', event => {
@@ -92,13 +127,22 @@
       url.searchParams.delete('lang');
       if (language !== 'en') url.searchParams.set('lang', language);
       if (location.protocol === 'file:') {
-        const localPages = { '/': 'index.html', '/services': 'services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/seo/cyprus': 'seo-cyprus.html', '/seo/limassol': 'seo-limassol.html', '/contact': 'contact.html', '/news': 'news.html' };
+        const localPages = { '/': 'index.html', '/services': 'services.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/seo/cyprus': 'seo-cyprus.html', '/seo/limassol': 'seo-limassol.html', '/contact': 'contact.html', '/news': 'news.html', '/wip': 'wip.html' };
         const localPath = localPages[url.pathname] || url.pathname.replace(/^\//, '');
         link.setAttribute('href', `${localPath}${url.search}${url.hash}`);
       } else {
         link.setAttribute('href', `${url.pathname}${url.search}${url.hash}`);
       }
     });
+  };
+
+  const normaliseWebsiteFamilyCard = () => {
+    if (page !== 'services') return;
+    const card = document.querySelector('.service-family-grid .service-family-card');
+    if (!card) return;
+    card.setAttribute('href', '/services/website');
+    const action = card.querySelector(':scope > span');
+    if (action?.firstChild) action.firstChild.nodeValue = `${window.Studio17I18n?.translate?.('Explore website services') || 'Explore website services'} `;
   };
 
   const render = language => {
@@ -112,8 +156,10 @@
       record.element.innerHTML = `${supplemental}${locale?.[record.key] || record.original}`;
     });
     updateMetadata(language === 'en' ? englishMetadata : (locale?.meta || englishMetadata));
+    normaliseWebsiteFamilyCard();
     updateInsertedLinks(language);
     enhanceSeoCapabilities();
+    enhanceWebsiteServices();
     window.lucide?.createIcons({ attrs: { 'stroke-width': 2 } });
   };
 

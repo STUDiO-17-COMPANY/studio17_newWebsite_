@@ -41,6 +41,38 @@ test('website development page preserves commercial and portfolio requirements',
   assert.equal(structured.hasOfferCatalog.itemListElement.length, 5);
 });
 
+test('website service-family page provides a distinct, translated decision journey', () => {
+  const html = read('website-services.html');
+  const css = read('styles.css');
+  const behavior = read('service-pages.js');
+  assert.match(html, /<html lang="en" data-supported-languages="en,el,ru">/);
+  assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website"/);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 4);
+  assert.match(html, /data-service-page="websiteServices"/);
+  assert.equal((html.match(/data-website-service="/g) || []).length, 8);
+  assert.equal((html.match(/data-website-service-panel="/g) || []).length, 8);
+  for (const service of ['Website development', 'Website revamp', 'Website design', 'SEO', 'GEO', 'Copywriting', 'Localization and Translation', 'Maintenance']) assert.ok(html.includes(service), service);
+  for (const destination of ['/services/website-development', '/wip?for=website-revamp', '/wip?for=website-design', '/services/seo', '/wip?for=geo', '/wip?for=copywriting', '/wip?for=localization-and-translation', '/wip?for=maintenance']) assert.ok(html.includes(destination), destination);
+  const freeCta = html.match(/<section class="website-free-cta"[\s\S]*?<\/section>/)?.[0] || '';
+  assert.match(freeCta, /could cost €0/);
+  assert.match(freeCta, /href="\/services\/free-website"/);
+  assert.ok(html.indexOf('website-free-cta') < html.indexOf('website-services-faq'));
+  assert.equal((html.match(/class="website-faq-list"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<details>/g) || []).length, 6);
+  assert.match(css, /\.website-service-selector \{[^}]*grid-template-columns: 290px minmax\(0,1fr\)/);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*?\.website-service-mobile \{ display: grid;/);
+  assert.match(behavior, /enhanceWebsiteServices[\s\S]*?data-website-service-panel[\s\S]*?aria-selected/);
+  const structured = jsonLd(html)[0];
+  assert.equal(structured['@type'], 'Service');
+  assert.equal(structured.hasOfferCatalog.itemListElement.length, 6);
+  for (const locale of ['el', 'ru']) {
+    const page = require(path.join(root, 'service-locales', `${locale}.json`)).pages.websiteServices;
+    assert.deepEqual(Object.keys(page), ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'intro', 'capabilitiesHeading', 'capabilities', 'value', 'freeCta', 'faqHeading', 'faq', 'closing'], locale);
+    assert.equal((page.capabilities.match(/data-website-service="/g) || []).length, 8, locale);
+    assert.equal((page.faq.match(/<details>/g) || []).length, 6, locale);
+  }
+  for (const locale of ['pt-PT', 'es', 'he']) assert.equal(require(path.join(root, 'service-locales', `${locale}.json`)).pages.websiteServices, undefined, locale);
+});
+
 test('free website page is transparent, lead-ready and translated in all site languages', () => {
   const html = read('free-website.html');
   const css = read('styles.css');
@@ -197,14 +229,17 @@ test('clean routes and sitemaps include every published service page', () => {
   const vercel = read('vercel.json');
   const sitemap = read('api/sitemap.js');
   assert.ok(server.includes("['/services', 'services.html']"));
+  assert.ok(server.includes("['/services/website', 'website-services.html']"));
   assert.ok(server.includes("['/services/website-development', 'website-development.html']"));
   assert.ok(server.includes("['/services/free-website', 'free-website.html']"));
   assert.ok(server.includes("['/services/seo', 'seo.html']"));
   assert.ok(vercel.includes('"source": "/services/website-development"'));
+  assert.ok(vercel.includes('"source": "/services/website"'));
   assert.ok(vercel.includes('"source": "/services/free-website"'));
   assert.ok(vercel.includes('"source": "/services/seo"'));
   assert.ok(sitemap.includes('`${SITE_URL}/services`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/website-development`'));
+  assert.ok(sitemap.includes('`${SITE_URL}/services/website`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/free-website`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/seo`'));
   assert.match(read('sitemap.html'), /href="\/services\/free-website">Free Website\s*<i/);
@@ -212,7 +247,7 @@ test('clean routes and sitemaps include every published service page', () => {
 });
 
 test('mobile menu remains limited to the approved five destinations', () => {
-  for (const file of ['services.html', 'website-development.html', 'free-website.html', 'seo.html']) {
+  for (const file of ['services.html', 'website-services.html', 'website-development.html', 'free-website.html', 'seo.html']) {
     const html = read(file);
     const menu = html.match(/<div class="mobile-menu"[\s\S]*?<\/div>\s*<\/header>/)?.[0] || '';
     assert.equal((menu.match(/<a /g) || []).length, 5, file);

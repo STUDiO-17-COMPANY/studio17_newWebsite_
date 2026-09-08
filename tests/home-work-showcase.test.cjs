@@ -20,6 +20,7 @@ test('homepage replaces the former AI block with selected client work', () => {
   for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/terrassivilla.jpg', '/Images/rg-automotive-work.jpg']) assert.ok(showcase.includes(asset), asset);
   for (const project of ['100 Pratos', 'PHÓS Optics', 'Terrassi Villa', 'RG Automotive']) assert.ok(showcase.includes(project), project);
   assert.ok(showcase.includes('https://www.instagram.com/rgautomotive.stand/'));
+  assert.match(showcase, /href="\/wip\?for=portfolio"[^>]*>See more of our work/);
 
   const order = ['services-section', 'home-work-showcase', 'news-section'].map(className => html.indexOf(className));
   assert.ok(order.every((position, index) => position >= 0 && (index === 0 || position > order[index - 1])));
@@ -34,11 +35,13 @@ test('homepage work showcase uses the shared six-language contract', () => {
     assert.ok(generic.strings['Selected client work'], locale);
     assert.ok(generic.strings['Automotive marketing · Social media and design'], locale);
     assert.ok(generic.strings['View on Instagram'], locale);
-    assert.ok(generic.strings['Explore website development'], locale);
+    assert.ok(generic.strings['See more of our work'], locale);
   }
 });
 
 test('obsolete AI section styles are removed', () => {
   const css = read('styles.css');
+  assert.match(css, /\.home-work-showcase \.website-project-card \{ background: transparent; \}/);
+  assert.match(css, /\.home-work-showcase \+ \.news-section \{ margin-top: 0; \}/);
   assert.doesNotMatch(css, /\.ai-section|\.ai-grid|\.ai-card|\.ai-heading|\.ai-button/);
 });

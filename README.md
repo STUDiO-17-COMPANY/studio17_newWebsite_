@@ -13,6 +13,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/our-story` (`our-story.html`) — the approved seven-chapter Studio 17 origin and evolution narrative.
 - `/team` (`team.html`) — confirmed Studio 17 founders and leadership introduction without unapproved personal details.
 - `/services` (`services.html`) — multilingual, price-free catalogue of all Studio 17 service areas.
+- `/services/website` (`website-services.html`) — English, Greek and Russian overview of website development, revamp, design, SEO, GEO, copywriting, localisation and maintenance.
 - `/services/website-development` (`website-development.html`) — multilingual Website Development packages, inclusions, proof projects, process and FAQs.
 - `/services/free-website` (`free-website.html`) — six-language lead page for selected businesses applying for a professional one-page website without a Studio 17 design or development fee.
 - `/services/seo` (`seo.html`) — international SEO strategy and delivery page in English, Greek and Russian.
@@ -114,6 +115,7 @@ node service-locales/build-bundle.cjs
 27. Keep `/services/seo`, `/seo/cyprus` and `/seo/limassol` distinct by search intent. The service page explains the complete capability; the Cyprus and Limassol pages sell that capability through original market-specific decision journeys.
 28. Build the desktop Services navigation from the shared horizontal mega-menu in `script.js`; keep `/services` as a supporting catalogue rather than a mega-menu item, and route every unpublished service to a specific WIP destination.
 29. Build the mobile Services directory from the same shared configuration as desktop, keep only one category expanded at a time, and preserve keyboard, translated-label and RTL behavior.
+30. Use `/services/website` as the Website family overview. Keep Free Website outside its main service selector and promote it through the dedicated pre-FAQ CTA.
 
 ## Pre-launch checklist
 
