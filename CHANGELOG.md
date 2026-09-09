@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-09 — Website services sales journey refinement
+
+- Rebuilt the `/services/website` selector around the homepage interaction pattern: four horizontal service-area tabs, a focused vertical service list and an image-led detail panel, with two compact selects on mobile.
+- Added alternating Terrassi Villa and PHÓS Optics case-study components with linked imagery, supporting service points and clear next actions; the published Terrassi Villa story is used directly while the future PHÓS Optics case study uses its precise WIP destination.
+- Reframed the connected-value section around sellable SEO, GEO and portfolio paths, including a direct link to the published SEO service.
+- Converted the Website FAQ to the Free Website two-column layout and added independent accordion behaviour, allowing one open answer per column on both pages.
+- Added a high-contrast white state to the Website category title in the Services mega menu on hover, keyboard focus and active Website-family pages.
+- Normalized desktop and mobile spacing, responsive case-study ordering and the English, Greek and Russian translation contract; regenerated locale assets and expanded regression coverage.
+
 ## 2026-09-08 — Website service-family page and homepage work refinement
 
 - Published `/services/website` as the English, Greek and Russian Website family overview, separating service selection from the more detailed Website Development package page.

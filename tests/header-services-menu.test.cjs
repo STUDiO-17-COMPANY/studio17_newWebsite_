@@ -21,6 +21,7 @@ for (const group of groups) {
 }
 
 const requiredDestinations = [
+  '/wip?for=social-media', '/wip?for=content-creation', '/wip?for=advertisement', '/wip?for=by-industry', '/wip?for=events',
   '/services/website',
   '/services/website-development',
   '/wip?for=social-media-management', '/wip?for=social-media-automation', '/wip?for=growth-strategy', '/wip?for=community-management', '/wip?for=free-social-media-audit',
@@ -50,6 +51,8 @@ assert.match(css, /\.mobile-services-primary-row\s*\{[^}]*grid-template-columns:
 assert.match(css, /\.mobile-services-panel\[hidden\], \.mobile-services-list\[hidden\]/);
 assert.match(css, /html\[dir="rtl"\] \.mobile-services-toggle/);
 assert.match(css, /a\.services-mega-offer\s*\{[^}]*background:\s*var\(--white\)/);
+assert.match(css, /a\.services-mega-title\[aria-current="page"\][^{]*\{[^}]*color:\s*var\(--ink\);[^}]*background:\s*var\(--white\)/);
+assert.match(script, /isWebsiteFamily[\s\S]*?title\.setAttribute\('aria-current', 'page'\)/);
 
 for (const locale of ['pt-PT', 'es', 'el', 'ru', 'he']) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'locales', `${locale}.json`), 'utf8'));

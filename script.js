@@ -21,6 +21,7 @@
     {
       categoryKey: 'social',
       label: 'Social Media',
+      href: '/wip?for=social-media',
       items: [
         ['socialManagement', 'Social Media management', '/wip?for=social-media-management'],
         ['socialAutomation', 'Social Media automation', '/wip?for=social-media-automation'],
@@ -48,6 +49,7 @@
     {
       categoryKey: 'content',
       label: 'Content creation',
+      href: '/wip?for=content-creation',
       items: [
         [null, 'Filming', '/wip?for=filming'],
         [null, 'Photography', '/wip?for=photography'],
@@ -61,6 +63,7 @@
     {
       categoryKey: 'ads',
       label: 'Advertisement',
+      href: '/wip?for=advertisement',
       items: [
         [null, 'Meta ads', '/wip?for=meta-ads'],
         [null, 'Google ads', '/wip?for=google-ads'],
@@ -73,6 +76,7 @@
     {
       categoryKey: 'industry',
       label: 'By Industry',
+      href: '/wip?for=by-industry',
       items: [
         ['automotive', 'Automotive', '/wip?for=automotive'],
         ['restaurants', 'Restaurants', '/wip?for=restaurants'],
@@ -86,6 +90,7 @@
     },
     {
       label: 'Events',
+      href: '/wip?for=events',
       items: [
         [null, 'Presential Events', '/wip?for=presential-events'],
         [null, 'Online Events', '/wip?for=online-events']
@@ -118,7 +123,18 @@
       const title = document.createElement(group.href ? 'a' : 'p');
       title.className = 'services-mega-title';
       title.textContent = (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
-      if (group.href) title.href = localiseServicesMenuHref(group.href);
+      if (group.href) {
+        title.href = localiseServicesMenuHref(group.href);
+        const currentPath = location.protocol === 'file:' ? location.pathname.split('/').pop() : location.pathname.replace(/\/$/, '');
+        const isWebsiteFamily = group.categoryKey === 'website' && (
+          currentPath === '/services/website' ||
+          currentPath === '/services/website-development' ||
+          currentPath === '/services/free-website' ||
+          currentPath === '/services/seo' ||
+          ['website-services.html', 'website-development.html', 'free-website.html', 'seo.html'].includes(currentPath)
+        );
+        if (isWebsiteFamily) title.setAttribute('aria-current', 'page');
+      }
       const list = document.createElement('ul');
       group.items.forEach(([itemKey, label, href]) => {
         const listItem = document.createElement('li');
@@ -212,7 +228,8 @@
       button.setAttribute('aria-expanded', 'false');
       button.setAttribute('aria-controls', listId);
       const title = document.createElement('span');
-      title.textContent = (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
+      const categoryTitle = (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
+      title.textContent = categoryTitle;
       const icon = document.createElement('i');
       icon.dataset.lucide = 'chevron-down';
       icon.setAttribute('aria-hidden', 'true');
@@ -227,7 +244,7 @@
         const overviewLink = document.createElement('a');
         overviewLink.href = localiseServicesMenuHref(group.href);
         overviewLink.className = 'mobile-services-category-overview';
-        overviewLink.textContent = translateText('Explore website services');
+        overviewLink.textContent = group.categoryKey === 'website' ? translateText('Explore website services') : `${categoryTitle} →`;
         overviewItem.appendChild(overviewLink);
         list.appendChild(overviewItem);
       }

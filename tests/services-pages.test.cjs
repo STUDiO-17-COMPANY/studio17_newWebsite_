@@ -58,16 +58,27 @@ test('website service-family page provides a distinct, translated decision journ
   assert.match(freeCta, /href="\/services\/free-website"/);
   assert.ok(html.indexOf('website-free-cta') < html.indexOf('website-services-faq'));
   assert.equal((html.match(/class="website-faq-list"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<details>/g) || []).length, 6);
-  assert.match(css, /\.website-service-selector \{[^}]*grid-template-columns: 290px minmax\(0,1fr\)/);
+  assert.match(css, /\.website-service-selector \{[^}]*min-height: 538px;[^}]*padding: 24px 24px 0;/);
+  assert.match(css, /\.website-service-tabs \{[^}]*grid-template-columns: repeat\(4,minmax\(0,1fr\)\)/);
+  assert.match(css, /\.website-service-main \{[^}]*grid-template-columns: 212px minmax\(0,1fr\)/);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*?\.website-service-mobile \{ display: grid;/);
-  assert.match(behavior, /enhanceWebsiteServices[\s\S]*?data-website-service-panel[\s\S]*?aria-selected/);
+  assert.match(behavior, /enhanceWebsiteServices[\s\S]*?data-website-service-panel/);
+  assert.match(behavior, /tabs\.className = 'website-service-tabs'[\s\S]*?aria-selected/);
+  assert.match(behavior, /enhanceTwoColumnFaq[\s\S]*?dataset\.faqColumn[\s\S]*?sibling\.open = false/);
+  assert.match(html, /class="website-case-studies"[\s\S]*?Terrassi Villa[\s\S]*?PHÓS Optics/);
+  assert.match(html, /terrassivilla-accessible-tourism-in-the-azores/);
+  assert.match(html, /wip\?for=phos-optics-case-study/);
+  assert.match(html, /data-service-key="searchGrowth"[\s\S]*?href="\/services\/seo"[\s\S]*?wip\?for=geo[\s\S]*?wip\?for=portfolio/);
+  assert.match(css, /\.website-services-faq \.website-faq-list \{[^}]*grid-template-columns: repeat\(2,minmax\(0,1fr\)\)/);
   const structured = jsonLd(html)[0];
   assert.equal(structured['@type'], 'Service');
   assert.equal(structured.hasOfferCatalog.itemListElement.length, 6);
   for (const locale of ['el', 'ru']) {
     const page = require(path.join(root, 'service-locales', `${locale}.json`)).pages.websiteServices;
-    assert.deepEqual(Object.keys(page), ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'intro', 'capabilitiesHeading', 'capabilities', 'value', 'freeCta', 'faqHeading', 'faq', 'closing'], locale);
+    assert.deepEqual(Object.keys(page), ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'intro', 'capabilitiesHeading', 'capabilities', 'workHeading', 'workCases', 'searchGrowth', 'value', 'freeCta', 'faqHeading', 'faq', 'closing'], locale);
     assert.equal((page.capabilities.match(/data-website-service="/g) || []).length, 8, locale);
+    assert.equal((page.workCases.match(/class="website-case-study /g) || []).length, 2, locale);
+    assert.match(page.searchGrowth, /href="\/services\/seo"[\s\S]*?wip\?for=geo[\s\S]*?wip\?for=portfolio/, locale);
     assert.equal((page.faq.match(/<details>/g) || []).length, 6, locale);
   }
   for (const locale of ['pt-PT', 'es', 'he']) assert.equal(require(path.join(root, 'service-locales', `${locale}.json`)).pages.websiteServices, undefined, locale);
