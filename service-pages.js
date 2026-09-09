@@ -69,6 +69,8 @@
     ];
     const labels = {
       en: { build: 'Website build', visibility: 'Search visibility', content: 'Content & markets', care: 'Care & improvement', area: 'Website area', service: 'Website service', sales: 'Talk to sales', explore: 'Explore service', previous: 'Previous website service', next: 'Next website service' },
+      'pt-PT': { build: 'Construção de website', visibility: 'Visibilidade na pesquisa', content: 'Conteúdo e mercados', care: 'Manutenção e melhoria', area: 'Área do website', service: 'Serviço de website', sales: 'Falar com vendas', explore: 'Explorar serviço', previous: 'Serviço anterior', next: 'Serviço seguinte' },
+      es: { build: 'Creación web', visibility: 'Visibilidad en buscadores', content: 'Contenido y mercados', care: 'Mantenimiento y mejora', area: 'Área del sitio web', service: 'Servicio web', sales: 'Hablar con ventas', explore: 'Explorar servicio', previous: 'Servicio anterior', next: 'Servicio siguiente' },
       el: { build: 'Κατασκευή ιστοσελίδας', visibility: 'Ορατότητα αναζήτησης', content: 'Περιεχόμενο & αγορές', care: 'Φροντίδα & βελτίωση', area: 'Τομέας ιστοσελίδας', service: 'Υπηρεσία ιστοσελίδας', sales: 'Μιλήστε με τις πωλήσεις', explore: 'Δείτε την υπηρεσία', previous: 'Προηγούμενη υπηρεσία ιστοσελίδας', next: 'Επόμενη υπηρεσία ιστοσελίδας' },
       ru: { build: 'Создание сайта', visibility: 'Видимость в поиске', content: 'Контент и рынки', care: 'Поддержка и развитие', area: 'Направление', service: 'Услуга для сайта', sales: 'Связаться с отделом продаж', explore: 'Смотреть услугу', previous: 'Предыдущая услуга для сайта', next: 'Следующая услуга для сайта' }
     };
@@ -236,7 +238,7 @@
   };
 
   const enhanceTwoColumnFaq = () => {
-    document.querySelectorAll('.free-faq-columns, .website-services-faq .website-faq-list').forEach(list => {
+    document.querySelectorAll('.website-faq-list').forEach(list => {
       const details = [...list.querySelectorAll(':scope > details')];
       if (details.length < 2) return;
       const split = Math.ceil(details.length / 2);

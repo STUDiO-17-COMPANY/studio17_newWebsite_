@@ -3,7 +3,7 @@
 ## Public routes
 
 - `/services` is the price-free catalogue of Studio 17 capabilities.
-- `/services/website` is the Website service-family overview in English, Greek and Russian.
+- `/services/website` is the Website service-family overview in English, Portuguese (Portugal), Spanish, Greek and Russian. Hebrew is intentionally unavailable on this page.
 - `/services/website-development` is the commercial Website Development page.
 - `/services/free-website` is the multilingual application page for the selected-business Free Website offer.
 - `/services/seo` is the international commercial SEO page.
@@ -14,11 +14,15 @@ All routes use clean URLs, canonical metadata, the shared header/footer, and the
 
 ## Website service family
 
-`/services/website` helps visitors choose between Website Development, Website Revamp, Website Design, SEO, GEO, Copywriting, Localization and Translation, and Maintenance. Its interactive selector reuses the homepage service component: horizontal service-area tabs, the same focused vertical service list and the same image-led detail stage. Mobile uses separate area and service selects so visitors do not face a long button wall. Complete content is available in English, Greek and Russian. Development and SEO use their published routes; unfinished services use specific WIP destinations.
+`/services/website` helps visitors choose between Website Development, Website Revamp, Website Design, SEO, GEO, Copywriting, Localization and Translation, and Maintenance. Its interactive selector reuses the homepage service component: horizontal service-area tabs, the same focused vertical service list and the same image-led detail stage. Mobile uses separate area and service selects so visitors do not face a long button wall. Complete content is available in English, Portuguese (Portugal), Spanish, Greek and Russian; Hebrew URLs normalize to an available language. Development and SEO use their published routes; unfinished services use specific WIP destinations.
+
+The service selector follows the hero directly. Do not restore the removed generic introduction between them.
 
 The sales journey gives Terrassi Villa and PHÓS Optics one standalone semantic section each. The client layouts have no surrounding card border or separate surface colour. Terrassi Villa links to its published article; PHÓS Optics uses `/wip?for=phos-optics-case-study` until its dedicated case study is published. The following component gives SEO, GEO and portfolio work distinct explanations and routes rather than treating search visibility as a generic website inclusion.
 
-The FAQ uses two independent column containers on desktop, not shared CSS grid rows. One answer may be open in each column, and opening another answer closes only its sibling in the same column without changing the opposite column's row height. The same behaviour applies to the two-column FAQ on `/services/free-website`.
+Every service-page FAQ uses two independent column containers on desktop, not shared CSS grid rows. One answer may be open in each column, and opening another answer closes only its sibling in the same column without changing the opposite column's row height. This contract applies to Website, Website Development, Free Website, SEO, SEO Cyprus and SEO Limassol.
+
+The Website page's SEO, GEO and portfolio block uses white headings and high-contrast copy on contained navy/blue cards. It contains no decorative top icons. Each card ends with a clear rectangular CTA; SEO links to `/services/seo`, while GEO and portfolio retain their precise WIP routes.
 
 Every outer section on this page uses the shared paper background and the 32px homepage section break. Dark and blue remain reserved for intentional internal components and conversion CTAs, preventing full-width alternating surface colours from breaking the page rhythm.
 
@@ -90,7 +94,7 @@ The CTA keeps **Talk to sales** as the primary contact action and includes **See
 
 ## Translation workflow
 
-English source content lives in the HTML pages. The catalogue and Website Development translations live in all five `service-locales/<locale>.json` files. Free Website translations live in the page-specific browser module `service-locales/free-website.js` for Portuguese (Portugal), Spanish, Greek, Russian and Hebrew. SEO translations live only in `el.json` and `ru.json` until another language is explicitly approved. After editing the canonical JSON service locales, run `node service-locales/build-bundle.cjs` and commit the regenerated `service-locales/locales.js`; the page-specific Free Website module does not require that build step. Do not change or remove `data-service-key` values; they are the stable translation contract.
+English source content lives in the HTML pages. The catalogue and Website Development translations live in all five `service-locales/<locale>.json` files. Website-family Portuguese and Spanish translations live in `service-locales/website-services.js`; its Greek and Russian content remains in the generated locale bundle. Free Website translations live in `service-locales/free-website.js` for Portuguese (Portugal), Spanish, Greek, Russian and Hebrew. SEO translations live only in `el.json` and `ru.json` until another language is explicitly approved. After editing the canonical JSON service locales, run `node service-locales/build-bundle.cjs` and commit the regenerated `service-locales/locales.js`; page-specific modules do not require that build step. Do not change or remove `data-service-key` values; they are the stable translation contract.
 
 ## Update checklist
 

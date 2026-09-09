@@ -80,7 +80,8 @@ The sitemap establishes the template for non-homepage pages:
 - Main service-family pages reuse the homepage service explorer rather than approximating it: horizontal category tabs, the same focused service list and the same image-led detail panel. At 600px and below, replace the button groups with compact category and service selects. Keep every service description unique and preserve a visible selected state.
 - Keep Website-family outer sections on the default paper surface with the standard 32px separation and compact 52px/64px interiors (44px/54px at 900px and below). Reserve dark and blue for contained components and conversion CTAs.
 - Give each featured client its own semantic section and use contrast and spacing instead of a surrounding project-card border.
-- Two-column FAQs use independent column containers rather than shared grid rows. Opening an answer may close only another answer in the same column and must not resize the opposite column's row.
+- Two-column FAQs on every service and SEO page use independent column containers rather than shared grid rows. Opening an answer may close only another answer in the same column and must not resize the opposite column's row.
+- Website-family SEO, GEO and portfolio cards use high-contrast light text on contained dark or blue surfaces, no decorative top icons and a clear rectangular action at the bottom of each card.
 - Reuse the homepage closing CTA when there is a meaningful contact action. The general Services page is the approved media-led variation: a tightly cropped image up to 520 × 260px replaces the decorative icon, aligns with the copy and retains the shared CTA dimensions and responsive stacking.
 - At 900px and below, stack hero content and cards without document-level horizontal overflow.
 
@@ -174,6 +175,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 
 - Existing published translations remain available and maintained.
 - New pages default to English, Greek and Russian.
+- `/services/website` is an approved exception: publish English, Portuguese (Portugal), Spanish, Greek and Russian, but not Hebrew.
 - Add Portuguese (Portugal), Spanish or Hebrew to a new page only when explicitly requested.
 - Shared navigation and WIP labels remain translated across every language already available on the surrounding page so navigation never falls back to an unrelated label.
 

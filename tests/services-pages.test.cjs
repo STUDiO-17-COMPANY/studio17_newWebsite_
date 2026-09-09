@@ -45,9 +45,11 @@ test('website service-family page provides a distinct, translated decision journ
   const html = read('website-services.html');
   const css = read('styles.css');
   const behavior = read('service-pages.js');
-  assert.match(html, /<html lang="en" data-supported-languages="en,el,ru">/);
+  assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 4);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 6);
+  assert.doesNotMatch(html, /hreflang="he"|data-lang="he"/);
+  assert.doesNotMatch(html, /website-services-intro|Your website is one system/);
   assert.match(html, /data-service-page="websiteServices"/);
   assert.equal((html.match(/data-website-service="/g) || []).length, 8);
   assert.equal((html.match(/data-website-service-panel="/g) || []).length, 8);
@@ -72,7 +74,11 @@ test('website service-family page provides a distinct, translated decision journ
   assert.match(html, /terrassivilla-accessible-tourism-in-the-azores/);
   assert.match(html, /wip\?for=phos-optics-case-study/);
   assert.match(html, /data-service-key="searchGrowth"[\s\S]*?href="\/services\/seo"[\s\S]*?wip\?for=geo[\s\S]*?wip\?for=portfolio/);
-  assert.match(css, /\.website-services-faq \.website-faq-list \{[^}]*grid-template-columns: repeat\(2,minmax\(0,1fr\)\)/);
+  assert.match(css, /\.website-faq \.website-faq-list \{[^}]*grid-template-columns: repeat\(2,minmax\(0,1fr\)\)/);
+  const searchGrowth = html.match(/<section class="website-connected-value website-search-growth"[\s\S]*?<\/section>/)?.[0] || '';
+  assert.doesNotMatch(searchGrowth, /data-lucide="(?:search-check|sparkles|panels-top-left)"/);
+  assert.equal((searchGrowth.match(/class="design-link[^"\n]*website-value-action"/g) || []).length, 3);
+  assert.match(css, /\.website-value-grid h3 \{[^}]*color: var\(--white\)/);
   const structured = jsonLd(html)[0];
   assert.equal(structured['@type'], 'Service');
   assert.equal(structured.hasOfferCatalog.itemListElement.length, 6);
@@ -84,7 +90,31 @@ test('website service-family page provides a distinct, translated decision journ
     assert.match(page.searchGrowth, /href="\/services\/seo"[\s\S]*?wip\?for=geo[\s\S]*?wip\?for=portfolio/, locale);
     assert.equal((page.faq.match(/<details>/g) || []).length, 6, locale);
   }
-  for (const locale of ['pt-PT', 'es', 'he']) assert.equal(require(path.join(root, 'service-locales', `${locale}.json`)).pages.websiteServices, undefined, locale);
+  const localizedSource = read('service-locales/website-services.js');
+  const vm = require('node:vm');
+  const context = { window: { Studio17ServiceLocaleData: {} } };
+  vm.runInNewContext(localizedSource, context);
+  for (const locale of ['pt-PT', 'es']) {
+    const localizedPage = context.window.Studio17ServiceLocaleData[locale].websiteServices;
+    for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'capabilitiesHeading', 'capabilities', 'workCases', 'searchGrowth', 'freeCta', 'faqHeading', 'faq', 'closing']) assert.ok(localizedPage[key], `${locale}: missing ${key}`);
+    assert.equal((localizedPage.capabilities.match(/data-website-service="/g) || []).length, 8, locale);
+    assert.equal((localizedPage.workCases.match(/class="website-case-study /g) || []).length, 2, locale);
+    assert.equal((localizedPage.faq.match(/<details>/g) || []).length, 6, locale);
+  }
+  assert.equal(context.window.Studio17ServiceLocaleData.he, undefined);
+});
+
+test('service-page FAQs use independent two-column accordion groups', () => {
+  const behavior = read('service-pages.js');
+  const css = read('styles.css');
+  assert.match(behavior, /querySelectorAll\('\.website-faq-list'\)/);
+  assert.match(behavior, /leftColumn\.className = 'website-faq-column'[\s\S]*?rightColumn\.className = 'website-faq-column'/);
+  assert.match(behavior, /sibling\.dataset\.faqColumn === column\) sibling\.open = false/);
+  assert.match(css, /\.website-faq \.website-faq-list \{[^}]*grid-template-rows: none;[^}]*grid-auto-flow: row;/);
+  for (const file of ['website-services.html', 'website-development.html', 'free-website.html', 'seo.html', 'seo-cyprus.html', 'seo-limassol.html']) {
+    assert.match(read(file), /class="website-faq-list/, file);
+    assert.match(read(file), /src="\/service-pages\.js"/, file);
+  }
 });
 
 test('free website page is transparent, lead-ready and translated in all site languages', () => {

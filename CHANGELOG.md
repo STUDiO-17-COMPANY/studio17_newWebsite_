@@ -2,12 +2,16 @@
 
 ## 2026-09-09 — Website services sales journey refinement
 
+- Extended `/services/website` to Portuguese (Portugal) and Spanish alongside English, Greek and Russian, while deliberately excluding Hebrew from this page and its `hreflang` set.
+- Removed the redundant “Your website is one system” introduction so the service selector follows the hero directly.
+- Corrected the SEO, GEO and portfolio cards with readable white headings, stronger body contrast, no decorative top icons and clear rectangular actions.
+- Standardized every service-page FAQ into independent left and right accordion columns, with one answer open per column and no shared row-height expansion.
 - Rebuilt the `/services/website` selector from the homepage Services component itself: four horizontal service-area tabs, the same focused vertical service list and the same image-led detail panel, with two compact selects on mobile.
 - Separated Terrassi Villa and PHÓS Optics into individual semantic client sections, removed the surrounding card border and retained linked imagery, supporting service points and clear next actions. The published Terrassi Villa story is used directly while the future PHÓS Optics case study uses its precise WIP destination.
 - Reframed the connected-value section around sellable SEO, GEO and portfolio paths, including a direct link to the published SEO service.
 - Converted the Website FAQ to two independent column containers, allowing one open answer per column without the opposite column inheriting its row height. The same behaviour now applies to the Free Website FAQ.
 - Added a high-contrast white state to the Website category title in the Services mega menu on hover, keyboard focus and active Website-family pages.
-- Normalized all outer Website-page sections to the shared paper background and 32px section rhythm, while retaining dark or blue only inside intentional components and CTAs. Responsive case-study ordering and the English, Greek and Russian translation contract remain covered by regression tests.
+- Normalized all outer Website-page sections to the shared paper background and 32px section rhythm, while retaining dark or blue only inside intentional components and CTAs. Responsive case-study ordering and the five-language translation contract remain covered by regression tests.
 
 ## 2026-09-08 — Website service-family page and homepage work refinement
 
