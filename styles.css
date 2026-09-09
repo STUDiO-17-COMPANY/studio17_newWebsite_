@@ -1707,11 +1707,11 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .mobile-services-category-overview { color: var(--blue) !important; font-weight: 850 !important; }
 .website-services-hero .hero-media img { object-position: center 42%; }
 .website-services-intro, .website-capabilities, .website-services-faq { margin-top: var(--section-gap); padding-block: 52px 64px; }
-.website-services-intro, .website-services-faq { background: var(--white); }
-.website-capabilities { color: var(--white); background: var(--ink); }
-.website-capabilities .service-page-heading h2, .website-capabilities .service-page-heading > p { color: var(--white); }
-.website-capabilities .service-page-heading h2 span { color: var(--ink); background: #8fb1ff; }
-.website-capabilities .service-page-heading > p { color: #b9c5d7; }
+.website-services-page, .website-services-main, .website-services-intro, .website-services-faq, .website-capabilities { background: var(--paper); }
+.website-capabilities { color: var(--ink); }
+.website-capabilities .service-page-heading h2 { color: var(--ink); }
+.website-capabilities .service-page-heading h2 span { color: var(--white); background: var(--blue); }
+.website-capabilities .service-page-heading > p { color: #596477; }
 .website-service-selector { min-height: 538px; padding: 24px 24px 0; background: var(--ink); overflow: hidden; }
 .website-service-tabs { height: 56px; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px; }
 .website-service-tabs button { min-width: 0; min-height: 56px; border: 0; padding: 8px 10px; color: var(--ink); background: var(--paper); font: inherit; font-size: 16px; line-height: 1.2; cursor: pointer; transition: color .2s ease, background .2s ease, transform .2s var(--ease); }
@@ -1746,15 +1746,15 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .website-service-stage ul { grid-column: 2; grid-row: 1 / span 5; align-self: center; display: grid; gap: 1px; margin: 0; padding: 1px; background: rgba(255,255,255,.2); list-style: none; }
 .website-service-stage li { min-height: 74px; display: flex; align-items: center; padding: 15px 18px; color: #e4eaf3; background: rgba(17,31,54,.88); font-size: 13px; line-height: 1.4; }
 .website-service-stage .design-link { grid-column: 1; width: fit-content; margin-top: 26px; font-size: 14px; }
-.website-case-studies { margin-top: var(--section-gap); padding-block: 52px 64px; background: var(--white); }
-.website-case-study-list { display: grid; gap: 32px; }
-.website-case-study { min-height: 420px; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border: 1px solid #cad3df; background: var(--paper); overflow: hidden; }
+.website-client-projects { background: var(--paper); }
+.website-client-project { margin-top: var(--section-gap); padding-block: 52px 64px; background: var(--paper); }
+.website-case-study { min-height: 420px; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); background: transparent; overflow: hidden; }
 .website-case-study-copy { display: flex; flex-direction: column; justify-content: center; padding: 46px 52px; }
 .website-case-study-kicker { margin: 0 0 15px; color: var(--blue); font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .website-case-study h3 { margin: 0 0 17px; font-size: clamp(34px,3.4vw,52px); line-height: 1.02; letter-spacing: -.055em; }
 .website-case-study-copy > p:not(.website-case-study-kicker) { max-width: 610px; margin: 0; color: #596477; font-size: 15px; line-height: 1.62; }
 .website-case-study ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 25px 0 0; padding: 0; list-style: none; }
-.website-case-study li { padding: 8px 10px; color: var(--ink); background: var(--white); font-size: 12px; font-weight: 750; }
+.website-case-study li { padding: 8px 10px; border: 1px solid #cad3df; color: var(--ink); background: transparent; font-size: 12px; font-weight: 750; }
 .website-case-study-copy .design-link { width: fit-content; margin-top: 28px; }
 .website-case-study-media { position: relative; min-height: 420px; display: block; overflow: hidden; background: var(--ink); }
 .website-case-study-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg,transparent 50%,rgba(5,12,25,.72)); pointer-events: none; }
@@ -1763,7 +1763,10 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .website-case-study-media .lucide { width: 18px; height: 18px; }
 .website-case-study-media:hover img, .website-case-study-media:focus-visible img { transform: scale(1.035); }
 .website-case-study-media:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
-.website-connected-value { margin-top: var(--section-gap); padding-block: 52px 64px; color: var(--white); background: var(--ink); }
+.website-connected-value { margin-top: var(--section-gap); padding-block: 52px 64px; color: var(--ink); background: var(--paper); }
+.website-search-growth .service-page-heading-light h2 { color: var(--ink); }
+.website-search-growth .service-page-heading-light h2 span { color: var(--white); background: var(--blue); }
+.website-search-growth .service-page-heading-light > p { color: #596477; }
 .website-value-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; padding: 1px; background: rgba(255,255,255,.18); }
 .website-value-grid article { min-height: 245px; display: flex; flex-direction: column; padding: 28px; background: #121d33; }
 .website-value-grid .lucide { width: 31px; height: 31px; margin-bottom: auto; color: #8fb1ff; }
@@ -1794,8 +1797,12 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .website-services-faq .website-faq-grid { display: block; }
 .website-services-faq .service-page-heading { display: grid; margin-bottom: 42px; }
 .website-services-faq .service-page-heading > p { margin-top: 0; }
-.website-services-faq .website-faq-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: repeat(3,auto); grid-auto-flow: column; gap: 0 48px; border-top: 0; }
-.website-services-faq .website-faq-list details:nth-child(1), .website-services-faq .website-faq-list details:nth-child(4) { border-top: 1px solid #cbd3df; }
+.website-services-faq .website-faq-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 48px; border-top: 0; }
+.website-faq-column { min-width: 0; border-top: 1px solid #cbd3df; }
+.free-faq-columns { grid-template-rows: none; grid-auto-flow: row; }
+.free-faq-columns > .website-faq-column { border-top: 1px solid #cbd3df; }
+.case-link .website-feature-overlay-text { display: inline; width: auto; height: auto; background: transparent; }
+.website-service-templates[hidden] { display: none !important; }
 
 /* Limassol-specific local discovery composition */
 .seo-local-journey { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 0; margin: 0; padding: 0; list-style: none; }
@@ -1842,21 +1849,14 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 
 @media (max-width: 900px) {
   .website-services-intro, .website-capabilities, .website-connected-value, .website-services-faq { padding-block: 44px 54px; }
-  .website-case-studies { padding-block: 44px 54px; }
+  .website-client-project { padding-block: 44px 54px; }
   .website-service-selector { min-height: 0; padding: 16px; }
-  .website-service-tabs { display: none; }
-  .website-service-mobile-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
-  .website-service-mobile { display: grid; gap: 8px; padding: 0; background: transparent; font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
-  .website-service-mobile > span:last-child { position: relative; display: block; }
-  .website-service-mobile select { width: 100%; min-height: 52px; appearance: none; border: 1px solid rgba(255,255,255,.35); padding: 10px 48px 10px 14px; color: var(--white); background: #17243e; font: inherit; font-size: 15px; letter-spacing: 0; text-transform: none; }
-  .website-service-mobile .lucide { position: absolute; top: 50%; right: 14px; width: 20px; height: 20px; pointer-events: none; transform: translateY(-50%); }
-  .website-service-nav { display: none; }
+  .website-service-tabs { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .website-service-tabs button { min-width: 150px; scroll-snap-align: start; }
+  .website-service-mobile-fields, .website-service-mobile { display: none; }
   .website-service-main { height: auto; display: block; margin-top: 16px; }
-  .website-service-stage { height: auto; min-height: 500px; border-left: 0; }
-  .website-service-stage article { min-height: 500px; grid-template-columns: 1fr; align-content: end; gap: 0; padding: 36px 30px 40px; }
-  .website-service-stage article::after { background: linear-gradient(180deg,rgba(6,13,28,.3),rgba(6,13,28,.97) 52%); }
-  .website-service-stage ul { grid-column: 1; grid-row: auto; margin-top: 30px; }
-  .website-service-stage .design-link { grid-column: 1; }
+  .website-service-nav { display: flex; height: 58px; flex-direction: row; gap: 10px; overflow-x: auto; overflow-y: hidden; padding-right: 0; }
+  .website-service-nav button { min-width: 140px; }
   .website-case-study { min-height: 0; grid-template-columns: 1fr; }
   .website-case-study-copy { padding: 38px 30px; }
   .website-case-study-media { min-height: 330px; }
@@ -1868,8 +1868,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .website-services-closing .cta-grid { grid-template-columns: 1fr; gap: 32px; }
   .website-services-faq .service-page-heading { display: block; }
   .website-services-faq .service-page-heading > p { margin-top: 20px; }
-  .website-services-faq .website-faq-list { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; gap: 0; }
-  .website-services-faq .website-faq-list details:nth-child(4) { border-top: 0; }
+  .website-services-faq .website-faq-list { grid-template-columns: 1fr; gap: 0; }
   .seo-opportunity, .seo-capabilities, .seo-method, .seo-ai-search, .seo-proof, .seo-why, .seo-market-directory, .seo-process, .seo-faq, .seo-growth-system { padding-block: 44px 54px; }
   .seo-problem-grid, .seo-proof-grid { grid-template-columns: 1fr; }
   .seo-problem-grid article { min-height: 220px; }
@@ -1949,9 +1948,9 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 }
 
 @media (max-width: 600px) {
-  .website-service-mobile-fields { grid-template-columns: 1fr; }
-  .website-service-stage article { min-height: 560px; padding: 30px 22px; }
-  .website-service-stage h3 { font-size: 34px; }
+  .website-service-mobile-fields, .website-service-mobile { display: grid; }
+  .website-service-mobile-fields { grid-template-columns: 1fr; gap: 13px; }
+  .website-service-tabs, .website-service-nav { display: none; }
   .website-case-study-media { min-height: 280px; }
   .website-case-study-copy { padding: 32px 24px; }
   .website-case-study li { width: 100%; }

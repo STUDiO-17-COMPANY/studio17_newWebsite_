@@ -68,9 +68,9 @@
       { key: 'care', services: ['maintenance'] }
     ];
     const labels = {
-      en: { build: 'Website build', visibility: 'Search visibility', content: 'Content & markets', care: 'Care & improvement', area: 'Website area', service: 'Website service' },
-      el: { build: 'Κατασκευή ιστοσελίδας', visibility: 'Ορατότητα αναζήτησης', content: 'Περιεχόμενο & αγορές', care: 'Φροντίδα & βελτίωση', area: 'Τομέας ιστοσελίδας', service: 'Υπηρεσία ιστοσελίδας' },
-      ru: { build: 'Создание сайта', visibility: 'Видимость в поиске', content: 'Контент и рынки', care: 'Поддержка и развитие', area: 'Направление', service: 'Услуга для сайта' }
+      en: { build: 'Website build', visibility: 'Search visibility', content: 'Content & markets', care: 'Care & improvement', area: 'Website area', service: 'Website service', sales: 'Talk to sales', explore: 'Explore service', previous: 'Previous website service', next: 'Next website service' },
+      el: { build: 'Κατασκευή ιστοσελίδας', visibility: 'Ορατότητα αναζήτησης', content: 'Περιεχόμενο & αγορές', care: 'Φροντίδα & βελτίωση', area: 'Τομέας ιστοσελίδας', service: 'Υπηρεσία ιστοσελίδας', sales: 'Μιλήστε με τις πωλήσεις', explore: 'Δείτε την υπηρεσία', previous: 'Προηγούμενη υπηρεσία ιστοσελίδας', next: 'Επόμενη υπηρεσία ιστοσελίδας' },
+      ru: { build: 'Создание сайта', visibility: 'Видимость в поиске', content: 'Контент и рынки', care: 'Поддержка и развитие', area: 'Направление', service: 'Услуга для сайта', sales: 'Связаться с отделом продаж', explore: 'Смотреть услугу', previous: 'Предыдущая услуга для сайта', next: 'Следующая услуга для сайта' }
     };
     const language = document.documentElement.lang || 'en';
     const copy = labels[language] || labels.en;
@@ -78,8 +78,9 @@
 
     if (!serviceNav || !serviceStage || !serviceSelect) return;
 
+    selector.classList.add('service-panel', 'website-service-panel');
     const tabs = document.createElement('div');
-    tabs.className = 'website-service-tabs';
+    tabs.className = 'service-tabs website-service-tabs';
     tabs.setAttribute('role', 'tablist');
     tabs.setAttribute('aria-label', copy.area);
     groups.forEach((group, index) => {
@@ -94,27 +95,55 @@
     });
 
     const categoryField = document.createElement('label');
-    categoryField.className = 'website-service-mobile website-service-mobile-category';
+    categoryField.className = 'service-mobile-field website-service-mobile website-service-mobile-category';
     categoryField.innerHTML = `<span>${copy.area}</span><span><select data-website-service-group-select>${groups.map(group => `<option value="${group.key}">${copy[group.key]}</option>`).join('')}</select><i data-lucide="chevron-down" aria-hidden="true"></i></span>`;
+    categoryField.querySelector(':scope > span:last-child')?.classList.add('service-mobile-select-control');
     const serviceField = selector.querySelector('.website-service-mobile');
-    serviceField?.classList.add('website-service-mobile-item');
+    serviceField?.classList.add('service-mobile-field', 'website-service-mobile-item');
+    serviceField?.querySelector(':scope > span:last-child')?.classList.add('service-mobile-select-control');
     const serviceFieldLabel = serviceField?.querySelector(':scope > span:first-child');
     if (serviceFieldLabel) serviceFieldLabel.textContent = copy.service;
     const mobileFields = document.createElement('div');
-    mobileFields.className = 'website-service-mobile-fields';
+    mobileFields.className = 'service-mobile-selector website-service-mobile-fields';
     mobileFields.append(categoryField);
     if (serviceField) mobileFields.append(serviceField);
 
     const main = document.createElement('div');
-    main.className = 'website-service-main';
+    main.className = 'service-main website-service-main';
     main.id = 'website-service-main';
-    main.append(serviceNav, serviceStage);
+    serviceNav.classList.add('industry-list');
+    serviceNav.querySelector('p')?.setAttribute('hidden', '');
+
+    const feature = document.createElement('article');
+    feature.className = 'service-feature website-service-feature';
+    feature.innerHTML = '<div class="service-photo" aria-hidden="true"><img src="/Images/Showcase1.webp" alt="" data-website-feature-image></div><div class="service-gradient" aria-hidden="true"></div><div class="service-copy"><p class="website-service-kicker" data-website-feature-kicker></p><h3 data-website-feature-title></h3><p data-website-feature-body></p><p class="service-result" data-website-feature-result></p></div><button class="image-control image-control-left" type="button" data-website-service-prev><i data-lucide="chevron-left" aria-hidden="true"></i></button><button class="image-control image-control-right" type="button" data-website-service-next><i data-lucide="chevron-right" aria-hidden="true"></i></button><div class="service-bottom-links"><a class="design-link design-link-dark" data-website-feature-primary href="#"></a><a class="design-link design-link-dark" data-website-feature-sales href="/contact?service=website">Talk to sales <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div><a class="case-link" data-website-feature-overlay href="#"><span class="website-feature-overlay-text" data-website-feature-overlay-label></span><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>';
+    serviceStage.hidden = true;
+    serviceStage.classList.add('website-service-templates');
+    main.append(serviceNav, feature);
     selector.prepend(tabs, mobileFields);
-    selector.append(main);
+    selector.append(main, serviceStage);
 
     const groupButtons = [...tabs.querySelectorAll('[data-website-service-group]')];
     const groupSelect = categoryField.querySelector('[data-website-service-group-select]');
     const navLabel = serviceNav.querySelector('p');
+    const featureImage = feature.querySelector('[data-website-feature-image]');
+    const featureKicker = feature.querySelector('[data-website-feature-kicker]');
+    const featureTitle = feature.querySelector('[data-website-feature-title]');
+    const featureBody = feature.querySelector('[data-website-feature-body]');
+    const featureResult = feature.querySelector('[data-website-feature-result]');
+    const featurePrimary = feature.querySelector('[data-website-feature-primary]');
+    const featureOverlay = feature.querySelector('[data-website-feature-overlay]');
+    const featureSales = feature.querySelector('[data-website-feature-sales]');
+    const featureOverlayLabel = feature.querySelector('[data-website-feature-overlay-label]');
+    if (featureSales?.firstChild) featureSales.firstChild.nodeValue = `${copy.sales} `;
+    if (featureOverlayLabel) featureOverlayLabel.textContent = copy.explore;
+    feature.querySelector('[data-website-service-prev]')?.setAttribute('aria-label', copy.previous);
+    feature.querySelector('[data-website-service-next]')?.setAttribute('aria-label', copy.next);
+    const featureImages = {
+      development: '/Images/Showcase1.webp', revamp: '/Images/Showcase2.webp', design: '/Images/Showcase3.webp',
+      seo: '/Images/SEO_heroimage.webp', geo: '/Images/SEO_heroimage.webp', copywriting: '/Images/CTA_Question_Image.webp',
+      localisation: '/Images/CTA_Question_Image.webp', maintenance: '/Images/terrassivilla.jpg'
+    };
 
     const activateGroup = (groupKey, preferredService) => {
       const group = groups.find(item => item.key === groupKey) || groups[0];
@@ -142,6 +171,22 @@
       });
       panels.forEach(panel => { panel.hidden = panel.dataset.websiteServicePanel !== next; });
       serviceSelect.value = next;
+      const panel = panels.find(item => item.dataset.websiteServicePanel === next);
+      if (panel) {
+        const link = panel.querySelector('a');
+        feature.classList.add('is-changing');
+        if (featureKicker) featureKicker.textContent = panel.querySelector('.website-service-kicker')?.textContent || '';
+        if (featureTitle) featureTitle.textContent = panel.querySelector('h3')?.textContent || '';
+        if (featureBody) featureBody.textContent = panel.querySelector(':scope > p:not(.website-service-kicker)')?.textContent || '';
+        if (featureResult) featureResult.textContent = [...panel.querySelectorAll('li')].map(item => item.textContent.trim()).join(' · ');
+        if (featureImage) featureImage.src = featureImages[next] || featureImages.development;
+        if (featurePrimary && link) {
+          featurePrimary.href = link.getAttribute('href');
+          featurePrimary.innerHTML = link.innerHTML;
+        }
+        if (featureOverlay && link) featureOverlay.href = link.getAttribute('href');
+        window.setTimeout(() => feature.classList.remove('is-changing'), 140);
+      }
     };
 
     panels.forEach((panel, index) => {
@@ -178,6 +223,14 @@
     });
     groupSelect?.addEventListener('change', event => activateGroup(event.target.value));
     serviceSelect.addEventListener('change', event => activate(event.target.value));
+    const stepService = direction => {
+      const visibleButtons = buttons.filter(item => !item.hidden);
+      const currentIndex = visibleButtons.findIndex(item => item.getAttribute('aria-selected') === 'true');
+      const nextIndex = (currentIndex + direction + visibleButtons.length) % visibleButtons.length;
+      visibleButtons[nextIndex]?.click();
+    };
+    feature.querySelector('[data-website-service-prev]')?.addEventListener('click', () => stepService(-1));
+    feature.querySelector('[data-website-service-next]')?.addEventListener('click', () => stepService(1));
     const initialService = buttons.find(button => button.getAttribute('aria-selected') === 'true')?.dataset.websiteService || serviceSelect.value;
     activateGroup(groupForService(initialService).key, initialService);
   };
@@ -187,8 +240,13 @@
       const details = [...list.querySelectorAll(':scope > details')];
       if (details.length < 2) return;
       const split = Math.ceil(details.length / 2);
+      const leftColumn = document.createElement('div');
+      const rightColumn = document.createElement('div');
+      leftColumn.className = 'website-faq-column';
+      rightColumn.className = 'website-faq-column';
       details.forEach((detail, index) => {
         detail.dataset.faqColumn = index < split ? 'left' : 'right';
+        (index < split ? leftColumn : rightColumn).append(detail);
         detail.addEventListener('toggle', () => {
           if (!detail.open) return;
           const column = detail.dataset.faqColumn;
@@ -197,6 +255,27 @@
           });
         });
       });
+      list.append(leftColumn, rightColumn);
+    });
+  };
+
+  const enhanceWebsiteProjects = () => {
+    if (page !== 'websiteServices') return;
+    const projects = document.querySelector('.website-client-projects');
+    if (!projects) return;
+    [...projects.querySelectorAll(':scope > .website-case-study')].forEach((project, index) => {
+      const section = document.createElement('section');
+      section.className = `website-client-project website-client-project-${index + 1}`;
+      const shell = document.createElement('div');
+      shell.className = 'shell';
+      const heading = project.querySelector('h3');
+      if (heading) {
+        heading.id = `website-client-project-title-${index + 1}`;
+        section.setAttribute('aria-labelledby', heading.id);
+      }
+      projects.insertBefore(section, project);
+      section.append(shell);
+      shell.append(project);
     });
   };
 
@@ -274,6 +353,7 @@
     updateInsertedLinks(language);
     enhanceSeoCapabilities();
     enhanceWebsiteServices();
+    enhanceWebsiteProjects();
     enhanceTwoColumnFaq();
     window.lucide?.createIcons({ attrs: { 'stroke-width': 2 } });
   };

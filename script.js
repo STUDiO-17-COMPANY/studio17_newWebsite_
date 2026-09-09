@@ -570,17 +570,17 @@
     }
   };
 
-  const serviceFeature = document.querySelector('.service-feature');
-  const serviceImage = document.querySelector('[data-service-image]');
-  const serviceTitle = document.querySelector('[data-service-title]');
-  const serviceBody = document.querySelector('[data-service-body]');
-  const serviceResult = document.querySelector('[data-service-result]');
-  const serviceList = document.querySelector('.industry-list');
-  const serviceTabs = [...document.querySelectorAll('[data-service-tab]')];
-  const serviceCategorySelect = document.querySelector('[data-service-category-select]');
-  const serviceItemSelect = document.querySelector('[data-service-item-select]');
-  const serviceCategoryLabel = document.querySelector('[data-service-category-label]');
-  const serviceItemLabel = document.querySelector('[data-service-item-label]');
+  const serviceFeature = document.querySelector('.home-page .service-feature');
+  const serviceImage = document.querySelector('.home-page [data-service-image]');
+  const serviceTitle = document.querySelector('.home-page [data-service-title]');
+  const serviceBody = document.querySelector('.home-page [data-service-body]');
+  const serviceResult = document.querySelector('.home-page [data-service-result]');
+  const serviceList = document.querySelector('.home-page .industry-list');
+  const serviceTabs = [...document.querySelectorAll('.home-page [data-service-tab]')];
+  const serviceCategorySelect = document.querySelector('.home-page [data-service-category-select]');
+  const serviceItemSelect = document.querySelector('.home-page [data-service-item-select]');
+  const serviceCategoryLabel = document.querySelector('.home-page [data-service-category-label]');
+  const serviceItemLabel = document.querySelector('.home-page [data-service-item-label]');
   const selectedItems = Object.fromEntries(Object.entries(serviceSchema).map(([category, config]) => [category, config.items[0]]));
   let activeCategory = 'industry';
 

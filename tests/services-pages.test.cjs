@@ -61,11 +61,14 @@ test('website service-family page provides a distinct, translated decision journ
   assert.match(css, /\.website-service-selector \{[^}]*min-height: 538px;[^}]*padding: 24px 24px 0;/);
   assert.match(css, /\.website-service-tabs \{[^}]*grid-template-columns: repeat\(4,minmax\(0,1fr\)\)/);
   assert.match(css, /\.website-service-main \{[^}]*grid-template-columns: 212px minmax\(0,1fr\)/);
-  assert.match(css, /@media \(max-width: 900px\)[\s\S]*?\.website-service-mobile \{ display: grid;/);
+  assert.match(css, /@media \(max-width: 600px\)[\s\S]*?\.website-service-mobile-fields, \.website-service-mobile \{ display: grid;/);
   assert.match(behavior, /enhanceWebsiteServices[\s\S]*?data-website-service-panel/);
-  assert.match(behavior, /tabs\.className = 'website-service-tabs'[\s\S]*?aria-selected/);
-  assert.match(behavior, /enhanceTwoColumnFaq[\s\S]*?dataset\.faqColumn[\s\S]*?sibling\.open = false/);
-  assert.match(html, /class="website-case-studies"[\s\S]*?Terrassi Villa[\s\S]*?PHÓS Optics/);
+  assert.match(behavior, /tabs\.className = 'service-tabs website-service-tabs'[\s\S]*?feature\.className = 'service-feature website-service-feature'/);
+  assert.match(behavior, /enhanceTwoColumnFaq[\s\S]*?website-faq-column[\s\S]*?dataset\.faqColumn[\s\S]*?sibling\.open = false/);
+  assert.match(html, /class="website-client-projects"[\s\S]*?Terrassi Villa[\s\S]*?PHÓS Optics/);
+  assert.match(behavior, /enhanceWebsiteProjects[\s\S]*?createElement\('section'\)[\s\S]*?website-client-project-/);
+  assert.match(css, /\.website-case-study \{[^}]*background: transparent;[^}]*overflow: hidden;/);
+  assert.match(css, /\.website-services-page,[^{]+\.website-capabilities \{ background: var\(--paper\); \}/);
   assert.match(html, /terrassivilla-accessible-tourism-in-the-azores/);
   assert.match(html, /wip\?for=phos-optics-case-study/);
   assert.match(html, /data-service-key="searchGrowth"[\s\S]*?href="\/services\/seo"[\s\S]*?wip\?for=geo[\s\S]*?wip\?for=portfolio/);

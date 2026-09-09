@@ -77,7 +77,10 @@ The sitemap establishes the template for non-homepage pages:
 - Keep portfolio imagery at its intrinsic aspect ratio with explicit dimensions and `object-fit: cover`; the complete image remains available through its project link.
 - At mobile widths, stack service, package, project and process grids into one column and retain the approved five-item mobile menu.
 - Use square dark cards, 24px grid gaps and clear link states.
-- Main service-family pages may adapt the homepage service explorer into a dark, two-column selector: vertical tabs on desktop and one native select on mobile. Keep every service description unique and preserve a visible selected state.
+- Main service-family pages reuse the homepage service explorer rather than approximating it: horizontal category tabs, the same focused service list and the same image-led detail panel. At 600px and below, replace the button groups with compact category and service selects. Keep every service description unique and preserve a visible selected state.
+- Keep Website-family outer sections on the default paper surface with the standard 32px separation and compact 52px/64px interiors (44px/54px at 900px and below). Reserve dark and blue for contained components and conversion CTAs.
+- Give each featured client its own semantic section and use contrast and spacing instead of a surrounding project-card border.
+- Two-column FAQs use independent column containers rather than shared grid rows. Opening an answer may close only another answer in the same column and must not resize the opposite column's row.
 - Reuse the homepage closing CTA when there is a meaningful contact action. The general Services page is the approved media-led variation: a tightly cropped image up to 520 × 260px replaces the decorative icon, aligns with the copy and retains the shared CTA dimensions and responsive stacking.
 - At 900px and below, stack hero content and cards without document-level horizontal overflow.
 

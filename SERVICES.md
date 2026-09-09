@@ -14,11 +14,13 @@ All routes use clean URLs, canonical metadata, the shared header/footer, and the
 
 ## Website service family
 
-`/services/website` helps visitors choose between Website Development, Website Revamp, Website Design, SEO, GEO, Copywriting, Localization and Translation, and Maintenance. Its interactive selector follows the homepage service pattern: horizontal service-area tabs, a focused vertical service list and an image-led detail stage. Mobile uses separate area and service selects so visitors do not face a long button wall. Complete content is available in English, Greek and Russian. Development and SEO use their published routes; unfinished services use specific WIP destinations.
+`/services/website` helps visitors choose between Website Development, Website Revamp, Website Design, SEO, GEO, Copywriting, Localization and Translation, and Maintenance. Its interactive selector reuses the homepage service component: horizontal service-area tabs, the same focused vertical service list and the same image-led detail stage. Mobile uses separate area and service selects so visitors do not face a long button wall. Complete content is available in English, Greek and Russian. Development and SEO use their published routes; unfinished services use specific WIP destinations.
 
-The sales journey includes alternating Terrassi Villa and PHÓS Optics case-study components. Terrassi Villa links to its published article; PHÓS Optics uses `/wip?for=phos-optics-case-study` until its dedicated case study is published. The following dark section gives SEO, GEO and portfolio work distinct explanations and routes rather than treating search visibility as a generic website inclusion.
+The sales journey gives Terrassi Villa and PHÓS Optics one standalone semantic section each. The client layouts have no surrounding card border or separate surface colour. Terrassi Villa links to its published article; PHÓS Optics uses `/wip?for=phos-optics-case-study` until its dedicated case study is published. The following component gives SEO, GEO and portfolio work distinct explanations and routes rather than treating search visibility as a generic website inclusion.
 
-The FAQ uses two columns on desktop. Its accordion groups are independent: one answer may be open in each column, and opening another answer closes only its sibling in the same column. The same behaviour applies to the two-column FAQ on `/services/free-website`.
+The FAQ uses two independent column containers on desktop, not shared CSS grid rows. One answer may be open in each column, and opening another answer closes only its sibling in the same column without changing the opposite column's row height. The same behaviour applies to the two-column FAQ on `/services/free-website`.
+
+Every outer section on this page uses the shared paper background and the 32px homepage section break. Dark and blue remain reserved for intentional internal components and conversion CTAs, preventing full-width alternating surface colours from breaking the page rhythm.
 
 Free Website is deliberately excluded from the selector. It has a dedicated high-contrast CTA immediately before the FAQ, linking to `/services/free-website`, so the offer remains prominent without being confused with the standard service family.
 
