@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-12 — SEO location-page visual consistency
+
+- Switched the final Cyprus and Limassol SEO CTAs to the supplied `Limassol.webp` artwork in a matching 16:9 media frame.
+- Unified both location pages on the same `--paper` background used by the homepage; dark and blue remain purposeful component colours rather than alternating page surfaces.
+- Removed sentence-ending periods from English SEO location-page headings and added locale-safe runtime normalisation for Greek and Russian headings.
+- Changed SEO pathway and CTA buttons, including “See the complete Studio 17 SEO service”, from white to Studio 17 blue; the mid-page CTA is now contained on a navy component over the continuous paper background.
+- Corrected the highlighted AI search and GEO capability to use white copy on blue.
+- Styled links inside FAQ answers in Studio 17 blue with an underline for clear affordance.
+- Reduced the separation before the practical Limassol SEO plan so it follows the preceding capability component more naturally.
+
 ## 2026-09-12 — Limassol SEO landing-page upgrade
 
 - Repositioned `/seo/limassol` around the commercial intent behind searches for an SEO agency or SEO company in Limassol.

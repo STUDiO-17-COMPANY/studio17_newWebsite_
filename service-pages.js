@@ -340,6 +340,18 @@
     if (action?.firstChild) action.firstChild.nodeValue = `${window.Studio17I18n?.translate?.('Explore website services') || 'Explore website services'} `;
   };
 
+  const removeSeoLocationHeadingPeriods = () => {
+    if (!document.body.classList.contains('seo-location-page')) return;
+    document.querySelectorAll('.seo-location-main h1, .seo-location-main h2').forEach(heading => {
+      const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+      let lastTextNode = null;
+      while (walker.nextNode()) {
+        if (walker.currentNode.nodeValue.trim()) lastTextNode = walker.currentNode;
+      }
+      if (lastTextNode) lastTextNode.nodeValue = lastTextNode.nodeValue.replace(/\.\s*$/, '');
+    });
+  };
+
   const render = language => {
     const locale = window.Studio17ServiceLocaleData?.[language]?.[page];
     records.forEach(record => {
@@ -352,6 +364,7 @@
     });
     updateMetadata(language === 'en' ? englishMetadata : (locale?.meta || englishMetadata));
     normaliseWebsiteFamilyCard();
+    removeSeoLocationHeadingPeriods();
     updateInsertedLinks(language);
     enhanceSeoCapabilities();
     enhanceWebsiteServices();
