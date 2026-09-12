@@ -86,11 +86,17 @@ assert.match(limassolPage, /href="\/seo\/cyprus"/);
 assert.match(limassolPage, /How much does SEO cost in Limassol\?/);
 assert.match(limassolPage, /Can SEO help my business appear on Google Maps\?/);
 assert.match(limassolPage, /class="seo-local-system"[\s\S]*?Search demand[\s\S]*?Maps visibility[\s\S]*?Trust and relevance[\s\S]*?Calls and enquiries/);
+assert.match(limassolPage, /class="seo-local-system-lead"[\s\S]*?src="\/Images\/LimassolBusinessBulding\.jpg"/);
+assert.doesNotMatch(limassolPage.match(/class="seo-local-system"[\s\S]*?<\/ol><\/div>/)?.[0] || '', /<b>0[1-4]<\/b>/);
+assert.match(limassolPage, /Illustrative visibility example[\s\S]*?data-seo-visibility-counter data-target="172">172K<[\s\S]*?views \/ 3 months/);
 assert.match(read('styles.css'), /\.seo-location-section \{[^}]*background: var\(--paper\)/);
 assert.match(read('styles.css'), /\.seo-location-text-link \{[^}]*color: var\(--white\); background: var\(--blue\)/);
 assert.match(read('styles.css'), /\.website-faq-list details p a \{[^}]*color: var\(--blue\)/);
 assert.match(read('service-pages.js'), /removeSeoLocationHeadingPeriods/);
 assert.match(read('service-pages.js'), /updateRelatedSeoNavigation/);
+assert.match(read('service-pages.js'), /enhanceSeoVisibilityCounter/);
+assert.match(read('service-pages.js'), /requestAnimationFrame/);
+assert.match(read('service-pages.js'), /prefers-reduced-motion/);
 assert.match(read('seo-cyprus.html'), /href="\/seo\/limassol"/);
 assert.match(read('index.html'), /aria-label="Services"[\s\S]*?href="\/services\/seo"/);
 

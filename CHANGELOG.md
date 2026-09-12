@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-12 — Limassol local-discovery visual update
+
+- Removed the `01–04` labels from the local-discovery cards because the component is not a timeline.
+- Added `LimassolBusinessBulding.jpg` behind the Limassol feature panel with a controlled blue-to-navy overlay and a restrained hover zoom.
+- Added an animated `0K → 172K` three-month visibility example to the Calls and Enquiries card.
+- Explicitly labels the number as an illustrative example so it is not presented as an invented Studio 17 or client result.
+- The counter animates only when visible, renders its final value without JavaScript and respects reduced-motion preferences.
+
 ## 2026-09-12 — Limassol SEO component refinement
 
 - Replaced the generic four-card local-discovery component with a single Studio 17 editorial system connecting Search Demand, Maps Visibility, Trust and Relevance, and Calls and Enquiries.

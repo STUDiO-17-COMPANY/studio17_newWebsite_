@@ -13,6 +13,7 @@
     title: document.title,
     description: document.querySelector('meta[name="description"]')?.content || ''
   };
+  let seoVisibilityObserver = null;
 
   const enhanceSeoCapabilities = () => {
     if (page !== 'seo') return;
@@ -352,6 +353,38 @@
     });
   };
 
+  const enhanceSeoVisibilityCounter = () => {
+    seoVisibilityObserver?.disconnect();
+    seoVisibilityObserver = null;
+    const counter = document.querySelector('[data-seo-visibility-counter]');
+    if (!counter) return;
+    const target = Number(counter.dataset.target) || 0;
+    const showFinalValue = () => { counter.textContent = `${target}K`; };
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      showFinalValue();
+      return;
+    }
+    counter.textContent = '0K';
+    const animate = () => {
+      const duration = 1400;
+      const startedAt = performance.now();
+      const frame = now => {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = `${Math.round(target * eased)}K`;
+        if (progress < 1) requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    };
+    seoVisibilityObserver = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      seoVisibilityObserver?.disconnect();
+      seoVisibilityObserver = null;
+      animate();
+    }, { threshold: .45 });
+    seoVisibilityObserver.observe(counter);
+  };
+
   const normaliseWebsiteFamilyCard = () => {
     if (page !== 'services') return;
     const card = document.querySelector('.service-family-grid .service-family-card');
@@ -388,6 +421,7 @@
     removeSeoLocationHeadingPeriods();
     updateInsertedLinks(language);
     updateRelatedSeoNavigation(language);
+    enhanceSeoVisibilityCounter();
     enhanceSeoCapabilities();
     enhanceWebsiteServices();
     enhanceWebsiteProjects();

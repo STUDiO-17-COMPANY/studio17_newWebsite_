@@ -1817,17 +1817,24 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 
 /* Limassol-specific local discovery composition */
 .seo-local-system { display: grid; grid-template-columns: minmax(280px,.72fr) minmax(0,1.28fr); min-height: 430px; color: var(--white); background: var(--ink); }
-.seo-local-system-lead { display: flex; flex-direction: column; justify-content: flex-end; min-width: 0; padding: 34px; background: var(--blue); }
+.seo-local-system-lead { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: flex-end; min-width: 0; overflow: hidden; padding: 34px; background: var(--blue); }
+.seo-local-system-lead > img, .seo-local-system-overlay { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; }
+.seo-local-system-lead > img { object-fit: cover; object-position: center 45%; transition: transform .55s var(--ease); }
+.seo-local-system:hover .seo-local-system-lead > img { transform: scale(1.035); }
+.seo-local-system-overlay { z-index: -1; background: linear-gradient(180deg,rgba(4,86,254,.42) 0%,rgba(4,86,254,.7) 42%,rgba(5,18,45,.94) 100%); }
 .seo-local-system-lead > span { margin-bottom: auto; font-size: 11px; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
-.seo-local-system-lead strong { font-size: clamp(52px,6.3vw,94px); line-height: .88; letter-spacing: -.08em; }
-.seo-local-system-lead p { max-width: 340px; margin: 25px 0 0; color: rgba(255,255,255,.88); font-size: 15px; line-height: 1.6; }
+.seo-local-system-lead > strong { font-size: clamp(52px,6.3vw,94px); line-height: .88; letter-spacing: -.08em; }
+.seo-local-system-lead > p { max-width: 340px; margin: 25px 0 0; color: rgba(255,255,255,.88); font-size: 15px; line-height: 1.6; }
 .seo-local-journey { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); margin: 0; padding: 1px; gap: 1px; background: rgba(255,255,255,.16); list-style: none; }
-.seo-local-journey li { min-height: 214px; display: grid; grid-template-columns: 42px minmax(0,1fr); align-content: end; gap: 8px 18px; padding: 27px; background: #121d33; transition: background .22s ease, transform .25s var(--ease); }
+.seo-local-journey li { min-height: 214px; display: flex; flex-direction: column; padding: 27px; background: #121d33; transition: background .22s ease, transform .25s var(--ease); }
 .seo-local-journey li:hover { background: #192a49; transform: translateY(-3px); }
-.seo-local-journey b { align-self: start; color: #8fb1ff; font-size: 11px; letter-spacing: .09em; }
-.seo-local-journey li > div { min-width: 0; }
+.seo-local-journey li > div { min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
 .seo-local-journey h3 { margin: 0 0 9px; color: var(--white); font-size: 22px; line-height: 1.15; letter-spacing: -.035em; }
 .seo-local-journey p { margin: 0; color: #b8c3d4; font-size: 13px; line-height: 1.55; }
+.seo-visibility-metric { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 3px 12px; margin-bottom: auto; padding-bottom: 20px; }
+.seo-visibility-metric > span { grid-column: 1 / -1; color: #8fb1ff; font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.seo-visibility-metric > strong { color: var(--white); font-size: clamp(42px,4vw,64px); line-height: .9; letter-spacing: -.07em; font-variant-numeric: tabular-nums; }
+.seo-visibility-metric > small { color: #b8c3d4; font-size: 11px; line-height: 1.2; }
 .seo-limassol-blockers { color: var(--white); background: var(--ink); }
 .seo-local-blocker-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
 .seo-local-blocker-grid article { min-height: 180px; display: grid; grid-template-columns: 48px minmax(0,1fr); align-content: center; gap: 8px 22px; padding: 26px; border: 1px solid rgba(255,255,255,.17); background: #121d33; }
