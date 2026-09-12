@@ -32,7 +32,7 @@
     },
     "team": {
       "title": "Команда Studio 17",
-      "description": "Познакомьтесь с основателями, которые определяют направление Studio 17 и её комплексный подход к росту бизнеса."
+      "description": "Познакомьтесь с командой Studio 17, объединяющей развитие бизнеса, креатив, технологии и рост компаний."
     },
     "news": {
       "title": "Идеи, кейсы и новости | Studio 17",
@@ -81,6 +81,12 @@
     "Hugo Filipe on Instagram": "Уго Филипе в Instagram",
     "Pedro Leonardo social profiles": "Профили Педро Леонардо в социальных сетях",
     "Pedro Leonardo on LinkedIn": "Педро Леонардо в LinkedIn",
+    "Team carousel controls": "Управление каруселью команды",
+    "Previous team member": "Предыдущий участник команды",
+    "Next team member": "Следующий участник команды",
+    "Business Developer": "Менеджер по развитию бизнеса",
+    "Natalia Ioannou social profiles": "Профили Наталии Иоанну в социальных сетях",
+    "Natalia Ioannou on LinkedIn": "Наталия Иоанну в LinkedIn",
     "Copywriting": "Копирайтинг",
     "Filming": "Видеосъёмка",
     "Photography": "Фотосъёмка",
@@ -116,11 +122,15 @@
     "A multidisciplinary studio begins with people who connect the work.": "Многопрофильная студия начинается с людей, которые связывают работу воедино.",
     "Meet the founders shaping Studio 17’s direction, standards and connected approach to business growth.": "Познакомьтесь с основателями, которые определяют направление, стандарты и комплексный подход Studio 17 к росту бизнеса.",
     "Meet the founders": "Познакомиться с основателями",
+    "Meet the team shaping Studio 17’s direction, standards and connected approach to business growth.": "Познакомьтесь с командой, которая определяет направление, стандарты и комплексный подход Studio 17 к росту бизнеса.",
+    "Meet the team": "Познакомиться с командой",
+    "A team with": "Команда с",
     "Founders with": "Основатели с",
     "a connected perspective.": "комплексным взглядом.",
     "Studio 17 brings strategic, creative and technical decisions into the same conversation.": "Studio 17 объединяет стратегические, творческие и технические решения в одном процессе.",
     "Hugo leads Studio 17’s direction and the coordination of its strategy, creative, technology and client work.": "Хьюго определяет направление Studio 17 и координирует стратегическую, творческую, технологическую и клиентскую работу.",
     "Pedro helps shape Studio 17’s direction and its connected approach to solving business problems across disciplines.": "Педро участвует в формировании направления Studio 17 и комплексного подхода к решению бизнес-задач на стыке дисциплин.",
+    "Natalia develops new business relationships and helps connect client needs with the right Studio 17 capabilities.": "Наталия развивает новые деловые отношения и помогает связать потребности клиентов с подходящими возможностями Studio 17.",
     "The work is multidisciplinary.": "Работа многопрофильна.",
     "Accountability stays clear.": "Ответственность остаётся понятной.",
     "Every engagement is built around the business objective, with the people, skills and systems selected for a defined reason.": "Каждый проект строится вокруг бизнес-цели, а люди, компетенции и системы выбираются по определённой причине.",

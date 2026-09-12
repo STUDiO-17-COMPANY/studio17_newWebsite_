@@ -32,7 +32,7 @@
     },
     "team": {
       "title": "Η ομάδα πίσω από τη Studio 17",
-      "description": "Γνωρίστε τους ιδρυτές που διαμορφώνουν την κατεύθυνση και τη συνδεδεμένη προσέγγιση της Studio 17 στην επιχειρηματική ανάπτυξη."
+      "description": "Γνωρίστε την ομάδα της Studio 17 που συνδέει business development, δημιουργικότητα, τεχνολογία και επιχειρηματική ανάπτυξη."
     },
     "news": {
       "title": "Απόψεις, Μελέτες Περιπτώσεων & Νέα | Studio 17",
@@ -81,6 +81,12 @@
     "Hugo Filipe on Instagram": "Ο Hugo Filipe στο Instagram",
     "Pedro Leonardo social profiles": "Κοινωνικά προφίλ του Pedro Leonardo",
     "Pedro Leonardo on LinkedIn": "Ο Pedro Leonardo στο LinkedIn",
+    "Team carousel controls": "Χειριστήρια καρουζέλ ομάδας",
+    "Previous team member": "Προηγούμενο μέλος ομάδας",
+    "Next team member": "Επόμενο μέλος ομάδας",
+    "Business Developer": "Business Developer",
+    "Natalia Ioannou social profiles": "Κοινωνικά προφίλ της Natalia Ioannou",
+    "Natalia Ioannou on LinkedIn": "Η Natalia Ioannou στο LinkedIn",
     "Copywriting": "Κειμενογραφία",
     "Filming": "Βιντεοσκόπηση",
     "Photography": "Φωτογράφιση",
@@ -116,11 +122,15 @@
     "A multidisciplinary studio begins with people who connect the work.": "Ένα διεπιστημονικό studio ξεκινά από ανθρώπους που συνδέουν τη δουλειά.",
     "Meet the founders shaping Studio 17’s direction, standards and connected approach to business growth.": "Γνωρίστε τους ιδρυτές που διαμορφώνουν την κατεύθυνση, τα πρότυπα και τη συνδεδεμένη προσέγγιση της Studio 17 στην επιχειρηματική ανάπτυξη.",
     "Meet the founders": "Γνωρίστε τους ιδρυτές",
+    "Meet the team shaping Studio 17’s direction, standards and connected approach to business growth.": "Γνωρίστε την ομάδα που διαμορφώνει την κατεύθυνση, τα πρότυπα και τη συνδεδεμένη προσέγγιση της Studio 17 στην επιχειρηματική ανάπτυξη.",
+    "Meet the team": "Γνωρίστε την ομάδα",
+    "A team with": "Μια ομάδα με",
     "Founders with": "Ιδρυτές με",
     "a connected perspective.": "συνδεδεμένη προοπτική.",
     "Studio 17 brings strategic, creative and technical decisions into the same conversation.": "Η Studio 17 φέρνει τις στρατηγικές, δημιουργικές και τεχνικές αποφάσεις στην ίδια συζήτηση.",
     "Hugo leads Studio 17’s direction and the coordination of its strategy, creative, technology and client work.": "Ο Hugo καθοδηγεί τη Studio 17 και συντονίζει τη στρατηγική, δημιουργική, τεχνολογική και πελατειακή εργασία.",
     "Pedro helps shape Studio 17’s direction and its connected approach to solving business problems across disciplines.": "Ο Pedro συμβάλλει στην κατεύθυνση της Studio 17 και στη συνδεδεμένη προσέγγισή της για την επίλυση επιχειρηματικών προβλημάτων μεταξύ ειδικοτήτων.",
+    "Natalia develops new business relationships and helps connect client needs with the right Studio 17 capabilities.": "Η Natalia αναπτύσσει νέες επιχειρηματικές σχέσεις και συνδέει τις ανάγκες των πελατών με τις κατάλληλες δυνατότητες της Studio 17.",
     "The work is multidisciplinary.": "Η δουλειά είναι διεπιστημονική.",
     "Accountability stays clear.": "Η ευθύνη παραμένει σαφής.",
     "Every engagement is built around the business objective, with the people, skills and systems selected for a defined reason.": "Κάθε συνεργασία χτίζεται γύρω από τον επιχειρηματικό στόχο, με ανθρώπους, δεξιότητες και συστήματα επιλεγμένα για συγκεκριμένο λόγο.",

@@ -32,7 +32,7 @@
     },
     "team": {
       "title": "האנשים שמאחורי Studio 17",
-      "description": "הכירו את המייסדים שמובילים את הכיוון ואת הגישה המחוברת של Studio 17 לצמיחה עסקית."
+      "description": "הכירו את צוות Studio 17 שמחבר פיתוח עסקי, יצירתיות, טכנולוגיה וצמיחה עסקית."
     },
     "news": {
       "title": "תובנות, מקרי בוחן וחדשות | Studio 17",
@@ -81,6 +81,12 @@
     "Hugo Filipe on Instagram": "הוגו פיליפה באינסטגרם",
     "Pedro Leonardo social profiles": "הפרופילים החברתיים של פדרו לאונרדו",
     "Pedro Leonardo on LinkedIn": "פדרו לאונרדו בלינקדאין",
+    "Team carousel controls": "פקדי קרוסלת הצוות",
+    "Previous team member": "חבר הצוות הקודם",
+    "Next team member": "חבר הצוות הבא",
+    "Business Developer": "פיתוח עסקי",
+    "Natalia Ioannou social profiles": "הפרופילים החברתיים של נטליה יואנו",
+    "Natalia Ioannou on LinkedIn": "נטליה יואנו בלינקדאין",
     "Copywriting": "קופירייטינג",
     "Filming": "צילום וידאו",
     "Photography": "צילום סטילס",
@@ -116,11 +122,15 @@
     "A multidisciplinary studio begins with people who connect the work.": "סטודיו רב-תחומי מתחיל באנשים שמחברים את העבודה.",
     "Meet the founders shaping Studio 17’s direction, standards and connected approach to business growth.": "הכירו את המייסדים שמעצבים את הכיוון, הסטנדרטים והגישה המחוברת של Studio 17 לצמיחה עסקית.",
     "Meet the founders": "הכירו את המייסדים",
+    "Meet the team shaping Studio 17’s direction, standards and connected approach to business growth.": "הכירו את הצוות שמעצב את הכיוון, הסטנדרטים והגישה המחוברת של Studio 17 לצמיחה עסקית.",
+    "Meet the team": "הכירו את הצוות",
+    "A team with": "צוות עם",
     "Founders with": "מייסדים עם",
     "a connected perspective.": "נקודת מבט מחוברת.",
     "Studio 17 brings strategic, creative and technical decisions into the same conversation.": "Studio 17 מביאה החלטות אסטרטגיות, יצירתיות וטכניות לאותה שיחה.",
     "Hugo leads Studio 17’s direction and the coordination of its strategy, creative, technology and client work.": "הוגו מוביל את הכיוון של Studio 17 ומתאם את עבודת האסטרטגיה, הקריאייטיב, הטכנולוגיה והלקוחות.",
     "Pedro helps shape Studio 17’s direction and its connected approach to solving business problems across disciplines.": "פדרו מסייע לעצב את הכיוון של Studio 17 ואת הגישה המחוברת שלה לפתרון בעיות עסקיות בין תחומים.",
+    "Natalia develops new business relationships and helps connect client needs with the right Studio 17 capabilities.": "נטליה מפתחת קשרים עסקיים חדשים ומסייעת לחבר בין צורכי הלקוחות ליכולות המתאימות של Studio 17.",
     "The work is multidisciplinary.": "העבודה רב-תחומית.",
     "Accountability stays clear.": "האחריות נשארת ברורה.",
     "Every engagement is built around the business objective, with the people, skills and systems selected for a defined reason.": "כל פרויקט נבנה סביב המטרה העסקית, עם אנשים, מיומנויות ומערכות שנבחרו מסיבה מוגדרת.",

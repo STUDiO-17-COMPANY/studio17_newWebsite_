@@ -49,6 +49,12 @@ const aboutStrings = [
   'Studio 17 is headquartered in Limassol, Cyprus, with one of our operations hubs in Portugal. From these two European bases, we work across languages, markets and disciplines while keeping the same principle: understand the business first, then build what it actually needs.',
   'Trusted by businesses across Europe.',
   'The people behind',
+  'Team carousel controls',
+  'Previous team member',
+  'Next team member',
+  'Business Developer',
+  'Natalia Ioannou social profiles',
+  'Natalia Ioannou on LinkedIn',
   'Meet the full team',
   'Culture & values:',
   'Want to build with us? View open roles',
@@ -75,15 +81,16 @@ assert.equal((about.match(/hreflang=/g) || []).length, 7, 'About must expose x-d
 assert.match(about, new RegExp(`href="${presentationUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" target="_blank" rel="noopener noreferrer"`));
 assert.match(about, /Images\/About_heroimage\.webp/);
 assert.match(about, /href="\/our-story"[^>]*>Read the full Studio 17 Story/);
-assert.match(about, /id="about-team-track"[\s\S]*?Hugo Filipe[\s\S]*?Pedro Leonardo/);
+assert.match(about, /id="about-team-track"[\s\S]*?Hugo Filipe[\s\S]*?Pedro Leonardo[\s\S]*?Natalia Ioannou/);
 assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/hugodm-filipe\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Hugo Filipe on LinkedIn"/);
 assert.match(about, /href="https:\/\/www\.instagram\.com\/hugodmfilipe02\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Hugo Filipe on Instagram"/);
 assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/pedro-leonardo-375478330\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Pedro Leonardo on LinkedIn"/);
-assert.equal((about.match(/class="about-team-social-link/g) || []).length, 3, 'only approved founder profile links should be published');
+assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/natalia-ioannou-83527126b\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Natalia Ioannou on LinkedIn"/);
+assert.equal((about.match(/class="about-team-social-link/g) || []).length, 4, 'only approved team profile links should be published');
 assert.doesNotMatch(about, /Pedro Leonardo[\s\S]{0,700}instagram\.com/i, 'Pedro Leonardo must not display an Instagram link without approval');
 assert.match(about, /src="Images\/social-linkedin\.svg"/);
 assert.match(about, /src="Images\/social-instagram\.svg"/);
-assert.doesNotMatch(about, /about-team-social-link[^>]*>[\s\S]{0,180}footer-socials\.png/, 'founder icons must not reuse the navy-backed footer sprite');
+assert.doesNotMatch(about, /about-team-social-link[^>]*>[\s\S]{0,180}footer-socials\.png/, 'team icons must not reuse the navy-backed footer sprite');
 assert.match(about, /href="\/team"[^>]*>Meet the full team/);
 assert.match(about, /href="\/careers" data-force-language="en">Want to build with us\? View open roles/);
 assert.doesNotMatch(about, /4\.8\/5|TrustScore|trustpilot[^<]*logo/i, 'About must not hard-code restricted or changing Trustpilot rating assets');

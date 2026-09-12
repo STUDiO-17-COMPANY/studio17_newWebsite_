@@ -693,16 +693,19 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .company-page-hero .page-hero-title h1 span { color: var(--white); background: var(--blue); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .team-main, .our-story-main { overflow: hidden; }
 .team-profiles { margin-top: var(--section-gap); padding: 84px 0 94px; background: var(--white); }
-.team-profile-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; }
-.team-profile-card { display: grid; grid-template-columns: minmax(240px,.9fr) minmax(0,1.1fr); min-height: 430px; background: var(--paper); border: 1px solid #d4dce7; transition: border-color .2s ease, transform .25s var(--ease); }
+.team-profile-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; }
+.team-profile-card { display: grid; grid-template-columns: 1fr; min-height: 430px; background: var(--paper); border: 1px solid #d4dce7; transition: border-color .2s ease, transform .25s var(--ease); }
 .team-profile-card:hover { border-color: var(--blue); transform: translateY(-5px); }
-.team-profile-portrait { position: relative; display: grid; min-height: 430px; place-items: center; overflow: hidden; color: var(--white); background: var(--ink); }
+.team-profile-portrait { position: relative; display: grid; min-height: 300px; place-items: center; overflow: hidden; color: var(--white); background: var(--ink); }
 .team-profile-portrait::before { content: ""; position: absolute; width: 280px; height: 280px; background: var(--blue); transform: rotate(45deg); }
 .team-profile-portrait span { position: relative; z-index: 1; font-family: "Plus Jakarta Sans",Inter,sans-serif; font-size: 86px; font-weight: 800; letter-spacing: -.09em; }
 .team-profile-copy { align-self: end; padding: 34px; }
 .team-profile-role { margin: 0 0 8px; color: var(--blue); font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
 .team-profile-copy h3 { margin: 0 0 17px; font-size: 30px; line-height: 1.05; letter-spacing: -.045em; }
-.team-profile-copy > p:last-child { margin: 0; color: #5c687a; font-size: 15px; line-height: 1.65; }
+.team-profile-copy > p:not(.team-profile-role) { margin: 0; color: #5c687a; font-size: 15px; line-height: 1.65; }
+.team-profile-social-link { display: inline-flex; align-items: center; gap: 9px; width: fit-content; margin-top: 22px; color: var(--ink); font-size: 14px; font-weight: 800; transition: color .2s ease, transform .2s var(--ease); }
+.team-profile-social-link:hover { color: var(--blue); transform: translateY(-2px); }
+.team-profile-social-link img { width: 20px; height: 23px; object-fit: contain; }
 .team-principle { margin-top: var(--section-gap); padding: 82px 0; color: var(--white); background: var(--ink); }
 .team-principle-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(320px,.85fr); gap: 90px; align-items: start; }
 .team-principle-grid > div:last-child > p { margin: 0; color: #c2ccdc; font-size: 17px; line-height: 1.7; }
@@ -1868,16 +1871,23 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-limassol-industry-grid article:hover { background: var(--white); transform: translateY(-3px); }
 .seo-limassol-industry-grid h3 { margin: 0 0 34px; color: var(--ink); font-size: 21px; line-height: 1.16; letter-spacing: -.03em; }
 .seo-limassol-industry-grid p { margin: 0; color: #596477; font-size: 13px; line-height: 1.55; }
-.seo-limassol-proof-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
-.seo-limassol-project, .seo-limassol-review { min-height: 300px; display: flex; flex-direction: column; justify-content: flex-end; margin: 0; padding: 30px; }
-.seo-limassol-project { color: var(--white); background: var(--blue); transition: transform .25s var(--ease), background .2s ease; }
-.seo-limassol-project:hover { background: #084bd8; transform: translateY(-4px); }
-.seo-limassol-project > span { margin-bottom: auto; font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
-.seo-limassol-project h3 { margin: 60px 0 10px; font-size: 36px; letter-spacing: -.05em; }
-.seo-limassol-project p { max-width: 470px; margin: 0 0 26px; color: rgba(255,255,255,.84); font-size: 14px; line-height: 1.58; }
-.seo-limassol-project strong, .seo-limassol-review a { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; }
-.seo-limassol-project .lucide, .seo-limassol-review .lucide { width: 16px; height: 16px; }
-.seo-limassol-review { color: var(--white); background: var(--ink); }
+.seo-limassol-proof-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 36px; margin-bottom: 38px; }
+.seo-limassol-proof-heading h2 { max-width: 920px; margin: 0; }
+.seo-limassol-proof-track { grid-auto-columns: minmax(540px,680px); gap: 20px; }
+.seo-limassol-proof-card { min-height: 500px; margin: 0; scroll-snap-align: start; border: 1px solid #cbd4e1; background: var(--paper); overflow: hidden; }
+.seo-limassol-proof-media { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); }
+.seo-limassol-proof-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s var(--ease); }
+.seo-limassol-proof-media:hover img, .seo-limassol-proof-media:focus-visible img { transform: scale(1.035); }
+.seo-limassol-proof-copy { min-height: 240px; display: flex; flex-direction: column; padding: 26px 28px 28px; }
+.seo-limassol-proof-copy > span { color: var(--blue); font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.seo-limassol-proof-copy h3 { margin: 15px 0 10px; color: var(--ink); font-size: 32px; line-height: 1.05; letter-spacing: -.045em; }
+.seo-limassol-proof-copy p { max-width: 560px; margin: 0 0 24px; color: #596477; font-size: 14px; line-height: 1.58; }
+.seo-limassol-proof-copy > a, .seo-limassol-proof-actions a, .seo-limassol-review a { display: inline-flex; align-items: center; gap: 9px; width: fit-content; margin-top: auto; color: var(--ink); font-size: 14px; font-weight: 800; }
+.seo-limassol-proof-copy a:hover, .seo-limassol-review a:hover { color: var(--blue); }
+.seo-limassol-proof-actions { display: flex; flex-wrap: wrap; gap: 14px 25px; margin-top: auto; }
+.seo-limassol-proof-actions a { margin-top: 0; }
+.seo-limassol-proof-copy .lucide, .seo-limassol-review .lucide { width: 16px; height: 16px; }
+.seo-limassol-review { min-height: 500px; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; color: var(--white); border-color: var(--ink); background: var(--ink); }
 .seo-limassol-review blockquote { max-width: 570px; margin: 0 auto auto 0; font-size: clamp(25px,2.3vw,38px); font-weight: 800; line-height: 1.13; letter-spacing: -.045em; }
 .seo-limassol-review figcaption { color: #b8c3d4; font-size: 13px; line-height: 1.5; }
 .seo-limassol-review a { margin-top: 8px; color: var(--white); font-weight: 800; }
@@ -2066,10 +2076,14 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-location-closing .cta-grid { grid-template-columns: 1fr; gap: 32px; }
   .seo-location-market-link a { grid-template-columns: 1fr auto; gap: 8px 16px; }
   .seo-location-market-link span { grid-column: 1 / -1; }
-  .seo-limassol-service-grid, .seo-limassol-industry-grid, .seo-limassol-proof-grid { grid-template-columns: 1fr; }
+  .seo-limassol-service-grid, .seo-limassol-industry-grid { grid-template-columns: 1fr; }
   .seo-limassol-service-grid article:last-child { grid-column: auto; }
   .seo-limassol-service-grid article, .seo-limassol-industry-grid article { min-height: 170px; }
   .seo-limassol-project, .seo-limassol-review { min-height: 270px; padding: 24px; }
+  .seo-limassol-proof-heading { align-items: center; gap: 20px; }
+  .seo-limassol-proof-track { grid-auto-columns: calc(100vw - 48px); gap: 18px; }
+  .seo-limassol-proof-card, .seo-limassol-review { min-height: 0; }
+  .seo-limassol-proof-copy { min-height: 250px; padding: 23px; }
   .seo-related-pages .shell { align-items: stretch; flex-direction: column; }
   .seo-related-pages > .shell > span { margin-right: 0; }
   .seo-related-pages a { justify-content: space-between; }

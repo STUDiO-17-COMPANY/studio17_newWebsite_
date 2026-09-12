@@ -81,6 +81,12 @@ for (const industry of ['Real estate', 'Hospitality', 'Restaurants', 'Profession
   assert.match(limassolPage, new RegExp(`<h3>${industry}<\\/h3>`), `Limassol page must address ${industry}`);
 }
 assert.match(limassolPage, /href="https:\/\/www\.phosoptics\.com\/en"/);
+assert.match(limassolPage, /Find the gaps between Maps, your website and your next client/);
+assert.doesNotMatch(limassolPage, /Find the gaps between Maps, your website and the next enquiry/);
+assert.match(limassolPage, /id="seo-limassol-proof-track"[\s\S]*?PhosOpticsWebsiteMainPage\.webp[\s\S]*?GoogleReviewTag\.webp[\s\S]*?Nerouppos Barber Shop/);
+assert.match(limassolPage, /data-carousel-prev="seo-limassol-proof-track"[\s\S]*?data-carousel-next="seo-limassol-proof-track"/);
+assert.match(limassolPage, /href="https:\/\/share\.google\/XQClN89HrSWhHBMHR"/);
+assert.match(limassolPage, /href="\/wip\?for=nerouppos-barber-shop-local-seo-case-study"/);
 assert.match(limassolPage, /href="https:\/\/www\.trustpilot\.com\/reviews\/69bd096cfa469b4a641ef444"/);
 assert.match(limassolPage, /href="\/seo\/cyprus"/);
 assert.match(limassolPage, /How much does SEO cost in Limassol\?/);

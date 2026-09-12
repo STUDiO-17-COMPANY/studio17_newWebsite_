@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-12 — Limassol proof carousel and team update
+
+- Replaced “next enquiry” with the clearer phrase “next client” in the Limassol analysis CTA across English, Greek and Russian.
+- Rebuilt the Limassol proof area as an accessible horizontal carousel with previous and next controls, image-led PHÓS Optics and Nerouppos Barber Shop client cards, and the verified Trustpilot review.
+- Connected the Nerouppos card to a precise future case-study WIP route and retained a separate Google Maps profile link.
+- Added Natalia Ioannou as Business Developer to the About carousel and Team page with her approved LinkedIn profile.
+- Updated team wording, metadata and translations across all six website languages.
+
 ## 2026-09-12 — Limassol SEO journey flow
 
 - Renamed the final local-discovery card to “Website views for clients” and removed the small label above its animated metric.
