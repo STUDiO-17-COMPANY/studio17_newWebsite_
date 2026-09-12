@@ -1832,7 +1832,6 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-local-journey h3 { margin: 0 0 9px; color: var(--white); font-size: 22px; line-height: 1.15; letter-spacing: -.035em; }
 .seo-local-journey p { margin: 0; color: #b8c3d4; font-size: 13px; line-height: 1.55; }
 .seo-visibility-metric { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 3px 12px; margin-bottom: auto; padding-bottom: 20px; }
-.seo-visibility-metric > span { grid-column: 1 / -1; color: #8fb1ff; font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .seo-visibility-metric > strong { color: var(--white); font-size: clamp(42px,4vw,64px); line-height: .9; letter-spacing: -.07em; font-variant-numeric: tabular-nums; }
 .seo-visibility-metric > small { color: #b8c3d4; font-size: 11px; line-height: 1.2; }
 .seo-limassol-blockers { color: var(--white); background: var(--ink); }
@@ -1841,14 +1840,17 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-local-blocker-grid .lucide { grid-row: 1 / 3; width: 32px; height: 32px; color: #8fb1ff; }
 .seo-local-blocker-grid h3 { margin: 0; font-size: 22px; line-height: 1.16; letter-spacing: -.03em; }
 .seo-local-blocker-grid p { margin: 0; color: #b2bed0; font-size: 14px; line-height: 1.55; }
-.seo-local-plan ol { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 1px; margin: 0; padding: 1px; background: #cbd4e1; list-style: none; }
-.seo-local-plan li { min-height: 290px; display: flex; flex-direction: column; padding: 25px; background: var(--paper); }
-.seo-local-plan li > span { margin-bottom: auto; color: var(--blue); font-size: 11px; font-weight: 850; letter-spacing: .08em; }
-.seo-local-plan h3 { margin: 56px 0 11px; font-size: 20px; line-height: 1.17; letter-spacing: -.03em; }
+.seo-local-plan ol { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 22px; margin: 0; padding: 0; background: transparent; list-style: none; overflow: visible; }
+.seo-local-plan li { position: relative; min-height: 250px; display: flex; flex-direction: column; padding: 25px; border: 1px solid #cbd4e1; background: var(--paper); }
+.seo-local-plan li > div { height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+.seo-local-plan li:not(:last-child)::after { content: "\2192"; position: absolute; z-index: 3; top: 50%; right: -28px; width: 34px; height: 34px; display: grid; place-items: center; color: var(--white); background: var(--blue); font-size: 19px; font-weight: 850; transform: translateY(-50%); animation: seo-plan-arrow-flow 2.8s ease-in-out infinite; }
+.seo-local-plan li:nth-child(2)::after { animation-delay: .35s; }
+.seo-local-plan li:nth-child(3)::after { animation-delay: .7s; }
+.seo-local-plan li:nth-child(4)::after { animation-delay: 1.05s; }
+.seo-local-plan h3 { margin: 0 0 11px; font-size: 20px; line-height: 1.17; letter-spacing: -.03em; }
 .seo-local-plan p { margin: 0; color: #596477; font-size: 13px; line-height: 1.58; }
 .seo-local-plan .service-page-heading > p { max-width: 590px; color: #596477; font-size: 16px; line-height: 1.65; }
-.seo-local-plan { margin-top: 0; padding-top: 32px; }
-.seo-limassol-services { padding-bottom: 32px; color: var(--ink); background: var(--paper); }
+.seo-limassol-services { color: var(--ink); background: var(--paper); }
 .seo-limassol-services .service-page-heading-light h2 { color: var(--ink); }
 .seo-limassol-services .service-page-heading-light h2 span { color: var(--white); background: var(--blue); }
 .seo-limassol-services .service-page-heading-light > p { color: #596477; }
@@ -1886,14 +1888,24 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-related-pages a:hover, .seo-related-pages a[aria-current="page"] { color: var(--white); background: var(--blue); }
 .seo-related-pages .lucide { width: 15px; height: 15px; }
 
+@keyframes seo-plan-arrow-flow {
+  0%, 20%, 100% { opacity: .4; transform: translateY(-50%) translateX(-4px); }
+  45%, 70% { opacity: 1; transform: translateY(-50%) translateX(4px); }
+}
+
+@keyframes seo-plan-arrow-down {
+  0%, 20%, 100% { opacity: .4; transform: translateX(-50%) translateY(-4px); }
+  45%, 70% { opacity: 1; transform: translateX(-50%) translateY(4px); }
+}
+
 @media (max-width: 1279px) {
   .seo-capability-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .seo-ai-copy { padding: 48px 44px; }
   .seo-why-grid, .seo-process ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .seo-process li:last-child { grid-column: 1 / -1; }
   .seo-location-mid-cta .shell { gap: 50px; }
-  .seo-local-plan ol { grid-template-columns: repeat(3,minmax(0,1fr)); }
-  .seo-local-plan li:nth-child(n+4) { min-height: 240px; }
+  .seo-local-plan ol { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(230px,1fr); overflow-x: auto; padding-bottom: 12px; }
+  .seo-local-plan li:nth-child(n+4) { min-height: 250px; }
   .website-service-stage article { gap: 0 32px; padding-inline: 34px; }
   .website-case-study-copy { padding: 38px; }
   .website-free-cta-grid { gap: 50px; }
@@ -1963,8 +1975,9 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-local-system { grid-template-columns: 1fr; }
   .seo-local-system-lead { min-height: 300px; }
   .seo-location-mid-cta .shell { grid-template-columns: 1fr; gap: 27px; }
-  .seo-local-plan ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .seo-local-plan li:last-child { grid-column: 1 / -1; min-height: 230px; }
+  .seo-local-plan ol { grid-template-columns: 1fr; grid-auto-flow: row; grid-auto-columns: auto; gap: 22px; overflow-x: visible; padding-bottom: 0; }
+  .seo-local-plan li, .seo-local-plan li:nth-child(n+4), .seo-local-plan li:last-child { min-height: 210px; grid-column: auto; }
+  .seo-local-plan li:not(:last-child)::after { content: "\2193"; top: auto; right: auto; bottom: -28px; left: 50%; transform: translateX(-50%); animation-name: seo-plan-arrow-down; }
   .seo-location-closing .cta-grid { grid-template-columns: 1fr 1fr; gap: 38px; }
   .seo-limassol-service-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .seo-limassol-industry-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -2048,7 +2061,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-local-system-lead { min-height: 265px; padding: 24px; }
   .seo-local-journey li { min-height: 175px; padding: 23px 20px; }
   .seo-local-blocker-grid article { min-height: 175px; grid-template-columns: 39px minmax(0,1fr); gap: 8px 15px; padding: 23px 20px; }
-  .seo-local-plan li, .seo-local-plan li:nth-child(n+4), .seo-local-plan li:last-child { min-height: 230px; grid-column: auto; }
+  .seo-local-plan li, .seo-local-plan li:nth-child(n+4), .seo-local-plan li:last-child { min-height: 190px; grid-column: auto; }
   .seo-location-closing { min-height: 0; padding-block: 42px; }
   .seo-location-closing .cta-grid { grid-template-columns: 1fr; gap: 32px; }
   .seo-location-market-link a { grid-template-columns: 1fr auto; gap: 8px 16px; }

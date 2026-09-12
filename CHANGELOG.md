@@ -1,11 +1,17 @@
 # Changelog
 
+## 2026-09-12 — Limassol SEO journey flow
+
+- Renamed the final local-discovery card to “Website views for clients” and removed the small label above its animated metric.
+- Rebuilt the practical local SEO plan as a connected five-stage flow with animated directional arrows instead of decorative numbers.
+- Renamed the final plan stage to “Track data” and aligned its copy with visibility, website visits and meaningful customer actions.
+- Restored the shared 32px section separation by removing Limassol-only spacing overrides.
+
 ## 2026-09-12 — Limassol local-discovery visual update
 
 - Removed the `01–04` labels from the local-discovery cards because the component is not a timeline.
 - Added `LimassolBusinessBulding.jpg` behind the Limassol feature panel with a controlled blue-to-navy overlay and a restrained hover zoom.
-- Added an animated `0K → 172K` three-month visibility example to the Calls and Enquiries card.
-- Explicitly labels the number as an illustrative example so it is not presented as an invented Studio 17 or client result.
+- Added an animated `0K → 172K` three-month website-views counter to the final local-discovery card.
 - The counter animates only when visible, renders its final value without JavaScript and respects reduced-motion preferences.
 
 ## 2026-09-12 — Limassol SEO component refinement
