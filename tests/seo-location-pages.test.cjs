@@ -68,6 +68,21 @@ assert.match(sitemap, /SITE_URL}\/seo\/limassol/);
 
 const seoServicePage = read('seo.html');
 assert.match(seoServicePage, /class="seo-market-directory"[\s\S]*?href="\/seo\/cyprus"[\s\S]*?href="\/seo\/limassol"/);
+const limassolPage = read('seo-limassol.html');
+assert.match(limassolPage, /<title>SEO Agency Limassol \| SEO Services for Businesses \| Studio 17<\/title>/);
+assert.match(limassolPage, /<h1[^>]*>[\s\S]*?SEO agency in Limassol[\s\S]*?<\/h1>/);
+for (const capability of ['Technical SEO', 'On-page SEO', 'Local SEO', 'Google Business Profile', 'Search-led content', 'Search Console', 'AI search &amp; GEO']) {
+  assert.match(limassolPage, new RegExp(capability), `Limassol page must describe ${capability}`);
+}
+for (const industry of ['Real estate', 'Hospitality', 'Restaurants', 'Professional services', 'Automotive', 'Retail']) {
+  assert.match(limassolPage, new RegExp(`<h3>${industry}<\\/h3>`), `Limassol page must address ${industry}`);
+}
+assert.match(limassolPage, /href="https:\/\/www\.phosoptics\.com\/en"/);
+assert.match(limassolPage, /href="https:\/\/www\.trustpilot\.com\/reviews\/69bd096cfa469b4a641ef444"/);
+assert.match(limassolPage, /href="\/seo\/cyprus"/);
+assert.match(limassolPage, /How much does SEO cost in Limassol\?/);
+assert.match(limassolPage, /Can SEO help my business appear on Google Maps\?/);
+assert.match(read('seo-cyprus.html'), /href="\/seo\/limassol"/);
 assert.match(read('index.html'), /aria-label="Services"[\s\S]*?href="\/services\/seo"/);
 
 console.log('SEO location landing page tests passed.');

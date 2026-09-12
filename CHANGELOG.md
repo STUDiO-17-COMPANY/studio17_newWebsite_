@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-09-12 — Limassol SEO landing-page upgrade
+
+- Repositioned `/seo/limassol` around the commercial intent behind searches for an SEO agency or SEO company in Limassol.
+- Updated the title, meta description, social metadata, H1 and opening copy to clearly cover Google Search, Maps, local SEO and business visibility.
+- Added seven connected capabilities: technical SEO, on-page SEO, local SEO, Google Business Profile, content, Search Console and AI search/GEO.
+- Added Limassol-relevant routes for real estate, hospitality, restaurants, professional services, automotive and retail.
+- Replaced generic proof with Studio 17's Limassol presence, PHÓS Optics work, a directly linked Trustpilot review and the public Trustpilot profile.
+- Reworked the FAQ around cost, timing, Maps visibility, Cyprus coverage, scope, website requirements and ranking expectations.
+- Added reciprocal crawlable links between `/seo/limassol`, `/seo/cyprus` and `/services/seo`.
+- Synchronized English, Greek and Russian content and expanded the Service structured data without unsupported results or ratings.
+- Confirmed the clean Vercel route, canonical URL, index/follow directive and dynamic sitemap entry remain present.
+
 ## 2026-09-09 — Website services sales journey refinement
 
 - Extended `/services/website` to Portuguese (Portugal) and Spanish alongside English, Greek and Russian, while deliberately excluding Hebrew from this page and its `hreflang` set.

@@ -1,5 +1,13 @@
 # Services pages
 
+## SEO market architecture
+
+- `/services/seo` is the complete SEO capability page.
+- `/seo/cyprus` serves country-level commercial search intent and links to the more specific Limassol offer.
+- `/seo/limassol` serves high-intent local searches and covers Google Search, Maps, Google Business Profile, technical/on-page/local SEO, content, Search Console and AI search/GEO.
+- The Limassol page uses only verifiable proof: Studio 17's Limassol headquarters, live PHÓS Optics work and directly linked Trustpilot feedback. It does not claim rankings, traffic growth or guaranteed results.
+- All three pages retain crawlable links to one another so users and search engines can understand the general capability, Cyprus market and Limassol market relationship.
+
 ## Public routes
 
 - `/services` is the price-free catalogue of Studio 17 capabilities.
