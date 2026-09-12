@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-12 — Limassol proof placement
+
+- Moved “Based in Limassol, trusted to deliver real digital work” directly below the local-discovery section while preserving its translated content and continuous carousel behavior.
+
+## 2026-09-12 — Limassol continuous proof carousel
+
+- Shortened the English Limassol search title to `SEO Company Limassol | Local SEO Services | SEO Services` and removed the appended brand suffix from its Greek and Russian variants.
+- Added a verified five-star treatment to the Pantelis Petrou review card using Lucide stars.
+- Added an accessible continuous-loop foundation to the proof carousel, including automatic progression, seamless cloned edges, manual arrow controls, interaction pauses and reduced-motion support.
+
 ## 2026-09-12 — Limassol proof carousel and team update
 
 - Replaced “next enquiry” with the clearer phrase “next client” in the Limassol analysis CTA across English, Greek and Russian.

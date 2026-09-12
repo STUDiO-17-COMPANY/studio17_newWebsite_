@@ -14,6 +14,7 @@
     description: document.querySelector('meta[name="description"]')?.content || ''
   };
   let seoVisibilityObserver = null;
+  let seoProofCarouselCleanup = null;
 
   const enhanceSeoCapabilities = () => {
     if (page !== 'seo') return;
@@ -385,6 +386,89 @@
     seoVisibilityObserver.observe(counter);
   };
 
+  const enhanceSeoProofCarousel = () => {
+    seoProofCarouselCleanup?.();
+    seoProofCarouselCleanup = null;
+    const track = document.querySelector('[data-infinite-carousel]');
+    if (!track) return;
+    const originals = [...track.children];
+    if (originals.length < 2) return;
+
+    const cloneSet = () => originals.map(card => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.dataset.carouselClone = '';
+      clone.querySelectorAll('a, button, [tabindex]').forEach(element => element.setAttribute('tabindex', '-1'));
+      return clone;
+    });
+    track.prepend(...cloneSet());
+    track.append(...cloneSet());
+
+    const motionAllowed = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let autoplayId = null;
+    let resetting = false;
+    const measurements = () => {
+      const card = track.firstElementChild;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      const step = (card?.getBoundingClientRect().width || 0) + gap;
+      return { step, setWidth: step * originals.length };
+    };
+    const jumpTo = left => {
+      resetting = true;
+      const previous = track.style.scrollBehavior;
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = left;
+      track.style.scrollBehavior = previous;
+      requestAnimationFrame(() => { resetting = false; });
+    };
+    const keepLoopContinuous = () => {
+      if (resetting) return;
+      const { step, setWidth } = measurements();
+      if (!step || !setWidth) return;
+      if (track.scrollLeft <= step * .25) jumpTo(track.scrollLeft + setWidth);
+      else if (track.scrollLeft >= setWidth * 2 - step * .25) jumpTo(track.scrollLeft - setWidth);
+    };
+    const stopAutoplay = () => {
+      if (autoplayId !== null) window.clearInterval(autoplayId);
+      autoplayId = null;
+    };
+    const startAutoplay = () => {
+      stopAutoplay();
+      if (!motionAllowed || document.hidden) return;
+      autoplayId = window.setInterval(() => {
+        const { step } = measurements();
+        if (step) track.scrollBy({ left: step, behavior: 'smooth' });
+      }, 4800);
+    };
+    const resumeAfterFocus = () => window.setTimeout(() => {
+      if (!track.contains(document.activeElement)) startAutoplay();
+    }, 0);
+    const handleVisibility = () => document.hidden ? stopAutoplay() : startAutoplay();
+    const initialise = () => {
+      const { setWidth } = measurements();
+      if (setWidth) jumpTo(setWidth);
+      startAutoplay();
+    };
+
+    track.addEventListener('scroll', keepLoopContinuous, { passive: true });
+    track.addEventListener('pointerenter', stopAutoplay);
+    track.addEventListener('pointerleave', startAutoplay);
+    track.addEventListener('focusin', stopAutoplay);
+    track.addEventListener('focusout', resumeAfterFocus);
+    document.addEventListener('visibilitychange', handleVisibility);
+    requestAnimationFrame(initialise);
+
+    seoProofCarouselCleanup = () => {
+      stopAutoplay();
+      track.removeEventListener('scroll', keepLoopContinuous);
+      track.removeEventListener('pointerenter', stopAutoplay);
+      track.removeEventListener('pointerleave', startAutoplay);
+      track.removeEventListener('focusin', stopAutoplay);
+      track.removeEventListener('focusout', resumeAfterFocus);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
+  };
+
   const normaliseWebsiteFamilyCard = () => {
     if (page !== 'services') return;
     const card = document.querySelector('.service-family-grid .service-family-card');
@@ -422,6 +506,7 @@
     updateInsertedLinks(language);
     updateRelatedSeoNavigation(language);
     enhanceSeoVisibilityCounter();
+    enhanceSeoProofCarousel();
     enhanceSeoCapabilities();
     enhanceWebsiteServices();
     enhanceWebsiteProjects();

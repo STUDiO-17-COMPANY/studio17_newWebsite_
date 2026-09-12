@@ -1888,6 +1888,8 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-limassol-proof-actions a { margin-top: 0; }
 .seo-limassol-proof-copy .lucide, .seo-limassol-review .lucide { width: 16px; height: 16px; }
 .seo-limassol-review { min-height: 500px; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; color: var(--white); border-color: var(--ink); background: var(--ink); }
+.review-stars { display: flex; gap: 7px; margin-bottom: 30px; color: #00b67a; }
+.review-stars .lucide { width: 24px; height: 24px; fill: currentColor; stroke-width: 1.8; }
 .seo-limassol-review blockquote { max-width: 570px; margin: 0 auto auto 0; font-size: clamp(25px,2.3vw,38px); font-weight: 800; line-height: 1.13; letter-spacing: -.045em; }
 .seo-limassol-review figcaption { color: #b8c3d4; font-size: 13px; line-height: 1.5; }
 .seo-limassol-review a { margin-top: 8px; color: var(--white); font-weight: 800; }

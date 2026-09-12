@@ -72,7 +72,7 @@ assert.match(sitemap, /SITE_URL}\/seo\/limassol/);
 const seoServicePage = read('seo.html');
 assert.match(seoServicePage, /class="seo-market-directory"[\s\S]*?href="\/seo\/cyprus"[\s\S]*?href="\/seo\/limassol"/);
 const limassolPage = read('seo-limassol.html');
-assert.match(limassolPage, /<title>SEO Agency Limassol \| SEO Services for Businesses \| Studio 17<\/title>/);
+assert.match(limassolPage, /<title>SEO Company Limassol \| Local SEO Services \| SEO Services<\/title>/);
 assert.match(limassolPage, /<h1[^>]*>[\s\S]*?SEO agency in Limassol[\s\S]*?<\/h1>/);
 for (const capability of ['Technical SEO', 'On-page SEO', 'Local SEO', 'Google Business Profile', 'Search-led content', 'Search Console', 'AI search &amp; GEO']) {
   assert.match(limassolPage, new RegExp(capability), `Limassol page must describe ${capability}`);
@@ -85,6 +85,10 @@ assert.match(limassolPage, /Find the gaps between Maps, your website and your ne
 assert.doesNotMatch(limassolPage, /Find the gaps between Maps, your website and the next enquiry/);
 assert.match(limassolPage, /id="seo-limassol-proof-track"[\s\S]*?PhosOpticsWebsiteMainPage\.webp[\s\S]*?GoogleReviewTag\.webp[\s\S]*?Nerouppos Barber Shop/);
 assert.match(limassolPage, /data-carousel-prev="seo-limassol-proof-track"[\s\S]*?data-carousel-next="seo-limassol-proof-track"/);
+assert.ok(limassolPage.indexOf('seo-limassol-proof') > limassolPage.indexOf('seo-limassol-discovery'));
+assert.ok(limassolPage.indexOf('seo-limassol-proof') < limassolPage.indexOf('seo-limassol-services'));
+assert.match(limassolPage, /data-infinite-carousel/);
+assert.match(limassolPage, /class="review-stars" aria-label="5 out of 5 stars"[\s\S]*?(?:data-lucide="star"[\s\S]*?){5}/);
 assert.match(limassolPage, /href="https:\/\/share\.google\/XQClN89HrSWhHBMHR"/);
 assert.match(limassolPage, /href="\/wip\?for=nerouppos-barber-shop-local-seo-case-study"/);
 assert.match(limassolPage, /href="https:\/\/www\.trustpilot\.com\/reviews\/69bd096cfa469b4a641ef444"/);
@@ -107,6 +111,9 @@ assert.match(read('styles.css'), /\.website-faq-list details p a \{[^}]*color: v
 assert.match(read('service-pages.js'), /removeSeoLocationHeadingPeriods/);
 assert.match(read('service-pages.js'), /updateRelatedSeoNavigation/);
 assert.match(read('service-pages.js'), /enhanceSeoVisibilityCounter/);
+assert.match(read('service-pages.js'), /enhanceSeoProofCarousel/);
+assert.match(read('service-pages.js'), /cloneNode\(true\)/);
+assert.match(read('service-pages.js'), /setInterval/);
 assert.match(read('service-pages.js'), /requestAnimationFrame/);
 assert.match(read('service-pages.js'), /prefers-reduced-motion/);
 assert.match(read('seo-cyprus.html'), /href="\/seo\/limassol"/);
