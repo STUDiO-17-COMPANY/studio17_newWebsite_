@@ -35,7 +35,8 @@ for (const page of pages) {
   assert.match(source, /href="\/services\/seo"/);
   assert.equal((source.match(/<details>/g) || []).length, 8, `${page.file} must contain eight decision FAQs`);
   assert.doesNotMatch(source, /<h[12][^>]*>[\s\S]*?\.<\/h[12]>/, `${page.file} headings must not end with a period`);
-  assert.match(source, /<section class="closing-cta seo-location-closing"[\s\S]*?src="\/Images\/Limassol\.webp"/, `${page.file} must use the Limassol CTA artwork`);
+  assert.match(source, /<section class="closing-cta seo-location-closing"[\s\S]*?src="\/Images\/SEO\.webp"/, `${page.file} must use the shared SEO CTA artwork`);
+  assert.match(source, /class="seo-related-pages"[\s\S]*?href="\/services\/seo"[\s\S]*?href="\/seo\/cyprus"[\s\S]*?href="\/seo\/limassol"/, `${page.file} must expose the related SEO navigation`);
   assert.doesNotMatch(source, /aggregateRating|"review"\s*:/i, `${page.file} must not invent rating or review structured data`);
   assert.equal(structuredData['@type'], 'Service');
   assert.equal(structuredData.areaServed['@type'], page.areaType);
@@ -84,10 +85,12 @@ assert.match(limassolPage, /href="https:\/\/www\.trustpilot\.com\/reviews\/69bd0
 assert.match(limassolPage, /href="\/seo\/cyprus"/);
 assert.match(limassolPage, /How much does SEO cost in Limassol\?/);
 assert.match(limassolPage, /Can SEO help my business appear on Google Maps\?/);
+assert.match(limassolPage, /class="seo-local-system"[\s\S]*?Search demand[\s\S]*?Maps visibility[\s\S]*?Trust and relevance[\s\S]*?Calls and enquiries/);
 assert.match(read('styles.css'), /\.seo-location-section \{[^}]*background: var\(--paper\)/);
 assert.match(read('styles.css'), /\.seo-location-text-link \{[^}]*color: var\(--white\); background: var\(--blue\)/);
 assert.match(read('styles.css'), /\.website-faq-list details p a \{[^}]*color: var\(--blue\)/);
 assert.match(read('service-pages.js'), /removeSeoLocationHeadingPeriods/);
+assert.match(read('service-pages.js'), /updateRelatedSeoNavigation/);
 assert.match(read('seo-cyprus.html'), /href="\/seo\/limassol"/);
 assert.match(read('index.html'), /aria-label="Services"[\s\S]*?href="\/services\/seo"/);
 

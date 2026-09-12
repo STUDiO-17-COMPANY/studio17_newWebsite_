@@ -200,7 +200,8 @@ test('SEO page is an international, evidence-safe commercial service page', () =
   assert.match(html, /What is included in your SEO services\?[\s\S]*?strategy and keyword research[\s\S]*?AI Search\/GEO/);
   for (const destination of ['/contact?service=seo', '/services/website-development', '/seo/cyprus', '/seo/limassol', '/news', 'https://www.trustpilot.com/review/studio17.world']) assert.ok(html.includes(destination), destination);
   assert.match(html, /We do not present broader client work as invented SEO results/);
-  assert.match(html, /class="seo-cta-media"[^>]*>[\s\S]*?src="\/Images\/CTA_SEO_MainIMAGE\.webp"[^>]*width="462" height="260"/);
+  assert.match(html, /class="seo-cta-media"[^>]*>[\s\S]*?src="\/Images\/SEO\.webp"[^>]*width="462" height="260"/);
+  assert.match(html, /class="seo-related-pages"[\s\S]*?href="\/services\/seo"[\s\S]*?href="\/seo\/cyprus"[\s\S]*?href="\/seo\/limassol"/);
   assert.doesNotMatch(html, /aggregateRating|"review"\s*:/);
   assert.match(css, /\.seo-opportunity,[^{]+\{[^}]*padding-block: 52px 64px;/);
   assert.match(css, /\.seo-growth-system \{[^}]*padding-block: 52px 64px;/);

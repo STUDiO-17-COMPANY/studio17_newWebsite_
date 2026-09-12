@@ -331,6 +331,27 @@
     });
   };
 
+  const updateRelatedSeoNavigation = language => {
+    const navigation = document.querySelector('[data-related-seo-nav]');
+    if (!navigation) return;
+    const copy = {
+      en: { label: 'Explore related SEO', services: 'SEO services', cyprus: 'SEO Cyprus', limassol: 'SEO Limassol' },
+      el: { label: 'Σχετικές σελίδες SEO', services: 'Υπηρεσίες SEO', cyprus: 'SEO Κύπρος', limassol: 'SEO Λεμεσός' },
+      ru: { label: 'Связанные SEO-страницы', services: 'SEO-услуги', cyprus: 'SEO Кипр', limassol: 'SEO Лимасол' }
+    }[language] || null;
+    if (!copy) return;
+    const label = navigation.querySelector('[data-related-seo-label]');
+    if (label) label.textContent = copy.label;
+    navigation.querySelectorAll('[data-related-seo-link]').forEach(link => {
+      const key = link.dataset.relatedSeoLink;
+      if (link.firstChild) link.firstChild.nodeValue = copy[key];
+      const url = new URL(link.getAttribute('href'), location.origin);
+      url.searchParams.delete('lang');
+      if (language !== 'en') url.searchParams.set('lang', language);
+      link.setAttribute('href', `${url.pathname}${url.search}`);
+    });
+  };
+
   const normaliseWebsiteFamilyCard = () => {
     if (page !== 'services') return;
     const card = document.querySelector('.service-family-grid .service-family-card');
@@ -366,6 +387,7 @@
     normaliseWebsiteFamilyCard();
     removeSeoLocationHeadingPeriods();
     updateInsertedLinks(language);
+    updateRelatedSeoNavigation(language);
     enhanceSeoCapabilities();
     enhanceWebsiteServices();
     enhanceWebsiteProjects();

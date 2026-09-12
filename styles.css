@@ -1816,13 +1816,18 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .website-service-templates[hidden] { display: none !important; }
 
 /* Limassol-specific local discovery composition */
-.seo-local-journey { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 0; margin: 0; padding: 0; list-style: none; }
-.seo-local-journey li { position: relative; min-height: 245px; display: flex; flex-direction: column; padding: 27px; border: 1px solid #ccd5e2; background: var(--paper); }
-.seo-local-journey li:not(:last-child) { border-inline-end: 0; }
-.seo-local-journey li:not(:last-child)::after { content: ""; position: absolute; z-index: 2; top: 54px; inset-inline-end: -7px; width: 13px; height: 13px; background: var(--blue); transform: rotate(45deg); }
-.seo-local-journey .lucide { width: 31px; height: 31px; margin-bottom: auto; color: var(--blue); }
-.seo-local-journey span { margin: 50px 0 9px; color: var(--ink); font-size: 21px; font-weight: 850; line-height: 1.15; letter-spacing: -.03em; }
-.seo-local-journey small { color: #596477; font-size: 13px; line-height: 1.55; }
+.seo-local-system { display: grid; grid-template-columns: minmax(280px,.72fr) minmax(0,1.28fr); min-height: 430px; color: var(--white); background: var(--ink); }
+.seo-local-system-lead { display: flex; flex-direction: column; justify-content: flex-end; min-width: 0; padding: 34px; background: var(--blue); }
+.seo-local-system-lead > span { margin-bottom: auto; font-size: 11px; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+.seo-local-system-lead strong { font-size: clamp(52px,6.3vw,94px); line-height: .88; letter-spacing: -.08em; }
+.seo-local-system-lead p { max-width: 340px; margin: 25px 0 0; color: rgba(255,255,255,.88); font-size: 15px; line-height: 1.6; }
+.seo-local-journey { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); margin: 0; padding: 1px; gap: 1px; background: rgba(255,255,255,.16); list-style: none; }
+.seo-local-journey li { min-height: 214px; display: grid; grid-template-columns: 42px minmax(0,1fr); align-content: end; gap: 8px 18px; padding: 27px; background: #121d33; transition: background .22s ease, transform .25s var(--ease); }
+.seo-local-journey li:hover { background: #192a49; transform: translateY(-3px); }
+.seo-local-journey b { align-self: start; color: #8fb1ff; font-size: 11px; letter-spacing: .09em; }
+.seo-local-journey li > div { min-width: 0; }
+.seo-local-journey h3 { margin: 0 0 9px; color: var(--white); font-size: 22px; line-height: 1.15; letter-spacing: -.035em; }
+.seo-local-journey p { margin: 0; color: #b8c3d4; font-size: 13px; line-height: 1.55; }
 .seo-limassol-blockers { color: var(--white); background: var(--ink); }
 .seo-local-blocker-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
 .seo-local-blocker-grid article { min-height: 180px; display: grid; grid-template-columns: 48px minmax(0,1fr); align-content: center; gap: 8px 22px; padding: 26px; border: 1px solid rgba(255,255,255,.17); background: #121d33; }
@@ -1834,16 +1839,17 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-local-plan li > span { margin-bottom: auto; color: var(--blue); font-size: 11px; font-weight: 850; letter-spacing: .08em; }
 .seo-local-plan h3 { margin: 56px 0 11px; font-size: 20px; line-height: 1.17; letter-spacing: -.03em; }
 .seo-local-plan p { margin: 0; color: #596477; font-size: 13px; line-height: 1.58; }
+.seo-local-plan .service-page-heading > p { max-width: 590px; color: #596477; font-size: 16px; line-height: 1.65; }
 .seo-local-plan { margin-top: 0; padding-top: 32px; }
 .seo-limassol-services { padding-bottom: 32px; color: var(--ink); background: var(--paper); }
 .seo-limassol-services .service-page-heading-light h2 { color: var(--ink); }
 .seo-limassol-services .service-page-heading-light h2 span { color: var(--white); background: var(--blue); }
 .seo-limassol-services .service-page-heading-light > p { color: #596477; }
 .seo-limassol-service-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; padding: 1px; background: rgba(255,255,255,.18); }
-.seo-limassol-service-grid article { min-height: 205px; display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; background: #121d33; transition: background .2s ease, transform .2s var(--ease); }
+.seo-limassol-service-grid article { min-height: 205px; display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; color: var(--white); background: #121d33; transition: background .2s ease, transform .2s var(--ease); }
 .seo-limassol-service-grid article:hover { background: #1a2b4c; transform: translateY(-3px); }
 .seo-limassol-service-grid article:last-child { grid-column: span 2; color: var(--white); background: var(--blue); }
-.seo-limassol-service-grid h3 { margin: 0 0 10px; font-size: 21px; line-height: 1.16; letter-spacing: -.03em; }
+.seo-limassol-service-grid h3 { margin: 0 0 10px; color: var(--white); font-size: 21px; line-height: 1.16; letter-spacing: -.03em; }
 .seo-limassol-service-grid p { margin: 0; color: #b8c3d4; font-size: 13px; line-height: 1.55; }
 .seo-limassol-service-grid article:last-child p { color: var(--white); }
 .website-faq-list details p a { color: var(--blue); font-weight: 750; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
@@ -1866,6 +1872,12 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-limassol-review blockquote { max-width: 570px; margin: 0 auto auto 0; font-size: clamp(25px,2.3vw,38px); font-weight: 800; line-height: 1.13; letter-spacing: -.045em; }
 .seo-limassol-review figcaption { color: #b8c3d4; font-size: 13px; line-height: 1.5; }
 .seo-limassol-review a { margin-top: 8px; color: var(--white); font-weight: 800; }
+.seo-related-pages { margin-top: 18px; }
+.seo-related-pages .shell { display: flex; align-items: center; gap: 12px; padding-block: 14px; border-block: 1px solid #cad3df; }
+.seo-related-pages > .shell > span { margin-right: auto; color: #596477; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.seo-related-pages a { display: inline-flex; align-items: center; gap: 9px; padding: 10px 13px; color: var(--ink); font-size: 13px; font-weight: 800; transition: color .2s ease, background .2s ease; }
+.seo-related-pages a:hover, .seo-related-pages a[aria-current="page"] { color: var(--white); background: var(--blue); }
+.seo-related-pages .lucide { width: 15px; height: 15px; }
 
 @media (max-width: 1279px) {
   .seo-capability-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -1940,10 +1952,9 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-location-strip p:nth-child(4) { border-top: 1px solid #cad3df; }
   .seo-location-card-grid-three, .seo-location-scope-grid, .seo-location-proof-grid { grid-template-columns: 1fr; }
   .seo-location-card-grid article, .seo-location-proof-grid article { min-height: 220px; }
-  .seo-location-route, .seo-local-journey { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .seo-local-journey li:nth-child(2) { border-inline-end: 1px solid #ccd5e2; }
-  .seo-local-journey li:nth-child(3), .seo-local-journey li:nth-child(4) { border-top: 0; }
-  .seo-local-journey li:nth-child(2)::after { display: none; }
+  .seo-location-route { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .seo-local-system { grid-template-columns: 1fr; }
+  .seo-local-system-lead { min-height: 300px; }
   .seo-location-mid-cta .shell { grid-template-columns: 1fr; gap: 27px; }
   .seo-local-plan ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .seo-local-plan li:last-child { grid-column: 1 / -1; min-height: 230px; }
@@ -2027,9 +2038,8 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-location-mid-cta h2 { font-size: 34px; }
   .seo-location-proof-grid article { min-height: 230px; padding: 24px; }
   .seo-location-proof-links { align-items: flex-start; flex-direction: column; }
-  .seo-local-journey li, .seo-local-journey li:nth-child(2), .seo-local-journey li:nth-child(3), .seo-local-journey li:nth-child(4) { min-height: 210px; border: 1px solid #ccd5e2; }
-  .seo-local-journey li + li { border-top: 0; }
-  .seo-local-journey li:not(:last-child)::after { top: auto; right: auto; bottom: -7px; left: 28px; display: block; }
+  .seo-local-system-lead { min-height: 265px; padding: 24px; }
+  .seo-local-journey li { min-height: 175px; padding: 23px 20px; }
   .seo-local-blocker-grid article { min-height: 175px; grid-template-columns: 39px minmax(0,1fr); gap: 8px 15px; padding: 23px 20px; }
   .seo-local-plan li, .seo-local-plan li:nth-child(n+4), .seo-local-plan li:last-child { min-height: 230px; grid-column: auto; }
   .seo-location-closing { min-height: 0; padding-block: 42px; }
@@ -2040,6 +2050,9 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-limassol-service-grid article:last-child { grid-column: auto; }
   .seo-limassol-service-grid article, .seo-limassol-industry-grid article { min-height: 170px; }
   .seo-limassol-project, .seo-limassol-review { min-height: 270px; padding: 24px; }
+  .seo-related-pages .shell { align-items: stretch; flex-direction: column; }
+  .seo-related-pages > .shell > span { margin-right: 0; }
+  .seo-related-pages a { justify-content: space-between; }
   .seo-proof-grid article { min-height: 280px; padding: 25px; }
   .seo-why-grid article, .seo-process li, .seo-process li:last-child { min-height: 230px; grid-column: auto; }
   .seo-why-grid strong, .seo-process li > span { margin-bottom: 45px; }

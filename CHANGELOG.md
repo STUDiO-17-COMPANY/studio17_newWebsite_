@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-12 — Limassol SEO component refinement
+
+- Replaced the generic four-card local-discovery component with a single Studio 17 editorial system connecting Search Demand, Maps Visibility, Trust and Relevance, and Calls and Enquiries.
+- Corrected the practical-plan introduction size so the card-copy rule no longer overrides the section description.
+- Corrected every Limassol service-card heading to render in white on the navy surface.
+- Standardized the final CTA image across `/services/seo`, `/seo/cyprus` and `/seo/limassol` with `SEO.webp`.
+- Added a compact, responsive related-SEO navigation below every final CTA, with current-page indication and English, Greek and Russian labels.
+
 ## 2026-09-12 — SEO location-page visual consistency
 
 - Switched the final Cyprus and Limassol SEO CTAs to the supplied `Limassol.webp` artwork in a matching 16:9 media frame.
