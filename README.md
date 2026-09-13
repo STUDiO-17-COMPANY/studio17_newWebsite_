@@ -15,6 +15,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/services` (`services.html`) — multilingual, price-free catalogue of all Studio 17 service areas.
 - `/services/website` (`website-services.html`) — English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew overview of website development, revamp, design, SEO, GEO, copywriting, localisation and maintenance.
 - `/services/website-development` (`website-development.html`) — multilingual Website Development packages, inclusions, proof projects, process and FAQs.
+- `/services/website-pricing` (`website-pricing.html`) — English, Greek and Russian side-by-side comparison of Website Development prices, scope, integrations and estimated delivery.
 - `/services/free-website` (`free-website.html`) — six-language lead page for selected businesses applying for a professional one-page website without a Studio 17 design or development fee.
 - `/services/seo` (`seo.html`) — international SEO strategy and delivery page in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew.
 - `/seo/cyprus` (`seo-cyprus.html`) — Cyprus-wide commercial SEO landing page in English, Greek, Russian and Hebrew for organic, local, multilingual and AI-search enquiries.

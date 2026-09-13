@@ -13,6 +13,7 @@
 - `/services` is the price-free catalogue of Studio 17 capabilities.
 - `/services/website` is the Website service-family overview in English, Portuguese (Portugal), Spanish, Greek and Russian. Hebrew is intentionally unavailable on this page.
 - `/services/website-development` is the commercial Website Development page.
+- `/services/website-pricing` is the English, Greek and Russian package-comparison page linked from Website Development.
 - `/services/free-website` is the multilingual application page for the selected-business Free Website offer.
 - `/services/seo` is the international commercial SEO page.
 - `/seo/cyprus` is the Cyprus-wide SEO lead-generation page.

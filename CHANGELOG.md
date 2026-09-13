@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-13 — Website pricing comparison
+
+- Added the clean, indexable `/services/website-pricing` route in English, Greek and Russian.
+- Added an accessible side-by-side table comparing all five website packages across price, page scope, design, journeys, forms, integrations, languages, publishing, search foundations and estimated delivery.
+- Kept the first comparison column visible during horizontal mobile scrolling and added clear scope, translation, third-party-cost and delivery notes.
+- Added translated “Compare prices” actions to every Website Development locale, with unsupported comparison-page languages deliberately routed to English.
+- Added the comparison page to local and production routing, XML and human sitemaps, internal documentation and regression coverage.
+
 ## 2026-09-13 — Website package scope update
 
 - Renamed the five Website Development offers to One Page Website, Starter Pack, Growth Pack, Business Pack and Custom Website across the package page, service catalogue and six published languages.

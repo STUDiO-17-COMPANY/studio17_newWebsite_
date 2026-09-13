@@ -18,6 +18,7 @@ This document is the maintenance contract for search visibility. It covers techn
 - About: `https://www.studio17.world/about`
 - Services catalogue: `https://www.studio17.world/services`
 - Website Development: `https://www.studio17.world/services/website-development`
+- Website pricing comparison: `https://www.studio17.world/services/website-pricing`
 - SEO services: `https://www.studio17.world/services/seo`
 - SEO agency Cyprus: `https://www.studio17.world/seo/cyprus`
 - SEO company Limassol: `https://www.studio17.world/seo/limassol`
