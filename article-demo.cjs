@@ -31,6 +31,7 @@ module.exports = {
       { type: 'heading', level: 2, text: 'Create a repeatable publishing and follow-up system', id: 'create-a-repeatable-publishing-and-follow-up-system' },
       { type: 'paragraph', text: 'A defined workflow can move each new vehicle through preparation, photography, description, publication, promotion and follow-up.' },
       { type: 'callout', title: 'A practical workflow', copy: 'Photograph once, prepare accurate information, publish consistently, assign every enquiry and review performance weekly.' },
+      { type: 'table', headers: ['Stage', 'Customer signal', 'Useful action'], rows: [['Discovery', 'Listing views', 'Improve presentation'], ['Consideration', 'Vehicle-page visits', 'Clarify specifications'], ['Contact', 'Calls and messages', 'Measure response time']] },
       { type: 'heading', level: 2, text: 'Measure what moves the sale forward', id: 'measure-what-moves-the-sale-forward' },
       { type: 'paragraph', text: 'Track the path from listing impression to enquiry, response, appointment and completed sale. This identifies whether the problem is presentation, traffic quality, response speed or the sales process.' }
     ]

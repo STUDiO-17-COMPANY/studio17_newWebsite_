@@ -11,12 +11,12 @@ const CATEGORY_LABELS = {
   he: { Insight: 'תובנה', 'Case Study': 'מקרה בוחן', News: 'חדשות' }
 };
 const UI = {
-  en: { back: 'All articles', published: 'Published', reading: 'Reading time', written: 'Written by', role: 'Role', minutes: n => `${n} minutes`, contents: 'In this article', share: 'Share article', continue: 'Continue reading' },
-  'pt-PT': { back: 'Todos os artigos', published: 'Publicado', reading: 'Tempo de leitura', written: 'Escrito por', role: 'Função', minutes: n => `${n} minutos`, contents: 'Neste artigo', share: 'Partilhar artigo', continue: 'Continue a ler' },
-  es: { back: 'Todos los artículos', published: 'Publicado', reading: 'Tiempo de lectura', written: 'Escrito por', role: 'Cargo', minutes: n => `${n} minutos`, contents: 'En este artículo', share: 'Compartir artículo', continue: 'Seguir leyendo' },
-  el: { back: 'Όλα τα άρθρα', published: 'Δημοσιεύτηκε', reading: 'Χρόνος ανάγνωσης', written: 'Συντάκτης', role: 'Ρόλος', minutes: n => `${n} λεπτά`, contents: 'Σε αυτό το άρθρο', share: 'Κοινοποίηση άρθρου', continue: 'Συνεχίστε την ανάγνωση' },
-  ru: { back: 'Все статьи', published: 'Опубликовано', reading: 'Время чтения', written: 'Автор', role: 'Роль', minutes: n => `${n} мин.`, contents: 'В этой статье', share: 'Поделиться статьёй', continue: 'Продолжить чтение' },
-  he: { back: 'כל המאמרים', published: 'פורסם', reading: 'זמן קריאה', written: 'נכתב על ידי', role: 'תפקיד', minutes: n => `${n} דקות`, contents: 'במאמר זה', share: 'שיתוף המאמר', continue: 'המשך קריאה' }
+  en: { back: 'All articles', published: 'Published', reading: 'Reading time', written: 'Written by', role: 'Role', minutes: n => `${n} minutes`, contents: 'In this article', share: 'Share article', continue: 'Continue reading', table: 'Article data table' },
+  'pt-PT': { back: 'Todos os artigos', published: 'Publicado', reading: 'Tempo de leitura', written: 'Escrito por', role: 'Função', minutes: n => `${n} minutos`, contents: 'Neste artigo', share: 'Partilhar artigo', continue: 'Continue a ler', table: 'Tabela de dados do artigo' },
+  es: { back: 'Todos los artículos', published: 'Publicado', reading: 'Tiempo de lectura', written: 'Escrito por', role: 'Cargo', minutes: n => `${n} minutos`, contents: 'En este artículo', share: 'Compartir artículo', continue: 'Seguir leyendo', table: 'Tabla de datos del artículo' },
+  el: { back: 'Όλα τα άρθρα', published: 'Δημοσιεύτηκε', reading: 'Χρόνος ανάγνωσης', written: 'Συντάκτης', role: 'Ρόλος', minutes: n => `${n} λεπτά`, contents: 'Σε αυτό το άρθρο', share: 'Κοινοποίηση άρθρου', continue: 'Συνεχίστε την ανάγνωση', table: 'Πίνακας δεδομένων άρθρου' },
+  ru: { back: 'Все статьи', published: 'Опубликовано', reading: 'Время чтения', written: 'Автор', role: 'Роль', minutes: n => `${n} мин.`, contents: 'В этой статье', share: 'Поделиться статьёй', continue: 'Продолжить чтение', table: 'Таблица данных статьи' },
+  he: { back: 'כל המאמרים', published: 'פורסם', reading: 'זמן קריאה', written: 'נכתב על ידי', role: 'תפקיד', minutes: n => `${n} דקות`, contents: 'במאמר זה', share: 'שיתוף המאמר', continue: 'המשך קריאה', table: 'טבלת נתוני המאמר' }
 };
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
@@ -37,7 +37,7 @@ const formatDate = (value, locale) => {
   catch { return value; }
 };
 
-const renderBlocks = blocks => {
+const renderBlocks = (blocks, tableLabel = UI.en.table) => {
   let sectionOpen = false;
   let number = 0;
   const html = [];
@@ -49,6 +49,7 @@ const renderBlocks = blocks => {
     } else if (block.type === 'heading') html.push(`<h3>${escapeHtml(block.text)}</h3>`);
     else if (block.type === 'paragraph') html.push(`<p${!number && html.length === 0 ? ' class="article-lead"' : ''}>${escapeHtml(block.text)}</p>`);
     else if (block.type === 'list') html.push(`<${block.ordered ? 'ol' : 'ul'}>${block.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</${block.ordered ? 'ol' : 'ul'}>`);
+    else if (block.type === 'table') html.push(`<div class="article-table-wrap" role="region" aria-label="${escapeAttribute(tableLabel)}" tabindex="0"><table class="article-table"><thead><tr>${block.headers.map(header => `<th scope="col">${escapeHtml(header)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
     else if (block.type === 'image') html.push(`<figure class="article-inline-image"><img src="/api/article-image?id=${encodeURIComponent(block.imageId)}" alt="${escapeAttribute(block.alt)}" loading="lazy">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}</figure>`);
     else if (block.type === 'quote') html.push(`<blockquote><p>${escapeHtml(block.text)}</p>${block.citation ? `<cite>${escapeHtml(block.citation)}</cite>` : ''}</blockquote>`);
     else if (block.type === 'callout') html.push(`<div class="article-callout"><i data-lucide="workflow" aria-hidden="true"></i><div>${block.title ? `<h3>${escapeHtml(block.title)}</h3>` : ''}<p>${escapeHtml(block.copy)}</p></div></div>`);
@@ -72,7 +73,7 @@ const renderArticleMain = article => {
       <div class="article-meta-panel reveal" data-delay="1"><dl class="article-meta"><div><dt>${escapeHtml(ui.published)}</dt><dd><time datetime="${escapeAttribute(article.publishedDate)}">${escapeHtml(formatDate(article.publishedDate, locale))}</time></dd></div><div><dt>${escapeHtml(ui.reading)}</dt><dd>${escapeHtml(ui.minutes(article.readTime))}</dd></div><div><dt>${escapeHtml(ui.written)}</dt><dd>${escapeHtml(article.authorName)}</dd></div><div><dt>${escapeHtml(ui.role)}</dt><dd>${escapeHtml(article.authorRole)}</dd></div></dl><nav class="article-language-status" aria-label="Available article languages"><i data-lucide="languages" aria-hidden="true"></i>${languageLinks}</nav></div>
     </div></header>
     <figure class="shell article-cover reveal"><img src="${escapeAttribute(article.coverImage)}" alt="${escapeAttribute(content.coverAlt)}">${content.coverCaption ? `<figcaption>${escapeHtml(content.coverCaption)}</figcaption>` : ''}</figure>
-    <div class="shell article-layout"><aside class="article-sidebar" aria-label="${escapeAttribute(ui.contents)}"><div class="article-sidebar-inner"><p>${escapeHtml(ui.contents)}</p><nav>${headings.map(item => `<a href="#${escapeAttribute(item.id)}">${escapeHtml(item.text)}</a>`).join('')}</nav><button class="article-share" type="button" data-article-share><i data-lucide="share-2" aria-hidden="true"></i><span>${escapeHtml(ui.share)}</span></button><p class="article-share-status" data-article-share-status role="status" aria-live="polite"></p></div></aside><div class="article-body">${renderBlocks(content.blocks)}</div></div>
+    <div class="shell article-layout"><aside class="article-sidebar" aria-label="${escapeAttribute(ui.contents)}"><div class="article-sidebar-inner"><p>${escapeHtml(ui.contents)}</p><nav>${headings.map(item => `<a href="#${escapeAttribute(item.id)}">${escapeHtml(item.text)}</a>`).join('')}</nav><button class="article-share" type="button" data-article-share><i data-lucide="share-2" aria-hidden="true"></i><span>${escapeHtml(ui.share)}</span></button><p class="article-share-status" data-article-share-status role="status" aria-live="polite"></p></div></aside><div class="article-body">${renderBlocks(content.blocks, ui.table)}</div></div>
     <section class="article-cta" aria-labelledby="article-cta-title"><div class="shell article-cta-grid"><div><h2 id="article-cta-title">${highlight(content.ctaHeading, content.ctaHighlighted)}</h2><p>${escapeHtml(content.ctaCopy)}</p></div><a class="solid-button" href="${escapeAttribute(content.ctaUrl)}">${escapeHtml(content.ctaLabel)}<span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div></section>
     ${article.related.length ? `<section class="article-related" aria-labelledby="related-title"><div class="shell section-title-line"><h2 class="design-heading" id="related-title"><span>${escapeHtml(ui.continue)}</span></h2></div><div class="shell article-related-grid">${article.related.map(item => renderCard(item, locale)).join('')}</div></section>` : ''}
   </article></main>`;

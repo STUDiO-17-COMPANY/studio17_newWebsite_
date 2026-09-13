@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-13 — Native article tables
+
+- Added native Google Docs table parsing within article bodies, preserving table position and treating the first row as column headings.
+- Added safe semantic table rendering with escaped cell content, accessible labelling and keyboard-focusable horizontal scrolling.
+- Added responsive Studio 17 table styling for desktop, mobile and right-to-left articles.
+- Documented the supported Google Docs authoring workflow and table limits, with parser and renderer regression coverage.
+
 ## 2026-09-13 — Limassol proof carousel controls
 
 - Moved the previous and next controls directly beside the proof-section title instead of separating them across the full heading width.

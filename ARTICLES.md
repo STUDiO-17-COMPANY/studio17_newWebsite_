@@ -38,6 +38,18 @@ The cover image and social-share image are deliberately independent:
 
 The recommended social image is 1200 × 630 px. A public share never falls back to the cover image because the share-image field is required.
 
+## Tables inside an article
+
+Native Google Docs tables are supported inside the `Article body` of every language tab.
+
+1. Put the cursor at the exact position where the table should appear.
+2. In Google Docs, choose **Insert > Table** and create the required columns and rows.
+3. Use the first row for short, meaningful column headings. The website renders this as the accessible table header.
+4. Add the information in the remaining rows using plain text.
+5. Repeat and translate the table independently in each language tab where the article is published.
+
+Use at least two columns and one data row. Keep tables to a maximum of 12 columns and 100 rows. Avoid merged cells, nested tables and images inside cells; these structures are intentionally simplified by the secure article parser. On narrow screens, the table remains at a readable width and scrolls horizontally without widening the page.
+
 ## Website architecture
 
 - `GET /api/articles?lang=<locale>` — newest-first validated summaries for the homepage and archive.

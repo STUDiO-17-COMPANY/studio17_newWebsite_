@@ -10,10 +10,17 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
     elements: [{ textRun: { content: text + '\n' } }]
   }
 });
+const nativeTable = rows => ({
+  table: {
+    tableRows: rows.map(cells => ({
+      tableCells: cells.map(text => ({ content: [paragraph(text)] }))
+    }))
+  }
+});
 const tab = (title, rows) => ({
   tabProperties: { title },
   documentTab: {
-    body: { content: rows.map(([text, style, bullet]) => paragraph(text, style, bullet)) },
+    body: { content: rows.map(row => row.table ? row : paragraph(...row)) },
     lists: { 'list-1': { listProperties: { nestingLevels: [{ glyphType: 'BULLET' }] } } }
   }
 });
@@ -42,6 +49,11 @@ const enRows = [
   ['The section explains one useful idea.'],
   ['One list item', 'NORMAL_TEXT', true],
   ['Another list item', 'NORMAL_TEXT', true],
+  nativeTable([
+    ['SEO area', 'What it improves', 'When it matters'],
+    ['Technical SEO', 'Crawling and indexation', 'Before expanding content'],
+    ['Local SEO', 'Maps and local visibility', 'When serving a location']
+  ]),
   ['Quote', 'HEADING_3'], ['Quote text: A useful quotation.'], ['Citation: Studio 17']
 ];
 const incompletePt = [
@@ -60,6 +72,9 @@ assert.notEqual(result.article.coverImageId, result.article.shareImageId);
 assert.equal(result.article.translations.en.ctaUrl, '/contact');
 assert.equal(result.article.translations.en.blocks.some(block => block.type === 'list' && block.items.length === 2), true);
 assert.equal(result.article.translations.en.blocks.some(block => block.type === 'quote'), true);
+const parsedTable = result.article.translations.en.blocks.find(block => block.type === 'table');
+assert.deepEqual(parsedTable.headers, ['SEO area', 'What it improves', 'When it matters']);
+assert.deepEqual(parsedTable.rows[1], ['Local SEO', 'Maps and local visibility', 'When serving a location']);
 
 const draft = buildArticle(
   { id: 'doc-2', name: 'Draft article' },

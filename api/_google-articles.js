@@ -143,19 +143,42 @@ const safeCtaUrl = value => {
 };
 
 const inlineText = element => element.textRun?.content || element.richLink?.richLinkProperties?.title || element.richLink?.richLinkProperties?.uri || '';
-const extractParagraphs = tab => {
+const paragraphRecord = (paragraph, lists = {}) => ({
+  text: (paragraph?.elements || []).map(inlineText).join('').replace(/\n+$/, '').trim(),
+  bullet: Boolean(paragraph?.bullet),
+  listId: paragraph?.bullet?.listId || '',
+  ordered: /DECIMAL|ALPHA|ROMAN/i.test(lists[paragraph?.bullet?.listId]?.listProperties?.nestingLevels?.[paragraph?.bullet?.nestingLevel || 0]?.glyphType || ''),
+  style: paragraph?.paragraphStyle?.namedStyleType || 'NORMAL_TEXT'
+});
+
+const structuralText = content => (content || []).flatMap(item => {
+  if (item.paragraph) return (item.paragraph.elements || []).map(inlineText).join('').replace(/\n+$/, '').trim();
+  if (item.table) return (item.table.tableRows || []).flatMap(row => (row.tableCells || []).map(cell => structuralText(cell.content).join(' ')));
+  return '';
+}).map(cleanText).filter(Boolean).join(' ');
+
+const extractNativeTable = table => {
+  const rows = (table?.tableRows || []).slice(0, 100).map(row =>
+    (row.tableCells || []).slice(0, 12).map(cell => cleanText(structuralText(cell.content)))
+  ).filter(row => row.some(Boolean));
+  const columnCount = Math.max(0, ...rows.map(row => row.length));
+  if (rows.length < 2 || columnCount < 2) return null;
+  const normalised = rows.map(row => Array.from({ length: columnCount }, (_, index) => row[index] || ''));
+  return { type: 'table', headers: normalised[0], rows: normalised.slice(1) };
+};
+
+const extractContentNodes = tab => {
   const lists = tab?.lists || tab?.documentTab?.lists || {};
   return (tab?.body?.content || tab?.documentTab?.body?.content || [])
-  .filter(item => item.paragraph)
-  .map(item => ({
-    text: (item.paragraph.elements || []).map(inlineText).join('').replace(/\n+$/, '').trim(),
-    bullet: Boolean(item.paragraph.bullet),
-    listId: item.paragraph.bullet?.listId || '',
-    ordered: /DECIMAL|ALPHA|ROMAN/i.test(lists[item.paragraph.bullet?.listId]?.listProperties?.nestingLevels?.[item.paragraph.bullet?.nestingLevel || 0]?.glyphType || ''),
-    style: item.paragraph.paragraphStyle?.namedStyleType || 'NORMAL_TEXT'
-  }))
-  .filter(paragraph => paragraph.text);
+  .map(item => item.paragraph
+    ? { type: 'paragraph', ...paragraphRecord(item.paragraph, lists) }
+    : item.table ? extractNativeTable(item.table) : null)
+  .filter(node => node && (node.type === 'table' || node.text));
 };
+
+const extractParagraphs = tab => extractContentNodes(tab)
+  .filter(node => node.type === 'paragraph')
+  .map(({ type, ...paragraph }) => paragraph);
 
 const flattenTabs = tabs => (tabs || []).flatMap(tab => [tab, ...flattenTabs(tab.childTabs)]);
 const tabTitle = tab => String(tab?.title || tab?.tabProperties?.title || '').trim().toUpperCase();
@@ -178,7 +201,8 @@ const parseFields = (paragraphs, fieldMap, stopHeading = '') => {
 
 const scalar = (values, key) => cleanText((values[key] || []).join(' '));
 
-const parseBodyBlocks = paragraphs => {
+const parseBodyBlocks = entries => {
+  const nodes = (entries || []).map(entry => entry?.type ? entry : { type: 'paragraph', ...entry });
   const blocks = [];
   let index = 0;
   const pushListItem = paragraph => {
@@ -187,14 +211,20 @@ const parseBodyBlocks = paragraphs => {
     if (previous?.type === 'list' && previous.ordered === ordered) previous.items.push(paragraph.text);
     else blocks.push({ type: 'list', ordered, items: [paragraph.text] });
   };
-  while (index < paragraphs.length) {
-    const paragraph = paragraphs[index];
+  while (index < nodes.length) {
+    const node = nodes[index];
+    if (node.type === 'table') {
+      blocks.push({ type: 'table', headers: node.headers, rows: node.rows });
+      index += 1;
+      continue;
+    }
+    const paragraph = node;
     if (isPlaceholder(paragraph.text)) { index += 1; continue; }
     const special = paragraph.style === 'HEADING_3' ? normaliseHeading(paragraph.text) : '';
     if (['image', 'quote', 'callout', 'statistics'].includes(special)) {
       const values = [];
       index += 1;
-      while (index < paragraphs.length && !/^HEADING_\d+$/.test(paragraphs[index].style)) values.push(paragraphs[index++].text);
+      while (index < nodes.length && nodes[index].type === 'paragraph' && !/^HEADING_\d+$/.test(nodes[index].style)) values.push(nodes[index++].text);
       const labelled = prefix => cleanText(values.find(value => normaliseHeading(value.split(':')[0]) === prefix)?.split(':').slice(1).join(':') || '');
       if (special === 'image') {
         const imageId = getDriveFileId(labelled('image url'));
@@ -235,8 +265,11 @@ const parseSetup = tab => {
 };
 
 const parseLocale = tab => {
-  const paragraphs = extractParagraphs(tab);
-  const { values, stopIndex } = parseFields(paragraphs, LOCALE_FIELDS, 'article body');
+  const nodes = extractContentNodes(tab);
+  const bodyIndex = nodes.findIndex(node => node.type === 'paragraph' && normaliseHeading(node.text) === 'article body');
+  const metadataParagraphs = nodes.slice(0, bodyIndex < 0 ? nodes.length : bodyIndex + 1)
+    .filter(node => node.type === 'paragraph');
+  const { values } = parseFields(metadataParagraphs, LOCALE_FIELDS, 'article body');
   return {
     seoTitle: scalar(values, 'seoTitle'), metaDescription: scalar(values, 'metaDescription'),
     socialTitle: scalar(values, 'socialTitle'), socialDescription: scalar(values, 'socialDescription'),
@@ -244,7 +277,7 @@ const parseLocale = tab => {
     coverAlt: scalar(values, 'coverAlt'), coverCaption: scalar(values, 'coverCaption'),
     ctaHeading: scalar(values, 'ctaHeading'), ctaHighlighted: scalar(values, 'ctaHighlighted'),
     ctaCopy: scalar(values, 'ctaCopy'), ctaLabel: scalar(values, 'ctaLabel'), ctaUrl: safeCtaUrl(scalar(values, 'ctaUrl')),
-    blocks: parseBodyBlocks(paragraphs.slice(stopIndex))
+    blocks: parseBodyBlocks(bodyIndex < 0 ? [] : nodes.slice(bodyIndex + 1))
   };
 };
 
