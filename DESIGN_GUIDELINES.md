@@ -87,6 +87,15 @@ The sitemap establishes the template for non-homepage pages:
 
 Future pages may vary their content and hero image but not the shared hero geometry, shell, media treatment, palette, heading treatment, icon language, CTA or footer contract.
 
+### Contextual assistance badge
+
+- Eligible commercial and informational pages use one shared bottom-start assistance launcher with the Lucide `badge-question-mark` icon.
+- Keep the resting control as a compact 54px blue square. On desktop hover or keyboard focus it may expand horizontally to reveal “Not sure where to start?”. Touch devices retain the compact launcher until tapped.
+- Clicking the launcher opens a white vertical guidance card with a blue outline, concise page-relevant copy and one primary contact action. SEO, Website and Free Website journeys may use tailored copy; other eligible pages use the general route.
+- Reveal the launcher only after meaningful engagement (12 seconds or approximately 18% page scroll), never while the analytics-consent dialog is visible, and hide it while the mobile menu is open.
+- Do not render the launcher on Contact, Careers, role, legal, WIP or privacy-preference destinations. These pages either already provide the intended action or should remain distraction-free.
+- The control must support `aria-expanded`, labelled controls, Escape and outside-click dismissal, focus restoration, translated copy, right-to-left layouts and reduced-motion preferences.
+
 ### Work-in-progress page
 
 - `/wip` is the single shared public destination for every page that has not been built yet; `wip.html` remains only its source filename.

@@ -776,6 +776,101 @@
     track.scrollBy({ left: readingDirection * direction * ((firstCard?.getBoundingClientRect().width || 380) + gap), behavior: 'smooth' });
   });
 
+  const createSiteAssistance = () => {
+    const currentPath = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+    const currentFile = currentPath.split('/').pop()?.replace(/\.html$/, '') || '';
+    const excludedRoutes = ['/contact', '/careers', '/career-role', '/wip', '/privacy-policy', '/cookie-policy', '/terms'];
+    const excludedFiles = new Set(['contact', 'careers', 'career-role', 'wip', 'privacy-policy', 'cookie-policy', 'terms']);
+    if (excludedRoutes.some(route => currentPath === route || currentPath.startsWith(`${route}/`)) || excludedFiles.has(currentFile)) return;
+
+    const isFreeWebsite = currentPath.includes('/free-website') || currentFile === 'free-website';
+    const isSeo = currentPath.includes('/services/seo') || currentPath.startsWith('/seo/') || ['seo', 'seo-cyprus', 'seo-limassol'].includes(currentFile);
+    const isWebsite = currentPath.includes('/services/website') || ['website-services', 'website-development'].includes(currentFile);
+    const variants = {
+      general: {
+        title: 'Not sure where to start?',
+        copy: 'Tell us what you want to improve. We will help identify the clearest next step.',
+        label: 'Talk to Studio 17', href: '/contact?source=assistance-badge'
+      },
+      seo: {
+        title: 'Want to improve your search visibility?',
+        copy: 'Get a practical review of your website, search presence and next opportunities.',
+        label: 'Get your free SEO analysis', href: '/contact?service=seo&source=assistance-badge'
+      },
+      website: {
+        title: 'Planning a new website?',
+        copy: 'Tell us about the business and we will help define the right website scope.',
+        label: 'Discuss your website', href: '/contact?service=website&source=assistance-badge'
+      },
+      freeWebsite: {
+        title: 'Could your next website cost €0?',
+        copy: 'Selected businesses can receive a complete one-page website with design and development included.',
+        label: 'Apply for a free website', href: '/contact?service=free-website&source=assistance-badge'
+      }
+    };
+    const content = variants[isFreeWebsite ? 'freeWebsite' : isSeo ? 'seo' : isWebsite ? 'website' : 'general'];
+    const assistance = document.createElement('div');
+    assistance.className = 'site-assist';
+    assistance.dataset.siteAssist = '';
+    assistance.hidden = true;
+    assistance.innerHTML = `<button class="site-assist-launcher" type="button" aria-expanded="false" aria-controls="site-assist-panel"><i data-lucide="badge-question-mark" aria-hidden="true"></i><span></span></button><section class="site-assist-panel" id="site-assist-panel" aria-labelledby="site-assist-title" hidden><button class="site-assist-close" type="button"><i data-lucide="x" aria-hidden="true"></i></button><p class="site-assist-kicker"></p><h2 id="site-assist-title"></h2><p class="site-assist-copy"></p><a class="solid-button site-assist-cta"></a></section>`;
+    document.body.appendChild(assistance);
+
+    const launcher = assistance.querySelector('.site-assist-launcher');
+    const panel = assistance.querySelector('.site-assist-panel');
+    const closeButton = assistance.querySelector('.site-assist-close');
+    const updateCopy = () => {
+      launcher.querySelector('span').textContent = translateText('Not sure where to start?');
+      launcher.setAttribute('aria-label', translateText('Open Studio 17 guidance'));
+      closeButton.setAttribute('aria-label', translateText('Close guidance'));
+      assistance.querySelector('.site-assist-kicker').textContent = translateText('A useful next step');
+      assistance.querySelector('#site-assist-title').textContent = translateText(content.title);
+      assistance.querySelector('.site-assist-copy').textContent = translateText(content.copy);
+      const cta = assistance.querySelector('.site-assist-cta');
+      cta.textContent = translateText(content.label);
+      cta.href = localiseServicesMenuHref(content.href);
+    };
+    const setOpen = (open, { restoreFocus = false } = {}) => {
+      assistance.classList.toggle('is-open', open);
+      launcher.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+      if (open) closeButton.focus();
+      else if (restoreFocus) launcher.focus();
+    };
+    const analyticsNoticeVisible = () => {
+      const notice = document.querySelector('.analytics-consent');
+      return notice && !notice.hidden;
+    };
+    let engaged = false;
+    const revealLauncher = () => {
+      engaged = true;
+      if (!analyticsNoticeVisible()) assistance.hidden = false;
+    };
+    const revealFromScroll = () => {
+      const scrollable = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
+      if (scrollY / scrollable < .18) return;
+      revealLauncher();
+      window.removeEventListener('scroll', revealFromScroll);
+    };
+
+    launcher.addEventListener('click', () => setOpen(launcher.getAttribute('aria-expanded') !== 'true'));
+    closeButton.addEventListener('click', () => setOpen(false, { restoreFocus: true }));
+    document.addEventListener('click', event => {
+      if (!assistance.classList.contains('is-open') || assistance.contains(event.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && assistance.classList.contains('is-open')) setOpen(false, { restoreFocus: true });
+    });
+    window.addEventListener('studio17:languagechange', updateCopy);
+    window.addEventListener('studio17:analyticsconsent', () => { if (engaged) assistance.hidden = false; });
+    window.addEventListener('scroll', revealFromScroll, { passive: true });
+    window.setTimeout(revealLauncher, 12000);
+    updateCopy();
+    window.lucide?.createIcons({ attrs: { 'stroke-width': 2 } });
+  };
+  createSiteAssistance();
+
   const revealItems = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver(entries => {

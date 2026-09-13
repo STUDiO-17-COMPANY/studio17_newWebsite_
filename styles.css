@@ -280,6 +280,45 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .analytics-consent-reject:hover { color: var(--white); background: var(--blue); transform: translateY(-2px); }
 .analytics-consent-button:focus-visible { outline: 3px solid #8fb1ff; outline-offset: 4px; }
 
+/* Contextual, user-opened assistance badge */
+.site-assist { position: fixed; z-index: 190; inset-inline-start: max(20px,calc((100vw - var(--shell)) / 2)); bottom: 20px; }
+.site-assist[hidden], .site-assist-panel[hidden] { display: none; }
+body.menu-open .site-assist { visibility: hidden; opacity: 0; pointer-events: none; }
+.site-assist-launcher { display: flex; width: 54px; height: 54px; align-items: center; gap: 11px; border: 0; padding: 0 16px; overflow: hidden; color: var(--white); background: var(--blue); box-shadow: 0 14px 38px rgba(15,23,42,.22); cursor: pointer; white-space: nowrap; transition: width .32s var(--ease), background .2s ease, transform .2s var(--ease); animation: site-assist-arrive .45s var(--ease) both; }
+.site-assist-launcher > .lucide { width: 22px; height: 22px; flex: 0 0 22px; }
+.site-assist-launcher > span { max-width: 0; overflow: hidden; font-size: 13px; font-weight: 800; opacity: 0; transition: max-width .32s var(--ease), opacity .18s ease; }
+.site-assist-launcher:hover, .site-assist-launcher:focus-visible, .site-assist.is-open .site-assist-launcher { width: 238px; background: var(--ink); transform: translateY(-2px); }
+.site-assist-launcher:hover > span, .site-assist-launcher:focus-visible > span, .site-assist.is-open .site-assist-launcher > span { max-width: 174px; opacity: 1; }
+.site-assist-launcher:focus-visible, .site-assist-close:focus-visible, .site-assist-cta:focus-visible { outline: 3px solid #8fb1ff; outline-offset: 3px; }
+.site-assist-panel { position: absolute; inset-inline-start: 0; bottom: calc(100% + 12px); width: min(390px,calc(100vw - 40px)); border: 3px solid var(--blue); padding: 27px 26px 25px; color: var(--ink); background: var(--white); box-shadow: 0 24px 70px rgba(15,23,42,.22); animation: site-assist-panel-in .24s var(--ease) both; }
+.site-assist-close { position: absolute; top: 12px; inset-inline-end: 12px; display: grid; width: 34px; height: 34px; place-items: center; border: 0; padding: 0; color: var(--ink); background: transparent; cursor: pointer; transition: color .2s ease, background .2s ease; }
+.site-assist-close:hover { color: var(--white); background: var(--blue); }
+.site-assist-close .lucide { width: 19px; height: 19px; }
+.site-assist-kicker { margin: 0 44px 13px 0; color: var(--blue); font-size: 10px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+html[dir="rtl"] .site-assist-kicker { margin-right: 0; margin-left: 44px; }
+.site-assist-panel h2 { max-width: 320px; margin: 0 0 13px; font-size: 29px; line-height: 1.07; letter-spacing: -.045em; }
+.site-assist-copy { margin: 0 0 22px; color: #536075; font-size: 14px; line-height: 1.58; }
+.site-assist-cta { width: 100%; min-width: 0; justify-content: center; }
+@keyframes site-assist-arrive { from { opacity: 0; transform: translateY(12px) scale(.94); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes site-assist-panel-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-assist-launcher, .site-assist-panel { animation: none; transition: none; }
+}
+
+@media (max-width: 600px) {
+  .site-assist { inset-inline-start: 12px; bottom: 12px; }
+  .site-assist-panel { position: fixed; inset-inline: 12px; bottom: 78px; width: auto; max-height: calc(100vh - 102px); overflow-y: auto; padding: 24px 22px 22px; }
+  .site-assist-panel h2 { font-size: 26px; }
+  .site-assist.is-open .site-assist-launcher { width: 54px; background: var(--blue); transform: none; }
+  .site-assist.is-open .site-assist-launcher > span { max-width: 0; opacity: 0; }
+}
+
+@media (hover: none) {
+  .site-assist-launcher:hover { width: 54px; background: var(--blue); transform: none; }
+  .site-assist-launcher:hover > span { max-width: 0; opacity: 0; }
+}
+
 /* Shared internal-page hero — the homepage media treatment is a Studio 17 signature. */
 .page-hero { position: relative; height: 296px; min-height: 296px; margin-top: var(--section-gap); overflow: hidden; color: var(--white); background: var(--ink); }
 .page-hero::before, .page-hero::after { content: ""; position: absolute; z-index: 2; top: 0; bottom: 0; width: max(calc((100vw - var(--shell)) / 2),90px); pointer-events: none; }
