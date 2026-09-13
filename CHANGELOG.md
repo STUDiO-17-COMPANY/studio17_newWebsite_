@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-13 — Limassol proof carousel controls
+
+- Moved the previous and next controls directly beside the proof-section title instead of separating them across the full heading width.
+- Unified both controls with the same dark default appearance and a blue-square hover and keyboard-focus state with a white arrow.
+- Kept the heading and controls compact and responsive, allowing the controls to sit immediately below the title on narrow screens.
+
 ## 2026-09-12 — Limassol proof placement
 
 - Moved “Based in Limassol, trusted to deliver real digital work” directly below the local-discovery section while preserving its translated content and continuous carousel behavior.

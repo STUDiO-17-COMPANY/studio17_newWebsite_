@@ -7,6 +7,7 @@ const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
+const css = read('styles.css');
 const pages = [
   { file: 'seo-cyprus.html', route: '/seo/cyprus', market: 'cyprus', areaType: 'Country', areaName: 'Cyprus' },
   { file: 'seo-limassol.html', route: '/seo/limassol', market: 'limassol', areaType: 'City', areaName: 'Limassol' }
@@ -85,6 +86,10 @@ assert.match(limassolPage, /Find the gaps between Maps, your website and your ne
 assert.doesNotMatch(limassolPage, /Find the gaps between Maps, your website and the next enquiry/);
 assert.match(limassolPage, /id="seo-limassol-proof-track"[\s\S]*?PhosOpticsWebsiteMainPage\.webp[\s\S]*?GoogleReviewTag\.webp[\s\S]*?Nerouppos Barber Shop/);
 assert.match(limassolPage, /data-carousel-prev="seo-limassol-proof-track"[\s\S]*?data-carousel-next="seo-limassol-proof-track"/);
+assert.match(css, /\.seo-limassol-proof-heading \{[^}]*justify-content:\s*flex-start/);
+assert.match(css, /\.seo-limassol-proof-heading \.triangle-controls \{[^}]*gap:\s*8px/);
+assert.match(css, /\.seo-limassol-proof-heading \.triangle-controls button \{[^}]*color:\s*var\(--ink\)[^}]*background:\s*transparent/);
+assert.match(css, /\.seo-limassol-proof-heading \.triangle-controls button:hover,[\s\S]*?background:\s*var\(--blue\)/);
 assert.ok(limassolPage.indexOf('seo-limassol-proof') > limassolPage.indexOf('seo-limassol-discovery'));
 assert.ok(limassolPage.indexOf('seo-limassol-proof') < limassolPage.indexOf('seo-limassol-services'));
 assert.match(limassolPage, /data-infinite-carousel/);

@@ -1871,8 +1871,13 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .seo-limassol-industry-grid article:hover { background: var(--white); transform: translateY(-3px); }
 .seo-limassol-industry-grid h3 { margin: 0 0 34px; color: var(--ink); font-size: 21px; line-height: 1.16; letter-spacing: -.03em; }
 .seo-limassol-industry-grid p { margin: 0; color: #596477; font-size: 13px; line-height: 1.55; }
-.seo-limassol-proof-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 36px; margin-bottom: 38px; }
+.seo-limassol-proof-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 16px; margin-bottom: 38px; }
 .seo-limassol-proof-heading h2 { max-width: 920px; margin: 0; }
+.seo-limassol-proof-heading .triangle-controls { flex: 0 0 auto; gap: 8px; }
+.seo-limassol-proof-heading .triangle-controls button { width: 40px; height: 40px; color: var(--ink); background: transparent; opacity: 1; transition: color .2s ease, background .2s ease; }
+.seo-limassol-proof-heading .triangle-controls button:hover,
+.seo-limassol-proof-heading .triangle-controls button:focus-visible { color: var(--white); background: var(--blue); opacity: 1; transform: none; }
+.seo-limassol-proof-heading .triangle-controls .lucide { width: 27px; height: 27px; stroke-width: 2.5; }
 .seo-limassol-proof-track { grid-auto-columns: minmax(540px,680px); gap: 20px; }
 .seo-limassol-proof-card { min-height: 500px; margin: 0; scroll-snap-align: start; border: 1px solid #cbd4e1; background: var(--paper); overflow: hidden; }
 .seo-limassol-proof-media { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); }
@@ -2082,7 +2087,8 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .seo-limassol-service-grid article:last-child { grid-column: auto; }
   .seo-limassol-service-grid article, .seo-limassol-industry-grid article { min-height: 170px; }
   .seo-limassol-project, .seo-limassol-review { min-height: 270px; padding: 24px; }
-  .seo-limassol-proof-heading { align-items: center; gap: 20px; }
+  .seo-limassol-proof-heading { align-items: flex-start; gap: 14px; }
+  .seo-limassol-proof-heading h2 { width: 100%; }
   .seo-limassol-proof-track { grid-auto-columns: calc(100vw - 48px); gap: 18px; }
   .seo-limassol-proof-card, .seo-limassol-review { min-height: 0; }
   .seo-limassol-proof-copy { min-height: 250px; padding: 23px; }
