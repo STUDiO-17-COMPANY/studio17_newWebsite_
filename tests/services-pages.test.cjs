@@ -38,6 +38,7 @@ test('website development page preserves commercial and portfolio requirements',
   assert.match(html, /<h3>Custom Website<\/h3>[\s\S]*<small>starting at<\/small>/);
   assert.match(html, /Language allowances cover the technical implementation of supplied translations/);
   assert.match(html, /class="website-development-cta-media"[\s\S]*src="\/Images\/PhosOpticsWebsiteMainPage\.webp"/);
+  assert.match(html, /class="page-hero website-development-hero"[\s\S]*src="\/Images\/Team_heroimage\.webp"/);
   assert.match(html, /class="[^"]*website-development-cta[^"]*"[\s\S]*class="cta-actions"[\s\S]*href="\/contact"[\s\S]*href="\/wip\?for=portfolio"[\s\S]*See our work/);
   assert.match(html, /class="design-link" href="\/wip\?for=portfolio"/);
   assert.match(html, /data-service-key="compareAction"[\s\S]*href="\/services\/website-pricing"[\s\S]*Compare prices/);
@@ -64,6 +65,7 @@ test('website pricing page compares the five packages accessibly', () => {
   const css = read('styles.css');
   assert.match(html, /<html lang="en" data-supported-languages="en,el,ru">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website-pricing"/);
+  assert.match(html, /class="page-hero website-pricing-hero"[\s\S]*src="\/Images\/Team_heroimage\.webp"/);
   assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 4);
   assert.match(html, /class="website-pricing-scroll" role="region"[^>]*tabindex="0"/);
   assert.equal((html.match(/class="website-pricing-group"/g) || []).length, 3);
@@ -77,6 +79,7 @@ test('website pricing page compares the five packages accessibly', () => {
   assert.doesNotMatch(html, /class="page-hero-icon"/);
   assert.match(css, /\.website-pricing-table thead th:first-child, \.website-pricing-table tbody th\[scope="row"\][^{]*\{[^}]*position: sticky/);
   assert.match(css, /\.website-pricing-overview, \.website-pricing-table-section \{ margin-top: 32px; padding-block: 24px; \}/);
+  assert.match(css, /\.website-development-main \.website-project-card \{ background: transparent; \}/);
   const vm = require('node:vm');
   const context = { window: { Studio17ServiceLocaleData: {} } };
   vm.runInNewContext(read('service-locales/website-pricing.js'), context);

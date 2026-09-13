@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-13 — Website hero and background correction
+
+- Applied `Team_heroimage.webp` to the Website Development and Website Pricing heroes.
+- Corrected the Website Pricing page and its outer sections to the approved `#F8FAFC` base background.
+- Removed the white surface from the Website Development client-work cards so they sit directly on the page background.
+
 ## 2026-09-13 — Approved base page colour
 
 - Corrected the Website Development page and its outer sections to use the approved `#F8FAFC` base background while preserving white only for intentional cards and content surfaces.
