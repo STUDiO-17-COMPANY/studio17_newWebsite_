@@ -50,7 +50,7 @@ test('website development page preserves commercial and portfolio requirements',
   assert.equal((html.match(/class="website-process"[\s\S]*?<\/section>/)?.[0].match(/<li><span>\d+/g) || []).length, 0);
   assert.match(css, /\.website-process li:not\(:last-child\)::after[^}]*animation: seo-plan-arrow-flow/);
   assert.match(css, /\.page-hero-icon \{ display: none; \}/);
-  assert.match(css, /\.website-development-main \.website-work[^}]*margin-top: 32px; padding-block: 24px; background: var\(--white\)/);
+  assert.match(css, /\.website-development-main \.website-work[^}]*margin-top: 32px; padding-block: 24px; background: var\(--paper\)/);
   const sectionOrder = ['website-work', 'website-packages', 'website-foundation'].map(className => html.indexOf(`class="${className}"`));
   assert.ok(sectionOrder.every((position, index) => position >= 0 && (index === 0 || position > sectionOrder[index - 1])), 'portfolio, packages and foundations must appear in the approved order');
   const structured = jsonLd(html)[0];

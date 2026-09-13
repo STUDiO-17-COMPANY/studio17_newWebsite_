@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-13 — Approved base page colour
+
+- Corrected the Website Development page and its outer sections to use the approved `#F8FAFC` base background while preserving white only for intentional cards and content surfaces.
+- Added regression coverage for the exact rendered background colour across desktop, mobile and every published language.
+
 ## 2026-09-13 — Website Pricing design alignment
 
 - Applied the approved 32px section spacing, 24px internal padding and continuous white background to the Website Pricing page on desktop and mobile.
