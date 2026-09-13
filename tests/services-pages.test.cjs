@@ -45,10 +45,10 @@ test('website service-family page provides a distinct, translated decision journ
   const html = read('website-services.html');
   const css = read('styles.css');
   const behavior = read('service-pages.js');
-  assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru">/);
+  assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 6);
-  assert.doesNotMatch(html, /hreflang="he"|data-lang="he"/);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
+  assert.match(html, /hreflang="he"/);
   assert.doesNotMatch(html, /website-services-intro|Your website is one system/);
   assert.match(html, /data-service-page="websiteServices"/);
   assert.equal((html.match(/data-website-service="/g) || []).length, 8);
@@ -94,6 +94,7 @@ test('website service-family page provides a distinct, translated decision journ
   const vm = require('node:vm');
   const context = { window: { Studio17ServiceLocaleData: {} } };
   vm.runInNewContext(localizedSource, context);
+  vm.runInNewContext(read('service-locales/requested-translations.js'), context);
   for (const locale of ['pt-PT', 'es']) {
     const localizedPage = context.window.Studio17ServiceLocaleData[locale].websiteServices;
     for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'capabilitiesHeading', 'capabilities', 'workCases', 'searchGrowth', 'freeCta', 'faqHeading', 'faq', 'closing']) assert.ok(localizedPage[key], `${locale}: missing ${key}`);
@@ -101,7 +102,10 @@ test('website service-family page provides a distinct, translated decision journ
     assert.equal((localizedPage.workCases.match(/class="website-case-study /g) || []).length, 2, locale);
     assert.equal((localizedPage.faq.match(/<details>/g) || []).length, 6, locale);
   }
-  assert.equal(context.window.Studio17ServiceLocaleData.he, undefined);
+  const hebrewPage = context.window.Studio17ServiceLocaleData.he.websiteServices;
+  for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'capabilitiesHeading', 'capabilities', 'workCases', 'searchGrowth', 'freeCta', 'faqHeading', 'faq', 'closing']) assert.ok(hebrewPage[key], `he: missing ${key}`);
+  assert.equal((hebrewPage.capabilities.match(/data-website-service="/g) || []).length, 8);
+  assert.equal((hebrewPage.faq.match(/<details>/g) || []).length, 6);
 });
 
 test('service-page FAQs use independent two-column accordion groups', () => {
@@ -179,11 +183,10 @@ test('free website page is transparent, lead-ready and translated in all site la
 test('SEO page is an international, evidence-safe commercial service page', () => {
   const html = read('seo.html');
   const css = read('styles.css');
-  assert.match(html, /<html lang="en" data-supported-languages="en,el,ru">/);
+  assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/seo"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 4);
-  for (const language of ['x-default', 'en', 'el', 'ru']) assert.match(html, new RegExp(`hreflang="${language}"`));
-  for (const language of ['pt-PT', 'es', 'he']) assert.doesNotMatch(html, new RegExp(`hreflang="${language}"`));
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
+  for (const language of ['x-default', 'en', 'pt-PT', 'es', 'el', 'ru', 'he']) assert.match(html, new RegExp(`hreflang="${language}"`));
   assert.match(html, /<h1[^>]*><span>SEO services<\/span> that connect search demand to growth\.<\/h1>/);
   assert.match(html, /<div class="hero-media"[^>]*><img src="\/Images\/SEO_heroimage\.webp" alt="" width="1744" height="296">/);
   assert.equal((html.match(/class="seo-capability-grid"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<article>/g) || []).length, 9);
@@ -247,7 +250,7 @@ test('all service locales preserve the page schema and content counts', () => {
   }
 });
 
-test('SEO page translations are complete only for the approved Greek and Russian scope', () => {
+test('SEO page translations cover the approved six-language scope', () => {
   const englishKeys = ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'opportunity', 'growthSystem', 'capabilitiesHeading', 'capabilities', 'method', 'aiSearch', 'proof', 'why', 'locations', 'process', 'faqHeading', 'faqIncluded', 'faq', 'closing'];
   for (const locale of ['el', 'ru']) {
     const page = require(path.join(root, 'service-locales', `${locale}.json`)).pages.seo;
@@ -262,9 +265,14 @@ test('SEO page translations are complete only for the approved Greek and Russian
     assert.equal((page.faqIncluded.match(/<details>/g) || []).length, 1, locale);
     assert.equal((page.faq.match(/<details>/g) || []).length + (page.faqIncluded.match(/<details>/g) || []).length, 8, locale);
   }
+  const vm = require('node:vm');
+  const context = { window: { Studio17ServiceLocaleData: {} } };
+  vm.runInNewContext(read('service-locales/requested-translations.js'), context);
   for (const locale of ['pt-PT', 'es', 'he']) {
-    const pages = require(path.join(root, 'service-locales', `${locale}.json`)).pages;
-    assert.equal(pages.seo, undefined, `${locale} should not advertise an unapproved SEO translation`);
+    const page = context.window.Studio17ServiceLocaleData[locale].seo;
+    for (const key of englishKeys.filter(key => key !== 'faqIncluded')) assert.ok(page[key], `${locale}: missing ${key}`);
+    assert.equal((page.capabilities.match(/<article>/g) || []).length, 9, locale);
+    assert.equal((page.faq.match(/<details>/g) || []).length, 8, locale);
   }
   assert.match(read('service-pages.js'), /page === 'seo' && record\.key === 'faq'[\s\S]*?faqIncluded/);
 });

@@ -184,7 +184,8 @@ Future pages may vary their content and hero image but not the shared hero geome
 
 - Existing published translations remain available and maintained.
 - New pages default to English, Greek and Russian.
-- `/services/website` is an approved exception: publish English, Portuguese (Portugal), Spanish, Greek and Russian, but not Hebrew.
+- `/services/website` is published in all six website languages: English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew.
+- `/services/seo` is published in all six website languages. `/seo/cyprus` and `/seo/limassol` are published in English, Greek, Russian and Hebrew.
 - Add Portuguese (Portugal), Spanish or Hebrew to a new page only when explicitly requested.
 - Shared navigation and WIP labels remain translated across every language already available on the surrounding page so navigation never falls back to an unrelated label.
 

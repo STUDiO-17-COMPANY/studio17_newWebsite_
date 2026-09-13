@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-13 — Requested service-page translations
+
+- Added Hebrew to `/services/website`, `/seo/cyprus` and `/seo/limassol`, including right-to-left layout, translated metadata, controls, FAQs and reciprocal `hreflang` alternatives.
+- Added Portuguese (Portugal), Spanish and Hebrew to `/services/seo`, preserving its full capability content, internal market links and interactive behavior.
+- Expanded `/services/website` to all six website languages and supplied Hebrew labels for its desktop and mobile service selector.
+- Added a maintainable page-region translation source and generator so the complete component structure, links, Lucide icons and accessibility attributes remain synchronized with the English pages.
+- Added structural and real-browser regression coverage at desktop and mobile widths for every newly published page-language combination.
+
 ## 2026-09-13 — Contextual assistance badge
 
 - Added a delayed, user-opened Lucide `badge-question-mark` launcher that expands to “Not sure where to start?” on desktop hover and keyboard focus.

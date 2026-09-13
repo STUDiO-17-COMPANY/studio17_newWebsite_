@@ -13,12 +13,12 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/our-story` (`our-story.html`) — the approved seven-chapter Studio 17 origin and evolution narrative.
 - `/team` (`team.html`) — confirmed Studio 17 founders and leadership introduction without unapproved personal details.
 - `/services` (`services.html`) — multilingual, price-free catalogue of all Studio 17 service areas.
-- `/services/website` (`website-services.html`) — English, Greek and Russian overview of website development, revamp, design, SEO, GEO, copywriting, localisation and maintenance.
+- `/services/website` (`website-services.html`) — English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew overview of website development, revamp, design, SEO, GEO, copywriting, localisation and maintenance.
 - `/services/website-development` (`website-development.html`) — multilingual Website Development packages, inclusions, proof projects, process and FAQs.
 - `/services/free-website` (`free-website.html`) — six-language lead page for selected businesses applying for a professional one-page website without a Studio 17 design or development fee.
-- `/services/seo` (`seo.html`) — international SEO strategy and delivery page in English, Greek and Russian.
-- `/seo/cyprus` (`seo-cyprus.html`) — Cyprus-wide commercial SEO landing page for organic, local, multilingual and AI-search enquiries.
-- `/seo/limassol` (`seo-limassol.html`) — Limassol local SEO landing page focused on Search, Maps, Google Business Profile and qualified local enquiries.
+- `/services/seo` (`seo.html`) — international SEO strategy and delivery page in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew.
+- `/seo/cyprus` (`seo-cyprus.html`) — Cyprus-wide commercial SEO landing page in English, Greek, Russian and Hebrew for organic, local, multilingual and AI-search enquiries.
+- `/seo/limassol` (`seo-limassol.html`) — Limassol local SEO landing page in English, Greek, Russian and Hebrew focused on Search, Maps, Google Business Profile and qualified local enquiries.
 - `/privacy-policy` (`privacy-policy.html`) — multilingual privacy information covering website, enquiry and analytics processing.
 - `/cookie-policy` (`cookie-policy.html`) — multilingual browser-storage and consent information with a working Analytics-settings control.
 - `/terms` (`terms.html`) — multilingual terms governing use of the public Studio 17 website.

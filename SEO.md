@@ -51,8 +51,8 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 - WIP pages stay `noindex,follow` until real, approved content replaces them.
 - Never add unsupported review ratings, awards, locations or business claims to structured data.
 - Keep the Website Development `Service`/`OfferCatalog` structured data synchronized with visible package names and prices. The catalogue page remains price-free.
-- Keep the SEO page's `Service`/`OfferCatalog` data synchronized with its ten visible capabilities. It is international, price-free and available only in English, Greek and Russian until another translation is approved.
-- Keep both geographic SEO landing pages available only in English, Greek and Russian until another translation is approved. Each needs a location-specific canonical, reciprocal four-link `hreflang` set, unique title, description, H1, visible FAQs and truthful `Service` area coverage.
+- Keep the SEO page's `Service`/`OfferCatalog` data synchronized with its ten visible capabilities. It is international, price-free and published in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew.
+- Keep both geographic SEO landing pages published in English, Greek, Russian and Hebrew. Each needs a location-specific canonical, reciprocal five-link `hreflang` set (`x-default` plus the four published languages), unique title, description, H1, visible FAQs and truthful `Service` area coverage.
 - `/seo/cyprus` serves Cyprus-wide commercial agency intent across organic, local, multilingual and AI search. `/seo/limassol` serves local agency intent with an explicit Search, Maps, Google Business Profile and enquiry journey. Do not reuse one page by swapping place names.
 - Do not add SEO guarantees, invented performance results, unsupported ratings or `FAQPage` markup. Use Search Console and consent-aware analytics as measurement tools, not as claims of results.
 - Preserve descriptive project alternative text, explicit image dimensions and crawlable project links; do not replace useful visible copy with image-only case studies.

@@ -29,7 +29,7 @@ for (const page of pages) {
   assert.ok(title && description, `${page.file} requires a title and description`);
   assert.equal(h1Matches.length, 1, `${page.file} must have one H1`);
   assert.match(source, new RegExp(`<link rel="canonical" href="${canonical.replaceAll('/', '\\/')}"`));
-  assert.equal((source.match(/hreflang=/g) || []).length, 4, `${page.file} must expose x-default, EN, EL and RU alternates`);
+  assert.equal((source.match(/hreflang=/g) || []).length, 5, `${page.file} must expose x-default, EN, EL, RU and HE alternates`);
   assert.match(source, new RegExp(`href="\\/contact\\?service=seo&amp;market=${page.market}"`));
   assert.match(source, /Get Your Free SEO Analysis/);
   assert.match(source, /Talk to Sales/);
@@ -55,10 +55,11 @@ assert.equal(headings.size, pages.length, 'Location pages must have unique H1 co
 const localeContext = { window: { Studio17ServiceLocaleData: {} } };
 vm.createContext(localeContext);
 vm.runInContext(read(path.join('service-locales', 'seo-locations.js')), localeContext);
+vm.runInContext(read(path.join('service-locales', 'requested-translations.js')), localeContext);
 for (const page of pages) {
   const pageKey = page.market === 'cyprus' ? 'seoCyprus' : 'seoLimassol';
   const serviceKeys = [...read(page.file).matchAll(/data-service-key="([^"]+)"/g)].map(match => match[1]);
-  for (const locale of ['el', 'ru']) {
+  for (const locale of ['el', 'ru', 'he']) {
     const localizedPage = localeContext.window.Studio17ServiceLocaleData[locale]?.[pageKey];
     assert.ok(localizedPage, `${pageKey} must exist in ${locale}`);
     assert.deepEqual(serviceKeys.filter(key => !(key in localizedPage)), [], `${pageKey} has missing ${locale} regions`);

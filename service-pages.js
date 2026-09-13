@@ -74,7 +74,8 @@
       'pt-PT': { build: 'Construção de website', visibility: 'Visibilidade na pesquisa', content: 'Conteúdo e mercados', care: 'Manutenção e melhoria', area: 'Área do website', service: 'Serviço de website', sales: 'Falar com vendas', explore: 'Explorar serviço', previous: 'Serviço anterior', next: 'Serviço seguinte' },
       es: { build: 'Creación web', visibility: 'Visibilidad en buscadores', content: 'Contenido y mercados', care: 'Mantenimiento y mejora', area: 'Área del sitio web', service: 'Servicio web', sales: 'Hablar con ventas', explore: 'Explorar servicio', previous: 'Servicio anterior', next: 'Servicio siguiente' },
       el: { build: 'Κατασκευή ιστοσελίδας', visibility: 'Ορατότητα αναζήτησης', content: 'Περιεχόμενο & αγορές', care: 'Φροντίδα & βελτίωση', area: 'Τομέας ιστοσελίδας', service: 'Υπηρεσία ιστοσελίδας', sales: 'Μιλήστε με τις πωλήσεις', explore: 'Δείτε την υπηρεσία', previous: 'Προηγούμενη υπηρεσία ιστοσελίδας', next: 'Επόμενη υπηρεσία ιστοσελίδας' },
-      ru: { build: 'Создание сайта', visibility: 'Видимость в поиске', content: 'Контент и рынки', care: 'Поддержка и развитие', area: 'Направление', service: 'Услуга для сайта', sales: 'Связаться с отделом продаж', explore: 'Смотреть услугу', previous: 'Предыдущая услуга для сайта', next: 'Следующая услуга для сайта' }
+      ru: { build: 'Создание сайта', visibility: 'Видимость в поиске', content: 'Контент и рынки', care: 'Поддержка и развитие', area: 'Направление', service: 'Услуга для сайта', sales: 'Связаться с отделом продаж', explore: 'Смотреть услугу', previous: 'Предыдущая услуга для сайта', next: 'Следующая услуга для сайта' },
+      he: { build: 'בניית אתר', visibility: 'נראות בחיפוש', content: 'תוכן ושווקים', care: 'תחזוקה ושיפור', area: 'תחום באתר', service: 'שירות לאתר', sales: 'דברו עם צוות המכירות', explore: 'לפרטי השירות', previous: 'שירות האתר הקודם', next: 'שירות האתר הבא' }
     };
     const language = document.documentElement.lang || 'en';
     const copy = labels[language] || labels.en;
@@ -338,8 +339,11 @@
     if (!navigation) return;
     const copy = {
       en: { label: 'Explore related SEO', services: 'SEO services', cyprus: 'SEO Cyprus', limassol: 'SEO Limassol' },
+      'pt-PT': { label: 'Explorar páginas de SEO relacionadas', services: 'Serviços de SEO', cyprus: 'SEO no Chipre', limassol: 'SEO em Limassol' },
+      es: { label: 'Explorar páginas SEO relacionadas', services: 'Servicios SEO', cyprus: 'SEO en Chipre', limassol: 'SEO en Limassol' },
       el: { label: 'Σχετικές σελίδες SEO', services: 'Υπηρεσίες SEO', cyprus: 'SEO Κύπρος', limassol: 'SEO Λεμεσός' },
-      ru: { label: 'Связанные SEO-страницы', services: 'SEO-услуги', cyprus: 'SEO Кипр', limassol: 'SEO Лимасол' }
+      ru: { label: 'Связанные SEO-страницы', services: 'SEO-услуги', cyprus: 'SEO Кипр', limassol: 'SEO Лимасол' },
+      he: { label: 'עמודי SEO קשורים', services: 'שירותי SEO', cyprus: 'SEO בקפריסין', limassol: 'SEO בלימסול' }
     }[language] || null;
     if (!copy) return;
     const label = navigation.querySelector('[data-related-seo-label]');
