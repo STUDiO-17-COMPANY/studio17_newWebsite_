@@ -482,9 +482,8 @@
     if (action?.firstChild) action.firstChild.nodeValue = `${window.Studio17I18n?.translate?.('Explore website services') || 'Explore website services'} `;
   };
 
-  const removeSeoLocationHeadingPeriods = () => {
-    if (!document.body.classList.contains('seo-location-page')) return;
-    document.querySelectorAll('.seo-location-main h1, .seo-location-main h2').forEach(heading => {
+  const removeTerminalHeadingPeriods = selector => {
+    document.querySelectorAll(selector).forEach(heading => {
       const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
       let lastTextNode = null;
       while (walker.nextNode()) {
@@ -492,6 +491,31 @@
       }
       if (lastTextNode) lastTextNode.nodeValue = lastTextNode.nodeValue.replace(/\.\s*$/, '');
     });
+  };
+
+  const normalisePageHeadingPunctuation = () => {
+    if (document.body.classList.contains('seo-location-page')) removeTerminalHeadingPeriods('.seo-location-main h1, .seo-location-main h2');
+    if (page === 'websiteDevelopment') removeTerminalHeadingPeriods('.website-development-main h1, .website-development-main h2');
+  };
+
+  const normaliseWebsiteDevelopmentDesign = language => {
+    if (page !== 'websiteDevelopment') return;
+    document.querySelectorAll('.website-process li > span').forEach(sequence => {
+      if (/^\d+$/.test(sequence.textContent.trim())) sequence.remove();
+    });
+    const secondaryAction = document.querySelector('.website-development-cta .cta-secondary-button');
+    secondaryAction?.classList.remove('solid-button', 'cta-secondary-button');
+    secondaryAction?.classList.add('design-link');
+    const primaryAction = document.querySelector('.website-development-cta .solid-button');
+    const labels = {
+      en: 'Start your website',
+      'pt-PT': 'Começar o seu website',
+      es: 'Empieza tu sitio web',
+      el: 'Ξεκινήστε το website σας',
+      ru: 'Начать создание сайта',
+      he: 'התחילו את האתר שלכם'
+    };
+    if (primaryAction?.firstChild) primaryAction.firstChild.nodeValue = `${labels[language] || labels.en} `;
   };
 
   const render = language => {
@@ -506,7 +530,8 @@
     });
     updateMetadata(language === 'en' ? englishMetadata : (locale?.meta || englishMetadata));
     normaliseWebsiteFamilyCard();
-    removeSeoLocationHeadingPeriods();
+    normalisePageHeadingPunctuation();
+    normaliseWebsiteDevelopmentDesign(language);
     updateInsertedLinks(language);
     updateRelatedSeoNavigation(language);
     enhanceSeoVisibilityCounter();

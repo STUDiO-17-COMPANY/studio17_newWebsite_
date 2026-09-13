@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-13 — Website Development design alignment
+
+- Applied the approved Website Development rhythm of exactly 32px between sections and no more than 24px internal section padding, on one white page background.
+- Removed the decorative icon from the Website Development hero and disabled the same decorative hero-icon pattern site-wide.
+- Replaced the numbered website process with four connected stages and animated directional arrows, including a vertical mobile treatment and reduced-motion support.
+- Removed terminal full stops from Website Development hero and section headings in every available language.
+- Rebuilt the final CTA around the homepage composition: message first, PHÓS Optics image second, one solid primary action and one lightweight secondary action.
+
 ## 2026-09-13 — Website pricing comparison
 
 - Added the clean, indexable `/services/website-pricing` route in English, Greek and Russian.

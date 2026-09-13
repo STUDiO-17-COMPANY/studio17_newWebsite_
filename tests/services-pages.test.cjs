@@ -25,6 +25,7 @@ test('services catalogue exposes every service without internal codes', () => {
 
 test('website development page preserves commercial and portfolio requirements', () => {
   const html = read('website-development.html');
+  const css = read('styles.css');
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website-development"/);
   assert.equal((html.match(/class="website-package-card(?: [^"]*)?"/g) || []).length, 5);
   for (const price of ['450,00 €', '950,00 €', '1&nbsp;500,00 €', '2&nbsp;250,00 €', '3&nbsp;500,00 €']) assert.ok(html.includes(price), price);
@@ -38,14 +39,18 @@ test('website development page preserves commercial and portfolio requirements',
   assert.match(html, /Language allowances cover the technical implementation of supplied translations/);
   assert.match(html, /class="website-development-cta-media"[\s\S]*src="\/Images\/PhosOpticsWebsiteMainPage\.webp"/);
   assert.match(html, /class="[^"]*website-development-cta[^"]*"[\s\S]*class="cta-actions"[\s\S]*href="\/contact"[\s\S]*href="\/wip\?for=portfolio"[\s\S]*See our work/);
-  assert.match(html, /class="solid-button cta-secondary-button" href="\/wip\?for=portfolio"/);
+  assert.match(html, /class="design-link" href="\/wip\?for=portfolio"/);
   assert.match(html, /data-service-key="compareAction"[\s\S]*href="\/services\/website-pricing"[\s\S]*Compare prices/);
   for (const term of ['SEO foundation', 'GEO foundation', 'Technical SEO']) assert.ok(html.includes(term), term);
   for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/terrassivilla.jpg']) assert.ok(html.includes(asset), asset);
   assert.ok(html.includes('https://www.100pratos.pt/'));
   assert.ok(html.includes('https://www.phosoptics.com/en'));
   assert.ok(html.includes('/insights/terrassivilla-accessible-tourism-in-the-azores'));
-  assert.match(html, /<span>Some of the websites<\/span> we developed\.<\/h2><p>Selected websites across our clients\.<\/p>/);
+  assert.match(html, /<span>Some of the websites<\/span> we developed<\/h2><p>Selected websites across our clients\.<\/p>/);
+  assert.equal((html.match(/class="website-process"[\s\S]*?<\/section>/)?.[0].match(/<li><span>\d+/g) || []).length, 0);
+  assert.match(css, /\.website-process li:not\(:last-child\)::after[^}]*animation: seo-plan-arrow-flow/);
+  assert.match(css, /\.page-hero-icon \{ display: none; \}/);
+  assert.match(css, /\.website-development-main \.website-work[^}]*margin-top: 32px; padding-block: 24px; background: var\(--white\)/);
   const sectionOrder = ['website-work', 'website-packages', 'website-foundation'].map(className => html.indexOf(`class="${className}"`));
   assert.ok(sectionOrder.every((position, index) => position >= 0 && (index === 0 || position > sectionOrder[index - 1])), 'portfolio, packages and foundations must appear in the approved order');
   const structured = jsonLd(html)[0];

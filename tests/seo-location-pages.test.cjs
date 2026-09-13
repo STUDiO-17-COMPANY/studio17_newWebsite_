@@ -114,7 +114,7 @@ assert.match(read('styles.css'), /@keyframes seo-plan-arrow-down/);
 assert.match(read('styles.css'), /\.seo-location-section \{[^}]*margin-top: var\(--section-gap\)[^}]*background: var\(--paper\)/);
 assert.match(read('styles.css'), /\.seo-location-text-link \{[^}]*color: var\(--white\); background: var\(--blue\)/);
 assert.match(read('styles.css'), /\.website-faq-list details p a \{[^}]*color: var\(--blue\)/);
-assert.match(read('service-pages.js'), /removeSeoLocationHeadingPeriods/);
+assert.match(read('service-pages.js'), /normalisePageHeadingPunctuation/);
 assert.match(read('service-pages.js'), /updateRelatedSeoNavigation/);
 assert.match(read('service-pages.js'), /enhanceSeoVisibilityCounter/);
 assert.match(read('service-pages.js'), /enhanceSeoProofCarousel/);
