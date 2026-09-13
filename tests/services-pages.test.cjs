@@ -15,6 +15,7 @@ test('services catalogue exposes every service without internal codes', () => {
   assert.equal((html.match(/class="service-row"/g) || []).length, 43);
   assert.equal((html.match(/class="service-category"/g) || []).length, 5);
   assert.doesNotMatch(html, /WEB-\d+/);
+  for (const packageName of ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website']) assert.match(html, new RegExp(`<h3>${packageName}<\\/h3>`));
   assert.equal(jsonLd(html)[0]['@type'], 'CollectionPage');
   for (const count of ['8 services', '13 services', '11 services', '7 services', '4 services']) assert.match(html, new RegExp(count));
   assert.match(html, /class="services-cta-media"><img src="\/Images\/CTA_Question_Image\.webp"/);
@@ -27,7 +28,13 @@ test('website development page preserves commercial and portfolio requirements',
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website-development"/);
   assert.equal((html.match(/class="website-package-card(?: [^"]*)?"/g) || []).length, 5);
   for (const price of ['450,00 €', '950,00 €', '1&nbsp;500,00 €', '2&nbsp;250,00 €', '3&nbsp;500,00 €']) assert.ok(html.includes(price), price);
-  assert.match(html, /website-package-card is-popular[\s\S]*Most bought[\s\S]*Website – Starter/);
+  for (const packageName of ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website']) assert.ok(html.includes(packageName), packageName);
+  assert.match(html, /website-package-card is-popular[\s\S]*Most bought[\s\S]*Starter Pack/);
+  assert.match(html, /<h3>One Page Website<\/h3>[\s\S]*1 website page[\s\S]*1 week development/);
+  assert.match(html, /<h3>Starter Pack<\/h3>[\s\S]*Up to 6 website pages[\s\S]*Up to 2 weeks development/);
+  assert.match(html, /<h3>Growth Pack<\/h3>[\s\S]*Up to 12 website pages[\s\S]*Up to 2 months development/);
+  assert.match(html, /<h3>Business Pack<\/h3>[\s\S]*Up to 20 website pages[\s\S]*Conversion and performance review/);
+  assert.match(html, /<h3>Custom Website<\/h3>[\s\S]*<small>starting at<\/small>/);
   for (const term of ['SEO foundation', 'GEO foundation', 'Technical SEO']) assert.ok(html.includes(term), term);
   for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/terrassivilla.jpg']) assert.ok(html.includes(asset), asset);
   assert.ok(html.includes('https://www.100pratos.pt/'));
@@ -39,6 +46,7 @@ test('website development page preserves commercial and portfolio requirements',
   const structured = jsonLd(html)[0];
   assert.equal(structured['@type'], 'Service');
   assert.equal(structured.hasOfferCatalog.itemListElement.length, 5);
+  assert.deepEqual(structured.hasOfferCatalog.itemListElement.map(offer => offer.name), ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website']);
 });
 
 test('website service-family page provides a distinct, translated decision journey', () => {
@@ -245,6 +253,8 @@ test('all service locales preserve the page schema and content counts', () => {
     assert.deepEqual(Object.keys(data.pages.websiteDevelopment), Object.keys(reference.pages.websiteDevelopment), locale);
     assert.equal((data.pages.services.catalogue.match(/service-row/g) || []).length, 43, locale);
     assert.equal((data.pages.websiteDevelopment.packages.match(/website-package-card/g) || []).length, 5, locale);
+    assert.deepEqual([...data.pages.websiteDevelopment.packages.matchAll(/website-package-top"><h3>([^<]+)<\/h3>/g)].map(match => match[1]), ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website'], locale);
+    assert.equal((data.pages.services.catalogue.match(/<h3>Growth Pack<\/h3>/g) || []).length, 1, `${locale}: package name must not alter accessibility services`);
     assert.doesNotMatch(data.pages.services.catalogue, /WEB-\d+/, locale);
     assert.match(data.pages.services.closing, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/wip\?for=portfolio"/, locale);
   }

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-13 — Website package scope update
+
+- Renamed the five Website Development offers to One Page Website, Starter Pack, Growth Pack, Business Pack and Custom Website across the package page, service catalogue and six published languages.
+- Replaced the package inclusions with the approved page limits, design, integrations, translation, tracking and delivery-time scopes.
+- Kept Starter Pack marked as “Most bought” and changed Custom Website from a fixed-price presentation to a starting price of €3,500 with discovery-led final scoping.
+- Synchronized the visible package names with structured service data, Free Website comparisons, documentation and regression tests.
+
 ## 2026-09-13 — Requested service-page translations
 
 - Added Hebrew to `/services/website`, `/seo/cyprus` and `/seo/limassol`, including right-to-left layout, translated metadata, controls, FAQs and reciprocal `hreflang` alternatives.

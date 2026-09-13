@@ -48,7 +48,7 @@ Free Website is deliberately excluded from the selector. It has a dedicated high
 
 ## Website packages
 
-The published starting packages are Conversion Landing Page (€450), Website – Starter (€950), Website – Growth (€1,500), Website – Business (€2,250), and Custom Website / Enterprise (€3,500). Website – Starter is the only package marked “Most bought”.
+The published packages are One Page Website (€450), Starter Pack (€950), Growth Pack (€1,500), Business Pack (€2,250), and Custom Website (starting at €3,500). Starter Pack is the only package marked “Most bought”. The Custom Website amount is a starting point rather than a fixed package price; its final scope, delivery plan and investment are confirmed after discovery.
 
 Every package includes an SEO foundation, GEO foundation, Technical SEO, responsive development, accessibility foundations, and launch QA. Published prices cover the standard scope described on the page; additions, third-party services, and out-of-scope requirements must be confirmed separately.
 
@@ -62,7 +62,7 @@ The Legal Pages Setup entry means technical publication of approved text. It is 
 
 The Free Website and SEO pages retain the shared 32px section break while using compact section interiors: 52px top and 64px bottom on desktop, reducing to 44px and 54px at 900px and below. This keeps their long-form sales journeys aligned with the homepage rhythm without compressing card content.
 
-The Free Website page is a qualification and application journey, not an unconditional giveaway. It clearly states that Studio 17 waives its design and development fee only for selected suitable businesses and only for the agreed one-page scope. Applying does not guarantee selection. The page anchors the comparable scope to the existing €950 Website – Starter offer while clearly excluding third-party costs.
+The Free Website page is a qualification and application journey, not an unconditional giveaway. It clearly states that Studio 17 waives its design and development fee only for selected suitable businesses and only for the agreed one-page scope. Applying does not guarantee selection. The page anchors the comparable scope to the existing €950 Starter Pack while clearly excluding third-party costs.
 
 The published scope contains exactly 21 inclusions: brand-led responsive structure; hero, company, service, benefit and contact content; form, call, optional WhatsApp, Maps and social actions; essential footer information; basic SEO, Analytics, Search Console and performance setup; SSL/security, basic cookie implementation, one revision and the required “Website by Studio 17” footer credit. The free scope covers one page in one agreed language.
 
