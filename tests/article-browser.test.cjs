@@ -26,14 +26,25 @@ let activeBrowser;
     assert.equal(await page.locator('h1').count(), 1);
     assert.equal(await page.locator('.article-body section').count(), 4);
     assert.equal(await page.locator('.article-language-status a').count(), 1);
+    assert.equal(await page.locator('.article-meta > div').count(), 3);
+    assert.equal(await page.locator('.article-table-wrap').count(), 1);
     assert.equal(await page.locator('i[data-lucide]').count(), 0);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Article overflow at ${width}px`);
     assert.equal(await page.locator('meta[property="og:image"]').getAttribute('content'), 'https://www.studio17.world/Images/news-partnership.webp');
     assert.notEqual(await page.locator('meta[property="og:image"]').getAttribute('content'), await page.locator('.article-cover img').getAttribute('src'));
 
+    if (width === 1440) {
+      assert.equal(await page.locator('.article-related-rail').isVisible(), true);
+      assert.equal(await page.locator('.article-rail-card').count(), 3);
+    }
+
     if (width === 390) {
+      assert.equal(await page.locator('.article-cover').isVisible(), false);
+      assert.equal(await page.locator('[data-article-toc]').getAttribute('open'), null);
+      assert.equal(await page.evaluate(() => document.querySelector('.article-table-wrap').scrollWidth > document.querySelector('.article-table-wrap').clientWidth), true);
+      assert.equal(await page.evaluate(() => document.querySelector('.article-body').getBoundingClientRect().top + scrollY < 950), true);
       await page.locator('.menu-toggle').click();
-      assert.deepEqual(await page.locator('#mobile-menu nav > a').allTextContents(), ['Services', 'Work', 'About', 'News', 'Careers']);
+      assert.deepEqual(await page.locator('#mobile-menu .mobile-services-overview-link, #mobile-menu nav > a').allTextContents(), ['Services', 'Work', 'About', 'News', 'Careers']);
     }
 
     if (width === 1440 || width === 390) {

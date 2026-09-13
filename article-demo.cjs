@@ -5,7 +5,11 @@ module.exports = {
   publishedDate: '2026-06-22', modifiedDate: null, sourceModifiedTime: null,
   authorName: 'Hugo Filipe', authorRole: 'Founder of Studio 17', readTime: 7,
   coverImage: '/Images/case-automotive.webp', shareImage: '/Images/news-partnership.webp',
-  availableLanguages: ['en'], locale: 'en', related: [],
+  availableLanguages: ['en'], locale: 'en', related: [
+    { slug: 'website-content-that-builds-trust', category: 'Insight', publishedDate: '2026-06-18', authorName: 'Studio 17', authorRole: 'Editorial Team', coverImage: '/Images/news-partnership.webp', coverAlt: 'A team reviewing website content', title: 'Website content that builds trust', summary: 'How useful information helps customers understand and choose a business.' },
+    { slug: 'a-practical-local-search-foundation', category: 'Insight', publishedDate: '2026-06-12', authorName: 'Studio 17', authorRole: 'Editorial Team', coverImage: '/Images/case-automotive.webp', coverAlt: 'A local business search strategy', title: 'A practical local search foundation', summary: 'The signals that connect a business, its website and local discovery.' },
+    { slug: 'turning-attention-into-enquiries', category: 'Case Study', publishedDate: '2026-06-05', authorName: 'Studio 17', authorRole: 'Editorial Team', coverImage: '/Images/news-social.webp', coverAlt: 'Marketing work designed around customer action', title: 'Turning attention into meaningful action', summary: 'Why connected content and follow-up matter after discovery.' }
+  ],
   content: {
     seoTitle: 'How Car Dealerships Can Increase Monthly Sales',
     metaDescription: 'A practical guide to improving vehicle presentation, customer trust and sales follow-up.',

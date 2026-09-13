@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-13 — Responsive article reading experience
+
+- Condensed mobile article metadata by combining the author and role, reducing the hero height and removing the repeated cover image.
+- Converted the mobile article contents list into a collapsed, accessible section-jump control that closes after selecting a destination.
+- Added a wide-screen three-column reading layout with sticky section navigation, a controlled-width article and compact related-article cards.
+- Preserved the complete “Continue reading” section at the end and retained the two-column layout for intermediate screen sizes.
+
 ## 2026-09-13 — Native article tables
 
 - Added native Google Docs table parsing within article bodies, preserving table position and treating the first row as column headings.

@@ -61,6 +61,8 @@ Use at least two columns and one data row. Keep tables to a maximum of 12 column
 
 Article metadata includes a canonical URL, valid-language alternates, `Article` JSON-LD, publication/modified dates and the independent social image. Removed or incomplete articles return a non-indexable unavailable page.
 
+The reader uses a three-column layout on wide desktop screens: section navigation, a controlled-width article column and compact related-article cards. The complete related-article section remains at the end. On mobile, the repeated cover image is removed, metadata is condensed and the section navigation starts collapsed so readers reach the article substantially sooner.
+
 The public feeds use a 60-second CDN cache with a five-minute stale-while-revalidate window. Article images use a longer immutable cache because Drive file IDs identify fixed file versions.
 
 ## Environment contract

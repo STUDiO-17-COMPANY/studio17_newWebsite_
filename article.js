@@ -5,6 +5,7 @@
   const articleBody = document.querySelector('.article-body');
   const shareButton = document.querySelector('[data-article-share]');
   const shareStatus = document.querySelector('[data-article-share-status]');
+  const articleToc = document.querySelector('[data-article-toc]');
   const shareMessages = {
     en: ['Article shared.', 'Article link copied.', 'Copy the address from your browser to share this article.'],
     'pt-PT': ['Artigo partilhado.', 'Ligação do artigo copiada.', 'Copie o endereço do navegador para partilhar este artigo.'],
@@ -17,6 +18,22 @@
   const availableLanguages = Array.isArray(window.__STUDIO17_ARTICLE_LANGUAGES__)
     ? window.__STUDIO17_ARTICLE_LANGUAGES__
     : ['en'];
+
+  if (articleToc) {
+    const compactToc = window.matchMedia('(max-width: 800px)');
+    let tocMode = '';
+    const syncToc = () => {
+      const nextMode = compactToc.matches ? 'compact' : 'wide';
+      if (nextMode === tocMode) return;
+      articleToc.open = nextMode === 'wide';
+      tocMode = nextMode;
+    };
+    compactToc.addEventListener?.('change', syncToc);
+    articleToc.addEventListener('click', event => {
+      if (compactToc.matches && event.target.closest('nav a')) articleToc.open = false;
+    });
+    syncToc();
+  }
 
   document.querySelectorAll('[data-language-switcher] [data-lang]').forEach(button => {
     if (!availableLanguages.includes(button.dataset.lang)) button.hidden = true;
