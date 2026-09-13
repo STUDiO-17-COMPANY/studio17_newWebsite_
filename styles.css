@@ -1401,6 +1401,15 @@ html[dir="rtl"] .article-table { text-align: right; }
 .service-row h3 { margin: 0 0 8px; font-size: 17px; line-height: 1.3; }
 .service-row p { margin: 0; color: #aebbd0; font-size: 14px; line-height: 1.55; }
 .services-cta, .website-development-cta { margin-top: var(--section-gap); }
+.website-development-cta { height: auto; min-height: 330px; padding-block: 24px; background: var(--paper); }
+.website-development-cta .cta-grid { grid-template-columns: minmax(0,620px) minmax(0,1fr); align-items: center; min-height: 282px; }
+.website-development-cta-media { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); }
+.website-development-cta-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .45s var(--ease); }
+.website-development-cta:hover .website-development-cta-media img { transform: scale(1.025); }
+.website-development-cta .cta-copy > p { width: min(700px,100%); }
+.website-development-cta .cta-actions { flex-wrap: wrap; gap: 30px; }
+.website-development-cta .cta-secondary-button { color: var(--ink); background: transparent; box-shadow: inset 0 0 0 1px var(--ink); }
+.website-development-cta .cta-secondary-button:hover, .website-development-cta .cta-secondary-button:focus-visible { color: var(--white); background: var(--ink); }
 .services-cta-media { width: min(520px,100%); aspect-ratio: 2 / 1; overflow: hidden; background: var(--white); }
 .services-cta-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.55); transform-origin: 62% 58%; }
 .services-cta .cta-copy > p { width: min(700px,100%); }
@@ -2030,6 +2039,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .website-case-study { min-height: 0; grid-template-columns: 1fr; }
   .website-case-study-copy { padding: 38px 30px; }
   .website-case-study-media { min-height: 330px; }
+  .website-development-cta .cta-grid { grid-template-columns: 1fr 1fr; gap: 38px; }
   .website-case-study-image-right .website-case-study-media { grid-row: 1; }
   .website-value-grid { grid-template-columns: 1fr; }
   .website-value-grid article { min-height: 220px; }
@@ -2121,6 +2131,8 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 
 @media (max-width: 600px) {
   .website-service-mobile-fields, .website-service-mobile { display: grid; }
+  .website-development-cta { min-height: 0; padding-block: 42px; }
+  .website-development-cta .cta-grid { grid-template-columns: 1fr; gap: 32px; }
   .website-service-mobile-fields { grid-template-columns: 1fr; gap: 13px; }
   .website-service-tabs, .website-service-nav { display: none; }
   .website-case-study-media { min-height: 280px; }

@@ -30,11 +30,15 @@ test('website development page preserves commercial and portfolio requirements',
   for (const price of ['450,00 €', '950,00 €', '1&nbsp;500,00 €', '2&nbsp;250,00 €', '3&nbsp;500,00 €']) assert.ok(html.includes(price), price);
   for (const packageName of ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website']) assert.ok(html.includes(packageName), packageName);
   assert.match(html, /website-package-card is-popular[\s\S]*Most bought[\s\S]*Starter Pack/);
-  assert.match(html, /<h3>One Page Website<\/h3>[\s\S]*1 website page[\s\S]*1 week development/);
-  assert.match(html, /<h3>Starter Pack<\/h3>[\s\S]*Up to 6 website pages[\s\S]*Up to 2 weeks development/);
-  assert.match(html, /<h3>Growth Pack<\/h3>[\s\S]*Up to 12 website pages[\s\S]*Up to 2 months development/);
-  assert.match(html, /<h3>Business Pack<\/h3>[\s\S]*Up to 20 website pages[\s\S]*Conversion and performance review/);
+  assert.match(html, /<h3>One Page Website<\/h3>[\s\S]*1 custom-designed website page[\s\S]*Estimated delivery: from 1 week/);
+  assert.match(html, /<h3>Starter Pack<\/h3>[\s\S]*Up to 6 custom-designed pages[\s\S]*Estimated delivery: up to 2 weeks/);
+  assert.match(html, /<h3>Growth Pack<\/h3>[\s\S]*Up to 12 custom-designed pages[\s\S]*Estimated delivery: up to 2 months/);
+  assert.match(html, /<h3>Business Pack<\/h3>[\s\S]*Up to 20 custom-designed pages[\s\S]*Advanced content and navigation architecture/);
   assert.match(html, /<h3>Custom Website<\/h3>[\s\S]*<small>starting at<\/small>/);
+  assert.match(html, /Language allowances cover the technical implementation of supplied translations/);
+  assert.match(html, /class="website-development-cta-media"[\s\S]*src="\/Images\/PhosOpticsWebsiteMainPage\.webp"/);
+  assert.match(html, /class="[^"]*website-development-cta[^"]*"[\s\S]*class="cta-actions"[\s\S]*href="\/contact"[\s\S]*href="\/wip\?for=portfolio"[\s\S]*See our work/);
+  assert.match(html, /class="solid-button cta-secondary-button" href="\/wip\?for=portfolio"/);
   for (const term of ['SEO foundation', 'GEO foundation', 'Technical SEO']) assert.ok(html.includes(term), term);
   for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/terrassivilla.jpg']) assert.ok(html.includes(asset), asset);
   assert.ok(html.includes('https://www.100pratos.pt/'));
@@ -254,6 +258,8 @@ test('all service locales preserve the page schema and content counts', () => {
     assert.equal((data.pages.services.catalogue.match(/service-row/g) || []).length, 43, locale);
     assert.equal((data.pages.websiteDevelopment.packages.match(/website-package-card/g) || []).length, 5, locale);
     assert.deepEqual([...data.pages.websiteDevelopment.packages.matchAll(/website-package-top"><h3>([^<]+)<\/h3>/g)].map(match => match[1]), ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website'], locale);
+    assert.match(data.pages.websiteDevelopment.packageNote, /technical|técnica|τεχνική|техническую|טכני/i, `${locale}: language implementation scope must remain explicit`);
+    assert.match(data.pages.websiteDevelopment.closing, /class="cta-actions"[\s\S]*href="\/contact"[\s\S]*href="\/wip\?for=portfolio"/, locale);
     assert.equal((data.pages.services.catalogue.match(/<h3>Growth Pack<\/h3>/g) || []).length, 1, `${locale}: package name must not alter accessibility services`);
     assert.doesNotMatch(data.pages.services.catalogue, /WEB-\d+/, locale);
     assert.match(data.pages.services.closing, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/wip\?for=portfolio"/, locale);

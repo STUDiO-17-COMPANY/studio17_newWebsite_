@@ -52,6 +52,10 @@ The published packages are One Page Website (€450), Starter Pack (€950), Gro
 
 Every package includes an SEO foundation, GEO foundation, Technical SEO, responsive development, accessibility foundations, and launch QA. Published prices cover the standard scope described on the page; additions, third-party services, and out-of-scope requirements must be confirmed separately.
 
+Package page limits apply to the agreed project scope. Published language allowances cover technical implementation of client-supplied translations; professional translation is quoted separately unless explicitly included. Delivery periods are estimates and depend on content, access, feedback and the confirmed technical scope.
+
+The Website Development closing CTA uses the approved `PhosOpticsWebsiteMainPage.webp` image in an uncropped 16:9 media window. Keep “Talk to sales” as the primary action and “See our work” as the secondary action, routed to the Portfolio WIP destination until that page is published.
+
 ## Catalogue rules
 
 The catalogue contains 43 services across Website Builds; Domain & Website Add-ons; SEO, Performance & Accessibility; AI & Automation; and Website Care. Internal service codes must never appear on the public site. Use native `details`/`summary` controls so the catalogue stays accessible without JavaScript.
