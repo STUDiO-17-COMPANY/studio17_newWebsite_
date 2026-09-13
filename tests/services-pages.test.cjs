@@ -73,7 +73,10 @@ test('website pricing page compares the five packages accessibly', () => {
   assert.match(html, /From 3&nbsp;500,00 €/);
   assert.match(html, /Language allowances cover technical implementation of supplied translations/);
   assert.match(html, /href="\/contact\?service=website"[\s\S]*href="\/services\/website-development"/);
+  assert.match(html, /class="solid-button" href="\/contact\?service=website"[\s\S]*class="design-link" href="\/services\/website-development"/);
+  assert.doesNotMatch(html, /class="page-hero-icon"/);
   assert.match(css, /\.website-pricing-table thead th:first-child, \.website-pricing-table tbody th\[scope="row"\][^{]*\{[^}]*position: sticky/);
+  assert.match(css, /\.website-pricing-overview, \.website-pricing-table-section \{ margin-top: 32px; padding-block: 24px; \}/);
   const vm = require('node:vm');
   const context = { window: { Studio17ServiceLocaleData: {} } };
   vm.runInNewContext(read('service-locales/website-pricing.js'), context);

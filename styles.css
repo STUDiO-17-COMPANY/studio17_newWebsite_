@@ -1456,11 +1456,11 @@ html[dir="rtl"] .article-table { text-align: right; }
 .website-package-compare .solid-button:hover, .website-package-compare .solid-button:focus-visible { color: var(--ink); background: var(--white); }
 
 /* Website package comparison */
-.website-pricing-page { background: var(--paper); }
-.website-pricing-overview, .website-pricing-table-section { padding-block: 60px 76px; background: var(--paper); }
-.website-pricing-overview { padding-bottom: 44px; }
+.website-pricing-page, .website-pricing-page .website-pricing-overview, .website-pricing-page .website-pricing-table-section { background: var(--white); }
+.website-pricing-overview, .website-pricing-table-section { margin-top: 32px; padding-block: 24px; }
+.website-pricing-overview { padding-bottom: 24px; }
 .website-pricing-overview .service-page-heading { margin-bottom: 0; }
-.website-pricing-table-section { padding-top: 44px; }
+.website-pricing-table-section { padding-top: 24px; }
 .website-pricing-scroll { position: relative; width: 100%; overflow-x: auto; border: 1px solid #cbd3df; background: var(--white); scrollbar-color: var(--blue) #dbe2ed; }
 .website-pricing-scroll:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 .website-pricing-table { width: 100%; min-width: 1180px; border-collapse: separate; border-spacing: 0; table-layout: fixed; color: var(--ink); }
@@ -1481,10 +1481,11 @@ html[dir="rtl"] .article-table { text-align: right; }
 .website-pricing-table thead th:first-child, .website-pricing-table tbody th[scope="row"] { position: sticky; inset-inline-start: 0; z-index: 2; }
 .website-pricing-table thead th:first-child { z-index: 3; }
 .website-pricing-note { max-width: 1060px; margin: 24px 0 0; color: #596477; font-size: 13px; line-height: 1.65; }
-.website-pricing-cta { height: auto; min-height: 330px; margin-top: 0; padding-block: 24px; background: var(--paper); }
-.website-pricing-cta .cta-grid { grid-template-columns: minmax(0,620px) minmax(0,1fr); align-items: center; min-height: 282px; }
+.website-pricing-cta { height: auto; min-height: 298px; margin-top: 32px; padding-block: 24px; background: var(--white); }
+.website-pricing-cta .cta-grid { grid-template-columns: minmax(0,704px) minmax(0,1fr); align-items: center; min-height: 250px; }
+.website-pricing-cta .website-development-cta-media { width: min(462px,100%); justify-self: end; }
 .website-pricing-cta .cta-copy > p { width: min(700px,100%); }
-.website-pricing-cta .cta-actions { flex-wrap: wrap; gap: 30px; }
+.website-pricing-cta .cta-actions { flex-wrap: wrap; gap: 55px; }
 .website-pricing-cta .cta-secondary-button { color: var(--ink); background: transparent; box-shadow: inset 0 0 0 1px var(--ink); }
 .website-pricing-cta .cta-secondary-button:hover, .website-pricing-cta .cta-secondary-button:focus-visible { color: var(--white); background: var(--ink); }
 
@@ -2091,9 +2092,9 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .website-case-study-copy { padding: 38px 30px; }
   .website-case-study-media { min-height: 330px; }
   .website-development-cta .cta-grid { grid-template-columns: 1fr 1fr; gap: 38px; }
-  .website-pricing-overview, .website-pricing-table-section { padding-block: 44px 54px; }
-  .website-pricing-overview { padding-bottom: 34px; }
-  .website-pricing-table-section { padding-top: 34px; }
+  .website-pricing-overview, .website-pricing-table-section { padding-block: 24px; }
+  .website-pricing-overview { padding-bottom: 24px; }
+  .website-pricing-table-section { padding-top: 24px; }
   .website-pricing-cta .cta-grid { grid-template-columns: 1fr 1fr; gap: 38px; }
   .website-case-study-image-right .website-case-study-media { grid-row: 1; }
   .website-value-grid { grid-template-columns: 1fr; }
@@ -2195,7 +2196,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .website-pricing-table { min-width: 1040px; }
   .website-pricing-table th, .website-pricing-table td { min-width: 154px; padding: 17px 13px; }
   .website-pricing-table thead th:first-child, .website-pricing-table tbody th[scope="row"] { width: 142px; min-width: 142px; }
-  .website-pricing-cta { min-height: 0; padding-block: 42px; }
+  .website-pricing-cta { min-height: 0; padding-block: 24px; }
   .website-pricing-cta .cta-grid { grid-template-columns: 1fr; gap: 32px; }
   .website-service-mobile-fields { grid-template-columns: 1fr; gap: 13px; }
   .website-service-tabs, .website-service-nav { display: none; }

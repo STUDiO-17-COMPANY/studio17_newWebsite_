@@ -28,6 +28,15 @@ const languages = ['en', 'el', 'ru'];
         assert.equal(await page.locator('.website-pricing-table thead th').count(), 6);
         assert.equal(await page.locator('.website-pricing-table thead .is-popular').count(), 1);
         assert.equal(await page.locator('.website-pricing-cta .cta-actions a').count(), 2);
+        assert.equal(await page.locator('.website-pricing-cta .cta-actions .solid-button').count(), 1);
+        assert.equal(await page.locator('.website-pricing-cta .cta-actions .design-link').count(), 1);
+        assert.equal(await page.locator('.page-hero-icon:visible').count(), 0);
+        assert.equal(await page.locator('.website-pricing-page h1, .website-pricing-page main h2').evaluateAll(headings => headings.every(heading => !heading.textContent.trim().endsWith('.'))), true);
+        const sectionMetrics = await page.locator('.website-pricing-overview, .website-pricing-table-section, .website-pricing-cta').evaluateAll(sections => sections.map(section => {
+          const style = getComputedStyle(section);
+          return { marginTop: style.marginTop, paddingTop: style.paddingTop, paddingBottom: style.paddingBottom, background: style.backgroundColor };
+        }));
+        assert.equal(sectionMetrics.every(metric => metric.marginTop === '32px' && metric.paddingTop === '24px' && metric.paddingBottom === '24px' && metric.background === 'rgb(255, 255, 255)'), true, `${language} section rhythm at ${width}px`);
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true, `${language} document overflows at ${width}px`);
 
         const ctaImage = page.locator('.website-pricing-cta img');

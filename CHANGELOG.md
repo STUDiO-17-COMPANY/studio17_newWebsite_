@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-13 — Website Pricing design alignment
+
+- Applied the approved 32px section spacing, 24px internal padding and continuous white background to the Website Pricing page on desktop and mobile.
+- Removed the decorative hero icon and kept all page headings free of terminal full stops.
+- Reordered and restyled the final CTA to match the homepage pattern: message first, PHÓS Optics image second, one solid primary action and one lightweight secondary action.
+- Preserved the accessible horizontally scrollable comparison table and sticky criteria column across English, Greek and Russian.
+
 ## 2026-09-13 — Website Development design alignment
 
 - Applied the approved Website Development rhythm of exactly 32px between sections and no more than 24px internal section padding, on one white page background.

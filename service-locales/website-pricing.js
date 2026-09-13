@@ -45,7 +45,7 @@
         ]}
       ],
       note: 'Τα όρια σελίδων αφορούν το συμφωνημένο εύρος. Οι γλώσσες καλύπτουν την τεχνική υλοποίηση των μεταφράσεων που παρέχονται. Copywriting, επαγγελματική μετάφραση, hosting, domains, άδειες, επί πληρωμή πλατφόρμες και κόστη τρίτων τιμολογούνται ξεχωριστά, εκτός αν περιλαμβάνονται ρητά. Οι χρόνοι παράδοσης είναι εκτιμήσεις και εξαρτώνται από το περιεχόμενο, τις προσβάσεις, το feedback και το τεχνικό εύρος.',
-      closing: '<h2 class="design-heading" id="website-pricing-cta-title">Δεν είστε σίγουροι <span>ποιο πακέτο ταιριάζει;</span></h2><p>Πείτε μας τι πρέπει να πετύχει το website. Θα προτείνουμε το μικρότερο κατάλληλο εύρος πριν ετοιμάσουμε την πρόταση.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=website">Μιλήστε με τις πωλήσεις <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="solid-button cta-secondary-button" href="/services/website-development">Δείτε την ανάπτυξη website <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
+      closing: '<h2 class="design-heading" id="website-pricing-cta-title">Δεν είστε σίγουροι <span>ποιο πακέτο ταιριάζει;</span></h2><p>Πείτε μας τι πρέπει να πετύχει το website. Θα προτείνουμε το μικρότερο κατάλληλο εύρος πριν ετοιμάσουμε την πρόταση.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=website">Ξεκινήστε το website σας <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/services/website-development">Δείτε την ανάπτυξη website <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
     },
     ru: {
       meta: { title: 'Цены на сайты | Сравнение пакетов', description: 'Сравните цены, количество страниц, дизайн, интеграции, языки, основы SEO и ориентировочные сроки пакетов разработки сайтов Studio 17.' },
@@ -82,7 +82,7 @@
         ]}
       ],
       note: 'Лимиты страниц относятся к согласованному объёму проекта. Языки включают техническую реализацию предоставленных переводов. Копирайтинг, профессиональный перевод, хостинг, домены, лицензии, платные платформы и сторонние расходы рассчитываются отдельно, если их включение не подтверждено явно. Сроки являются ориентировочными и зависят от готовности контента, доступов, обратной связи и технического объёма.',
-      closing: '<h2 class="design-heading" id="website-pricing-cta-title">Не уверены, <span>какой пакет подходит?</span></h2><p>Расскажите, чего должен достичь сайт. До подготовки предложения мы порекомендуем минимальный подходящий объём.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=website">Связаться с отделом продаж <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="solid-button cta-secondary-button" href="/services/website-development">Смотреть разработку сайтов <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
+      closing: '<h2 class="design-heading" id="website-pricing-cta-title">Не уверены, <span>какой пакет подходит?</span></h2><p>Расскажите, чего должен достичь сайт. До подготовки предложения мы порекомендуем минимальный подходящий объём.</p><div class="cta-actions"><a class="solid-button" href="/contact?service=website">Начать создание сайта <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a><a class="design-link" href="/services/website-development">Смотреть разработку сайтов <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>'
     }
   };
 
