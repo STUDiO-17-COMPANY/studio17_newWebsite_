@@ -48,8 +48,9 @@ const bundle = fs.readFileSync(path.join(root, 'locales', 'locales.js'), 'utf8')
 for (const key of copyKeys) assert.ok(bundle.includes(JSON.stringify(key)), `generated locale bundle is missing: ${key}`);
 
 assert.match(css, /\.site-assist-launcher\s*\{[^}]*width:\s*54px/);
+assert.match(css, /\.site-assist\s*\{[^}]*right:\s*max\(20px,calc\(\(100vw - var\(--shell\)\) \/ 2\)\)[^}]*left:\s*auto/);
 assert.match(css, /\.site-assist-launcher:hover[^}]*width:\s*238px/);
-assert.match(css, /\.site-assist-panel\s*\{[^}]*border:\s*3px solid var\(--blue\)[^}]*background:\s*var\(--white\)/);
+assert.match(css, /\.site-assist-panel\s*\{[^}]*right:\s*0[^}]*left:\s*auto[^}]*border:\s*3px solid var\(--blue\)[^}]*background:\s*var\(--white\)/);
 assert.match(css, /@media \(max-width: 600px\)[\s\S]*?\.site-assist-panel\s*\{[^}]*position:\s*fixed/);
 assert.match(css, /@media \(hover: none\)[\s\S]*?\.site-assist-launcher:hover\s*\{[^}]*width:\s*54px/);
 assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);

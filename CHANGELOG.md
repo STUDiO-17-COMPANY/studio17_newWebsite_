@@ -3,6 +3,7 @@
 ## 2026-09-13 — Contextual assistance badge
 
 - Added a delayed, user-opened Lucide `badge-question-mark` launcher that expands to “Not sure where to start?” on desktop hover and keyboard focus.
+- Positioned the launcher and its opened guidance panel in the bottom-right corner on desktop and mobile.
 - Added compact, page-aware guidance for general, SEO, Website and Free Website journeys, with language-aware links to the relevant contact path.
 - Added translated copy for Portuguese, Spanish, Greek, Russian and Hebrew, including right-to-left support.
 - Kept the component out of Contact, Careers, role, legal and WIP pages, below the analytics-consent layer and hidden while the mobile menu is open.

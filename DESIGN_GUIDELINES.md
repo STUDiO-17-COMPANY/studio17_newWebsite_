@@ -89,7 +89,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 
 ### Contextual assistance badge
 
-- Eligible commercial and informational pages use one shared bottom-start assistance launcher with the Lucide `badge-question-mark` icon.
+- Eligible commercial and informational pages use one shared bottom-right assistance launcher with the Lucide `badge-question-mark` icon, including on right-to-left pages.
 - Keep the resting control as a compact 54px blue square. On desktop hover or keyboard focus it may expand horizontally to reveal “Not sure where to start?”. Touch devices retain the compact launcher until tapped.
 - Clicking the launcher opens a white vertical guidance card with a blue outline, concise page-relevant copy and one primary contact action. SEO, Website and Free Website journeys may use tailored copy; other eligible pages use the general route.
 - Reveal the launcher only after meaningful engagement (12 seconds or approximately 18% page scroll), never while the analytics-consent dialog is visible, and hide it while the mobile menu is open.
