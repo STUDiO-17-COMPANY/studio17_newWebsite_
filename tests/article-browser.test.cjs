@@ -32,6 +32,13 @@ let activeBrowser;
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Article overflow at ${width}px`);
     assert.equal(await page.locator('meta[property="og:image"]').getAttribute('content'), 'https://www.studio17.world/Images/news-partnership.webp');
     assert.notEqual(await page.locator('meta[property="og:image"]').getAttribute('content'), await page.locator('.article-cover img').getAttribute('src'));
+    assert.equal(await page.evaluate(() => {
+      const body = document.querySelector('.article-body');
+      const lead = body?.querySelector('.article-lead');
+      const cover = body?.querySelector('.article-cover');
+      const firstSection = body?.querySelector('section');
+      return Boolean(lead && cover && firstSection && (lead.compareDocumentPosition(cover) & Node.DOCUMENT_POSITION_FOLLOWING) && (cover.compareDocumentPosition(firstSection) & Node.DOCUMENT_POSITION_FOLLOWING));
+    }), true);
 
     if (width === 1440) {
       assert.equal(await page.locator('.article-related-rail').isVisible(), true);
@@ -39,7 +46,7 @@ let activeBrowser;
     }
 
     if (width === 390) {
-      assert.equal(await page.locator('.article-cover').isVisible(), false);
+      assert.equal(await page.locator('.article-cover').isVisible(), true);
       assert.equal(await page.locator('[data-article-toc]').getAttribute('open'), null);
       assert.equal(await page.evaluate(() => document.querySelector('.article-table-wrap').scrollWidth > document.querySelector('.article-table-wrap').clientWidth), true);
       assert.equal(await page.evaluate(() => document.querySelector('.article-body').getBoundingClientRect().top + scrollY < 950), true);

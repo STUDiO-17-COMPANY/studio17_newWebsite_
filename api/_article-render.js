@@ -37,17 +37,28 @@ const formatDate = (value, locale) => {
   catch { return value; }
 };
 
-const renderBlocks = (blocks, tableLabel = UI.en.table) => {
+const renderBlocks = (blocks, tableLabel = UI.en.table, coverMarkup = '') => {
   let sectionOpen = false;
   let number = 0;
+  let coverRendered = false;
   const html = [];
   const closeSection = () => { if (sectionOpen) { html.push('</section>'); sectionOpen = false; } };
+  const renderCover = () => {
+    if (!coverRendered && coverMarkup) {
+      html.push(coverMarkup);
+      coverRendered = true;
+    }
+  };
   for (const block of blocks || []) {
     if (block.type === 'heading' && block.level === 2) {
-      closeSection(); number += 1; sectionOpen = true;
+      closeSection(); renderCover(); number += 1; sectionOpen = true;
       html.push(`<section id="${escapeAttribute(block.id)}"><h2><span>${String(number).padStart(2, '0')}</span>${escapeHtml(block.text)}</h2>`);
     } else if (block.type === 'heading') html.push(`<h3>${escapeHtml(block.text)}</h3>`);
-    else if (block.type === 'paragraph') html.push(`<p${!number && html.length === 0 ? ' class="article-lead"' : ''}>${escapeHtml(block.text)}</p>`);
+    else if (block.type === 'paragraph') {
+      const isLead = !number && html.length === 0;
+      html.push(`<p${isLead ? ' class="article-lead"' : ''}>${escapeHtml(block.text)}</p>`);
+      if (isLead) renderCover();
+    }
     else if (block.type === 'list') html.push(`<${block.ordered ? 'ol' : 'ul'}>${block.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</${block.ordered ? 'ol' : 'ul'}>`);
     else if (block.type === 'table') html.push(`<div class="article-table-wrap" role="region" aria-label="${escapeAttribute(tableLabel)}" tabindex="0"><table class="article-table"><thead><tr>${block.headers.map(header => `<th scope="col">${escapeHtml(header)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
     else if (block.type === 'image') html.push(`<figure class="article-inline-image"><img src="/api/article-image?id=${encodeURIComponent(block.imageId)}" alt="${escapeAttribute(block.alt)}" loading="lazy">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}</figure>`);
@@ -55,6 +66,7 @@ const renderBlocks = (blocks, tableLabel = UI.en.table) => {
     else if (block.type === 'callout') html.push(`<div class="article-callout"><i data-lucide="workflow" aria-hidden="true"></i><div>${block.title ? `<h3>${escapeHtml(block.title)}</h3>` : ''}<p>${escapeHtml(block.copy)}</p></div></div>`);
     else if (block.type === 'statistics') html.push(`<div class="article-stat-grid">${block.items.map(item => `<div><strong>${escapeHtml(item.value)}</strong><span>${escapeHtml(item.label)}</span></div>`).join('')}</div>`);
   }
+  renderCover();
   closeSection();
   return html.join('');
 };
@@ -69,13 +81,13 @@ const renderArticleMain = article => {
   const headings = (content.blocks || []).filter(block => block.type === 'heading' && block.level === 2);
   const hasRelated = article.related.length > 0;
   const languageLinks = article.availableLanguages.map(code => `<a href="/insights/${encodeURIComponent(article.slug)}${code === 'en' ? '' : `?lang=${encodeURIComponent(code)}`}" hreflang="${escapeAttribute(code)}"${code === locale ? ' aria-current="page"' : ''}>${escapeHtml(LANGUAGE_LABELS[code])}</a>`).join('');
+  const coverMarkup = `<figure class="article-cover reveal"><img src="${escapeAttribute(article.coverImage)}" alt="${escapeAttribute(content.coverAlt)}" loading="lazy">${content.coverCaption ? `<figcaption>${escapeHtml(content.coverCaption)}</figcaption>` : ''}</figure>`;
   return `<main id="article-content"><article data-i18n-skip>
     <header class="article-hero"><div class="hero-media" aria-hidden="true"><img src="${escapeAttribute(article.coverImage)}" alt=""></div><div class="shell article-hero-grid">
       <div class="article-heading reveal"><a class="article-back-link" href="/news${locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`}"><i data-lucide="arrow-left" aria-hidden="true"></i>${escapeHtml(ui.back)}</a><p class="article-category">${escapeHtml((CATEGORY_LABELS[locale] || CATEGORY_LABELS.en)[article.category] || article.category)}</p><h1>${highlight(content.title, content.highlightedTitle)}</h1><p class="article-deck">${escapeHtml(content.summary)}</p></div>
       <div class="article-meta-panel reveal" data-delay="1"><dl class="article-meta"><div><dt>${escapeHtml(ui.published)}</dt><dd><time datetime="${escapeAttribute(article.publishedDate)}">${escapeHtml(formatDate(article.publishedDate, locale))}</time></dd></div><div><dt>${escapeHtml(ui.reading)}</dt><dd>${escapeHtml(ui.minutes(article.readTime))}</dd></div><div class="article-meta-author"><dt>${escapeHtml(ui.written)}</dt><dd><strong>${escapeHtml(article.authorName)}</strong><span><span class="sr-only">${escapeHtml(ui.role)}: </span>${escapeHtml(article.authorRole)}</span></dd></div></dl><nav class="article-language-status" aria-label="Available article languages"><i data-lucide="languages" aria-hidden="true"></i>${languageLinks}</nav></div>
     </div></header>
-    <figure class="shell article-cover reveal"><img src="${escapeAttribute(article.coverImage)}" alt="${escapeAttribute(content.coverAlt)}">${content.coverCaption ? `<figcaption>${escapeHtml(content.coverCaption)}</figcaption>` : ''}</figure>
-    <div class="shell article-layout${hasRelated ? ' has-related' : ''}"><aside class="article-sidebar" aria-label="${escapeAttribute(ui.contents)}"><div class="article-sidebar-inner"><details class="article-toc" data-article-toc open><summary><span>${escapeHtml(ui.contents)}</span><i data-lucide="chevron-down" aria-hidden="true"></i></summary><nav>${headings.map(item => `<a href="#${escapeAttribute(item.id)}">${escapeHtml(item.text)}</a>`).join('')}</nav></details><button class="article-share" type="button" data-article-share><i data-lucide="share-2" aria-hidden="true"></i><span>${escapeHtml(ui.share)}</span></button><p class="article-share-status" data-article-share-status role="status" aria-live="polite"></p></div></aside><div class="article-body">${renderBlocks(content.blocks, ui.table)}</div>${hasRelated ? `<aside class="article-related-rail" aria-labelledby="article-related-rail-title"><div class="article-related-rail-inner"><p id="article-related-rail-title">${escapeHtml(ui.continue)}</p>${article.related.slice(0, 3).map(item => renderRailCard(item, locale)).join('')}</div></aside>` : ''}</div>
+    <div class="shell article-layout${hasRelated ? ' has-related' : ''}"><aside class="article-sidebar" aria-label="${escapeAttribute(ui.contents)}"><div class="article-sidebar-inner"><details class="article-toc" data-article-toc open><summary><span>${escapeHtml(ui.contents)}</span><i data-lucide="chevron-down" aria-hidden="true"></i></summary><nav>${headings.map(item => `<a href="#${escapeAttribute(item.id)}">${escapeHtml(item.text)}</a>`).join('')}</nav></details><button class="article-share" type="button" data-article-share><i data-lucide="share-2" aria-hidden="true"></i><span>${escapeHtml(ui.share)}</span></button><p class="article-share-status" data-article-share-status role="status" aria-live="polite"></p></div></aside><div class="article-body">${renderBlocks(content.blocks, ui.table, coverMarkup)}</div>${hasRelated ? `<aside class="article-related-rail" aria-labelledby="article-related-rail-title"><div class="article-related-rail-inner"><p id="article-related-rail-title">${escapeHtml(ui.continue)}</p>${article.related.slice(0, 3).map(item => renderRailCard(item, locale)).join('')}</div></aside>` : ''}</div>
     <section class="article-cta" aria-labelledby="article-cta-title"><div class="shell article-cta-grid"><div><h2 id="article-cta-title">${highlight(content.ctaHeading, content.ctaHighlighted)}</h2><p>${escapeHtml(content.ctaCopy)}</p></div><a class="solid-button" href="${escapeAttribute(content.ctaUrl)}">${escapeHtml(content.ctaLabel)}<span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div></section>
     ${hasRelated ? `<section class="article-related" aria-labelledby="related-title"><div class="shell section-title-line"><h2 class="design-heading" id="related-title"><span>${escapeHtml(ui.continue)}</span></h2></div><div class="shell article-related-grid">${article.related.map(item => renderCard(item, locale)).join('')}</div></section>` : ''}
   </article></main>`;
