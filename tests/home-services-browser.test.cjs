@@ -51,12 +51,20 @@ const services = {
 
     if (width > 600) {
       await page.locator('[data-service-tab="social"]').click();
+      const controls = page.locator('.service-carousel-controls button');
+      await page.locator('#hero-title').hover();
+      assert.equal(await controls.nth(0).evaluate(element => getComputedStyle(element).color), await controls.nth(1).evaluate(element => getComputedStyle(element).color));
       await page.locator('[data-service-next]').click();
       assert.equal(await page.locator('.industry-list [aria-selected="true"]').innerText(), 'Social Media Automation');
-      const controls = page.locator('.service-carousel-controls button');
-      assert.equal(await controls.nth(0).evaluate(element => getComputedStyle(element).color), await controls.nth(1).evaluate(element => getComputedStyle(element).color));
       await controls.nth(0).hover();
-      assert.equal(await controls.nth(0).evaluate(element => getComputedStyle(element).backgroundColor), 'rgb(28, 91, 255)');
+      assert.equal(await controls.nth(0).evaluate(element => {
+        const reference = document.createElement('span');
+        reference.style.background = 'var(--blue)';
+        document.body.appendChild(reference);
+        const matches = getComputedStyle(element).backgroundColor === getComputedStyle(reference).backgroundColor;
+        reference.remove();
+        return matches;
+      }), true);
     }
 
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Homepage overflow at ${width}px`);
