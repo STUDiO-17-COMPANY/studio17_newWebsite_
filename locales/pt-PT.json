@@ -561,7 +561,8 @@
       "content": "Criação de conteúdos",
       "social": "Redes sociais",
       "ads": "Publicidade",
-      "systems": "Sistemas digitais"
+      "systems": "Sistemas digitais",
+      "events": "Eventos"
     },
     "controls": {
       "category": "Área de serviços",
@@ -601,7 +602,8 @@
       "softwareDevelopment": "Desenvolvimento de software",
       "crm": "CRM",
       "internalTools": "Ferramentas internas",
-      "dashboards": "Dashboards"
+      "dashboards": "Dashboards",
+      "websiteDesign": "Design de websites", "copywriting": "Redação de conteúdos", "filming": "Filmagem", "photography": "Fotografia", "videoEditing": "Edição de vídeo", "graphicDesign": "Design gráfico", "digitalDesign": "Design digital", "aiGeneration": "Geração com IA", "metaAds": "Anúncios Meta", "googleAds": "Anúncios Google", "influencerAds": "Publicidade com influenciadores", "emailAds": "Publicidade por email", "smes": "PME", "presentialEvents": "Eventos presenciais", "onlineEvents": "Eventos online"
     },
     "descriptions": {
       "automotive": "Combinamos apresentação de viaturas, fotografia, vídeo, redes sociais, publicidade e percursos de contacto para ajudar stands a ganhar confiança antes da primeira visita.",

@@ -39,7 +39,8 @@
       "content": "Content creation",
       "social": "Social Media",
       "ads": "Advertisement",
-      "systems": "Digital systems"
+      "systems": "Digital systems",
+      "events": "Events"
     },
     "controls": {
       "category": "Service area",
@@ -79,7 +80,8 @@
       "softwareDevelopment": "Software Development",
       "crm": "CRM",
       "internalTools": "Internal Tools",
-      "dashboards": "Dashboards"
+      "dashboards": "Dashboards",
+      "websiteDesign": "Website Design", "copywriting": "Copywriting", "filming": "Filming", "photography": "Photography", "videoEditing": "Video editing", "graphicDesign": "Graphic design", "digitalDesign": "Digital design", "aiGeneration": "AI Generation", "metaAds": "Meta ads", "googleAds": "Google ads", "influencerAds": "Influencer ads", "emailAds": "Email ads", "smes": "SMEs", "presentialEvents": "Presential Events", "onlineEvents": "Online Events"
     },
     "descriptions": {
       "automotive": "We combine vehicle presentation, photography, video, social media, advertising and lead journeys to help dealerships earn trust before the first visit.",

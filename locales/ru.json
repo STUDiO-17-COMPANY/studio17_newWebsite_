@@ -493,7 +493,8 @@
       "content": "Создание контента",
       "social": "Социальные сети",
       "ads": "Реклама",
-      "systems": "Цифровые системы"
+      "systems": "Цифровые системы",
+      "events": "Мероприятия"
     },
     "controls": {
       "category": "Направление услуг",
@@ -533,7 +534,8 @@
       "softwareDevelopment": "Разработка программного обеспечения",
       "crm": "CRM",
       "internalTools": "Внутренние инструменты",
-      "dashboards": "Дашборды"
+      "dashboards": "Дашборды",
+      "websiteDesign": "Дизайн сайтов", "copywriting": "Копирайтинг", "filming": "Видеосъёмка", "photography": "Фотография", "videoEditing": "Монтаж видео", "graphicDesign": "Графический дизайн", "digitalDesign": "Цифровой дизайн", "aiGeneration": "Генерация с ИИ", "metaAds": "Реклама в Meta", "googleAds": "Реклама в Google", "influencerAds": "Реклама у инфлюенсеров", "emailAds": "Email-реклама", "smes": "МСП", "presentialEvents": "Очные мероприятия", "onlineEvents": "Онлайн-мероприятия"
     },
     "descriptions": {
       "automotive": "Мы объединяем презентацию автомобилей, фото, видео, соцсети, рекламу и пути обращения, чтобы автосалоны вызывали доверие ещё до первого визита.",

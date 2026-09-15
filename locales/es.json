@@ -493,7 +493,8 @@
       "content": "Creación de contenido",
       "social": "Redes sociales",
       "ads": "Publicidad",
-      "systems": "Sistemas digitales"
+      "systems": "Sistemas digitales",
+      "events": "Eventos"
     },
     "controls": {
       "category": "Área de servicios",
@@ -533,7 +534,8 @@
       "softwareDevelopment": "Desarrollo de software",
       "crm": "CRM",
       "internalTools": "Herramientas internas",
-      "dashboards": "Paneles"
+      "dashboards": "Paneles",
+      "websiteDesign": "Diseño web", "copywriting": "Redacción de contenidos", "filming": "Filmación", "photography": "Fotografía", "videoEditing": "Edición de vídeo", "graphicDesign": "Diseño gráfico", "digitalDesign": "Diseño digital", "aiGeneration": "Generación con IA", "metaAds": "Anuncios de Meta", "googleAds": "Anuncios de Google", "influencerAds": "Publicidad con influencers", "emailAds": "Publicidad por email", "smes": "Pymes", "presentialEvents": "Eventos presenciales", "onlineEvents": "Eventos online"
     },
     "descriptions": {
       "automotive": "Combinamos presentación de vehículos, fotografía, vídeo, redes sociales, publicidad y recorridos de contacto para generar confianza antes de la primera visita.",

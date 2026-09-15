@@ -5,7 +5,7 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Studio 17 — Marketing agency for business growth",
+        "title": "Marketing Agency for your problems | Built for modern growth",
         "description": "Studio 17 is a European marketing agency building websites, content, digital systems and AI solutions for modern business growth."
       },
       "sitemap": {
@@ -41,7 +41,8 @@ window.Studio17LocaleData = {
         "content": "Content creation",
         "social": "Social Media",
         "ads": "Advertisement",
-        "systems": "Digital systems"
+        "systems": "Digital systems",
+        "events": "Events"
       },
       "controls": {
         "category": "Service area",
@@ -81,7 +82,22 @@ window.Studio17LocaleData = {
         "softwareDevelopment": "Software Development",
         "crm": "CRM",
         "internalTools": "Internal Tools",
-        "dashboards": "Dashboards"
+        "dashboards": "Dashboards",
+        "websiteDesign": "Website Design",
+        "copywriting": "Copywriting",
+        "filming": "Filming",
+        "photography": "Photography",
+        "videoEditing": "Video editing",
+        "graphicDesign": "Graphic design",
+        "digitalDesign": "Digital design",
+        "aiGeneration": "AI Generation",
+        "metaAds": "Meta ads",
+        "googleAds": "Google ads",
+        "influencerAds": "Influencer ads",
+        "emailAds": "Email ads",
+        "smes": "SMEs",
+        "presentialEvents": "Presential Events",
+        "onlineEvents": "Online Events"
       },
       "descriptions": {
         "automotive": "We combine vehicle presentation, photography, video, social media, advertising and lead journeys to help dealerships earn trust before the first visit.",
@@ -199,7 +215,7 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Studio 17 — Agência de marketing para o crescimento empresarial",
+        "title": "Agência de marketing para os seus problemas | Criada para o crescimento moderno",
         "description": "A Studio 17 é uma agência europeia de marketing que cria websites, conteúdos, sistemas digitais e soluções de IA para o crescimento de empresas modernas."
       },
       "sitemap": {
@@ -495,6 +511,9 @@ window.Studio17LocaleData = {
       "Marketing agency for": "Agência de marketing para",
       "business growth": "crescimento empresarial",
       "Built for modern business growth": "Criada para o crescimento das empresas modernas",
+      "Marketing Agency for": "Agência de marketing para",
+      "your problems": "os seus problemas",
+      "Built for modern growth": "Criada para o crescimento moderno",
       "We help brands and businesses stay relevant, communicate clearly and grow through marketing solutions built for the way people discover, trust and choose businesses today.": "Ajudamos marcas e empresas a manterem-se relevantes, a comunicar com clareza e a crescer através de soluções de marketing pensadas para a forma como as pessoas descobrem, confiam e escolhem empresas hoje.",
       "View our work": "Ver os nossos trabalhos",
       "Explore website development": "Explorar desenvolvimento de websites",
@@ -748,7 +767,8 @@ window.Studio17LocaleData = {
         "content": "Criação de conteúdos",
         "social": "Redes sociais",
         "ads": "Publicidade",
-        "systems": "Sistemas digitais"
+        "systems": "Sistemas digitais",
+        "events": "Eventos"
       },
       "controls": {
         "category": "Área de serviços",
@@ -788,7 +808,22 @@ window.Studio17LocaleData = {
         "softwareDevelopment": "Desenvolvimento de software",
         "crm": "CRM",
         "internalTools": "Ferramentas internas",
-        "dashboards": "Dashboards"
+        "dashboards": "Dashboards",
+        "websiteDesign": "Design de websites",
+        "copywriting": "Redação de conteúdos",
+        "filming": "Filmagem",
+        "photography": "Fotografia",
+        "videoEditing": "Edição de vídeo",
+        "graphicDesign": "Design gráfico",
+        "digitalDesign": "Design digital",
+        "aiGeneration": "Geração com IA",
+        "metaAds": "Anúncios Meta",
+        "googleAds": "Anúncios Google",
+        "influencerAds": "Publicidade com influenciadores",
+        "emailAds": "Publicidade por email",
+        "smes": "PME",
+        "presentialEvents": "Eventos presenciais",
+        "onlineEvents": "Eventos online"
       },
       "descriptions": {
         "automotive": "Combinamos apresentação de viaturas, fotografia, vídeo, redes sociais, publicidade e percursos de contacto para ajudar stands a ganhar confiança antes da primeira visita.",
@@ -906,7 +941,7 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Studio 17 — Agencia de marketing para el crecimiento empresarial",
+        "title": "Agencia de marketing para tus problemas | Creada para el crecimiento moderno",
         "description": "Studio 17 es una agencia europea de marketing que crea sitios web, contenido, sistemas digitales y soluciones de IA para el crecimiento de empresas modernas."
       },
       "sitemap": {
@@ -1135,6 +1170,9 @@ window.Studio17LocaleData = {
       "Marketing agency for": "Agencia de marketing para",
       "business growth": "el crecimiento empresarial",
       "Built for modern business growth": "Creada para el crecimiento de empresas modernas",
+      "Marketing Agency for": "Agencia de marketing para",
+      "your problems": "tus problemas",
+      "Built for modern growth": "Creada para el crecimiento moderno",
       "We help brands and businesses stay relevant, communicate clearly and grow through marketing solutions built for the way people discover, trust and choose businesses today.": "Ayudamos a marcas y empresas a seguir siendo relevantes, comunicar con claridad y crecer mediante soluciones de marketing pensadas para la forma en que hoy las personas descubren, valoran y eligen empresas.",
       "View our work": "Ver nuestros trabajos",
       "Explore website development": "Explorar desarrollo web",
@@ -1388,7 +1426,8 @@ window.Studio17LocaleData = {
         "content": "Creación de contenido",
         "social": "Redes sociales",
         "ads": "Publicidad",
-        "systems": "Sistemas digitales"
+        "systems": "Sistemas digitales",
+        "events": "Eventos"
       },
       "controls": {
         "category": "Área de servicios",
@@ -1428,7 +1467,22 @@ window.Studio17LocaleData = {
         "softwareDevelopment": "Desarrollo de software",
         "crm": "CRM",
         "internalTools": "Herramientas internas",
-        "dashboards": "Paneles"
+        "dashboards": "Paneles",
+        "websiteDesign": "Diseño web",
+        "copywriting": "Redacción de contenidos",
+        "filming": "Filmación",
+        "photography": "Fotografía",
+        "videoEditing": "Edición de vídeo",
+        "graphicDesign": "Diseño gráfico",
+        "digitalDesign": "Diseño digital",
+        "aiGeneration": "Generación con IA",
+        "metaAds": "Anuncios de Meta",
+        "googleAds": "Anuncios de Google",
+        "influencerAds": "Publicidad con influencers",
+        "emailAds": "Publicidad por email",
+        "smes": "Pymes",
+        "presentialEvents": "Eventos presenciales",
+        "onlineEvents": "Eventos online"
       },
       "descriptions": {
         "automotive": "Combinamos presentación de vehículos, fotografía, vídeo, redes sociales, publicidad y recorridos de contacto para generar confianza antes de la primera visita.",
@@ -1546,7 +1600,7 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Studio 17 — Εταιρεία μάρκετινγκ για επιχειρηματική ανάπτυξη",
+        "title": "Εταιρεία μάρκετινγκ για τα προβλήματά σας | Σχεδιασμένο για σύγχρονη ανάπτυξη",
         "description": "Η Studio 17 είναι μια ευρωπαϊκή εταιρεία μάρκετινγκ που δημιουργεί ιστοσελίδες, περιεχόμενο, ψηφιακά συστήματα και λύσεις ΤΝ."
       },
       "sitemap": {
@@ -1775,6 +1829,9 @@ window.Studio17LocaleData = {
       "Marketing agency for": "Εταιρεία μάρκετινγκ για",
       "business growth": "επιχειρηματική ανάπτυξη",
       "Built for modern business growth": "Σχεδιασμένο για την ανάπτυξη σύγχρονων επιχειρήσεων",
+      "Marketing Agency for": "Εταιρεία μάρκετινγκ για",
+      "your problems": "τα προβλήματά σας",
+      "Built for modern growth": "Σχεδιασμένο για σύγχρονη ανάπτυξη",
       "We help brands and businesses stay relevant, communicate clearly and grow through marketing solutions built for the way people discover, trust and choose businesses today.": "Βοηθάμε μάρκες και επιχειρήσεις να παραμένουν επίκαιρες, να επικοινωνούν καθαρά και να αναπτύσσονται με λύσεις μάρκετινγκ προσαρμοσμένες στον τρόπο με τον οποίο οι άνθρωποι ανακαλύπτουν, εμπιστεύονται και επιλέγουν επιχειρήσεις σήμερα.",
       "View our work": "Δείτε τα έργα μας",
       "Explore website development": "Δείτε την ανάπτυξη ιστοσελίδων",
@@ -2028,7 +2085,8 @@ window.Studio17LocaleData = {
         "content": "Δημιουργία περιεχομένου",
         "social": "Κοινωνικά δίκτυα",
         "ads": "Διαφήμιση",
-        "systems": "Ψηφιακά συστήματα"
+        "systems": "Ψηφιακά συστήματα",
+        "events": "Εκδηλώσεις"
       },
       "controls": {
         "category": "Τομέας υπηρεσιών",
@@ -2068,7 +2126,22 @@ window.Studio17LocaleData = {
         "softwareDevelopment": "Ανάπτυξη λογισμικού",
         "crm": "CRM",
         "internalTools": "Εσωτερικά εργαλεία",
-        "dashboards": "Πίνακες ελέγχου"
+        "dashboards": "Πίνακες ελέγχου",
+        "websiteDesign": "Σχεδιασμός ιστοσελίδων",
+        "copywriting": "Συγγραφή περιεχομένου",
+        "filming": "Βιντεοσκόπηση",
+        "photography": "Φωτογραφία",
+        "videoEditing": "Επεξεργασία βίντεο",
+        "graphicDesign": "Γραφιστική",
+        "digitalDesign": "Ψηφιακός σχεδιασμός",
+        "aiGeneration": "Δημιουργία με ΤΝ",
+        "metaAds": "Διαφημίσεις Meta",
+        "googleAds": "Διαφημίσεις Google",
+        "influencerAds": "Διαφήμιση με influencers",
+        "emailAds": "Διαφήμιση μέσω email",
+        "smes": "ΜΜΕ",
+        "presentialEvents": "Εκδηλώσεις με φυσική παρουσία",
+        "onlineEvents": "Διαδικτυακές εκδηλώσεις"
       },
       "descriptions": {
         "automotive": "Συνδυάζουμε παρουσίαση οχημάτων, φωτογραφία, βίντεο, κοινωνικά δίκτυα, διαφήμιση και διαδρομές επικοινωνίας για να χτίζεται εμπιστοσύνη πριν από την πρώτη επίσκεψη.",
@@ -2186,7 +2259,7 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Studio 17 — Маркетинговое агентство для роста бизнеса",
+        "title": "Маркетинговое агентство для решения ваших задач | Создано для современного роста",
         "description": "Studio 17 — европейское маркетинговое агентство, создающее сайты, контент, цифровые системы и решения с ИИ для современного бизнеса."
       },
       "sitemap": {
@@ -2415,6 +2488,9 @@ window.Studio17LocaleData = {
       "Marketing agency for": "Маркетинговое агентство для",
       "business growth": "роста бизнеса",
       "Built for modern business growth": "Создано для роста современного бизнеса",
+      "Marketing Agency for": "Маркетинговое агентство для решения",
+      "your problems": "ваших задач",
+      "Built for modern growth": "Создано для современного роста",
       "We help brands and businesses stay relevant, communicate clearly and grow through marketing solutions built for the way people discover, trust and choose businesses today.": "Мы помогаем брендам и компаниям оставаться актуальными, ясно общаться и расти с помощью маркетинговых решений, учитывающих то, как люди сегодня находят компании, доверяют им и выбирают их.",
       "View our work": "Посмотреть наши работы",
       "Explore website development": "Подробнее о разработке сайтов",
@@ -2668,7 +2744,8 @@ window.Studio17LocaleData = {
         "content": "Создание контента",
         "social": "Социальные сети",
         "ads": "Реклама",
-        "systems": "Цифровые системы"
+        "systems": "Цифровые системы",
+        "events": "Мероприятия"
       },
       "controls": {
         "category": "Направление услуг",
@@ -2708,7 +2785,22 @@ window.Studio17LocaleData = {
         "softwareDevelopment": "Разработка программного обеспечения",
         "crm": "CRM",
         "internalTools": "Внутренние инструменты",
-        "dashboards": "Дашборды"
+        "dashboards": "Дашборды",
+        "websiteDesign": "Дизайн сайтов",
+        "copywriting": "Копирайтинг",
+        "filming": "Видеосъёмка",
+        "photography": "Фотография",
+        "videoEditing": "Монтаж видео",
+        "graphicDesign": "Графический дизайн",
+        "digitalDesign": "Цифровой дизайн",
+        "aiGeneration": "Генерация с ИИ",
+        "metaAds": "Реклама в Meta",
+        "googleAds": "Реклама в Google",
+        "influencerAds": "Реклама у инфлюенсеров",
+        "emailAds": "Email-реклама",
+        "smes": "МСП",
+        "presentialEvents": "Очные мероприятия",
+        "onlineEvents": "Онлайн-мероприятия"
       },
       "descriptions": {
         "automotive": "Мы объединяем презентацию автомобилей, фото, видео, соцсети, рекламу и пути обращения, чтобы автосалоны вызывали доверие ещё до первого визита.",
@@ -2826,7 +2918,7 @@ window.Studio17LocaleData = {
     "direction": "rtl",
     "meta": {
       "home": {
-        "title": "Studio 17 — סוכנות שיווק לצמיחה עסקית",
+        "title": "סוכנות שיווק לפתרון הבעיות שלכם | נבנה לצמיחה מודרנית",
         "description": "Studio 17 היא סוכנות שיווק אירופית שיוצרת אתרים, תוכן, מערכות דיגיטליות ופתרונות בינה מלאכותית לצמיחה עסקית מודרנית."
       },
       "sitemap": {
@@ -3055,6 +3147,9 @@ window.Studio17LocaleData = {
       "Marketing agency for": "סוכנות שיווק עבור",
       "business growth": "צמיחה עסקית",
       "Built for modern business growth": "נבנה לצמיחה של עסקים מודרניים",
+      "Marketing Agency for": "סוכנות שיווק לפתרון",
+      "your problems": "הבעיות שלכם",
+      "Built for modern growth": "נבנה לצמיחה מודרנית",
       "We help brands and businesses stay relevant, communicate clearly and grow through marketing solutions built for the way people discover, trust and choose businesses today.": "אנחנו עוזרים למותגים ולעסקים להישאר רלוונטיים, לתקשר בבירור ולצמוח באמצעות פתרונות שיווק שמתאימים לאופן שבו אנשים מגלים עסקים, נותנים בהם אמון ובוחרים בהם כיום.",
       "View our work": "צפייה בעבודות שלנו",
       "Explore website development": "מידע על פיתוח אתרים",
@@ -3308,7 +3403,8 @@ window.Studio17LocaleData = {
         "content": "יצירת תוכן",
         "social": "רשתות חברתיות",
         "ads": "פרסום",
-        "systems": "מערכות דיגיטליות"
+        "systems": "מערכות דיגיטליות",
+        "events": "אירועים"
       },
       "controls": {
         "category": "תחום שירות",
@@ -3348,7 +3444,22 @@ window.Studio17LocaleData = {
         "softwareDevelopment": "פיתוח תוכנה",
         "crm": "CRM",
         "internalTools": "כלים פנימיים",
-        "dashboards": "לוחות מחוונים"
+        "dashboards": "לוחות מחוונים",
+        "websiteDesign": "עיצוב אתרים",
+        "copywriting": "כתיבת תוכן",
+        "filming": "צילום וידאו",
+        "photography": "צילום סטילס",
+        "videoEditing": "עריכת וידאו",
+        "graphicDesign": "עיצוב גרפי",
+        "digitalDesign": "עיצוב דיגיטלי",
+        "aiGeneration": "יצירה באמצעות בינה מלאכותית",
+        "metaAds": "מודעות Meta",
+        "googleAds": "מודעות Google",
+        "influencerAds": "פרסום באמצעות משפיענים",
+        "emailAds": "פרסום בדוא״ל",
+        "smes": "עסקים קטנים ובינוניים",
+        "presentialEvents": "אירועים פיזיים",
+        "onlineEvents": "אירועים מקוונים"
       },
       "descriptions": {
         "automotive": "אנחנו משלבים הצגת רכבים, צילום, וידאו, רשתות חברתיות, פרסום ומסלולי פנייה כדי לבנות אמון עוד לפני הביקור הראשון.",

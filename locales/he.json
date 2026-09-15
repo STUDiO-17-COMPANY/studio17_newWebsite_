@@ -493,7 +493,8 @@
       "content": "יצירת תוכן",
       "social": "רשתות חברתיות",
       "ads": "פרסום",
-      "systems": "מערכות דיגיטליות"
+      "systems": "מערכות דיגיטליות",
+      "events": "אירועים"
     },
     "controls": {
       "category": "תחום שירות",
@@ -533,7 +534,8 @@
       "softwareDevelopment": "פיתוח תוכנה",
       "crm": "CRM",
       "internalTools": "כלים פנימיים",
-      "dashboards": "לוחות מחוונים"
+      "dashboards": "לוחות מחוונים",
+      "websiteDesign": "עיצוב אתרים", "copywriting": "כתיבת תוכן", "filming": "צילום וידאו", "photography": "צילום סטילס", "videoEditing": "עריכת וידאו", "graphicDesign": "עיצוב גרפי", "digitalDesign": "עיצוב דיגיטלי", "aiGeneration": "יצירה באמצעות בינה מלאכותית", "metaAds": "מודעות Meta", "googleAds": "מודעות Google", "influencerAds": "פרסום באמצעות משפיענים", "emailAds": "פרסום בדוא״ל", "smes": "עסקים קטנים ובינוניים", "presentialEvents": "אירועים פיזיים", "onlineEvents": "אירועים מקוונים"
     },
     "descriptions": {
       "automotive": "אנחנו משלבים הצגת רכבים, צילום, וידאו, רשתות חברתיות, פרסום ומסלולי פנייה כדי לבנות אמון עוד לפני הביקור הראשון.",
