@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-15 — Homepage service architecture and hero messaging
+
+- Reordered the homepage service browser to match the header exactly: Social Media, Website, Content Creation, Advertisement, By Industry and Events.
+- Replaced the retired homepage service choices with the current header catalogue, including Free Audit, Free Website and the separated production and advertising services.
+- Moved the service carousel arrows beside the section heading and applied the approved equal-colour controls with blue hover and focus states.
+- Updated the homepage title and hero messaging to “Marketing Agency for your problems | Built for modern growth,” with localized hero copy preserved across all six languages.
+
 ## 2026-09-15 — Article cover reading-flow refinement
 
 - Kept the article cover as the hero background while moving its standalone presentation from directly below the hero to the article column, after the complete multi-paragraph introduction and immediately before the first content heading.

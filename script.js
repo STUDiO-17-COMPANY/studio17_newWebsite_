@@ -410,39 +410,39 @@
   });
 
   const serviceSchema = {
-    industry: {
-      items: ['automotive', 'restaurants', 'health', 'ecommerce', 'influencers', 'fashion', 'education', 'local', 'physicalAdvertising'],
-      images: {
-        automotive: 'Images/case-automotive.webp', restaurants: 'Images/news-social.webp', health: 'Images/news-partnership.webp',
-        ecommerce: 'Images/news-billboard.webp', influencers: 'Images/news-social.webp', fashion: 'Images/ai-team.webp',
-        education: 'Images/news-ai.webp', local: 'Images/news-partnership.webp', physicalAdvertising: 'Images/news-billboard.webp'
-      }
+    social: {
+      items: ['socialManagement', 'socialAutomation', 'growthStrategy', 'communityManagement', 'freeAudit'],
+      image: 'Images/news-social.webp'
     },
     website: {
-      items: ['websiteDevelopment', 'websiteRevamp', 'freeWebsite', 'seo', 'geo', 'localization', 'maintenance'],
+      items: ['websiteDevelopment', 'websiteRevamp', 'websiteDesign', 'seo', 'geo', 'copywriting', 'localization', 'maintenance', 'freeWebsite'],
       image: 'Images/hero-team.webp'
     },
     content: {
-      items: ['filmingPhotography', 'videoGraphicDesign', 'scripting', 'aiGeneratedContent'],
+      items: ['filming', 'photography', 'videoEditing', 'graphicDesign', 'digitalDesign', 'scripting', 'aiGeneration'],
       image: 'Images/ai-hands.webp'
     },
-    social: {
-      items: ['socialManagement', 'socialAutomation', 'growthStrategy', 'communityManagement'],
-      image: 'Images/news-social.webp'
-    },
     ads: {
-      items: ['metaGoogleAds', 'socialAds', 'influencerAdvertising', 'ugcCreators', 'emailAdvertising'],
+      items: ['metaAds', 'googleAds', 'socialAds', 'influencerAds', 'ugcCreators', 'emailAds'],
       image: 'Images/news-billboard.webp'
     },
-    systems: {
-      items: ['softwareDevelopment', 'crm', 'internalTools', 'dashboards'],
-      image: 'Images/news-ai.webp'
+    industry: {
+      items: ['automotive', 'restaurants', 'health', 'ecommerce', 'influencers', 'education', 'local', 'smes'],
+      images: {
+        automotive: 'Images/case-automotive.webp', restaurants: 'Images/news-social.webp', health: 'Images/news-partnership.webp',
+        ecommerce: 'Images/news-billboard.webp', influencers: 'Images/news-social.webp', education: 'Images/news-ai.webp',
+        local: 'Images/news-partnership.webp', smes: 'Images/hero-team.webp'
+      }
+    },
+    events: {
+      items: ['presentialEvents', 'onlineEvents'],
+      image: 'Images/news-partnership.webp'
     }
   };
 
   const englishServices = {
     categoryLabels: {
-      industry: 'By industry', website: 'Website', content: 'Content creation', social: 'Social Media', ads: 'Advertisement', systems: 'Digital systems'
+      social: 'Social Media', website: 'Website', content: 'Content creation', ads: 'Advertisement', industry: 'By industry', events: 'Events'
     },
     controls: {
       category: 'Service area',
@@ -450,14 +450,13 @@
     },
     itemLabels: {
       automotive: 'Automotive', restaurants: 'Restaurants', health: 'Health', ecommerce: 'E-Commerce', influencers: 'Individual Influencers',
-      fashion: 'Clothing Stores', education: 'Education', local: 'Local Businesses', physicalAdvertising: 'Physical Advertising',
-      websiteDevelopment: 'Website Development', websiteRevamp: 'Website Revamp', freeWebsite: 'Free Website', seo: 'SEO', geo: 'GEO',
-      localization: 'Localization and Translation', maintenance: 'Maintenance', filmingPhotography: 'Filming / Photography',
-      videoGraphicDesign: 'Video editing and graphic design', scripting: 'Scripting', aiGeneratedContent: 'AI-generated Content',
+      education: 'Education', local: 'Local Business', smes: 'SMEs',
+      websiteDevelopment: 'Website Development', websiteRevamp: 'Website Revamp', websiteDesign: 'Website Design', seo: 'SEO', geo: 'GEO',
+      copywriting: 'Copywriting', localization: 'Localization and Translation', maintenance: 'Maintenance', freeWebsite: 'Free Website',
+      filming: 'Filming', photography: 'Photography', videoEditing: 'Video editing', graphicDesign: 'Graphic design', digitalDesign: 'Digital design', scripting: 'Scripting', aiGeneration: 'AI Generation',
       socialManagement: 'Social Media Management', socialAutomation: 'Social Media Automation', growthStrategy: 'Growth strategy',
-      communityManagement: 'Community management', metaGoogleAds: 'Meta and Google Ads', socialAds: 'Social Media Ads',
-      influencerAdvertising: 'Influencer Advertising', ugcCreators: 'UGC Creators', emailAdvertising: 'Email Advertising',
-      softwareDevelopment: 'Software Development', crm: 'CRM', internalTools: 'Internal Tools', dashboards: 'Dashboards'
+      communityManagement: 'Community management', freeAudit: 'Free Audit', metaAds: 'Meta ads', googleAds: 'Google ads', socialAds: 'Social Media ads',
+      influencerAds: 'Influencer ads', ugcCreators: 'UGC creators', emailAds: 'Email ads', presentialEvents: 'Presential Events', onlineEvents: 'Online Events'
     },
     descriptions: {
       automotive: 'We combine vehicle presentation, photography, video, social media, advertising and lead journeys to help dealerships earn trust before the first visit.',
@@ -471,28 +470,34 @@
       physicalAdvertising: 'We plan and design billboards, print, signage and offline campaigns with clear messages, production-ready files and digital follow-up journeys.',
       websiteDevelopment: 'We design and build responsive, conversion-focused websites with SEO, GEO and technical SEO foundations, clear customer journeys and measurable contact actions.',
       websiteRevamp: 'We improve an existing website’s structure, messaging, design, speed, accessibility and conversion path while protecting useful content and search value.',
+      websiteDesign: 'We shape page hierarchy, interface systems and responsive user journeys before development so every screen feels clear, distinctive and easy to use.',
       freeWebsite: 'Eligible small businesses can receive a focused starter website under our Free Website offer, with scope, requirements and ongoing costs confirmed before work begins.',
       seo: 'We improve site structure, on-page content, internal linking and technical signals so search engines understand the business and relevant customers can find it.',
       geo: 'We structure entities, expertise and answer-ready content so AI-powered search and answer engines can understand, trust and cite the business more easily.',
+      copywriting: 'We write clear website copy around customer questions, commercial priorities and search intent so visitors understand the offer and know what to do next.',
       localization: 'We adapt language, tone, search intent, metadata and customer journeys for each market instead of simply translating words.',
       maintenance: 'We keep websites secure, updated, monitored and improving through backups, content support, performance checks and agreed technical care.',
-      filmingPhotography: 'We plan and capture brand, product, team, venue and campaign photography or video in formats prepared for websites, social media and advertising.',
-      videoGraphicDesign: 'We turn raw material into platform-ready videos and graphics with clear pacing, branding, captions, formats and calls to action.',
+      filming: 'We plan and film brand, product, team, venue and campaign footage with the shots, formats and narrative coverage required for each publishing channel.',
+      photography: 'We create a consistent photography library for products, people, spaces and campaigns, framed for websites, social media, press and advertising.',
+      videoEditing: 'We turn raw footage into platform-ready videos with purposeful pacing, brand treatment, captions, sound and clear calls to action.',
+      graphicDesign: 'We design recognisable campaign graphics, social assets, presentations and print-ready material around one consistent visual system.',
+      digitalDesign: 'We create digital interfaces and campaign assets that remain usable, responsive and visually consistent across screens and platforms.',
       scripting: 'We write hooks, narratives, interview guides and conversion scripts that give every video, advertisement or presentation a clear purpose.',
-      aiGeneratedContent: 'We use AI as a directed production tool for scalable concepts and assets, with human review for accuracy, brand fit and quality.',
+      aiGeneration: 'We direct AI-assisted production for scalable concepts and assets while retaining human review over facts, creative quality and brand consistency.',
       socialManagement: 'We manage strategy, calendars, publishing, creative coordination, reporting and continuous improvement across the channels that matter to the business.',
       socialAutomation: 'We automate approved scheduling, routing, responses and reporting tasks so social media runs consistently without removing human oversight.',
       growthStrategy: 'We build a testable growth plan around audience, positioning, content pillars, distribution, collaborations and metrics tied to business value.',
       communityManagement: 'We monitor and respond to comments, messages and community signals with clear guidelines that protect the brand and strengthen customer relationships.',
-      metaGoogleAds: 'We plan, launch and optimize Meta and Google campaigns around search intent, audiences, creative, landing pages, tracking and a defined commercial goal.',
+      freeAudit: 'We review the current social presence, publishing consistency, content mix and customer journey to identify practical opportunities before any engagement begins.',
+      metaAds: 'We plan and optimise Meta campaigns around audience signals, creative testing, landing journeys and measurable commercial actions across Facebook and Instagram.',
+      googleAds: 'We build Google Ads campaigns around real search intent, relevant landing pages, conversion tracking and controlled optimisation of queries and budget.',
       socialAds: 'We create platform-specific paid social campaigns with attention-earning creative, relevant targeting and a clear path from impression to action.',
-      influencerAdvertising: 'We identify suitable creators, define deliverables, coordinate campaigns and connect creator reach to an offer, landing journey and measurement plan.',
+      influencerAds: 'We identify suitable creators, define deliverables, coordinate campaigns and connect creator reach to an offer, landing journey and measurement plan.',
       ugcCreators: 'We source and direct UGC creators to produce authentic assets for organic publishing and paid testing, with deliverables and usage terms defined.',
-      emailAdvertising: 'We plan newsletters, promotional sequences and automated follow-ups with useful segmentation, persuasive copy, clear design and measurable actions.',
-      softwareDevelopment: 'We design and develop purpose-built software around a validated workflow, user need and maintainable technical scope.',
-      crm: 'We configure CRM structure, pipelines, forms, automation and reporting so leads and customer follow-up stop getting lost between tools.',
-      internalTools: 'We build focused internal tools that replace repetitive spreadsheets, manual handoffs and fragmented processes with one clearer workflow.',
-      dashboards: 'We connect approved data sources into decision-ready dashboards that show the metrics, trends and actions each team actually needs.'
+      emailAds: 'We plan newsletters, promotional sequences and automated follow-ups with useful segmentation, persuasive copy, clear design and measurable actions.',
+      smes: 'We combine the website, content, campaigns and practical systems an SME needs most, prioritising work around limited time, budget and internal capacity.',
+      presentialEvents: 'We support in-person events with positioning, promotion, visual assets, registration journeys and content capture designed around attendance and follow-up.',
+      onlineEvents: 'We build online event journeys across promotion, registration, reminders, branded broadcast assets and post-event content or lead follow-up.'
     },
     outcomes: {
       automotive: 'Give buyers the information and confidence to enquire about the right vehicle before visiting the dealership.',
@@ -506,28 +511,34 @@
       physicalAdvertising: 'Make every physical placement instantly understandable and connect offline attention to a trackable next action.',
       websiteDevelopment: 'Launch a responsive website that supports search visibility and guides visitors toward enquiry, booking or purchase.',
       websiteRevamp: 'Keep what already works while removing the design, performance and messaging friction holding conversion back.',
+      websiteDesign: 'Give development a tested visual and interaction direction that reduces ambiguity and improves the customer journey.',
       freeWebsite: 'Give an eligible business a credible starting point online with the agreed essentials clearly defined.',
       seo: 'Build stronger relevance and crawlability around the searches that matter to the business.',
       geo: 'Make expertise easier for AI answer engines to interpret, verify and reference.',
+      copywriting: 'Turn complex offers into clear, persuasive pages that support search visibility and confident customer action.',
       localization: 'Give each market language and customer journey that feel native rather than copied.',
       maintenance: 'Protect continuity with planned updates, monitoring, backups and responsive technical support.',
-      filmingPhotography: 'Create a reusable visual library sized and framed for campaigns, websites and daily publishing.',
-      videoGraphicDesign: 'Deliver finished assets that are recognisable, accessible and ready for each platform.',
+      filming: 'Capture reusable footage with enough variety to support campaigns, websites and regular publishing.',
+      photography: 'Build a coherent image library that makes the business easier to recognise and trust across channels.',
+      videoEditing: 'Deliver finished videos that hold attention, communicate clearly and are ready for each platform.',
+      graphicDesign: 'Give every campaign and communication a consistent visual language across digital and physical formats.',
+      digitalDesign: 'Create responsive digital assets and interfaces that remain clear and consistent wherever customers see them.',
       scripting: 'Give presenters, creators and campaigns a stronger opening, logical flow and decisive call to action.',
-      aiGeneratedContent: 'Increase production capacity while retaining human approval over facts, tone and brand quality.',
+      aiGeneration: 'Increase production capacity while retaining human approval over facts, tone and brand quality.',
       socialManagement: 'Replace irregular posting with an accountable calendar, coordinated creative and useful performance reporting.',
       socialAutomation: 'Save time on repeatable social tasks while keeping sensitive conversations and approvals with people.',
       growthStrategy: 'Create a prioritised testing roadmap that shows what to publish, distribute, measure and improve next.',
       communityManagement: 'Turn timely, on-brand replies into stronger relationships and clearer customer insight.',
-      metaGoogleAds: 'Direct search demand and audience attention to dedicated landing journeys with conversion tracking in place.',
+      freeAudit: 'Leave with a prioritised view of what is working, what is missing and what should be improved first.',
+      metaAds: 'Test audiences and creative systematically while connecting paid attention to a measurable next step.',
+      googleAds: 'Capture relevant search demand and learn which queries, offers and landing journeys produce meaningful action.',
       socialAds: 'Test messages, creatives and audiences systematically so paid social learning compounds instead of resetting.',
-      influencerAdvertising: 'Build creator campaigns around audience fit, agreed usage, accountable delivery and a measurable destination.',
+      influencerAds: 'Build creator campaigns around audience fit, agreed usage, accountable delivery and a measurable destination.',
       ugcCreators: 'Produce a varied bank of authentic creative that can be tested organically and in paid campaigns.',
-      emailAdvertising: 'Move subscribers and leads toward the next relevant action through segmented campaigns and follow-up sequences.',
-      softwareDevelopment: 'Deliver a maintainable application designed around the people, permissions and workflow that will use it.',
-      crm: 'Give every lead a visible owner, stage, history and next action inside one organised pipeline.',
-      internalTools: 'Reduce manual handoffs and give the team one reliable place to complete recurring operational work.',
-      dashboards: 'Replace scattered reports with a shared view of the signals that require attention and decisions.'
+      emailAds: 'Move subscribers and leads toward the next relevant action through segmented campaigns and follow-up sequences.',
+      smes: 'Focus limited resources on the connected marketing work most likely to improve visibility, trust and enquiries.',
+      presentialEvents: 'Create a consistent journey from event discovery and registration through attendance, content and follow-up.',
+      onlineEvents: 'Turn an online session into a complete acquisition and follow-up journey instead of a one-off broadcast.'
     },
     templates: {
       industry: {
@@ -555,10 +566,10 @@
         body: 'We connect the message, creative, targeting and rollout so every campaign has one clear job.',
         result: 'Creative, targeting, landing journey and measurement are planned as one campaign.'
       },
-      systems: {
-        title: '{item} that removes repetitive work and makes decisions clearer.',
-        body: 'We connect data, tools and workflows to reduce friction and create a more consistent operating system.',
-        result: 'Your team gets a practical system with defined data, ownership and workflows.'
+      events: {
+        title: '{item} designed to turn attendance into lasting business value.',
+        body: 'Promotion, registration, event experience, content and follow-up are planned as one connected journey.',
+        result: 'The event has a clear audience, conversion path and follow-up plan before promotion begins.'
       }
     },
     featured: {
@@ -582,7 +593,7 @@
   const serviceCategoryLabel = document.querySelector('.home-page [data-service-category-label]');
   const serviceItemLabel = document.querySelector('.home-page [data-service-item-label]');
   const selectedItems = Object.fromEntries(Object.entries(serviceSchema).map(([category, config]) => [category, config.items[0]]));
-  let activeCategory = 'industry';
+  let activeCategory = 'social';
 
   const getServiceLocale = () => window.Studio17I18n?.getLanguage?.() === 'en'
     ? englishServices

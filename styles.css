@@ -147,6 +147,12 @@ h1, h2, h3, h4, p { margin-top: 0; }
 /* Services — Figma: y813, 1920 × 633; panel 1440 × 538 */
 .services-section { height: 633px; margin-top: 32px; padding-top: 20px; }
 .services-section .design-heading { height: 48px; }
+.service-section-heading { display: flex; align-items: center; gap: 16px; }
+.service-section-heading .design-heading { margin: 0; }
+.service-carousel-controls { flex: 0 0 auto; gap: 8px; }
+.service-carousel-controls button { width: 40px; height: 40px; color: var(--ink); background: transparent; opacity: 1; transition: color .2s ease, background .2s ease; }
+.service-carousel-controls button:hover, .service-carousel-controls button:focus-visible { color: var(--white); background: var(--blue); opacity: 1; transform: none; }
+.service-carousel-controls .lucide { width: 27px; height: 27px; stroke-width: 2.5; }
 .service-panel { height: 538px; margin-top: 27px; padding: 24px 24px 0; color: var(--white); background: var(--ink); overflow: hidden; }
 .service-mobile-selector { display: none; }
 .service-tabs { height: 56px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }

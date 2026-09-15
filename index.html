@@ -16,13 +16,13 @@
   <link rel="alternate" hreflang="he" href="https://www.studio17.world/?lang=he">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Studio 17">
-  <meta property="og:title" content="Studio 17 — Marketing agency for business growth">
+  <meta property="og:title" content="Marketing Agency for your problems | Built for modern growth">
   <meta property="og:description" content="European marketing agency building websites, content, digital systems and AI solutions for modern business growth.">
   <meta property="og:url" content="https://www.studio17.world/" data-seo-og-url>
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Studio 17 — Marketing agency for business growth">
+  <meta name="twitter:title" content="Marketing Agency for your problems | Built for modern growth">
   <meta name="twitter:description" content="European marketing agency building websites, content, digital systems and AI solutions for modern business growth.">
-  <title>Studio 17 — Marketing agency for business growth</title>
+  <title>Marketing Agency for your problems | Built for modern growth</title>
   <link rel="icon" type="image/png" href="Images/FavIcon.png">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="styles.css">
@@ -125,11 +125,11 @@
       <div class="hero-media" aria-hidden="true"><img src="Images/hero-team.webp" alt=""></div>
       <div class="shell hero-grid">
         <div class="hero-title-block reveal">
-          <h1 id="hero-title">Marketing agency for<br>business growth</h1>
+          <h1 id="hero-title">Marketing Agency for<br>your problems</h1>
           <a class="media-play" href="/wip?for=work" aria-label="Explore Studio 17 featured work"><i data-lucide="play" aria-hidden="true"></i></a>
         </div>
         <div class="hero-copy reveal" data-delay="1">
-          <h2>Built for modern business growth</h2>
+          <h2>Built for modern growth</h2>
           <p>We help brands and businesses stay relevant, communicate clearly and grow through marketing solutions built for the way people discover, trust and choose businesses today.</p>
           <div class="hero-actions">
             <a class="design-link design-link-dark" href="/wip?for=work">View our work <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
@@ -177,7 +177,13 @@
 
     <section class="services-section" id="services" aria-labelledby="services-title">
       <div class="shell">
-        <h2 class="design-heading reveal" id="services-title"><span>Marketing solutions</span> for how businesses grow today</h2>
+        <div class="service-section-heading">
+          <h2 class="design-heading reveal" id="services-title"><span>Marketing solutions</span> for how businesses grow today</h2>
+          <div class="triangle-controls service-carousel-controls reveal" aria-label="Service carousel controls">
+            <button type="button" data-service-prev aria-label="Previous service"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+            <button type="button" data-service-next aria-label="Next service"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
 
         <div class="service-panel reveal">
           <div class="service-mobile-selector">
@@ -185,12 +191,12 @@
               <span data-service-category-label>Service area</span>
               <span class="service-mobile-select-control">
                 <select data-service-category-select>
-                  <option value="industry">By industry</option>
+                  <option value="social">Social Media</option>
                   <option value="website">Website</option>
                   <option value="content">Content creation</option>
-                  <option value="social">Social Media</option>
                   <option value="ads">Advertisement</option>
-                  <option value="systems">Digital systems</option>
+                  <option value="industry">By industry</option>
+                  <option value="events">Events</option>
                 </select>
                 <i data-lucide="chevron-down" aria-hidden="true"></i>
               </span>
@@ -199,15 +205,11 @@
               <span data-service-item-label>Service</span>
               <span class="service-mobile-select-control">
                 <select data-service-item-select>
-                  <option value="automotive">Automotive</option>
-                  <option value="restaurants">Restaurants</option>
-                  <option value="health">Health</option>
-                  <option value="ecommerce">E-Commerce</option>
-                  <option value="influencers">Individual Influencers</option>
-                  <option value="fashion">Clothing Stores</option>
-                  <option value="education">Education</option>
-                  <option value="local">Local Businesses</option>
-                  <option value="physicalAdvertising">Physical Advertising</option>
+                  <option value="socialManagement">Social Media Management</option>
+                  <option value="socialAutomation">Social Media Automation</option>
+                  <option value="growthStrategy">Growth strategy</option>
+                  <option value="communityManagement">Community management</option>
+                  <option value="freeAudit">Free Audit</option>
                 </select>
                 <i data-lucide="chevron-down" aria-hidden="true"></i>
               </span>
@@ -215,38 +217,33 @@
           </div>
 
           <div class="service-tabs" role="tablist" aria-label="Marketing service categories">
-            <button type="button" role="tab" aria-selected="true" data-service-tab="industry">By industry</button>
+            <button type="button" role="tab" aria-selected="true" data-service-tab="social">Social Media</button>
             <button type="button" role="tab" aria-selected="false" data-service-tab="website">Website</button>
             <button type="button" role="tab" aria-selected="false" data-service-tab="content">Content creation</button>
-            <button type="button" role="tab" aria-selected="false" data-service-tab="social">Social Media</button>
             <button type="button" role="tab" aria-selected="false" data-service-tab="ads">Advertisement</button>
-            <button type="button" role="tab" aria-selected="false" data-service-tab="systems">Digital systems</button>
+            <button type="button" role="tab" aria-selected="false" data-service-tab="industry">By industry</button>
+            <button type="button" role="tab" aria-selected="false" data-service-tab="events">Events</button>
           </div>
 
           <div class="service-main" id="work">
-            <div class="industry-list" role="tablist" aria-label="Industries">
-              <button type="button" role="tab" aria-selected="true" data-industry="automotive">Automotive</button>
-              <button type="button" role="tab" aria-selected="false" data-industry="restaurants">Restaurants</button>
-              <button type="button" role="tab" aria-selected="false" data-industry="health">Health</button>
-              <button type="button" role="tab" aria-selected="false" data-industry="ecommerce">E-Commerce</button>
-              <button type="button" role="tab" aria-selected="false" data-industry="fashion">Clothing Stores</button>
-              <button type="button" role="tab" aria-selected="false" data-industry="education">Education</button>
-              <button type="button" role="tab" aria-selected="false" data-industry="local">Local Businesses</button>
-              <button type="button" role="tab" aria-selected="false" data-industry="physical-advertising">Physical Advertising</button>
+            <div class="industry-list" role="tablist" aria-label="Social Media services">
+              <button type="button" role="tab" aria-selected="true" data-service-item="socialManagement">Social Media Management</button>
+              <button type="button" role="tab" aria-selected="false" data-service-item="socialAutomation">Social Media Automation</button>
+              <button type="button" role="tab" aria-selected="false" data-service-item="growthStrategy">Growth strategy</button>
+              <button type="button" role="tab" aria-selected="false" data-service-item="communityManagement">Community management</button>
+              <button type="button" role="tab" aria-selected="false" data-service-item="freeAudit">Free Audit</button>
             </div>
 
             <article class="service-feature">
               <div class="service-photo" aria-hidden="true">
-                <img src="Images/case-automotive.webp" alt="" data-service-image>
+                <img src="Images/news-social.webp" alt="" data-service-image>
               </div>
               <div class="service-gradient" aria-hidden="true"></div>
               <div class="service-copy">
-                <h3 data-service-title>Car dealership marketing that sells the<br>car before the first visit.</h3>
-                <p data-service-body>Before a buyer contacts a dealership, they have already judged the car online. We help automotive businesses make every vehicle easier to understand and trust through useful content, clearer presentation and a more consistent brand presence.</p>
-                <p class="service-result" data-service-result>One dealership client <strong>grew from</strong> selling up to <strong>4 cars</strong> per month to <strong>more than 10 cars per month</strong>, with some <strong>vehicles selling in less than 24 hours after being listed.</strong></p>
+                <h3 data-service-title>Social Media Management that gives your brand a reason to be followed.</h3>
+                <p data-service-body>We manage strategy, calendars, publishing, creative coordination, reporting and continuous improvement across the channels that matter to the business.</p>
+                <p class="service-result" data-service-result>Replace irregular posting with an accountable calendar, coordinated creative and useful performance reporting.</p>
               </div>
-              <button class="image-control image-control-left" type="button" data-service-prev aria-label="Previous industry"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
-              <button class="image-control image-control-right" type="button" data-service-next aria-label="Next industry"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
               <div class="service-bottom-links">
                 <a class="design-link design-link-dark" href="/wip?for=digital-solutions">Digital solutions <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
                 <a class="design-link design-link-dark" href="/wip?for=physical-solutions">Physical solutions <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
