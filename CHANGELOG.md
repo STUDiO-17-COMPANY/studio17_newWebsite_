@@ -11,6 +11,8 @@
 - Standardized the page on the `#F8FAFC` surface, 32px section rhythm and 24px internal spacing, with responsive layouts and mobile-safe animated process arrows.
 - Hardened repeated language renders so generated project sections are cleaned up before being rebuilt.
 - Added complete responsive versions of the new decision journey for English, Portuguese, Spanish, Greek, Russian and Hebrew.
+- Reduced the height of the three Studio 17 advantage cards and made each card fully actionable, linking to website pricing, the team page and the AI integrations route in every language.
+- Corrected the problem-card hover and keyboard-focus state so the blue surface and white content always change together with readable contrast.
 
 ## 2026-09-15 — Homepage title punctuation and carousel controls
 

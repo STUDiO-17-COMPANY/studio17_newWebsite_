@@ -2400,13 +2400,25 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .website-services-closing .cta-actions { flex-wrap: wrap; gap: 24px 40px; }
 .website-services-closing .services-cta-media { max-width: 100%; overflow: clip; contain: paint; }
 .website-services-main .website-method { padding-top: 0; }
-.website-services-main .website-method-grid article { min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; }
+.website-services-main .website-method-grid a { position: relative; min-height: 168px; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 58px 24px 24px; color: var(--white); background: var(--ink); transition: transform .22s var(--ease), background .22s ease; }
+.website-services-main .website-method-grid a > span { position: absolute; top: 22px; inset-inline-end: 22px; display: grid; width: 30px; height: 30px; place-items: center; color: var(--white); background: var(--blue); transition: transform .22s var(--ease); }
+.website-services-main .website-method-grid a > span .lucide { width: 17px; height: 17px; }
+.website-services-main .website-method-grid a:hover,
+.website-services-main .website-method-grid a:focus-visible { background: #16233b; transform: translateY(-3px); }
+.website-services-main .website-method-grid a:hover > span,
+.website-services-main .website-method-grid a:focus-visible > span { transform: translate(3px,-3px); }
 .website-services-main .website-method-grid h3 { margin-top: 0; }
 .website-proof-note { margin: 18px 0 0; color: #596477; font-size: 15px; line-height: 1.55; }
 .website-services-main .website-problem-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; padding: 0; background: transparent; }
 .website-services-main .website-problem-grid a,
 .website-services-main .website-problem-grid a:nth-child(4) { grid-column: auto; min-height: 205px; border: 1px solid #cbd4e1; background: var(--paper); }
 .website-services-main .website-problem-grid a:nth-child(4) { grid-column: 1; }
+.website-services-main .website-problem-grid a:hover,
+.website-services-main .website-problem-grid a:focus-visible { color: var(--white); background: var(--blue); }
+.website-services-main .website-problem-grid a:hover p,
+.website-services-main .website-problem-grid a:hover .lucide,
+.website-services-main .website-problem-grid a:focus-visible p,
+.website-services-main .website-problem-grid a:focus-visible .lucide { color: var(--white); }
 .website-client-project { scroll-margin-top: 96px; }
 
 @media (max-width: 900px) {

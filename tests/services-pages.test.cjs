@@ -115,8 +115,9 @@ test('website service-family page provides a distinct, translated decision journ
   const problems = html.slice(html.indexOf('<section class="website-problems"'), html.indexOf('<section class="website-situations"'));
   const situations = html.slice(html.indexOf('<section class="website-situations"'), html.indexOf('<section class="website-capabilities"'));
   assert.equal((problems.match(/<a /g) || []).length, 5);
-  assert.equal((method.match(/<article>/g) || []).length, 3);
-  assert.doesNotMatch(method, /data-lucide=/);
+  assert.equal((method.match(/<a href=/g) || []).length, 3);
+  assert.match(method, /href="\/services\/website-pricing"[\s\S]*?href="\/team"[\s\S]*?href="\/wip\?for=ai-integrations"/);
+  assert.equal((method.match(/data-lucide="arrow-up-right"/g) || []).length, 3);
   assert.equal((situations.match(/<a /g) || []).length, 8);
   assert.match(html, /class="website-proof-grid[\s\S]*?<\/div><p class="website-proof-note">Real websites shaped around different audiences, markets and commercial goals<\/p>/);
   assert.match(html, /href="#website-project-terrassi"[\s\S]*?href="#website-project-phos"[\s\S]*?href="#website-project-100pratos"/);
@@ -167,7 +168,8 @@ test('website service-family page provides a distinct, translated decision journ
     assert.equal((localizedPage.capabilities.match(/data-website-service="/g) || []).length, 8, locale);
     assert.equal((localizedPage.workCases.match(/class="website-case-study /g) || []).length, 3, locale);
     assert.equal((localizedPage.faq.match(/<details>/g) || []).length, 9, locale);
-    assert.doesNotMatch(localizedPage.method, /data-lucide=/, locale);
+    assert.match(localizedPage.method, /href="\/services\/website-pricing"[\s\S]*?href="\/team"[\s\S]*?href="\/wip\?for=ai-integrations"/, locale);
+    assert.equal((localizedPage.method.match(/data-lucide="arrow-up-right"/g) || []).length, 3, locale);
     assert.match(localizedPage.proof, /href="#website-project-terrassi"[\s\S]*href="#website-project-phos"[\s\S]*href="#website-project-100pratos"/, locale);
   }
   const hebrewPage = context.window.Studio17ServiceLocaleData.he.websiteServices;
