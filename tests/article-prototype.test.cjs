@@ -13,6 +13,9 @@ const news = fs.readFileSync(path.join(root, 'news.html'), 'utf8');
 const styles = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 const behavior = fs.readFileSync(path.join(root, 'article.js'), 'utf8');
 const rendered = renderArticleMain(demo);
+const multiParagraphDemo = structuredClone(demo);
+multiParagraphDemo.content.blocks.splice(1, 0, { type: 'paragraph', text: 'A second introductory paragraph before the first article section.' });
+const multiParagraphRendered = renderArticleMain(multiParagraphDemo);
 const seo = buildSeo(demo);
 
 assert.match(template, /class="article-page"/);
@@ -25,6 +28,8 @@ assert.match(rendered, /datetime="2026-06-22"/);
 assert.match(rendered, /class="article-cover reveal"/);
 assert.ok(rendered.indexOf('class="article-lead"') < rendered.indexOf('class="article-cover reveal"'));
 assert.ok(rendered.indexOf('class="article-cover reveal"') < rendered.indexOf('<section id="the-first-visit-often-happens-online"'));
+assert.ok(multiParagraphRendered.indexOf('A second introductory paragraph') < multiParagraphRendered.indexOf('class="article-cover reveal"'));
+assert.ok(multiParagraphRendered.indexOf('class="article-cover reveal"') < multiParagraphRendered.indexOf('<section id="the-first-visit-often-happens-online"'));
 assert.match(rendered, /class="shell article-layout has-related"/);
 assert.match(rendered, /class="article-meta-author"/);
 assert.match(rendered, /class="article-toc" data-article-toc open/);

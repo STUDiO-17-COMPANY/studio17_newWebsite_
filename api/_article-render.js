@@ -57,7 +57,6 @@ const renderBlocks = (blocks, tableLabel = UI.en.table, coverMarkup = '') => {
     else if (block.type === 'paragraph') {
       const isLead = !number && html.length === 0;
       html.push(`<p${isLead ? ' class="article-lead"' : ''}>${escapeHtml(block.text)}</p>`);
-      if (isLead) renderCover();
     }
     else if (block.type === 'list') html.push(`<${block.ordered ? 'ol' : 'ul'}>${block.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</${block.ordered ? 'ol' : 'ul'}>`);
     else if (block.type === 'table') html.push(`<div class="article-table-wrap" role="region" aria-label="${escapeAttribute(tableLabel)}" tabindex="0"><table class="article-table"><thead><tr>${block.headers.map(header => `<th scope="col">${escapeHtml(header)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);

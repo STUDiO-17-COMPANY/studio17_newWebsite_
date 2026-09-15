@@ -2,7 +2,7 @@
 
 ## 2026-09-15 — Article cover reading-flow refinement
 
-- Kept the article cover as the hero background while moving its standalone presentation from directly below the hero to the article column, after the opening summary and before the first content heading.
+- Kept the article cover as the hero background while moving its standalone presentation from directly below the hero to the article column, after the complete multi-paragraph introduction and immediately before the first content heading.
 - Reframed the in-article cover at 16:9 and made it available on mobile so it supports the reading flow without creating an oversized interruption before the article begins.
 - Added renderer and browser regression coverage for semantic placement, visibility, one-H1 hierarchy and responsive behavior.
 
