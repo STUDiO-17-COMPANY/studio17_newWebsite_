@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-15 — Website services conversion journey
+
+- Rebuilt `/services/website` around the visitor's business situation: proof, problem recognition, Studio 17 method, guided service choice, full service detail, selected work, process, low-friction entry paths, buying FAQs and a decisive final CTA.
+- Added concise proof for Terrassi Villa, PHÓS Optics and 100 Pratos, plus challenge/solution/outcome project presentations without inventing performance results.
+- Added the Free Website Audit and Free Website as distinct conversion paths, expanded the FAQ to nine buying questions and preserved independent accordion behaviour in each FAQ column.
+- Standardized the page on the `#F8FAFC` surface, 32px section rhythm and 24px internal spacing, with responsive layouts and mobile-safe animated process arrows.
+- Hardened repeated language renders so generated project sections are cleaned up before being rebuilt.
+
 ## 2026-09-15 — Homepage title punctuation and carousel controls
 
 - Removed the unnecessary previous/next controls from the homepage service browser while retaining direct category, service and mobile-select navigation.

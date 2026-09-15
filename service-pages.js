@@ -266,6 +266,7 @@
 
   const enhanceWebsiteProjects = () => {
     if (page !== 'websiteServices') return;
+    document.querySelectorAll('.website-client-project').forEach(section => section.remove());
     const projects = document.querySelector('.website-client-projects');
     if (!projects) return;
     [...projects.querySelectorAll(':scope > .website-case-study')].forEach((project, index) => {
@@ -496,6 +497,7 @@
   const normalisePageHeadingPunctuation = () => {
     if (document.body.classList.contains('seo-location-page')) removeTerminalHeadingPeriods('.seo-location-main h1, .seo-location-main h2');
     if (page === 'websiteDevelopment') removeTerminalHeadingPeriods('.website-development-main h1, .website-development-main h2');
+    if (page === 'websiteServices') removeTerminalHeadingPeriods('.website-services-main h1, .website-services-main h2');
   };
 
   const normaliseWebsiteDevelopmentDesign = language => {
