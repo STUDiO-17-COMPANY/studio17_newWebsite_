@@ -4,9 +4,13 @@
 
 - Rebuilt `/services/website` around the visitor's business situation: proof, problem recognition, Studio 17 method, guided service choice, full service detail, selected work, process, low-friction entry paths, buying FAQs and a decisive final CTA.
 - Added concise proof for Terrassi Villa, PHÓS Optics and 100 Pratos, plus challenge/solution/outcome project presentations without inventing performance results.
+- Moved the three Studio 17 advantages directly below the hero, removed decorative icons and introductory copy, and placed the proof section immediately afterwards with its explanatory line below the client cards.
+- Connected each proof card to its matching Terrassi Villa, PHÓS Optics or 100 Pratos project section and renamed the portfolio heading to “Selected work shaped around European business challenges”.
+- Reworked the problem cards as a clean left-aligned grid without a grey backing surface.
 - Added the Free Website Audit and Free Website as distinct conversion paths, expanded the FAQ to nine buying questions and preserved independent accordion behaviour in each FAQ column.
 - Standardized the page on the `#F8FAFC` surface, 32px section rhythm and 24px internal spacing, with responsive layouts and mobile-safe animated process arrows.
 - Hardened repeated language renders so generated project sections are cleaned up before being rebuilt.
+- Added complete responsive versions of the new decision journey for English, Portuguese, Spanish, Greek, Russian and Hebrew.
 
 ## 2026-09-15 — Homepage title punctuation and carousel controls
 

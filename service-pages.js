@@ -9,6 +9,16 @@
     key: element.dataset.serviceKey,
     original: element.innerHTML
   }));
+  if (page === 'websiteServices') {
+    [
+      ['.website-situations > .shell', 'situations'],
+      ['.website-services-process > .shell', 'process'],
+      ['.website-entry-paths > .shell', 'entryPaths']
+    ].forEach(([selector, key]) => {
+      const element = document.querySelector(selector);
+      if (element) records.push({ element, key, original: element.innerHTML });
+    });
+  }
   const englishMetadata = {
     title: document.title,
     description: document.querySelector('meta[name="description"]')?.content || ''
@@ -272,6 +282,7 @@
     [...projects.querySelectorAll(':scope > .website-case-study')].forEach((project, index) => {
       const section = document.createElement('section');
       section.className = `website-client-project website-client-project-${index + 1}`;
+      section.id = ['website-project-terrassi', 'website-project-phos', 'website-project-100pratos'][index] || `website-project-${index + 1}`;
       const shell = document.createElement('div');
       shell.className = 'shell';
       const heading = project.querySelector('h3');

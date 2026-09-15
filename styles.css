@@ -2399,6 +2399,15 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .website-services-closing .cta-copy > p { min-width: 0; width: 100%; }
 .website-services-closing .cta-actions { flex-wrap: wrap; gap: 24px 40px; }
 .website-services-closing .services-cta-media { max-width: 100%; overflow: clip; contain: paint; }
+.website-services-main .website-method { padding-top: 0; }
+.website-services-main .website-method-grid article { min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; }
+.website-services-main .website-method-grid h3 { margin-top: 0; }
+.website-proof-note { margin: 18px 0 0; color: #596477; font-size: 15px; line-height: 1.55; }
+.website-services-main .website-problem-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; padding: 0; background: transparent; }
+.website-services-main .website-problem-grid a,
+.website-services-main .website-problem-grid a:nth-child(4) { grid-column: auto; min-height: 205px; border: 1px solid #cbd4e1; background: var(--paper); }
+.website-services-main .website-problem-grid a:nth-child(4) { grid-column: 1; }
+.website-client-project { scroll-margin-top: 96px; }
 
 @media (max-width: 900px) {
   .website-services-main .website-services-process ol { grid-template-columns: 1fr; }
@@ -2407,4 +2416,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .website-services-closing { height: auto; min-height: 0; padding-block: 42px; }
   .website-services-closing .cta-grid { grid-template-columns: 1fr; gap: 28px; }
   .website-services-closing .services-cta-media img { transform: none; object-position: center; }
+  .website-services-main .website-problem-grid { grid-template-columns: 1fr; gap: 14px; }
+  .website-services-main .website-problem-grid a,
+  .website-services-main .website-problem-grid a:nth-child(4) { grid-column: auto; }
 }

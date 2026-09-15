@@ -107,16 +107,21 @@ test('website service-family page provides a distinct, translated decision journ
   for (const service of ['Website development', 'Website revamp', 'Website design', 'SEO', 'GEO', 'Copywriting', 'Localization and Translation', 'Maintenance']) assert.ok(html.includes(service), service);
   for (const destination of ['/services/website-development', '/wip?for=website-revamp', '/wip?for=website-design', '/services/seo', '/wip?for=geo', '/wip?for=copywriting', '/wip?for=localization-and-translation', '/wip?for=maintenance']) assert.ok(html.includes(destination), destination);
   for (const section of ['website-proof', 'website-problems', 'website-method', 'website-situations', 'website-capabilities', 'website-work-intro', 'website-services-process', 'website-entry-paths', 'website-services-faq', 'website-services-closing']) assert.ok(html.includes(section), section);
-  const orderedSections = ['<section class="page-hero website-services-hero"', '<section class="website-proof"', '<section class="website-problems"', '<section class="website-method"', '<section class="website-situations"', '<section class="website-capabilities"', '<section class="website-work-intro"', '<section class="website-process website-services-process"', '<section class="website-entry-paths"', '<section class="website-faq website-services-faq"', '<section class="closing-cta website-services-closing"'];
+  const orderedSections = ['<section class="page-hero website-services-hero"', '<section class="website-method"', '<section class="website-proof"', '<section class="website-problems"', '<section class="website-situations"', '<section class="website-capabilities"', '<section class="website-work-intro"', '<section class="website-process website-services-process"', '<section class="website-entry-paths"', '<section class="website-faq website-services-faq"', '<section class="closing-cta website-services-closing"'];
   orderedSections.reduce((previous, section) => { const next = html.indexOf(section); assert.ok(next > previous, section); return next; }, -1);
   assert.match(html, /Website services<\/span> for your business needs/);
   assert.match(html, /class="website-hero-actions"[\s\S]*?class="solid-button"[\s\S]*?href="\/contact"/);
-  const problems = html.slice(html.indexOf('<section class="website-problems"'), html.indexOf('<section class="website-method"'));
-  const method = html.slice(html.indexOf('<section class="website-method"'), html.indexOf('<section class="website-situations"'));
+  const method = html.slice(html.indexOf('<section class="website-method"'), html.indexOf('<section class="website-proof"'));
+  const problems = html.slice(html.indexOf('<section class="website-problems"'), html.indexOf('<section class="website-situations"'));
   const situations = html.slice(html.indexOf('<section class="website-situations"'), html.indexOf('<section class="website-capabilities"'));
   assert.equal((problems.match(/<a /g) || []).length, 5);
   assert.equal((method.match(/<article>/g) || []).length, 3);
+  assert.doesNotMatch(method, /data-lucide=/);
   assert.equal((situations.match(/<a /g) || []).length, 8);
+  assert.match(html, /class="website-proof-grid[\s\S]*?<\/div><p class="website-proof-note">Real websites shaped around different audiences, markets and commercial goals<\/p>/);
+  assert.match(html, /href="#website-project-terrassi"[\s\S]*?href="#website-project-phos"[\s\S]*?href="#website-project-100pratos"/);
+  assert.match(html, /data-service-key="workHeading"><h2[^>]*><span>Selected work<\/span> shaped around European business challenges<\/h2><\/div>/);
+  assert.match(html, /service-locales\/website-services-v2\.js/);
   const process = html.slice(html.indexOf('<section class="website-process website-services-process"'), html.indexOf('<section class="website-entry-paths"'));
   assert.equal((process.match(/<li>/g) || []).length, 5);
   assert.match(html, /Free Website Audit[\s\S]*?Review My Website[\s\S]*?next one-page website could cost €0[\s\S]*?\/services\/free-website/);
@@ -130,6 +135,7 @@ test('website service-family page provides a distinct, translated decision journ
   assert.match(behavior, /enhanceTwoColumnFaq[\s\S]*?website-faq-column[\s\S]*?dataset\.faqColumn[\s\S]*?sibling\.open = false/);
   assert.match(html, /class="website-client-projects"[\s\S]*?Terrassi Villa[\s\S]*?PHÓS Optics[\s\S]*?100 Pratos/);
   assert.match(behavior, /enhanceWebsiteProjects[\s\S]*?createElement\('section'\)[\s\S]*?website-client-project-/);
+  assert.match(behavior, /website-project-terrassi[\s\S]*website-project-phos[\s\S]*website-project-100pratos/);
   assert.match(css, /\.website-case-study \{[^}]*background: transparent;[^}]*overflow: hidden;/);
   assert.match(css, /\.website-services-page,[^{]+\.website-capabilities \{ background: var\(--paper\); \}/);
   assert.match(html, /terrassivilla-accessible-tourism-in-the-azores/);
@@ -154,17 +160,21 @@ test('website service-family page provides a distinct, translated decision journ
   const context = { window: { Studio17ServiceLocaleData: {} } };
   vm.runInNewContext(localizedSource, context);
   vm.runInNewContext(read('service-locales/requested-translations.js'), context);
+  vm.runInNewContext(read('service-locales/website-services-v2.js'), context);
   for (const locale of ['pt-PT', 'es']) {
     const localizedPage = context.window.Studio17ServiceLocaleData[locale].websiteServices;
-    for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'capabilitiesHeading', 'capabilities', 'workCases', 'searchGrowth', 'freeCta', 'faqHeading', 'faq', 'closing']) assert.ok(localizedPage[key], `${locale}: missing ${key}`);
+    for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'method', 'proof', 'problems', 'situations', 'capabilitiesHeading', 'capabilities', 'workHeading', 'workCases', 'process', 'entryPaths', 'faqHeading', 'faq', 'closing']) assert.ok(localizedPage[key], `${locale}: missing ${key}`);
     assert.equal((localizedPage.capabilities.match(/data-website-service="/g) || []).length, 8, locale);
-    assert.equal((localizedPage.workCases.match(/class="website-case-study /g) || []).length, 2, locale);
-    assert.equal((localizedPage.faq.match(/<details>/g) || []).length, 6, locale);
+    assert.equal((localizedPage.workCases.match(/class="website-case-study /g) || []).length, 3, locale);
+    assert.equal((localizedPage.faq.match(/<details>/g) || []).length, 9, locale);
+    assert.doesNotMatch(localizedPage.method, /data-lucide=/, locale);
+    assert.match(localizedPage.proof, /href="#website-project-terrassi"[\s\S]*href="#website-project-phos"[\s\S]*href="#website-project-100pratos"/, locale);
   }
   const hebrewPage = context.window.Studio17ServiceLocaleData.he.websiteServices;
-  for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'capabilitiesHeading', 'capabilities', 'workCases', 'searchGrowth', 'freeCta', 'faqHeading', 'faq', 'closing']) assert.ok(hebrewPage[key], `he: missing ${key}`);
+  for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'method', 'proof', 'problems', 'situations', 'capabilitiesHeading', 'capabilities', 'workHeading', 'workCases', 'process', 'entryPaths', 'faqHeading', 'faq', 'closing']) assert.ok(hebrewPage[key], `he: missing ${key}`);
   assert.equal((hebrewPage.capabilities.match(/data-website-service="/g) || []).length, 8);
-  assert.equal((hebrewPage.faq.match(/<details>/g) || []).length, 6);
+  assert.equal((hebrewPage.workCases.match(/class="website-case-study /g) || []).length, 3);
+  assert.equal((hebrewPage.faq.match(/<details>/g) || []).length, 9);
 });
 
 test('service-page FAQs use independent two-column accordion groups', () => {
