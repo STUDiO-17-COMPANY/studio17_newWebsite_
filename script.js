@@ -609,7 +609,7 @@
     const outcome = locale.outcomes?.[item] || englishServices.outcomes[item] || templates.result;
     const schema = serviceSchema[category];
     return {
-      title: featured?.title || formatServiceText(templates.title, label),
+      title: (featured?.title || formatServiceText(templates.title, label)).replace(/[.]$/u, ''),
       body: featured?.body || description,
       result: featured?.result || outcome,
       image: schema.images?.[item] || schema.image
@@ -729,18 +729,6 @@
     buttons[nextIndex].focus();
     buttons[nextIndex].click();
   });
-
-  const stepService = direction => {
-    const buttons = [...(serviceList?.querySelectorAll('[data-service-item]') || [])];
-    if (!buttons.length) return;
-    const currentIndex = buttons.findIndex(tab => tab.getAttribute('aria-selected') === 'true');
-    const nextIndex = (currentIndex + direction + buttons.length) % buttons.length;
-    buttons[nextIndex].click();
-    buttons[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  };
-
-  document.querySelector('[data-service-prev]')?.addEventListener('click', () => stepService(-1));
-  document.querySelector('[data-service-next]')?.addEventListener('click', () => stepService(1));
 
   const addTabKeyboardNavigation = tabs => {
     tabs.forEach((tab, index) => {

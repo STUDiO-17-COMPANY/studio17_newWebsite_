@@ -37,8 +37,7 @@ const services = {
     assert.equal((await page.locator('.hero-copy h2').innerText()).trim(), 'Built for modern growth');
     assert.deepEqual(await page.locator('[data-service-tab]').allTextContents(), categories);
     assert.equal(await page.locator('[data-service-tab="social"]').getAttribute('aria-selected'), 'true');
-    assert.equal(await page.locator('.service-section-heading .service-carousel-controls').count(), 1);
-    assert.equal(await page.locator('.service-feature [data-service-prev], .service-feature [data-service-next]').count(), 0);
+    assert.equal(await page.locator('[data-service-prev], [data-service-next], .service-carousel-controls').count(), 0);
 
     for (const [category, expected] of Object.entries(services)) {
       if (width > 600) await page.locator(`[data-service-tab="${category}"]`).click();
@@ -51,12 +50,13 @@ const services = {
 
     if (width > 600) {
       await page.locator('[data-service-tab="social"]').click();
-      const controls = page.locator('.service-carousel-controls button');
+      await page.locator('.industry-list [data-service-item="socialAutomation"]').click();
+      assert.equal(await page.locator('.industry-list [aria-selected="true"]').innerText(), 'Social Media Automation');
+      const controls = page.locator('.news-section .triangle-controls button');
       await page.locator('#hero-title').hover();
       assert.equal(await controls.nth(0).evaluate(element => getComputedStyle(element).color), await controls.nth(1).evaluate(element => getComputedStyle(element).color));
-      await page.locator('[data-service-next]').click();
-      assert.equal(await page.locator('.industry-list [aria-selected="true"]').innerText(), 'Social Media Automation');
       await controls.nth(0).hover();
+      await page.waitForTimeout(250);
       assert.equal(await controls.nth(0).evaluate(element => {
         const reference = document.createElement('span');
         reference.style.background = 'var(--blue)';
@@ -65,7 +65,10 @@ const services = {
         reference.remove();
         return matches;
       }), true);
+      assert.equal(await page.locator('.testimonials-section .triangle-controls button').count(), 2);
     }
+
+    assert.equal(await page.locator('h1, h2, h3').evaluateAll(headings => headings.filter(heading => heading.textContent.trim().endsWith('.')).length), 0);
 
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Homepage overflow at ${width}px`);
     await page.screenshot({ path: path.join(artifactDir, `homepage-services-${width}.png`), fullPage: true });

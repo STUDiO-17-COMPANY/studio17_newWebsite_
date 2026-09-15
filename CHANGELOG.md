@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-15 — Homepage title punctuation and carousel controls
+
+- Removed the unnecessary previous/next controls from the homepage service browser while retaining direct category, service and mobile-select navigation.
+- Removed trailing full stops from the homepage client-work heading and all dynamically rendered service titles across every language.
+- Standardized the Insights and Testimonials carousel arrows with equal neutral states and the approved individual blue hover and keyboard-focus treatment.
+
 ## 2026-09-15 — Homepage service architecture and hero messaging
 
 - Reordered the homepage service browser to match the header exactly: Social Media, Website, Content Creation, Advertisement, By Industry and Events.

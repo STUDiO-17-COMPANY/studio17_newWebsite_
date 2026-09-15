@@ -12,7 +12,7 @@ test('homepage replaces the former AI block with selected client work', () => {
   const html = read('index.html');
   assert.doesNotMatch(html, /class="ai-section"|AI helps your business to respond faster/);
   assert.match(html, /class="website-work home-work-showcase"/);
-  assert.match(html, /<span>Selected client work<\/span> in web development and marketing\./);
+  assert.match(html, /<span>Selected client work<\/span> in web development and marketing<\/h2>/);
   assert.match(html, /automotive marketing, social media promotion and design/);
 
   const showcase = html.match(/<section class="website-work home-work-showcase"[\s\S]*?<\/section>/)?.[0] || '';
