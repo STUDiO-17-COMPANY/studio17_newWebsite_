@@ -18,6 +18,7 @@
 
   const copy = {
     'pt-PT': {
+      methodHeading: '<h2 class="design-heading" id="website-method-title"><span>O que nos diferencia</span> dos outros</h2>',
       method: [['Preços imbatíveis', 'Pague pela execução real, não pela estrutura de uma agência. Design de nível empresarial e carregamento rápido, otimizados para reduzir o custo por lead.'], ['Experiência de uma equipa completa', 'Um estúdio de crescimento dedicado à sua visão, com especialistas em desenvolvimento full-stack, design e marketing para fazer a marca crescer.'], ['IA integrada', 'Prepare as operações para o futuro com automação inteligente, personas virtuais, recursos dinâmicos de marketing e fluxos automatizados ligados ao seu ecossistema.']],
       proof: [['Trabalho de websites de confiança', 'para empresas em toda a Europa'], 'Websites reais adaptados a diferentes públicos, mercados e objetivos comerciais'],
       problems: [['É este o problema do website', 'que está a enfrentar?'], 'Comece pela situação que reconhece. Indicamos o próximo passo útil mais pequeno', [['Preciso de um novo website', 'Crie um website em torno da oferta, do público e dos objetivos.'], ['O meu website parece desatualizado', 'Melhore a estrutura, o design e o percurso do cliente sem reconstruir às cegas.'], ['O meu website não gera contactos', 'Descubra onde os visitantes perdem confiança ou deixam de agir.'], ['As pessoas não me encontram online', 'Melhore SEO, visibilidade local e bases para pesquisa por IA.'], ['Não sei do que preciso', 'Peça uma análise e recomendaremos o âmbito útil mais pequeno.']]],
@@ -29,6 +30,7 @@
       faq: [['Quanto tempo demora um website?', 'O prazo depende do âmbito acordado e da rapidez na entrega de conteúdo, feedback e acessos. Confirmamos um plano realista antes do início.'], ['Podem criar websites multilingues?', 'Sim. Planeamos conteúdo, rotas, metadata e layouts para experiências multilingues e da direita para a esquerda.'], ['O que acontece depois do lançamento?', 'Concluímos os testes, ligamos as ferramentas acordadas e fornecemos a passagem ou o apoio contínuo definido no projeto.']]
     },
     es: {
+      methodHeading: '<h2 class="design-heading" id="website-method-title"><span>Lo que nos diferencia</span> de los demás</h2>',
       method: [['Precios imbatibles', 'Paga por ejecución real, no por estructura de agencia. Diseño de nivel empresarial y carga rápida, optimizados para reducir el coste por lead.'], ['Experiencia de un equipo completo', 'Un estudio de crecimiento dedicado a tu visión, con especialistas en desarrollo full-stack, diseño y marketing.'], ['IA integrada', 'Prepara tus operaciones con automatización inteligente, personas virtuales, recursos dinámicos y flujos conectados a tu ecosistema.']],
       proof: [['Trabajo web de confianza', 'para empresas de toda Europa'], 'Sitios web reales adaptados a distintos públicos, mercados y objetivos comerciales'],
       problems: [['¿Es este el problema web', 'al que te enfrentas?'], 'Empieza por la situación que reconoces. Te guiaremos al siguiente paso útil más pequeño', [['Necesito un sitio web nuevo', 'Crea un sitio alrededor de tu oferta, público y objetivos.'], ['Mi sitio parece anticuado', 'Mejora estructura, diseño y recorrido sin reconstruir a ciegas.'], ['Mi sitio no genera contactos', 'Detecta dónde los visitantes pierden confianza o dejan de actuar.'], ['No me encuentran online', 'Mejora SEO, visibilidad local y bases para búsqueda con IA.'], ['No sé qué necesito', 'Solicita una revisión y recomendaremos el alcance útil más pequeño.']]],
@@ -40,6 +42,7 @@
       faq: [['¿Cuánto tarda un sitio web?', 'Depende del alcance y de la rapidez con que se entreguen contenido, feedback y accesos. Confirmamos un plan realista antes de empezar.'], ['¿Podéis crear sitios multilingües?', 'Sí. Planificamos contenido, rutas, metadatos y layouts para varios idiomas y experiencias RTL.'], ['¿Qué ocurre después del lanzamiento?', 'Terminamos las pruebas, conectamos las herramientas acordadas y entregamos el proyecto o el soporte continuo definido.']]
     },
     el: {
+      methodHeading: '<h2 class="design-heading" id="website-method-title"><span>Τι μας διαφοροποιεί</span> από τους άλλους</h2>',
       method: [['Ανταγωνιστική τιμολόγηση', 'Πληρώνετε για ουσιαστική υλοποίηση και όχι για περιττά λειτουργικά έξοδα, με γρήγορο και ποιοτικό σχεδιασμό.'], ['Πλήρης εξειδίκευση ομάδας', 'Εξειδικευμένοι συνεργάτες σε development, design και marketing υποστηρίζουν συνολικά την ανάπτυξη της επιχείρησης.'], ['Ενσωματωμένη AI', 'Έξυπνοι αυτοματισμοί, δυναμικό marketing και ροές εργασίας συνδέονται απευθείας με το οικοσύστημά σας.']],
       proof: [['Αξιόπιστα έργα ιστοσελίδων', 'για επιχειρήσεις σε όλη την Ευρώπη'], 'Πραγματικές ιστοσελίδες για διαφορετικά κοινά, αγορές και εμπορικούς στόχους'],
       problems: [['Αυτό είναι το πρόβλημα της ιστοσελίδας', 'που αντιμετωπίζετε;'], 'Ξεκινήστε από την κατάσταση που αναγνωρίζετε και θα σας οδηγήσουμε στο σωστό επόμενο βήμα', [['Χρειάζομαι νέα ιστοσελίδα', 'Δημιουργία γύρω από την προσφορά, το κοινό και τους στόχους σας.'], ['Η ιστοσελίδα μου φαίνεται παλιά', 'Βελτίωση δομής, design και διαδρομής πελάτη χωρίς τυφλή ανακατασκευή.'], ['Η ιστοσελίδα δεν φέρνει επαφές', 'Εντοπισμός των σημείων όπου οι επισκέπτες χάνουν εμπιστοσύνη ή δεν ενεργούν.'], ['Δεν με βρίσκουν online', 'Βελτίωση SEO, τοπικής παρουσίας και βάσεων AI search.'], ['Δεν ξέρω τι χρειάζομαι', 'Ζητήστε έλεγχο και θα προτείνουμε το μικρότερο χρήσιμο εύρος.']]],
@@ -51,6 +54,7 @@
       faq: [['Πόσο χρόνο χρειάζεται μια ιστοσελίδα;', 'Εξαρτάται από το εύρος και την έγκαιρη παροχή περιεχομένου, feedback και πρόσβασης.'], ['Δημιουργείτε πολύγλωσσες ιστοσελίδες;', 'Ναι. Σχεδιάζουμε περιεχόμενο, διαδρομές, metadata και layouts για πολλές γλώσσες και RTL.'], ['Τι συμβαίνει μετά το launch;', 'Ολοκληρώνουμε τους ελέγχους, συνδέουμε τα συμφωνημένα εργαλεία και παρέχουμε παράδοση ή συνεχή υποστήριξη.']]
     },
     ru: {
+      methodHeading: '<h2 class="design-heading" id="website-method-title"><span>Что отличает нас</span> от других</h2>',
       method: [['Выгодная стоимость', 'Вы платите за реальную работу, а не за агентские накладные расходы: качественный дизайн и высокая скорость для снижения стоимости обращения.'], ['Экспертиза полной команды', 'Специалисты по full-stack разработке, дизайну и маркетингу комплексно поддерживают рост бренда.'], ['Интегрированный ИИ', 'Интеллектуальная автоматизация, динамические маркетинговые материалы и рабочие процессы встраиваются в вашу систему.']],
       proof: [['Проверенные сайты', 'для бизнеса по всей Европе'], 'Реальные сайты для разных аудиторий, рынков и коммерческих целей'],
       problems: [['Это проблема сайта', 'с которой вы столкнулись?'], 'Выберите знакомую ситуацию, и мы предложим минимальный полезный следующий шаг', [['Мне нужен новый сайт', 'Создадим сайт вокруг предложения, аудитории и целей.'], ['Мой сайт устарел', 'Улучшим структуру, дизайн и путь клиента без слепой перестройки.'], ['Сайт не приносит обращения', 'Найдём точки, где посетители теряют доверие или не совершают действие.'], ['Меня не находят онлайн', 'Улучшим SEO, локальную видимость и основу для AI-поиска.'], ['Я не знаю, что мне нужно', 'Проведём анализ и предложим минимальный полезный объём.']]],
@@ -62,6 +66,7 @@
       faq: [['Сколько времени занимает сайт?', 'Срок зависит от объёма и скорости предоставления контента, обратной связи и доступов.'], ['Вы создаёте многоязычные сайты?', 'Да. Мы планируем контент, маршруты, метаданные и макеты для нескольких языков и RTL.'], ['Что происходит после запуска?', 'Мы завершаем проверки, подключаем согласованные инструменты и передаём проект или продолжаем поддержку.']]
     },
     he: {
+      methodHeading: '<h2 class="design-heading" id="website-method-title"><span>מה מבדיל אותנו</span> מאחרים</h2>',
       method: [['מחיר תחרותי במיוחד', 'משלמים על ביצוע אמיתי ולא על תקורה של סוכנות, עם עיצוב איכותי ומהירות שנועדו לשפר את עלות הליד.'], ['מומחיות של צוות מלא', 'מומחי פיתוח, עיצוב ושיווק עובדים יחד כדי לתמוך בצמיחה של המותג.'], ['בינה מלאכותית משולבת', 'אוטומציה חכמה, נכסי שיווק דינמיים ותהליכי עבודה מתחברים ישירות למערכת העסקית.']],
       proof: [['עבודות אתרים מהימנות', 'לעסקים ברחבי אירופה'], 'אתרים אמיתיים המותאמים לקהלים, שווקים ויעדים מסחריים שונים'],
       problems: [['האם זו בעיית האתר', 'שאיתה אתם מתמודדים?'], 'בחרו את המצב המוכר לכם ונכוון אתכם לצעד השימושי הקטן ביותר', [['אני צריך אתר חדש', 'נבנה אתר סביב ההצעה, הקהל והיעדים.'], ['האתר שלי נראה מיושן', 'נשפר מבנה, עיצוב ומסע לקוח בלי לבנות מחדש ללא צורך.'], ['האתר לא מייצר פניות', 'נזהה היכן מבקרים מאבדים אמון או לא מבצעים פעולה.'], ['לא מוצאים אותי באינטרנט', 'נשפר SEO, נראות מקומית ותשתית לחיפוש AI.'], ['אני לא יודע מה אני צריך', 'נבדוק את האתר ונמליץ על היקף העבודה השימושי הקטן ביותר.']]],
@@ -77,6 +82,7 @@
   Object.entries(copy).forEach(([locale, c]) => {
     const page = window.Studio17ServiceLocaleData?.[locale]?.websiteServices;
     if (!page) return;
+    page.methodHeading = c.methodHeading;
     page.method = method(c.method);
     page.proof = proof(c.proof[0], c.proof[1]);
     page.problems = problems(c.problems[0], c.problems[1], c.problems[2].map((item, index) => [commonProblemLinks[index], ...item]));

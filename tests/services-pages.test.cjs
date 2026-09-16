@@ -106,19 +106,19 @@ test('website service-family page provides a distinct, translated decision journ
   assert.equal((html.match(/data-website-service-panel="/g) || []).length, 8);
   for (const service of ['Website development', 'Website revamp', 'Website design', 'SEO', 'GEO', 'Copywriting', 'Localization and Translation', 'Maintenance']) assert.ok(html.includes(service), service);
   for (const destination of ['/services/website-development', '/wip?for=website-revamp', '/wip?for=website-design', '/services/seo', '/wip?for=geo', '/wip?for=copywriting', '/wip?for=localization-and-translation', '/wip?for=maintenance']) assert.ok(html.includes(destination), destination);
-  for (const section of ['website-proof', 'website-problems', 'website-method', 'website-situations', 'website-capabilities', 'website-work-intro', 'website-services-process', 'website-entry-paths', 'website-services-faq', 'website-services-closing']) assert.ok(html.includes(section), section);
-  const orderedSections = ['<section class="page-hero website-services-hero"', '<section class="website-method"', '<section class="website-proof"', '<section class="website-problems"', '<section class="website-situations"', '<section class="website-capabilities"', '<section class="website-work-intro"', '<section class="website-process website-services-process"', '<section class="website-entry-paths"', '<section class="website-faq website-services-faq"', '<section class="closing-cta website-services-closing"'];
+  for (const section of ['website-proof', 'website-problems', 'website-method', 'website-capabilities', 'website-work-intro', 'website-services-process', 'website-entry-paths', 'website-services-faq', 'website-services-closing']) assert.ok(html.includes(section), section);
+  assert.doesNotMatch(html, /website-situations|Choose your situation/);
+  const orderedSections = ['<section class="page-hero website-services-hero"', '<section class="website-method"', '<section class="website-proof"', '<section class="website-problems"', '<section class="website-capabilities"', '<section class="website-work-intro"', '<section class="website-process website-services-process"', '<section class="website-entry-paths"', '<section class="website-faq website-services-faq"', '<section class="closing-cta website-services-closing"'];
   orderedSections.reduce((previous, section) => { const next = html.indexOf(section); assert.ok(next > previous, section); return next; }, -1);
   assert.match(html, /Website services<\/span> for your business needs/);
   assert.match(html, /class="website-hero-actions"[\s\S]*?class="solid-button"[\s\S]*?href="\/contact"/);
   const method = html.slice(html.indexOf('<section class="website-method"'), html.indexOf('<section class="website-proof"'));
-  const problems = html.slice(html.indexOf('<section class="website-problems"'), html.indexOf('<section class="website-situations"'));
-  const situations = html.slice(html.indexOf('<section class="website-situations"'), html.indexOf('<section class="website-capabilities"'));
+  const problems = html.slice(html.indexOf('<section class="website-problems"'), html.indexOf('<section class="website-capabilities"'));
   assert.equal((problems.match(/<a /g) || []).length, 5);
   assert.equal((method.match(/<a href=/g) || []).length, 3);
   assert.match(method, /href="\/services\/website-pricing"[\s\S]*?href="\/team"[\s\S]*?href="\/wip\?for=ai-integrations"/);
   assert.equal((method.match(/data-lucide="arrow-up-right"/g) || []).length, 3);
-  assert.equal((situations.match(/<a /g) || []).length, 8);
+  assert.match(method, /data-service-key="methodHeading"[\s\S]*What differentiates us[\s\S]*from the others/);
   assert.match(html, /class="website-proof-grid[\s\S]*?<\/div><p class="website-proof-note">Real websites shaped around different audiences, markets and commercial goals<\/p>/);
   assert.match(html, /href="#website-project-terrassi"[\s\S]*?href="#website-project-phos"[\s\S]*?href="#website-project-100pratos"/);
   assert.match(html, /data-service-key="workHeading"><h2[^>]*><span>Selected work<\/span> shaped around European business challenges<\/h2><\/div>/);
@@ -164,7 +164,7 @@ test('website service-family page provides a distinct, translated decision journ
   vm.runInNewContext(read('service-locales/website-services-v2.js'), context);
   for (const locale of ['pt-PT', 'es']) {
     const localizedPage = context.window.Studio17ServiceLocaleData[locale].websiteServices;
-    for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'method', 'proof', 'problems', 'situations', 'capabilitiesHeading', 'capabilities', 'workHeading', 'workCases', 'process', 'entryPaths', 'faqHeading', 'faq', 'closing']) assert.ok(localizedPage[key], `${locale}: missing ${key}`);
+    for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'methodHeading', 'method', 'proof', 'problems', 'capabilitiesHeading', 'capabilities', 'workHeading', 'workCases', 'process', 'entryPaths', 'faqHeading', 'faq', 'closing']) assert.ok(localizedPage[key], `${locale}: missing ${key}`);
     assert.equal((localizedPage.capabilities.match(/data-website-service="/g) || []).length, 8, locale);
     assert.equal((localizedPage.workCases.match(/class="website-case-study /g) || []).length, 3, locale);
     assert.equal((localizedPage.faq.match(/<details>/g) || []).length, 9, locale);
@@ -173,7 +173,7 @@ test('website service-family page provides a distinct, translated decision journ
     assert.match(localizedPage.proof, /href="#website-project-terrassi"[\s\S]*href="#website-project-phos"[\s\S]*href="#website-project-100pratos"/, locale);
   }
   const hebrewPage = context.window.Studio17ServiceLocaleData.he.websiteServices;
-  for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'method', 'proof', 'problems', 'situations', 'capabilitiesHeading', 'capabilities', 'workHeading', 'workCases', 'process', 'entryPaths', 'faqHeading', 'faq', 'closing']) assert.ok(hebrewPage[key], `he: missing ${key}`);
+  for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'methodHeading', 'method', 'proof', 'problems', 'capabilitiesHeading', 'capabilities', 'workHeading', 'workCases', 'process', 'entryPaths', 'faqHeading', 'faq', 'closing']) assert.ok(hebrewPage[key], `he: missing ${key}`);
   assert.equal((hebrewPage.capabilities.match(/data-website-service="/g) || []).length, 8);
   assert.equal((hebrewPage.workCases.match(/class="website-case-study /g) || []).length, 3);
   assert.equal((hebrewPage.faq.match(/<details>/g) || []).length, 9);

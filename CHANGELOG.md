@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-16 — Website differentiators and decision-flow cleanup
+
+- Added the “What differentiates us from the others” heading above the three Studio 17 advantage cards in all six languages.
+- Enlarged the card arrow controls to 40px squares with properly centred 22px Lucide arrows.
+- Removed the complete “Choose your situation and find the right next step” section from `/services/website`.
+
 ## 2026-09-15 — Website services conversion journey
 
 - Rebuilt `/services/website` around the visitor's business situation: proof, problem recognition, Studio 17 method, guided service choice, full service detail, selected work, process, low-friction entry paths, buying FAQs and a decisive final CTA.

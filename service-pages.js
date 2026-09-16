@@ -11,7 +11,6 @@
   }));
   if (page === 'websiteServices') {
     [
-      ['.website-situations > .shell', 'situations'],
       ['.website-services-process > .shell', 'process'],
       ['.website-entry-paths > .shell', 'entryPaths']
     ].forEach(([selector, key]) => {
