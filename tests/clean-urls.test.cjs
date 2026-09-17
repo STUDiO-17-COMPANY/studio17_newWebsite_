@@ -13,6 +13,25 @@ for (const file of htmlFiles) {
   assert.doesNotMatch(source, /href="\/services\/website-developments(?:[?#"])/i, `${file} contains the obsolete plural Website Development route`);
 }
 
+const wipRoutingFiles = [
+  ...htmlFiles,
+  'script.js',
+  'i18n.js',
+  'wip.js',
+  ...fs.readdirSync(path.join(root, 'service-locales'))
+    .filter(file => /\.(?:js|json)$/i.test(file))
+    .map(file => path.join('service-locales', file))
+];
+for (const file of wipRoutingFiles) {
+  const source = fs.readFileSync(path.join(root, file), 'utf8');
+  assert.doesNotMatch(source, /\/wip\?for=/i, `${file} creates a crawlable WIP query variant`);
+}
+
+const wip = fs.readFileSync(path.join(root, 'wip.html'), 'utf8');
+assert.match(wip, /<meta name="robots" content="noindex,follow">/);
+assert.match(wip, /<link rel="canonical" href="https:\/\/www\.studio17\.world\/wip">/);
+assert.match(fs.readFileSync(path.join(root, 'wip.js'), 'utf8'), /location\.hash/);
+
 const configuration = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 assert.equal(configuration.cleanUrls, true);
 assert.equal(configuration.rewrites.some(route => route.source === '/careers/:slug'), true);

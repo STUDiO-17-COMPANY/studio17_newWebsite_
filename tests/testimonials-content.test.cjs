@@ -19,7 +19,7 @@ assert.match(testimonialSection, /Founder of Miguel Labs/);
 assert.match(testimonialSection, /href="https:\/\/www\.100pratos\.pt\/"/);
 assert.match(testimonialSection, /href="https:\/\/www\.trustpilot\.com\/reviews\/69bd096cfa469b4a641ef444"/);
 assert.match(testimonialSection, /href="https:\/\/miguellabs\.xyz\/"/);
-assert.doesNotMatch(testimonialSection, /Client name|Approved client feedback|\/wip\?for=testimonials/);
+assert.doesNotMatch(testimonialSection, /Client name|Approved client feedback|\/wip#for=testimonials/);
 assert.match(css, /\.testimonial-card \{[^}]*display:\s*flex;[^}]*height:\s*294px;/);
 
 console.log('Homepage testimonial content tests passed.');

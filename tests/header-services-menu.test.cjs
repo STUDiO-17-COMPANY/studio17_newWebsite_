@@ -21,15 +21,15 @@ for (const group of groups) {
 }
 
 const requiredDestinations = [
-  '/wip?for=social-media', '/wip?for=content-creation', '/wip?for=advertisement', '/wip?for=by-industry', '/wip?for=events',
+  '/wip#for=social-media', '/wip#for=content-creation', '/wip#for=advertisement', '/wip#for=by-industry', '/wip#for=events',
   '/services/website',
   '/services/website-development',
-  '/wip?for=social-media-management', '/wip?for=social-media-automation', '/wip?for=growth-strategy', '/wip?for=community-management', '/wip?for=free-social-media-audit',
-  '/wip?for=website-revamp', '/wip?for=website-design', '/services/free-website', '/services/seo', '/wip?for=geo', '/wip?for=copywriting', '/wip?for=localization-and-translation', '/wip?for=maintenance',
-  '/wip?for=filming', '/wip?for=photography', '/wip?for=video-editing', '/wip?for=graphic-design', '/wip?for=digital-design', '/wip?for=scripting', '/wip?for=ai-generation',
-  '/wip?for=meta-ads', '/wip?for=google-ads', '/wip?for=social-media-ads', '/wip?for=influencer-ads', '/wip?for=ugc-creators', '/wip?for=email-ads',
-  '/wip?for=automotive', '/wip?for=restaurants', '/wip?for=health-care', '/wip?for=ecommerce', '/wip?for=individual-influencers', '/wip?for=education', '/wip?for=local-business', '/wip?for=smes',
-  '/wip?for=presential-events', '/wip?for=online-events'
+  '/wip#for=social-media-management', '/wip#for=social-media-automation', '/wip#for=growth-strategy', '/wip#for=community-management', '/wip#for=free-social-media-audit',
+  '/wip#for=website-revamp', '/wip#for=website-design', '/services/free-website', '/services/seo', '/wip#for=geo', '/wip#for=copywriting', '/wip#for=localization-and-translation', '/wip#for=maintenance',
+  '/wip#for=filming', '/wip#for=photography', '/wip#for=video-editing', '/wip#for=graphic-design', '/wip#for=digital-design', '/wip#for=scripting', '/wip#for=ai-generation',
+  '/wip#for=meta-ads', '/wip#for=google-ads', '/wip#for=social-media-ads', '/wip#for=influencer-ads', '/wip#for=ugc-creators', '/wip#for=email-ads',
+  '/wip#for=automotive', '/wip#for=restaurants', '/wip#for=health-care', '/wip#for=ecommerce', '/wip#for=individual-influencers', '/wip#for=education', '/wip#for=local-business', '/wip#for=smes',
+  '/wip#for=presential-events', '/wip#for=online-events'
 ];
 for (const destination of requiredDestinations) assert.ok(menu.includes(destination), destination);
 for (const category of ['social', 'website']) {
@@ -66,7 +66,7 @@ for (const locale of ['pt-PT', 'es', 'el', 'ru', 'he']) {
 }
 
 const wip = fs.readFileSync(path.join(root, 'wip.js'), 'utf8');
-for (const destination of requiredDestinations.filter(value => value.startsWith('/wip?for='))) {
+for (const destination of requiredDestinations.filter(value => value.startsWith('/wip#for='))) {
   const key = destination.split('=')[1];
   assert.ok(wip.includes(`'${key}'`) || wip.includes(`${key}:`), `WIP label mapping missing for ${key}`);
 }

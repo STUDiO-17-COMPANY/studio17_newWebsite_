@@ -50,6 +50,8 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 - Homepage, Contact, FAQ and other multilingual pages use separate `?lang=` URLs plus reciprocal `hreflang` alternates. English is the default and `x-default` version.
 - Careers and role pages are English-only and must not advertise translated alternatives.
 - WIP pages stay `noindex,follow` until real, approved content replaces them.
+- Contextual WIP destinations use `/wip#for=<destination>` rather than query-string variants. The fragment preserves the visitor-facing label while search engines see one canonical `/wip` URL; localized WIP links must not add `?lang=` and are marked `nofollow` after rendering.
+- A Search Console exclusion for the canonical WIP page is expected. Do not run “Validate fix” unless a published page was accidentally assigned `noindex`; use `node scripts/audit-indexability.cjs` to verify every sitemap URL first.
 - Never add unsupported review ratings, awards, locations or business claims to structured data.
 - Keep the Website Development `Service`/`OfferCatalog` structured data synchronized with visible package names and prices. The catalogue page remains price-free.
 - Keep the SEO page's `Service`/`OfferCatalog` data synchronized with its ten visible capabilities. It is international, price-free and published in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew.

@@ -119,7 +119,11 @@
       const query = queryIndex >= 0 ? withoutHash.slice(queryIndex + 1) : '';
       const parameters = new URLSearchParams(query);
       const linkLanguage = normaliseLanguage(anchor.dataset.forceLanguage) || language;
-      if (linkLanguage === 'en') parameters.delete('lang');
+      const isWipLink = page === '/wip' || page === 'wip.html';
+      if (isWipLink) {
+        parameters.delete('lang');
+        anchor.relList.add('nofollow');
+      } else if (linkLanguage === 'en') parameters.delete('lang');
       else parameters.set('lang', linkLanguage);
       const serialized = parameters.toString();
       anchor.setAttribute('href', `${page}${serialized ? `?${serialized}` : ''}${hash}`);

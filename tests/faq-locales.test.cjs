@@ -37,12 +37,12 @@ for (const file of htmlFiles) {
   const mobileLinks = [...mobileMenu.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
   assert.deepEqual(mobileLinks, [
     '/services',
-    '/wip?for=work',
+    '/wip#for=work',
     '/about',
     '/news',
     '/careers'
   ], `${file} mobile navigation must contain only the five approved links in the approved order`);
-  assert.doesNotMatch(source, /href="\/wip\?for=faqs"/, `${file} still sends FAQs to WIP`);
+  assert.doesNotMatch(source, /href="\/wip#for=faqs"/, `${file} still sends FAQs to WIP`);
 }
 
 const i18n = fs.readFileSync(path.join(root, 'i18n.js'), 'utf8');

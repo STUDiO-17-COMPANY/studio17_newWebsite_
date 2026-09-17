@@ -21,13 +21,13 @@
     {
       categoryKey: 'social',
       label: 'Social Media',
-      href: '/wip?for=social-media',
+      href: '/wip#for=social-media',
       items: [
-        ['socialManagement', 'Social Media management', '/wip?for=social-media-management'],
-        ['socialAutomation', 'Social Media automation', '/wip?for=social-media-automation'],
-        ['growthStrategy', 'Growth strategy', '/wip?for=growth-strategy'],
-        ['communityManagement', 'Community management', '/wip?for=community-management'],
-        ['freeAudit', 'Free Audit', '/wip?for=free-social-media-audit']
+        ['socialManagement', 'Social Media management', '/wip#for=social-media-management'],
+        ['socialAutomation', 'Social Media automation', '/wip#for=social-media-automation'],
+        ['growthStrategy', 'Growth strategy', '/wip#for=growth-strategy'],
+        ['communityManagement', 'Community management', '/wip#for=community-management'],
+        ['freeAudit', 'Free Audit', '/wip#for=free-social-media-audit']
       ]
     },
     {
@@ -36,77 +36,85 @@
       href: '/services/website',
       items: [
         ['websiteDevelopment', 'Website development', '/services/website-development'],
-        ['websiteRevamp', 'Website revamp', '/wip?for=website-revamp'],
-        [null, 'Website design', '/wip?for=website-design'],
+        ['websiteRevamp', 'Website revamp', '/wip#for=website-revamp'],
+        [null, 'Website design', '/wip#for=website-design'],
         ['seo', 'SEO', '/services/seo'],
-        ['geo', 'GEO', '/wip?for=geo'],
-        [null, 'Copywriting', '/wip?for=copywriting'],
-        ['localization', 'Localization and Translation', '/wip?for=localization-and-translation'],
-        ['maintenance', 'Maintenance', '/wip?for=maintenance'],
+        ['geo', 'GEO', '/wip#for=geo'],
+        [null, 'Copywriting', '/wip#for=copywriting'],
+        ['localization', 'Localization and Translation', '/wip#for=localization-and-translation'],
+        ['maintenance', 'Maintenance', '/wip#for=maintenance'],
         ['freeWebsite', 'Free Website', '/services/free-website']
       ]
     },
     {
       categoryKey: 'content',
       label: 'Content creation',
-      href: '/wip?for=content-creation',
+      href: '/wip#for=content-creation',
       items: [
-        [null, 'Filming', '/wip?for=filming'],
-        [null, 'Photography', '/wip?for=photography'],
-        [null, 'Video editing', '/wip?for=video-editing'],
-        [null, 'Graphic design', '/wip?for=graphic-design'],
-        [null, 'Digital design', '/wip?for=digital-design'],
-        ['scripting', 'Scripting', '/wip?for=scripting'],
-        [null, 'AI generation', '/wip?for=ai-generation']
+        [null, 'Filming', '/wip#for=filming'],
+        [null, 'Photography', '/wip#for=photography'],
+        [null, 'Video editing', '/wip#for=video-editing'],
+        [null, 'Graphic design', '/wip#for=graphic-design'],
+        [null, 'Digital design', '/wip#for=digital-design'],
+        ['scripting', 'Scripting', '/wip#for=scripting'],
+        [null, 'AI generation', '/wip#for=ai-generation']
       ]
     },
     {
       categoryKey: 'ads',
       label: 'Advertisement',
-      href: '/wip?for=advertisement',
+      href: '/wip#for=advertisement',
       items: [
-        [null, 'Meta ads', '/wip?for=meta-ads'],
-        [null, 'Google ads', '/wip?for=google-ads'],
-        ['socialAds', 'Social Media ads', '/wip?for=social-media-ads'],
-        [null, 'Influencer ads', '/wip?for=influencer-ads'],
-        ['ugcCreators', 'UGC creators', '/wip?for=ugc-creators'],
-        ['emailAdvertising', 'Email ads', '/wip?for=email-ads']
+        [null, 'Meta ads', '/wip#for=meta-ads'],
+        [null, 'Google ads', '/wip#for=google-ads'],
+        ['socialAds', 'Social Media ads', '/wip#for=social-media-ads'],
+        [null, 'Influencer ads', '/wip#for=influencer-ads'],
+        ['ugcCreators', 'UGC creators', '/wip#for=ugc-creators'],
+        ['emailAdvertising', 'Email ads', '/wip#for=email-ads']
       ]
     },
     {
       categoryKey: 'industry',
       label: 'By Industry',
-      href: '/wip?for=by-industry',
+      href: '/wip#for=by-industry',
       items: [
-        ['automotive', 'Automotive', '/wip?for=automotive'],
-        ['restaurants', 'Restaurants', '/wip?for=restaurants'],
-        [null, 'Health care', '/wip?for=health-care'],
-        ['ecommerce', 'E-Commerce', '/wip?for=ecommerce'],
-        ['influencers', 'Individual Influencers', '/wip?for=individual-influencers'],
-        ['education', 'Education', '/wip?for=education'],
-        [null, 'Local Business', '/wip?for=local-business'],
-        [null, 'SMEs', '/wip?for=smes']
+        ['automotive', 'Automotive', '/wip#for=automotive'],
+        ['restaurants', 'Restaurants', '/wip#for=restaurants'],
+        [null, 'Health care', '/wip#for=health-care'],
+        ['ecommerce', 'E-Commerce', '/wip#for=ecommerce'],
+        ['influencers', 'Individual Influencers', '/wip#for=individual-influencers'],
+        ['education', 'Education', '/wip#for=education'],
+        [null, 'Local Business', '/wip#for=local-business'],
+        [null, 'SMEs', '/wip#for=smes']
       ]
     },
     {
       label: 'Events',
-      href: '/wip?for=events',
+      href: '/wip#for=events',
       items: [
-        [null, 'Presential Events', '/wip?for=presential-events'],
-        [null, 'Online Events', '/wip?for=online-events']
+        [null, 'Presential Events', '/wip#for=presential-events'],
+        [null, 'Online Events', '/wip#for=online-events']
       ]
     }
   ];
 
   const localiseServicesMenuHref = href => {
     const language = window.Studio17I18n?.getLanguage?.() || 'en';
-    const [pathname, query = ''] = href.split('?');
+    const hashIndex = href.indexOf('#');
+    const hash = hashIndex >= 0 ? href.slice(hashIndex) : '';
+    const withoutHash = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
+    const [pathname, query = ''] = withoutHash.split('?');
     const localPages = { '/wip': 'wip.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html' };
-    const target = location.protocol === 'file:' ? `${localPages[pathname] || pathname.replace(/^\//, '')}${query ? `?${query}` : ''}` : href;
+    const target = location.protocol === 'file:' ? `${localPages[pathname] || pathname.replace(/^\//, '')}${query ? `?${query}` : ''}${hash}` : href;
     const url = new URL(target, location.href);
-    if (language === 'en') url.searchParams.delete('lang');
+    const isWip = /(?:^|\/)wip(?:\.html)?$/.test(url.pathname);
+    if (isWip || language === 'en') url.searchParams.delete('lang');
     else url.searchParams.set('lang', language);
-    return location.protocol === 'file:' ? `${url.pathname.split('/').pop()}${url.search}` : `${url.pathname}${url.search}`;
+    return location.protocol === 'file:' ? `${url.pathname.split('/').pop()}${url.search}${url.hash}` : `${url.pathname}${url.search}${url.hash}`;
+  };
+
+  const markWipLink = (element, href) => {
+    if (href.startsWith('/wip#')) element.relList.add('nofollow');
   };
 
   const updateServicesMegaMenu = () => {
@@ -125,6 +133,7 @@
       title.textContent = (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
       if (group.href) {
         title.href = localiseServicesMenuHref(group.href);
+        markWipLink(title, group.href);
         const currentPath = location.protocol === 'file:' ? location.pathname.split('/').pop() : location.pathname.replace(/\/$/, '');
         const isWebsiteFamily = group.categoryKey === 'website' && (
           currentPath === '/services/website' ||
@@ -140,6 +149,7 @@
         const listItem = document.createElement('li');
         const link = document.createElement('a');
         link.href = localiseServicesMenuHref(href);
+        markWipLink(link, href);
         link.textContent = (itemKey && items[itemKey]) || translateText(label);
         if (itemKey === 'freeAudit' || itemKey === 'freeWebsite') link.classList.add('services-mega-offer');
         listItem.appendChild(link);
@@ -243,6 +253,7 @@
         const overviewItem = document.createElement('li');
         const overviewLink = document.createElement('a');
         overviewLink.href = localiseServicesMenuHref(group.href);
+        markWipLink(overviewLink, group.href);
         overviewLink.className = 'mobile-services-category-overview';
         overviewLink.textContent = group.categoryKey === 'website' ? translateText('Explore website services') : `${categoryTitle} →`;
         overviewItem.appendChild(overviewLink);
@@ -252,6 +263,7 @@
         const listItem = document.createElement('li');
         const link = document.createElement('a');
         link.href = localiseServicesMenuHref(href);
+        markWipLink(link, href);
         link.textContent = (itemKey && items[itemKey]) || translateText(label);
         if (itemKey === 'freeAudit' || itemKey === 'freeWebsite') link.classList.add('services-mega-offer');
         listItem.appendChild(link);

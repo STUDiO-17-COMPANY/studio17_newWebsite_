@@ -97,7 +97,7 @@ assert.doesNotMatch(about, /4\.8\/5|TrustScore|trustpilot[^<]*logo/i, 'About mus
 
 for (const file of htmlFiles) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
-  assert.doesNotMatch(source, /\/wip\?for=about/, `${file} still sends About to WIP`);
+  assert.doesNotMatch(source, /\/wip#for=about/, `${file} still sends About to WIP`);
   assert.doesNotMatch(source, /footer-social-image|WhatsApp, Instagram, Facebook, LinkedIn, Google, X and Threads/, `${file} still uses the retired seven-logo strip`);
   const footers = [...source.matchAll(/<nav class="footer-social-links(?: footer-social-links-small)?"[\s\S]*?<\/nav>/g)].map(match => match[0]);
   assert.equal(footers.length, 2, `${file} should expose the approved social links in both footer positions`);

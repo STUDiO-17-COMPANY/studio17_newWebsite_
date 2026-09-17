@@ -11,7 +11,7 @@ const htmlFiles = fs.readdirSync(root).filter(file => file.endsWith('.html'));
 let linkCount = 0;
 for (const file of htmlFiles) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
-  assert.doesNotMatch(source, /href="\/wip\?for=trustpilot"/, `${file} still sends Trustpilot visitors to WIP`);
+  assert.doesNotMatch(source, /href="\/wip#for=trustpilot"/, `${file} still sends Trustpilot visitors to WIP`);
 
   const links = source.match(new RegExp(`href="${profile.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*`, 'g')) || [];
   for (const link of links) {

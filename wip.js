@@ -83,15 +83,25 @@
     generic: { label: 'Requested page' }
   };
 
-  const requested = new URLSearchParams(location.search).get('for') || 'generic';
-  const destination = destinations[requested] || destinations.generic;
+  const legacyParameters = new URLSearchParams(location.search);
+  const legacyRequested = legacyParameters.get('for');
+  const initialHashParameters = new URLSearchParams(location.hash.replace(/^#/, ''));
+  if (legacyRequested && !initialHashParameters.has('for')) {
+    const url = new URL(location.href);
+    url.searchParams.delete('for');
+    url.hash = `for=${encodeURIComponent(legacyRequested)}`;
+    history.replaceState({}, '', url);
+  }
 
   const renderTarget = () => {
+    const requested = new URLSearchParams(location.hash.replace(/^#/, '')).get('for') || 'generic';
+    const destination = destinations[requested] || destinations.generic;
     const locale = window.Studio17I18n?.getData();
     const serviceLabel = destination.service ? locale?.services?.itemLabels?.[destination.service] : null;
     target.textContent = serviceLabel || window.Studio17I18n?.translate(destination.label) || destination.label;
   };
 
+  window.addEventListener('hashchange', renderTarget);
   window.addEventListener('studio17:languagechange', renderTarget);
   window.Studio17I18n?.ready.then(renderTarget).catch(renderTarget);
   renderTarget();

@@ -27,7 +27,7 @@ All routes use clean URLs, canonical metadata, the shared header/footer, and the
 
 The service selector follows the hero directly. Do not restore the removed generic introduction between them.
 
-The sales journey gives Terrassi Villa and PHÓS Optics one standalone semantic section each. The client layouts have no surrounding card border or separate surface colour. Terrassi Villa links to its published article; PHÓS Optics uses `/wip?for=phos-optics-case-study` until its dedicated case study is published. The following component gives SEO, GEO and portfolio work distinct explanations and routes rather than treating search visibility as a generic website inclusion.
+The sales journey gives Terrassi Villa and PHÓS Optics one standalone semantic section each. The client layouts have no surrounding card border or separate surface colour. Terrassi Villa links to its published article; PHÓS Optics uses `/wip#for=phos-optics-case-study` until its dedicated case study is published. The following component gives SEO, GEO and portfolio work distinct explanations and routes rather than treating search visibility as a generic website inclusion.
 
 Every service-page FAQ uses two independent column containers on desktop, not shared CSS grid rows. One answer may be open in each column, and opening another answer closes only its sibling in the same column without changing the opposite column's row height. This contract applies to Website, Website Development, Free Website, SEO, SEO Cyprus and SEO Limassol.
 
@@ -103,7 +103,7 @@ Project images must keep descriptive alternative text, explicit dimensions, lazy
 
 The general Services page closing CTA uses `CTA_Question_Image.webp` instead of an icon. Display it in a responsive media window up to 520 × 260px, aligned with the CTA copy and using the approved close crop, intrinsic dimensions and localised alternative text. It must remain compact enough to preserve the shared CTA height.
 
-The CTA keeps **Talk to sales** as the primary contact action and includes **See our work** as the secondary action. Until the portfolio page is published, the secondary action must use `/wip?for=portfolio` and preserve the active locale.
+The CTA keeps **Talk to sales** as the primary contact action and includes **See our work** as the secondary action. Until the portfolio page is published, the secondary action must use `/wip#for=portfolio` and preserve the active locale.
 
 ## Translation workflow
 

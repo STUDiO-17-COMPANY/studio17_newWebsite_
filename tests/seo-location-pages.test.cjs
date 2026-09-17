@@ -96,7 +96,7 @@ assert.ok(limassolPage.indexOf('seo-limassol-proof') < limassolPage.indexOf('seo
 assert.match(limassolPage, /data-infinite-carousel/);
 assert.match(limassolPage, /class="review-stars" aria-label="5 out of 5 stars"[\s\S]*?(?:data-lucide="star"[\s\S]*?){5}/);
 assert.match(limassolPage, /href="https:\/\/share\.google\/XQClN89HrSWhHBMHR"/);
-assert.match(limassolPage, /href="\/wip\?for=nerouppos-barber-shop-local-seo-case-study"/);
+assert.match(limassolPage, /href="\/wip#for=nerouppos-barber-shop-local-seo-case-study"/);
 assert.match(limassolPage, /href="https:\/\/www\.trustpilot\.com\/reviews\/69bd096cfa469b4a641ef444"/);
 assert.match(limassolPage, /href="\/seo\/cyprus"/);
 assert.match(limassolPage, /How much does SEO cost in Limassol\?/);

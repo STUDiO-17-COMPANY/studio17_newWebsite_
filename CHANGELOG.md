@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-17 — Search Console noindex cleanup
+
+- Confirmed that every live URL in the XML sitemap returns HTTP 200, none returns `noindex`, and every response publishes a matching canonical URL.
+- Identified the 50 Search Console exclusions as contextual Work in Progress URLs rather than published service, company, career or article pages.
+- Replaced crawlable `/wip?for=...` query variants with `/wip#for=...` fragments so unfinished destinations retain their contextual message without creating dozens of separate URLs for search engines.
+- Preserved `noindex,follow` on the WIP page, added one canonical `/wip` URL and kept backwards compatibility for existing query-format WIP links.
+- Prevented the language system from appending language parameters to WIP links and marked those links `nofollow` after localisation.
+- Added a repeatable production indexability audit for every URL published in `/sitemap.xml`, plus regression coverage for the WIP URL contract.
+
 ## 2026-09-16 — Website differentiators and decision-flow cleanup
 
 - Added the “What differentiates us from the others” heading above the three Studio 17 advantage cards in all six languages.

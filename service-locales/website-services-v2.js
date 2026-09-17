@@ -2,7 +2,7 @@
   'use strict';
 
   const arrow = '<i data-lucide="arrow-up-right" aria-hidden="true"></i>';
-  const methodLinks = ['/services/website-pricing', '/team', '/wip?for=ai-integrations'];
+  const methodLinks = ['/services/website-pricing', '/team', '/wip#for=ai-integrations'];
   const method = items => items.map(([title, copy], index) => `<a href="${methodLinks[index]}"><h3>${title}</h3><p>${copy}</p><span aria-hidden="true">${arrow}</span></a>`).join('');
   const proof = (title, note) => `<div class="service-page-heading reveal"><h2 class="design-heading" id="website-proof-title"><span>${title[0]}</span> ${title[1]}</h2></div><div class="website-proof-grid reveal" data-delay="1"><a href="#website-project-terrassi"><img src="/Images/terrassivilla.jpg" alt="Terrassi Villa website" width="1024" height="683"><span>Terrassi Villa</span></a><a href="#website-project-phos"><img src="/Images/phosoptics_website.png" alt="PHÓS Optics website" width="2793" height="1862"><span>PHÓS Optics</span></a><a href="#website-project-100pratos"><img src="/Images/100pratos_website.png" alt="100 Pratos website" width="1920" height="1080"><span>100 Pratos</span></a></div><p class="website-proof-note">${note}</p>`;
   const problems = (title, intro, items) => `<div class="service-page-heading reveal"><h2 class="design-heading" id="website-problems-title"><span>${title[0]}</span> ${title[1]}</h2><p>${intro}</p></div><div class="website-problem-grid reveal" data-delay="1">${items.map(([href, heading, copy]) => `<a href="${href}"><h3>${heading}</h3><p>${copy}</p>${arrow}</a>`).join('')}</div>`;
@@ -13,8 +13,8 @@
   const extraCase = c => `<article class="website-case-study website-case-study-image-right"><div class="website-case-study-copy"><p class="website-case-study-kicker">${c.kicker}</p><h3>100 Pratos</h3><p>${c.copy}</p><ul>${c.points.map(point => `<li>${point}</li>`).join('')}</ul><a class="design-link" href="https://www.100pratos.pt/" target="_blank" rel="noopener noreferrer">${c.action} <span aria-hidden="true">${arrow}</span></a></div><a class="website-case-study-media" href="https://www.100pratos.pt/" target="_blank" rel="noopener noreferrer" aria-label="${c.action}"><img src="/Images/100pratos_website.png" alt="100 Pratos website" width="1920" height="1080" loading="lazy" decoding="async"><span>${c.media} ${arrow}</span></a></article>`;
   const extraFaq = items => items.map(([question, answer]) => `<details><summary>${question}<i data-lucide="plus" aria-hidden="true"></i></summary><p>${answer}</p></details>`).join('');
 
-  const commonSituationLinks = ['/services/website-development', '/wip?for=website-revamp', '/wip?for=website-design', '/services/seo', '/wip?for=geo', '/wip?for=copywriting', '/wip?for=localization-and-translation', '/wip?for=maintenance'];
-  const commonProblemLinks = ['/services/website-development', '/wip?for=website-revamp', '/contact?service=website-audit', '/services/seo', '/contact?service=website'];
+  const commonSituationLinks = ['/services/website-development', '/wip#for=website-revamp', '/wip#for=website-design', '/services/seo', '/wip#for=geo', '/wip#for=copywriting', '/wip#for=localization-and-translation', '/wip#for=maintenance'];
+  const commonProblemLinks = ['/services/website-development', '/wip#for=website-revamp', '/contact?service=website-audit', '/services/seo', '/contact?service=website'];
 
   const copy = {
     'pt-PT': {

@@ -72,7 +72,7 @@ for (const language of languages) {
 }
 
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.html'), 'utf8');
-assert.doesNotMatch(sitemap, /wip\?for=(?:privacy|cookies|terms)/);
+assert.doesNotMatch(sitemap, /wip#for=(?:privacy|cookies|terms)/);
 for (const route of Object.values(pages).map(page => page.route)) assert.match(sitemap, new RegExp(`href="${route}"`));
 
 const developmentServer = fs.readFileSync(path.join(root, 'dev-server.cjs'), 'utf8');

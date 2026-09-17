@@ -99,7 +99,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 ### Work-in-progress page
 
 - `/wip` is the single shared public destination for every page that has not been built yet; `wip.html` remains only its source filename.
-- Use `/wip?for=<destination>` so the page can identify and translate the requested destination. Stable keys cover navigation, services, industries, content, company, sales and legal destinations.
+- Use `/wip#for=<destination>` so the page can identify and translate the requested destination. Stable keys cover navigation, services, industries, content, company, sales and legal destinations.
 - The WIP page reuses the shared header, footer, language selector, square geometry, blue highlight system and Lucide icon language.
 - When a final page is published, replace its WIP link in `/sitemap` and update this documentation in the same change.
 - Never create separate WIP HTML files per language; all localized variants use the shared page and locale JSON contract.
@@ -173,7 +173,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Uppercase navigation with the blue selected/action square.
 - Desktop Services navigation is a viewport-wide horizontal mega-menu with six ordered groups: Social Media, Website, Content creation, Advertisement, By Industry and Events.
 - Do not include `All services` in the mega-menu. `/services` remains a supporting catalogue reached through contextual links and the mobile Services overview link.
-- Group names are non-clickable headings; individual services are links. Website Development, Free Website and SEO use their published routes; every unfinished service uses a specific `/wip?for=<service>` destination. Free Audit remains a localized WIP destination until its page is approved.
+- Group names are non-clickable headings; individual services are links. Website Development, Free Website and SEO use their published routes; every unfinished service uses a specific `/wip#for=<service>` destination. Free Audit remains a localized WIP destination until its page is approved.
 - Free Website and Free Audit are always the final item in their respective Website and Social Media lists. Render both as white, high-contrast offer cards in desktop and mobile service directories, with the standard blue hover/focus state.
 - The desktop service dropdown supports mouse, keyboard and Escape, preserves visible focus, and collapses from six to three columns before the approved mobile breakpoint.
 - Mobile menu uses Lucide `menu`, `x` and `chevron-down`; it opens full-screen below the 68px mobile header.
