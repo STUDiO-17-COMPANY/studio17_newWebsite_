@@ -38,6 +38,7 @@ assert.equal(configuration.rewrites.some(route => route.source === '/careers/:sl
 assert.equal(configuration.rewrites.some(route => route.source === '/insights/:slug' && route.destination === '/api/article-page?slug=:slug'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/seo/cyprus' && route.destination === '/seo-cyprus'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/seo/limassol' && route.destination === '/seo-limassol'), true);
+assert.equal(configuration.rewrites.some(route => route.source === '/sitemap' && route.destination === '/api/sitemap-page'), true);
 assert.equal(configuration.rewrites.some(route => /\.html/.test(route.source) || /\.html/.test(route.destination)), false);
 
 const sitemapSource = fs.readFileSync(path.join(root, 'api', 'sitemap.js'), 'utf8');

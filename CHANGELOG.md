@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-17 — Search Console discovery crawl signals
+
+- Audited all 17 URLs exported under “Discovered — currently not indexed”; every URL returns HTTP 200, allows indexing, uses a matching canonical and is already present in the XML sitemap.
+- Added accurate modification dates to every static XML sitemap entry and extended the production audit to fail on missing, invalid or future `<lastmod>` values.
+- Rebuilt the human `/sitemap` route as a server-rendered page that adds ordinary crawlable links for every live Google Drive article, published translation and open role.
+- Preserved the existing sitemap design and graceful fallback while strengthening internal discovery for dynamic content that previously depended on XML, `hreflang` or client-side rendering.
+
 ## 2026-09-17 — Search Console noindex cleanup
 
 - Confirmed that every live URL in the XML sitemap returns HTTP 200, none returns `noindex`, and every response publishes a matching canonical URL.

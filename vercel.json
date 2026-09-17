@@ -33,6 +33,7 @@
     { "source": "/services/seo", "destination": "/seo" },
     { "source": "/seo/cyprus", "destination": "/seo-cyprus" },
     { "source": "/seo/limassol", "destination": "/seo-limassol" },
+    { "source": "/sitemap", "destination": "/api/sitemap-page" },
     { "source": "/insights/:slug", "destination": "/api/article-page?slug=:slug" },
     { "source": "/careers/:slug", "destination": "/api/career-page?slug=:slug" },
     { "source": "/career-role", "destination": "/api/legacy-career" },

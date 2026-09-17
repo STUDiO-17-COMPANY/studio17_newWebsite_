@@ -36,10 +36,21 @@ const audit = async url => {
   const sitemapResponse = await fetch(`${SITE_URL}/sitemap.xml`);
   if (!sitemapResponse.ok) throw new Error(`Sitemap returned HTTP ${sitemapResponse.status}`);
   const sitemap = await sitemapResponse.text();
-  const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
-    .map(match => match[1].replace(/&amp;/g, '&'));
+  const entries = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(match => {
+    const block = match[1];
+    return {
+      url: block.match(/<loc>([^<]+)<\/loc>/)?.[1].replace(/&amp;/g, '&') || '',
+      sitemapLastmod: block.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1] || ''
+    };
+  }).filter(item => item.url);
   const results = [];
-  for (const url of urls) results.push(await audit(url));
+  for (const item of entries) results.push({ ...await audit(item.url), sitemapLastmod: item.sitemapLastmod });
+
+  const lastmodIsInvalid = value => {
+    if (!value) return true;
+    const timestamp = Date.parse(value);
+    return Number.isNaN(timestamp) || timestamp > Date.now() + 86400000;
+  };
 
   const failures = results.filter(result => (
     result.status !== 200
@@ -47,12 +58,14 @@ const audit = async url => {
     || /noindex/i.test(result.metaRobots)
     || !/\bindex\b/i.test(result.xRobotsTag || result.metaRobots)
     || !result.canonical
+    || lastmodIsInvalid(result.sitemapLastmod)
   ));
 
   console.table(results.map(result => ({
     status: result.status,
     robots: result.xRobotsTag || result.metaRobots || '(missing)',
     canonical: result.canonical || '(missing)',
+    lastmod: result.sitemapLastmod || '(missing)',
     url: result.url
   })));
   console.log(`\nAudited ${results.length} sitemap URLs. ${failures.length} issue(s) found.`);

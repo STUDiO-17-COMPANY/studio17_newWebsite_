@@ -4,6 +4,7 @@ const { listPublishedRoles } = require('./_google-careers');
 const { listPublishedArticles } = require('./_google-articles');
 
 const SITE_URL = 'https://www.studio17.world';
+const STATIC_LASTMOD = '2026-09-17';
 const escapeXml = value => String(value || '')
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
@@ -38,26 +39,26 @@ module.exports = async function sitemapHandler(request, response) {
     if (rolesResult.status === 'rejected') console.warn('Sitemap: Careers entries unavailable', rolesResult.reason?.code || rolesResult.reason?.message);
     if (articlesResult.status === 'rejected') console.warn('Sitemap: article entries unavailable', articlesResult.reason?.code || articlesResult.reason?.message);
     const urls = [
-      { loc: `${SITE_URL}/`, changefreq: 'weekly', priority: '1.0' },
-      { loc: `${SITE_URL}/contact`, changefreq: 'monthly', priority: '0.8' },
-      { loc: `${SITE_URL}/faq`, changefreq: 'monthly', priority: '0.8' },
-      { loc: `${SITE_URL}/about`, changefreq: 'monthly', priority: '0.8' },
-      { loc: `${SITE_URL}/our-story`, changefreq: 'monthly', priority: '0.7' },
-      { loc: `${SITE_URL}/team`, changefreq: 'monthly', priority: '0.7' },
-      { loc: `${SITE_URL}/services`, changefreq: 'monthly', priority: '0.9' },
-      { loc: `${SITE_URL}/services/website`, changefreq: 'monthly', priority: '0.9' },
-      { loc: `${SITE_URL}/services/website-development`, changefreq: 'monthly', priority: '0.9' },
-      { loc: `${SITE_URL}/services/website-pricing`, changefreq: 'monthly', priority: '0.8' },
-      { loc: `${SITE_URL}/services/free-website`, changefreq: 'monthly', priority: '0.9' },
-      { loc: `${SITE_URL}/services/seo`, changefreq: 'monthly', priority: '0.9' },
-      { loc: `${SITE_URL}/seo/cyprus`, changefreq: 'monthly', priority: '0.9' },
-      { loc: `${SITE_URL}/seo/limassol`, changefreq: 'monthly', priority: '0.9' },
-      { loc: `${SITE_URL}/news`, changefreq: 'daily', priority: '0.9' },
-      { loc: `${SITE_URL}/careers`, changefreq: 'daily', priority: '0.8' },
-      { loc: `${SITE_URL}/sitemap`, changefreq: 'monthly', priority: '0.3' },
-      { loc: `${SITE_URL}/privacy-policy`, changefreq: 'monthly', priority: '0.4' },
-      { loc: `${SITE_URL}/cookie-policy`, changefreq: 'monthly', priority: '0.4' },
-      { loc: `${SITE_URL}/terms`, changefreq: 'monthly', priority: '0.4' },
+      { loc: `${SITE_URL}/`, lastmod: STATIC_LASTMOD, changefreq: 'weekly', priority: '1.0' },
+      { loc: `${SITE_URL}/contact`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+      { loc: `${SITE_URL}/faq`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+      { loc: `${SITE_URL}/about`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+      { loc: `${SITE_URL}/our-story`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.7' },
+      { loc: `${SITE_URL}/team`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.7' },
+      { loc: `${SITE_URL}/services`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
+      { loc: `${SITE_URL}/services/website`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
+      { loc: `${SITE_URL}/services/website-development`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
+      { loc: `${SITE_URL}/services/website-pricing`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+      { loc: `${SITE_URL}/services/free-website`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
+      { loc: `${SITE_URL}/services/seo`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
+      { loc: `${SITE_URL}/seo/cyprus`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
+      { loc: `${SITE_URL}/seo/limassol`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
+      { loc: `${SITE_URL}/news`, lastmod: STATIC_LASTMOD, changefreq: 'daily', priority: '0.9' },
+      { loc: `${SITE_URL}/careers`, lastmod: STATIC_LASTMOD, changefreq: 'daily', priority: '0.8' },
+      { loc: `${SITE_URL}/sitemap`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.3' },
+      { loc: `${SITE_URL}/privacy-policy`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.4' },
+      { loc: `${SITE_URL}/cookie-policy`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.4' },
+      { loc: `${SITE_URL}/terms`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.4' },
       ...roles.map(role => ({
         loc: `${SITE_URL}/careers/${encodeURIComponent(role.slug)}`,
         lastmod: role.modifiedTime || undefined,
