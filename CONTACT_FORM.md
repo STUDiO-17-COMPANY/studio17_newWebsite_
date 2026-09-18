@@ -68,6 +68,8 @@ The expanded automated QA suite passed on 2026-09-03 across all six languages an
 
 Production acceptance QA on 2026-09-03 submitted one clearly labelled enquiry for each of `en`, `pt-PT`, `es`, `el`, `ru` and `he`. The public endpoint returned HTTP 200 for all six. The sixth request initially demonstrated the configured HTTP 429 limit after five rapid submissions; Hebrew was retried after the protection cleared and was accepted without weakening the limit.
 
+Inbox delivery was verified on 2026-09-18 in the correct Google Workspace account, `contact@studio17.world`. The inbox contains the labelled production enquiries for all six public language codes: `en`, `pt-PT`, `es`, `el`, `ru` and `he`. No duplicate submissions were created during this verification.
+
 ## Maintenance rules
 
 - Never place `RESEND_API_KEY` in HTML, JavaScript sent to the browser, documentation values or Git.

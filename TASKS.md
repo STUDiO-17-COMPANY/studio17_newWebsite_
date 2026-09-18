@@ -57,7 +57,7 @@ The multilingual `/contact` page and its server-side `/api/contact` endpoint are
 - [x] Confirm that the sender and recipient are approved Studio 17 addresses at `contact@studio17.world`.
 - [x] Deploy the contact page and serverless endpoint to `www.studio17.world`.
 - [x] Submit one production test enquiry in each language: English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew; all six received HTTP 200 on 2026-09-03.
-- [-] Confirm inbox delivery from all six public languages. Production accepted every locale; English inbox delivery was previously verified and `reply_to` is covered by the API regression test.
+- [x] Confirm inbox delivery from all six public languages. The `contact@studio17.world` inbox contains the labelled production enquiries for `en`, `pt-PT`, `es`, `el`, `ru` and `he`; `reply_to` remains covered by the API regression test.
 - [x] Test required-field errors, invalid email, short messages, consent, rate limiting, provider/network failure and duplicate-submit prevention.
 - [x] Test keyboard use, accessible labels and error states, desktop/mobile layouts down to 320px, translated text wrapping and Hebrew RTL behavior.
 - [x] Add the live Privacy Policy route to the shared footer and contact consent language.

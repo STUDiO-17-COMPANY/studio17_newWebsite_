@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-18 — Six-language contact inbox verification
+
+- Verified the production contact-form destination in the correct Google Workspace account, `contact@studio17.world`.
+- Confirmed inbox delivery of the labelled English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew enquiries submitted during production acceptance QA.
+- Closed the remaining delivery-verification task without creating duplicate enquiries or weakening the five-request rate limit.
+
 ## 2026-09-17 — Search Console discovery crawl signals
 
 - Audited all 17 URLs exported under “Discovered — currently not indexed”; every URL returns HTTP 200, allows indexing, uses a matching canonical and is already present in the XML sitemap.
