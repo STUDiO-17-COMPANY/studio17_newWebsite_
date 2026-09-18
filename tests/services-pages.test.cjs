@@ -105,7 +105,7 @@ test('website service-family page provides a distinct, translated decision journ
   assert.equal((html.match(/data-website-service="/g) || []).length, 8);
   assert.equal((html.match(/data-website-service-panel="/g) || []).length, 8);
   for (const service of ['Website development', 'Website revamp', 'Website design', 'SEO', 'GEO', 'Copywriting', 'Localization and Translation', 'Maintenance']) assert.ok(html.includes(service), service);
-  for (const destination of ['/services/website-development', '/wip#for=website-revamp', '/wip#for=website-design', '/services/seo', '/wip#for=geo', '/wip#for=copywriting', '/wip#for=localization-and-translation', '/wip#for=maintenance']) assert.ok(html.includes(destination), destination);
+  for (const destination of ['/services/website-development', '/wip#for=website-revamp', '/wip#for=website-design', '/services/seo', '/wip#for=geo', '/wip#for=copywriting', '/services/localization-and-translation', '/wip#for=maintenance']) assert.ok(html.includes(destination), destination);
   for (const section of ['website-proof', 'website-problems', 'website-method', 'website-capabilities', 'website-work-intro', 'website-services-process', 'website-entry-paths', 'website-services-faq', 'website-services-closing']) assert.ok(html.includes(section), section);
   assert.doesNotMatch(html, /website-situations|Choose your situation/);
   const orderedSections = ['<section class="page-hero website-services-hero"', '<section class="website-method"', '<section class="website-proof"', '<section class="website-problems"', '<section class="website-capabilities"', '<section class="website-work-intro"', '<section class="website-process website-services-process"', '<section class="website-entry-paths"', '<section class="website-faq website-services-faq"', '<section class="closing-cta website-services-closing"'];
@@ -362,23 +362,27 @@ test('clean routes and sitemaps include every published service page', () => {
   assert.ok(server.includes("['/services/website-pricing', 'website-pricing.html']"));
   assert.ok(server.includes("['/services/free-website', 'free-website.html']"));
   assert.ok(server.includes("['/services/seo', 'seo.html']"));
+  assert.ok(server.includes("['/services/localization-and-translation', 'localization-and-translation.html']"));
   assert.ok(vercel.includes('"source": "/services/website-development"'));
   assert.ok(vercel.includes('"source": "/services/website-pricing"'));
   assert.ok(vercel.includes('"source": "/services/website"'));
   assert.ok(vercel.includes('"source": "/services/free-website"'));
   assert.ok(vercel.includes('"source": "/services/seo"'));
+  assert.ok(vercel.includes('"source": "/services/localization-and-translation"'));
   assert.ok(sitemap.includes('`${SITE_URL}/services`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/website-development`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/website-pricing`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/website`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/free-website`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/seo`'));
+  assert.ok(sitemap.includes('`${SITE_URL}/services/localization-and-translation`'));
   assert.match(read('api/sitemap-template.html'), /href="\/services\/free-website">Free Website\s*<i/);
   assert.match(read('api/sitemap-template.html'), /href="\/services\/seo">SEO services\s*<i/);
+  assert.match(read('api/sitemap-template.html'), /href="\/services\/localization-and-translation">Localization and Translation\s*<i/);
 });
 
 test('mobile menu remains limited to the approved five destinations', () => {
-  for (const file of ['services.html', 'website-services.html', 'website-development.html', 'website-pricing.html', 'free-website.html', 'seo.html']) {
+  for (const file of ['services.html', 'website-services.html', 'website-development.html', 'website-pricing.html', 'free-website.html', 'seo.html', 'localization-and-translation.html']) {
     const html = read(file);
     const menu = html.match(/<div class="mobile-menu"[\s\S]*?<\/div>\s*<\/header>/)?.[0] || '';
     assert.equal((menu.match(/<a /g) || []).length, 5, file);

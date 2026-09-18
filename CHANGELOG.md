@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-18 — Localization and Translation service page
+
+- Added the English-only `/services/localization-and-translation` page with market-fit problems, service capabilities, multilingual search guidance, a controlled delivery process, scope options, buying FAQs and conversion actions.
+- Published clean Vercel and local-preview routing, canonical metadata, Service structured data and human/XML sitemap entries.
+- Replaced the shared Localization and Translation WIP destination with the live route across desktop/mobile Services navigation and every rendered Website Services locale.
+- Preserved the Studio 17 `#F8FAFC` page surface, 32px section rhythm, icon-free informational cards, animated process arrows, independent FAQ columns and responsive mobile behavior.
+
 ## 2026-09-18 — Sitemap documentation and publication-link audit
 
 - Updated the README to describe the server-rendered `/sitemap` architecture and its `api/sitemap-template.html` source instead of the retired root `sitemap.html` file.

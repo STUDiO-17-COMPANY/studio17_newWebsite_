@@ -25,7 +25,7 @@ const requiredDestinations = [
   '/services/website',
   '/services/website-development',
   '/wip#for=social-media-management', '/wip#for=social-media-automation', '/wip#for=growth-strategy', '/wip#for=community-management', '/wip#for=free-social-media-audit',
-  '/wip#for=website-revamp', '/wip#for=website-design', '/services/free-website', '/services/seo', '/wip#for=geo', '/wip#for=copywriting', '/wip#for=localization-and-translation', '/wip#for=maintenance',
+  '/wip#for=website-revamp', '/wip#for=website-design', '/services/free-website', '/services/seo', '/wip#for=geo', '/wip#for=copywriting', '/services/localization-and-translation', '/wip#for=maintenance',
   '/wip#for=filming', '/wip#for=photography', '/wip#for=video-editing', '/wip#for=graphic-design', '/wip#for=digital-design', '/wip#for=scripting', '/wip#for=ai-generation',
   '/wip#for=meta-ads', '/wip#for=google-ads', '/wip#for=social-media-ads', '/wip#for=influencer-ads', '/wip#for=ugc-creators', '/wip#for=email-ads',
   '/wip#for=automotive', '/wip#for=restaurants', '/wip#for=health-care', '/wip#for=ecommerce', '/wip#for=individual-influencers', '/wip#for=education', '/wip#for=local-business', '/wip#for=smes',

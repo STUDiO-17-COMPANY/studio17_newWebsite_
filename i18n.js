@@ -112,7 +112,7 @@
       if (!page || /\.[a-z0-9]+$/i.test(page)) return;
 
       if (location.protocol === 'file:') {
-        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/our-story': 'our-story.html', '/team': 'team.html', '/news': 'news.html', '/careers': 'careers.html', '/services': 'services.html', '/services/website-development': 'website-development.html', '/services/seo': 'seo.html', '/privacy-policy': 'privacy-policy.html', '/cookie-policy': 'cookie-policy.html', '/terms': 'terms.html' };
+        const localPages = { '/': 'index.html', '/sitemap': 'sitemap.html', '/wip': 'wip.html', '/contact': 'contact.html', '/faq': 'faq.html', '/about': 'about.html', '/our-story': 'our-story.html', '/team': 'team.html', '/news': 'news.html', '/careers': 'careers.html', '/services': 'services.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/services/localization-and-translation': 'localization-and-translation.html', '/privacy-policy': 'privacy-policy.html', '/cookie-policy': 'cookie-policy.html', '/terms': 'terms.html' };
         page = localPages[page] || page;
       }
 

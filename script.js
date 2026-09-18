@@ -41,7 +41,7 @@
         ['seo', 'SEO', '/services/seo'],
         ['geo', 'GEO', '/wip#for=geo'],
         [null, 'Copywriting', '/wip#for=copywriting'],
-        ['localization', 'Localization and Translation', '/wip#for=localization-and-translation'],
+        ['localization', 'Localization and Translation', '/services/localization-and-translation'],
         ['maintenance', 'Maintenance', '/wip#for=maintenance'],
         ['freeWebsite', 'Free Website', '/services/free-website']
       ]
@@ -104,7 +104,7 @@
     const hash = hashIndex >= 0 ? href.slice(hashIndex) : '';
     const withoutHash = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
     const [pathname, query = ''] = withoutHash.split('?');
-    const localPages = { '/wip': 'wip.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html' };
+    const localPages = { '/wip': 'wip.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/services/localization-and-translation': 'localization-and-translation.html' };
     const target = location.protocol === 'file:' ? `${localPages[pathname] || pathname.replace(/^\//, '')}${query ? `?${query}` : ''}${hash}` : href;
     const url = new URL(target, location.href);
     const isWip = /(?:^|\/)wip(?:\.html)?$/.test(url.pathname);

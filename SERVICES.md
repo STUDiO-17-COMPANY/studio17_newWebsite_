@@ -109,6 +109,8 @@ The CTA keeps **Talk to sales** as the primary contact action and includes **See
 
 English source content lives in the HTML pages. The catalogue and Website Development translations live in all five `service-locales/<locale>.json` files. Website-family Portuguese and Spanish translations live in `service-locales/website-services.js`; its Greek and Russian content remains in the generated locale bundle. Free Website translations live in `service-locales/free-website.js` for Portuguese (Portugal), Spanish, Greek, Russian and Hebrew. SEO translations live only in `el.json` and `ru.json` until another language is explicitly approved. After editing the canonical JSON service locales, run `node service-locales/build-bundle.cjs` and commit the regenerated `service-locales/locales.js`; page-specific modules do not require that build step. Do not change or remove `data-service-key` values; they are the stable translation contract.
 
+The Localization and Translation service page is intentionally English-only at `/services/localization-and-translation`. Add another locale only after Studio 17 explicitly requests that language and the complete page has passed the review workflow in `TRANSLATION_REVIEW.md`.
+
 ## Update checklist
 
 When a package, price, service, or project changes:

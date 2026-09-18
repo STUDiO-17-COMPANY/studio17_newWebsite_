@@ -82,6 +82,7 @@
   Object.entries(copy).forEach(([locale, c]) => {
     const page = window.Studio17ServiceLocaleData?.[locale]?.websiteServices;
     if (!page) return;
+    page.capabilities = page.capabilities?.replaceAll('/wip#for=localization-and-translation', '/services/localization-and-translation');
     page.methodHeading = c.methodHeading;
     page.method = method(c.method);
     page.proof = proof(c.proof[0], c.proof[1]);
