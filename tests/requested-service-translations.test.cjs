@@ -10,10 +10,11 @@ const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const context = { window: { Studio17ServiceLocaleData: {} } };
 vm.createContext(context);
 vm.runInContext(read('service-locales/requested-translations.js'), context);
+vm.runInContext(read('service-locales/website-services-v2.js'), context);
 const store = context.window.Studio17ServiceLocaleData;
 
 const targets = [
-  { file: 'website-services.html', page: 'websiteServices', languages: ['he'], faq: 6 },
+  { file: 'website-services.html', page: 'websiteServices', languages: ['he'], faq: 9 },
   { file: 'seo.html', page: 'seo', languages: ['pt-PT', 'es', 'he'], faq: 8 },
   { file: 'seo-cyprus.html', page: 'seoCyprus', languages: ['he'], faq: 8 },
   { file: 'seo-limassol.html', page: 'seoLimassol', languages: ['he'], faq: 8 }

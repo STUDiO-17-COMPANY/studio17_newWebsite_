@@ -23,7 +23,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Rebuild About with the approved hero, origin summary, European presence, Trustpilot proof, founders carousel, culture and Careers action.
 - [x] Publish clean `/our-story` and `/team` routes, add them to both sitemaps and cover them with regression tests.
 - [ ] Obtain approved founder portraits, longer biographies and optional personal facts before expanding `/team`; Pedro Leonardo's Instagram is intentionally omitted at present.
-- [ ] Complete native-language editorial review of the long-form Our Story narrative for Spanish, Greek, Russian and Hebrew before replacing the approved English fallback.
+- [-] Complete native-language editorial review of the long-form Our Story narrative for Spanish, Greek, Russian and Hebrew before replacing the approved English fallback. The review and sign-off workflow is ready in `TRANSLATION_REVIEW.md`; named native reviewers and their corrections are still required.
 - [x] Remove decorative mini-titles across public pages and rebalance the About opening statement layout.
 - [x] Add consent-first Google Analytics 4 across all public pages in all six languages.
 - [x] Verify the `studio17.world` Google Search Console Domain property under `contact@studio17.world`, submit the XML sitemap and associate the Studio 17 GA4 data stream.

@@ -5,7 +5,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 ## Project structure
 
 - `/` (`index.html`) — Figma-based homepage with a multilingual selected website-work showcase.
-- `/sitemap` (`sitemap.html`) — public website map and planned page structure.
+- `/sitemap` (`api/sitemap-template.html`, rendered by `api/sitemap-page.js`) — server-rendered public website map combining the maintained page structure with live article translations and open roles.
 - `/wip#for=<destination>` (`wip.html`) — shared multilingual destination for pages that are not built yet.
 - `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.
 - `/faq` (`faq.html`) — multilingual, search-intent FAQ with accessible native disclosure controls.
@@ -51,6 +51,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `DESIGN_GUIDELINES.md` — canonical page, component, icon and QA rules.
 - `DESIGN_SYSTEM.md` — compact token and geometry reference.
 - `CONTENT_NOTES.md` — content verification and launch notes.
+- `TRANSLATION_REVIEW.md` — native-speaker editorial review workflow and sign-off register for every published locale.
 - `CHANGELOG.md` — dated implementation history.
 - `CAREERS_AUTOMATION.md` — automatic publishing architecture, setup, security and QA guide.
 - `CONTACT_FORM.md` — contact delivery setup, security, testing and maintenance guide.

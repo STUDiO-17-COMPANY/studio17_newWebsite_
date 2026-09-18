@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-18 — Sitemap documentation and publication-link audit
+
+- Updated the README to describe the server-rendered `/sitemap` architecture and its `api/sitemap-template.html` source instead of the retired root `sitemap.html` file.
+- Replaced the remaining Free Website WIP destination in the sitemap closing CTA with the published `/services/free-website` route.
+- Added an auditable native-speaker translation review register without claiming editorial approval that has not yet been supplied.
+- Updated the requested-translation regression test to load the final Website Services enhancement layer, matching the production script order and covering its Hebrew regions.
+
 ## 2026-09-18 — Partner carousel update
 
 - Removed Lodgify from every homepage partner-marquee set and rebalanced the carousel grid for the remaining ten partners.
