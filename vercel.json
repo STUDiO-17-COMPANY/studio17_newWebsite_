@@ -4,7 +4,7 @@
   "functions": {
     "api/*.js": {
       "maxDuration": 10,
-      "includeFiles": "*.html"
+      "includeFiles": "{*.html,api/sitemap-template.html}"
     }
   },
   "redirects": [

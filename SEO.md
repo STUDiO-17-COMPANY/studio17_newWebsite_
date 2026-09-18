@@ -64,6 +64,7 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 
 - Important indexable pages must be reachable through normal `<a href>` links; do not depend only on JavaScript-rendered menus, XML sitemap discovery or manual URL submission.
 - The server-rendered human sitemap at `/sitemap` must include every currently published Google Drive article, available article translation and open role as a normal crawlable link. Its dynamic entries must stay synchronized with the XML sitemap.
+- Keep the human sitemap template at `api/sitemap-template.html`; placing a root `sitemap.html` file back in the project makes Vercel serve that static file before the `/sitemap` function rewrite.
 - Every XML sitemap entry needs an accurate `<lastmod>` value. Update `STATIC_LASTMOD` when a deployment materially changes static page content or internal links; Drive-managed articles and roles use their own source modification dates.
 - The homepage footer links to `/services/seo`. The main SEO page then links contextually and reciprocally to `/seo/cyprus` and `/seo/limassol` through its visible market directory.
 - Both market pages link back to `/services/seo`. Keep this small service cluster intact when changing navigation or page layouts.

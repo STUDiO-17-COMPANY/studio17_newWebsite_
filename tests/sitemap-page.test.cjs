@@ -5,8 +5,9 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { renderArticleLinks, renderRoleLinks } = require('../api/sitemap-page');
 
-const template = fs.readFileSync(path.join(__dirname, '..', 'sitemap.html'), 'utf8');
+const template = fs.readFileSync(path.join(__dirname, '..', 'api', 'sitemap-template.html'), 'utf8');
 
+assert.equal(fs.existsSync(path.join(__dirname, '..', 'sitemap.html')), false, 'A root sitemap.html would bypass the dynamic Vercel rewrite');
 assert.match(template, /STUDIO17_DYNAMIC_ARTICLE_LINKS/, 'Human sitemap must expose the article insertion point');
 assert.match(template, /STUDIO17_DYNAMIC_ROLE_LINKS/, 'Human sitemap must expose the careers insertion point');
 

@@ -373,8 +373,8 @@ test('clean routes and sitemaps include every published service page', () => {
   assert.ok(sitemap.includes('`${SITE_URL}/services/website`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/free-website`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/seo`'));
-  assert.match(read('sitemap.html'), /href="\/services\/free-website">Free Website\s*<i/);
-  assert.match(read('sitemap.html'), /href="\/services\/seo">SEO services\s*<i/);
+  assert.match(read('api/sitemap-template.html'), /href="\/services\/free-website">Free Website\s*<i/);
+  assert.match(read('api/sitemap-template.html'), /href="\/services\/seo">SEO services\s*<i/);
 });
 
 test('mobile menu remains limited to the approved five destinations', () => {

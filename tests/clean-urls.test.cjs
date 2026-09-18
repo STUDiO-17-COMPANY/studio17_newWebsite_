@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
-const htmlFiles = ['index.html', 'sitemap.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'services.html', 'website-development.html', 'free-website.html', 'seo.html', 'seo-cyprus.html', 'seo-limassol.html', 'news.html', 'article.html', 'careers.html', 'career-role.html', 'privacy-policy.html', 'cookie-policy.html', 'terms.html'];
+const htmlFiles = ['index.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'services.html', 'website-development.html', 'free-website.html', 'seo.html', 'seo-cyprus.html', 'seo-limassol.html', 'news.html', 'article.html', 'careers.html', 'career-role.html', 'privacy-policy.html', 'cookie-policy.html', 'terms.html'];
 
 for (const file of htmlFiles) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
@@ -39,6 +39,7 @@ assert.equal(configuration.rewrites.some(route => route.source === '/insights/:s
 assert.equal(configuration.rewrites.some(route => route.source === '/seo/cyprus' && route.destination === '/seo-cyprus'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/seo/limassol' && route.destination === '/seo-limassol'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/sitemap' && route.destination === '/api/sitemap-page'), true);
+assert.match(configuration.functions['api/*.js'].includeFiles, /api\/sitemap-template\.html/);
 assert.equal(configuration.rewrites.some(route => /\.html/.test(route.source) || /\.html/.test(route.destination)), false);
 
 const sitemapSource = fs.readFileSync(path.join(root, 'api', 'sitemap.js'), 'utf8');

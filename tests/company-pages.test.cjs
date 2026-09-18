@@ -32,7 +32,7 @@ test('Team page identifies the approved team members and publishes only approved
 test('company routes are available locally and included in XML and human sitemaps', () => {
   const server = read('dev-server.cjs');
   const xml = read('api/sitemap.js');
-  const human = read('sitemap.html');
+  const human = read('api/sitemap-template.html');
   const i18n = read('i18n.js');
   for (const [route, file] of [['/our-story', 'our-story.html'], ['/team', 'team.html']]) {
     assert.ok(server.includes(`['${route}', '${file}']`));

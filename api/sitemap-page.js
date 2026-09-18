@@ -5,7 +5,7 @@ const path = require('node:path');
 const { listPublishedRoles } = require('./_google-careers');
 const { listPublishedArticles } = require('./_google-articles');
 
-const TEMPLATE_PATH = path.join(__dirname, '..', 'sitemap.html');
+const TEMPLATE_PATH = path.join(__dirname, 'sitemap-template.html');
 const ARTICLE_MARKER = '<!-- STUDIO17_DYNAMIC_ARTICLE_LINKS -->';
 const ROLE_MARKER = '<!-- STUDIO17_DYNAMIC_ROLE_LINKS -->';
 const LANGUAGE_LABELS = { 'pt-PT': 'Portuguese', es: 'Spanish', el: 'Greek', ru: 'Russian', he: 'Hebrew' };

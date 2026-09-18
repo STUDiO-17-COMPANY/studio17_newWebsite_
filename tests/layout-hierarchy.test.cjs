@@ -7,7 +7,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const publicHtmlFiles = [
   'index.html',
-  'sitemap.html',
+  'api/sitemap-template.html',
   'wip.html',
   'contact.html',
   'faq.html',
