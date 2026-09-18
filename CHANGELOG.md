@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-18 — Partner carousel update
+
+- Removed Lodgify from every homepage partner-marquee set and rebalanced the carousel grid for the remaining ten partners.
+- Updated the partner regression test to prevent Lodgify from being reintroduced accidentally.
+
 ## 2026-09-18 — Six-language contact inbox verification
 
 - Verified the production contact-form destination in the correct Google Workspace account, `contact@studio17.world`.

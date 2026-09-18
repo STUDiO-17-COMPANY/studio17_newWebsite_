@@ -12,7 +12,6 @@ const partners = [
   ['03', '100 Pratos', 'https://www.100pratos.pt/'],
   ['04', 'For Social Media Lovers', 'https://forsocialmedialovers.com/'],
   ['05', 'Chome Rats', 'https://www.chromerats.com/'],
-  ['06', 'Lodgify', 'https://www.lodgify.com'],
   ['07', 'Selene Island', 'https://www.instagram.com/seleneisland/'],
   ['08', 'Phós Optics', 'https://www.phosoptics.com/en'],
   ['09', 'Event Studio Cyprus', 'https://www.instagram.com/eventstudiocy/'],
@@ -29,7 +28,8 @@ for (const [number, name, url] of partners) {
 }
 
 assert.equal((html.match(/data-partner="11"/g) || []).length, 4, 'partner-11 must appear once in every marquee set');
-assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(11,/s, 'the partner grid must expose all eleven partners in one row');
+assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(10,/s, 'the partner grid must expose all ten partners in one row');
+assert.doesNotMatch(html, /Lodgify|lodgify\.com|data-partner="06"/i, 'Lodgify must not appear in the partner carousel');
 
 assert.doesNotMatch(html, /partner-phos\.png/);
 assert.match(css, /\.partner-marquee:hover \.partner-track/);
