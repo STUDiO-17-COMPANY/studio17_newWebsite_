@@ -20,7 +20,7 @@ let activeBrowser;
     await context.addInitScript(() => localStorage.setItem('studio17-language', 'en'));
     const page = await context.newPage();
     page.on('console', message => { if (message.type() === 'error') errors.push(`${width}: ${message.text()}`); });
-    await page.goto(`${baseUrl}/insights/how-car-dealerships-can-increase-monthly-sales`, { waitUntil: 'networkidle' });
+    await page.goto(`${baseUrl}/case-studies/how-car-dealerships-can-increase-monthly-sales`, { waitUntil: 'networkidle' });
 
     assert.match(await page.title(), /How Car Dealerships Can Increase Monthly Sales/);
     assert.equal(await page.locator('h1').count(), 1);
@@ -66,9 +66,9 @@ let activeBrowser;
     const page = await context.newPage();
     await page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
     const link = page.locator('[data-article-feed="home"] .news-card').first().locator('a');
-    assert.equal(await link.getAttribute('href'), '/insights/how-car-dealerships-can-increase-monthly-sales');
+    assert.equal(await link.getAttribute('href'), '/case-studies/how-car-dealerships-can-increase-monthly-sales');
     await link.click();
-    await page.waitForURL('**/insights/how-car-dealerships-can-increase-monthly-sales');
+    await page.waitForURL('**/case-studies/how-car-dealerships-can-increase-monthly-sales');
     assert.equal(await page.locator('h1').isVisible(), true);
     await context.close();
   }

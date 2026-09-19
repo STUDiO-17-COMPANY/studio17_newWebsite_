@@ -1,6 +1,7 @@
 'use strict';
 
 const SITE_URL = 'https://www.studio17.world';
+const CATEGORY_PATHS = { Insight: 'insights', 'Case Study': 'case-studies', News: 'news' };
 const LANGUAGE_LABELS = { en: 'English', 'pt-PT': 'Português', es: 'Español', el: 'Ελληνικά', ru: 'Русский', he: 'עברית' };
 const CATEGORY_LABELS = {
   en: { Insight: 'Insight', 'Case Study': 'Case Study', News: 'News' },
@@ -22,6 +23,8 @@ const UI = {
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const escapeAttribute = escapeHtml;
 const absoluteUrl = value => new URL(String(value || '/'), SITE_URL).href;
+const getArticleSection = category => CATEGORY_PATHS[category] || CATEGORY_PATHS.Insight;
+const getArticlePath = (article, locale = article.locale || 'en') => `/${getArticleSection(article.category)}/${encodeURIComponent(article.slug)}${locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`}`;
 
 const highlight = (value, highlighted) => {
   const text = String(value || '');
@@ -70,8 +73,8 @@ const renderBlocks = (blocks, tableLabel = UI.en.table, coverMarkup = '') => {
   return html.join('');
 };
 
-const renderCard = (item, locale) => `<article class="news-card"><a href="/insights/${encodeURIComponent(item.slug)}${locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`}"><div class="news-image"><img src="${escapeAttribute(item.coverImage)}" alt="${escapeAttribute(item.coverAlt)}" loading="lazy"><span>${escapeHtml((CATEGORY_LABELS[locale] || CATEGORY_LABELS.en)[item.category] || item.category)}</span></div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.summary)}</p><small>${escapeHtml(formatDate(item.publishedDate, locale))}&nbsp;&nbsp;•&nbsp;&nbsp;${escapeHtml(item.authorName)} | ${escapeHtml(item.authorRole)}</small></a></article>`;
-const renderRailCard = (item, locale) => `<a class="article-rail-card" href="/insights/${encodeURIComponent(item.slug)}${locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`}"><img src="${escapeAttribute(item.coverImage)}" alt="${escapeAttribute(item.coverAlt)}" loading="lazy"><span>${escapeHtml((CATEGORY_LABELS[locale] || CATEGORY_LABELS.en)[item.category] || item.category)}</span><h3>${escapeHtml(item.title)}</h3><small>${escapeHtml(formatDate(item.publishedDate, locale))}</small></a>`;
+const renderCard = (item, locale) => `<article class="news-card"><a href="${escapeAttribute(getArticlePath(item, locale))}"><div class="news-image"><img src="${escapeAttribute(item.coverImage)}" alt="${escapeAttribute(item.coverAlt)}" loading="lazy"><span>${escapeHtml((CATEGORY_LABELS[locale] || CATEGORY_LABELS.en)[item.category] || item.category)}</span></div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.summary)}</p><small>${escapeHtml(formatDate(item.publishedDate, locale))}&nbsp;&nbsp;•&nbsp;&nbsp;${escapeHtml(item.authorName)} | ${escapeHtml(item.authorRole)}</small></a></article>`;
+const renderRailCard = (item, locale) => `<a class="article-rail-card" href="${escapeAttribute(getArticlePath(item, locale))}"><img src="${escapeAttribute(item.coverImage)}" alt="${escapeAttribute(item.coverAlt)}" loading="lazy"><span>${escapeHtml((CATEGORY_LABELS[locale] || CATEGORY_LABELS.en)[item.category] || item.category)}</span><h3>${escapeHtml(item.title)}</h3><small>${escapeHtml(formatDate(item.publishedDate, locale))}</small></a>`;
 
 const renderArticleMain = article => {
   const locale = article.locale;
@@ -79,7 +82,7 @@ const renderArticleMain = article => {
   const content = article.content;
   const headings = (content.blocks || []).filter(block => block.type === 'heading' && block.level === 2);
   const hasRelated = article.related.length > 0;
-  const languageLinks = article.availableLanguages.map(code => `<a href="/insights/${encodeURIComponent(article.slug)}${code === 'en' ? '' : `?lang=${encodeURIComponent(code)}`}" hreflang="${escapeAttribute(code)}"${code === locale ? ' aria-current="page"' : ''}>${escapeHtml(LANGUAGE_LABELS[code])}</a>`).join('');
+  const languageLinks = article.availableLanguages.map(code => `<a href="${escapeAttribute(getArticlePath(article, code))}" hreflang="${escapeAttribute(code)}"${code === locale ? ' aria-current="page"' : ''}>${escapeHtml(LANGUAGE_LABELS[code])}</a>`).join('');
   const coverMarkup = `<figure class="article-cover reveal"><img src="${escapeAttribute(article.coverImage)}" alt="${escapeAttribute(content.coverAlt)}" loading="lazy">${content.coverCaption ? `<figcaption>${escapeHtml(content.coverCaption)}</figcaption>` : ''}</figure>`;
   return `<main id="article-content"><article data-i18n-skip>
     <header class="article-hero"><div class="hero-media" aria-hidden="true"><img src="${escapeAttribute(article.coverImage)}" alt=""></div><div class="shell article-hero-grid">
@@ -94,9 +97,9 @@ const renderArticleMain = article => {
 
 const buildSeo = article => {
   const content = article.content;
-  const canonical = `${SITE_URL}/insights/${encodeURIComponent(article.slug)}${article.locale === 'en' ? '' : `?lang=${encodeURIComponent(article.locale)}`}`;
+  const canonical = `${SITE_URL}${getArticlePath(article, article.locale)}`;
   const shareImage = absoluteUrl(article.shareImage);
-  const alternates = article.availableLanguages.map(locale => `<link rel="alternate" hreflang="${escapeAttribute(locale)}" href="${SITE_URL}/insights/${encodeURIComponent(article.slug)}${locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`}">`).join('\n');
+  const alternates = article.availableLanguages.map(locale => `<link rel="alternate" hreflang="${escapeAttribute(locale)}" href="${SITE_URL}${getArticlePath(article, locale)}">`).join('\n');
   const jsonLd = {
     '@context': 'https://schema.org', '@type': 'Article', headline: content.title,
     description: content.metaDescription, image: [absoluteUrl(article.coverImage)],
@@ -116,4 +119,4 @@ const buildSeo = article => {
   <script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>`;
 };
 
-module.exports = { buildSeo, escapeHtml, renderArticleMain };
+module.exports = { buildSeo, escapeHtml, getArticlePath, getArticleSection, renderArticleMain };

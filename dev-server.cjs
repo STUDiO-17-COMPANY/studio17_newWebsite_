@@ -121,6 +121,11 @@ const server = http.createServer((request, response) => {
     return;
   }
   if (pathname === '/insights/how-car-dealerships-can-increase-monthly-sales') {
+    response.writeHead(308, { Location: `/case-studies/how-car-dealerships-can-increase-monthly-sales${url.search}` });
+    response.end();
+    return;
+  }
+  if (pathname === '/case-studies/how-car-dealerships-can-increase-monthly-sales') {
     sendDemoArticle(response);
     return;
   }

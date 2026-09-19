@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-19 — Category-aware article URLs
+
+- Separated published article routes by editorial category: `/insights/<slug>`, `/case-studies/<slug>` and `/news/<slug>`.
+- Updated homepage/archive cards, related-article cards, language links, canonical and `hreflang` metadata, structured data and both sitemaps to use the same category-aware URL.
+- Added permanent redirects from mismatched category routes to each article's current canonical route, preserving language selection and avoiding duplicate indexable URLs.
+- Added routing and rendering regression coverage for all three article categories.
+
 ## 2026-09-19 — Work page
 
 - Published the English-only `/work` page with an image-led two-column client gallery for 100 Pratos, PHÓS Optics, Terrassi Villa and RG Automotive.

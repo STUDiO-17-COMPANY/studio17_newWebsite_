@@ -55,9 +55,13 @@ Use at least two columns and one data row. Keep tables to a maximum of 12 column
 - `GET /api/articles?lang=<locale>` — newest-first validated summaries for the homepage and archive.
 - `GET /api/article-page?slug=<slug>&lang=<locale>` — server-rendered article page and metadata.
 - `GET /api/article-image?id=<drive-file-id>` — restricted article-media delivery.
-- `/insights/<slug>` — clean article URL, rewritten to the server renderer.
+- `/insights/<slug>` — clean route for articles categorised as `Insight`.
+- `/case-studies/<slug>` — clean route for articles categorised as `Case Study`.
+- `/news/<slug>` — clean route for articles categorised as `News`; `/news` remains the complete archive.
 - `/news` — multilingual archive with All, Insights, Case Studies and News filters.
 - `/sitemap.xml` — static pages, open roles and every valid article translation.
+
+The shared category field determines the public route automatically. If an article category changes, requests to its previous or otherwise mismatched category route receive a permanent redirect to the current route. Cards, related content, language links, canonical tags, `hreflang`, the human sitemap and the XML sitemap all use the same category-aware route helper, preventing duplicate indexable URLs.
 
 Article metadata includes a canonical URL, valid-language alternates, `Article` JSON-LD, publication/modified dates and the independent social image. Removed or incomplete articles return a non-indexable unavailable page.
 

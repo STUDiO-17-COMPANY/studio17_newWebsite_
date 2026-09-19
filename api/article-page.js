@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { getPublishedArticleBySlug } = require('./_google-articles');
-const { buildSeo, escapeHtml, renderArticleMain } = require('./_article-render');
+const { buildSeo, escapeHtml, getArticlePath, getArticleSection, renderArticleMain } = require('./_article-render');
 
 let cachedTemplate = '';
 
@@ -27,6 +27,15 @@ module.exports = async function articlePageHandler(request, response) {
     const slug = typeof request.query?.slug === 'string' ? request.query.slug : '';
     const locale = typeof request.query?.lang === 'string' ? request.query.lang : 'en';
     const article = await getPublishedArticleBySlug(slug, locale, request);
+    const requestedSection = typeof request.query?.section === 'string' ? request.query.section : '';
+    const canonicalSection = getArticleSection(article.category);
+    if (requestedSection && requestedSection !== canonicalSection) {
+      response.statusCode = 308;
+      response.setHeader('Location', getArticlePath(article, locale));
+      response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=300');
+      response.end();
+      return;
+    }
     cachedTemplate ||= readTemplate();
     const html = cachedTemplate
       .replace('<!-- ARTICLE_SEO -->', buildSeo(article))

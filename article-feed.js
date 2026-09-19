@@ -16,7 +16,8 @@
 
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
   const locale = () => window.Studio17I18n?.getLanguage?.() || document.documentElement.lang || 'en';
-  const articleUrl = (slug, language) => `/insights/${encodeURIComponent(slug)}${language === 'en' ? '' : `?lang=${encodeURIComponent(language)}`}`;
+  const articleSections = { Insight: 'insights', 'Case Study': 'case-studies', News: 'news' };
+  const articleUrl = (article, language) => `/${articleSections[article.category] || 'insights'}/${encodeURIComponent(article.slug)}${language === 'en' ? '' : `?lang=${encodeURIComponent(language)}`}`;
   const formatDate = (date, language) => {
     try { return new Intl.DateTimeFormat(language, { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`)); }
     catch { return date; }
@@ -29,7 +30,7 @@
     return `<div class="article-feed-state article-feed-error"><i data-lucide="circle-alert" aria-hidden="true"></i><p>${escapeHtml(copy.error)}</p><button type="button" data-article-retry>${escapeHtml(copy.retry)}</button></div>`;
   };
 
-  const cardMarkup = (article, language) => `<article class="news-card" data-article-category="${escapeHtml(article.category)}"><a href="${articleUrl(article.slug, language)}"><div class="news-image"><img src="${escapeHtml(article.coverImage)}" alt="${escapeHtml(article.coverAlt)}" loading="lazy"><span>${escapeHtml((messages[language] || messages.en).categories[article.category] || article.category)}</span></div><h3>${escapeHtml(article.title)}</h3><p>${escapeHtml(article.summary)}</p><small>${escapeHtml(formatDate(article.publishedDate, language))}&nbsp;&nbsp;•&nbsp;&nbsp;${escapeHtml(article.authorName)} | ${escapeHtml(article.authorRole)}</small></a></article>`;
+  const cardMarkup = (article, language) => `<article class="news-card" data-article-category="${escapeHtml(article.category)}"><a href="${articleUrl(article, language)}"><div class="news-image"><img src="${escapeHtml(article.coverImage)}" alt="${escapeHtml(article.coverAlt)}" loading="lazy"><span>${escapeHtml((messages[language] || messages.en).categories[article.category] || article.category)}</span></div><h3>${escapeHtml(article.title)}</h3><p>${escapeHtml(article.summary)}</p><small>${escapeHtml(formatDate(article.publishedDate, language))}&nbsp;&nbsp;•&nbsp;&nbsp;${escapeHtml(article.authorName)} | ${escapeHtml(article.authorRole)}</small></a></article>`;
 
   const applyFilter = feed => {
     if (feed.dataset.articleFeed !== 'archive') return;

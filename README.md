@@ -26,7 +26,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/cookie-policy` (`cookie-policy.html`) — multilingual browser-storage and consent information with a working Analytics-settings control.
 - `/terms` (`terms.html`) — multilingual terms governing use of the public Studio 17 website.
 - `/news` (`news.html`) — multilingual live archive for Insights, Case Studies and News.
-- `/insights/<article-slug>` (`article.html` template) — clean, server-rendered multilingual article route.
+- `/insights/<article-slug>`, `/case-studies/<article-slug>` and `/news/<article-slug>` (`article.html` template) — category-aware, server-rendered multilingual article routes with permanent correction redirects for mismatched category URLs.
 - `/careers` (`careers.html`) — English-only Careers index with automatic Google Drive role listing.
 - `/careers/<role-name>` (`career-role.html` template) — clean, server-rendered role route populated from the selected Google Doc.
 - `careers.js` / `career-role.js` — Careers loading, rendering and failure-state behavior.

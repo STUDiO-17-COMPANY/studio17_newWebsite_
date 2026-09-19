@@ -2,6 +2,7 @@
 
 const { listPublishedRoles } = require('./_google-careers');
 const { listPublishedArticles } = require('./_google-articles');
+const { getArticlePath } = require('./_article-render');
 
 const SITE_URL = 'https://www.studio17.world';
 const STATIC_LASTMOD = '2026-09-19';
@@ -68,7 +69,7 @@ module.exports = async function sitemapHandler(request, response) {
         priority: '0.7'
       })),
       ...articles.flatMap(article => article.availableLanguages.map(locale => ({
-        loc: `${SITE_URL}/insights/${encodeURIComponent(article.slug)}${locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`}`,
+        loc: `${SITE_URL}${getArticlePath(article, locale)}`,
         lastmod: article.modifiedDate || article.publishedDate || undefined,
         changefreq: 'monthly',
         priority: locale === 'en' ? '0.8' : '0.7'

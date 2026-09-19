@@ -17,6 +17,7 @@ assert.match(template, /STUDIO17_DYNAMIC_ROLE_LINKS/, 'Human sitemap must expose
 const articles = renderArticleLinks([{
   slug: 'example-article',
   title: 'Example & Article',
+  category: 'Insight',
   availableLanguages: ['en', 'el', 'pt-PT']
 }]);
 
@@ -24,6 +25,13 @@ assert.match(articles, /href="\/insights\/example-article"/, 'English article UR
 assert.match(articles, /href="\/insights\/example-article\?lang=el"/, 'Greek article URL must be linked');
 assert.match(articles, /href="\/insights\/example-article\?lang=pt-PT"/, 'Portuguese article URL must be linked');
 assert.match(articles, /Example &amp; Article/, 'Article labels must be HTML escaped');
+
+const categoryArticles = renderArticleLinks([
+  { slug: 'client-result', title: 'Client result', category: 'Case Study', availableLanguages: ['en'] },
+  { slug: 'company-update', title: 'Company update', category: 'News', availableLanguages: ['en'] }
+]);
+assert.match(categoryArticles, /href="\/case-studies\/client-result"/, 'Case Studies must use their own route');
+assert.match(categoryArticles, /href="\/news\/company-update"/, 'News articles must use their own route');
 
 const roles = renderRoleLinks([{ slug: 'growth-strategist', title: 'Growth Strategist' }]);
 assert.match(roles, /href="\/careers\/growth-strategist"/, 'Published role URL must be linked');

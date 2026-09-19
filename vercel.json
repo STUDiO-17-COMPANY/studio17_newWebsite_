@@ -36,7 +36,9 @@
     { "source": "/seo/cyprus", "destination": "/seo-cyprus" },
     { "source": "/seo/limassol", "destination": "/seo-limassol" },
     { "source": "/sitemap", "destination": "/api/sitemap-page" },
-    { "source": "/insights/:slug", "destination": "/api/article-page?slug=:slug" },
+    { "source": "/insights/:slug", "destination": "/api/article-page?slug=:slug&section=insights" },
+    { "source": "/case-studies/:slug", "destination": "/api/article-page?slug=:slug&section=case-studies" },
+    { "source": "/news/:slug", "destination": "/api/article-page?slug=:slug&section=news" },
     { "source": "/careers/:slug", "destination": "/api/career-page?slug=:slug" },
     { "source": "/career-role", "destination": "/api/legacy-career" },
     { "source": "/sitemap.xml", "destination": "/api/sitemap" }

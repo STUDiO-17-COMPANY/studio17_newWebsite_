@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { listPublishedRoles } = require('./_google-careers');
 const { listPublishedArticles } = require('./_google-articles');
+const { getArticlePath } = require('./_article-render');
 
 const TEMPLATE_PATH = path.join(__dirname, 'sitemap-template.html');
 const ARTICLE_MARKER = '<!-- STUDIO17_DYNAMIC_ARTICLE_LINKS -->';
@@ -21,8 +22,7 @@ const linkItem = (href, label) => `<li><a href="${escapeHtml(href)}">${escapeHtm
 
 const renderArticleLinks = articles => articles.flatMap(article => article.availableLanguages.map(locale => {
   const suffix = locale === 'en' ? '' : ` — ${LANGUAGE_LABELS[locale] || locale}`;
-  const query = locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`;
-  return linkItem(`/insights/${encodeURIComponent(article.slug)}${query}`, `${article.title}${suffix}`);
+  return linkItem(getArticlePath(article, locale), `${article.title}${suffix}`);
 })).join('\n              ');
 
 const renderRoleLinks = roles => roles

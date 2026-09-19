@@ -35,7 +35,9 @@ assert.match(fs.readFileSync(path.join(root, 'wip.js'), 'utf8'), /location\.hash
 const configuration = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 assert.equal(configuration.cleanUrls, true);
 assert.equal(configuration.rewrites.some(route => route.source === '/careers/:slug'), true);
-assert.equal(configuration.rewrites.some(route => route.source === '/insights/:slug' && route.destination === '/api/article-page?slug=:slug'), true);
+for (const section of ['insights', 'case-studies', 'news']) {
+  assert.equal(configuration.rewrites.some(route => route.source === `/${section}/:slug` && route.destination === `/api/article-page?slug=:slug&section=${section}`), true, `${section} article rewrite is missing`);
+}
 assert.equal(configuration.rewrites.some(route => route.source === '/seo/cyprus' && route.destination === '/seo-cyprus'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/seo/limassol' && route.destination === '/seo-limassol'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/services/localization-and-translation' && route.destination === '/localization-and-translation'), true);
