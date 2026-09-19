@@ -882,6 +882,22 @@
   };
   createSiteAssistance();
 
+  document.querySelectorAll('[data-presentation-preview]').forEach(preview => {
+    const loadButton = preview.querySelector('[data-presentation-load]');
+    const placeholder = preview.querySelector('[data-presentation-placeholder]');
+    const frame = preview.querySelector('iframe[data-src]');
+    if (!loadButton || !placeholder || !frame) return;
+    loadButton.addEventListener('click', () => {
+      if (frame.dataset.src) {
+        frame.src = frame.dataset.src;
+        delete frame.dataset.src;
+      }
+      frame.hidden = false;
+      placeholder.hidden = true;
+      frame.focus();
+    });
+  });
+
   const revealItems = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver(entries => {

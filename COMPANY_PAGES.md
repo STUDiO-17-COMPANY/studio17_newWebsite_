@@ -15,10 +15,11 @@ All three routes use clean URLs, the shared header and footer, Lucide interface 
 1. Media hero using `Images/About_heroimage.webp`.
 2. `Trusted globally`: one animated partner-logo line, one short collaboration note and four approved static reviews.
 3. Confirmed team members in the keyboard- and touch-usable carousel, with a link to `/team`.
-4. `About Studio 17`: concise company identity, Limassol headquarters, Portugal operations hub and European brand proof.
-5. `Our origin`: the approved three-paragraph summary and `Read the full Studio 17 Story` linking to `/our-story`.
-6. `See Studio 17 in more detail`: the shared Greek presentation on Google Drive.
-7. `Join Studio 17`: a focused careers CTA linking to the English `/careers` workflow.
+4. `About Studio 17`: concise company identity with an image-led company view.
+5. A compact `100% European Brand` proof section covering the Limassol headquarters, Portugal operations hub and international collaboration.
+6. `Our origin`: an image-led layout with the approved three-paragraph summary and `Read the full Studio 17 Story` linking to `/our-story`.
+7. `See Studio 17 in more detail`: an explicit click-to-load Google Drive preview plus the external presentation link. The third-party viewer must not load before the visitor requests it.
+8. `Join Studio 17`: a focused careers CTA linking to the English `/careers` workflow.
 
 The About page is company-focused. It must not include service directories, sales-package sections, generic lead-generation messaging or a closing sales CTA.
 

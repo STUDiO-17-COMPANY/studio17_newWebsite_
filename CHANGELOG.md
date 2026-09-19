@@ -5,6 +5,8 @@
 - Rebuilt `/about` into the approved company-focused sequence: hero, one-line global partner proof, four static reviews, team, company profile, origin, presentation and careers CTA.
 - Removed the service-selling method, capability, culture, social-directory and closing sales sections from the About journey.
 - Aligned the page with the shared `#F8FAFC` surface, 32px section rhythm, compact 24px interiors, blue title emphasis and responsive square components.
+- Moved the global-collaboration statement below the logo line, made long partner hover names wrap safely, added image-led company and origin layouts, and separated the European-brand proof into a compact section.
+- Added a click-to-load Google Drive presentation viewer with native slide navigation and kept the external presentation link as a fallback without loading Google resources before visitor action.
 - Updated the About regression contract and company-page documentation to preserve the new hierarchy.
 
 ## 2026-09-19 — Gil Barreto added to the Studio 17 team

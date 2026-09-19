@@ -37,7 +37,7 @@ for (const file of publicHtmlFiles) {
 
 const about = fs.readFileSync(path.join(root, 'about.html'), 'utf8');
 assert.match(about, /class="shell about-origin-grid"[\s\S]*?<h2 class="design-heading about-display-heading" id="about-origin-title"><span>Our origin<\/span><\/h2>/);
-assert.match(about, /class="shell about-origin-grid"[\s\S]*?<blockquote class="reveal" data-delay="1">Businesses should not need five disconnected suppliers to make one growth strategy work\.<\/blockquote>/);
+assert.match(about, /class="shell about-origin-grid"[\s\S]*?class="about-origin-image reveal"[\s\S]*?Images\/ai-hands\.webp[\s\S]*?class="about-origin-copy reveal"/);
 assert.doesNotMatch(about, />Our point of view<|>The principle</, 'About still contains decorative mini-title copy');
 
 const faq = fs.readFileSync(path.join(root, 'faq.html'), 'utf8');

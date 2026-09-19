@@ -150,8 +150,10 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Keep the Google Drive presentation as one external link across all locales. Translate the CTA and clearly state that the presentation itself is in Greek.
 - Reuse the shared media hero, `#F8FAFC` page surface, square geometry, restrained hover motion and footer contract.
 - Every main About section heading reuses the homepage blue inline-highlight treatment; do not substitute oversized unaccented display headings.
-- Use the approved About order documented in `COMPANY_PAGES.md`: media hero, one-line global partner proof, four static reviews, team, About Studio 17, origin, presentation and careers CTA.
+- Use the approved About order documented in `COMPANY_PAGES.md`: media hero, one-line global partner proof, four static reviews, team, image-led company profile, compact European-brand proof, image-led origin, presentation and careers CTA.
 - Show only one partner-logo marquee on About. Reviews remain a static four-card grid and must not become a carousel.
+- Place the global-collaboration statement below the partner-logo line. Partner hover labels may wrap and must remain fully readable inside the logo row.
+- The embedded Google Drive presentation viewer loads only after an explicit visitor action; retain the external presentation link as a reliable fallback.
 - The origin summary links to `/our-story`; do not repeat all seven chapters on `/about`.
 - The team carousel must remain usable with keyboard and touch, use visible previous/next controls and expose only confirmed people and titles.
 - Trustpilot proof remains plain text while the free plan is active; do not hard-code a changing score or reproduce restricted Trustpilot artwork.

@@ -26,7 +26,7 @@ assert.match(about, new RegExp(`href="${presentationUrl.replace(/[.*+?^${}()|[\]
 assert.match(about, /Images\/About_heroimage\.webp/);
 assert.match(about, /Images\/Team_heroimage\.webp/);
 
-const expectedOrder = ['about-hero', 'about-trusted', 'about-team', 'about-company', 'about-origin', 'about-presentation', 'about-join'];
+const expectedOrder = ['about-hero', 'about-trusted', 'about-team', 'about-company', 'about-european', 'about-origin', 'about-presentation', 'about-join'];
 let previousIndex = -1;
 for (const className of expectedOrder) {
   const currentIndex = about.search(new RegExp(`<section class="[^"]*\\b${className}\\b`));
@@ -36,6 +36,7 @@ for (const className of expectedOrder) {
 
 assert.equal((about.match(/class="partner-marquee"/g) || []).length, 1, 'About must use one visible partner-logo line');
 assert.doesNotMatch(about, /partner-marquee-reverse/, 'About must not use a second reverse logo line');
+assert.ok(about.indexOf('We collaborate with businesses and people across markets') > about.indexOf('class="partner-marquee"'), 'global collaboration copy must follow the partner logos');
 assert.equal((about.match(/class="about-review-card/g) || []).length, 4, 'About must show four static reviews');
 assert.doesNotMatch(about, /about-review[^\n]*data-carousel|data-carousel-(?:prev|next)="about-review/i, 'About reviews must not be a carousel');
 assert.doesNotMatch(about, /about-method|about-capabilities|about-culture|about-social|about-cta/, 'About must not include the retired service-selling sections');
@@ -50,6 +51,11 @@ assert.equal((about.match(/class="about-team-social-link/g) || []).length, 4, 'o
 assert.doesNotMatch(about, /Pedro Leonardo[\s\S]{0,700}instagram\.com/i, 'Pedro Leonardo must not display an Instagram link without approval');
 assert.match(about, /href="\/team"[^>]*>Meet the full team/);
 assert.match(about, /href="\/careers" data-force-language="en">View open roles/);
+assert.match(about, /Images\/ai-team\.webp/);
+assert.match(about, /Images\/ai-hands\.webp/);
+assert.match(about, /class="about-european"[\s\S]*?100% European Brand/);
+assert.doesNotMatch(about, /The presentation opens in Greek on Google Drive/);
+assert.match(about, /data-presentation-preview[\s\S]*?data-presentation-load[\s\S]*?\/preview/);
 assert.doesNotMatch(about, /4\.8\/5|TrustScore|trustpilot[^<]*logo/i, 'About must not hard-code changing Trustpilot ratings or restricted assets');
 
 assert.match(styles, /\.about-page, \.about-main \{ background: var\(--paper\); \}/);
@@ -81,5 +87,6 @@ assert.match(i18n, /'\/about': 'about\.html'/);
 const sharedScript = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
 assert.match(sharedScript, /https:\/\/share\.google\/B3qQDpUvLnv5UAZ4G/);
 assert.match(sharedScript, /footer-social-link social-google/);
+assert.match(sharedScript, /querySelectorAll\('\[data-presentation-preview\]'\)/);
 
 console.log('About page structure, presentation and social-link tests passed.');
