@@ -7,6 +7,7 @@
 - Aligned the page with the shared `#F8FAFC` surface, 32px section rhythm, compact 24px interiors, blue title emphasis and responsive square components.
 - Moved the global-collaboration statement below the logo line, made long partner hover names wrap safely, added image-led company and origin layouts, and separated the European-brand proof into a compact section.
 - Added a click-to-load Google Drive presentation viewer with native slide navigation and kept the external presentation link as a fallback without loading Google resources before visitor action.
+- Fixed the presentation preview state so the branded loading panel is removed after activation and the loaded Google Drive viewer becomes visible.
 - Updated the About regression contract and company-page documentation to preserve the new hierarchy.
 
 ## 2026-09-19 — Gil Barreto added to the Studio 17 team

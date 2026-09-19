@@ -60,6 +60,7 @@ assert.doesNotMatch(about, /4\.8\/5|TrustScore|trustpilot[^<]*logo/i, 'About mus
 
 assert.match(styles, /\.about-page, \.about-main \{ background: var\(--paper\); \}/);
 assert.match(styles, /\.about-main > section:not\(\.page-hero\) \{ margin-top: 32px; padding-block: 24px;/);
+assert.match(styles, /\.about-presentation-placeholder\[hidden\] \{ display: none; \}/, 'loaded presentation must replace the preview placeholder');
 
 for (const file of htmlFiles) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
