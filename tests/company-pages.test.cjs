@@ -20,10 +20,11 @@ test('Our Story publishes the complete approved seven-chapter narrative', () => 
 test('Team page identifies the approved team members and publishes only approved profile links', () => {
   const html = read('team.html');
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/team"/);
-  assert.equal((html.match(/class="team-profile-card/g) || []).length, 3);
+  assert.equal((html.match(/class="team-profile-card/g) || []).length, 4);
   assert.match(html, /Founder &amp; Director[\s\S]*?Hugo Filipe/);
   assert.match(html, /Co-founder[\s\S]*?Pedro Leonardo/);
   assert.match(html, /Business Developer[\s\S]*?Natalia Ioannou/);
+  assert.match(html, /Business Developer[\s\S]*?Portugal[\s\S]*?Gil Barreto/);
   assert.match(html, /href="https:\/\/www\.linkedin\.com\/in\/natalia-ioannou-83527126b\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
   assert.equal((html.match(/linkedin\.com\/in\//gi) || []).length, 1);
   assert.equal((html.match(/hreflang=/g) || []).length, 7);

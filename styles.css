@@ -903,7 +903,7 @@ html[dir="rtl"] .site-assist-kicker { margin-right: 0; margin-left: 44px; }
 .company-page-hero .page-hero-title h1 span { color: var(--white); background: var(--blue); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .team-main, .our-story-main { overflow: hidden; }
 .team-profiles { margin-top: var(--section-gap); padding: 84px 0 94px; background: var(--white); }
-.team-profile-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; }
+.team-profile-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 28px; }
 .team-profile-card { display: grid; grid-template-columns: 1fr; min-height: 430px; background: var(--paper); border: 1px solid #d4dce7; transition: border-color .2s ease, transform .25s var(--ease); }
 .team-profile-card:hover { border-color: var(--blue); transform: translateY(-5px); }
 .team-profile-portrait { position: relative; display: grid; min-height: 300px; place-items: center; overflow: hidden; color: var(--white); background: var(--ink); }
@@ -954,6 +954,7 @@ html[dir="rtl"] .site-assist-kicker { margin-right: 0; margin-left: 44px; }
   .about-method-card > .lucide { margin-bottom: 58px; }
   .about-presence-grid { grid-template-columns: 340px minmax(0,1fr); gap: 54px; }
   .about-culture-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .team-profile-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .team-profile-card { grid-template-columns: 1fr; }
   .team-profile-portrait { min-height: 330px; }
   .story-chapter-grid { gap: 64px; }

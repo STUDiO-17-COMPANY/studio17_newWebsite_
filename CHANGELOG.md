@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-19 — Gil Barreto added to the Studio 17 team
+
+- Added Gil Barreto as Business Developer in Portugal to the About page team carousel.
+- Added Gil to the full Team page with a concise role description and an initials-based profile card matching the existing design.
+
 ## 2026-09-18 — Localization and Translation service page
 
 - Added the English-only `/services/localization-and-translation` page with market-fit problems, service capabilities, multilingual search guidance, a controlled delivery process, scope options, buying FAQs and conversion actions.

@@ -81,7 +81,7 @@ assert.equal((about.match(/hreflang=/g) || []).length, 7, 'About must expose x-d
 assert.match(about, new RegExp(`href="${presentationUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" target="_blank" rel="noopener noreferrer"`));
 assert.match(about, /Images\/About_heroimage\.webp/);
 assert.match(about, /href="\/our-story"[^>]*>Read the full Studio 17 Story/);
-assert.match(about, /id="about-team-track"[\s\S]*?Hugo Filipe[\s\S]*?Pedro Leonardo[\s\S]*?Natalia Ioannou/);
+assert.match(about, /id="about-team-track"[\s\S]*?Hugo Filipe[\s\S]*?Pedro Leonardo[\s\S]*?Natalia Ioannou[\s\S]*?Gil Barreto/);
 assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/hugodm-filipe\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Hugo Filipe on LinkedIn"/);
 assert.match(about, /href="https:\/\/www\.instagram\.com\/hugodmfilipe02\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Hugo Filipe on Instagram"/);
 assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/pedro-leonardo-375478330\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Pedro Leonardo on LinkedIn"/);
