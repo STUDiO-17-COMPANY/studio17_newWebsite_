@@ -817,52 +817,34 @@ html[dir="rtl"] .site-assist-kicker { margin-right: 0; margin-left: 44px; }
   .contact-form-status { flex-basis: auto; }
 }
 
-/* About — Studio 17 positioning, approach and company presentation */
+/* About — company, trust, people and origin */
+.about-page, .about-main { background: var(--paper); }
 .about-main { overflow: hidden; }
-.about-intro { margin-top: var(--section-gap); padding: 92px 0 100px; background: var(--white); }
-.about-intro-grid { display: grid; gap: 44px; }
-.about-intro-heading { max-width: 980px; }
-.about-intro .about-display-heading { max-width: 980px; text-wrap: balance; }
-.about-intro-copy { display: grid; grid-template-columns: minmax(0,1.12fr) minmax(300px,.88fr); gap: 72px; align-items: start; border-top: 1px solid #cad2df; padding-top: 36px; }
-.about-intro-text > p { max-width: 720px; margin: 0 0 20px; color: #4f5a6c; font-size: 17px; line-height: 1.72; }
-.about-intro-text > p:last-child { margin-bottom: 0; }
-.about-intro-copy blockquote { max-width: 560px; margin: 0; border-inline-start: 6px solid var(--blue); padding: 27px 29px; color: var(--white); background: var(--ink); font-size: 22px; font-weight: 750; line-height: 1.35; }
-.about-section-heading { display: grid; grid-template-columns: minmax(0,1fr) 430px; align-items: end; gap: 60px; margin-bottom: 42px; }
+.about-main > section:not(.page-hero) { margin-top: 32px; padding-block: 24px; background: var(--paper); }
+.about-hero .page-hero-title h1 span { color: var(--white); background: var(--blue); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.about-display-heading { margin: 0; }
+.about-section-heading { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(300px,.92fr); align-items: end; gap: 48px; margin-bottom: 24px; }
 .about-section-heading .about-display-heading { max-width: 780px; text-wrap: balance; }
-.about-section-heading > p { margin: 0; color: inherit; opacity: .78; font-size: 15px; line-height: 1.65; }
-.about-method { margin-top: var(--section-gap); padding: 86px 0 94px; color: var(--white); background: var(--ink); }
-.about-method-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; counter-reset: none; }
-.about-method-card { position: relative; min-height: 330px; padding: 28px; background: #151f33; box-shadow: inset 0 0 0 1px rgba(255,255,255,.09); transition: transform .28s var(--ease), box-shadow .28s ease; }
-.about-method-card:hover { transform: translateY(-5px); box-shadow: inset 0 5px 0 var(--blue), 0 22px 42px rgba(0,0,0,.22); }
-.about-method-card > span { position: absolute; top: 28px; inset-inline-end: 28px; color: #8fa2c0; font-size: 11px; font-weight: 800; letter-spacing: .1em; }
-.about-method-card > .lucide { width: 36px; height: 36px; margin: 0 0 84px; color: #8fb1ff; }
-.about-method-card h3 { margin: 0 0 13px; font-size: 22px; line-height: 1.15; letter-spacing: -.03em; }
-.about-method-card p { margin: 0; color: #c2ccdb; font-size: 14px; line-height: 1.6; }
-.about-capabilities { margin-top: var(--section-gap); padding: 86px 0 96px; background: var(--white); }
-.about-capability-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
-.about-capability { min-height: 148px; display: grid; grid-template-columns: 42px minmax(0,1fr) 28px; align-items: center; gap: 18px; border: 1px solid #d6dce6; padding: 24px; color: var(--ink); background: var(--paper); transition: border-color .2s ease, color .2s ease, transform .25s var(--ease); }
-.about-capability > .lucide:first-child { width: 31px; height: 31px; color: var(--blue); }
-.about-capability > .lucide:last-child { width: 20px; height: 20px; justify-self: end; }
-.about-capability span { font-size: 20px; font-weight: 760; letter-spacing: -.025em; }
-.about-capability:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-4px); }
-.about-presence { margin-top: var(--section-gap); padding: 78px 0; color: var(--white); background: var(--ink); }
-.about-presence-grid { display: grid; grid-template-columns: 420px minmax(0,1fr); gap: 86px; align-items: center; }
-.about-presence-mark { min-height: 220px; display: grid; place-items: center; background: var(--blue); }
-.about-presence-mark img { width: min(300px,78%); height: auto; }
-.about-presence .about-display-heading { max-width: 800px; margin-bottom: 18px; text-wrap: balance; }
-.about-presence p:last-child { max-width: 720px; margin: 0; color: #c5cfde; font-size: 16px; line-height: 1.65; }
-.about-presence-proof { margin-top: 20px !important; font-weight: 700; }
-.about-presence-proof a { display: inline-flex; align-items: center; gap: 6px; color: #8fb1ff; transition: color .2s ease; }
-.about-presence-proof a:hover { color: var(--white); }
-.about-presence-proof .lucide { width: 14px; height: 14px; }
+.about-section-heading > p { max-width: 620px; margin: 0; color: #596477; font-size: 15px; line-height: 1.65; }
+.about-trusted .partner-marquee { margin-top: 0; }
+.about-trusted-note { max-width: 860px; margin: 18px 0 24px; color: #596477; font-size: 15px; line-height: 1.65; }
+.about-review-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }
+.about-review-card { display: flex; min-height: 270px; flex-direction: column; justify-content: space-between; border: 1px solid #cfd7e3; padding: 24px; background: var(--paper); transition: border-color .2s ease, transform .25s var(--ease); }
+.about-review-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+.about-review-card blockquote { margin: 0 0 26px; color: var(--ink); font-size: 15px; line-height: 1.65; }
+.about-review-card > div { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 2px 14px; border-top: 1px solid #cfd7e3; padding-top: 16px; }
+.about-review-card strong { font-size: 15px; }
+.about-review-card span { grid-column: 1; color: #657084; font-size: 12px; }
+.about-review-card a { grid-column: 2; grid-row: 1 / span 2; display: grid; width: 36px; height: 36px; place-items: center; color: var(--white); background: var(--blue); }
+.about-review-card a .lucide { width: 17px; height: 17px; }
 .about-story-link { margin-top: 12px; }
-.about-team { margin-top: var(--section-gap); padding: 76px 0 86px; overflow: hidden; background: var(--white); }
+.about-team { overflow: hidden; }
 .about-team .section-title-line { height: auto; justify-content: space-between; }
-.about-team-track { grid-auto-columns: 420px; gap: 32px; margin-top: 38px; }
-.about-team-card { width: 420px; scroll-snap-align: start; }
-.about-team-photo-placeholder { position: relative; display: grid; width: 420px; height: 300px; place-items: center; overflow: hidden; color: var(--white); background: var(--ink); }
-.about-team-photo-placeholder::before { content: ""; position: absolute; width: 230px; height: 230px; background: var(--blue); transform: rotate(45deg); }
-.about-team-photo-placeholder span { position: relative; z-index: 1; font-family: "Plus Jakarta Sans",Inter,sans-serif; font-size: 72px; font-weight: 800; letter-spacing: -.08em; }
+.about-team-track { grid-auto-columns: 380px; gap: 24px; margin-top: 24px; }
+.about-team-card { width: 380px; scroll-snap-align: start; }
+.about-team-photo-placeholder { position: relative; display: grid; width: 380px; height: 260px; place-items: center; overflow: hidden; color: var(--white); background: var(--ink); }
+.about-team-photo-placeholder::before { content: ""; position: absolute; width: 210px; height: 210px; background: var(--blue); transform: rotate(45deg); }
+.about-team-photo-placeholder span { position: relative; z-index: 1; font-family: "Plus Jakarta Sans",Inter,sans-serif; font-size: 66px; font-weight: 800; letter-spacing: -.08em; }
 .about-team-meta { display: flex; min-height: 70px; align-items: center; justify-content: space-between; gap: 18px; padding-top: 16px; }
 .about-team-card h3 { margin: 0 0 3px; font-size: 22px; letter-spacing: -.03em; }
 .about-team-meta p { margin: 0; color: #657084; font-size: 14px; }
@@ -873,31 +855,24 @@ html[dir="rtl"] .site-assist-kicker { margin-right: 0; margin-left: 44px; }
 .about-team-social-link:hover { opacity: .62; transform: translateY(-3px); }
 .about-team-social-link:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .about-team-social-link img { display: block; width: 24px; height: 28px; object-fit: contain; }
-.about-team-link { display: flex; justify-content: flex-end; margin-top: 34px; }
-.about-culture { margin-top: var(--section-gap); padding: 82px 0 90px; background: var(--paper); }
-.about-culture-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }
-.about-culture-card { min-height: 286px; padding: 28px; border: 1px solid #d4dbe6; background: var(--white); transition: transform .25s var(--ease), border-color .2s ease; }
-.about-culture-card:hover { border-color: var(--blue); transform: translateY(-5px); }
-.about-culture-card > .lucide { width: 34px; height: 34px; margin-bottom: 74px; color: var(--blue); }
-.about-culture-card h3 { margin: 0 0 12px; font-size: 21px; line-height: 1.2; letter-spacing: -.03em; }
-.about-culture-card p { margin: 0; color: #5d687a; font-size: 14px; line-height: 1.6; }
-.about-careers-button { width: fit-content; margin-top: 34px; }
-.about-presentation { margin-top: var(--section-gap); padding: 60px 0; color: var(--white); background: var(--ink); }
-.about-presentation-grid { display: grid; grid-template-columns: 76px minmax(0,1fr) auto; gap: 32px; align-items: center; }
-.about-presentation-icon { display: grid; width: 76px; height: 76px; place-items: center; color: var(--ink); background: var(--white); }
-.about-presentation-icon .lucide { width: 34px; height: 34px; }
-.about-presentation .about-display-heading { margin-bottom: 9px; }
-.about-presentation p { max-width: 760px; margin: 0; line-height: 1.58; }
+.about-team-link { display: flex; justify-content: flex-end; margin-top: 24px; }
+.about-company-grid, .about-origin-grid { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(320px,.92fr); gap: 48px; align-items: start; }
+.about-company-grid > div:first-child > p, .about-origin-grid > div:first-child > p { max-width: 760px; margin: 18px 0 0; color: #4f5a6c; font-size: 16px; line-height: 1.7; }
+.about-company-facts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); color: var(--white); background: var(--ink); }
+.about-company-facts > div { min-height: 118px; display: flex; flex-direction: column; justify-content: flex-end; border-inline-end: 1px solid rgba(255,255,255,.16); padding: 18px; }
+.about-company-facts strong { font-size: 18px; }
+.about-company-facts span { margin-top: 4px; color: #c2ccdb; font-size: 12px; }
+.about-company-facts img { grid-column: 1 / -1; width: 100%; max-height: 100px; padding: 20px; object-fit: contain; background: var(--blue); }
+.about-origin-grid blockquote { margin: 0; border-inline-start: 6px solid var(--blue); padding: 28px; color: var(--white); background: var(--ink); font-size: 22px; font-weight: 750; line-height: 1.4; }
+.about-presentation-card { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 48px; align-items: center; padding: 32px; color: var(--white); background: var(--ink); }
+.about-presentation .about-display-heading { margin-bottom: 10px; }
+.about-presentation p { max-width: 760px; margin: 0; color: #c2ccdb; line-height: 1.58; }
 .about-presentation-button { min-width: 230px; }
-.about-social { margin-top: var(--section-gap); padding: 68px 0; background: var(--white); }
-.about-social-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 72px; }
-.about-social .about-display-heading { margin: 0; }
-.about-social-links { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
-.about-social-links a { display: flex; min-height: 66px; align-items: center; justify-content: space-between; gap: 15px; border-top: 1px solid #cbd3df; padding: 14px 16px; font-weight: 750; transition: color .2s ease, background .2s ease; }
-.about-social-links a:last-child { border-bottom: 1px solid #cbd3df; }
-.about-social-links a:hover { color: var(--white); background: var(--blue); }
-.about-social-links .lucide { width: 18px; height: 18px; }
-.about-cta { margin-top: var(--section-gap); }
+.about-join-card { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); min-height: 330px; color: var(--white); background: var(--ink); }
+.about-join-image { min-height: 330px; overflow: hidden; }
+.about-join-image img { width: 100%; height: 100%; object-fit: cover; }
+.about-join-copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 32px; }
+.about-join-copy p { max-width: 620px; margin: 14px 0 24px; color: #c2ccdb; font-size: 16px; line-height: 1.65; }
 
 /* Company story and team pages */
 .company-page-hero .page-hero-title h1 span { color: var(--white); background: var(--blue); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
@@ -947,13 +922,8 @@ html[dir="rtl"] .site-assist-kicker { margin-right: 0; margin-left: 44px; }
 .story-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 34px; margin-top: 42px; }
 
 @media (max-width: 1279px) {
-  .about-intro-copy { gap: 48px; }
-  .about-section-heading { grid-template-columns: minmax(0,1fr) 370px; gap: 42px; }
-  .about-method-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .about-method-card { min-height: 290px; }
-  .about-method-card > .lucide { margin-bottom: 58px; }
-  .about-presence-grid { grid-template-columns: 340px minmax(0,1fr); gap: 54px; }
-  .about-culture-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .about-section-heading { grid-template-columns: minmax(0,1fr) 370px; gap: 36px; }
+  .about-review-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .team-profile-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .team-profile-card { grid-template-columns: 1fr; }
   .team-profile-portrait { min-height: 330px; }
@@ -961,17 +931,12 @@ html[dir="rtl"] .site-assist-kicker { margin-right: 0; margin-left: 44px; }
 }
 
 @media (max-width: 900px) {
-  .about-intro { padding-block: 64px 72px; }
-  .about-intro-grid, .about-section-heading, .about-presence-grid, .about-presentation-grid, .about-social-grid { grid-template-columns: 1fr; gap: 32px; }
-  .about-intro-copy { grid-template-columns: 1fr; gap: 28px; padding-top: 30px; }
+  .about-section-heading, .about-company-grid, .about-origin-grid, .about-presentation-card, .about-join-card { grid-template-columns: 1fr; gap: 24px; }
   .about-section-heading > p { max-width: 700px; }
-  .about-method, .about-capabilities, .about-team, .about-culture { padding-block: 64px 72px; }
-  .about-capability-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .about-presence-mark { min-height: 190px; }
-  .about-team-track { grid-auto-columns: min(420px,82vw); }
-  .about-team-card, .about-team-photo-placeholder { width: min(420px,82vw); }
+  .about-team-track { grid-auto-columns: min(380px,82vw); }
+  .about-team-card, .about-team-photo-placeholder { width: min(380px,82vw); }
   .about-presentation-button { width: fit-content; }
-  .about-social-links { grid-template-columns: 1fr; }
+  .about-join-image { min-height: 280px; }
   .team-profiles, .story-chapter { padding-block: 64px 76px; }
   .team-profile-grid, .team-principle-grid, .story-chapter-grid { grid-template-columns: 1fr; gap: 34px; }
   .team-profile-card { grid-template-columns: minmax(220px,.8fr) minmax(0,1.2fr); }
@@ -980,14 +945,14 @@ html[dir="rtl"] .site-assist-kicker { margin-right: 0; margin-left: 44px; }
 
 @media (max-width: 600px) {
   .about-display-heading { font-size: 28px; }
-  .about-intro-text > p { font-size: 16px; }
-  .about-intro-copy blockquote { font-size: 19px; }
-  .about-method-grid, .about-capability-grid, .about-culture-grid { grid-template-columns: 1fr; }
-  .about-method-card { min-height: 260px; }
-  .about-capability { min-height: 118px; }
-  .about-culture-card { min-height: 250px; }
+  .about-review-grid, .about-company-facts { grid-template-columns: 1fr; }
+  .about-review-card { min-height: 0; }
+  .about-company-facts > div { min-height: 88px; border-inline-end: 0; border-bottom: 1px solid rgba(255,255,255,.16); }
   .about-team-photo-placeholder { height: 230px; }
-  .about-presentation { padding-block: 48px; }
+  .about-origin-grid blockquote { padding: 24px; font-size: 19px; }
+  .about-presentation-card, .about-join-copy { padding: 24px; }
+  .about-presentation-button, .about-join-copy .solid-button { width: 100%; }
+  .about-join-image { min-height: 220px; }
   .team-profile-card { grid-template-columns: 1fr; }
   .team-profile-portrait { min-height: 280px; }
   .team-profile-copy { padding: 26px; }

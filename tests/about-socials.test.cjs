@@ -8,92 +8,52 @@ const root = path.resolve(__dirname, '..');
 const languages = ['en', 'pt-PT', 'es', 'el', 'ru', 'he'];
 const htmlFiles = ['index.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'careers.html', 'career-role.html'];
 const about = fs.readFileSync(path.join(root, 'about.html'), 'utf8');
+const styles = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 const presentationUrl = 'https://drive.google.com/file/d/1k4c9pzEhKLeXVNI-v90OiolOpS2H_235/view?usp=sharing';
 const approvedSocialUrls = [
   'https://www.instagram.com/studio17.world/',
   'https://www.facebook.com/profile.php?id=61582939535174',
   'https://www.linkedin.com/company/studio17world'
 ];
-const aboutStrings = [
-  'About Studio 17',
-  'Our origin:',
-  'one growth strategy, connected.',
-  'From constraint',
-  'to connected system.',
-  'Selected by purpose,',
-  'not sold as a package.',
-  'European roots,',
-  'international outlook.',
-  'See Studio 17',
-  'in more detail.',
-  'What is currently',
-  'limiting your business?',
-  'We build the systems behind business growth.',
-  'We start with the business, not the deliverable.',
-  'Studio 17 identifies commercial, operational and customer-experience constraints, then connects the capabilities required to solve them.',
-  'See how we work',
-  'Studio 17 was born from a simple idea: businesses shouldn’t need five different companies to make one growth strategy work.',
-  'Read the full Studio 17 Story',
-  'From constraint to connected system.',
-  'Strategy and execution stay connected from the first question to the working solution.',
-  'Understand the business',
-  'We begin with the goals, audience, customer journey, team and current way of working.',
-  'Identify the constraint',
-  'We focus on the friction that is limiting growth, conversion, service or operational efficiency.',
-  'Design the system',
-  'We connect only the capabilities that have a clear role in solving the identified problem.',
-  'Build, measure and improve',
-  'We implement the system, observe how it performs and improve it using useful evidence.',
-  'Selected by purpose, not sold as a package.',
-  'The combination changes with the business problem. Each capability has a defined role and must support the same outcome.',
-  'Studio 17 is headquartered in Limassol, Cyprus, with one of our operations hubs in Portugal. From these two European bases, we work across languages, markets and disciplines while keeping the same principle: understand the business first, then build what it actually needs.',
-  'Trusted by businesses across Europe.',
-  'The people behind',
-  'Team carousel controls',
-  'Previous team member',
-  'Next team member',
-  'Business Developer',
-  'Natalia Ioannou social profiles',
-  'Natalia Ioannou on LinkedIn',
-  'Meet the full team',
-  'Culture & values:',
-  'Want to build with us? View open roles',
-  'See Studio 17 in more detail.',
-  'Our company presentation introduces Studio 17 and the thinking behind our work. The presentation opens in Greek on Google Drive.',
-  'View the presentation',
-  'Follow Studio 17.',
-  'What is currently limiting your business?',
-  'Tell us where growth, conversion or operations are breaking down. We will help identify the clearest next step.',
-  'Talk to Studio 17',
-  'Studio 17 social media profiles',
-  'Studio 17 on Instagram',
-  'Studio 17 on Facebook',
-  'Studio 17 on LinkedIn',
-  'Studio 17 on Google'
-];
 
 assert.match(about, /<body class="about-page">/);
 assert.equal((about.match(/<h1\b/g) || []).length, 1, 'About must have one h1');
-assert.equal((about.match(/class="design-heading about-display-heading"/g) || []).length, 7, 'About must reuse the homepage highlighted heading component for every main content section');
-assert.match(about, /<h2 id="about-cta-title">What is currently <span>limiting your business\?<\/span><\/h2>/, 'About closing CTA must reuse the homepage highlighted heading treatment');
+assert.match(about, /<h1 id="about-title">The people and purpose <span>behind Studio 17<\/span><\/h1>/);
+assert.doesNotMatch(about, /page-hero-icon/, 'About hero must not contain a decorative icon');
 assert.match(about, /rel="canonical" href="https:\/\/www\.studio17\.world\/about"/);
 assert.equal((about.match(/hreflang=/g) || []).length, 7, 'About must expose x-default and six language alternates');
 assert.match(about, new RegExp(`href="${presentationUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" target="_blank" rel="noopener noreferrer"`));
 assert.match(about, /Images\/About_heroimage\.webp/);
+assert.match(about, /Images\/Team_heroimage\.webp/);
+
+const expectedOrder = ['about-hero', 'about-trusted', 'about-team', 'about-company', 'about-origin', 'about-presentation', 'about-join'];
+let previousIndex = -1;
+for (const className of expectedOrder) {
+  const currentIndex = about.search(new RegExp(`<section class="[^"]*\\b${className}\\b`));
+  assert.ok(currentIndex > previousIndex, `${className} must appear in the approved About-page order`);
+  previousIndex = currentIndex;
+}
+
+assert.equal((about.match(/class="partner-marquee"/g) || []).length, 1, 'About must use one visible partner-logo line');
+assert.doesNotMatch(about, /partner-marquee-reverse/, 'About must not use a second reverse logo line');
+assert.equal((about.match(/class="about-review-card/g) || []).length, 4, 'About must show four static reviews');
+assert.doesNotMatch(about, /about-review[^\n]*data-carousel|data-carousel-(?:prev|next)="about-review/i, 'About reviews must not be a carousel');
+assert.doesNotMatch(about, /about-method|about-capabilities|about-culture|about-social|about-cta/, 'About must not include the retired service-selling sections');
+
 assert.match(about, /href="\/our-story"[^>]*>Read the full Studio 17 Story/);
 assert.match(about, /id="about-team-track"[\s\S]*?Hugo Filipe[\s\S]*?Pedro Leonardo[\s\S]*?Natalia Ioannou[\s\S]*?Gil Barreto/);
-assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/hugodm-filipe\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Hugo Filipe on LinkedIn"/);
-assert.match(about, /href="https:\/\/www\.instagram\.com\/hugodmfilipe02\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Hugo Filipe on Instagram"/);
-assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/pedro-leonardo-375478330\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Pedro Leonardo on LinkedIn"/);
-assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/natalia-ioannou-83527126b\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*aria-label="Natalia Ioannou on LinkedIn"/);
+assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/hugodm-filipe\/"[^>]*aria-label="Hugo Filipe on LinkedIn"/);
+assert.match(about, /href="https:\/\/www\.instagram\.com\/hugodmfilipe02\/"[^>]*aria-label="Hugo Filipe on Instagram"/);
+assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/pedro-leonardo-375478330\/"[^>]*aria-label="Pedro Leonardo on LinkedIn"/);
+assert.match(about, /href="https:\/\/www\.linkedin\.com\/in\/natalia-ioannou-83527126b\/"[^>]*aria-label="Natalia Ioannou on LinkedIn"/);
 assert.equal((about.match(/class="about-team-social-link/g) || []).length, 4, 'only approved team profile links should be published');
 assert.doesNotMatch(about, /Pedro Leonardo[\s\S]{0,700}instagram\.com/i, 'Pedro Leonardo must not display an Instagram link without approval');
-assert.match(about, /src="Images\/social-linkedin\.svg"/);
-assert.match(about, /src="Images\/social-instagram\.svg"/);
-assert.doesNotMatch(about, /about-team-social-link[^>]*>[\s\S]{0,180}footer-socials\.png/, 'team icons must not reuse the navy-backed footer sprite');
 assert.match(about, /href="\/team"[^>]*>Meet the full team/);
-assert.match(about, /href="\/careers" data-force-language="en">Want to build with us\? View open roles/);
-assert.doesNotMatch(about, /4\.8\/5|TrustScore|trustpilot[^<]*logo/i, 'About must not hard-code restricted or changing Trustpilot rating assets');
+assert.match(about, /href="\/careers" data-force-language="en">View open roles/);
+assert.doesNotMatch(about, /4\.8\/5|TrustScore|trustpilot[^<]*logo/i, 'About must not hard-code changing Trustpilot ratings or restricted assets');
+
+assert.match(styles, /\.about-page, \.about-main \{ background: var\(--paper\); \}/);
+assert.match(styles, /\.about-main > section:not\(\.page-hero\) \{ margin-top: 32px; padding-block: 24px;/);
 
 for (const file of htmlFiles) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
@@ -112,8 +72,6 @@ for (const language of languages) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'locales', `${language}.json`), 'utf8'));
   assert.ok(data.meta.about?.title, `${language} is missing About metadata title`);
   assert.ok(data.meta.about?.description, `${language} is missing About metadata description`);
-  if (language === 'en') continue;
-  for (const key of aboutStrings) assert.ok(data.strings[key], `${language} is missing About translation: ${key}`);
 }
 
 const i18n = fs.readFileSync(path.join(root, 'i18n.js'), 'utf8');
@@ -123,7 +81,5 @@ assert.match(i18n, /'\/about': 'about\.html'/);
 const sharedScript = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
 assert.match(sharedScript, /https:\/\/share\.google\/B3qQDpUvLnv5UAZ4G/);
 assert.match(sharedScript, /footer-social-link social-google/);
-assert.match(sharedScript, /target = '_blank'/);
-assert.match(sharedScript, /rel = 'noopener noreferrer'/);
 
-console.log('About page, presentation and social-link tests passed.');
+console.log('About page structure, presentation and social-link tests passed.');

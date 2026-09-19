@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-19 — About page company journey
+
+- Rebuilt `/about` into the approved company-focused sequence: hero, one-line global partner proof, four static reviews, team, company profile, origin, presentation and careers CTA.
+- Removed the service-selling method, capability, culture, social-directory and closing sales sections from the About journey.
+- Aligned the page with the shared `#F8FAFC` surface, 32px section rhythm, compact 24px interiors, blue title emphasis and responsive square components.
+- Updated the About regression contract and company-page documentation to preserve the new hierarchy.
+
 ## 2026-09-19 — Gil Barreto added to the Studio 17 team
 
 - Added Gil Barreto as Business Developer in Portugal to the About page team carousel.

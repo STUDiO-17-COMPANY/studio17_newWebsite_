@@ -4,7 +4,7 @@ This document is the content, design and maintenance contract for `/about`, `/ou
 
 ## Route responsibilities
 
-- `/about` is the concise company overview. It introduces the origin, operating presence, founders, culture and values, then routes readers to the deeper pages.
+- `/about` is the concise company overview. It establishes global trust, introduces the team, company, origin and presentation, then routes potential colleagues to Careers.
 - `/our-story` publishes the approved seven-chapter Studio 17 narrative supplied by the company. It must not be shortened, expanded with invented claims or rewritten without content approval.
 - `/team` introduces confirmed team members. It must not publish a surname, biography detail, portrait, LinkedIn profile or personal fact that Studio 17 has not approved.
 
@@ -13,12 +13,14 @@ All three routes use clean URLs, the shared header and footer, Lucide interface 
 ## About page order
 
 1. Media hero using `Images/About_heroimage.webp`.
-2. Origin summary with `Read the full Studio 17 Story` linking to `/our-story`.
-3. Connected-system approach and operating method.
-4. European presence: headquarters in Limassol, Cyprus, and an operations hub in Portugal.
-5. Founders carousel with a `/team` action.
-6. Culture and values with an English-only `/careers` action.
-7. Presentation, social profiles, contact prompt and shared closing CTA.
+2. `Trusted globally`: one animated partner-logo line, one short collaboration note and four approved static reviews.
+3. Confirmed team members in the keyboard- and touch-usable carousel, with a link to `/team`.
+4. `About Studio 17`: concise company identity, Limassol headquarters, Portugal operations hub and European brand proof.
+5. `Our origin`: the approved three-paragraph summary and `Read the full Studio 17 Story` linking to `/our-story`.
+6. `See Studio 17 in more detail`: the shared Greek presentation on Google Drive.
+7. `Join Studio 17`: a focused careers CTA linking to the English `/careers` workflow.
+
+The About page is company-focused. It must not include service directories, sales-package sections, generic lead-generation messaging or a closing sales CTA.
 
 The Trustpilot proof is intentionally a plain-text link. While Studio 17 uses the free Trustpilot plan, do not hard-code a score, stars, TrustScore or Trustpilot artwork. A score can change and brand assets require the relevant Trustpilot entitlement.
 

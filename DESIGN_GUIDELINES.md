@@ -146,15 +146,14 @@ Future pages may vary their content and hero image but not the shared hero geome
 ### About page
 
 - `/about` is the shared multilingual company page and replaces every former About WIP destination.
-- Explain Studio 17 through the business constraint, connected-system approach, operating method and European/international perspective; do not present a generic agency biography or invent team members.
+- Explain who Studio 17 is through its people, international collaboration, European bases and approved origin; do not turn this page into a service or sales catalogue.
 - Keep the Google Drive presentation as one external link across all locales. Translate the CTA and clearly state that the presentation itself is in Greek.
-- The company page may link to service categories that remain WIP, but it must not imply unverified results, clients, offices or awards.
-- Reuse the shared media hero, square geometry, restrained hover motion, closing CTA and footer contract.
+- Reuse the shared media hero, `#F8FAFC` page surface, square geometry, restrained hover motion and footer contract.
 - Every main About section heading reuses the homepage blue inline-highlight treatment; do not substitute oversized unaccented display headings.
-- The opening About statement uses a full-width heading above a two-column copy-and-principle composition; it stacks to one column at 900px and below.
-- Use the approved About order documented in `COMPANY_PAGES.md`: media hero, origin, connected method, European presence, founders, culture, presentation/social proof and closing CTA.
+- Use the approved About order documented in `COMPANY_PAGES.md`: media hero, one-line global partner proof, four static reviews, team, About Studio 17, origin, presentation and careers CTA.
+- Show only one partner-logo marquee on About. Reviews remain a static four-card grid and must not become a carousel.
 - The origin summary links to `/our-story`; do not repeat all seven chapters on `/about`.
-- The founders carousel must remain usable with keyboard and touch, use visible previous/next controls and expose only confirmed people and titles.
+- The team carousel must remain usable with keyboard and touch, use visible previous/next controls and expose only confirmed people and titles.
 - Trustpilot proof remains plain text while the free plan is active; do not hard-code a changing score or reproduce restricted Trustpilot artwork.
 
 ### Our Story and Team pages
