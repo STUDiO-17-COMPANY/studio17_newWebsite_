@@ -100,11 +100,12 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/careers\/growth-strategist/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/faq/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/about/);
+  assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/work/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/sitemap</);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/privacy-policy/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/cookie-policy/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/terms/);
-  assert.match(sitemap.body, /<loc>https:\/\/www\.studio17\.world\/services\/website<\/loc>\s+<lastmod>2026-09-17<\/lastmod>/);
+  assert.match(sitemap.body, /<loc>https:\/\/www\.studio17\.world\/services\/website<\/loc>\s+<lastmod>2026-09-19<\/lastmod>/);
   assert.match(sitemap.body, /<loc>https:\/\/www\.studio17\.world\/careers\/growth-strategist<\/loc>\s+<lastmod>2026-08-02T12:00:00\.000Z<\/lastmod>/);
   assert.equal([...sitemap.body.matchAll(/<url>[\s\S]*?<\/url>/g)].every(match => /<lastmod>[^<]+<\/lastmod>/.test(match[0])), true);
   assert.doesNotMatch(sitemap.body, /career-role\.html|\?id=/);

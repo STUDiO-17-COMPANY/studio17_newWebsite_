@@ -20,7 +20,7 @@ test('services catalogue exposes every service without internal codes', () => {
   for (const count of ['8 services', '13 services', '11 services', '7 services', '4 services']) assert.match(html, new RegExp(count));
   assert.match(html, /class="services-cta-media"><img src="\/Images\/CTA_Question_Image\.webp"/);
   assert.doesNotMatch(html, /class="cta-mark"[\s\S]*?messages-square/);
-  assert.match(html, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/wip#for=portfolio"[\s\S]*?See our work/);
+  assert.match(html, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/work#selected-work"[\s\S]*?See our work/);
 });
 
 test('website development page preserves commercial and portfolio requirements', () => {
@@ -39,8 +39,8 @@ test('website development page preserves commercial and portfolio requirements',
   assert.match(html, /Language allowances cover the technical implementation of supplied translations/);
   assert.match(html, /class="website-development-cta-media"[\s\S]*src="\/Images\/PhosOpticsWebsiteMainPage\.webp"/);
   assert.match(html, /class="page-hero website-development-hero"[\s\S]*src="\/Images\/Team_heroimage\.webp"/);
-  assert.match(html, /class="[^"]*website-development-cta[^"]*"[\s\S]*class="cta-actions"[\s\S]*href="\/contact"[\s\S]*href="\/wip#for=portfolio"[\s\S]*See our work/);
-  assert.match(html, /class="design-link" href="\/wip#for=portfolio"/);
+  assert.match(html, /class="[^"]*website-development-cta[^"]*"[\s\S]*class="cta-actions"[\s\S]*href="\/contact"[\s\S]*href="\/work#selected-work"[\s\S]*See our work/);
+  assert.match(html, /class="design-link" href="\/work#selected-work"/);
   assert.match(html, /data-service-key="compareAction"[\s\S]*href="\/services\/website-pricing"[\s\S]*Compare prices/);
   for (const term of ['SEO foundation', 'GEO foundation', 'Technical SEO']) assert.ok(html.includes(term), term);
   for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/terrassivilla.jpg']) assert.ok(html.includes(asset), asset);
@@ -153,7 +153,7 @@ test('website service-family page provides a distinct, translated decision journ
     assert.deepEqual(Object.keys(page), ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'intro', 'capabilitiesHeading', 'capabilities', 'workHeading', 'workCases', 'searchGrowth', 'value', 'freeCta', 'faqHeading', 'faq', 'closing'], locale);
     assert.equal((page.capabilities.match(/data-website-service="/g) || []).length, 8, locale);
     assert.equal((page.workCases.match(/class="website-case-study /g) || []).length, 2, locale);
-    assert.match(page.searchGrowth, /href="\/services\/seo"[\s\S]*?wip#for=geo[\s\S]*?wip#for=portfolio/, locale);
+    assert.match(page.searchGrowth, /href="\/services\/seo"[\s\S]*?wip#for=geo[\s\S]*?href="\/work#selected-work"/, locale);
     assert.equal((page.faq.match(/<details>/g) || []).length, 6, locale);
   }
   const localizedSource = read('service-locales/website-services.js');
@@ -318,10 +318,10 @@ test('all service locales preserve the page schema and content counts', () => {
     assert.equal((data.pages.websiteDevelopment.packages.match(/website-package-card/g) || []).length, 5, locale);
     assert.deepEqual([...data.pages.websiteDevelopment.packages.matchAll(/website-package-top"><h3>([^<]+)<\/h3>/g)].map(match => match[1]), ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website'], locale);
     assert.match(data.pages.websiteDevelopment.packageNote, /technical|técnica|τεχνική|техническую|טכני/i, `${locale}: language implementation scope must remain explicit`);
-    assert.match(data.pages.websiteDevelopment.closing, /class="cta-actions"[\s\S]*href="\/contact"[\s\S]*href="\/wip#for=portfolio"/, locale);
+    assert.match(data.pages.websiteDevelopment.closing, /class="cta-actions"[\s\S]*href="\/contact"[\s\S]*href="\/work#selected-work"/, locale);
     assert.equal((data.pages.services.catalogue.match(/<h3>Growth Pack<\/h3>/g) || []).length, 1, `${locale}: package name must not alter accessibility services`);
     assert.doesNotMatch(data.pages.services.catalogue, /WEB-\d+/, locale);
-    assert.match(data.pages.services.closing, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/wip#for=portfolio"/, locale);
+    assert.match(data.pages.services.closing, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/work#selected-work"/, locale);
   }
 });
 

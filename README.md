@@ -10,6 +10,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/contact` (`contact.html`) — multilingual project enquiry page with server-side email delivery.
 - `/faq` (`faq.html`) — multilingual, search-intent FAQ with accessible native disclosure controls.
 - `/about` (`about.html`) — multilingual Studio 17 positioning, methodology, presentation and official social links.
+- `/work` (`work.html`) — English-only selected client work, approved testimonials, partner proof, buying FAQs and project-start actions.
 - `/our-story` (`our-story.html`) — the approved seven-chapter Studio 17 origin and evolution narrative.
 - `/team` (`team.html`) — confirmed Studio 17 founders and leadership introduction without unapproved personal details.
 - `/services` (`services.html`) — multilingual, price-free catalogue of all Studio 17 service areas.
@@ -97,7 +98,7 @@ node service-locales/build-bundle.cjs
 6. Do not publish metrics, testimonials, partner names or case-study claims without confirmation.
 7. Update the sitemap and documentation in the same change as any new page or design rule.
 8. Add every meaningful code, content or design change to `CHANGELOG.md`, keeping one concise entry per coherent feature and consolidating follow-up refinements instead of logging every small iteration separately.
-9. Existing multilingual pages remain supported in their published languages. New page development defaults to English, Greek and Russian; add Portuguese (Portugal), Spanish or Hebrew only when explicitly requested. Hebrew must retain RTL support wherever it is published. Careers and individual role pages remain the documented English-only exception.
+9. Existing multilingual pages remain supported in their published languages. New page development defaults to English only; add translations only when explicitly requested. Hebrew must retain RTL support wherever it is published. Careers and individual role pages remain documented English-only experiences.
 10. Point unfinished destinations to `/wip#for=<destination>` and replace that link with the final clean route when the page is published. Privacy, Cookies and Terms now use their live routes.
 11. Header items, promotional CTAs, cards and footer navigation must use WIP until their real HTML page exists. Keep only actual pages, structural anchors and real email addresses as direct destinations.
 12. Treat the 1920px fixed geometry as the English reference only. Translated and responsive text containers must grow naturally; never hide buttons or copy to preserve an English-only height.

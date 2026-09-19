@@ -787,6 +787,17 @@
     track.scrollBy({ left: readingDirection * direction * ((firstCard?.getBoundingClientRect().width || 380) + gap), behavior: 'smooth' });
   });
 
+  document.querySelectorAll('.website-faq-column').forEach(column => {
+    column.querySelectorAll(':scope > details').forEach(item => {
+      item.addEventListener('toggle', () => {
+        if (!item.open) return;
+        column.querySelectorAll(':scope > details[open]').forEach(sibling => {
+          if (sibling !== item) sibling.open = false;
+        });
+      });
+    });
+  });
+
   const createSiteAssistance = () => {
     const currentPath = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
     const currentFile = currentPath.split('/').pop()?.replace(/\.html$/, '') || '';

@@ -4,7 +4,7 @@ const { listPublishedRoles } = require('./_google-careers');
 const { listPublishedArticles } = require('./_google-articles');
 
 const SITE_URL = 'https://www.studio17.world';
-const STATIC_LASTMOD = '2026-09-18';
+const STATIC_LASTMOD = '2026-09-19';
 const escapeXml = value => String(value || '')
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
@@ -43,6 +43,7 @@ module.exports = async function sitemapHandler(request, response) {
       { loc: `${SITE_URL}/contact`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
       { loc: `${SITE_URL}/faq`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
       { loc: `${SITE_URL}/about`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+      { loc: `${SITE_URL}/work`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/our-story`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.7' },
       { loc: `${SITE_URL}/team`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.7' },
       { loc: `${SITE_URL}/services`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },

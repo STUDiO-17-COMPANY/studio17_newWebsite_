@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-19 — Work page
+
+- Published the English-only `/work` page with an image-led two-column client gallery for 100 Pratos, PHÓS Optics, Terrassi Villa and RG Automotive.
+- Added four approved written testimonials, verified external destinations and a reusable accessible video-testimonial template ready for approved recordings.
+- Added one-line partner proof, an eight-question independent-column FAQ and the final Start a Project / Talk to Sales conversion section.
+- Replaced the shared Work, Testimonials and Portfolio WIP destinations with the live page and its section anchors across headers, footers, CTAs and service translations.
+- Added canonical and social metadata, CollectionPage structured data, human/XML sitemap discovery, local-file routing and responsive regression coverage.
+
 ## 2026-09-19 — About page company journey
 
 - Rebuilt `/about` into the approved company-focused sequence: hero, one-line global partner proof, four static reviews, team, company profile, origin, presentation and careers CTA.

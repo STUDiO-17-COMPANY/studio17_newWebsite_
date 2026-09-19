@@ -28,6 +28,10 @@ window.Studio17LocaleData = {
         "title": "About Studio 17 — Business growth systems",
         "description": "Meet Studio 17, a European business growth systems company connecting strategy, marketing, technology, sales and operations."
       },
+      "work": {
+        "title": "Selected client work | Studio 17",
+        "description": "Explore selected Studio 17 website, marketing and design work for businesses across Europe, together with verified client feedback."
+      },
       "news": {
         "title": "Insights, Case Studies & News | Studio 17",
         "description": "Explore Studio 17 insights, case studies and news about websites, content, advertising, digital systems and business growth."
