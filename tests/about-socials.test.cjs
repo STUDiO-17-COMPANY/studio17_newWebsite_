@@ -3,6 +3,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
 const languages = ['en', 'pt-PT', 'es', 'el', 'ru', 'he'];
@@ -15,6 +16,14 @@ const approvedSocialUrls = [
   'https://www.facebook.com/profile.php?id=61582939535174',
   'https://www.linkedin.com/company/studio17world'
 ];
+const untranslatedBrandContent = /^(RG Automotive|Chome Rats|For Social Media Lovers|100 Pratos|Terrassi Villa|Selene Island|Phós Optics|Event Studio Cyprus|Nerouppos Barber Shop|Snapdrop|Rita Braz|Pantelis Petrou|Miguel Ângelo|Natalia Ioannou|Hugo Filipe|Pedro Leonardo|Gil Barreto|HF|PL|NI|GB|— Portugal)$/;
+const aboutMain = about.match(/<main[\s\S]*?<\/main>/)?.[0] || '';
+const aboutVisibleStrings = [...new Set([...aboutMain.matchAll(/>([^<>]+)</g)]
+  .map(match => match[1].replace(/\s+/g, ' ').trim().replaceAll('&amp;', '&'))
+  .filter(Boolean))].filter(value => !untranslatedBrandContent.test(value));
+const localeBundleSandbox = { window: {} };
+vm.runInNewContext(fs.readFileSync(path.join(root, 'locales', 'locales.js'), 'utf8'), localeBundleSandbox);
+const bundledLocales = localeBundleSandbox.window.Studio17LocaleData;
 
 assert.match(about, /<body class="about-page">/);
 assert.equal((about.match(/<h1\b/g) || []).length, 1, 'About must have one h1');
@@ -77,8 +86,11 @@ for (const file of htmlFiles) {
 
 for (const language of languages) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'locales', `${language}.json`), 'utf8'));
+  assert.deepEqual(JSON.parse(JSON.stringify(bundledLocales[language])), data, `${language} runtime locale bundle is stale`);
   assert.ok(data.meta.about?.title, `${language} is missing About metadata title`);
   assert.ok(data.meta.about?.description, `${language} is missing About metadata description`);
+  if (language === 'en') continue;
+  for (const source of aboutVisibleStrings) assert.ok(data.strings[source], `${language} is missing About translation: ${source}`);
 }
 
 const i18n = fs.readFileSync(path.join(root, 'i18n.js'), 'utf8');

@@ -235,8 +235,8 @@ window.Studio17LocaleData = {
         "description": "Respostas claras a perguntas comuns sobre websites, SEO, GEO, conteúdos, redes sociais, publicidade, sistemas de IA e como trabalhar com a Studio 17."
       },
       "about": {
-        "title": "Sobre a Studio 17 — Sistemas para o crescimento empresarial",
-        "description": "Conheça a Studio 17, uma empresa europeia de sistemas de crescimento que liga estratégia, marketing, tecnologia, vendas e operações."
+        "title": "Sobre a Studio 17",
+        "description": "Conheça as pessoas, o propósito e a origem europeia da Studio 17, com sede em Limassol e um centro de operações em Portugal."
       },
       "ourStory": {
         "title": "A história da Studio 17 — De trabalho criativo a sistemas integrados",
@@ -759,7 +759,34 @@ window.Studio17LocaleData = {
       "Use the contact page or email contact@studio17.world with your goal, current challenge, market and any important deadline. We will review the request, ask the necessary questions and explain the recommended next step.": "Utilize a página de contacto ou envie um email para contact@studio17.world com o seu objetivo, desafio atual, mercado e qualquer prazo importante. Analisaremos o pedido, faremos as perguntas necessárias e explicaremos o próximo passo recomendado.",
       "Still have a": "Ainda tem uma",
       "question about your business?": "pergunta sobre a sua empresa?",
-      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "Diga-nos o que pretende melhorar. Ajudaremos a identificar o próximo passo mais claro e prático."
+      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "Diga-nos o que pretende melhorar. Ajudaremos a identificar o próximo passo mais claro e prático.",
+      "The people and purpose": "As pessoas e o propósito",
+      "behind Studio 17": "por detrás da Studio 17",
+      "Built across markets, connected by one way of working": "Construída entre mercados, unida por uma forma de trabalhar",
+      "Studio 17 is a European multidisciplinary studio shaped by people, curiosity and a shared commitment to purposeful work.": "A Studio 17 é um estúdio europeu multidisciplinar construído por pessoas, curiosidade e um compromisso comum com trabalho que tem propósito.",
+      "Trusted globally": "Confiança global",
+      "We collaborate with businesses and people across markets, industries and cultures while keeping communication direct and the work connected.": "Colaboramos com empresas e pessoas em diferentes mercados, setores e culturas, mantendo a comunicação direta e o trabalho ligado.",
+      "“From the very first contact, the team showed professionalism, efficiency, and an incredible level of responsiveness. Every request was handled quickly and with precision… We always felt heard and supported. The final result exceeded our expectations.”": "“Desde o primeiro contacto, a equipa demonstrou profissionalismo, eficiência e uma capacidade de resposta incrível. Cada pedido foi tratado rapidamente e com precisão… Sentimo-nos sempre ouvidos e apoiados. O resultado final superou as nossas expectativas.”",
+      "Owner of 100Pratos": "Proprietária da 100Pratos",
+      "“Excellent communication and professional work. Totally recommend them.”": "“Excelente comunicação e trabalho profissional. Recomendo totalmente.”",
+      "Client review": "Avaliação de cliente",
+      "“I’ve been working with STUDiO 17 for several months now and they’ve quickly become an essential partner for our business. From the first meeting, they took the time to understand our brand, our market, and what actually matters to us in terms of results, not just vanity metrics.”": "“Trabalho com a STUDiO 17 há vários meses e rapidamente se tornou um parceiro essencial para o nosso negócio. Desde a primeira reunião, dedicaram tempo a compreender a nossa marca, o nosso mercado e aquilo que realmente importa em termos de resultados, não apenas métricas de vaidade.”",
+      "Founder of Miguel Labs": "Fundador da Miguel Labs",
+      "“The Studio 17 team is very professional, fast, and pays great attention to detail. The quality of their work is excellent, and their pricing is very fair.”": "“A equipa da Studio 17 é muito profissional, rápida e presta grande atenção aos detalhes. A qualidade do trabalho é excelente e os preços são muito justos.”",
+      "Studio 17 is a multidisciplinary European studio bringing strategy, creativity, technology and operations into one connected way of working.": "A Studio 17 é um estúdio europeu multidisciplinar que reúne estratégia, criatividade, tecnologia e operações numa forma de trabalhar ligada.",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal, we collaborate across countries, cultures and languages while keeping responsibility and communication clear.": "Com sede em Limassol, Chipre, e um centro de operações em Portugal, colaboramos entre países, culturas e línguas, mantendo claras a responsabilidade e a comunicação.",
+      "100% European Brand": "Marca 100% Europeia",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal and collaborations that connect us with businesses across Europe and beyond.": "Com sede em Limassol, Chipre, um centro de operações em Portugal e colaborações que nos ligam a empresas em toda a Europa e além dela.",
+      "Our origin": "A nossa origem",
+      "in more detail": "em mais detalhe",
+      "Explore our company presentation and move through it directly on this page.": "Explore a nossa apresentação institucional e percorra-a diretamente nesta página.",
+      "Open the presentation": "Abrir a apresentação",
+      "Studio 17 presentation preview": "Pré-visualização da apresentação da Studio 17",
+      "Load the viewer, then use its controls to move between slides.": "Carregue o visualizador e utilize os controlos para avançar entre os diapositivos.",
+      "Load presentation preview": "Carregar pré-visualização",
+      "Join Studio 17": "Junte-se à Studio 17",
+      "We are building a multidisciplinary team for people who want to create useful work, take responsibility and grow across markets.": "Estamos a construir uma equipa multidisciplinar para pessoas que querem criar trabalho útil, assumir responsabilidade e crescer entre mercados.",
+      "View open roles": "Ver vagas disponíveis"
     },
     "services": {
       "categoryLabels": {
@@ -962,8 +989,8 @@ window.Studio17LocaleData = {
         "description": "Respuestas claras a preguntas habituales sobre sitios web, SEO, GEO, contenido, redes sociales, publicidad, sistemas de IA y cómo trabajar con Studio 17."
       },
       "about": {
-        "title": "Sobre Studio 17 — Sistemas de crecimiento empresarial",
-        "description": "Conoce Studio 17, una empresa europea de sistemas de crecimiento que conecta estrategia, marketing, tecnología, ventas y operaciones."
+        "title": "Sobre Studio 17",
+        "description": "Conoce a las personas, el propósito y el origen europeo de Studio 17, con sede en Limassol y un centro de operaciones en Portugal."
       },
       "ourStory": {
         "title": "La historia de Studio 17 — Del trabajo creativo a sistemas conectados",
@@ -1419,7 +1446,34 @@ window.Studio17LocaleData = {
       "Use the contact page or email contact@studio17.world with your goal, current challenge, market and any important deadline. We will review the request, ask the necessary questions and explain the recommended next step.": "Utiliza la página de contacto o escribe a contact@studio17.world indicando tu objetivo, reto actual, mercado y cualquier plazo importante. Revisaremos la solicitud, haremos las preguntas necesarias y explicaremos el siguiente paso recomendado.",
       "Still have a": "¿Todavía tienes una",
       "question about your business?": "pregunta sobre tu empresa?",
-      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "Cuéntanos qué quieres mejorar. Te ayudaremos a identificar el siguiente paso más claro y práctico."
+      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "Cuéntanos qué quieres mejorar. Te ayudaremos a identificar el siguiente paso más claro y práctico.",
+      "The people and purpose": "Las personas y el propósito",
+      "behind Studio 17": "detrás de Studio 17",
+      "Built across markets, connected by one way of working": "Creada entre mercados, unida por una forma de trabajar",
+      "Studio 17 is a European multidisciplinary studio shaped by people, curiosity and a shared commitment to purposeful work.": "Studio 17 es un estudio europeo multidisciplinar formado por personas, curiosidad y un compromiso compartido con un trabajo que tiene propósito.",
+      "Trusted globally": "Confianza global",
+      "We collaborate with businesses and people across markets, industries and cultures while keeping communication direct and the work connected.": "Colaboramos con empresas y personas de distintos mercados, sectores y culturas, manteniendo una comunicación directa y el trabajo conectado.",
+      "“From the very first contact, the team showed professionalism, efficiency, and an incredible level of responsiveness. Every request was handled quickly and with precision… We always felt heard and supported. The final result exceeded our expectations.”": "“Desde el primer contacto, el equipo demostró profesionalidad, eficiencia y una capacidad de respuesta increíble. Cada petición se gestionó con rapidez y precisión… Siempre nos sentimos escuchados y respaldados. El resultado final superó nuestras expectativas.”",
+      "Owner of 100Pratos": "Propietaria de 100Pratos",
+      "“Excellent communication and professional work. Totally recommend them.”": "“Excelente comunicación y trabajo profesional. Los recomiendo totalmente.”",
+      "Client review": "Opinión de cliente",
+      "“I’ve been working with STUDiO 17 for several months now and they’ve quickly become an essential partner for our business. From the first meeting, they took the time to understand our brand, our market, and what actually matters to us in terms of results, not just vanity metrics.”": "“Llevo varios meses trabajando con STUDiO 17 y se ha convertido rápidamente en un socio esencial para nuestro negocio. Desde la primera reunión, dedicaron tiempo a entender nuestra marca, nuestro mercado y lo que realmente importa en términos de resultados, no solo métricas de vanidad.”",
+      "Founder of Miguel Labs": "Fundador de Miguel Labs",
+      "“The Studio 17 team is very professional, fast, and pays great attention to detail. The quality of their work is excellent, and their pricing is very fair.”": "“El equipo de Studio 17 es muy profesional, rápido y presta mucha atención a los detalles. La calidad de su trabajo es excelente y sus precios son muy justos.”",
+      "Studio 17 is a multidisciplinary European studio bringing strategy, creativity, technology and operations into one connected way of working.": "Studio 17 es un estudio europeo multidisciplinar que reúne estrategia, creatividad, tecnología y operaciones en una forma de trabajar conectada.",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal, we collaborate across countries, cultures and languages while keeping responsibility and communication clear.": "Con sede en Limassol, Chipre, y un centro de operaciones en Portugal, colaboramos entre países, culturas e idiomas manteniendo claras la responsabilidad y la comunicación.",
+      "100% European Brand": "Marca 100% europea",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal and collaborations that connect us with businesses across Europe and beyond.": "Con sede en Limassol, Chipre, un centro de operaciones en Portugal y colaboraciones que nos conectan con empresas de toda Europa y otros mercados.",
+      "Our origin": "Nuestro origen",
+      "in more detail": "con más detalle",
+      "Explore our company presentation and move through it directly on this page.": "Explora nuestra presentación corporativa y recórrela directamente desde esta página.",
+      "Open the presentation": "Abrir la presentación",
+      "Studio 17 presentation preview": "Vista previa de la presentación de Studio 17",
+      "Load the viewer, then use its controls to move between slides.": "Carga el visor y utiliza sus controles para desplazarte entre las diapositivas.",
+      "Load presentation preview": "Cargar vista previa",
+      "Join Studio 17": "Únete a Studio 17",
+      "We are building a multidisciplinary team for people who want to create useful work, take responsibility and grow across markets.": "Estamos construyendo un equipo multidisciplinar para personas que quieren crear trabajo útil, asumir responsabilidades y crecer entre mercados.",
+      "View open roles": "Ver puestos disponibles"
     },
     "services": {
       "categoryLabels": {
@@ -1622,8 +1676,8 @@ window.Studio17LocaleData = {
         "description": "Σαφείς απαντήσεις σε συχνές ερωτήσεις για ιστοσελίδες, SEO, GEO, περιεχόμενο, κοινωνικά δίκτυα, διαφήμιση, συστήματα ΤΝ και συνεργασία με τη Studio 17."
       },
       "about": {
-        "title": "Σχετικά με τη Studio 17 — Συστήματα επιχειρηματικής ανάπτυξης",
-        "description": "Γνωρίστε τη Studio 17, μια ευρωπαϊκή εταιρεία συστημάτων ανάπτυξης που συνδέει στρατηγική, μάρκετινγκ, τεχνολογία, πωλήσεις και λειτουργίες."
+        "title": "Σχετικά με τη Studio 17",
+        "description": "Γνωρίστε τους ανθρώπους, τον σκοπό και την ευρωπαϊκή προέλευση της Studio 17, με έδρα τη Λεμεσό και επιχειρησιακό κόμβο στην Πορτογαλία."
       },
       "ourStory": {
         "title": "Η ιστορία της Studio 17 — Από τη δημιουργική εργασία στα συνδεδεμένα συστήματα",
@@ -2079,7 +2133,34 @@ window.Studio17LocaleData = {
       "Use the contact page or email contact@studio17.world with your goal, current challenge, market and any important deadline. We will review the request, ask the necessary questions and explain the recommended next step.": "Χρησιμοποιήστε τη σελίδα επικοινωνίας ή στείλτε email στο contact@studio17.world με τον στόχο, την τρέχουσα πρόκληση, την αγορά και οποιαδήποτε σημαντική προθεσμία. Θα εξετάσουμε το αίτημα, θα κάνουμε τις απαραίτητες ερωτήσεις και θα εξηγήσουμε το προτεινόμενο επόμενο βήμα.",
       "Still have a": "Έχετε ακόμη μια",
       "question about your business?": "ερώτηση για την επιχείρησή σας;",
-      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "Πείτε μας τι προσπαθείτε να βελτιώσετε. Θα σας βοηθήσουμε να εντοπίσετε το σαφέστερο και πιο πρακτικό επόμενο βήμα."
+      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "Πείτε μας τι προσπαθείτε να βελτιώσετε. Θα σας βοηθήσουμε να εντοπίσετε το σαφέστερο και πιο πρακτικό επόμενο βήμα.",
+      "The people and purpose": "Οι άνθρωποι και ο σκοπός",
+      "behind Studio 17": "πίσω από τη Studio 17",
+      "Built across markets, connected by one way of working": "Χτισμένη σε διαφορετικές αγορές, ενωμένη από έναν τρόπο συνεργασίας",
+      "Studio 17 is a European multidisciplinary studio shaped by people, curiosity and a shared commitment to purposeful work.": "Η Studio 17 είναι ένα ευρωπαϊκό διεπιστημονικό studio που διαμορφώνεται από ανθρώπους, περιέργεια και κοινή δέσμευση για εργασία με ουσιαστικό σκοπό.",
+      "Trusted globally": "Εμπιστοσύνη διεθνώς",
+      "We collaborate with businesses and people across markets, industries and cultures while keeping communication direct and the work connected.": "Συνεργαζόμαστε με επιχειρήσεις και ανθρώπους σε διαφορετικές αγορές, κλάδους και κουλτούρες, διατηρώντας άμεση επικοινωνία και ενιαία εργασία.",
+      "“From the very first contact, the team showed professionalism, efficiency, and an incredible level of responsiveness. Every request was handled quickly and with precision… We always felt heard and supported. The final result exceeded our expectations.”": "«Από την πρώτη κιόλας επικοινωνία, η ομάδα έδειξε επαγγελματισμό, αποτελεσματικότητα και εξαιρετική ανταπόκριση. Κάθε αίτημα αντιμετωπίστηκε γρήγορα και με ακρίβεια… Νιώθαμε πάντα ότι μας άκουγαν και μας υποστήριζαν. Το τελικό αποτέλεσμα ξεπέρασε τις προσδοκίες μας.»",
+      "Owner of 100Pratos": "Ιδιοκτήτρια του 100Pratos",
+      "“Excellent communication and professional work. Totally recommend them.”": "«Εξαιρετική επικοινωνία και επαγγελματική δουλειά. Τους συστήνω ανεπιφύλακτα.»",
+      "Client review": "Αξιολόγηση πελάτη",
+      "“I’ve been working with STUDiO 17 for several months now and they’ve quickly become an essential partner for our business. From the first meeting, they took the time to understand our brand, our market, and what actually matters to us in terms of results, not just vanity metrics.”": "«Συνεργάζομαι με τη STUDiO 17 εδώ και αρκετούς μήνες και γρήγορα έγινε ένας απαραίτητος συνεργάτης για την επιχείρησή μας. Από την πρώτη συνάντηση, αφιέρωσαν χρόνο για να κατανοήσουν το brand, την αγορά μας και όσα έχουν πραγματική σημασία ως αποτελέσματα, όχι απλώς επιφανειακές μετρήσεις.»",
+      "Founder of Miguel Labs": "Ιδρυτής της Miguel Labs",
+      "“The Studio 17 team is very professional, fast, and pays great attention to detail. The quality of their work is excellent, and their pricing is very fair.”": "«Η ομάδα της Studio 17 είναι πολύ επαγγελματική, γρήγορη και δίνει μεγάλη προσοχή στη λεπτομέρεια. Η ποιότητα της δουλειάς είναι εξαιρετική και οι τιμές πολύ δίκαιες.»",
+      "Studio 17 is a multidisciplinary European studio bringing strategy, creativity, technology and operations into one connected way of working.": "Η Studio 17 είναι ένα ευρωπαϊκό διεπιστημονικό studio που ενώνει στρατηγική, δημιουργικότητα, τεχνολογία και λειτουργίες σε έναν συνδεδεμένο τρόπο εργασίας.",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal, we collaborate across countries, cultures and languages while keeping responsibility and communication clear.": "Με έδρα τη Λεμεσό της Κύπρου και επιχειρησιακό κόμβο στην Πορτογαλία, συνεργαζόμαστε μεταξύ χωρών, πολιτισμών και γλωσσών, με σαφή ευθύνη και επικοινωνία.",
+      "100% European Brand": "100% Ευρωπαϊκό Brand",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal and collaborations that connect us with businesses across Europe and beyond.": "Με έδρα τη Λεμεσό της Κύπρου, επιχειρησιακό κόμβο στην Πορτογαλία και συνεργασίες που μας συνδέουν με επιχειρήσεις σε όλη την Ευρώπη και πέρα από αυτήν.",
+      "Our origin": "Η προέλευσή μας",
+      "in more detail": "με περισσότερες λεπτομέρειες",
+      "Explore our company presentation and move through it directly on this page.": "Εξερευνήστε την εταιρική μας παρουσίαση και περιηγηθείτε σε αυτήν απευθείας από τη σελίδα.",
+      "Open the presentation": "Άνοιγμα παρουσίασης",
+      "Studio 17 presentation preview": "Προεπισκόπηση παρουσίασης Studio 17",
+      "Load the viewer, then use its controls to move between slides.": "Φορτώστε την προβολή και χρησιμοποιήστε τα χειριστήριά της για μετάβαση μεταξύ των διαφανειών.",
+      "Load presentation preview": "Φόρτωση προεπισκόπησης",
+      "Join Studio 17": "Γίνετε μέλος της Studio 17",
+      "We are building a multidisciplinary team for people who want to create useful work, take responsibility and grow across markets.": "Χτίζουμε μια διεπιστημονική ομάδα για ανθρώπους που θέλουν να δημιουργούν χρήσιμη δουλειά, να αναλαμβάνουν ευθύνη και να εξελίσσονται σε διαφορετικές αγορές.",
+      "View open roles": "Δείτε τις ανοιχτές θέσεις"
     },
     "services": {
       "categoryLabels": {
@@ -2282,8 +2363,8 @@ window.Studio17LocaleData = {
         "description": "Понятные ответы на частые вопросы о сайтах, SEO, GEO, контенте, социальных сетях, рекламе, системах ИИ и работе со Studio 17."
       },
       "about": {
-        "title": "О Studio 17 — Системы роста бизнеса",
-        "description": "Познакомьтесь со Studio 17 — европейской компанией, которая объединяет стратегию, маркетинг, технологии, продажи и операционную деятельность в системы роста."
+        "title": "О Studio 17",
+        "description": "Познакомьтесь с людьми, целью и европейской историей Studio 17 — со штаб-квартирой в Лимасоле и операционным центром в Португалии."
       },
       "ourStory": {
         "title": "История Studio 17 — От креативной работы к связанным системам",
@@ -2739,7 +2820,34 @@ window.Studio17LocaleData = {
       "Use the contact page or email contact@studio17.world with your goal, current challenge, market and any important deadline. We will review the request, ask the necessary questions and explain the recommended next step.": "Используйте страницу контактов или напишите на contact@studio17.world, указав цель, текущую задачу, рынок и важные сроки. Мы рассмотрим запрос, зададим необходимые вопросы и объясним рекомендуемый следующий шаг.",
       "Still have a": "Остался",
       "question about your business?": "вопрос о вашем бизнесе?",
-      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "Расскажите, что вы хотите улучшить. Мы поможем определить самый понятный и практичный следующий шаг."
+      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "Расскажите, что вы хотите улучшить. Мы поможем определить самый понятный и практичный следующий шаг.",
+      "The people and purpose": "Люди и смысл",
+      "behind Studio 17": "за Studio 17",
+      "Built across markets, connected by one way of working": "Создана в разных странах, объединена единым подходом к работе",
+      "Studio 17 is a European multidisciplinary studio shaped by people, curiosity and a shared commitment to purposeful work.": "Studio 17 — европейская многопрофильная студия, которую формируют люди, любознательность и общее стремление создавать осмысленную работу.",
+      "Trusted globally": "Нам доверяют по всему миру",
+      "We collaborate with businesses and people across markets, industries and cultures while keeping communication direct and the work connected.": "Мы сотрудничаем с компаниями и людьми из разных стран, отраслей и культур, сохраняя прямую коммуникацию и целостность работы.",
+      "“From the very first contact, the team showed professionalism, efficiency, and an incredible level of responsiveness. Every request was handled quickly and with precision… We always felt heard and supported. The final result exceeded our expectations.”": "«С самого первого контакта команда показала профессионализм, эффективность и невероятную оперативность. Каждый запрос выполнялся быстро и точно… Мы всегда чувствовали, что нас слышат и поддерживают. Итоговый результат превзошёл наши ожидания.»",
+      "Owner of 100Pratos": "Владелица 100Pratos",
+      "“Excellent communication and professional work. Totally recommend them.”": "«Отличная коммуникация и профессиональная работа. Полностью рекомендую.»",
+      "Client review": "Отзыв клиента",
+      "“I’ve been working with STUDiO 17 for several months now and they’ve quickly become an essential partner for our business. From the first meeting, they took the time to understand our brand, our market, and what actually matters to us in terms of results, not just vanity metrics.”": "«Я работаю со STUDiO 17 уже несколько месяцев, и они быстро стали важным партнёром для нашего бизнеса. С первой встречи команда уделила время тому, чтобы понять наш бренд, рынок и то, что действительно важно для результата, а не только красивые показатели.»",
+      "Founder of Miguel Labs": "Основатель Miguel Labs",
+      "“The Studio 17 team is very professional, fast, and pays great attention to detail. The quality of their work is excellent, and their pricing is very fair.”": "«Команда Studio 17 очень профессиональна, работает быстро и уделяет большое внимание деталям. Качество работы превосходное, а цены очень справедливые.»",
+      "Studio 17 is a multidisciplinary European studio bringing strategy, creativity, technology and operations into one connected way of working.": "Studio 17 — европейская многопрофильная студия, объединяющая стратегию, креатив, технологии и операционную работу в единый подход.",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal, we collaborate across countries, cultures and languages while keeping responsibility and communication clear.": "Наша штаб-квартира находится в Лимасоле на Кипре, а операционный центр — в Португалии. Мы работаем между странами, культурами и языками, сохраняя ясную ответственность и коммуникацию.",
+      "100% European Brand": "100% европейский бренд",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal and collaborations that connect us with businesses across Europe and beyond.": "Со штаб-квартирой в Лимасоле на Кипре, операционным центром в Португалии и сотрудничеством с компаниями по всей Европе и за её пределами.",
+      "Our origin": "Наша история",
+      "in more detail": "подробнее",
+      "Explore our company presentation and move through it directly on this page.": "Изучите нашу корпоративную презентацию прямо на этой странице.",
+      "Open the presentation": "Открыть презентацию",
+      "Studio 17 presentation preview": "Предпросмотр презентации Studio 17",
+      "Load the viewer, then use its controls to move between slides.": "Загрузите просмотрщик и используйте его элементы управления для перехода между слайдами.",
+      "Load presentation preview": "Загрузить предпросмотр",
+      "Join Studio 17": "Присоединяйтесь к Studio 17",
+      "We are building a multidisciplinary team for people who want to create useful work, take responsibility and grow across markets.": "Мы создаём многопрофильную команду для людей, которые хотят делать полезную работу, брать на себя ответственность и развиваться на разных рынках.",
+      "View open roles": "Посмотреть открытые вакансии"
     },
     "services": {
       "categoryLabels": {
@@ -2942,8 +3050,8 @@ window.Studio17LocaleData = {
         "description": "תשובות ברורות לשאלות נפוצות על אתרים, SEO, GEO, תוכן, רשתות חברתיות, פרסום, מערכות בינה מלאכותית ועבודה עם Studio 17."
       },
       "about": {
-        "title": "אודות Studio 17 — מערכות לצמיחה עסקית",
-        "description": "הכירו את Studio 17, חברה אירופית למערכות צמיחה המחברת אסטרטגיה, שיווק, טכנולוגיה, מכירות ותפעול."
+        "title": "אודות Studio 17",
+        "description": "הכירו את האנשים, המטרה והמקור האירופי של Studio 17, עם מטה בלימסול ומרכז תפעולי בפורטוגל."
       },
       "ourStory": {
         "title": "הסיפור של Studio 17 — מעבודה יצירתית למערכות מחוברות",
@@ -3399,7 +3507,34 @@ window.Studio17LocaleData = {
       "Use the contact page or email contact@studio17.world with your goal, current challenge, market and any important deadline. We will review the request, ask the necessary questions and explain the recommended next step.": "השתמשו בעמוד יצירת הקשר או כתבו ל-contact@studio17.world עם היעד, האתגר הנוכחי, השוק וכל מועד חשוב. נבדוק את הבקשה, נשאל את השאלות הדרושות ונסביר את הצעד הבא המומלץ.",
       "Still have a": "עדיין יש לכם",
       "question about your business?": "שאלה על העסק?",
-      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "ספרו לנו מה אתם מנסים לשפר. נעזור לזהות את הצעד הבא הברור והמעשי ביותר."
+      "Tell us what you are trying to improve. We will help you identify the clearest and most practical next step.": "ספרו לנו מה אתם מנסים לשפר. נעזור לזהות את הצעד הבא הברור והמעשי ביותר.",
+      "The people and purpose": "האנשים והמטרה",
+      "behind Studio 17": "שמאחורי Studio 17",
+      "Built across markets, connected by one way of working": "נבנתה בין שווקים ומחוברת בדרך עבודה אחת",
+      "Studio 17 is a European multidisciplinary studio shaped by people, curiosity and a shared commitment to purposeful work.": "Studio 17 היא סטודיו אירופי רב-תחומי שעוצב על ידי אנשים, סקרנות ומחויבות משותפת לעבודה בעלת משמעות.",
+      "Trusted globally": "אמון ברחבי העולם",
+      "We collaborate with businesses and people across markets, industries and cultures while keeping communication direct and the work connected.": "אנחנו משתפים פעולה עם עסקים ואנשים בשווקים, בענפים ובתרבויות שונות, תוך שמירה על תקשורת ישירה ועבודה מחוברת.",
+      "“From the very first contact, the team showed professionalism, efficiency, and an incredible level of responsiveness. Every request was handled quickly and with precision… We always felt heard and supported. The final result exceeded our expectations.”": "״כבר מהקשר הראשון הצוות הפגין מקצועיות, יעילות ורמת תגובתיות יוצאת דופן. כל בקשה טופלה במהירות ובדיוק… תמיד הרגשנו שמקשיבים לנו ותומכים בנו. התוצאה הסופית עלתה על הציפיות שלנו.״",
+      "Owner of 100Pratos": "בעלת 100Pratos",
+      "“Excellent communication and professional work. Totally recommend them.”": "״תקשורת מצוינת ועבודה מקצועית. ממליץ עליהם בחום.״",
+      "Client review": "חוות דעת של לקוח",
+      "“I’ve been working with STUDiO 17 for several months now and they’ve quickly become an essential partner for our business. From the first meeting, they took the time to understand our brand, our market, and what actually matters to us in terms of results, not just vanity metrics.”": "״אני עובד עם STUDiO 17 כבר כמה חודשים, והם הפכו במהירות לשותף חיוני לעסק שלנו. כבר מהפגישה הראשונה הם הקדישו זמן להבנת המותג, השוק ומה שבאמת חשוב לנו מבחינת תוצאות, ולא רק מדדי ראווה.״",
+      "Founder of Miguel Labs": "מייסד Miguel Labs",
+      "“The Studio 17 team is very professional, fast, and pays great attention to detail. The quality of their work is excellent, and their pricing is very fair.”": "״הצוות של Studio 17 מקצועי מאוד, מהיר ומקדיש תשומת לב רבה לפרטים. איכות העבודה מצוינת והמחירים הוגנים מאוד.״",
+      "Studio 17 is a multidisciplinary European studio bringing strategy, creativity, technology and operations into one connected way of working.": "Studio 17 היא סטודיו אירופי רב-תחומי המחבר אסטרטגיה, יצירתיות, טכנולוגיה ותפעול לדרך עבודה אחת.",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal, we collaborate across countries, cultures and languages while keeping responsibility and communication clear.": "עם מטה בלימסול שבקפריסין ומרכז תפעולי בפורטוגל, אנחנו עובדים בין מדינות, תרבויות ושפות תוך שמירה על אחריות ותקשורת ברורות.",
+      "100% European Brand": "מותג אירופי ב-100%",
+      "Headquartered in Limassol, Cyprus, with an operations hub in Portugal and collaborations that connect us with businesses across Europe and beyond.": "עם מטה בלימסול שבקפריסין, מרכז תפעולי בפורטוגל ושיתופי פעולה שמחברים אותנו לעסקים ברחבי אירופה ומעבר לה.",
+      "Our origin": "המקור שלנו",
+      "in more detail": "בפירוט נוסף",
+      "Explore our company presentation and move through it directly on this page.": "עיינו במצגת החברה והתקדמו בה ישירות בעמוד הזה.",
+      "Open the presentation": "פתיחת המצגת",
+      "Studio 17 presentation preview": "תצוגה מקדימה של מצגת Studio 17",
+      "Load the viewer, then use its controls to move between slides.": "טענו את המציג והשתמשו בפקדים כדי לעבור בין השקופיות.",
+      "Load presentation preview": "טעינת תצוגה מקדימה",
+      "Join Studio 17": "הצטרפו ל-Studio 17",
+      "We are building a multidisciplinary team for people who want to create useful work, take responsibility and grow across markets.": "אנחנו בונים צוות רב-תחומי לאנשים שרוצים ליצור עבודה שימושית, לקחת אחריות ולצמוח בשווקים שונים.",
+      "View open roles": "צפייה במשרות פתוחות"
     },
     "services": {
       "categoryLabels": {
