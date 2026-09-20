@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-20 — News hero image
+
+- Replaced the News archive hero artwork with the supplied `articles_hero_image.webp` asset while retaining the shared responsive hero treatment.
+
 ## 2026-09-20 — Seamless related-information carousel
 
 - Replaced the article carousel's cloned end-reset with continuous card rotation, removing the visible jump when readers reach the final related article.
