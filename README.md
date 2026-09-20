@@ -32,6 +32,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `careers.js` / `career-role.js` — Careers loading, rendering and failure-state behavior.
 - `contact.js` / `api/contact.js` — contact-form interaction, validation and Resend delivery.
 - `article-feed.js` — homepage and News archive loading, language handling, categories and publication states.
+- `article.js` — article progress, sharing, compact mobile contents and the looping related-article carousel used when four or more related articles are configured.
 - `api/` — Vercel Functions for authenticated, read-only Drive/Docs access, role validation, article rendering and restricted article-media delivery.
 - `.env.example` — non-secret environment-variable contract for Careers, Articles and contact delivery.
 - `vercel.json` — Vercel Function, redirect and clean-route configuration.

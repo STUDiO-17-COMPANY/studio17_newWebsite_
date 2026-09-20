@@ -27,6 +27,7 @@ let activeBrowser;
     assert.equal(await page.locator('.article-body section').count(), 4);
     assert.equal(await page.locator('.article-language-status a').count(), 1);
     assert.equal(await page.locator('.article-meta > div').count(), 3);
+    assert.equal(await page.locator('.article-author-image').count(), 1);
     assert.equal(await page.locator('.article-table-wrap').count(), 1);
     assert.equal(await page.locator('i[data-lucide]').count(), 0);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Article overflow at ${width}px`);
@@ -42,7 +43,19 @@ let activeBrowser;
 
     if (width === 1440) {
       assert.equal(await page.locator('.article-related-rail').isVisible(), true);
+      assert.equal(await page.locator('.article-rail-cta').isVisible(), true);
       assert.equal(await page.locator('.article-rail-card').count(), 3);
+      assert.equal(await page.locator('[data-related-track] .news-card:not([data-carousel-clone])').count(), 4);
+      assert.equal(await page.locator('[data-related-prev], [data-related-next]').count(), 2);
+      const initialTransform = await page.locator('[data-related-track]').evaluate(element => getComputedStyle(element).transform);
+      await page.locator('[data-related-next]').click();
+      await page.waitForTimeout(600);
+      assert.notEqual(await page.locator('[data-related-track]').evaluate(element => getComputedStyle(element).transform), initialTransform);
+      for (let index = 0; index < 3; index += 1) {
+        await page.locator('[data-related-next]').click();
+        await page.waitForTimeout(600);
+      }
+      assert.equal(await page.locator('[data-related-track]').evaluate(element => getComputedStyle(element).transform), initialTransform);
     }
 
     if (width === 390) {

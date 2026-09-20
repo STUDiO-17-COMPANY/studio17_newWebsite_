@@ -4,11 +4,13 @@ module.exports = {
   id: 'local-demo', slug: 'how-car-dealerships-can-increase-monthly-sales', category: 'Case Study',
   publishedDate: '2026-06-22', modifiedDate: null, sourceModifiedTime: null,
   authorName: 'Hugo Filipe', authorRole: 'Founder of Studio 17', readTime: 7,
+  authorImage: '/Images/About_heroimage.webp',
   coverImage: '/Images/case-automotive.webp', shareImage: '/Images/news-partnership.webp',
   availableLanguages: ['en'], locale: 'en', related: [
     { slug: 'website-content-that-builds-trust', category: 'Insight', publishedDate: '2026-06-18', authorName: 'Studio 17', authorRole: 'Editorial Team', coverImage: '/Images/news-partnership.webp', coverAlt: 'A team reviewing website content', title: 'Website content that builds trust', summary: 'How useful information helps customers understand and choose a business.' },
     { slug: 'a-practical-local-search-foundation', category: 'Insight', publishedDate: '2026-06-12', authorName: 'Studio 17', authorRole: 'Editorial Team', coverImage: '/Images/case-automotive.webp', coverAlt: 'A local business search strategy', title: 'A practical local search foundation', summary: 'The signals that connect a business, its website and local discovery.' },
-    { slug: 'turning-attention-into-enquiries', category: 'Case Study', publishedDate: '2026-06-05', authorName: 'Studio 17', authorRole: 'Editorial Team', coverImage: '/Images/news-social.webp', coverAlt: 'Marketing work designed around customer action', title: 'Turning attention into meaningful action', summary: 'Why connected content and follow-up matter after discovery.' }
+    { slug: 'turning-attention-into-enquiries', category: 'Case Study', publishedDate: '2026-06-05', authorName: 'Studio 17', authorRole: 'Editorial Team', coverImage: '/Images/news-social.webp', coverAlt: 'Marketing work designed around customer action', title: 'Turning attention into meaningful action', summary: 'Why connected content and follow-up matter after discovery.' },
+    { slug: 'building-a-useful-website-foundation', category: 'Insight', publishedDate: '2026-05-29', authorName: 'Studio 17', authorRole: 'Editorial Team', coverImage: '/Images/100pratos_website.png', coverAlt: 'A useful website foundation', title: 'Building a useful website foundation', summary: 'How structure, content and a clear next step work together.' }
   ],
   content: {
     seoTitle: 'How Car Dealerships Can Increase Monthly Sales',
@@ -22,6 +24,9 @@ module.exports = {
     ctaHeading: 'Want to improve how your vehicles are discovered and chosen?', ctaHighlighted: 'discovered and chosen?',
     ctaCopy: 'We can review your current digital presentation and identify the clearest opportunities across content, website, advertising and sales follow-up.',
     ctaLabel: 'Talk to Studio 17', ctaUrl: '/contact',
+    sidebarCtaTitle: 'Turn more online attention into sales conversations',
+    sidebarCtaDescription: 'Tell us where your sales journey is losing momentum and get a practical recommendation from Studio 17.',
+    sidebarCtaLabel: 'Discuss your project', sidebarCtaUrl: '/contact',
     blocks: [
       { type: 'paragraph', text: 'Many dealerships invest in inventory but underinvest in how that inventory is experienced online. Buyers compare vehicles long before they walk into a showroom, and every unclear photo, incomplete description or slow response introduces doubt.' },
       { type: 'heading', level: 2, text: 'The first visit often happens online', id: 'the-first-visit-often-happens-online' },

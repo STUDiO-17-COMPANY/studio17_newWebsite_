@@ -18,6 +18,7 @@ const SETUP_FIELDS = new Map([
   ['publication status', 'status'], ['slug', 'slug'], ['category', 'category'],
   ['publication date', 'publishedDate'], ['modified date', 'modifiedDate'],
   ['author name', 'authorName'], ['author role', 'authorRole'], ['read time', 'readTime'],
+  ['author image', 'authorImage'], ['author photo', 'authorImage'],
   ['cover image', 'coverImage'], ['social share image', 'shareImage'],
   ['related article slugs', 'relatedSlugs']
 ]);
@@ -28,7 +29,9 @@ const LOCALE_FIELDS = new Map([
   ['summary', 'summary'], ['cover image alt text', 'coverAlt'],
   ['cover image caption', 'coverCaption'], ['cta heading', 'ctaHeading'],
   ['cta highlighted text', 'ctaHighlighted'], ['cta copy', 'ctaCopy'],
-  ['cta label', 'ctaLabel'], ['cta url', 'ctaUrl']
+  ['cta label', 'ctaLabel'], ['cta url', 'ctaUrl'],
+  ['sidebar cta title', 'sidebarCtaTitle'], ['sidebar cta description', 'sidebarCtaDescription'],
+  ['sidebar cta button text', 'sidebarCtaLabel'], ['sidebar cta button url', 'sidebarCtaUrl']
 ]);
 
 let cachedAccessToken = null;
@@ -258,6 +261,7 @@ const parseSetup = tab => {
     publishedDate: scalar(values, 'publishedDate'), modifiedDate: scalar(values, 'modifiedDate'),
     authorName: scalar(values, 'authorName'), authorRole: scalar(values, 'authorRole'),
     readTime: Number.parseInt(scalar(values, 'readTime'), 10) || 0,
+    authorImageId: getDriveFileId(scalar(values, 'authorImage')),
     coverImageId: getDriveFileId(scalar(values, 'coverImage')),
     shareImageId: getDriveFileId(scalar(values, 'shareImage')),
     relatedSlugs: scalar(values, 'relatedSlugs').split(',').map(slugify).filter(Boolean)
@@ -277,6 +281,10 @@ const parseLocale = tab => {
     coverAlt: scalar(values, 'coverAlt'), coverCaption: scalar(values, 'coverCaption'),
     ctaHeading: scalar(values, 'ctaHeading'), ctaHighlighted: scalar(values, 'ctaHighlighted'),
     ctaCopy: scalar(values, 'ctaCopy'), ctaLabel: scalar(values, 'ctaLabel'), ctaUrl: safeCtaUrl(scalar(values, 'ctaUrl')),
+    sidebarCtaTitle: scalar(values, 'sidebarCtaTitle'),
+    sidebarCtaDescription: scalar(values, 'sidebarCtaDescription'),
+    sidebarCtaLabel: scalar(values, 'sidebarCtaLabel'),
+    sidebarCtaUrl: safeCtaUrl(scalar(values, 'sidebarCtaUrl')),
     blocks: parseBodyBlocks(bodyIndex < 0 ? [] : nodes.slice(bodyIndex + 1))
   };
 };
@@ -319,7 +327,7 @@ const buildArticle = (file, document) => {
       id: file.id, slug, category, publishedDate: setup.publishedDate,
       modifiedDate: isValidDate(setup.modifiedDate) ? setup.modifiedDate : null,
       sourceModifiedTime: file.modifiedTime || null, authorName: setup.authorName,
-      authorRole: setup.authorRole, readTime: setup.readTime, coverImageId: setup.coverImageId,
+      authorRole: setup.authorRole, authorImageId: setup.authorImageId, readTime: setup.readTime, coverImageId: setup.coverImageId,
       shareImageId: setup.shareImageId, relatedSlugs: setup.relatedSlugs,
       availableLanguages: SUPPORTED_LOCALES.filter(locale => translations[locale]), translations
     }
@@ -393,9 +401,13 @@ const getPublishedArticleBySlug = async (slug, locale, request) => {
   if (!article) throw new ArticlesError('ARTICLE_NOT_FOUND', 'This article is no longer available.', 404);
   const selected = SUPPORTED_LOCALES.includes(locale) ? locale : 'en';
   if (!article.translations[selected]) throw new ArticlesError('ARTICLE_TRANSLATION_NOT_FOUND', 'This article is not available in the selected language.', 404);
-  const related = article.relatedSlugs.map(relatedSlug => all.find(item => item.slug === relatedSlug)).filter(item => item?.translations[selected]).slice(0, 3).map(item => toSummary(item, selected));
+  const related = [...new Set(article.relatedSlugs)]
+    .map(relatedSlug => all.find(item => item.slug === relatedSlug))
+    .filter(item => item?.translations[selected] && item.slug !== article.slug)
+    .map(item => toSummary(item, selected));
   return {
     ...article, locale: selected, content: article.translations[selected], related,
+    authorImage: article.authorImageId ? articleImageUrl(article.authorImageId) : '',
     coverImage: articleImageUrl(article.coverImageId), shareImage: articleImageUrl(article.shareImageId)
   };
 };

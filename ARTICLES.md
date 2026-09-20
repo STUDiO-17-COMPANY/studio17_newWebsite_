@@ -1,7 +1,7 @@
 # Studio 17 automatic article publishing
 
-Status: implemented and locally verified; production folder permission and deployment remain
-Last reviewed: 2026-08-12
+Status: implemented, connected to the live Drive workflow and locally verified
+Last reviewed: 2026-09-20
 
 ## Drive resources
 
@@ -37,6 +37,21 @@ The cover image and social-share image are deliberately independent:
 - `Social share image` supplies Open Graph and Twitter preview metadata.
 
 The recommended social image is 1200 × 630 px. A public share never falls back to the cover image because the share-image field is required.
+
+`Author image` is optional and belongs in the shared `SETUP` tab. Upload the portrait to `2. Article Media` and paste its Drive link into that field. When it is absent, the article renders an accessible initials fallback, so existing articles remain valid.
+
+## Article conversion and related content
+
+Each language tab accepts four optional fields for a compact conversion box above the desktop Continue reading rail:
+
+- `Sidebar CTA title`
+- `Sidebar CTA description`
+- `Sidebar CTA button text`
+- `Sidebar CTA button URL`
+
+Complete all four fields to show the box in that language. Leaving all four blank keeps the box hidden. The button URL follows the same safety rules as the closing CTA: a clean internal path, `https:` link or `mailto:` link.
+
+`Related article slugs` in `SETUP` accepts a comma-separated list without a three-article limit. The right rail intentionally shows the first three related articles. The complete Continue reading section after the closing CTA shows every valid related article and becomes a looping carousel when four or more are available; its arrows stay hidden for three or fewer.
 
 ## Tables inside an article
 

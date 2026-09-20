@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-20 — Article conversion and author enhancements
+
+- Added an optional language-specific conversion box above the desktop Continue reading rail with editor-controlled title, description, button label and safe destination.
+- Added an optional shared author portrait sourced from the restricted Article Media folder, with an initials fallback for every existing article without a portrait.
+- Removed the three-item related-article data cap and turned the final Continue reading area into an accessible looping carousel whose controls appear only for four or more related articles.
+- Preserved the compact three-card desktop rail, existing article contracts and safe rendering for older Google Docs.
+- Documented the future Anima quick-answer assistant as a planned, deterministic support feature with a permanent human-contact path.
+
 ## 2026-09-20 — Teaching Economics partner and work
 
 - Added Teaching Economics as `partner-12` to every partner marquee on the homepage, About page and Work page using the supplied WebP logo and approved Instagram profile.

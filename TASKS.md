@@ -30,6 +30,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Approve the article-detail layout and content-field model.
 - [x] Create the Drive template, guidance, dedicated media folder, parser, multilingual article pages, dynamic homepage feed and `/news` archive described in `ARTICLES.md`.
 - [x] Grant the production Google service account Reader access to the Article folders, deploy and verify a real multilingual published Doc with separate social-sharing media end to end.
+- [x] Extend article pages with an optional right-rail CTA, author portrait support and an unlimited looping related-article carousel while preserving older article Docs.
 - [x] Complete and publish the contact-form email workflow.
 - [-] Review and publish the staged Vercel country-access rule before changing it from Log to Deny.
 - [x] Create multilingual Privacy Policy, Cookie Policy and Terms pages based on the website's implemented processing.
@@ -74,6 +75,15 @@ The multilingual `/contact` page and its server-side `/api/contact` endpoint are
 - [x] Publish and verify Portuguese (Portugal) and Greek translations while keeping incomplete language tabs hidden.
 
 Production was rechecked on 2026-09-05: the Terrassi Villa article returned HTTP 200, exposed English, Portuguese (Portugal) and Greek alternates, and used a dedicated `/api/article-image` Open Graph image.
+
+## Anima quick-answer assistant
+
+- [ ] Build **Anima** as a deterministic quick-answer assistant in the bottom-right corner, separate from the existing “Not sure where to start?” CTA.
+- [ ] Open with: “Hi, I’m Anima, your quick-answer assistant. I can help you understand our services, pricing and process, or connect you directly with our team. Let me know how I can help you.”
+- [ ] Use approved questions and prepared answers only; do not imply live AI reasoning or a human identity.
+- [ ] Add a short 2–3 second typing animation between a selected question and its prepared answer.
+- [ ] Keep **Talk with a human** available at every step and route it to the appropriate contact path.
+- [ ] Verify keyboard access, screen-reader announcements, reduced motion, mobile layout and non-overlap with consent or conversion controls before release.
 
 ## Trustpilot integration
 
