@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-20 — Anima quick-answer assistant
+
+- Added the English-first Anima assistant with six approved questions covering services, website pricing, SEO, project process, the free website offer and remote collaboration.
+- Added a 2.2-second preparation animation, answer-specific links, conversation reset and a permanently available human-contact path.
+- Stacked Anima above the existing guidance launcher, made the two panels mutually exclusive and suppressed both experiences around consent and mobile-navigation states.
+- Added keyboard, screen-reader, reduced-motion and responsive behavior while explicitly identifying the component as prepared answers rather than live chat.
+
 ## 2026-09-20 — Article sidebar CTA icon alignment
 
 - Centred the article sidebar CTA arrow within its fixed action area and prevented the icon from shifting when the editor supplies a longer button label.

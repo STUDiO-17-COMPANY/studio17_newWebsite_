@@ -856,7 +856,10 @@
       assistance.classList.toggle('is-open', open);
       launcher.setAttribute('aria-expanded', String(open));
       panel.hidden = !open;
-      if (open) closeButton.focus();
+      if (open) {
+        window.dispatchEvent(new CustomEvent('studio17:siteassistopen'));
+        closeButton.focus();
+      }
       else if (restoreFocus) launcher.focus();
     };
     const analyticsNoticeVisible = () => {
@@ -877,6 +880,7 @@
 
     launcher.addEventListener('click', () => setOpen(launcher.getAttribute('aria-expanded') !== 'true'));
     closeButton.addEventListener('click', () => setOpen(false, { restoreFocus: true }));
+    window.addEventListener('studio17:animaopen', () => setOpen(false));
     document.addEventListener('click', event => {
       if (!assistance.classList.contains('is-open') || assistance.contains(event.target)) return;
       setOpen(false);
@@ -892,6 +896,210 @@
     window.lucide?.createIcons({ attrs: { 'stroke-width': 2 } });
   };
   createSiteAssistance();
+
+  const createAnima = () => {
+    const currentPath = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+    const currentFile = currentPath.split('/').pop()?.replace(/\.html$/, '') || '';
+    const excludedRoutes = ['/contact', '/career-role', '/wip', '/privacy-policy', '/cookie-policy', '/terms'];
+    const excludedFiles = new Set(['contact', 'career-role', 'wip', 'privacy-policy', 'cookie-policy', 'terms']);
+    if (excludedRoutes.some(route => currentPath === route || currentPath.startsWith(`${route}/`)) || excludedFiles.has(currentFile)) return;
+
+    const copy = {
+      launcher: 'Ask Anima',
+      openLabel: 'Open Anima quick-answer assistant',
+      closeLabel: 'Close Anima',
+      resetLabel: 'Start again',
+      assistantLabel: 'Quick-answer assistant',
+      name: 'Anima',
+      prompt: 'Choose a question',
+      typing: 'Anima is preparing an answer',
+      disclosure: 'Prepared answers · Not live chat',
+      human: 'Talk with a human',
+      opening: 'Hi, I’m Anima, your quick-answer assistant. I can help you understand our services, pricing and process, or connect you directly with our team. Let me know how I can help you.',
+      questions: [
+        {
+          id: 'services',
+          question: 'What services does Studio 17 offer?',
+          answer: 'Studio 17 connects website development, SEO and GEO, content creation, social media, advertising, localization and digital systems around the business problem you need to solve.',
+          action: 'Explore our services',
+          href: '/services?source=anima'
+        },
+        {
+          id: 'pricing',
+          question: 'How much does a website cost?',
+          answer: 'Our published website packages start at €450 for a focused one-page website, €950 for Starter, €1,500 for Growth and €2,250 for Business. Custom websites start at €3,500. We confirm the scope before work begins.',
+          action: 'Compare website packages',
+          href: '/services/website-pricing?source=anima'
+        },
+        {
+          id: 'seo',
+          question: 'Can Studio 17 help me get found online?',
+          answer: 'Yes. Our SEO work can connect technical improvements, page optimization, content, local visibility, Google Business Profile, Search Console and AI-search foundations around qualified demand.',
+          action: 'Explore SEO services',
+          href: '/services/seo?source=anima'
+        },
+        {
+          id: 'process',
+          question: 'What happens when we start a project?',
+          answer: 'We begin by understanding the business, audience and current problem. Then we recommend the smallest useful scope, agree the work, design and build it, test it and support the launch.',
+          action: 'See our website process',
+          href: '/services/website-development?source=anima'
+        },
+        {
+          id: 'free-website',
+          question: 'How does the free website offer work?',
+          answer: 'Selected businesses can apply for a complete one-page website with design and development included. The offer has a defined scope, one revision round and clear information the business needs to provide.',
+          action: 'View the free website offer',
+          href: '/services/free-website?source=anima'
+        },
+        {
+          id: 'international',
+          question: 'Can you work with my business remotely?',
+          answer: 'Yes. Studio 17 operates from Cyprus and Portugal and collaborates with businesses across Europe and other markets through a clear remote workflow.',
+          action: 'Learn about Studio 17',
+          href: '/about?source=anima'
+        }
+      ]
+    };
+
+    const anima = document.createElement('div');
+    anima.className = 'anima';
+    anima.dataset.anima = '';
+    anima.hidden = true;
+    anima.innerHTML = `<button class="anima-launcher" type="button" aria-expanded="false" aria-controls="anima-panel"><i data-lucide="message-circle" aria-hidden="true"></i><span>${copy.launcher}</span></button><section class="anima-panel" id="anima-panel" role="dialog" aria-modal="false" aria-labelledby="anima-title" hidden data-i18n-skip><header class="anima-header"><span class="anima-mark" aria-hidden="true">A</span><div><p>${copy.assistantLabel}</p><h2 id="anima-title">${copy.name}</h2></div><div class="anima-header-actions"><button class="anima-reset" type="button" aria-label="${copy.resetLabel}" title="${copy.resetLabel}"><i data-lucide="rotate-ccw" aria-hidden="true"></i></button><button class="anima-close" type="button" aria-label="${copy.closeLabel}"><i data-lucide="x" aria-hidden="true"></i></button></div></header><div class="anima-conversation" data-anima-conversation aria-live="polite" aria-relevant="additions"></div><div class="anima-questions"><p>${copy.prompt}</p><div data-anima-questions></div></div><footer class="anima-footer"><a href="/contact?source=anima" data-anima-human>${copy.human}<i data-lucide="arrow-up-right" aria-hidden="true"></i></a><small>${copy.disclosure}</small></footer></section>`;
+    document.body.appendChild(anima);
+
+    const launcher = anima.querySelector('.anima-launcher');
+    const panel = anima.querySelector('.anima-panel');
+    const closeButton = anima.querySelector('.anima-close');
+    const resetButton = anima.querySelector('.anima-reset');
+    const conversation = anima.querySelector('[data-anima-conversation]');
+    const questionList = anima.querySelector('[data-anima-questions]');
+    const humanLink = anima.querySelector('[data-anima-human]');
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let answerTimer = 0;
+    let engaged = false;
+
+    launcher.setAttribute('aria-label', copy.openLabel);
+    humanLink.href = localiseServicesMenuHref(humanLink.getAttribute('href'));
+
+    const refreshIcons = () => window.lucide?.createIcons({ attrs: { 'stroke-width': 2 } });
+    const scrollConversation = () => requestAnimationFrame(() => { conversation.scrollTop = conversation.scrollHeight; });
+    const createMessage = (type, text, action) => {
+      const message = document.createElement('div');
+      message.className = `anima-message anima-message-${type}`;
+      const paragraph = document.createElement('p');
+      paragraph.textContent = text;
+      message.appendChild(paragraph);
+      if (action) {
+        const link = document.createElement('a');
+        link.href = localiseServicesMenuHref(action.href);
+        link.textContent = action.label;
+        link.innerHTML += '<i data-lucide="arrow-up-right" aria-hidden="true"></i>';
+        message.appendChild(link);
+      }
+      conversation.appendChild(message);
+      refreshIcons();
+      scrollConversation();
+      return message;
+    };
+    const createTyping = () => {
+      const typing = document.createElement('div');
+      typing.className = 'anima-message anima-message-assistant anima-typing';
+      typing.dataset.animaTyping = '';
+      typing.setAttribute('role', 'status');
+      typing.setAttribute('aria-label', copy.typing);
+      typing.innerHTML = '<span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>';
+      conversation.appendChild(typing);
+      scrollConversation();
+      return typing;
+    };
+    const setQuestionsDisabled = disabled => questionList.querySelectorAll('button').forEach(button => { button.disabled = disabled; });
+    const answerQuestion = item => {
+      window.clearTimeout(answerTimer);
+      createMessage('user', item.question);
+      setQuestionsDisabled(true);
+      const typing = createTyping();
+      answerTimer = window.setTimeout(() => {
+        typing.remove();
+        createMessage('assistant', item.answer, { label: item.action, href: item.href });
+        setQuestionsDisabled(false);
+      }, reduceMotion.matches ? 80 : 2200);
+    };
+    const renderQuestions = () => {
+      const priority = currentPath.includes('/seo/') || currentPath.includes('/services/seo')
+        ? ['seo', 'services', 'pricing', 'process', 'international', 'free-website']
+        : currentPath.includes('/services/website')
+          ? ['pricing', 'process', 'services', 'free-website', 'seo', 'international']
+          : copy.questions.map(item => item.id);
+      questionList.replaceChildren(...priority.map(id => {
+        const item = copy.questions.find(question => question.id === id);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.animaQuestion = item.id;
+        button.innerHTML = `<span>${item.question}</span><i data-lucide="chevron-right" aria-hidden="true"></i>`;
+        button.addEventListener('click', () => answerQuestion(item));
+        return button;
+      }));
+      refreshIcons();
+    };
+    const resetConversation = () => {
+      window.clearTimeout(answerTimer);
+      conversation.replaceChildren();
+      createMessage('assistant', copy.opening);
+      setQuestionsDisabled(false);
+    };
+    const setOpen = (open, { restoreFocus = false } = {}) => {
+      anima.classList.toggle('is-open', open);
+      launcher.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+      if (open) {
+        window.dispatchEvent(new CustomEvent('studio17:animaopen'));
+        closeButton.focus();
+      } else if (restoreFocus) launcher.focus();
+    };
+    const analyticsNoticeVisible = () => {
+      const notice = document.querySelector('.analytics-consent');
+      return notice && !notice.hidden;
+    };
+    const syncVisibility = () => {
+      const unavailable = analyticsNoticeVisible() || document.body.classList.contains('menu-open');
+      anima.hidden = !engaged || unavailable;
+      if (unavailable && anima.classList.contains('is-open')) setOpen(false);
+    };
+    const revealLauncher = () => {
+      engaged = true;
+      syncVisibility();
+    };
+    const revealFromScroll = () => {
+      const scrollable = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
+      if (scrollY / scrollable < .12) return;
+      revealLauncher();
+      window.removeEventListener('scroll', revealFromScroll);
+    };
+
+    launcher.addEventListener('click', () => setOpen(launcher.getAttribute('aria-expanded') !== 'true'));
+    closeButton.addEventListener('click', () => setOpen(false, { restoreFocus: true }));
+    resetButton.addEventListener('click', resetConversation);
+    window.addEventListener('studio17:siteassistopen', () => setOpen(false));
+    window.addEventListener('studio17:analyticsconsent', syncVisibility);
+    window.addEventListener('scroll', revealFromScroll, { passive: true });
+    document.addEventListener('click', event => {
+      if (!anima.classList.contains('is-open') || anima.contains(event.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && anima.classList.contains('is-open')) setOpen(false, { restoreFocus: true });
+    });
+    const consentNotice = document.querySelector('.analytics-consent');
+    if (consentNotice) new MutationObserver(syncVisibility).observe(consentNotice, { attributes: true, attributeFilter: ['hidden'] });
+    new MutationObserver(syncVisibility).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    window.setTimeout(revealLauncher, 18000);
+    renderQuestions();
+    resetConversation();
+    refreshIcons();
+  };
+  createAnima();
 
   document.querySelectorAll('[data-presentation-preview]').forEach(preview => {
     const loadButton = preview.querySelector('[data-presentation-load]');

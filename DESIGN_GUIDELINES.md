@@ -96,6 +96,15 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Do not render the launcher on Contact, Careers, role, legal, WIP or privacy-preference destinations. These pages either already provide the intended action or should remain distraction-free.
 - The control must support `aria-expanded`, labelled controls, Escape and outside-click dismissal, focus restoration, translated copy, right-to-left layouts and reduced-motion preferences.
 
+### Anima quick-answer assistant
+
+- Anima is a deterministic support component, not a generative chatbot. It uses only approved questions and prepared answers and identifies itself as a quick-answer assistant.
+- Stack the compact Anima launcher above the contextual assistance badge in the bottom-right corner. Opening either panel closes the other.
+- Keep “Talk with a human” permanently visible in the panel footer. The footer also states that the experience uses prepared answers rather than live chat.
+- Use a 2.2-second three-dot preparation animation after a question is selected. Reduced-motion users receive the answer without the animated delay.
+- Do not show Anima while analytics consent or the mobile navigation is open, or on Contact, role, WIP and legal pages.
+- The panel must remain keyboard accessible, announce new answers politely and fit within the viewport without document-level overflow.
+
 ### Work-in-progress page
 
 - `/wip` is the single shared public destination for every page that has not been built yet; `wip.html` remains only its source filename.

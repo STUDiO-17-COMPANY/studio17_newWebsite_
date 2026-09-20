@@ -78,12 +78,14 @@ Production was rechecked on 2026-09-05: the Terrassi Villa article returned HTTP
 
 ## Anima quick-answer assistant
 
-- [ ] Build **Anima** as a deterministic quick-answer assistant in the bottom-right corner, separate from the existing “Not sure where to start?” CTA.
-- [ ] Open with: “Hi, I’m Anima, your quick-answer assistant. I can help you understand our services, pricing and process, or connect you directly with our team. Let me know how I can help you.”
-- [ ] Use approved questions and prepared answers only; do not imply live AI reasoning or a human identity.
-- [ ] Add a short 2–3 second typing animation between a selected question and its prepared answer.
-- [ ] Keep **Talk with a human** available at every step and route it to the appropriate contact path.
-- [ ] Verify keyboard access, screen-reader announcements, reduced motion, mobile layout and non-overlap with consent or conversion controls before release.
+- [x] Build **Anima** as a deterministic quick-answer assistant in the bottom-right corner, separate from the existing “Not sure where to start?” CTA.
+- [x] Open with: “Hi, I’m Anima, your quick-answer assistant. I can help you understand our services, pricing and process, or connect you directly with our team. Let me know how I can help you.”
+- [x] Use approved questions and prepared answers only; do not imply live AI reasoning or a human identity.
+- [x] Add a short 2–3 second typing animation between a selected question and its prepared answer.
+- [x] Keep **Talk with a human** available at every step and route it to the appropriate contact path.
+- [x] Verify keyboard access, screen-reader announcements, reduced motion, mobile layout and non-overlap with consent or conversion controls before release.
+
+The first production version is intentionally English-only. Its component-owned copy is isolated so additional language packs can be added after review without changing the conversation behaviour.
 
 ## Trustpilot integration
 
