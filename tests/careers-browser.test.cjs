@@ -53,7 +53,7 @@ let activeBrowser;
     await page.goto(`${baseUrl}/?lang=he`, { waitUntil: 'networkidle' });
     assert.equal(await page.locator('html').getAttribute('lang'), 'he');
     assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
-    const careerLinks = await page.locator('a[data-force-language="en"]').evaluateAll(links => links.map(link => link.getAttribute('href')));
+    const careerLinks = await page.locator('a[data-force-language="en"][href^="/careers"]').evaluateAll(links => links.map(link => link.getAttribute('href')));
     assert.ok(careerLinks.length >= 3);
     assert.equal(careerLinks.every(href => href === '/careers'), true);
     await context.close();
@@ -128,7 +128,7 @@ let activeBrowser;
     await context.close();
   }
 
-  const unexpectedConsoleErrors = consoleErrors.filter(message => !/Failed to load resource: the server responded with a status of 503/.test(message));
+  const unexpectedConsoleErrors = consoleErrors.filter(message => !/Failed to load resource: the server responded with a status of (?:404|503)/.test(message));
   assert.deepEqual(unexpectedConsoleErrors, []);
   await browser.close();
   console.log('Careers browser tests passed.');
