@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-20 — Seamless related-information carousel
+
+- Replaced the article carousel's cloned end-reset with continuous card rotation, removing the visible jump when readers reach the final related article.
+- Matched the carousel heading, arrow controls, card dimensions and edge alignment to the established Studio 17 news and testimonial carousels.
+- Renamed the section to “Valuable related information” with only “related information” highlighted, including equivalent labels for every supported article language.
+
 ## 2026-09-20 — Article conversion and author enhancements
 
 - Added an optional language-specific conversion box above the desktop Continue reading rail with editor-controlled title, description, button label and safe destination.

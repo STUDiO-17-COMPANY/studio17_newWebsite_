@@ -49,6 +49,8 @@ assert.equal((rendered.match(/class="news-card"/g) || []).length, 4);
 assert.match(rendered, /data-related-carousel/);
 assert.match(rendered, /data-related-prev/);
 assert.match(rendered, /data-related-next/);
+assert.match(rendered, /Valuable <span>related information<\/span>/);
+assert.match(rendered, /class="triangle-controls article-related-controls"/);
 assert.match(rendered, /class="article-inline-image"/);
 assert.match(rendered, /class="article-table-wrap"[^>]*role="region"[^>]*tabindex="0"/);
 assert.match(rendered, /<th scope="col">Stage<\/th>/);
@@ -82,5 +84,8 @@ assert.match(behavior, /matchMedia\('\(max-width: 800px\)'\)/);
 assert.match(behavior, /navigator\.share/);
 assert.match(behavior, /__STUDIO17_ARTICLE_LANGUAGES__/);
 assert.match(behavior, /data-related-carousel/);
+assert.match(behavior, /relatedTrack\.append\(relatedTrack\.firstElementChild\)/);
+assert.match(behavior, /relatedTrack\.prepend\(relatedTrack\.lastElementChild\)/);
+assert.doesNotMatch(behavior, /carouselClone/);
 
 console.log('Automatic article-page tests passed.');

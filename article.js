@@ -85,62 +85,57 @@
   const nextRelated = relatedCarousel?.querySelector('[data-related-next]');
 
   if (relatedTrack && previousRelated && nextRelated) {
-    const originals = Array.from(relatedTrack.children).map(card => card.cloneNode(true));
-    let cloneCount = 0;
-    let currentIndex = 0;
     let moving = false;
-    let resizeTimer = 0;
+    let movementToken = 0;
 
-    const visibleCards = () => window.matchMedia('(max-width: 800px)').matches ? 1 : window.matchMedia('(max-width: 1100px)').matches ? 2 : 3;
-    const markClone = card => {
-      card.dataset.carouselClone = 'true';
-      card.setAttribute('aria-hidden', 'true');
-      card.querySelectorAll('a, button').forEach(element => element.setAttribute('tabindex', '-1'));
-      return card;
-    };
     const cardStep = () => {
       const first = relatedTrack.firstElementChild;
       const gap = Number.parseFloat(getComputedStyle(relatedTrack).columnGap || getComputedStyle(relatedTrack).gap) || 0;
       return (first?.getBoundingClientRect().width || 0) + gap;
     };
-    const moveTo = (index, animate = true) => {
-      relatedTrack.classList.toggle('is-resetting', !animate);
-      currentIndex = index;
-      relatedTrack.style.transform = `translate3d(${-cardStep() * currentIndex}px,0,0)`;
-      if (!animate) requestAnimationFrame(() => relatedTrack.classList.remove('is-resetting'));
+    const withoutTransition = callback => {
+      relatedTrack.classList.add('is-repositioning');
+      callback();
+      void relatedTrack.offsetWidth;
+      requestAnimationFrame(() => relatedTrack.classList.remove('is-repositioning'));
     };
-    const rebuild = () => {
-      cloneCount = Math.min(visibleCards(), originals.length);
-      relatedTrack.replaceChildren(
-        ...originals.slice(-cloneCount).map(card => markClone(card.cloneNode(true))),
-        ...originals.map(card => card.cloneNode(true)),
-        ...originals.slice(0, cloneCount).map(card => markClone(card.cloneNode(true)))
-      );
-      moveTo(cloneCount, false);
-      moving = false;
-    };
-    const finishMove = () => {
-      if (currentIndex >= originals.length + cloneCount) moveTo(cloneCount, false);
-      else if (currentIndex < cloneCount) moveTo(originals.length + cloneCount - 1, false);
+    const finishMove = (direction, token) => {
+      if (!moving || token !== movementToken) return;
+      if (direction > 0 && relatedTrack.firstElementChild) {
+        withoutTransition(() => {
+          relatedTrack.append(relatedTrack.firstElementChild);
+          relatedTrack.style.transform = 'translate3d(0,0,0)';
+        });
+      }
       moving = false;
     };
     const move = direction => {
       if (moving) return;
       moving = true;
-      moveTo(currentIndex + direction);
-      window.setTimeout(finishMove, 560);
+      const token = ++movementToken;
+      const step = cardStep();
+
+      if (direction > 0) {
+        requestAnimationFrame(() => { relatedTrack.style.transform = `translate3d(${-step}px,0,0)`; });
+      } else if (relatedTrack.lastElementChild) {
+        withoutTransition(() => {
+          relatedTrack.prepend(relatedTrack.lastElementChild);
+          relatedTrack.style.transform = `translate3d(${-step}px,0,0)`;
+        });
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          relatedTrack.style.transform = 'translate3d(0,0,0)';
+        }));
+      }
+
+      window.setTimeout(() => finishMove(direction, token), 560);
     };
 
     previousRelated.addEventListener('click', () => move(-1));
     nextRelated.addEventListener('click', () => move(1));
     relatedTrack.addEventListener('transitionend', event => {
-      if (event.propertyName === 'transform' && moving) finishMove();
+      if (event.propertyName !== 'transform' || !moving) return;
+      finishMove(relatedTrack.style.transform.includes('-') ? 1 : -1, movementToken);
     });
-    window.addEventListener('resize', () => {
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(rebuild, 140);
-    });
-    rebuild();
   }
 
   window.addEventListener('scroll', updateProgress, { passive: true });

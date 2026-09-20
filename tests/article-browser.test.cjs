@@ -45,17 +45,22 @@ let activeBrowser;
       assert.equal(await page.locator('.article-related-rail').isVisible(), true);
       assert.equal(await page.locator('.article-rail-cta').isVisible(), true);
       assert.equal(await page.locator('.article-rail-card').count(), 3);
-      assert.equal(await page.locator('[data-related-track] .news-card:not([data-carousel-clone])').count(), 4);
+      assert.equal(await page.locator('[data-related-track] .news-card').count(), 4);
       assert.equal(await page.locator('[data-related-prev], [data-related-next]').count(), 2);
-      const initialTransform = await page.locator('[data-related-track]').evaluate(element => getComputedStyle(element).transform);
+      assert.equal(await page.locator('#related-title').innerHTML(), 'Valuable <span>related information</span>');
+      const initialOrder = await page.locator('[data-related-track] .news-card h3').allTextContents();
       await page.locator('[data-related-next]').click();
       await page.waitForTimeout(600);
-      assert.notEqual(await page.locator('[data-related-track]').evaluate(element => getComputedStyle(element).transform), initialTransform);
+      assert.deepEqual(await page.locator('[data-related-track] .news-card h3').allTextContents(), [...initialOrder.slice(1), initialOrder[0]]);
+      assert.match(await page.locator('[data-related-track]').evaluate(element => getComputedStyle(element).transform), /matrix\(1, 0, 0, 1, 0, 0\)|none/);
       for (let index = 0; index < 3; index += 1) {
         await page.locator('[data-related-next]').click();
         await page.waitForTimeout(600);
       }
-      assert.equal(await page.locator('[data-related-track]').evaluate(element => getComputedStyle(element).transform), initialTransform);
+      assert.deepEqual(await page.locator('[data-related-track] .news-card h3').allTextContents(), initialOrder);
+      await page.locator('[data-related-prev]').click();
+      await page.waitForTimeout(600);
+      assert.deepEqual(await page.locator('[data-related-track] .news-card h3').allTextContents(), [initialOrder.at(-1), ...initialOrder.slice(0, -1)]);
     }
 
     if (width === 390) {
