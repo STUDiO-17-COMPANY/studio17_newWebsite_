@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-20 — Article sidebar CTA icon alignment
+
+- Centred the article sidebar CTA arrow within its fixed action area and prevented the icon from shifting when the editor supplies a longer button label.
+
 ## 2026-09-20 — News hero image
 
 - Replaced the News archive hero artwork with the supplied `articles_hero_image.webp` asset while retaining the shared responsive hero treatment.

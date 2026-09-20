@@ -1411,7 +1411,8 @@ html[lang]:not([lang="en"]) .footer-bottom { min-height: 80px; padding-block: 14
 .article-rail-cta h2 { margin: 0 0 11px; color: var(--ink); font-size: 23px; line-height: 1.08; letter-spacing: -.035em; }
 .article-rail-cta p { margin: 0 0 20px; color: #596477; font-size: 13px; line-height: 1.6; }
 .article-rail-cta .solid-button { min-height: 48px; width: 100%; justify-content: space-between; padding: 10px 12px 10px 17px; font-size: 13px; }
-.article-rail-cta .solid-button > span { width: 30px; height: 30px; }
+.article-rail-cta .solid-button > span { width: 30px; height: 30px; display: grid; flex: 0 0 30px; place-items: center; }
+.article-rail-cta .solid-button > span .lucide { display: block; margin: 0; }
 .article-rail-card { display: grid; border-bottom: 1px solid #dbe1ea; padding-block: 18px 20px; }
 .article-rail-card img { width: 100%; aspect-ratio: 16 / 9; margin-bottom: 14px; object-fit: cover; }
 .article-rail-card > span { margin-bottom: 7px; color: var(--blue); font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }

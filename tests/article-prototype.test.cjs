@@ -75,6 +75,7 @@ assert.match(styles, /\.article-cover img \{[^}]*aspect-ratio: 16\/9/);
 assert.doesNotMatch(styles, /\.article-cover \{ display: none; \}/);
 assert.match(styles, /\.article-table-wrap \{[^}]*overflow-x: auto/);
 assert.match(styles, /\.article-rail-cta/);
+assert.match(styles, /\.article-rail-cta \.solid-button > span \{[^}]*display: grid;[^}]*flex: 0 0 30px;[^}]*place-items: center;/);
 assert.match(styles, /\.article-related-track/);
 assert.match(styles, /html\[dir="rtl"\] \.article-table \{ text-align: right; \}/);
 assert.match(styles, /\.news-archive-grid/);
