@@ -16,7 +16,7 @@ const approvedSocialUrls = [
   'https://www.facebook.com/profile.php?id=61582939535174',
   'https://www.linkedin.com/company/studio17world'
 ];
-const untranslatedBrandContent = /^(RG Automotive|Chome Rats|For Social Media Lovers|100 Pratos|Terrassi Villa|Selene Island|Phós Optics|Event Studio Cyprus|Nerouppos Barber Shop|Snapdrop|Rita Braz|Pantelis Petrou|Miguel Ângelo|Natalia Ioannou|Hugo Filipe|Pedro Leonardo|Gil Barreto|HF|PL|NI|GB|— Portugal)$/;
+const untranslatedBrandContent = /^(RG Automotive|Chome Rats|For Social Media Lovers|100 Pratos|Terrassi Villa|Selene Island|Phós Optics|Event Studio Cyprus|Nerouppos Barber Shop|Snapdrop|Teaching Economics|Rita Braz|Pantelis Petrou|Miguel Ângelo|Natalia Ioannou|Hugo Filipe|Pedro Leonardo|Gil Barreto|HF|PL|NI|GB|— Portugal)$/;
 const aboutMain = about.match(/<main[\s\S]*?<\/main>/)?.[0] || '';
 const aboutVisibleStrings = [...new Set([...aboutMain.matchAll(/>([^<>]+)</g)]
   .map(match => match[1].replace(/\s+/g, ' ').trim().replaceAll('&amp;', '&'))

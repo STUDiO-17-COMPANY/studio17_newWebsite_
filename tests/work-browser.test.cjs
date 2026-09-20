@@ -27,7 +27,9 @@ let activeBrowser;
 
     assert.equal(await page.title(), 'Selected client work | Studio 17');
     assert.equal(await page.locator('h1').count(), 1);
-    assert.equal(await page.locator('.work-project-card').count(), 4);
+    assert.equal(await page.locator('.work-project-card').count(), 5);
+    assert.equal(await page.locator('.work-project-card').getByText('Teaching Economics', { exact: true }).count(), 1);
+    assert.equal(await page.locator('.work-project-card a[href="https://www.instagram.com/p/DaPSeSJsA-o/"]').count(), 1);
     assert.equal(await page.locator('.work-quote-card').count(), 4);
     assert.equal(await page.locator('.work-faq details').count(), 8);
     assert.equal(await page.locator('[data-nextjs-dialog], .vite-error-overlay, #webpack-dev-server-client-overlay').count(), 0);

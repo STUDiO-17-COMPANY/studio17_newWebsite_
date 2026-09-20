@@ -4,6 +4,8 @@ const path = require('node:path');
 
 const root = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const about = fs.readFileSync(path.join(root, 'about.html'), 'utf8');
+const work = fs.readFileSync(path.join(root, 'work.html'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 
 const partners = [
@@ -16,19 +18,24 @@ const partners = [
   ['08', 'Phós Optics', 'https://www.phosoptics.com/en'],
   ['09', 'Event Studio Cyprus', 'https://www.instagram.com/eventstudiocy/'],
   ['10', 'Nerouppos Barber Shop', 'https://share.google/qqDIgdgsQUuOc6XeN'],
-  ['11', 'Snapdrop', 'https://www.snappdrop.com']
+  ['11', 'Snapdrop', 'https://www.snappdrop.com'],
+  ['12', 'Teaching Economics', 'https://www.instagram.com/teaching.economics/']
 ];
 
 for (const [number, name, url] of partners) {
   assert.match(html, new RegExp(`data-partner="${number}"[^>]+href="${url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
   assert.match(html, new RegExp(`aria-label="Visit ${name}"`));
   assert.match(html, new RegExp(`<span>${name}</span>`));
-  const extension = number === '11' ? 'webp' : 'png';
+  const extension = ['11', '12'].includes(number) ? 'webp' : 'png';
   assert.ok(fs.existsSync(path.join(root, 'Images', `partner-${number}.${extension}`)), `Missing partner-${number}.${extension}`);
 }
 
 assert.equal((html.match(/data-partner="11"/g) || []).length, 4, 'partner-11 must appear once in every marquee set');
-assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(10,/s, 'the partner grid must expose all ten partners in one row');
+assert.equal((html.match(/data-partner="12"/g) || []).length, 4, 'partner-12 must appear once in every marquee set');
+assert.equal((about.match(/data-partner="12"/g) || []).length, 2, 'About must include partner-12 in both marquee sets');
+assert.equal((work.match(/data-partner="12"/g) || []).length, 2, 'Work must include partner-12 in both marquee sets');
+assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(11,/s, 'the partner grid must expose all eleven partners in one row');
+assert.match(css, /--partner-row-width:\s*max\(1384px,/, 'the partner row must preserve logo width after adding partner-12');
 assert.doesNotMatch(html, /Lodgify|lodgify\.com|data-partner="06"/i, 'Lodgify must not appear in the partner carousel');
 
 assert.doesNotMatch(html, /partner-phos\.png/);

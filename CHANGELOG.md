@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-20 — Teaching Economics partner and work
+
+- Added Teaching Economics as `partner-12` to every partner marquee on the homepage, About page and Work page using the supplied WebP logo and approved Instagram profile.
+- Added Teaching Economics to selected Work with the approved Instagram video and an accurate scope label covering video production, paid advertising and business consulting.
+- Expanded the shared partner row for eleven logos and added regression coverage for the new partner, work destination and supplied asset.
+
 ## 2026-09-20 — Terrassi Villa case-study links
 
 - Replaced the retired Terrassi Villa article URL across the homepage, Work page, Website pages, Free Website proof, translated service content and service documentation with `/case-studies/terrassi-villa-accessible-hospitality-website-case-study`.
