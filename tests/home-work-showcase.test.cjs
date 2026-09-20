@@ -19,6 +19,9 @@ test('homepage replaces the former AI block with selected client work', () => {
   assert.equal((showcase.match(/class="website-project-card(?: [^"]*)?"/g) || []).length, 4);
   for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/terrassivilla.jpg', '/Images/rg-automotive-work.jpg']) assert.ok(showcase.includes(asset), asset);
   for (const project of ['100 Pratos', 'PHÓS Optics', 'Terrassi Villa', 'RG Automotive']) assert.ok(showcase.includes(project), project);
+  assert.match(showcase, /href="\/case-studies\/terrassi-villa-accessible-hospitality-website-case-study"[^>]*aria-label="Read the Terrassi Villa case study"/);
+  assert.match(showcase, />Read case study <i data-lucide="arrow-up-right"/);
+  assert.doesNotMatch(showcase, /terrassivilla-accessible-tourism-in-the-azores|Read the project article/);
   assert.ok(showcase.includes('https://www.instagram.com/rgautomotive.stand/'));
   assert.match(showcase, /href="\/work#selected-work"[^>]*>See more of our work/);
 
@@ -36,6 +39,8 @@ test('homepage work showcase uses the shared six-language contract', () => {
     assert.ok(generic.strings['Automotive marketing · Social media and design'], locale);
     assert.ok(generic.strings['View on Instagram'], locale);
     assert.ok(generic.strings['See more of our work'], locale);
+    assert.ok(generic.strings['Read case study'], locale);
+    assert.ok(generic.strings['Read the Terrassi Villa case study'], locale);
   }
 });
 

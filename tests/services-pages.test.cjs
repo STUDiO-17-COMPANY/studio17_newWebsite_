@@ -46,7 +46,8 @@ test('website development page preserves commercial and portfolio requirements',
   for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/terrassivilla.jpg']) assert.ok(html.includes(asset), asset);
   assert.ok(html.includes('https://www.100pratos.pt/'));
   assert.ok(html.includes('https://www.phosoptics.com/en'));
-  assert.ok(html.includes('/insights/terrassivilla-accessible-tourism-in-the-azores'));
+  assert.ok(html.includes('/case-studies/terrassi-villa-accessible-hospitality-website-case-study'));
+  assert.ok(html.includes('Read case study'));
   assert.match(html, /<span>Some of the websites<\/span> we developed<\/h2><p>Selected websites across our clients\.<\/p>/);
   assert.equal((html.match(/class="website-process"[\s\S]*?<\/section>/)?.[0].match(/<li><span>\d+/g) || []).length, 0);
   assert.match(css, /\.website-process li:not\(:last-child\)::after[^}]*animation: seo-plan-arrow-flow/);
@@ -139,7 +140,8 @@ test('website service-family page provides a distinct, translated decision journ
   assert.match(behavior, /website-project-terrassi[\s\S]*website-project-phos[\s\S]*website-project-100pratos/);
   assert.match(css, /\.website-case-study \{[^}]*background: transparent;[^}]*overflow: hidden;/);
   assert.match(css, /\.website-services-page,[^{]+\.website-capabilities \{ background: var\(--paper\); \}/);
-  assert.match(html, /terrassivilla-accessible-tourism-in-the-azores/);
+  assert.match(html, /case-studies\/terrassi-villa-accessible-hospitality-website-case-study/);
+  assert.doesNotMatch(html, /terrassivilla-accessible-tourism-in-the-azores/);
   assert.match(html, /wip#for=phos-optics-case-study/);
   assert.doesNotMatch(html, /website-search-growth/);
   assert.match(css, /\.website-faq \.website-faq-list \{[^}]*grid-template-columns: repeat\(2,minmax\(0,1fr\)\)/);
@@ -246,6 +248,8 @@ test('free website page is transparent, lead-ready and translated in all site la
     assert.doesNotMatch(page.showcaseHeading, /<p>/, locale);
     assert.doesNotMatch(page.realWorkHeading, /<p>/, locale);
     assert.match(page.realWorkControls, /data-carousel-prev="free-work-track"/, locale);
+    assert.match(page.realWork, /\/case-studies\/terrassi-villa-accessible-hospitality-website-case-study/, locale);
+    assert.doesNotMatch(page.realWork, /terrassivilla-accessible-tourism-in-the-azores/, locale);
     assert.match(page.closing, /\/contact\?service=website/, locale);
     assert.equal((page.faq.match(/<details>/g) || []).length, 8, locale);
   }

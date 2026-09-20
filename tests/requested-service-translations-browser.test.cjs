@@ -7,7 +7,7 @@ const { chromium } = require('playwright');
 
 const baseUrl = process.env.STUDIO17_TEST_URL || 'http://127.0.0.1:8084';
 const targets = [
-  { route: '/services/website', language: 'he', original: 'Website services connected around how your business grows.', faq: 6 },
+  { route: '/services/website', language: 'he', original: 'Website services connected around how your business grows.', faq: 9 },
   { route: '/services/seo', language: 'pt-PT', original: 'SEO services that connect search demand to growth.', faq: 8 },
   { route: '/services/seo', language: 'es', original: 'SEO services that connect search demand to growth.', faq: 8 },
   { route: '/services/seo', language: 'he', original: 'SEO services that connect search demand to growth.', faq: 8 },

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-20 — Terrassi Villa case-study links
+
+- Replaced the retired Terrassi Villa article URL across the homepage, Work page, Website pages, Free Website proof, translated service content and service documentation with `/case-studies/terrassi-villa-accessible-hospitality-website-case-study`.
+- Standardised English showcase actions as “Read case study” and updated homepage translations and accessible labels to identify the destination correctly.
+
 ## 2026-09-19 — Category-aware article URLs
 
 - Separated published article routes by editorial category: `/insights/<slug>`, `/case-studies/<slug>` and `/news/<slug>`.

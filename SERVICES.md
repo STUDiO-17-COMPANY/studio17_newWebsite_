@@ -97,7 +97,7 @@ The SEO FAQ starts by answering what the service can include, then addresses tim
 
 - 100 Pratos links to `https://www.100pratos.pt/`.
 - PHÓS Optics links to `https://www.phosoptics.com/en`.
-- Terrassi Villa is marked in development and links to `/insights/terrassivilla-accessible-tourism-in-the-azores`.
+- Terrassi Villa is marked in development and links to `/case-studies/terrassi-villa-accessible-hospitality-website-case-study`.
 
 Project images must keep descriptive alternative text, explicit dimensions, lazy loading, and the approved destination.
 

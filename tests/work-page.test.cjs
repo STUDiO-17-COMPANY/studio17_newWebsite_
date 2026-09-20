@@ -22,7 +22,7 @@ test('Work page publishes the approved English-only client journey', () => {
 
   assert.equal((html.match(/class="work-project-card/g) || []).length, 4);
   for (const client of ['100 Pratos', 'PHÓS Optics', 'Terrassi Villa', 'RG Automotive']) assert.ok(html.includes(client), client);
-  for (const label of ['Visit website', 'Read article', 'View on Instagram']) assert.ok(html.includes(label), label);
+  for (const label of ['Visit website', 'Read case study', 'View on Instagram']) assert.ok(html.includes(label), label);
   assert.equal((html.match(/class="work-quote-card/g) || []).length, 4);
   assert.match(html, /id="work-video-testimonial-template"[\s\S]*?<video controls/);
   assert.equal((html.match(/<details>/g) || []).length, 8);
