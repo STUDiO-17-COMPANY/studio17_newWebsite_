@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-21 — Anima mobile usability
+
+- Rebuilt the mobile Anima panel as a viewport-safe modal sheet that respects dynamic viewport height and device safe areas from 320px upward.
+- Kept the close control and human-contact footer permanently visible while giving the conversation and question list independent touch scrolling.
+- Removed the open launcher overlap, locked background scrolling, added a subtle focus backdrop and contained keyboard focus within the mobile panel.
+- Expanded browser regression coverage across 320×568, 390×844 and 430×932 mobile viewports, including access to the final question and human-contact action.
+
 ## 2026-09-21 — Miguel Labs partner
 
 - Added Miguel Labs as `partner-13` to every partner marquee on the homepage, About page and Work page with its approved website destination.

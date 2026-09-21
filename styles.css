@@ -540,12 +540,23 @@ body.menu-open .anima { visibility: hidden; opacity: 0; pointer-events: none; }
 
 @media (max-width: 600px) {
   .anima { right: 12px; bottom: 78px; left: auto; }
-  .anima-panel { position: fixed; right: 12px; bottom: 144px; left: 12px; width: auto; max-height: calc(100vh - 168px); }
-  .anima-conversation { max-height: 190px; }
+  body.anima-open { overflow: hidden; overscroll-behavior: none; }
+  body.anima-open::before { content: ""; position: fixed; z-index: 191; inset: 0; background: rgba(15,23,42,.34); }
+  .anima-panel { position: fixed; top: max(8px,env(safe-area-inset-top)); right: 8px; bottom: max(8px,env(safe-area-inset-bottom)); left: 8px; width: auto; height: auto; max-height: none; grid-template-rows: auto minmax(120px,.85fr) minmax(150px,1.15fr) auto; border-width: 2px; animation-name: anima-mobile-panel-in; }
+  .anima-header { padding: 13px 14px; }
+  .anima-header-actions button { width: 40px; height: 40px; }
+  .anima-conversation { min-height: 0; max-height: none; overflow-y: auto; overscroll-behavior: contain; padding: 14px; touch-action: pan-y; -webkit-overflow-scrolling: touch; }
+  .anima-message { max-width: 96%; padding: 11px 12px; }
+  .anima-questions { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 12px 14px 14px; touch-action: pan-y; -webkit-overflow-scrolling: touch; }
   .anima-questions > div { grid-template-columns: 1fr; }
-  .anima.is-open .anima-launcher { width: 54px; background: var(--blue); transform: none; }
+  .anima-questions button { min-height: 52px; padding: 10px 12px; font-size: 12px; }
+  .anima-footer { position: relative; z-index: 1; padding: 12px 14px max(12px,env(safe-area-inset-bottom)); }
+  .anima-footer a { min-height: 40px; }
+  .anima.is-open .anima-launcher { visibility: hidden; width: 54px; background: var(--blue); pointer-events: none; transform: none; }
   .anima.is-open .anima-launcher > span { max-width: 0; opacity: 0; }
 }
+
+@keyframes anima-mobile-panel-in { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
 @media (hover: none) {
   .anima-launcher:hover { width: 54px; background: var(--blue); transform: none; }

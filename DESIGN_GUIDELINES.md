@@ -104,6 +104,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 - Use a 2.2-second three-dot preparation animation after a question is selected. Reduced-motion users receive the answer without the animated delay.
 - Do not show Anima while analytics consent or the mobile navigation is open, or on Contact, role, WIP and legal pages.
 - The panel must remain keyboard accessible, announce new answers politely and fit within the viewport without document-level overflow.
+- At 600px and below, open Anima as a viewport-safe modal sheet with safe-area spacing, a fixed header and human-contact footer, independently scrollable conversation and question regions, locked background scrolling, hidden launcher and contained keyboard focus.
 
 ### Work-in-progress page
 

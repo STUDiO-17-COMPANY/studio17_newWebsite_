@@ -18,6 +18,8 @@ assert.match(script, /reduceMotion\.matches \? 80 : 2200/);
 assert.match(script, /studio17:animaopen/);
 assert.match(script, /studio17:siteassistopen/);
 assert.match(script, /MutationObserver\(syncVisibility\)/);
+assert.match(script, /document\.body\.classList\.toggle\('anima-open', mobileOpen\)/);
+assert.match(script, /panel\.setAttribute\('aria-modal', String\(mobileOpen\)\)/);
 assert.equal((script.match(/id: '[^']+',\n\s+question:/g) || []).length, 6);
 assert.match(script, /anima\.hidden = unavailable/);
 assert.doesNotMatch(script, /setTimeout\(revealLauncher, 18000\)/);
@@ -36,5 +38,8 @@ assert.match(css, /\.anima-typing\s*\{[^}]*display:\s*flex/);
 assert.match(css, /\.anima-typing span\s*\{[^}]*display:\s*block[^}]*flex:\s*0 0 7px/);
 assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.anima-launcher/);
 assert.match(css, /@media \(max-width: 600px\)[\s\S]*?\.anima-panel\s*\{[^}]*position:\s*fixed/);
+assert.match(css, /@media \(max-width: 600px\)[\s\S]*?\.anima-panel\s*\{[^}]*top:\s*max\(8px,env\(safe-area-inset-top\)\)[^}]*bottom:\s*max\(8px,env\(safe-area-inset-bottom\)\)/);
+assert.match(css, /\.anima-questions\s*\{[^}]*overflow-y:\s*auto/);
+assert.match(css, /body\.anima-open\s*\{[^}]*overflow:\s*hidden/);
 
 console.log('Anima assistant tests passed.');

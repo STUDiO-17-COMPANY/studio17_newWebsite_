@@ -70,23 +70,53 @@ const baseUrl = process.env.STUDIO17_TEST_URL || 'http://127.0.0.1:4173';
     assert.equal(await consentPage.locator('[data-anima]').isVisible(), false, 'Anima must stay hidden behind consent');
     await consentPage.close();
 
-    const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
-    await mobile.addInitScript(() => {
-      localStorage.setItem('studio17-analytics-consent-v1', 'denied');
-      localStorage.setItem('studio17-language', 'en');
-    });
-    await mobile.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
-    await mobile.evaluate(() => scrollTo(0, document.documentElement.scrollHeight * .2));
-    const mobileAnima = mobile.locator('[data-anima]');
-    await mobileAnima.locator('.anima-launcher').waitFor({ state: 'visible' });
-    await mobileAnima.locator('.anima-launcher').click();
-    await mobile.waitForTimeout(350);
-    const panelBox = await mobileAnima.locator('.anima-panel').boundingBox();
-    assert.ok(panelBox.x >= 11 && panelBox.x + panelBox.width <= 379, 'mobile panel must stay inside the viewport');
-    assert.ok(panelBox.y >= 0 && panelBox.y + panelBox.height <= 844, 'mobile panel must stay vertically inside the viewport');
-    assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-    await mobile.screenshot({ path: path.join(os.tmpdir(), 'studio17-anima-mobile.png') });
-    await mobile.close();
+    for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }, { width: 430, height: 932 }]) {
+      const mobile = await browser.newPage({ viewport, isMobile: true, hasTouch: true, reducedMotion: 'reduce' });
+      await mobile.addInitScript(() => {
+        localStorage.setItem('studio17-analytics-consent-v1', 'denied');
+        localStorage.setItem('studio17-language', 'en');
+      });
+      await mobile.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+      await mobile.evaluate(() => scrollTo(0, document.documentElement.scrollHeight * .2));
+      const mobileAnima = mobile.locator('[data-anima]');
+      const mobileLauncher = mobileAnima.locator('.anima-launcher');
+      const mobilePanel = mobileAnima.locator('.anima-panel');
+      await mobileLauncher.waitFor({ state: 'visible' });
+      await mobileLauncher.click();
+      await mobile.waitForTimeout(120);
+      const panelBox = await mobilePanel.boundingBox();
+      const footerBox = await mobilePanel.locator('.anima-footer').boundingBox();
+      const closeBox = await mobilePanel.locator('.anima-close').boundingBox();
+      assert.ok(panelBox.x >= 7 && panelBox.x + panelBox.width <= viewport.width - 7, `${viewport.width}: mobile panel must stay horizontally inside the viewport`);
+      assert.ok(panelBox.y >= 7 && panelBox.y + panelBox.height <= viewport.height - 7, `${viewport.width}: mobile panel must stay vertically inside the viewport`);
+      assert.ok(footerBox.y >= panelBox.y && footerBox.y + footerBox.height <= panelBox.y + panelBox.height, `${viewport.width}: human contact must remain visible`);
+      assert.ok(closeBox.y >= panelBox.y && closeBox.y + closeBox.height <= panelBox.y + panelBox.height, `${viewport.width}: close control must remain visible`);
+      assert.equal(await mobilePanel.getAttribute('aria-modal'), 'true');
+      assert.equal(await mobile.evaluate(() => document.body.classList.contains('anima-open')), true);
+      assert.equal(await mobileLauncher.isVisible(), false, `${viewport.width}: launcher must not cover the open panel`);
+      assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+
+      if (viewport.width === 320) {
+        const questionRegion = mobileAnima.locator('.anima-questions');
+        await questionRegion.evaluate(element => { element.scrollTop = 0; });
+        await questionRegion.hover();
+        await mobile.mouse.wheel(0, 260);
+        await mobile.waitForTimeout(100);
+        assert.ok(await questionRegion.evaluate(element => element.scrollTop > 0), 'the mobile question list must support touch-style vertical scrolling');
+        const lastQuestion = mobileAnima.locator('[data-anima-question]').last();
+        await lastQuestion.scrollIntoViewIfNeeded();
+        await lastQuestion.click();
+        await mobile.waitForTimeout(120);
+        assert.match(await mobileAnima.locator('.anima-message-assistant').last().textContent(), /operates from Cyprus and Portugal/);
+        assert.equal(await mobilePanel.locator('[data-anima-human]').isVisible(), true, 'human contact must remain available after an answer');
+      }
+
+      await mobile.screenshot({ path: path.join(os.tmpdir(), `studio17-anima-mobile-${viewport.width}.png`) });
+      await mobilePanel.locator('.anima-close').click();
+      assert.equal(await mobile.evaluate(() => document.body.classList.contains('anima-open')), false);
+      assert.equal(await mobileLauncher.isVisible(), true);
+      await mobile.close();
+    }
 
     console.log('Anima assistant browser tests passed.');
   } finally {

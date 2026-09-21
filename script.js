@@ -977,6 +977,7 @@
     const questionList = anima.querySelector('[data-anima-questions]');
     const humanLink = anima.querySelector('[data-anima-human]');
     const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    const mobileDialog = matchMedia('(max-width: 600px)');
     let answerTimer = 0;
 
     launcher.setAttribute('aria-label', copy.openLabel);
@@ -1048,10 +1049,16 @@
       createMessage('assistant', copy.opening);
       setQuestionsDisabled(false);
     };
+    const syncPanelMode = () => {
+      const mobileOpen = anima.classList.contains('is-open') && mobileDialog.matches;
+      document.body.classList.toggle('anima-open', mobileOpen);
+      panel.setAttribute('aria-modal', String(mobileOpen));
+    };
     const setOpen = (open, { restoreFocus = false } = {}) => {
       anima.classList.toggle('is-open', open);
       launcher.setAttribute('aria-expanded', String(open));
       panel.hidden = !open;
+      syncPanelMode();
       if (open) {
         window.dispatchEvent(new CustomEvent('studio17:animaopen'));
         closeButton.focus();
@@ -1077,8 +1084,26 @@
       setOpen(false);
     });
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && anima.classList.contains('is-open')) setOpen(false, { restoreFocus: true });
+      if (!anima.classList.contains('is-open')) return;
+      if (event.key === 'Escape') {
+        setOpen(false, { restoreFocus: true });
+        return;
+      }
+      if (event.key !== 'Tab' || !mobileDialog.matches) return;
+      const focusable = [...panel.querySelectorAll('button:not([disabled]),a[href]')].filter(element => element.getClientRects().length);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     });
+    if (mobileDialog.addEventListener) mobileDialog.addEventListener('change', syncPanelMode);
+    else mobileDialog.addListener(syncPanelMode);
     const consentNotice = document.querySelector('.analytics-consent');
     if (consentNotice) new MutationObserver(syncVisibility).observe(consentNotice, { attributes: true, attributeFilter: ['hidden'] });
     new MutationObserver(syncVisibility).observe(document.body, { attributes: true, attributeFilter: ['class'] });
