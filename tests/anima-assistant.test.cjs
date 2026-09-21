@@ -19,6 +19,9 @@ assert.match(script, /studio17:animaopen/);
 assert.match(script, /studio17:siteassistopen/);
 assert.match(script, /MutationObserver\(syncVisibility\)/);
 assert.equal((script.match(/id: '[^']+',\n\s+question:/g) || []).length, 6);
+assert.match(script, /anima\.hidden = unavailable/);
+assert.doesNotMatch(script, /setTimeout\(revealLauncher, 18000\)/);
+assert.doesNotMatch(script, /class="anima-mark"/);
 
 for (const route of ['/contact', '/career-role', '/wip', '/privacy-policy', '/cookie-policy', '/terms']) {
   assert.ok(script.includes(`'${route}'`), `Anima must be excluded from ${route}`);
@@ -26,8 +29,11 @@ for (const route of ['/contact', '/career-role', '/wip', '/privacy-policy', '/co
 
 assert.match(css, /\.anima\s*\{[^}]*bottom:\s*86px/);
 assert.match(css, /\.anima-launcher\s*\{[^}]*width:\s*54px/);
+assert.match(css, /\.anima-launcher\s*\{[^}]*background:\s*var\(--blue\)/);
 assert.match(css, /\.anima-panel\s*\{[^}]*border:\s*3px solid var\(--blue\)/);
 assert.match(css, /\.anima-typing span[^}]*animation:\s*anima-typing/);
+assert.match(css, /\.anima-typing\s*\{[^}]*display:\s*flex/);
+assert.match(css, /\.anima-typing span\s*\{[^}]*display:\s*block[^}]*flex:\s*0 0 7px/);
 assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.anima-launcher/);
 assert.match(css, /@media \(max-width: 600px\)[\s\S]*?\.anima-panel\s*\{[^}]*position:\s*fixed/);
 

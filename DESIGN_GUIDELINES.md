@@ -99,7 +99,7 @@ Future pages may vary their content and hero image but not the shared hero geome
 ### Anima quick-answer assistant
 
 - Anima is a deterministic support component, not a generative chatbot. It uses only approved questions and prepared answers and identifies itself as a quick-answer assistant.
-- Stack the compact Anima launcher above the contextual assistance badge in the bottom-right corner. Opening either panel closes the other.
+- Keep the compact blue Anima launcher available immediately after consent is resolved. Stack it above the engagement-delayed contextual assistance badge in the bottom-right corner; opening either panel closes the other.
 - Keep “Talk with a human” permanently visible in the panel footer. The footer also states that the experience uses prepared answers rather than live chat.
 - Use a 2.2-second three-dot preparation animation after a question is selected. Reduced-motion users receive the answer without the animated delay.
 - Do not show Anima while analytics consent or the mobile navigation is open, or on Contact, role, WIP and legal pages.

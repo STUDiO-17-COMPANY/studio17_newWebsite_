@@ -495,15 +495,14 @@ html[dir="rtl"] .site-assist-kicker { margin-right: 0; margin-left: 44px; }
 .anima { position: fixed; z-index: 192; right: max(20px,calc((100vw - var(--shell)) / 2)); bottom: 86px; left: auto; }
 .anima[hidden], .anima-panel[hidden] { display: none; }
 body.menu-open .anima { visibility: hidden; opacity: 0; pointer-events: none; }
-.anima-launcher { display: flex; width: 54px; height: 54px; align-items: center; gap: 11px; border: 0; padding: 0 16px; overflow: hidden; color: var(--white); background: var(--ink); box-shadow: 0 14px 38px rgba(15,23,42,.22); cursor: pointer; white-space: nowrap; transition: width .32s var(--ease), background .2s ease, transform .2s var(--ease); animation: site-assist-arrive .45s var(--ease) both; }
+.anima-launcher { display: flex; width: 54px; height: 54px; align-items: center; gap: 11px; border: 0; padding: 0 16px; overflow: hidden; color: var(--white); background: var(--blue); box-shadow: 0 14px 38px rgba(15,23,42,.22); cursor: pointer; white-space: nowrap; transition: width .32s var(--ease), background .2s ease, transform .2s var(--ease); animation: site-assist-arrive .45s var(--ease) both; }
 .anima-launcher > .lucide { width: 22px; height: 22px; flex: 0 0 22px; }
 .anima-launcher > span { max-width: 0; overflow: hidden; font-size: 13px; font-weight: 800; opacity: 0; transition: max-width .32s var(--ease), opacity .18s ease; }
-.anima-launcher:hover, .anima-launcher:focus-visible, .anima.is-open .anima-launcher { width: 148px; background: var(--blue); transform: translateY(-2px); }
+.anima-launcher:hover, .anima-launcher:focus-visible, .anima.is-open .anima-launcher { width: 148px; background: var(--ink); transform: translateY(-2px); }
 .anima-launcher:hover > span, .anima-launcher:focus-visible > span, .anima.is-open .anima-launcher > span { max-width: 82px; opacity: 1; }
 .anima-launcher:focus-visible, .anima-close:focus-visible, .anima-reset:focus-visible, .anima-questions button:focus-visible, .anima-footer a:focus-visible, .anima-message a:focus-visible { outline: 3px solid #8fb1ff; outline-offset: 3px; }
 .anima-panel { position: absolute; right: 0; bottom: calc(100% + 12px); left: auto; width: min(420px,calc(100vw - 40px)); max-height: min(650px,calc(100vh - 180px)); display: grid; grid-template-rows: auto minmax(110px,auto) auto auto; overflow: hidden; border: 3px solid var(--blue); color: var(--ink); background: var(--paper); box-shadow: 0 24px 70px rgba(15,23,42,.25); animation: site-assist-panel-in .24s var(--ease) both; }
-.anima-header { display: grid; grid-template-columns: 42px minmax(0,1fr) auto; align-items: center; gap: 12px; border-bottom: 1px solid #cbd4e1; padding: 16px; background: var(--white); }
-.anima-mark { display: grid; width: 42px; height: 42px; place-items: center; color: var(--white); background: var(--blue); font-size: 18px; font-weight: 900; }
+.anima-header { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 12px; border-bottom: 1px solid #cbd4e1; padding: 16px; background: var(--white); }
 .anima-header p { margin: 0 0 2px; color: #647086; font-size: 9px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .anima-header h2 { margin: 0; font-size: 23px; line-height: 1; letter-spacing: -.04em; }
 .anima-header-actions { display: flex; align-items: center; gap: 4px; }
@@ -517,8 +516,8 @@ body.menu-open .anima { visibility: hidden; opacity: 0; pointer-events: none; }
 .anima-message-user { align-self: flex-end; color: var(--white); background: var(--blue); }
 .anima-message a { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; color: var(--blue); font-weight: 850; }
 .anima-message a .lucide { width: 15px; height: 15px; }
-.anima-typing { min-width: 70px; min-height: 43px; flex-direction: row; align-items: center; gap: 5px; }
-.anima-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); animation: anima-typing 1s ease-in-out infinite; }
+.anima-typing { min-width: 70px; min-height: 43px; display: flex; flex-direction: row; align-items: center; gap: 5px; }
+.anima-typing span { width: 7px; height: 7px; display: block; flex: 0 0 7px; border-radius: 50%; background: var(--blue); animation: anima-typing 1s ease-in-out infinite; }
 .anima-typing span:nth-child(2) { animation-delay: .15s; }
 .anima-typing span:nth-child(3) { animation-delay: .3s; }
 .anima-questions { border-top: 1px solid #cbd4e1; padding: 14px 16px 16px; background: var(--white); }
@@ -544,12 +543,12 @@ body.menu-open .anima { visibility: hidden; opacity: 0; pointer-events: none; }
   .anima-panel { position: fixed; right: 12px; bottom: 144px; left: 12px; width: auto; max-height: calc(100vh - 168px); }
   .anima-conversation { max-height: 190px; }
   .anima-questions > div { grid-template-columns: 1fr; }
-  .anima.is-open .anima-launcher { width: 54px; background: var(--ink); transform: none; }
+  .anima.is-open .anima-launcher { width: 54px; background: var(--blue); transform: none; }
   .anima.is-open .anima-launcher > span { max-width: 0; opacity: 0; }
 }
 
 @media (hover: none) {
-  .anima-launcher:hover { width: 54px; background: var(--ink); transform: none; }
+  .anima-launcher:hover { width: 54px; background: var(--blue); transform: none; }
   .anima-launcher:hover > span { max-width: 0; opacity: 0; }
 }
 

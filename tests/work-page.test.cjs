@@ -20,11 +20,13 @@ test('Work page publishes the approved English-only client journey', () => {
     .map(className => html.indexOf(className));
   assert.ok(order.every((position, index) => position >= 0 && (index === 0 || position > order[index - 1])), 'Work page sections must follow the approved order');
 
-  assert.equal((html.match(/class="work-project-card/g) || []).length, 5);
-  for (const client of ['100 Pratos', 'PHÓS Optics', 'Terrassi Villa', 'RG Automotive', 'Teaching Economics']) assert.ok(html.includes(client), client);
+  assert.equal((html.match(/class="work-project-card/g) || []).length, 6);
+  for (const client of ['100 Pratos', 'PHÓS Optics', 'Terrassi Villa', 'Nerouppos Barber Shop', 'RG Automotive', 'Teaching Economics']) assert.ok(html.includes(client), client);
   for (const label of ['Visit website', 'Read case study', 'View on Instagram', 'View video']) assert.ok(html.includes(label), label);
   assert.match(html, /href="https:\/\/www\.instagram\.com\/p\/DaPSeSJsA-o\/"[^>]*aria-label="View the Teaching Economics video on Instagram"/);
   assert.match(html, /Video production · Paid advertising · Business consulting/);
+  assert.match(html, /href="\/case-studies\/nerouppos-barber-shop-google-reviews-nfc"[^>]*aria-label="Read the Nerouppos Barber Shop case study"/);
+  assert.match(html, /src="Images\/NeuropposBarberShop\.webp"/);
   assert.equal((html.match(/class="work-quote-card/g) || []).length, 4);
   assert.match(html, /id="work-video-testimonial-template"[\s\S]*?<video controls/);
   assert.equal((html.match(/<details>/g) || []).length, 8);

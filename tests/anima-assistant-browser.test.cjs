@@ -19,12 +19,14 @@ const baseUrl = process.env.STUDIO17_TEST_URL || 'http://127.0.0.1:4173';
       localStorage.setItem('studio17-language', 'en');
     });
     await desktop.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
-    await desktop.evaluate(() => scrollTo(0, document.documentElement.scrollHeight * .2));
 
     const anima = desktop.locator('[data-anima]');
     const launcher = anima.locator('.anima-launcher');
     const siteLauncher = desktop.locator('.site-assist-launcher');
     await launcher.waitFor({ state: 'visible' });
+    assert.equal(await siteLauncher.isVisible(), false, 'the contextual assistance launcher must remain engagement-delayed');
+    assert.equal(await launcher.evaluate(element => getComputedStyle(element).backgroundColor), 'rgb(4, 86, 254)');
+    await desktop.evaluate(() => scrollTo(0, document.documentElement.scrollHeight * .2));
     await siteLauncher.waitFor({ state: 'visible' });
     const animaBox = await launcher.boundingBox();
     const siteBox = await siteLauncher.boundingBox();
@@ -41,6 +43,10 @@ const baseUrl = process.env.STUDIO17_TEST_URL || 'http://127.0.0.1:4173';
 
     await anima.locator('[data-anima-question="services"]').click();
     assert.equal(await anima.locator('[data-anima-typing]').isVisible(), true);
+    assert.deepEqual(await anima.locator('[data-anima-typing] span').first().evaluate(element => {
+      const style = getComputedStyle(element);
+      return { display: style.display, width: style.width, height: style.height, animation: style.animationName };
+    }), { display: 'block', width: '7px', height: '7px', animation: 'anima-typing' });
     assert.equal(await anima.locator('[data-anima-question]:disabled').count(), 6);
     await desktop.waitForTimeout(2300);
     assert.equal(await anima.locator('[data-anima-typing]').count(), 0);

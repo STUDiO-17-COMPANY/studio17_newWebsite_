@@ -966,7 +966,7 @@
     anima.className = 'anima';
     anima.dataset.anima = '';
     anima.hidden = true;
-    anima.innerHTML = `<button class="anima-launcher" type="button" aria-expanded="false" aria-controls="anima-panel"><i data-lucide="message-circle" aria-hidden="true"></i><span>${copy.launcher}</span></button><section class="anima-panel" id="anima-panel" role="dialog" aria-modal="false" aria-labelledby="anima-title" hidden data-i18n-skip><header class="anima-header"><span class="anima-mark" aria-hidden="true">A</span><div><p>${copy.assistantLabel}</p><h2 id="anima-title">${copy.name}</h2></div><div class="anima-header-actions"><button class="anima-reset" type="button" aria-label="${copy.resetLabel}" title="${copy.resetLabel}"><i data-lucide="rotate-ccw" aria-hidden="true"></i></button><button class="anima-close" type="button" aria-label="${copy.closeLabel}"><i data-lucide="x" aria-hidden="true"></i></button></div></header><div class="anima-conversation" data-anima-conversation aria-live="polite" aria-relevant="additions"></div><div class="anima-questions"><p>${copy.prompt}</p><div data-anima-questions></div></div><footer class="anima-footer"><a href="/contact?source=anima" data-anima-human>${copy.human}<i data-lucide="arrow-up-right" aria-hidden="true"></i></a><small>${copy.disclosure}</small></footer></section>`;
+    anima.innerHTML = `<button class="anima-launcher" type="button" aria-expanded="false" aria-controls="anima-panel"><i data-lucide="message-circle" aria-hidden="true"></i><span>${copy.launcher}</span></button><section class="anima-panel" id="anima-panel" role="dialog" aria-modal="false" aria-labelledby="anima-title" hidden data-i18n-skip><header class="anima-header"><div><p>${copy.assistantLabel}</p><h2 id="anima-title">${copy.name}</h2></div><div class="anima-header-actions"><button class="anima-reset" type="button" aria-label="${copy.resetLabel}" title="${copy.resetLabel}"><i data-lucide="rotate-ccw" aria-hidden="true"></i></button><button class="anima-close" type="button" aria-label="${copy.closeLabel}"><i data-lucide="x" aria-hidden="true"></i></button></div></header><div class="anima-conversation" data-anima-conversation aria-live="polite" aria-relevant="additions"></div><div class="anima-questions"><p>${copy.prompt}</p><div data-anima-questions></div></div><footer class="anima-footer"><a href="/contact?source=anima" data-anima-human>${copy.human}<i data-lucide="arrow-up-right" aria-hidden="true"></i></a><small>${copy.disclosure}</small></footer></section>`;
     document.body.appendChild(anima);
 
     const launcher = anima.querySelector('.anima-launcher');
@@ -978,7 +978,6 @@
     const humanLink = anima.querySelector('[data-anima-human]');
     const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
     let answerTimer = 0;
-    let engaged = false;
 
     launcher.setAttribute('aria-label', copy.openLabel);
     humanLink.href = localiseServicesMenuHref(humanLink.getAttribute('href'));
@@ -1064,18 +1063,8 @@
     };
     const syncVisibility = () => {
       const unavailable = analyticsNoticeVisible() || document.body.classList.contains('menu-open');
-      anima.hidden = !engaged || unavailable;
+      anima.hidden = unavailable;
       if (unavailable && anima.classList.contains('is-open')) setOpen(false);
-    };
-    const revealLauncher = () => {
-      engaged = true;
-      syncVisibility();
-    };
-    const revealFromScroll = () => {
-      const scrollable = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
-      if (scrollY / scrollable < .12) return;
-      revealLauncher();
-      window.removeEventListener('scroll', revealFromScroll);
     };
 
     launcher.addEventListener('click', () => setOpen(launcher.getAttribute('aria-expanded') !== 'true'));
@@ -1083,7 +1072,6 @@
     resetButton.addEventListener('click', resetConversation);
     window.addEventListener('studio17:siteassistopen', () => setOpen(false));
     window.addEventListener('studio17:analyticsconsent', syncVisibility);
-    window.addEventListener('scroll', revealFromScroll, { passive: true });
     document.addEventListener('click', event => {
       if (!anima.classList.contains('is-open') || anima.contains(event.target)) return;
       setOpen(false);
@@ -1094,10 +1082,10 @@
     const consentNotice = document.querySelector('.analytics-consent');
     if (consentNotice) new MutationObserver(syncVisibility).observe(consentNotice, { attributes: true, attributeFilter: ['hidden'] });
     new MutationObserver(syncVisibility).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    window.setTimeout(revealLauncher, 18000);
     renderQuestions();
     resetConversation();
     refreshIcons();
+    syncVisibility();
   };
   createAnima();
 

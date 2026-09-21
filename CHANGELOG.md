@@ -6,6 +6,11 @@
 - Added a 2.2-second preparation animation, answer-specific links, conversation reset and a permanently available human-contact path.
 - Stacked Anima above the existing guidance launcher, made the two panels mutually exclusive and suppressed both experiences around consent and mobile-navigation states.
 - Added keyboard, screen-reader, reduced-motion and responsive behavior while explicitly identifying the component as prepared answers rather than live chat.
+- Made the blue Anima launcher immediately available after consent, removed the decorative initial tile and corrected the typing dots so their size and vertical movement render reliably.
+
+## 2026-09-20 — Nerouppos Barber Shop work
+
+- Added Nerouppos Barber Shop to the Work gallery with the supplied 16:9 activation image and its published Google Reviews NFC case study.
 
 ## 2026-09-20 — Article sidebar CTA icon alignment
 

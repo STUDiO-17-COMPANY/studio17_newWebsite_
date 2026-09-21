@@ -85,7 +85,7 @@ Production was rechecked on 2026-09-05: the Terrassi Villa article returned HTTP
 - [x] Keep **Talk with a human** available at every step and route it to the appropriate contact path.
 - [x] Verify keyboard access, screen-reader announcements, reduced motion, mobile layout and non-overlap with consent or conversion controls before release.
 
-The first production version is intentionally English-only. Its component-owned copy is isolated so additional language packs can be added after review without changing the conversation behaviour.
+The first production version is intentionally English-only. Its component-owned copy is isolated so additional language packs can be added after review without changing the conversation behaviour. Anima is available immediately after consent is resolved; the separate contextual assistance prompt remains engagement-delayed.
 
 ## Trustpilot integration
 
