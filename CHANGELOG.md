@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-21 — Miguel Labs partner
+
+- Added Miguel Labs as `partner-13` to every partner marquee on the homepage, About page and Work page with its approved website destination.
+- Added the official Miguel Labs mark from its own website as a local SVG asset, with accessible labels and hover identification.
+- Expanded the shared twelve-partner row geometry and regression coverage so the continuous carousel remains seamless without cropped logos.
+
 ## 2026-09-20 — Anima quick-answer assistant
 
 - Added the English-first Anima assistant with six approved questions covering services, website pricing, SEO, project process, the free website offer and remote collaboration.
