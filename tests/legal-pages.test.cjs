@@ -34,10 +34,11 @@ assert.match(privacy, /Vercel[\s\S]*Resend[\s\S]*Google Analytics[\s\S]*Google W
 assert.match(privacy, /commissioner@dataprotection\.gov\.cy/);
 
 const cookies = fs.readFileSync(path.join(root, pages.cookies.file), 'utf8');
-assert.match(cookies, /studio17-language/);
-assert.match(cookies, /studio17-analytics-consent-v1/);
-assert.match(cookies, /_ga_GVWS39DSNX/);
-assert.match(cookies, /G-GVWS39DSNX/);
+assert.match(cookies, /Language preference/);
+assert.match(cookies, /Analytics preference/);
+assert.match(cookies, /Analytics visitor cookie/);
+assert.match(cookies, /Analytics session cookie/);
+assert.doesNotMatch(cookies, /studio17-language|studio17-analytics-consent-v1|_ga(?:_GVWS39DSNX)?|G-GVWS39DSNX/);
 assert.match(cookies, /data-open-analytics-settings/);
 
 for (const language of languages) {

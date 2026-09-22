@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-22 — Clearer Cookie Policy labels
+
+- Replaced internal storage keys and Google Analytics cookie identifiers in the public Cookie Policy table with concise, reader-friendly names.
+- Removed the GA4 measurement ID from the public explanation while preserving the actual Analytics configuration and consent behavior.
+- Applied the same wording approach across English, Portuguese, Spanish, Greek, Russian and Hebrew.
+
 ## 2026-09-21 — Anima mobile usability
 
 - Rebuilt the mobile Anima panel as a viewport-safe modal sheet that respects dynamic viewport height and device safe areas from 320px upward.
