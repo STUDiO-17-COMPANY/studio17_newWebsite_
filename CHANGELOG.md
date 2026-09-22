@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-22 — Nerouppos case study on SEO Limassol
+
+- Linked the Nerouppos card image and action to its published Google Reviews NFC case study across the SEO Limassol page translations.
+- Replaced the coming-soon action label with a link to read the case study.
+
 ## 2026-09-22 — Clearer Cookie Policy labels
 
 - Replaced internal storage keys and Google Analytics cookie identifiers in the public Cookie Policy table with concise, reader-friendly names.
