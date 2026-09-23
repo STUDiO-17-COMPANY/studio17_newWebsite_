@@ -24,13 +24,13 @@ const baseUrl = process.env.STUDIO17_TEST_URL || 'http://127.0.0.1:4173';
     const launcher = anima.locator('.anima-launcher');
     const siteLauncher = desktop.locator('.site-assist-launcher');
     await launcher.waitFor({ state: 'visible' });
-    assert.equal(await siteLauncher.isVisible(), false, 'the contextual assistance launcher must remain engagement-delayed');
+    assert.equal(await siteLauncher.isVisible(), true, 'guidance must be available immediately');
     assert.equal(await launcher.evaluate(element => getComputedStyle(element).backgroundColor), 'rgb(4, 86, 254)');
     await desktop.evaluate(() => scrollTo(0, document.documentElement.scrollHeight * .2));
     await siteLauncher.waitFor({ state: 'visible' });
     const animaBox = await launcher.boundingBox();
     const siteBox = await siteLauncher.boundingBox();
-    assert.ok(animaBox.y + animaBox.height < siteBox.y, 'Anima must sit above the contextual assistance launcher');
+    assert.ok(siteBox.y + siteBox.height < animaBox.y, 'guidance must sit above Anima');
     assert.equal(await anima.locator('i[data-lucide]').count(), 0, 'Lucide placeholders must be rendered');
 
     await launcher.click();
@@ -54,8 +54,10 @@ const baseUrl = process.env.STUDIO17_TEST_URL || 'http://127.0.0.1:4173';
     assert.match(await anima.locator('.anima-message-assistant').last().locator('a').getAttribute('href'), /^\/services\?source=anima$/);
     await desktop.screenshot({ path: path.join(os.tmpdir(), 'studio17-anima-desktop.png') });
 
+    assert.equal(await siteLauncher.isVisible(), false, 'open Anima must not overlap guidance');
+    await anima.locator('.anima-close').click();
     await siteLauncher.click();
-    assert.equal(await launcher.getAttribute('aria-expanded'), 'false', 'opening site assistance must close Anima');
+    assert.equal(await launcher.getAttribute('aria-expanded'), 'false');
     await siteLauncher.click();
     await launcher.click();
     assert.equal(await siteLauncher.getAttribute('aria-expanded'), 'false', 'opening Anima must close site assistance');

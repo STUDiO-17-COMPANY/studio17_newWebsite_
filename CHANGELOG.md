@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-23 — Guidance launcher visibility and spacing
+
+- Show guidance immediately after consent without a time or scroll threshold.
+- Place guidance above Anima with a 12px gap on desktop and mobile; account for device safe areas and keep the guidance panel above both buttons.
+- Hide guidance while Anima is open and restore it when closed.
+
 ## 2026-09-22 — Nerouppos case study on SEO Limassol
 
 - Linked the Nerouppos card image and action to its published Google Reviews NFC case study across the SEO Limassol page translations.

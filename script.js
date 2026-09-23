@@ -866,16 +866,9 @@
       const notice = document.querySelector('.analytics-consent');
       return notice && !notice.hidden;
     };
-    let engaged = false;
     const revealLauncher = () => {
-      engaged = true;
-      if (!analyticsNoticeVisible()) assistance.hidden = false;
-    };
-    const revealFromScroll = () => {
-      const scrollable = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
-      if (scrollY / scrollable < .18) return;
-      revealLauncher();
-      window.removeEventListener('scroll', revealFromScroll);
+      assistance.hidden = Boolean(analyticsNoticeVisible());
+      if (assistance.hidden) setOpen(false);
     };
 
     launcher.addEventListener('click', () => setOpen(launcher.getAttribute('aria-expanded') !== 'true'));
@@ -889,9 +882,10 @@
       if (event.key === 'Escape' && assistance.classList.contains('is-open')) setOpen(false, { restoreFocus: true });
     });
     window.addEventListener('studio17:languagechange', updateCopy);
-    window.addEventListener('studio17:analyticsconsent', () => { if (engaged) assistance.hidden = false; });
-    window.addEventListener('scroll', revealFromScroll, { passive: true });
-    window.setTimeout(revealLauncher, 12000);
+    window.addEventListener('studio17:analyticsconsent', revealLauncher);
+    const consentNotice = document.querySelector('.analytics-consent');
+    if (consentNotice) new MutationObserver(revealLauncher).observe(consentNotice, { attributes: true, attributeFilter: ['hidden'] });
+    revealLauncher();
     updateCopy();
     window.lucide?.createIcons({ attrs: { 'stroke-width': 2 } });
   };
