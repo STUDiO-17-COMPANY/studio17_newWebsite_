@@ -111,6 +111,11 @@ const server = http.createServer((request, response) => {
   const url = new URL(request.url || '/', 'http://localhost');
   const pathname = decodeURIComponent(url.pathname).replace(/\/+$/, '') || '/';
 
+  if (pathname === '/llms.txt') {
+    require('./api/llms')(request, response);
+    return;
+  }
+
   if (legacyPages.has(pathname)) {
     response.writeHead(308, { Location: `${legacyPages.get(pathname)}${url.search}` });
     response.end();

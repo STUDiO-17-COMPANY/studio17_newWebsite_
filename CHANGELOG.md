@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-23 — Dynamic LLM discovery directory
+
+- Added `/llms.txt` as a plain-text server route using the existing published English article feed and canonical URL helper.
+- Added curated company/service links, cached publication updates and shared build-time describedby metadata for HTML pages.
+
 ## 2026-09-23 — Guidance launcher visibility and spacing
 
 - Show guidance immediately after consent without a time or scroll threshold.
