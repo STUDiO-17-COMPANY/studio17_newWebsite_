@@ -2,7 +2,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { CareersError, getPublishedRoleBySlug } = require('./_google-careers');
+const { CareersError, getPublishedRole, getPublishedRoleBySlug } = require('../server/_google-careers');
 
 const SITE_URL = 'https://www.studio17.world';
 
@@ -125,6 +125,25 @@ module.exports = async function careerPageHandler(request, response) {
   }
 
   const url = new URL(request.url || '/', `https://${request.headers.host || 'www.studio17.world'}`);
+  if (url.searchParams.get('legacy') === '1') {
+    let legacySlug = (url.searchParams.get('role') || '').toLowerCase();
+    const id = url.searchParams.get('id') || '';
+
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(legacySlug) && /^[A-Za-z0-9_-]{10,200}$/.test(id)) {
+      try {
+        legacySlug = (await getPublishedRole(id, request)).slug;
+      } catch {
+        legacySlug = '';
+      }
+    }
+
+    response.statusCode = 308;
+    response.setHeader('Location', legacySlug ? `/careers/${encodeURIComponent(legacySlug)}` : '/careers');
+    response.setHeader('Cache-Control', 'public, max-age=3600');
+    response.end();
+    return;
+  }
+
   const slug = (url.searchParams.get('slug') || '').toLowerCase();
   const template = readTemplate();
 

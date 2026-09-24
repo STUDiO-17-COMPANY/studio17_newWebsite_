@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const { listPublishedArticles } = require('./_google-articles');
-const { renderArticleCard } = require('./_article-listing');
+const { listPublishedArticles } = require('../server/_google-articles');
+const { renderArticleCard } = require('../server/_article-listing');
 
 const template = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
 const marker = '<!-- ARTICLE_HOME_FEED -->';

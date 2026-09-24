@@ -1,8 +1,8 @@
 'use strict';
 
-const { listPublishedRoles } = require('./_google-careers');
-const { listPublishedArticles } = require('./_google-articles');
-const { getArticlePath } = require('./_article-render');
+const { listPublishedRoles } = require('../server/_google-careers');
+const { listPublishedArticles } = require('../server/_google-articles');
+const { getArticlePath } = require('../server/_article-render');
 
 const SITE_URL = 'https://www.studio17.world';
 const STATIC_LASTMOD = '2026-09-19';

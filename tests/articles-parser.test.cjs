@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('node:assert/strict');
-const { buildArticle } = require('../api/_google-articles');
+const { buildArticle } = require('../server/_google-articles');
 
 const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
   paragraph: {

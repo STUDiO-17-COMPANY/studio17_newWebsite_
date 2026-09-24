@@ -2,8 +2,8 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { getPublishedArticleBySlug } = require('./_google-articles');
-const { buildSeo, escapeHtml, getArticlePath, getArticleSection, renderArticleMain } = require('./_article-render');
+const { getPublishedArticleBySlug } = require('../server/_google-articles');
+const { buildSeo, escapeHtml, getArticlePath, getArticleSection, renderArticleMain } = require('../server/_article-render');
 
 let cachedTemplate = '';
 

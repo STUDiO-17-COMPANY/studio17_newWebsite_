@@ -46,7 +46,7 @@
     { "source": "/case-studies/:slug", "destination": "/api/article-page?slug=:slug&section=case-studies" },
     { "source": "/news/:slug", "destination": "/api/article-page?slug=:slug&section=news" },
     { "source": "/careers/:slug", "destination": "/api/career-page?slug=:slug" },
-    { "source": "/career-role", "destination": "/api/legacy-career" },
+    { "source": "/career-role", "destination": "/api/career-page?legacy=1" },
     { "source": "/sitemap.xml", "destination": "/api/sitemap" }
   ]
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-const { getArticleImage, sendError } = require('./_google-articles');
+const { getArticleImage, sendError } = require('../server/_google-articles');
 
 module.exports = async function articleImageHandler(request, response) {
   if (request.method !== 'GET' && request.method !== 'HEAD') {

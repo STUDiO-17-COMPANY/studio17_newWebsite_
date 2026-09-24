@@ -2,9 +2,9 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { listPublishedRoles } = require('./_google-careers');
-const { listPublishedArticles } = require('./_google-articles');
-const { getArticlePath } = require('./_article-render');
+const { listPublishedRoles } = require('../server/_google-careers');
+const { listPublishedArticles } = require('../server/_google-articles');
+const { getArticlePath } = require('../server/_article-render');
 
 const TEMPLATE_PATH = path.join(__dirname, 'sitemap-template.html');
 const ARTICLE_MARKER = '<!-- STUDIO17_DYNAMIC_ARTICLE_LINKS -->';

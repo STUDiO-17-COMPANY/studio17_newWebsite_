@@ -1,7 +1,7 @@
 'use strict';
 
-const { listPublishedArticles } = require('./_google-articles');
-const { getArticlePath } = require('./_article-render');
+const { listPublishedArticles } = require('../server/_google-articles');
+const { getArticlePath } = require('../server/_article-render');
 const SITE = 'https://www.studio17.world';
 const text = value => String(value || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().replace(/[\\`*_\[\]<>]/g, '\\$&');
 const groups = [

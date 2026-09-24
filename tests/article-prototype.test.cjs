@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const demo = require('../article-demo.cjs');
-const { buildSeo, getArticlePath, renderArticleMain } = require('../api/_article-render');
+const { buildSeo, getArticlePath, renderArticleMain } = require('../server/_article-render');
 
 const root = path.resolve(__dirname, '..');
 const template = fs.readFileSync(path.join(root, 'article.html'), 'utf8');

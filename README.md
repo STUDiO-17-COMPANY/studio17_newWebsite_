@@ -35,7 +35,8 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `contact.js` / `api/contact.js` — contact-form interaction, validation and Resend delivery.
 - `article-feed.js` — progressive language enhancement for article feeds; English article cards and archive pagination already exist in the server response without JavaScript.
 - `article.js` — article progress, sharing, compact mobile contents and the looping related-article carousel used when four or more related articles are configured.
-- `api/` — Vercel Functions for authenticated, read-only Drive/Docs access, role validation, article rendering and restricted article-media delivery.
+- `api/` — the 12 deployable Vercel route handlers, kept within the Hobby-plan function limit.
+- `server/` — shared article, career, rendering and URL helpers imported by those route handlers; these files are deliberately outside `api/` so Vercel does not count them as independent Functions.
 - `.env.example` — non-secret environment-variable contract for Careers, Articles and contact delivery.
 - `vercel.json` — Vercel Function, redirect and clean-route configuration.
 - `dev-server.cjs` — dependency-free local server that mirrors the production clean routes.

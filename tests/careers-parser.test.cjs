@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('node:assert/strict');
-const { buildRole, parseRoleDocument, slugify } = require('../api/_google-careers');
+const { buildRole, parseRoleDocument, slugify } = require('../server/_google-careers');
 
 const paragraph = (text, bullet = false, style = 'NORMAL_TEXT') => ({
   paragraph: {

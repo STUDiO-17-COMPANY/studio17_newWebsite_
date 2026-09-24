@@ -1,6 +1,6 @@
 'use strict';
 
-const { listPublishedRoles, sendError, sendJson } = require('./_google-careers');
+const { listPublishedRoles, sendError, sendJson } = require('../server/_google-careers');
 
 module.exports = async function careersHandler(request, response) {
   if (request.method !== 'GET') {

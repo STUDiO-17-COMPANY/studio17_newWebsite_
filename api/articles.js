@@ -1,6 +1,6 @@
 'use strict';
 
-const { listPublishedArticles, sendError, sendJson } = require('./_google-articles');
+const { listPublishedArticles, sendError, sendJson } = require('../server/_google-articles');
 
 module.exports = async function articlesHandler(request, response) {
   if (request.method !== 'GET' && request.method !== 'HEAD') {

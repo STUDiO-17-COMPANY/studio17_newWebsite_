@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
-const { getArticlePath } = require('../api/_article-render');
+const { getArticlePath } = require('../server/_article-render');
 let articles = [
   { slug: 'older', category: 'Insight', title: 'Older', summary: 'Existing summary', publishedDate: '2026-08-01', availableLanguages: ['en', 'el'] },
   { slug: 'newer', category: 'Insight', title: 'New [article]', summary: 'One\nline <b>description</b>', publishedDate: '2026-09-01', availableLanguages: ['en'] },
@@ -13,8 +13,8 @@ let articles = [
 ];
 let fail = false;
 const context = { module: { exports: {} }, console: { error() {} }, require(name) {
-  if (name === './_article-render') return { getArticlePath };
-  if (name === './_google-articles') return { async listPublishedArticles(req, locale) {
+  if (name === '../server/_article-render') return { getArticlePath };
+  if (name === '../server/_google-articles') return { async listPublishedArticles(req, locale) {
     assert.equal(locale, 'en'); if (fail) throw Error('upstream failure'); return { articles };
   } };
   throw Error(name);

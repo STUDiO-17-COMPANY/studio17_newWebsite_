@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const { listPublishedArticles, SUPPORTED_LOCALES } = require('./_google-articles');
-const { escapeHtml, renderArticleCard } = require('./_article-listing');
+const { listPublishedArticles, SUPPORTED_LOCALES } = require('../server/_google-articles');
+const { escapeHtml, renderArticleCard } = require('../server/_article-listing');
 
 const SITE_URL = 'https://www.studio17.world';
 const PAGE_SIZE = 9;

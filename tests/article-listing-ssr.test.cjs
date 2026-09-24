@@ -1,6 +1,8 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const test = require('node:test');
 const { renderHomePage } = require('../api/home-page');
 const { PAGE_SIZE, renderNewsPage } = require('../api/news-page');
@@ -54,4 +56,17 @@ test('News category filters work in the first HTML without JavaScript', () => {
   assert.equal(cardCount(result.body), 5);
   assert.match(result.body, /data-article-category="Insight"/);
   assert.doesNotMatch(result.body, /data-article-category="News"/);
+});
+
+test('Vercel Hobby deployment stays within the 12-function limit', () => {
+  const root = path.resolve(__dirname, '..');
+  const apiFunctions = fs.readdirSync(path.join(root, 'api')).filter(name => name.endsWith('.js'));
+  assert.ok(apiFunctions.length <= 12, `Expected at most 12 API functions, found ${apiFunctions.length}`);
+  assert.equal(apiFunctions.some(name => name.startsWith('_')), false, 'Shared helpers must stay outside /api');
+
+  const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
+  assert.equal(
+    config.rewrites.find(rewrite => rewrite.source === '/career-role')?.destination,
+    '/api/career-page?legacy=1'
+  );
 });
