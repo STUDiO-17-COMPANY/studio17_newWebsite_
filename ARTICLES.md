@@ -67,13 +67,14 @@ Use at least two columns and one data row. Keep tables to a maximum of 12 column
 
 ## Website architecture
 
-- `GET /api/articles?lang=<locale>` — newest-first validated summaries for the homepage and archive.
+- `GET /api/articles?lang=<locale>` — newest-first validated summaries from the shared processed publication cache.
+- `/` — the latest six published English articles are rendered into the first HTML response; JavaScript only enhances later language changes.
 - `GET /api/article-page?slug=<slug>&lang=<locale>` — server-rendered article page and metadata.
 - `GET /api/article-image?id=<drive-file-id>` — restricted article-media delivery.
 - `/insights/<slug>` — clean route for articles categorised as `Insight`.
 - `/case-studies/<slug>` — clean route for articles categorised as `Case Study`.
 - `/news/<slug>` — clean route for articles categorised as `News`; `/news` remains the complete archive.
-- `/news` — multilingual archive with All, Insights, Case Studies and News filters.
+- `/news` and `/news/page/<number>` — server-rendered archive with nine cards per page, crawlable pagination, category filters and metadata search. Search and filter result URLs are `noindex,follow`; clean numbered archive pages are indexable.
 - `/sitemap.xml` — static pages, open roles and every valid article translation.
 
 The shared category field determines the public route automatically. If an article category changes, requests to its previous or otherwise mismatched category route receive a permanent redirect to the current route. Cards, related content, language links, canonical tags, `hreflang`, the human sitemap and the XML sitemap all use the same category-aware route helper, preventing duplicate indexable URLs.
@@ -82,7 +83,9 @@ Article metadata includes a canonical URL, valid-language alternates, `Article` 
 
 The reader uses a three-column layout on wide desktop screens: section navigation, a controlled-width article column and compact related-article cards. The complete related-article section remains at the end. On mobile, the repeated cover image is removed, metadata is condensed and the section navigation starts collapsed so readers reach the article substantially sooner.
 
-The public feeds use a 60-second CDN cache with a five-minute stale-while-revalidate window. Article images use a longer immutable cache because Drive file IDs identify fixed file versions.
+Google Drive remains the editorial source, but normal homepage, archive, article, sitemap and `llms.txt` requests share one processed publication manifest in Vercel Runtime Cache. The fresh manifest lasts two minutes and each validated article plus a last-known-good manifest is retained for up to 30 days. A temporary Drive/Docs error therefore serves the last validated publication set instead of emptying public pages. Any failed document fetch aborts a refresh so a partial source response cannot accidentally remove live content.
+
+The homepage and archive HTML responses use a two-minute CDN cache with a ten-minute stale-while-revalidate window. Article images use a longer immutable cache because Drive file IDs identify fixed file versions. Publishing, editing or removing a valid article updates the detail route, homepage six-card feed, paginated archive, XML sitemap and `llms.txt` from this same source after cache refresh; no second URL list is maintained.
 
 ## Environment contract
 

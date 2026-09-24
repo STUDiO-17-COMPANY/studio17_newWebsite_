@@ -3,8 +3,26 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
-const { buildSeo, renderArticleMain } = require('./api/_article-render');
+const { buildSeo, getArticlePath, renderArticleMain } = require('./api/_article-render');
+const { renderHomePage } = require('./api/home-page');
+const { renderNewsPage } = require('./api/news-page');
 const demoArticle = require('./article-demo.cjs');
+
+const demoArticles = Array.from({ length: 12 }, (_, index) => ({
+  slug: demoArticle.slug,
+  category: demoArticle.category,
+  publishedDate: demoArticle.publishedDate,
+  modifiedDate: null,
+  authorName: demoArticle.authorName,
+  authorRole: demoArticle.authorRole,
+  readTime: demoArticle.readTime,
+  coverImage: '/Images/news-partnership.webp',
+  coverAlt: demoArticle.content.coverAlt,
+  title: index ? `${demoArticle.content.title} — Preview ${index + 1}` : demoArticle.content.title,
+  summary: demoArticle.content.summary,
+  availableLanguages: ['en'],
+  url: getArticlePath(demoArticle, 'en')
+}));
 
 const root = __dirname;
 const port = Number(process.argv[2] || process.env.PORT || 8080);
@@ -107,6 +125,11 @@ const sendDemoArticle = response => {
   response.end(html);
 };
 
+const sendHtml = (request, response, status, html) => {
+  response.writeHead(status, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+  response.end(request.method === 'HEAD' ? '' : html);
+};
+
 const server = http.createServer((request, response) => {
   const url = new URL(request.url || '/', 'http://localhost');
   const pathname = decodeURIComponent(url.pathname).replace(/\/+$/, '') || '/';
@@ -119,6 +142,22 @@ const server = http.createServer((request, response) => {
   if (legacyPages.has(pathname)) {
     response.writeHead(308, { Location: `${legacyPages.get(pathname)}${url.search}` });
     response.end();
+    return;
+  }
+  if (pathname === '/') {
+    sendHtml(request, response, 200, renderHomePage(demoArticles));
+    return;
+  }
+  const newsPageMatch = pathname.match(/^\/news\/page\/(\d+)$/);
+  if (pathname === '/news' || newsPageMatch) {
+    const rendered = renderNewsPage({
+      articles: demoArticles,
+      page: newsPageMatch ? Number(newsPageMatch[1]) : Number(url.searchParams.get('page') || 1),
+      query: url.searchParams.get('q') || '',
+      category: url.searchParams.get('category') || '',
+      locale: url.searchParams.get('lang') || 'en'
+    });
+    sendHtml(request, response, rendered.status, rendered.body);
     return;
   }
   if (cleanPages.has(pathname)) {
@@ -140,14 +179,8 @@ const server = http.createServer((request, response) => {
   }
   if (pathname.startsWith('/api/')) {
     if (pathname === '/api/articles') {
-      const summary = {
-        slug: demoArticle.slug, category: demoArticle.category, publishedDate: demoArticle.publishedDate,
-        modifiedDate: null, authorName: demoArticle.authorName, authorRole: demoArticle.authorRole,
-        readTime: demoArticle.readTime, coverImage: demoArticle.coverImage, coverAlt: demoArticle.content.coverAlt,
-        title: demoArticle.content.title, summary: demoArticle.content.summary, availableLanguages: ['en']
-      };
       response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      response.end(JSON.stringify({ articles: url.searchParams.get('lang') && url.searchParams.get('lang') !== 'en' ? [] : [summary], locale: url.searchParams.get('lang') || 'en' }));
+      response.end(JSON.stringify({ articles: url.searchParams.get('lang') && url.searchParams.get('lang') !== 'en' ? [] : demoArticles, locale: url.searchParams.get('lang') || 'en' }));
       return;
     }
     response.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8' });

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-24 — Server-rendered article discovery
+
+- Replaced client-only homepage and News loading states with initial server-rendered article cards: six latest articles on the homepage and nine per crawlable News archive page.
+- Added server-side metadata search and category filtering, accessible pagination, clean numbered archive URLs and `noindex,follow` protection for search/filter result URLs.
+- Centralised article URL generation and added a shared Vercel Runtime Cache manifest with per-article entries plus a 30-day last-known-good fallback, so homepage, archive, article pages, sitemap and `llms.txt` no longer query Google Drive on every request.
+- Added archive pagination URLs to the XML sitemap and focused regression coverage for JavaScript-free cards, pagination, search canonicalisation and filters.
+
 ## 2026-09-23 — Dynamic LLM discovery directory
 
 - Added `/llms.txt` as a plain-text server route using the existing published English article feed and canonical URL helper.

@@ -1,7 +1,7 @@
 'use strict';
 
 const SITE_URL = 'https://www.studio17.world';
-const CATEGORY_PATHS = { Insight: 'insights', 'Case Study': 'case-studies', News: 'news' };
+const { getArticlePath, getArticleSection } = require('./_article-paths');
 const LANGUAGE_LABELS = { en: 'English', 'pt-PT': 'Português', es: 'Español', el: 'Ελληνικά', ru: 'Русский', he: 'עברית' };
 const CATEGORY_LABELS = {
   en: { Insight: 'Insight', 'Case Study': 'Case Study', News: 'News' },
@@ -23,9 +23,6 @@ const UI = {
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const escapeAttribute = escapeHtml;
 const absoluteUrl = value => new URL(String(value || '/'), SITE_URL).href;
-const getArticleSection = category => CATEGORY_PATHS[category] || CATEGORY_PATHS.Insight;
-const getArticlePath = (article, locale = article.locale || 'en') => `/${getArticleSection(article.category)}/${encodeURIComponent(article.slug)}${locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`}`;
-
 const highlight = (value, highlighted) => {
   const text = String(value || '');
   const needle = String(highlighted || '').trim();

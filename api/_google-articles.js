@@ -1,5 +1,8 @@
 'use strict';
 
+const { getCache } = require('@vercel/functions');
+const { getArticlePath } = require('./_article-paths');
+
 const DEFAULT_ARTICLES_FOLDER_ID = '1k8x27HIhYJH2VNpasBuj5wZSTV7CVIEP';
 const DEFAULT_MEDIA_FOLDER_ID = '1epwy_o7_lyY5R--igJ5wkJEQ3hExnJyb';
 const GOOGLE_DOC_MIME = 'application/vnd.google-apps.document';
@@ -14,6 +17,11 @@ const SUPPORTED_TABS = new Map([
   ['EN', 'en'], ['PT-PT', 'pt-PT'], ['ES', 'es'], ['EL', 'el'], ['RU', 'ru'], ['HE', 'he']
 ]);
 const SUPPORTED_LOCALES = [...SUPPORTED_TABS.values()];
+const ARTICLE_CACHE_NAMESPACE = 'studio17-published-articles';
+const ARTICLE_CACHE_FRESH_KEY = 'manifest:v1:fresh';
+const ARTICLE_CACHE_FALLBACK_KEY = 'manifest:v1:fallback';
+const ARTICLE_CACHE_FRESH_TTL = 120;
+const ARTICLE_CACHE_FALLBACK_TTL = 60 * 60 * 24 * 30;
 const SETUP_FIELDS = new Map([
   ['publication status', 'status'], ['slug', 'slug'], ['category', 'category'],
   ['publication date', 'publishedDate'], ['modified date', 'modifiedDate'],
@@ -35,6 +43,33 @@ const LOCALE_FIELDS = new Map([
 ]);
 
 let cachedAccessToken = null;
+let articleRefreshPromise = null;
+const localCache = new Map();
+
+const localCacheAdapter = {
+  async get(key) {
+    const entry = localCache.get(key);
+    if (!entry || entry.expiresAt <= Date.now()) { localCache.delete(key); return undefined; }
+    return entry.value;
+  },
+  async set(key, value, options = {}) {
+    localCache.set(key, { value, expiresAt: Date.now() + Math.max(1, options.ttl || 60) * 1000 });
+  }
+};
+
+const articleCache = () => process.env.VERCEL === '1'
+  ? getCache({ namespace: ARTICLE_CACHE_NAMESPACE })
+  : localCacheAdapter;
+
+const cacheGet = async key => {
+  try { return await articleCache().get(key); }
+  catch (error) { console.warn('Articles: runtime cache read failed', error?.message); return undefined; }
+};
+
+const cacheSet = async (key, value, options) => {
+  try { await articleCache().set(key, value, options); }
+  catch (error) { console.warn('Articles: runtime cache write failed', error?.message); }
+};
 
 class ArticlesError extends Error {
   constructor(code, message, status = 500) {
@@ -364,22 +399,24 @@ const mapWithConcurrency = async (items, limit, mapper) => {
 const articleImageUrl = id => `/api/article-image?id=${encodeURIComponent(id)}`;
 const toSummary = (article, locale) => {
   const content = article.translations[locale];
-  return {
+  const summary = {
     slug: article.slug, category: article.category, publishedDate: article.publishedDate,
     modifiedDate: article.modifiedDate, authorName: article.authorName, authorRole: article.authorRole,
     readTime: article.readTime, coverImage: articleImageUrl(article.coverImageId), coverAlt: content.coverAlt,
     title: content.title, summary: content.summary, availableLanguages: article.availableLanguages
   };
+  return { ...summary, url: getArticlePath(summary, locale) };
 };
 
-const loadPublishedArticles = async request => {
+const loadPublishedArticlesFromSource = async request => {
   const configuration = getConfiguration(request);
   const files = await listArticleFiles(configuration);
   const results = await mapWithConcurrency(files, 5, async file => {
     try { return buildArticle(file, await getArticleDocument(file.id, configuration)); }
     catch (error) { console.warn('Articles: unable to parse document', file.id, error?.code || error?.message); return { valid: false, error }; }
   });
-  if (results.length && results.every(result => result.error)) throw results[0].error;
+  const sourceError = results.find(result => result.error)?.error;
+  if (sourceError) throw sourceError;
   const seen = new Set();
   return results.filter(result => result.valid).map(result => result.article).filter(article => {
     if (seen.has(article.slug)) { console.warn('Articles: duplicate slug ignored', article.slug); return false; }
@@ -387,24 +424,83 @@ const loadPublishedArticles = async request => {
   }).sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 };
 
+const buildArticleManifest = articles => ({
+  generatedAt: new Date().toISOString(),
+  articles: articles.map(article => ({
+    slug: article.slug,
+    category: article.category,
+    publishedDate: article.publishedDate,
+    modifiedDate: article.modifiedDate,
+    availableLanguages: article.availableLanguages,
+    summaries: Object.fromEntries(article.availableLanguages.map(locale => [locale, toSummary(article, locale)]))
+  }))
+});
+
+const persistPublishedArticles = async articles => {
+  const manifest = buildArticleManifest(articles);
+  const sharedOptions = { tags: ['published-articles'], name: 'published-articles' };
+  await Promise.all([
+    cacheSet(ARTICLE_CACHE_FRESH_KEY, manifest, { ...sharedOptions, ttl: ARTICLE_CACHE_FRESH_TTL }),
+    cacheSet(ARTICLE_CACHE_FALLBACK_KEY, manifest, { ...sharedOptions, ttl: ARTICLE_CACHE_FALLBACK_TTL }),
+    ...articles.map(article => cacheSet(`article:v1:${article.slug}`, article, {
+      ...sharedOptions, ttl: ARTICLE_CACHE_FALLBACK_TTL, tags: ['published-articles', `article:${article.slug}`]
+    }))
+  ]);
+  return { manifest, articles };
+};
+
+const refreshPublishedArticles = request => {
+  if (!articleRefreshPromise) {
+    articleRefreshPromise = loadPublishedArticlesFromSource(request)
+      .then(persistPublishedArticles)
+      .finally(() => { articleRefreshPromise = null; });
+  }
+  return articleRefreshPromise;
+};
+
+const getPublishedManifest = async request => {
+  const fresh = await cacheGet(ARTICLE_CACHE_FRESH_KEY);
+  if (fresh?.articles) return fresh;
+  try { return (await refreshPublishedArticles(request)).manifest; }
+  catch (error) {
+    const fallback = await cacheGet(ARTICLE_CACHE_FALLBACK_KEY);
+    if (fallback?.articles) {
+      console.warn('Articles: serving the last known published manifest', error?.code || error?.message);
+      return fallback;
+    }
+    throw error;
+  }
+};
+
 const listPublishedArticles = async (request, locale = 'en') => {
   const selected = SUPPORTED_LOCALES.includes(locale) ? locale : 'en';
-  const all = await loadPublishedArticles(request);
-  return { articles: all.filter(article => article.translations[selected]).map(article => toSummary(article, selected)), locale: selected };
+  const manifest = await getPublishedManifest(request);
+  return {
+    articles: manifest.articles.map(article => article.summaries[selected]).filter(Boolean),
+    locale: selected,
+    generatedAt: manifest.generatedAt
+  };
 };
 
 const getPublishedArticleBySlug = async (slug, locale, request) => {
   const cleanSlug = slugify(slug);
   if (!slug || cleanSlug !== slug) throw new ArticlesError('INVALID_ARTICLE_SLUG', 'The article link is invalid.', 400);
-  const all = await loadPublishedArticles(request);
-  const article = all.find(candidate => candidate.slug === slug);
-  if (!article) throw new ArticlesError('ARTICLE_NOT_FOUND', 'This article is no longer available.', 404);
+  let manifest = await getPublishedManifest(request);
+  let manifestArticle = manifest.articles.find(candidate => candidate.slug === slug);
+  if (!manifestArticle) throw new ArticlesError('ARTICLE_NOT_FOUND', 'This article is no longer available.', 404);
+  let article = await cacheGet(`article:v1:${slug}`);
+  if (!article) {
+    const refreshed = await refreshPublishedArticles(request);
+    manifest = refreshed.manifest;
+    manifestArticle = manifest.articles.find(candidate => candidate.slug === slug);
+    article = refreshed.articles.find(candidate => candidate.slug === slug);
+  }
+  if (!manifestArticle || !article) throw new ArticlesError('ARTICLE_NOT_FOUND', 'This article is no longer available.', 404);
   const selected = SUPPORTED_LOCALES.includes(locale) ? locale : 'en';
   if (!article.translations[selected]) throw new ArticlesError('ARTICLE_TRANSLATION_NOT_FOUND', 'This article is not available in the selected language.', 404);
   const related = [...new Set(article.relatedSlugs)]
-    .map(relatedSlug => all.find(item => item.slug === relatedSlug))
-    .filter(item => item?.translations[selected] && item.slug !== article.slug)
-    .map(item => toSummary(item, selected));
+    .map(relatedSlug => manifest.articles.find(item => item.slug === relatedSlug)?.summaries[selected])
+    .filter(item => item && item.slug !== article.slug);
   return {
     ...article, locale: selected, content: article.translations[selected], related,
     authorImage: article.authorImageId ? articleImageUrl(article.authorImageId) : '',
@@ -427,7 +523,7 @@ const sendJson = (response, status, payload, { cache = false } = {}) => {
   response.statusCode = status;
   response.setHeader('Content-Type', 'application/json; charset=utf-8');
   response.setHeader('X-Content-Type-Options', 'nosniff');
-  response.setHeader('Cache-Control', cache && status === 200 ? 'public, max-age=0, s-maxage=60, stale-while-revalidate=300' : 'no-store');
+  response.setHeader('Cache-Control', cache && status === 200 ? 'public, max-age=0, s-maxage=120, stale-while-revalidate=600' : 'no-store');
   response.end(JSON.stringify(payload));
 };
 

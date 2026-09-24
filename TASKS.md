@@ -31,6 +31,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 - [x] Create the Drive template, guidance, dedicated media folder, parser, multilingual article pages, dynamic homepage feed and `/news` archive described in `ARTICLES.md`.
 - [x] Grant the production Google service account Reader access to the Article folders, deploy and verify a real multilingual published Doc with separate social-sharing media end to end.
 - [x] Extend article pages with an optional right-rail CTA, author portrait support and an unlimited looping related-article carousel while preserving older article Docs.
+- [x] Server-render the latest six homepage articles and nine-per-page News archive from one cached publication manifest, with crawlable pagination and non-indexable search results.
 - [x] Complete and publish the contact-form email workflow.
 - [-] Review and publish the staged Vercel country-access rule before changing it from Log to Deny.
 - [x] Create multilingual Privacy Policy, Cookie Policy and Terms pages based on the website's implemented processing.

@@ -14,7 +14,7 @@ module.exports = async function articlesHandler(request, response) {
     const payload = await listPublishedArticles(request, locale);
     if (request.method === 'HEAD') {
       response.statusCode = 200;
-      response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=60, stale-while-revalidate=300');
+      response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=120, stale-while-revalidate=600');
       response.end();
       return;
     }
