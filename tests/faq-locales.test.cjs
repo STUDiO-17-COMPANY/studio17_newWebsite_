@@ -6,7 +6,7 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const languages = ['en', 'pt-PT', 'es', 'el', 'ru', 'he'];
-const htmlFiles = ['index.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'work.html', 'services.html', 'website-development.html', 'free-website.html', 'seo.html', 'news.html', 'careers.html', 'career-role.html'];
+const htmlFiles = ['home.template.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'work.html', 'services.html', 'website-development.html', 'free-website.html', 'seo.html', 'news.template.html', 'careers.html', 'career-role.html'];
 const faq = fs.readFileSync(path.join(root, 'faq.html'), 'utf8');
 
 const questions = [...faq.matchAll(/<summary><span>([^<]+)<\/span>/g)].map(match => match[1]);

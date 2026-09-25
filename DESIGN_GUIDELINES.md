@@ -61,7 +61,7 @@ The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px w
 
 The sitemap establishes the template for non-homepage pages:
 
-- Reuse the exact header and footer structure from `index.html`.
+- Reuse the exact header and footer structure from `home.template.html`.
 - Use the shared `page-hero` structure with a `hero-media` image after the 32px top gap.
 - Keep the English desktop hero at exactly 296px and align its columns to the homepage's 55.7% / 44.3% split and shell.
 - Reuse the homepage edge fades, dark media overlay and restrained image-scale hover; abstract standalone hero treatments are not part of the page system.
@@ -376,7 +376,7 @@ All interface pictograms come from the locally stored Lucide `1.24.0` browser pa
 - Load all six locales, verify locale codes and `html[lang]`, and confirm Hebrew uses RTL without mirroring logos or the footer wordmark.
 - For every locale, confirm the desktop Services dropdown opens, localized service content is present before any service click, all service/CTA buttons remain visible and next/previous carousel movement follows the document direction.
 - Open every planned sitemap link and confirm it reaches WIP with the correct `for` value; changing language must preserve that value.
-- Test language selection once over HTTP and once by opening `index.html` directly; both paths must update copy, locale code, metadata and document direction without console errors.
+- Test language selection over HTTP on the server-rendered homepage; static page templates may also be opened directly where their route does not depend on server data.
 - Check all 20 FAQ questions and answers in every locale and verify native disclosure controls by keyboard.
 - Confirm heroes and major sections begin directly with meaningful headings and contain no decorative eyebrow or mini-title labels.
 - Confirm the About opening statement stays balanced at desktop widths and stacks without overflow at 900px and below.

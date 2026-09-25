@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
-const htmlFiles = ['index.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'services.html', 'website-development.html', 'free-website.html', 'seo.html', 'seo-cyprus.html', 'seo-limassol.html', 'localization-and-translation.html', 'news.html', 'article.html', 'careers.html', 'career-role.html', 'privacy-policy.html', 'cookie-policy.html', 'terms.html'];
+const htmlFiles = ['home.template.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'services.html', 'website-development.html', 'free-website.html', 'seo.html', 'seo-cyprus.html', 'seo-limassol.html', 'localization-and-translation.html', 'news.template.html', 'article.html', 'careers.html', 'career-role.html', 'privacy-policy.html', 'cookie-policy.html', 'terms.html'];
 
 for (const file of htmlFiles) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');

@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.join(__dirname, '..');
-const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const html = fs.readFileSync(path.join(root, 'home.template.html'), 'utf8');
 const about = fs.readFileSync(path.join(root, 'about.html'), 'utf8');
 const work = fs.readFileSync(path.join(root, 'work.html'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');

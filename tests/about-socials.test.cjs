@@ -7,7 +7,7 @@ const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
 const languages = ['en', 'pt-PT', 'es', 'el', 'ru', 'he'];
-const htmlFiles = ['index.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'careers.html', 'career-role.html'];
+const htmlFiles = ['home.template.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'careers.html', 'career-role.html'];
 const about = fs.readFileSync(path.join(root, 'about.html'), 'utf8');
 const styles = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 const presentationUrl = 'https://drive.google.com/file/d/1k4c9pzEhKLeXVNI-v90OiolOpS2H_235/view?usp=sharing';

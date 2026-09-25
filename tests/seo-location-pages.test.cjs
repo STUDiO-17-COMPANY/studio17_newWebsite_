@@ -123,6 +123,6 @@ assert.match(read('service-pages.js'), /setInterval/);
 assert.match(read('service-pages.js'), /requestAnimationFrame/);
 assert.match(read('service-pages.js'), /prefers-reduced-motion/);
 assert.match(read('seo-cyprus.html'), /href="\/seo\/limassol"/);
-assert.match(read('index.html'), /aria-label="Services"[\s\S]*?href="\/services\/seo"/);
+assert.match(read('home.template.html'), /aria-label="Services"[\s\S]*?href="\/services\/seo"/);
 
 console.log('SEO location landing page tests passed.');

@@ -22,7 +22,7 @@ for (const file of htmlFiles) {
 }
 
 assert.ok(linkCount >= 15, `expected Trustpilot links across shared page families, found ${linkCount}`);
-const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const homepage = fs.readFileSync(path.join(root, 'home.template.html'), 'utf8');
 assert.match(homepage, /class="shell testimonial-section-link"[\s\S]*?See all our reviews on Trustpilot/, 'homepage must include the plain-text Trustpilot CTA below testimonials');
 assert.doesNotMatch(homepage, /testimonial-section-link[\s\S]*?<img[^>]+trustpilot/i, 'homepage Trustpilot CTA must not use restricted logo artwork');
 console.log(`Trustpilot link tests passed (${linkCount} links).`);

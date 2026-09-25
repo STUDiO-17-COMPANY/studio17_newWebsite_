@@ -8,8 +8,8 @@ const { buildSeo, getArticlePath, renderArticleMain } = require('../server/_arti
 
 const root = path.resolve(__dirname, '..');
 const template = fs.readFileSync(path.join(root, 'article.html'), 'utf8');
-const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-const news = fs.readFileSync(path.join(root, 'news.html'), 'utf8');
+const home = fs.readFileSync(path.join(root, 'home.template.html'), 'utf8');
+const news = fs.readFileSync(path.join(root, 'news.template.html'), 'utf8');
 const styles = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 const behavior = fs.readFileSync(path.join(root, 'article.js'), 'utf8');
 const rendered = renderArticleMain(demo);

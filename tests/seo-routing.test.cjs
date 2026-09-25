@@ -2,7 +2,6 @@
 
 const assert = require('node:assert/strict');
 const careerPageHandler = require('../api/career-page');
-const legacyCareerHandler = require('../api/legacy-career');
 const sitemapHandler = require('../api/sitemap');
 
 const createResponse = () => {
@@ -91,7 +90,7 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
   assert.equal(missing.statusCode, 404);
   assert.match(missing.body, /name="robots" content="noindex,follow"/);
 
-  const legacy = await call(legacyCareerHandler, '/api/legacy-career?id=roleDocument123456&role=growth-strategist&lang=en');
+  const legacy = await call(careerPageHandler, '/api/career-page?legacy=1&id=roleDocument123456&role=growth-strategist&lang=en');
   assert.equal(legacy.statusCode, 308);
   assert.equal(legacy.getHeader('location'), '/careers/growth-strategist');
 

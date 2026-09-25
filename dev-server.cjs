@@ -27,7 +27,7 @@ const demoArticles = Array.from({ length: 12 }, (_, index) => ({
 const root = __dirname;
 const port = Number(process.argv[2] || process.env.PORT || 8080);
 const cleanPages = new Map([
-  ['/', 'index.html'],
+  ['/', 'home.template.html'],
   ['/sitemap', 'sitemap.html'],
   ['/wip', 'wip.html'],
   ['/contact', 'contact.html'],
@@ -45,7 +45,7 @@ const cleanPages = new Map([
   ['/services/seo', 'seo.html'],
   ['/seo/cyprus', 'seo-cyprus.html'],
   ['/seo/limassol', 'seo-limassol.html'],
-  ['/news', 'news.html'],
+  ['/news', 'news.template.html'],
   ['/careers', 'careers.html'],
   ['/privacy-policy', 'privacy-policy.html'],
   ['/cookie-policy', 'cookie-policy.html'],

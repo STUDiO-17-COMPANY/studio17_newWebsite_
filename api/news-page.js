@@ -7,7 +7,7 @@ const { escapeHtml, renderArticleCard } = require('../server/_article-listing');
 
 const SITE_URL = 'https://www.studio17.world';
 const PAGE_SIZE = 9;
-const template = fs.readFileSync(path.join(process.cwd(), 'news.html'), 'utf8');
+const template = fs.readFileSync(path.join(process.cwd(), 'news.template.html'), 'utf8');
 const categoryMap = { insights: 'Insight', 'case-studies': 'Case Study', news: 'News' };
 const ARCHIVE_UI = {
   en: { searchLabel: 'Search published articles', searchPlaceholder: 'Search articles', search: 'Search', filters: 'Filter articles', all: 'All', insights: 'Insights', caseStudies: 'Case Studies', news: 'News', pages: 'Article archive pages', previous: 'Previous', next: 'Next', empty: 'No published articles are available in this category.', noMatches: query => `No articles match “${query}”.` },

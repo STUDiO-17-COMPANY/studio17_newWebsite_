@@ -5,7 +5,7 @@ const path = require('path');
 const { listPublishedArticles } = require('../server/_google-articles');
 const { renderArticleCard } = require('../server/_article-listing');
 
-const template = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
+const template = fs.readFileSync(path.join(process.cwd(), 'home.template.html'), 'utf8');
 const marker = '<!-- ARTICLE_HOME_FEED -->';
 
 const renderHomePage = articles => template.replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, 'en')).join(''));

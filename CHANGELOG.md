@@ -3,6 +3,7 @@
 ## 2026-09-24 — Server-rendered article discovery
 
 - Restored Hobby-plan deployment compatibility by moving shared server helpers outside `/api`, consolidating the legacy career redirect into the existing career-page handler and adding a regression check that caps the project at 12 Vercel Functions.
+- Renamed the homepage and News source documents to explicit server-template files so Vercel cannot serve their static placeholders ahead of the server-rendered article routes.
 - Replaced client-only homepage and News loading states with initial server-rendered article cards: six latest articles on the homepage and nine per crawlable News archive page.
 - Added server-side metadata search and category filtering, accessible pagination, clean numbered archive URLs and `noindex,follow` protection for search/filter result URLs.
 - Centralised article URL generation and added a shared Vercel Runtime Cache manifest with per-article entries plus a 30-day last-known-good fallback, so homepage, archive, article pages, sitemap and `llms.txt` no longer query Google Drive on every request.

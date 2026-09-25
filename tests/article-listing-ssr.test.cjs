@@ -69,4 +69,8 @@ test('Vercel Hobby deployment stays within the 12-function limit', () => {
     config.rewrites.find(rewrite => rewrite.source === '/career-role')?.destination,
     '/api/career-page?legacy=1'
   );
+  assert.equal(fs.existsSync(path.join(root, 'index.html')), false, 'Static index.html would bypass the homepage renderer');
+  assert.equal(fs.existsSync(path.join(root, 'news.html')), false, 'Static news.html would bypass the News renderer');
+  assert.equal(fs.existsSync(path.join(root, 'home.template.html')), true);
+  assert.equal(fs.existsSync(path.join(root, 'news.template.html')), true);
 });

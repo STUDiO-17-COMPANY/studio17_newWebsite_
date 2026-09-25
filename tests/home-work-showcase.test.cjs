@@ -9,7 +9,7 @@ const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 
 test('homepage replaces the former AI block with selected client work', () => {
-  const html = read('index.html');
+const html = read('home.template.html');
   assert.doesNotMatch(html, /class="ai-section"|AI helps your business to respond faster/);
   assert.match(html, /class="website-work home-work-showcase"/);
   assert.match(html, /<span>Selected client work<\/span> in web development and marketing<\/h2>/);
@@ -30,7 +30,7 @@ test('homepage replaces the former AI block with selected client work', () => {
 });
 
 test('homepage work showcase uses the shared six-language contract', () => {
-  const html = read('index.html');
+  const html = read('home.template.html');
   assert.doesNotMatch(html, /service-locales\/locales\.js|home-work\.js|data-home-work-key/);
 
   for (const locale of ['pt-PT', 'es', 'el', 'ru', 'he']) {

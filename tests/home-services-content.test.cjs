@@ -55,7 +55,7 @@ test('all public locales retain complete translated service content', () => {
 });
 
 test('mobile service discovery uses two synchronized selects instead of a wall of buttons', () => {
-  const html = read('index.html');
+  const html = read('home.template.html');
   const css = read('styles.css');
   const script = read('script.js');
   assert.match(html, /class="service-mobile-selector"/);
