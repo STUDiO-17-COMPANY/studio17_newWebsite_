@@ -1,7 +1,7 @@
 'use strict';
 
 const { listPublishedRoles } = require('../server/_google-careers');
-const { listPublishedArticles } = require('../server/_google-articles');
+const { articleCacheControl, listPublishedArticles } = require('../server/_google-articles');
 const { getArticlePath } = require('../server/_article-render');
 
 const SITE_URL = 'https://www.studio17.world';
@@ -37,7 +37,8 @@ module.exports = async function sitemapHandler(request, response) {
       listPublishedArticles(request, 'en')
     ]);
     const roles = rolesResult.status === 'fulfilled' ? rolesResult.value.roles : [];
-    const articles = articlesResult.status === 'fulfilled' ? articlesResult.value.articles : [];
+    const articlePayload = articlesResult.status === 'fulfilled' ? articlesResult.value : { articles: [], nextPublicationAt: null };
+    const articles = articlePayload.articles;
     if (rolesResult.status === 'rejected') console.warn('Sitemap: Careers entries unavailable', rolesResult.reason?.code || rolesResult.reason?.message);
     if (articlesResult.status === 'rejected') console.warn('Sitemap: article entries unavailable', articlesResult.reason?.code || articlesResult.reason?.message);
     const archivePages = Array.from(
@@ -90,7 +91,7 @@ module.exports = async function sitemapHandler(request, response) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'application/xml; charset=utf-8');
     response.setHeader('X-Content-Type-Options', 'nosniff');
-    response.setHeader('Cache-Control', 'public, max-age=0, must-revalidate, s-maxage=300, stale-while-revalidate=600');
+    response.setHeader('Cache-Control', articleCacheControl(articlePayload, 300, 600));
     response.end(request.method === 'HEAD' ? '' : body);
   } catch (error) {
     console.error('Sitemap generation failed', error?.code || error?.message);

@@ -1,7 +1,14 @@
 'use strict';
 
 const assert = require('node:assert/strict');
-const { buildArticle } = require('../server/_google-articles');
+const {
+  PUBLICATION_TIME_ZONE,
+  buildArticle,
+  createPublicationSchedule,
+  getArticleCachePolicy,
+  isPublicationDue,
+  publicationInstant
+} = require('../server/_google-articles');
 
 const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
   paragraph: {
@@ -100,7 +107,28 @@ const draft = buildArticle(
   { id: 'doc-2', name: 'Draft article' },
   { tabs: [tab('SETUP', setupRows.map(row => row[0] === 'Published' ? ['Draft'] : row)), tab('EN', enRows)] }
 );
-assert.equal(draft.valid, false);
-assert.equal(draft.missing.includes('status'), true);
+assert.equal(draft.valid, true, 'folder membership, not the legacy status field, approves publication');
+
+assert.equal(PUBLICATION_TIME_ZONE, 'Europe/Nicosia');
+assert.equal(publicationInstant('2026-06-10'), '2026-06-10T07:00:00.000Z');
+assert.equal(publicationInstant('2026-12-10'), '2026-12-10T08:00:00.000Z');
+
+const discoveredToday = createPublicationSchedule('2026-09-26', new Date('2026-09-26T06:15:00.000Z'));
+assert.equal(discoveredToday.publishAt, '2026-09-26T06:15:00.000Z', 'an article first seen on its publication date is immediate');
+
+const scheduled = createPublicationSchedule('2026-09-27', new Date('2026-09-26T06:15:00.000Z'));
+assert.equal(scheduled.publishAt, '2026-09-27T07:00:00.000Z', 'a future article publishes at 10:00 Europe/Nicosia');
+assert.equal(isPublicationDue(scheduled, Date.parse('2026-09-27T06:59:59.000Z')), false);
+assert.equal(isPublicationDue(scheduled, Date.parse('2026-09-27T07:00:00.000Z')), true);
+assert.deepEqual(
+  createPublicationSchedule('2026-09-27', new Date('2026-09-27T05:00:00.000Z'), scheduled),
+  scheduled,
+  'a future schedule remains stable when the manifest refreshes on publication day'
+);
+assert.deepEqual(
+  getArticleCachePolicy({ nextPublicationAt: scheduled.publishAt }, 120, 600, Date.parse('2026-09-27T06:59:30.000Z')),
+  { maxAge: 30, staleWhileRevalidate: 0 },
+  'CDN caching must expire at the scheduled release boundary'
+);
 
 console.log('Article Google Docs parser tests passed.');

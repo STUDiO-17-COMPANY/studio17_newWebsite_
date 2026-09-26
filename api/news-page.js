@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { listPublishedArticles, SUPPORTED_LOCALES } = require('../server/_google-articles');
+const { articleCacheControl, articleCdnCacheControl, listPublishedArticles, SUPPORTED_LOCALES } = require('../server/_google-articles');
 const { escapeHtml, renderArticleCard } = require('../server/_article-listing');
 
 const SITE_URL = 'https://www.studio17.world';
@@ -100,13 +100,13 @@ module.exports = async function newsPageHandler(request, response) {
     const query = normaliseSearch(request.query?.q);
     const categoryValue = queryValue(request.query?.category);
     const category = categoryMap[categoryValue] ? categoryValue : '';
-    const { articles } = await listPublishedArticles(request, locale);
-    const rendered = renderNewsPage({ articles, page, query, category, locale });
+    const payload = await listPublishedArticles(request, locale);
+    const rendered = renderNewsPage({ articles: payload.articles, page, query, category, locale });
     response.statusCode = rendered.status;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
-    response.setHeader('Cache-Control', query ? 'private, no-store' : 'public, max-age=0, must-revalidate, s-maxage=120, stale-while-revalidate=600');
+    response.setHeader('Cache-Control', query ? 'private, no-store' : articleCacheControl(payload));
     if (!query) {
-      response.setHeader('Vercel-CDN-Cache-Control', 'public, max-age=120, stale-while-revalidate=600');
+      response.setHeader('Vercel-CDN-Cache-Control', articleCdnCacheControl(payload));
       response.setHeader('Vercel-Cache-Tag', 'published-articles');
     }
     response.end(request.method === 'HEAD' ? '' : rendered.body);

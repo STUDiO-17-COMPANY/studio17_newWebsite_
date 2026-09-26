@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-26 — Scheduled article publication
+
+- Made direct membership in Google Drive folder `1. Open Articles` the article approval mechanism; the legacy `Publication status` field no longer controls visibility.
+- Added persistent per-document schedules: articles first detected with today's date publish immediately, while future-dated articles become public at 10:00 Europe/Nicosia with daylight-saving-aware timestamps.
+- Kept scheduled articles out of direct routes, feeds, related content, pagination, sitemaps and `llms.txt` until release, while retaining them privately in the shared processed manifest.
+- Made CDN cache lifetimes stop at the next release boundary so stale responses cannot delay scheduled publication.
+
 ## 2026-09-24 — Server-rendered article discovery
 
 - Restored Hobby-plan deployment compatibility by moving shared server helpers outside `/api`, consolidating the legacy career redirect into the existing career-page handler and adding a regression check that caps the project at 12 Vercel Functions.

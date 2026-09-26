@@ -123,8 +123,9 @@ node service-locales/build-bundle.cjs
 26. Keep `/about`, `/our-story` and `/team` aligned with `COMPANY_PAGES.md`; do not invent biographies, portraits, profile URLs, offices, ratings or company-history claims.
 27. Keep `/services/seo`, `/seo/cyprus` and `/seo/limassol` distinct by search intent. The service page explains the complete capability; the Cyprus and Limassol pages sell that capability through original market-specific decision journeys.
 28. Build the desktop Services navigation from the shared horizontal mega-menu in `script.js`; keep `/services` as a supporting catalogue rather than a mega-menu item, and route every unpublished service to a specific WIP destination.
-29. Build the mobile Services directory from the same shared configuration as desktop, keep only one category expanded at a time, and preserve keyboard, translated-label and RTL behavior.
-30. Use `/services/website` as the Website family overview. Keep Free Website outside its main service selector and promote it through the dedicated pre-FAQ CTA.
+29. Treat direct membership in Drive folder `1. Open Articles` as article approval. Publish articles first detected with today's date immediately; hold future dates privately until 10:00 Europe/Nicosia without requiring a deployment or duplicate content list.
+30. Build the mobile Services directory from the same shared configuration as desktop, keep only one category expanded at a time, and preserve keyboard, translated-label and RTL behavior.
+31. Use `/services/website` as the Website family overview. Keep Free Website outside its main service selector and promote it through the dedicated pre-FAQ CTA.
 
 ## Pre-launch checklist
 

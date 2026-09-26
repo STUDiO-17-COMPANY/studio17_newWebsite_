@@ -1,7 +1,7 @@
 # Studio 17 automatic article publishing
 
 Status: implemented, connected to the live Drive workflow and locally verified
-Last reviewed: 2026-09-20
+Last reviewed: 2026-09-26
 
 ## Drive resources
 
@@ -18,14 +18,20 @@ One Google Doc represents one article. It contains a shared `SETUP` tab and lang
 
 English is required. An optional language appears only when its tab contains every required field, article body and CTA and contains no template placeholders. An incomplete language is omitted from the homepage, `/news`, the article language controls, `hreflang` metadata and the XML sitemap.
 
-An article is public only when:
+Moving a completed Google Doc directly into `1. Open Articles` is the publication approval action. An article is eligible only when:
 
 1. Its Google Doc is directly inside `1. Open Articles`.
-2. `Publication status` is exactly `Published`.
-3. Shared fields and the English tab validate.
-4. Its slug, date, CTA and media references are safe.
+2. Shared fields and the English tab validate.
+3. Its slug, date, CTA and media references are safe.
 
-Moving the Doc out of the folder or changing its status to `Draft` removes it automatically after the CDN cache refresh.
+`Publication status` is retained in older Docs for backwards compatibility but no longer controls the website. Folder membership is the source of truth.
+
+- If the article is first detected in `1. Open Articles` with today's `Publication date`, it is published immediately.
+- If its `Publication date` is in the future, it remains private and returns no public URL until 10:00 Europe/Nicosia on that date.
+- The stored schedule remains stable across cache refreshes and Cyprus daylight-saving changes.
+- Moving the Doc out of `1. Open Articles` unpublishes it automatically after the source cache refresh.
+
+Scheduled content is excluded from the homepage, News archive, category results, direct article routes, related content, the human and XML sitemaps and `llms.txt` until its release time.
 
 ## Images and sharing
 
@@ -83,9 +89,9 @@ Article metadata includes a canonical URL, valid-language alternates, `Article` 
 
 The reader uses a three-column layout on wide desktop screens: section navigation, a controlled-width article column and compact related-article cards. The complete related-article section remains at the end. On mobile, the repeated cover image is removed, metadata is condensed and the section navigation starts collapsed so readers reach the article substantially sooner.
 
-Google Drive remains the editorial source, but normal homepage, archive, article, sitemap and `llms.txt` requests share one processed publication manifest in Vercel Runtime Cache. The fresh manifest lasts two minutes and each validated article plus a last-known-good manifest is retained for up to 30 days. A temporary Drive/Docs error therefore serves the last validated publication set instead of emptying public pages. Any failed document fetch aborts a refresh so a partial source response cannot accidentally remove live content.
+Google Drive remains the editorial source, but normal homepage, archive, article, sitemap and `llms.txt` requests share one processed publication manifest in Vercel Runtime Cache. The fresh manifest lasts two minutes and each validated article plus a last-known-good manifest is retained for up to 30 days. A future article is stored in that manifest with a private release timestamp, so publication at 10:00 does not depend on a fresh Google Drive request, another deployment or an additional Vercel Function. A temporary Drive/Docs error therefore serves the last validated publication set instead of emptying public pages. Any failed document fetch aborts a refresh so a partial source response cannot accidentally remove live content.
 
-The homepage and archive HTML responses use a two-minute CDN cache with a ten-minute stale-while-revalidate window. Article images use a longer immutable cache because Drive file IDs identify fixed file versions. Publishing, editing or removing a valid article updates the detail route, homepage six-card feed, paginated archive, XML sitemap and `llms.txt` from this same source after cache refresh; no second URL list is maintained.
+The homepage and archive HTML responses normally use a two-minute CDN cache with a ten-minute stale-while-revalidate window. When a future publication exists, the cache automatically shortens to the release boundary and disables stale delivery so scheduled content cannot remain hidden behind an old response after 10:00. Article images use a longer immutable cache because Drive file IDs identify fixed file versions. Publishing, editing or removing a valid article updates the detail route, homepage six-card feed, paginated archive, XML sitemap and `llms.txt` from this same source after cache refresh; no second URL list is maintained.
 
 ## Environment contract
 
@@ -100,7 +106,7 @@ The default IDs are also embedded as safe non-secret configuration. The Google s
 
 ## Verification
 
-- Parser regression covers shared fields, locale validation, separate media IDs, lists, quotes, draft rejection and safe CTAs.
+- Parser regression covers shared fields, locale validation, separate media IDs, lists, quotes, folder-controlled approval, Cyprus summer/winter scheduling, release gating, cache-boundary expiry and safe CTAs.
 - Page tests cover the article template, server rendering, clean routing, `index,follow`, structured data and independent social preview image.
 - Local browser QA passed at 1440 px and 390 px for `/news` and the article demo with zero horizontal overflow, a single H1, correct five-item mobile navigation and Hebrew RTL empty states.
 - Production must be retested after folder access is granted and the changes are deployed.

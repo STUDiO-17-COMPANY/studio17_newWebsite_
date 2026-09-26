@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { listPublishedArticles } = require('../server/_google-articles');
+const { articleCacheControl, articleCdnCacheControl, listPublishedArticles } = require('../server/_google-articles');
 const { renderArticleCard } = require('../server/_article-listing');
 
 const template = fs.readFileSync(path.join(process.cwd(), 'home.template.html'), 'utf8');
@@ -18,12 +18,12 @@ module.exports = async function homePageHandler(request, response) {
     return;
   }
   try {
-    const { articles } = await listPublishedArticles(request, 'en');
-    const body = renderHomePage(articles);
+    const payload = await listPublishedArticles(request, 'en');
+    const body = renderHomePage(payload.articles);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
-    response.setHeader('Cache-Control', 'public, max-age=0, must-revalidate, s-maxage=120, stale-while-revalidate=600');
-    response.setHeader('Vercel-CDN-Cache-Control', 'public, max-age=120, stale-while-revalidate=600');
+    response.setHeader('Cache-Control', articleCacheControl(payload));
+    response.setHeader('Vercel-CDN-Cache-Control', articleCdnCacheControl(payload));
     response.setHeader('Vercel-Cache-Tag', 'published-articles');
     response.end(request.method === 'HEAD' ? '' : body);
   } catch (error) {

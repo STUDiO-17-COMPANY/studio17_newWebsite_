@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { listPublishedRoles } = require('../server/_google-careers');
-const { listPublishedArticles } = require('../server/_google-articles');
+const { articleCacheControl, listPublishedArticles } = require('../server/_google-articles');
 const { getArticlePath } = require('../server/_article-render');
 
 const TEMPLATE_PATH = path.join(__dirname, 'sitemap-template.html');
@@ -44,7 +44,8 @@ module.exports = async function sitemapPageHandler(request, response) {
       listPublishedArticles(request, 'en')
     ]);
     const roles = rolesResult.status === 'fulfilled' ? rolesResult.value.roles : [];
-    const articles = articlesResult.status === 'fulfilled' ? articlesResult.value.articles : [];
+    const articlePayload = articlesResult.status === 'fulfilled' ? articlesResult.value : { articles: [], nextPublicationAt: null };
+    const articles = articlePayload.articles;
     if (rolesResult.status === 'rejected') console.warn('Human sitemap: Careers entries unavailable', rolesResult.reason?.code || rolesResult.reason?.message);
     if (articlesResult.status === 'rejected') console.warn('Human sitemap: article entries unavailable', articlesResult.reason?.code || articlesResult.reason?.message);
     const body = template
@@ -54,7 +55,7 @@ module.exports = async function sitemapPageHandler(request, response) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
     response.setHeader('X-Content-Type-Options', 'nosniff');
-    response.setHeader('Cache-Control', 'public, max-age=0, must-revalidate, s-maxage=300, stale-while-revalidate=600');
+    response.setHeader('Cache-Control', articleCacheControl(articlePayload, 300, 600));
     response.end(request.method === 'HEAD' ? '' : body);
   } catch (error) {
     console.error('Human sitemap generation failed', error?.code || error?.message);

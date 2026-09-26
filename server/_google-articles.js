@@ -18,10 +18,13 @@ const SUPPORTED_TABS = new Map([
 ]);
 const SUPPORTED_LOCALES = [...SUPPORTED_TABS.values()];
 const ARTICLE_CACHE_NAMESPACE = 'studio17-published-articles';
-const ARTICLE_CACHE_FRESH_KEY = 'manifest:v1:fresh';
-const ARTICLE_CACHE_FALLBACK_KEY = 'manifest:v1:fallback';
+const ARTICLE_CACHE_FRESH_KEY = 'manifest:v2:fresh';
+const ARTICLE_CACHE_FALLBACK_KEY = 'manifest:v2:fallback';
 const ARTICLE_CACHE_FRESH_TTL = 120;
 const ARTICLE_CACHE_FALLBACK_TTL = 60 * 60 * 24 * 30;
+const ARTICLE_SCHEDULE_TTL = 60 * 60 * 24 * 366;
+const PUBLICATION_TIME_ZONE = 'Europe/Nicosia';
+const SCHEDULED_PUBLICATION_HOUR = 10;
 const SETUP_FIELDS = new Map([
   ['publication status', 'status'], ['slug', 'slug'], ['category', 'category'],
   ['publication date', 'publishedDate'], ['modified date', 'modifiedDate'],
@@ -69,6 +72,66 @@ const cacheGet = async key => {
 const cacheSet = async (key, value, options) => {
   try { await articleCache().set(key, value, options); }
   catch (error) { console.warn('Articles: runtime cache write failed', error?.message); }
+};
+
+const publicationDateFormatter = new Intl.DateTimeFormat('en-CA', {
+  timeZone: PUBLICATION_TIME_ZONE,
+  year: 'numeric', month: '2-digit', day: '2-digit'
+});
+const publicationDateTimeFormatter = new Intl.DateTimeFormat('en-CA', {
+  timeZone: PUBLICATION_TIME_ZONE,
+  year: 'numeric', month: '2-digit', day: '2-digit',
+  hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+});
+const dateParts = (date, formatter) => Object.fromEntries(
+  formatter.formatToParts(date).filter(part => part.type !== 'literal').map(part => [part.type, part.value])
+);
+const publicationDateFor = date => {
+  const parts = dateParts(date, publicationDateFormatter);
+  return `${parts.year}-${parts.month}-${parts.day}`;
+};
+const publicationInstant = (date, hour = SCHEDULED_PUBLICATION_HOUR) => {
+  const [year, month, day] = date.split('-').map(Number);
+  const localAsUtc = Date.UTC(year, month - 1, day, hour, 0, 0);
+  let instant = localAsUtc;
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const parts = dateParts(new Date(instant), publicationDateTimeFormatter);
+    const represented = Date.UTC(
+      Number(parts.year), Number(parts.month) - 1, Number(parts.day),
+      Number(parts.hour), Number(parts.minute), Number(parts.second)
+    );
+    instant = localAsUtc - (represented - instant);
+  }
+  return new Date(instant).toISOString();
+};
+const createPublicationSchedule = (publishedDate, now = new Date(), existing = null) => {
+  if (existing?.publishedDate === publishedDate && Number.isFinite(Date.parse(existing.publishAt || ''))) return existing;
+  const today = publicationDateFor(now);
+  return {
+    publishedDate,
+    firstSeenAt: now.toISOString(),
+    publishAt: publishedDate <= today ? now.toISOString() : publicationInstant(publishedDate)
+  };
+};
+const isPublicationDue = (article, now = Date.now()) => {
+  const publishAt = Date.parse(article?.publishAt || '');
+  return Number.isFinite(publishAt) && publishAt <= Number(now);
+};
+const getArticleCachePolicy = (payload, maxAge = 120, staleWhileRevalidate = 600, now = Date.now()) => {
+  const next = Date.parse(payload?.nextPublicationAt || '');
+  if (!Number.isFinite(next) || next <= now) return { maxAge, staleWhileRevalidate };
+  return {
+    maxAge: Math.max(1, Math.min(maxAge, Math.ceil((next - now) / 1000))),
+    staleWhileRevalidate: 0
+  };
+};
+const articleCacheControl = (payload, maxAge = 120, staleWhileRevalidate = 600) => {
+  const policy = getArticleCachePolicy(payload, maxAge, staleWhileRevalidate);
+  return `public, max-age=0, must-revalidate, s-maxage=${policy.maxAge}, stale-while-revalidate=${policy.staleWhileRevalidate}`;
+};
+const articleCdnCacheControl = (payload, maxAge = 120, staleWhileRevalidate = 600) => {
+  const policy = getArticleCachePolicy(payload, maxAge, staleWhileRevalidate);
+  return `public, max-age=${policy.maxAge}, stale-while-revalidate=${policy.staleWhileRevalidate}`;
 };
 
 class ArticlesError extends Error {
@@ -346,7 +409,6 @@ const buildArticle = (file, document) => {
     if (validLocale(parsed)) translations[localeCode] = parsed;
   }
   const missing = [];
-  if (normaliseHeading(setup.status) !== 'published') missing.push('status');
   if (!category) missing.push('category');
   if (!isValidDate(setup.publishedDate)) missing.push('publishedDate');
   if (!setup.authorName) missing.push('authorName');
@@ -412,7 +474,23 @@ const loadPublishedArticlesFromSource = async request => {
   const configuration = getConfiguration(request);
   const files = await listArticleFiles(configuration);
   const results = await mapWithConcurrency(files, 5, async file => {
-    try { return buildArticle(file, await getArticleDocument(file.id, configuration)); }
+    try {
+      const result = buildArticle(file, await getArticleDocument(file.id, configuration));
+      if (!result.valid) return result;
+      const scheduleKey = `schedule:v1:${file.id}`;
+      const schedule = createPublicationSchedule(
+        result.article.publishedDate,
+        new Date(),
+        await cacheGet(scheduleKey)
+      );
+      result.article.publishAt = schedule.publishAt;
+      await cacheSet(scheduleKey, schedule, {
+        ttl: ARTICLE_SCHEDULE_TTL,
+        name: 'article-publication-schedule',
+        tags: ['article-publication-schedules', `article:${result.article.slug}`]
+      });
+      return result;
+    }
     catch (error) { console.warn('Articles: unable to parse document', file.id, error?.code || error?.message); return { valid: false, error }; }
   });
   const sourceError = results.find(result => result.error)?.error;
@@ -430,6 +508,7 @@ const buildArticleManifest = articles => ({
     slug: article.slug,
     category: article.category,
     publishedDate: article.publishedDate,
+    publishAt: article.publishAt,
     modifiedDate: article.modifiedDate,
     availableLanguages: article.availableLanguages,
     summaries: Object.fromEntries(article.availableLanguages.map(locale => [locale, toSummary(article, locale)]))
@@ -442,7 +521,7 @@ const persistPublishedArticles = async articles => {
   await Promise.all([
     cacheSet(ARTICLE_CACHE_FRESH_KEY, manifest, { ...sharedOptions, ttl: ARTICLE_CACHE_FRESH_TTL }),
     cacheSet(ARTICLE_CACHE_FALLBACK_KEY, manifest, { ...sharedOptions, ttl: ARTICLE_CACHE_FALLBACK_TTL }),
-    ...articles.map(article => cacheSet(`article:v1:${article.slug}`, article, {
+    ...articles.map(article => cacheSet(`article:v2:${article.slug}`, article, {
       ...sharedOptions, ttl: ARTICLE_CACHE_FALLBACK_TTL, tags: ['published-articles', `article:${article.slug}`]
     }))
   ]);
@@ -475,10 +554,18 @@ const getPublishedManifest = async request => {
 const listPublishedArticles = async (request, locale = 'en') => {
   const selected = SUPPORTED_LOCALES.includes(locale) ? locale : 'en';
   const manifest = await getPublishedManifest(request);
+  const now = Date.now();
+  const published = manifest.articles.filter(article => isPublicationDue(article, now));
+  const nextPublicationAt = manifest.articles
+    .filter(article => !isPublicationDue(article, now))
+    .map(article => article.publishAt)
+    .filter(Boolean)
+    .sort()[0] || null;
   return {
-    articles: manifest.articles.map(article => article.summaries[selected]).filter(Boolean),
+    articles: published.map(article => article.summaries[selected]).filter(Boolean),
     locale: selected,
-    generatedAt: manifest.generatedAt
+    generatedAt: manifest.generatedAt,
+    nextPublicationAt
   };
 };
 
@@ -486,20 +573,20 @@ const getPublishedArticleBySlug = async (slug, locale, request) => {
   const cleanSlug = slugify(slug);
   if (!slug || cleanSlug !== slug) throw new ArticlesError('INVALID_ARTICLE_SLUG', 'The article link is invalid.', 400);
   let manifest = await getPublishedManifest(request);
-  let manifestArticle = manifest.articles.find(candidate => candidate.slug === slug);
+  let manifestArticle = manifest.articles.find(candidate => candidate.slug === slug && isPublicationDue(candidate));
   if (!manifestArticle) throw new ArticlesError('ARTICLE_NOT_FOUND', 'This article is no longer available.', 404);
-  let article = await cacheGet(`article:v1:${slug}`);
+  let article = await cacheGet(`article:v2:${slug}`);
   if (!article) {
     const refreshed = await refreshPublishedArticles(request);
     manifest = refreshed.manifest;
-    manifestArticle = manifest.articles.find(candidate => candidate.slug === slug);
-    article = refreshed.articles.find(candidate => candidate.slug === slug);
+    manifestArticle = manifest.articles.find(candidate => candidate.slug === slug && isPublicationDue(candidate));
+    article = refreshed.articles.find(candidate => candidate.slug === slug && isPublicationDue(candidate));
   }
   if (!manifestArticle || !article) throw new ArticlesError('ARTICLE_NOT_FOUND', 'This article is no longer available.', 404);
   const selected = SUPPORTED_LOCALES.includes(locale) ? locale : 'en';
   if (!article.translations[selected]) throw new ArticlesError('ARTICLE_TRANSLATION_NOT_FOUND', 'This article is not available in the selected language.', 404);
   const related = [...new Set(article.relatedSlugs)]
-    .map(relatedSlug => manifest.articles.find(item => item.slug === relatedSlug)?.summaries[selected])
+    .map(relatedSlug => manifest.articles.find(item => item.slug === relatedSlug && isPublicationDue(item))?.summaries[selected])
     .filter(item => item && item.slug !== article.slug);
   return {
     ...article, locale: selected, content: article.translations[selected], related,
@@ -523,7 +610,7 @@ const sendJson = (response, status, payload, { cache = false } = {}) => {
   response.statusCode = status;
   response.setHeader('Content-Type', 'application/json; charset=utf-8');
   response.setHeader('X-Content-Type-Options', 'nosniff');
-  response.setHeader('Cache-Control', cache && status === 200 ? 'public, max-age=0, s-maxage=120, stale-while-revalidate=600' : 'no-store');
+  response.setHeader('Cache-Control', cache && status === 200 ? articleCacheControl(payload) : 'no-store');
   response.end(JSON.stringify(payload));
 };
 
@@ -536,7 +623,9 @@ const sendError = (response, error) => {
 };
 
 module.exports = {
-  ArticlesError, SUPPORTED_LOCALES, articleImageUrl, buildArticle, extractParagraphs,
+  ArticlesError, PUBLICATION_TIME_ZONE, SCHEDULED_PUBLICATION_HOUR, SUPPORTED_LOCALES,
+  articleCacheControl, articleCdnCacheControl, articleImageUrl, buildArticle, createPublicationSchedule,
+  extractParagraphs, getArticleCachePolicy, isPublicationDue, publicationDateFor, publicationInstant,
   getArticleImage, getPublishedArticleBySlug, listPublishedArticles, parseBodyBlocks,
   parseLocale, parseSetup, sendError, sendJson, slugify
 };

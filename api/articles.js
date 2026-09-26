@@ -1,6 +1,6 @@
 'use strict';
 
-const { listPublishedArticles, sendError, sendJson } = require('../server/_google-articles');
+const { articleCacheControl, listPublishedArticles, sendError, sendJson } = require('../server/_google-articles');
 
 module.exports = async function articlesHandler(request, response) {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
@@ -14,7 +14,7 @@ module.exports = async function articlesHandler(request, response) {
     const payload = await listPublishedArticles(request, locale);
     if (request.method === 'HEAD') {
       response.statusCode = 200;
-      response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=120, stale-while-revalidate=600');
+      response.setHeader('Cache-Control', articleCacheControl(payload));
       response.end();
       return;
     }

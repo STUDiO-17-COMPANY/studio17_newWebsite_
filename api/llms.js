@@ -1,6 +1,6 @@
 'use strict';
 
-const { listPublishedArticles } = require('../server/_google-articles');
+const { articleCacheControl, listPublishedArticles } = require('../server/_google-articles');
 const { getArticlePath } = require('../server/_article-render');
 const SITE = 'https://www.studio17.world';
 const text = value => String(value || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().replace(/[\\`*_\[\]<>]/g, '\\$&');
@@ -55,10 +55,10 @@ module.exports = async function llmsHandler(request, response) {
     return;
   }
   try {
-    const { articles } = await listPublishedArticles(request, 'en');
-    const body = render(articles);
+    const payload = await listPublishedArticles(request, 'en');
+    const body = render(payload.articles);
     response.statusCode = 200;
-    response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=60, stale-while-revalidate=300');
+    response.setHeader('Cache-Control', articleCacheControl(payload, 60, 300));
     response.end(request.method === 'HEAD' ? '' : body);
   } catch (error) {
     console.error('LLM directory unavailable', error?.code || 'CONTENT_SOURCE_UNAVAILABLE');

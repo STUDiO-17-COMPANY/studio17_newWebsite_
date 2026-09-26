@@ -14,9 +14,12 @@ let articles = [
 let fail = false;
 const context = { module: { exports: {} }, console: { error() {} }, require(name) {
   if (name === '../server/_article-render') return { getArticlePath };
-  if (name === '../server/_google-articles') return { async listPublishedArticles(req, locale) {
-    assert.equal(locale, 'en'); if (fail) throw Error('upstream failure'); return { articles };
-  } };
+  if (name === '../server/_google-articles') return {
+    articleCacheControl() { return 'public, max-age=0, s-maxage=60, stale-while-revalidate=300'; },
+    async listPublishedArticles(req, locale) {
+      assert.equal(locale, 'en'); if (fail) throw Error('upstream failure'); return { articles };
+    }
+  };
   throw Error(name);
 } };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'api/llms.js'), 'utf8'), context);
