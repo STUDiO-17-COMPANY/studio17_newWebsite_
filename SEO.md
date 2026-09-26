@@ -63,10 +63,11 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 ## Internal discovery architecture
 
 - Important indexable pages must be reachable through normal `<a href>` links; do not depend only on JavaScript-rendered menus, XML sitemap discovery or manual URL submission.
-- The server-rendered human sitemap at `/sitemap` must include every currently published Google Drive article, available article translation and open role as a normal crawlable link. Its dynamic entries must stay synchronized with the XML sitemap.
+- The human sitemap at `/sitemap` is a curated directory for visitors. Keep only the main published company, service, work, news and legal destinations; do not list individual articles, open roles, location landing pages, WIP destinations or the Sitemap page itself.
+- `sitemap.xml` remains the complete machine-readable discovery source for canonical indexable pages, including published articles, available article translations, open roles, location landing pages and crawlable archive pagination.
 - Keep the human sitemap template at `api/sitemap-template.html`; placing a root `sitemap.html` file back in the project makes Vercel serve that static file before the `/sitemap` function rewrite.
 - Every XML sitemap entry needs an accurate `<lastmod>` value. Update `STATIC_LASTMOD` when a deployment materially changes static page content or internal links; Drive-managed articles and roles use their own source modification dates.
-- Keep published article routes aligned with their category: Insights use `/insights/<slug>`, Case Studies use `/case-studies/<slug>` and News uses `/news/<slug>`. Feed links, related links, language alternates, canonicals and both sitemaps must continue using the shared category-aware routing helper; mismatched legacy routes permanently redirect to the canonical category route.
+- Keep published article routes aligned with their category: Insights use `/insights/<slug>`, Case Studies use `/case-studies/<slug>` and News uses `/news/<slug>`. Feed links, related links, language alternates, canonicals, `llms.txt` and the XML sitemap must continue using the shared category-aware routing helper; mismatched legacy routes permanently redirect to the canonical category route.
 - The homepage footer links to `/services/seo`. The main SEO page then links contextually and reciprocally to `/seo/cyprus` and `/seo/limassol` through its visible market directory.
 - Both market pages link back to `/services/seo`. Keep this small service cluster intact when changing navigation or page layouts.
 - The XML sitemap supports discovery but does not guarantee crawling, indexing or ranking. Search Console inspection and indexing requests are follow-up signals, not substitutes for internal links and useful original content.
@@ -85,7 +86,7 @@ Studio 17 is not currently an eligible government or health authority for Google
 2. Confirm `/robots.txt` and `/sitemap.xml` return HTTP 200 in production.
 3. Confirm one current role URL returns HTTP 200, a unique canonical and valid `JobPosting` JSON-LD.
 4. Confirm an invented/removed role returns HTTP 404 and `noindex,follow`.
-5. Check that the sitemap contains current roles only and never contains `career-role.html` or `?id=`.
+5. Check that the XML sitemap contains current roles only and never contains `career-role.html` or `?id=`. Individual roles must not appear in the human sitemap.
 6. Confirm the verified `studio17.world` Search Console property still reports `https://www.studio17.world/sitemap.xml` as successfully processed. Google revisits the submitted sitemap automatically.
 7. Monitor Search Console indexing, enhancements and Core Web Vitals; fix errors before adding more page families.
 8. Confirm `/faq` returns HTTP 200, has one canonical, exposes all six reciprocal language alternatives and appears in both the human and XML sitemaps.
@@ -93,11 +94,11 @@ Studio 17 is not currently an eligible government or health authority for Google
 10. Confirm `/about` returns HTTP 200, uses reciprocal six-language alternates, appears in both sitemaps and has replaced every About WIP link.
 11. Confirm `/services` and `/services/website-development` return HTTP 200, expose reciprocal six-language alternatives, appear in both sitemaps and contain no internal service codes.
 12. Confirm `/services/seo` returns HTTP 200, exposes only English, Greek, Russian and `x-default` alternatives, appears in both sitemaps, and preselects SEO at `/contact?service=seo`.
-13. Confirm `/seo/cyprus` and `/seo/limassol` return HTTP 200, use unique metadata and location `Service` data, expose only EN/EL/RU plus `x-default`, contain eight relevant FAQs, link to `/services/seo`, and preserve both lead CTAs.
+13. Confirm `/seo/cyprus` and `/seo/limassol` return HTTP 200, use unique metadata and location `Service` data, expose only EN/EL/RU plus `x-default`, contain eight relevant FAQs, link to `/services/seo`, preserve both lead CTAs and appear in the XML sitemap without being listed in the curated human sitemap.
 
 ## Files to update together
 
 - Route or canonical change: `vercel.json`, affected HTML/JS, `api/sitemap.js`, tests, this guide and `CHANGELOG.md`.
-- New indexable page: page metadata, human sitemap, XML sitemap generator, internal links and tests.
+- New indexable page: page metadata, XML sitemap generator, internal links and tests. Add it to the human sitemap only when it is a main visitor destination.
 - Removed page: permanent redirect when there is a true replacement; otherwise HTTP 404/410 and sitemap removal.
 - New language: locale data, selector, canonical/hreflang logic, sitemap alternates and cross-language QA.

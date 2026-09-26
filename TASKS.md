@@ -11,6 +11,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 
 ## Current priorities
 
+- [x] Curate the human Sitemap to main published pages only, excluding articles, open roles, location SEO pages, WIP destinations and its own route.
 - [x] Standardize Sitemap, WIP, Careers, career-role and Contact heroes on the homepage media-hero model.
 - [x] Make first-visit language detection regional-code aware and use the browser's ordered language preferences.
 - [x] Restrict every complete mobile menu to Services, Work, About, News and Careers.

@@ -2,32 +2,8 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { listPublishedRoles } = require('../server/_google-careers');
-const { articleCacheControl, listPublishedArticles } = require('../server/_google-articles');
-const { getArticlePath } = require('../server/_article-render');
 
 const TEMPLATE_PATH = path.join(__dirname, 'sitemap-template.html');
-const ARTICLE_MARKER = '<!-- STUDIO17_DYNAMIC_ARTICLE_LINKS -->';
-const ROLE_MARKER = '<!-- STUDIO17_DYNAMIC_ROLE_LINKS -->';
-const LANGUAGE_LABELS = { 'pt-PT': 'Portuguese', es: 'Spanish', el: 'Greek', ru: 'Russian', he: 'Hebrew' };
-
-const escapeHtml = value => String(value || '')
-  .replace(/&/g, '&amp;')
-  .replace(/</g, '&lt;')
-  .replace(/>/g, '&gt;')
-  .replace(/"/g, '&quot;')
-  .replace(/'/g, '&#39;');
-
-const linkItem = (href, label) => `<li><a href="${escapeHtml(href)}">${escapeHtml(label)} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></li>`;
-
-const renderArticleLinks = articles => articles.flatMap(article => article.availableLanguages.map(locale => {
-  const suffix = locale === 'en' ? '' : ` — ${LANGUAGE_LABELS[locale] || locale}`;
-  return linkItem(getArticlePath(article, locale), `${article.title}${suffix}`);
-})).join('\n              ');
-
-const renderRoleLinks = roles => roles
-  .map(role => linkItem(`/careers/${encodeURIComponent(role.slug)}`, role.title))
-  .join('\n              ');
 
 module.exports = async function sitemapPageHandler(request, response) {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
@@ -38,24 +14,12 @@ module.exports = async function sitemapPageHandler(request, response) {
   }
 
   try {
-    const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
-    const [rolesResult, articlesResult] = await Promise.allSettled([
-      listPublishedRoles(request),
-      listPublishedArticles(request, 'en')
-    ]);
-    const roles = rolesResult.status === 'fulfilled' ? rolesResult.value.roles : [];
-    const articlePayload = articlesResult.status === 'fulfilled' ? articlesResult.value : { articles: [], nextPublicationAt: null };
-    const articles = articlePayload.articles;
-    if (rolesResult.status === 'rejected') console.warn('Human sitemap: Careers entries unavailable', rolesResult.reason?.code || rolesResult.reason?.message);
-    if (articlesResult.status === 'rejected') console.warn('Human sitemap: article entries unavailable', articlesResult.reason?.code || articlesResult.reason?.message);
-    const body = template
-      .replace(ARTICLE_MARKER, renderArticleLinks(articles))
-      .replace(ROLE_MARKER, renderRoleLinks(roles));
+    const body = fs.readFileSync(TEMPLATE_PATH, 'utf8');
 
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
     response.setHeader('X-Content-Type-Options', 'nosniff');
-    response.setHeader('Cache-Control', articleCacheControl(articlePayload, 300, 600));
+    response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
     response.end(request.method === 'HEAD' ? '' : body);
   } catch (error) {
     console.error('Human sitemap generation failed', error?.code || error?.message);
@@ -65,6 +29,3 @@ module.exports = async function sitemapPageHandler(request, response) {
     response.end(request.method === 'HEAD' ? '' : 'Sitemap temporarily unavailable.');
   }
 };
-
-module.exports.renderArticleLinks = renderArticleLinks;
-module.exports.renderRoleLinks = renderRoleLinks;

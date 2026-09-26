@@ -31,7 +31,7 @@ Moving a completed Google Doc directly into `1. Open Articles` is the publicatio
 - The stored schedule remains stable across cache refreshes and Cyprus daylight-saving changes.
 - Moving the Doc out of `1. Open Articles` unpublishes it automatically after the source cache refresh.
 
-Scheduled content is excluded from the homepage, News archive, category results, direct article routes, related content, the human and XML sitemaps and `llms.txt` until its release time.
+Scheduled content is excluded from the homepage, News archive, category results, direct article routes, related content, the XML sitemap and `llms.txt` until its release time.
 
 ## Images and sharing
 
@@ -91,13 +91,13 @@ Use at least two columns and one data row. Keep tables to a maximum of 12 column
 - `/news` and `/news/page/<number>` — server-rendered archive with nine cards per page, crawlable pagination, category filters and metadata search. Search and filter result URLs are `noindex,follow`; clean numbered archive pages are indexable.
 - `/sitemap.xml` — static pages, open roles and every valid article translation.
 
-The shared category field determines the public route automatically. If an article category changes, requests to its previous or otherwise mismatched category route receive a permanent redirect to the current route. Cards, related content, language links, canonical tags, `hreflang`, the human sitemap and the XML sitemap all use the same category-aware route helper, preventing duplicate indexable URLs.
+The shared category field determines the public route automatically. If an article category changes, requests to its previous or otherwise mismatched category route receive a permanent redirect to the current route. Cards, related content, language links, canonical tags, `hreflang`, `llms.txt` and the XML sitemap all use the same category-aware route helper, preventing duplicate indexable URLs.
 
 Article metadata includes a canonical URL, valid-language alternates, `Article` JSON-LD, publication/modified dates and the independent social image. Removed or incomplete articles return a non-indexable unavailable page.
 
 The reader uses a three-column layout on wide desktop screens: section navigation, a controlled-width article column and compact related-article cards. The complete related-article section remains at the end. On mobile, the repeated cover image is removed, metadata is condensed and the section navigation starts collapsed so readers reach the article substantially sooner.
 
-Google Drive remains the editorial source, but normal homepage, archive, article, sitemap and `llms.txt` requests share one processed publication manifest in Vercel Runtime Cache. The fresh manifest lasts two minutes and each validated article plus a last-known-good manifest is retained for up to 30 days. A future article is stored in that manifest with a private release timestamp, so publication at 10:00 does not depend on a fresh Google Drive request, another deployment or an additional Vercel Function. A temporary Drive/Docs error therefore serves the last validated publication set instead of emptying public pages. Any failed document fetch aborts a refresh so a partial source response cannot accidentally remove live content.
+Google Drive remains the editorial source, but normal homepage, archive, article, XML sitemap and `llms.txt` requests share one processed publication manifest in Vercel Runtime Cache. The fresh manifest lasts two minutes and each validated article plus a last-known-good manifest is retained for up to 30 days. A future article is stored in that manifest with a private release timestamp, so publication at 10:00 does not depend on a fresh Google Drive request, another deployment or an additional Vercel Function. A temporary Drive/Docs error therefore serves the last validated publication set instead of emptying public pages. Any failed document fetch aborts a refresh so a partial source response cannot accidentally remove live content.
 
 The homepage and archive HTML responses normally use a two-minute CDN cache with a ten-minute stale-while-revalidate window. When a future publication exists, the cache automatically shortens to the release boundary and disables stale delivery so scheduled content cannot remain hidden behind an old response after 10:00. Article images use a longer immutable cache because Drive file IDs identify fixed file versions. Publishing, editing or removing a valid article updates the detail route, homepage six-card feed, paginated archive, XML sitemap and `llms.txt` from this same source after cache refresh; no second URL list is maintained.
 

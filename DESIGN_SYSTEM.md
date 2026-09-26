@@ -57,7 +57,7 @@ The Services panel is 1440 × 538px. Its six desktop selectors are 212 × 56px w
 - Partners: two continuous 24-second linear rows moving in opposite directions. Each has one accessible logo sequence plus one `aria-hidden` seamless-loop clone; artwork remains contained inside every cell.
 - Languages: `en`, `pt-PT`, `es`, `el`, `ru` and `he` share one structural template; Hebrew switches complete page flow to RTL while logos and the Latin wordmark stay unmirrored.
 - Translation safety: text-bearing controls use natural height and wrapping; localized sections may grow beyond English reference heights, and initial service copy always comes from the active locale.
-- Sitemap: every existing page is linked; planned destinations remain labelled and open the shared WIP page until their final files exist.
+- Human sitemap: keep `/sitemap` as a curated directory of main published pages only. Do not list individual articles, open roles, location landing pages, WIP destinations or the Sitemap page itself; complete machine discovery remains in `/sitemap.xml` and `/llms.txt`.
 - WIP: one reusable route accepts a stable `?for=` destination, keeps the selected language and is replaced link-by-link as final pages launch.
 - Navigation contract: only Homepage, Sitemap, WIP, structural accessibility anchors and real email addresses bypass WIP before their final destination page exists.
 - Locale loading: JSON files remain canonical; the generated `locales/locales.js` bundle provides identical behavior over HTTP and direct `file://` access.

@@ -10,7 +10,7 @@ window.Studio17LocaleData = {
       },
       "sitemap": {
         "title": "Sitemap — Studio 17",
-        "description": "Explore the Studio 17 website structure, services, industries, insights and company pages."
+        "description": "Browse the main Studio 17 pages for services, work, news, company information and legal policies."
       },
       "wip": {
         "title": "Work in progress — Studio 17",
@@ -224,7 +224,7 @@ window.Studio17LocaleData = {
       },
       "sitemap": {
         "title": "Mapa do site — Studio 17",
-        "description": "Explore a estrutura do website da Studio 17, os serviços, setores, conteúdos e páginas da empresa."
+        "description": "Consulte as principais páginas da Studio 17 sobre serviços, trabalhos, notícias, empresa e políticas legais."
       },
       "wip": {
         "title": "Trabalho em curso — Studio 17",
@@ -631,11 +631,11 @@ window.Studio17LocaleData = {
       "All rights reserved.": "Todos os direitos reservados.",
       "Studio 17 website": "Website Studio 17",
       "One clear structure for every page": "Uma estrutura clara para todas as páginas",
-      "See what is live today, what each section contains and which page families are ready to grow next.": "Veja o que está disponível hoje, o conteúdo de cada secção e as famílias de páginas preparadas para crescer.",
+      "Use this page to reach the main Studio 17 destinations quickly.": "Use esta página para aceder rapidamente aos principais destinos da Studio 17.",
       "Explore the structure": "Explorar a estrutura",
       "Website structure": "Estrutura do website",
       "built from the homepage system": "construída a partir do sistema da homepage",
-      "Live links open working destinations. Planned items define the next pages without pretending they already exist.": "As ligações ativas abrem destinos existentes. Os itens planeados definem as próximas páginas sem fingir que já estão disponíveis.",
+      "A focused directory of the main pages available across the Studio 17 website.": "Um diretório focado nas principais páginas disponíveis no website da Studio 17.",
       "Start": "Início",
       "Homepage": "Homepage",
       "Featured work": "Trabalhos em destaque",
@@ -980,7 +980,7 @@ window.Studio17LocaleData = {
       },
       "sitemap": {
         "title": "Mapa del sitio — Studio 17",
-        "description": "Explora la estructura del sitio web de Studio 17, sus servicios, sectores, contenidos y páginas corporativas."
+        "description": "Consulta las páginas principales de Studio 17 sobre servicios, trabajos, noticias, empresa y políticas legales."
       },
       "wip": {
         "title": "Trabajo en curso — Studio 17",
@@ -1320,11 +1320,11 @@ window.Studio17LocaleData = {
       "All rights reserved.": "Todos los derechos reservados.",
       "Studio 17 website": "Sitio web de Studio 17",
       "One clear structure for every page": "Una estructura clara para cada página",
-      "See what is live today, what each section contains and which page families are ready to grow next.": "Consulta qué está disponible hoy, qué contiene cada sección y qué familias de páginas están preparadas para crecer.",
+      "Use this page to reach the main Studio 17 destinations quickly.": "Utiliza esta página para acceder rápidamente a los principales destinos de Studio 17.",
       "Explore the structure": "Explorar la estructura",
       "Website structure": "Estructura del sitio web",
       "built from the homepage system": "creada a partir del sistema de la página principal",
-      "Live links open working destinations. Planned items define the next pages without pretending they already exist.": "Los enlaces activos abren destinos disponibles. Los elementos planificados definen las próximas páginas sin fingir que ya existen.",
+      "A focused directory of the main pages available across the Studio 17 website.": "Un directorio centrado en las principales páginas disponibles en el sitio web de Studio 17.",
       "Start": "Inicio",
       "Homepage": "Página principal",
       "Featured work": "Trabajos destacados",
@@ -1669,7 +1669,7 @@ window.Studio17LocaleData = {
       },
       "sitemap": {
         "title": "Χάρτης ιστοτόπου — Studio 17",
-        "description": "Εξερευνήστε τη δομή, τις υπηρεσίες, τους κλάδους, το περιεχόμενο και τις εταιρικές σελίδες της Studio 17."
+        "description": "Δείτε τις κύριες σελίδες της Studio 17 για υπηρεσίες, έργα, νέα, εταιρικές πληροφορίες και νομικές πολιτικές."
       },
       "wip": {
         "title": "Εργασία σε εξέλιξη — Studio 17",
@@ -2009,11 +2009,11 @@ window.Studio17LocaleData = {
       "All rights reserved.": "Με επιφύλαξη παντός δικαιώματος.",
       "Studio 17 website": "Ιστότοπος Studio 17",
       "One clear structure for every page": "Μία καθαρή δομή για κάθε σελίδα",
-      "See what is live today, what each section contains and which page families are ready to grow next.": "Δείτε τι είναι διαθέσιμο σήμερα, τι περιέχει κάθε ενότητα και ποιες οικογένειες σελίδων είναι έτοιμες να αναπτυχθούν.",
+      "Use this page to reach the main Studio 17 destinations quickly.": "Χρησιμοποιήστε αυτή τη σελίδα για γρήγορη πρόσβαση στους κύριους προορισμούς της Studio 17.",
       "Explore the structure": "Εξερευνήστε τη δομή",
       "Website structure": "Δομή ιστοτόπου",
       "built from the homepage system": "βασισμένη στο σύστημα της αρχικής σελίδας",
-      "Live links open working destinations. Planned items define the next pages without pretending they already exist.": "Οι ενεργοί σύνδεσμοι ανοίγουν υπάρχοντες προορισμούς. Τα προγραμματισμένα στοιχεία ορίζουν τις επόμενες σελίδες χωρίς να παρουσιάζονται ως διαθέσιμα.",
+      "A focused directory of the main pages available across the Studio 17 website.": "Ένας εστιασμένος κατάλογος με τις κύριες σελίδες που είναι διαθέσιμες στον ιστότοπο της Studio 17.",
       "Start": "Αρχή",
       "Homepage": "Αρχική σελίδα",
       "Featured work": "Επιλεγμένα έργα",
@@ -2358,7 +2358,7 @@ window.Studio17LocaleData = {
       },
       "sitemap": {
         "title": "Карта сайта — Studio 17",
-        "description": "Изучите структуру сайта Studio 17, услуги, отрасли, материалы и страницы компании."
+        "description": "Просмотрите основные страницы Studio 17 об услугах, работах, новостях, компании и юридических документах."
       },
       "wip": {
         "title": "В разработке — Studio 17",
@@ -2698,11 +2698,11 @@ window.Studio17LocaleData = {
       "All rights reserved.": "Все права защищены.",
       "Studio 17 website": "Сайт Studio 17",
       "One clear structure for every page": "Единая понятная структура для каждой страницы",
-      "See what is live today, what each section contains and which page families are ready to grow next.": "Посмотрите, что уже работает, что содержит каждый раздел и какие типы страниц готовы к дальнейшему развитию.",
+      "Use this page to reach the main Studio 17 destinations quickly.": "Используйте эту страницу, чтобы быстро перейти к основным разделам сайта Studio 17.",
       "Explore the structure": "Изучить структуру",
       "Website structure": "Структура сайта",
       "built from the homepage system": "на основе системы главной страницы",
-      "Live links open working destinations. Planned items define the next pages without pretending they already exist.": "Активные ссылки ведут на существующие страницы. Запланированные пункты показывают дальнейшую структуру и не выдают себя за готовые страницы.",
+      "A focused directory of the main pages available across the Studio 17 website.": "Краткий каталог основных страниц, доступных на сайте Studio 17.",
       "Start": "Начало",
       "Homepage": "Главная страница",
       "Featured work": "Избранные работы",
@@ -3047,7 +3047,7 @@ window.Studio17LocaleData = {
       },
       "sitemap": {
         "title": "מפת האתר — Studio 17",
-        "description": "גלו את מבנה האתר, השירותים, הענפים, התכנים ודפי החברה של Studio 17."
+        "description": "גלו את העמודים המרכזיים של Studio 17 לשירותים, עבודות, חדשות, מידע על החברה ומדיניות משפטית."
       },
       "wip": {
         "title": "עבודה בתהליך — Studio 17",
@@ -3387,11 +3387,11 @@ window.Studio17LocaleData = {
       "All rights reserved.": "כל הזכויות שמורות.",
       "Studio 17 website": "אתר Studio 17",
       "One clear structure for every page": "מבנה ברור אחד לכל עמוד",
-      "See what is live today, what each section contains and which page families are ready to grow next.": "ראו מה פעיל היום, מה כולל כל חלק ואילו משפחות עמודים מוכנות לצמיחה הבאה.",
+      "Use this page to reach the main Studio 17 destinations quickly.": "השתמשו בעמוד זה כדי להגיע במהירות לעמודים המרכזיים של Studio 17.",
       "Explore the structure": "גלו את המבנה",
       "Website structure": "מבנה האתר",
       "built from the homepage system": "שנבנה ממערכת עמוד הבית",
-      "Live links open working destinations. Planned items define the next pages without pretending they already exist.": "קישורים פעילים פותחים יעדים קיימים. פריטים מתוכננים מגדירים את העמודים הבאים מבלי להציג אותם כפעילים.",
+      "A focused directory of the main pages available across the Studio 17 website.": "מדריך ממוקד לעמודים המרכזיים הזמינים באתר של Studio 17.",
       "Start": "התחלה",
       "Homepage": "עמוד הבית",
       "Featured work": "עבודות נבחרות",
