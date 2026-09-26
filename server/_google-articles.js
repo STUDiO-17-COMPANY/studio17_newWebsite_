@@ -1,7 +1,15 @@
 'use strict';
 
 const { getCache } = require('@vercel/functions');
+const { BlobNotFoundError, head, put } = require('@vercel/blob');
+const sharp = require('sharp');
 const { getArticlePath } = require('./_article-paths');
+const {
+  articleImageUrl,
+  imageVersion,
+  normaliseImageFormat,
+  normaliseImageWidth
+} = require('./_article-image-url');
 
 const DEFAULT_ARTICLES_FOLDER_ID = '1k8x27HIhYJH2VNpasBuj5wZSTV7CVIEP';
 const DEFAULT_MEDIA_FOLDER_ID = '1epwy_o7_lyY5R--igJ5wkJEQ3hExnJyb';
@@ -23,6 +31,8 @@ const ARTICLE_CACHE_FALLBACK_KEY = 'manifest:v2:fallback';
 const ARTICLE_CACHE_FRESH_TTL = 120;
 const ARTICLE_CACHE_FALLBACK_TTL = 60 * 60 * 24 * 30;
 const ARTICLE_SCHEDULE_TTL = 60 * 60 * 24 * 366;
+const ARTICLE_IMAGE_BLOB_TTL = 60 * 60 * 24 * 366;
+const ARTICLE_IMAGE_CACHE_SECONDS = 60 * 60 * 24 * 365;
 const PUBLICATION_TIME_ZONE = 'Europe/Nicosia';
 const SCHEDULED_PUBLICATION_HOUR = 10;
 const SETUP_FIELDS = new Map([
@@ -489,13 +499,13 @@ const mapWithConcurrency = async (items, limit, mapper) => {
   await Promise.all(workers); return results;
 };
 
-const articleImageUrl = id => `/api/article-image?id=${encodeURIComponent(id)}`;
 const toSummary = (article, locale) => {
   const content = article.translations[locale];
+  const version = article.sourceModifiedTime || article.modifiedDate || article.publishedDate;
   const summary = {
     slug: article.slug, category: article.category, publishedDate: article.publishedDate,
     modifiedDate: article.modifiedDate, authorName: article.authorName, authorRole: article.authorRole,
-    readTime: article.readTime, coverImage: articleImageUrl(article.coverImageId), coverAlt: content.coverAlt,
+    readTime: article.readTime, coverImage: articleImageUrl(article.coverImageId, 720, version), coverAlt: content.coverAlt,
     title: content.title, summary: content.summary, availableLanguages: article.availableLanguages
   };
   return { ...summary, url: getArticlePath(summary, locale) };
@@ -621,20 +631,82 @@ const getPublishedArticleBySlug = async (slug, locale, request) => {
     .filter(item => item && item.slug !== article.slug);
   return {
     ...article, locale: selected, content: article.translations[selected], related,
-    authorImage: article.authorImageId ? articleImageUrl(article.authorImageId) : '',
-    coverImage: articleImageUrl(article.coverImageId), shareImage: articleImageUrl(article.shareImageId)
+    authorImage: article.authorImageId ? articleImageUrl(article.authorImageId, 160, article.sourceModifiedTime) : '',
+    coverImage: articleImageUrl(article.coverImageId, 1600, article.sourceModifiedTime),
+    shareImage: articleImageUrl(article.shareImageId, 1200, article.sourceModifiedTime, 'jpeg')
   };
 };
 
-const getArticleImage = async (id, request) => {
+const optimiseArticleImage = async (bytes, width, format) => {
+  const pipeline = sharp(bytes, { failOn: 'warning', limitInputPixels: 40_000_000 })
+    .rotate()
+    .resize({ width, withoutEnlargement: true, fit: 'inside' });
+  const output = format === 'jpeg'
+    ? pipeline.jpeg({ quality: 82, progressive: true, mozjpeg: true })
+    : pipeline.webp({ quality: 80, effort: 4 });
+  const result = await output.toBuffer({ resolveWithObject: true });
+  return {
+    bytes: result.data,
+    mimeType: format === 'jpeg' ? 'image/jpeg' : 'image/webp',
+    width: result.info.width,
+    height: result.info.height
+  };
+};
+
+const blobConfiguration = request => ({
+  token: process.env.BLOB_READ_WRITE_TOKEN || undefined,
+  storeId: process.env.BLOB_STORE_ID || undefined,
+  oidcToken: getHeader(request, 'x-vercel-oidc-token') || process.env.VERCEL_OIDC_TOKEN || undefined
+});
+
+const hasBlobConfiguration = configuration => Boolean(configuration.token || (configuration.storeId && configuration.oidcToken));
+
+const getArticleImage = async (id, request, options = {}) => {
   if (!/^[A-Za-z0-9_-]{20,}$/.test(id || '')) throw new ArticlesError('INVALID_IMAGE_ID', 'The image link is invalid.', 400);
+  const width = normaliseImageWidth(options.width);
+  const format = normaliseImageFormat(options.format);
+  const requestedVersion = imageVersion(options.version);
+  const mappingKey = `image-blob:v1:${id}:${requestedVersion}:${width}:${format}`;
+  const blob = blobConfiguration(request);
+  if (hasBlobConfiguration(blob)) {
+    const cachedBlobUrl = await cacheGet(mappingKey);
+    if (cachedBlobUrl) return { redirectUrl: cachedBlobUrl, width, format };
+  }
   const configuration = getConfiguration(request);
-  const fields = encodeURIComponent('id,name,mimeType,parents,size,trashed');
+  const fields = encodeURIComponent('id,name,mimeType,parents,size,trashed,modifiedTime,md5Checksum');
   const metadata = await googleJson(`https://www.googleapis.com/drive/v3/files/${encodeURIComponent(id)}?fields=${fields}&supportsAllDrives=true`, configuration);
   const valid = !metadata.trashed && String(metadata.mimeType || '').startsWith('image/') && Array.isArray(metadata.parents) && metadata.parents.includes(configuration.mediaFolderId) && Number(metadata.size || 0) <= 12 * 1024 * 1024;
   if (!valid) throw new ArticlesError('IMAGE_NOT_FOUND', 'This article image is not available.', 404);
   const response = await googleResponse(`https://www.googleapis.com/drive/v3/files/${encodeURIComponent(id)}?alt=media&supportsAllDrives=true`, configuration);
-  return { mimeType: metadata.mimeType, bytes: Buffer.from(await response.arrayBuffer()) };
+  const optimised = await optimiseArticleImage(Buffer.from(await response.arrayBuffer()), width, format);
+  if (!hasBlobConfiguration(blob)) return optimised;
+
+  const digest = String(metadata.md5Checksum || metadata.modifiedTime || requestedVersion).replace(/[^A-Za-z0-9_-]+/g, '').slice(0, 64);
+  const pathname = `article-images/${id}/${digest}-${width}.${format === 'jpeg' ? 'jpg' : 'webp'}`;
+  let stored;
+  try {
+    stored = await head(pathname, blob);
+  } catch (error) {
+    if (!(error instanceof BlobNotFoundError)) throw error;
+    try {
+      stored = await put(pathname, optimised.bytes, {
+        ...blob,
+        access: 'public',
+        addRandomSuffix: false,
+        allowOverwrite: false,
+        cacheControlMaxAge: ARTICLE_IMAGE_CACHE_SECONDS,
+        contentType: optimised.mimeType
+      });
+    } catch (uploadError) {
+      stored = await head(pathname, blob).catch(() => { throw uploadError; });
+    }
+  }
+  await cacheSet(mappingKey, stored.url, {
+    ttl: ARTICLE_IMAGE_BLOB_TTL,
+    name: 'article-image-blob-url',
+    tags: ['article-images', `article-image:${id}`]
+  });
+  return { redirectUrl: stored.url, width: optimised.width, height: optimised.height, format };
 };
 
 const sendJson = (response, status, payload, { cache = false } = {}) => {
@@ -657,6 +729,6 @@ module.exports = {
   ArticlesError, PUBLICATION_TIME_ZONE, SCHEDULED_PUBLICATION_HOUR, SUPPORTED_LOCALES,
   articleCacheControl, articleCdnCacheControl, articleImageUrl, buildArticle, createPublicationSchedule,
   extractParagraphs, getArticleCachePolicy, isPublicationDue, publicationDateFor, publicationInstant,
-  getArticleImage, getPublishedArticleBySlug, listPublishedArticles, parseBodyBlocks,
+  getArticleImage, getPublishedArticleBySlug, listPublishedArticles, optimiseArticleImage, parseBodyBlocks,
   parseLocale, parseSetup, sendError, sendJson, slugify
 };

@@ -44,6 +44,10 @@ The cover image and social-share image are deliberately independent:
 
 The recommended social image is 1200 × 630 px. A public share never falls back to the cover image because the share-image field is required.
 
+Published article images are never delivered to readers as raw Google Drive files. The image endpoint creates constrained WebP variants for article content and JPEG for social previews, emits responsive `srcset` markup, and uses a versioned URL with one-year immutable caching. When the project Blob store is connected, each generated variant is uploaded once and subsequent requests are redirected to the public global CDN URL. If Blob is temporarily unavailable, the optimized variant is still returned through the existing Vercel CDN endpoint, so images remain available during rollout or provider incidents.
+
+The article hero requests only the appropriate 720, 1280 or 1600 px variant and receives high fetch priority. Inline images remain lazy-loaded with responsive 480, 960 and 1600 px options. Article cards use a dedicated 720 px version instead of downloading the full original. Width, height and a neutral placeholder reserve space before delivery to reduce layout movement.
+
 `Author image` is optional and belongs in the shared `SETUP` tab. Upload the portrait to `2. Article Media` and paste its Drive link into that field. When it is absent, the article renders an accessible initials fallback, so existing articles remain valid.
 
 ## Article conversion and related content
@@ -108,9 +112,12 @@ GOOGLE_DRIVE_ARTICLE_MEDIA_FOLDER_ID=1epwy_o7_lyY5R--igJ5wkJEQ3hExnJyb
 
 The default IDs are also embedded as safe non-secret configuration. The Google service account still needs Reader access to the article root so its live and media children are accessible.
 
+For direct Blob delivery, connect a public Vercel Blob store to the production project. Vercel supplies `BLOB_READ_WRITE_TOKEN`, or `BLOB_STORE_ID` can be used with the existing Vercel OIDC identity. No extra Serverless Function is created; the existing article-image function performs the one-time optimization and upload.
+
 ## Verification
 
 - Parser regression covers shared fields, locale validation, separate media IDs, lists, quotes, safe inline links, folder-controlled approval, Cyprus summer/winter scheduling, release gating, cache-boundary expiry and safe CTAs.
+- Image regression covers URL versioning, supported widths and formats, resizing and WebP output without adding another Vercel Function.
 - Page tests cover the article template, server rendering, clean routing, `index,follow`, structured data and independent social preview image.
 - Local browser QA passed at 1440 px and 390 px for `/news` and the article demo with zero horizontal overflow, a single H1, correct five-item mobile navigation and Hebrew RTL empty states.
 - Production must be retested after folder access is granted and the changes are deployed.

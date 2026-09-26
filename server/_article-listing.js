@@ -23,7 +23,7 @@ const formatDate = (date, locale) => {
 
 const renderArticleCard = (article, locale = 'en') => {
   const labels = CATEGORY_LABELS[locale] || CATEGORY_LABELS.en;
-  return `<article class="news-card" data-article-category="${escapeHtml(article.category)}"><a href="${escapeHtml(article.url)}"><div class="news-image"><img src="${escapeHtml(article.coverImage)}" alt="${escapeHtml(article.coverAlt)}" loading="lazy"><span>${escapeHtml(labels[article.category] || article.category)}</span></div><h3>${escapeHtml(article.title)}</h3><p>${escapeHtml(article.summary)}</p><small>${escapeHtml(formatDate(article.publishedDate, locale))}&nbsp;&nbsp;•&nbsp;&nbsp;${escapeHtml(article.authorName)} | ${escapeHtml(article.authorRole)}</small></a></article>`;
+  return `<article class="news-card" data-article-category="${escapeHtml(article.category)}"><a href="${escapeHtml(article.url)}"><div class="news-image"><img src="${escapeHtml(article.coverImage)}" alt="${escapeHtml(article.coverAlt)}" width="720" height="405" loading="lazy" decoding="async"><span>${escapeHtml(labels[article.category] || article.category)}</span></div><h3>${escapeHtml(article.title)}</h3><p>${escapeHtml(article.summary)}</p><small>${escapeHtml(formatDate(article.publishedDate, locale))}&nbsp;&nbsp;•&nbsp;&nbsp;${escapeHtml(article.authorName)} | ${escapeHtml(article.authorRole)}</small></a></article>`;
 };
 
 module.exports = { CATEGORY_LABELS, escapeHtml, formatDate, renderArticleCard };

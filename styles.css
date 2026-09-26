@@ -1545,7 +1545,7 @@ html[dir="rtl"] .article-table { text-align: right; }
 .article-stat-grid strong { font-size: 36px; line-height: 1; letter-spacing: -.05em; }
 .article-stat-grid span { font-size: 12px; font-weight: 700; line-height: 1.35; }
 .article-inline-image { margin: 20px 0 72px; }
-.article-inline-image img { width: 100%; height: 430px; object-fit: cover; }
+.article-inline-image img { width: 100%; height: 430px; aspect-ratio: auto 16/9; object-fit: cover; background: #e7ebf2; }
 .article-callout { display: grid; grid-template-columns: 48px minmax(0,1fr); gap: 22px; margin: 36px 0; border: 1px solid #cfd8e7; border-inline-start: 5px solid var(--blue); padding: 28px; background: #f6f8fc; }
 .article-callout > .lucide { width: 30px; height: 30px; color: var(--blue); }
 .article-callout h3 { margin: 0 0 8px; font-size: 19px; }

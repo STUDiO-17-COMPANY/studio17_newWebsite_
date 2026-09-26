@@ -1,9 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "test:articles": "node --test tests/article-listing-ssr.test.cjs tests/articles-parser.test.cjs tests/article-prototype.test.cjs tests/llms.test.cjs"
+    "test:articles": "node --test tests/article-image-optimization.test.cjs tests/article-listing-ssr.test.cjs tests/articles-parser.test.cjs tests/article-prototype.test.cjs tests/llms.test.cjs"
   },
   "dependencies": {
-    "@vercel/functions": "3.9.9"
+    "@vercel/blob": "^2.8.0",
+    "@vercel/functions": "3.9.9",
+    "sharp": "^0.35.4"
   }
 }
