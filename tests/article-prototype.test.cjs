@@ -16,6 +16,19 @@ const rendered = renderArticleMain(demo);
 const multiParagraphDemo = structuredClone(demo);
 multiParagraphDemo.content.blocks.splice(1, 0, { type: 'paragraph', text: 'A second introductory paragraph before the first article section.' });
 const multiParagraphRendered = renderArticleMain(multiParagraphDemo);
+const linkedDemo = structuredClone(demo);
+linkedDemo.content.blocks.splice(1, 0, {
+  type: 'paragraph',
+  text: 'Explore our SEO services and unsafe example.',
+  inlines: [
+    { text: 'Explore our ', url: '' },
+    { text: 'SEO services', url: 'https://www.studio17.world/services/seo' },
+    { text: ', an ', url: '' },
+    { text: 'external source', url: 'https://example.com/reference' },
+    { text: ' and unsafe example.', url: 'javascript:alert(1)' }
+  ]
+});
+const linkedRendered = renderArticleMain(linkedDemo);
 const legacyDemo = structuredClone(demo);
 legacyDemo.authorImage = '';
 delete legacyDemo.content.sidebarCtaTitle;
@@ -37,6 +50,9 @@ assert.ok(rendered.indexOf('class="article-lead"') < rendered.indexOf('class="ar
 assert.ok(rendered.indexOf('class="article-cover reveal"') < rendered.indexOf('<section id="the-first-visit-often-happens-online"'));
 assert.ok(multiParagraphRendered.indexOf('A second introductory paragraph') < multiParagraphRendered.indexOf('class="article-cover reveal"'));
 assert.ok(multiParagraphRendered.indexOf('class="article-cover reveal"') < multiParagraphRendered.indexOf('<section id="the-first-visit-often-happens-online"'));
+assert.match(linkedRendered, /<a href="https:\/\/www\.studio17\.world\/services\/seo">SEO services<\/a>/);
+assert.match(linkedRendered, /<a href="https:\/\/example\.com\/reference" target="_blank" rel="noopener noreferrer">external source<\/a>/);
+assert.doesNotMatch(linkedRendered, /javascript:alert/);
 assert.match(rendered, /class="shell article-layout has-related"/);
 assert.match(rendered, /class="article-meta-author"/);
 assert.match(rendered, /class="article-author-image"/);
@@ -74,6 +90,7 @@ assert.match(styles, /\.article-layout\.has-related \{[^}]*grid-template-columns
 assert.match(styles, /\.article-cover img \{[^}]*aspect-ratio: 16\/9/);
 assert.doesNotMatch(styles, /\.article-cover \{ display: none; \}/);
 assert.match(styles, /\.article-table-wrap \{[^}]*overflow-x: auto/);
+assert.match(styles, /\.article-body p a,[^{]+\{[^}]*color: var\(--blue\);[^}]*text-decoration: underline/);
 assert.match(styles, /\.article-rail-cta/);
 assert.match(styles, /\.article-rail-cta \.solid-button > span \{[^}]*display: grid;[^}]*flex: 0 0 30px;[^}]*place-items: center;/);
 assert.match(styles, /\.article-related-track/);

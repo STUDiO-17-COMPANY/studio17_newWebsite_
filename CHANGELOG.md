@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-26 — Google Docs inline links in articles
+
+- Preserved Google Docs link metadata for linked words and phrases inside article paragraphs, headings and lists.
+- Added secure URL validation, safe external-tab behavior, keyboard focus states and Studio 17 blue link styling without changing legacy article rendering.
+- Added parser and renderer regression coverage and documented the editorial workflow.
+
 ## 2026-09-26 — Scheduled article publication
 
 - Made direct membership in Google Drive folder `1. Open Articles` the article approval mechanism; the legacy `Publication status` field no longer controls visibility.

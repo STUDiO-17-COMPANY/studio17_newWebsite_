@@ -22,6 +22,25 @@ const UI = {
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const escapeAttribute = escapeHtml;
+const safeInlineUrl = value => {
+  const text = String(value || '').trim();
+  if (/^(?:\/(?!\/)|#)[A-Za-z0-9/_?=&%#.-]*$/.test(text)) return text;
+  try {
+    const url = new URL(text);
+    return ['https:', 'http:', 'mailto:'].includes(url.protocol) ? url.href : '';
+  } catch { return ''; }
+};
+const renderInline = value => {
+  const fallback = typeof value === 'string' ? value : value?.text;
+  if (!Array.isArray(value?.inlines) || !value.inlines.length) return escapeHtml(fallback);
+  return value.inlines.map(segment => {
+    const label = escapeHtml(segment?.text);
+    const href = safeInlineUrl(segment?.url);
+    if (!href) return label;
+    const external = /^https?:\/\//i.test(href) && new URL(href).origin !== SITE_URL;
+    return `<a href="${escapeAttribute(href)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>${label}</a>`;
+  }).join('');
+};
 const absoluteUrl = value => new URL(String(value || '/'), SITE_URL).href;
 const highlight = (value, highlighted) => {
   const text = String(value || '');
@@ -52,13 +71,13 @@ const renderBlocks = (blocks, tableLabel = UI.en.table, coverMarkup = '') => {
   for (const block of blocks || []) {
     if (block.type === 'heading' && block.level === 2) {
       closeSection(); renderCover(); number += 1; sectionOpen = true;
-      html.push(`<section id="${escapeAttribute(block.id)}"><h2><span>${String(number).padStart(2, '0')}</span>${escapeHtml(block.text)}</h2>`);
-    } else if (block.type === 'heading') html.push(`<h3>${escapeHtml(block.text)}</h3>`);
+      html.push(`<section id="${escapeAttribute(block.id)}"><h2><span>${String(number).padStart(2, '0')}</span>${renderInline(block)}</h2>`);
+    } else if (block.type === 'heading') html.push(`<h3>${renderInline(block)}</h3>`);
     else if (block.type === 'paragraph') {
       const isLead = !number && html.length === 0;
-      html.push(`<p${isLead ? ' class="article-lead"' : ''}>${escapeHtml(block.text)}</p>`);
+      html.push(`<p${isLead ? ' class="article-lead"' : ''}>${renderInline(block)}</p>`);
     }
-    else if (block.type === 'list') html.push(`<${block.ordered ? 'ol' : 'ul'}>${block.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</${block.ordered ? 'ol' : 'ul'}>`);
+    else if (block.type === 'list') html.push(`<${block.ordered ? 'ol' : 'ul'}>${block.items.map(item => `<li>${renderInline(item)}</li>`).join('')}</${block.ordered ? 'ol' : 'ul'}>`);
     else if (block.type === 'table') html.push(`<div class="article-table-wrap" role="region" aria-label="${escapeAttribute(tableLabel)}" tabindex="0"><table class="article-table"><thead><tr>${block.headers.map(header => `<th scope="col">${escapeHtml(header)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
     else if (block.type === 'image') html.push(`<figure class="article-inline-image"><img src="/api/article-image?id=${encodeURIComponent(block.imageId)}" alt="${escapeAttribute(block.alt)}" loading="lazy">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}</figure>`);
     else if (block.type === 'quote') html.push(`<blockquote><p>${escapeHtml(block.text)}</p>${block.citation ? `<cite>${escapeHtml(block.citation)}</cite>` : ''}</blockquote>`);

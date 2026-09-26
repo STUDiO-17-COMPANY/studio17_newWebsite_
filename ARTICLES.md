@@ -59,6 +59,10 @@ Complete all four fields to show the box in that language. Leaving all four blan
 
 `Related article slugs` in `SETUP` accepts a comma-separated list without a three-article limit. The right rail intentionally shows the first three related articles. The complete Continue reading section after the closing CTA shows every valid related article and becomes a looping carousel when four or more are available; its arrows stay hidden for three or fewer.
 
+## Inline links inside an article
+
+Links applied to words or phrases in the Google Doc `Article body` are preserved on the published website. Select the relevant text in Google Docs, use **Insert link**, and enter a website URL, email link or clean internal Studio 17 path. Linked text is rendered in Studio 17 blue with an underline, supports keyboard focus and opens external web links safely in a new tab. Existing articles without inline links continue to render unchanged. Unsafe link protocols are discarded while their visible text is retained.
+
 ## Tables inside an article
 
 Native Google Docs tables are supported inside the `Article body` of every language tab.
@@ -106,7 +110,7 @@ The default IDs are also embedded as safe non-secret configuration. The Google s
 
 ## Verification
 
-- Parser regression covers shared fields, locale validation, separate media IDs, lists, quotes, folder-controlled approval, Cyprus summer/winter scheduling, release gating, cache-boundary expiry and safe CTAs.
+- Parser regression covers shared fields, locale validation, separate media IDs, lists, quotes, safe inline links, folder-controlled approval, Cyprus summer/winter scheduling, release gating, cache-boundary expiry and safe CTAs.
 - Page tests cover the article template, server rendering, clean routing, `index,follow`, structured data and independent social preview image.
 - Local browser QA passed at 1440 px and 390 px for `/news` and the article demo with zero horizontal overflow, a single H1, correct five-item mobile navigation and Hebrew RTL empty states.
 - Production must be retested after folder access is granted and the changes are deployed.

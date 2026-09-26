@@ -1520,6 +1520,9 @@ html[lang]:not([lang="en"]) .footer-bottom { min-height: 80px; padding-block: 14
 .article-body ul, .article-body ol { margin: 0 0 28px; padding-inline-start: 24px; }
 .article-body li { margin-bottom: 13px; padding-inline-start: 7px; font-size: 17px; line-height: 1.65; }
 .article-body li::marker { color: var(--blue); font-weight: 800; }
+.article-body p a, .article-body li a, .article-body h2 a, .article-body h3 a { color: var(--blue); font-weight: 700; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+.article-body p a:hover, .article-body li a:hover, .article-body h2 a:hover, .article-body h3 a:hover { color: var(--ink); }
+.article-body p a:focus-visible, .article-body li a:focus-visible, .article-body h2 a:focus-visible, .article-body h3 a:focus-visible { border-radius: 2px; outline: 3px solid var(--blue); outline-offset: 3px; }
 .article-table-wrap { max-width: 100%; margin: 36px 0 44px; overflow-x: auto; border: 1px solid #cbd4e1; background: var(--paper); scrollbar-color: var(--blue) #dce3ee; scrollbar-width: thin; }
 .article-table-wrap:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .article-table { width: 100%; min-width: 680px; border-collapse: collapse; text-align: left; }

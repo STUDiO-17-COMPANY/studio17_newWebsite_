@@ -17,6 +17,16 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
     elements: [{ textRun: { content: text + '\n' } }]
   }
 });
+const linkedParagraph = (segments, style = 'NORMAL_TEXT', bullet = false) => ({
+  paragraph: {
+    paragraphStyle: { namedStyleType: style },
+    ...(bullet ? { bullet: { listId: 'list-1', nestingLevel: 0 } } : {}),
+    elements: segments.map((segment, index) => ({ textRun: {
+      content: segment.text + (index === segments.length - 1 ? '\n' : ''),
+      ...(segment.url ? { textStyle: { link: { url: segment.url } } } : {})
+    } }))
+  }
+});
 const nativeTable = rows => ({
   table: {
     tableRows: rows.map(cells => ({
@@ -27,7 +37,7 @@ const nativeTable = rows => ({
 const tab = (title, rows) => ({
   tabProperties: { title },
   documentTab: {
-    body: { content: rows.map(row => row.table ? row : paragraph(...row)) },
+    body: { content: rows.map(row => row.table || row.paragraph ? row : paragraph(...row)) },
     lists: { 'list-1': { listProperties: { nestingLevels: [{ glyphType: 'BULLET' }] } } }
   }
 });
@@ -57,6 +67,11 @@ const enRows = [
   ['Sidebar CTA button URL', 'HEADING_2'], ['/contact'],
   ['Article body', 'HEADING_1'],
   ['This is the opening article paragraph.'],
+  linkedParagraph([
+    { text: 'Explore our ' },
+    { text: 'SEO services', url: 'https://www.studio17.world/services/seo' },
+    { text: ' for the complete approach.' }
+  ]),
   ['A practical section', 'HEADING_2'],
   ['The section explains one useful idea.'],
   ['One list item', 'NORMAL_TEXT', true],
@@ -87,6 +102,12 @@ assert.equal(result.article.translations.en.sidebarCtaTitle, 'Need help applying
 assert.equal(result.article.translations.en.sidebarCtaUrl, '/contact');
 assert.equal(result.article.translations.en.blocks.some(block => block.type === 'list' && block.items.length === 2), true);
 assert.equal(result.article.translations.en.blocks.some(block => block.type === 'quote'), true);
+const linkedBlock = result.article.translations.en.blocks.find(block => block.text === 'Explore our SEO services for the complete approach.');
+assert.deepEqual(linkedBlock.inlines, [
+  { text: 'Explore our ', url: '' },
+  { text: 'SEO services', url: 'https://www.studio17.world/services/seo' },
+  { text: ' for the complete approach.', url: '' }
+]);
 const parsedTable = result.article.translations.en.blocks.find(block => block.type === 'table');
 assert.deepEqual(parsedTable.headers, ['SEO area', 'What it improves', 'When it matters']);
 assert.deepEqual(parsedTable.rows[1], ['Local SEO', 'Maps and local visibility', 'When serving a location']);

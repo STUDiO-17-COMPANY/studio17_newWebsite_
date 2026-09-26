@@ -244,13 +244,43 @@ const safeCtaUrl = value => {
 };
 
 const inlineText = element => element.textRun?.content || element.richLink?.richLinkProperties?.title || element.richLink?.richLinkProperties?.uri || '';
-const paragraphRecord = (paragraph, lists = {}) => ({
-  text: (paragraph?.elements || []).map(inlineText).join('').replace(/\n+$/, '').trim(),
-  bullet: Boolean(paragraph?.bullet),
-  listId: paragraph?.bullet?.listId || '',
-  ordered: /DECIMAL|ALPHA|ROMAN/i.test(lists[paragraph?.bullet?.listId]?.listProperties?.nestingLevels?.[paragraph?.bullet?.nestingLevel || 0]?.glyphType || ''),
-  style: paragraph?.paragraphStyle?.namedStyleType || 'NORMAL_TEXT'
-});
+const safeInlineUrl = value => {
+  const text = cleanText(value);
+  if (/^(?:\/(?!\/)|#)[A-Za-z0-9/_?=&%#.-]*$/.test(text)) return text;
+  try {
+    const url = new URL(text);
+    return ['https:', 'http:', 'mailto:'].includes(url.protocol) ? url.href : '';
+  } catch { return ''; }
+};
+
+const inlineSegments = elements => {
+  const segments = (elements || []).map(element => ({
+    text: inlineText(element),
+    url: safeInlineUrl(element.textRun?.textStyle?.link?.url || element.richLink?.richLinkProperties?.uri || '')
+  })).filter(segment => segment.text);
+  if (!segments.length) return [];
+  segments[segments.length - 1].text = segments.at(-1).text.replace(/\n+$/, '');
+  segments[0].text = segments[0].text.replace(/^\s+/, '');
+  segments[segments.length - 1].text = segments.at(-1).text.replace(/\s+$/, '');
+  return segments.filter(segment => segment.text).reduce((result, segment) => {
+    const previous = result.at(-1);
+    if (previous?.url === segment.url) previous.text += segment.text;
+    else result.push(segment);
+    return result;
+  }, []);
+};
+
+const paragraphRecord = (paragraph, lists = {}) => {
+  const inlines = inlineSegments(paragraph?.elements);
+  return {
+    text: inlines.map(segment => segment.text).join(''),
+    inlines,
+    bullet: Boolean(paragraph?.bullet),
+    listId: paragraph?.bullet?.listId || '',
+    ordered: /DECIMAL|ALPHA|ROMAN/i.test(lists[paragraph?.bullet?.listId]?.listProperties?.nestingLevels?.[paragraph?.bullet?.nestingLevel || 0]?.glyphType || ''),
+    style: paragraph?.paragraphStyle?.namedStyleType || 'NORMAL_TEXT'
+  };
+};
 
 const structuralText = content => (content || []).flatMap(item => {
   if (item.paragraph) return (item.paragraph.elements || []).map(inlineText).join('').replace(/\n+$/, '').trim();
@@ -309,8 +339,9 @@ const parseBodyBlocks = entries => {
   const pushListItem = paragraph => {
     const ordered = Boolean(paragraph.ordered);
     const previous = blocks.at(-1);
-    if (previous?.type === 'list' && previous.ordered === ordered) previous.items.push(paragraph.text);
-    else blocks.push({ type: 'list', ordered, items: [paragraph.text] });
+    const item = { text: paragraph.text, inlines: paragraph.inlines };
+    if (previous?.type === 'list' && previous.ordered === ordered) previous.items.push(item);
+    else blocks.push({ type: 'list', ordered, items: [item] });
   };
   while (index < nodes.length) {
     const node = nodes[index];
@@ -344,9 +375,9 @@ const parseBodyBlocks = entries => {
       continue;
     }
     if (paragraph.bullet) pushListItem(paragraph);
-    else if (paragraph.style === 'HEADING_2') blocks.push({ type: 'heading', level: 2, text: paragraph.text, id: slugify(paragraph.text) });
-    else if (paragraph.style === 'HEADING_3') blocks.push({ type: 'heading', level: 3, text: paragraph.text });
-    else blocks.push({ type: 'paragraph', text: paragraph.text });
+    else if (paragraph.style === 'HEADING_2') blocks.push({ type: 'heading', level: 2, text: paragraph.text, inlines: paragraph.inlines, id: slugify(paragraph.text) });
+    else if (paragraph.style === 'HEADING_3') blocks.push({ type: 'heading', level: 3, text: paragraph.text, inlines: paragraph.inlines });
+    else blocks.push({ type: 'paragraph', text: paragraph.text, inlines: paragraph.inlines });
     index += 1;
   }
   return blocks;
