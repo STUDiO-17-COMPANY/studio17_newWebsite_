@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-26 — Website services proof and partner update
+
+- Reordered `/services/website` so the service-outcome selector follows the European proof grid and leads directly into the problem-identification section.
+- Standardized proof imagery at 16:9 and restored the approved 32 px section rhythm around the selected-work heading.
+- Replaced Terrassi Villa client-showcase imagery across the site with the new approved asset, marked the project as live and linked both its website and published case study.
+- Replaced the PHÓS Optics placeholder case-study links with its live website and made the 100 Pratos showcase non-clickable on the Website services page.
+- Added MIA EVENTS & EXPERIENCES as partner 14 to the homepage, About and Work marquees with the supplied logo and official website.
+
 ## 2026-09-26 — Curated human sitemap
 
 - Reduced `/sitemap` to the main published Studio 17 destinations instead of exposing every planned, location-specific or dynamically published page.

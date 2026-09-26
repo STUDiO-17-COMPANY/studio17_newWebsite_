@@ -43,7 +43,7 @@ test('website development page preserves commercial and portfolio requirements',
   assert.match(html, /class="design-link" href="\/work#selected-work"/);
   assert.match(html, /data-service-key="compareAction"[\s\S]*href="\/services\/website-pricing"[\s\S]*Compare prices/);
   for (const term of ['SEO foundation', 'GEO foundation', 'Technical SEO']) assert.ok(html.includes(term), term);
-  for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/terrassivilla.jpg']) assert.ok(html.includes(asset), asset);
+  for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/Terrassivilla_Image_Showcase_General-compressed.avif']) assert.ok(html.includes(asset), asset);
   assert.ok(html.includes('https://www.100pratos.pt/'));
   assert.ok(html.includes('https://www.phosoptics.com/en'));
   assert.ok(html.includes('/case-studies/terrassi-villa-accessible-hospitality-website-case-study'));
@@ -109,19 +109,21 @@ test('website service-family page provides a distinct, translated decision journ
   for (const destination of ['/services/website-development', '/wip#for=website-revamp', '/wip#for=website-design', '/services/seo', '/wip#for=geo', '/wip#for=copywriting', '/services/localization-and-translation', '/wip#for=maintenance']) assert.ok(html.includes(destination), destination);
   for (const section of ['website-proof', 'website-problems', 'website-method', 'website-capabilities', 'website-work-intro', 'website-services-process', 'website-entry-paths', 'website-services-faq', 'website-services-closing']) assert.ok(html.includes(section), section);
   assert.doesNotMatch(html, /website-situations|Choose your situation/);
-  const orderedSections = ['<section class="page-hero website-services-hero"', '<section class="website-method"', '<section class="website-proof"', '<section class="website-problems"', '<section class="website-capabilities"', '<section class="website-work-intro"', '<section class="website-process website-services-process"', '<section class="website-entry-paths"', '<section class="website-faq website-services-faq"', '<section class="closing-cta website-services-closing"'];
+  const orderedSections = ['<section class="page-hero website-services-hero"', '<section class="website-method"', '<section class="website-proof"', '<section class="website-capabilities"', '<section class="website-problems"', '<section class="website-work-intro"', '<section class="website-process website-services-process"', '<section class="website-entry-paths"', '<section class="website-faq website-services-faq"', '<section class="closing-cta website-services-closing"'];
   orderedSections.reduce((previous, section) => { const next = html.indexOf(section); assert.ok(next > previous, section); return next; }, -1);
   assert.match(html, /Website services<\/span> for your business needs/);
   assert.match(html, /class="website-hero-actions"[\s\S]*?class="solid-button"[\s\S]*?href="\/contact"/);
   const method = html.slice(html.indexOf('<section class="website-method"'), html.indexOf('<section class="website-proof"'));
-  const problems = html.slice(html.indexOf('<section class="website-problems"'), html.indexOf('<section class="website-capabilities"'));
+  const problems = html.slice(html.indexOf('<section class="website-problems"'), html.indexOf('<section class="website-work-intro"'));
   assert.equal((problems.match(/<a /g) || []).length, 5);
   assert.equal((method.match(/<a href=/g) || []).length, 3);
   assert.match(method, /href="\/services\/website-pricing"[\s\S]*?href="\/team"[\s\S]*?href="\/wip#for=ai-integrations"/);
   assert.equal((method.match(/data-lucide="arrow-up-right"/g) || []).length, 3);
   assert.match(method, /data-service-key="methodHeading"[\s\S]*What differentiates us[\s\S]*from the others/);
   assert.match(html, /class="website-proof-grid[\s\S]*?<\/div><p class="website-proof-note">Real websites shaped around different audiences, markets and commercial goals<\/p>/);
-  assert.match(html, /href="#website-project-terrassi"[\s\S]*?href="#website-project-phos"[\s\S]*?href="#website-project-100pratos"/);
+  assert.match(html, /href="#website-project-terrassi"[\s\S]*?href="#website-project-phos"[\s\S]*?website-proof-card-static[\s\S]*?100 Pratos/);
+  assert.doesNotMatch(html, /href="#website-project-100pratos"/);
+  assert.match(css, /\.website-proof-card \{[^}]*aspect-ratio: 16 \/ 9/);
   assert.match(html, /data-service-key="workHeading"><h2[^>]*><span>Selected work<\/span> shaped around European business challenges<\/h2><\/div>/);
   assert.match(html, /service-locales\/website-services-v2\.js/);
   const process = html.slice(html.indexOf('<section class="website-process website-services-process"'), html.indexOf('<section class="website-entry-paths"'));
@@ -141,8 +143,13 @@ test('website service-family page provides a distinct, translated decision journ
   assert.match(css, /\.website-case-study \{[^}]*background: transparent;[^}]*overflow: hidden;/);
   assert.match(css, /\.website-services-page,[^{]+\.website-capabilities \{ background: var\(--paper\); \}/);
   assert.match(html, /case-studies\/terrassi-villa-accessible-hospitality-website-case-study/);
+  assert.match(html, /Terrassivilla_Image_Showcase_General-compressed\.avif/);
+  assert.match(html, /href="https:\/\/www\.terrassivilla\.com\/"/);
+  assert.match(html, /href="https:\/\/www\.phosoptics\.com\/en"/);
   assert.doesNotMatch(html, /terrassivilla-accessible-tourism-in-the-azores/);
-  assert.match(html, /wip#for=phos-optics-case-study/);
+  assert.doesNotMatch(html, /wip#for=phos-optics-case-study/);
+  const hundredPratos = html.slice(html.indexOf('<h3>100 Pratos</h3>'), html.indexOf('</article>', html.indexOf('<h3>100 Pratos</h3>')));
+  assert.doesNotMatch(hundredPratos, /href=/);
   assert.doesNotMatch(html, /website-search-growth/);
   assert.match(css, /\.website-faq \.website-faq-list \{[^}]*grid-template-columns: repeat\(2,minmax\(0,1fr\)\)/);
   assert.match(html, /Get a Website Recommendation[\s\S]*?Talk to Sales/);
@@ -172,7 +179,8 @@ test('website service-family page provides a distinct, translated decision journ
     assert.equal((localizedPage.faq.match(/<details>/g) || []).length, 9, locale);
     assert.match(localizedPage.method, /href="\/services\/website-pricing"[\s\S]*?href="\/team"[\s\S]*?href="\/wip#for=ai-integrations"/, locale);
     assert.equal((localizedPage.method.match(/data-lucide="arrow-up-right"/g) || []).length, 3, locale);
-    assert.match(localizedPage.proof, /href="#website-project-terrassi"[\s\S]*href="#website-project-phos"[\s\S]*href="#website-project-100pratos"/, locale);
+    assert.match(localizedPage.proof, /href="#website-project-terrassi"[\s\S]*href="#website-project-phos"[\s\S]*website-proof-card-static[\s\S]*100 Pratos/, locale);
+    assert.doesNotMatch(localizedPage.proof, /href="#website-project-100pratos"/, locale);
   }
   const hebrewPage = context.window.Studio17ServiceLocaleData.he.websiteServices;
   for (const key of ['meta', 'heroTitle', 'heroHeading', 'heroCopy', 'heroAction', 'methodHeading', 'method', 'proof', 'problems', 'capabilitiesHeading', 'capabilities', 'workHeading', 'workCases', 'process', 'entryPaths', 'faqHeading', 'faq', 'closing']) assert.ok(hebrewPage[key], `he: missing ${key}`);

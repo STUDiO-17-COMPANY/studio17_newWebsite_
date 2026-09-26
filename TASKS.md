@@ -11,6 +11,7 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 
 ## Current priorities
 
+- [x] Reorder the Website services decision journey, standardize its 16:9 proof cards and section spacing, connect launched Terrassi Villa and PHÓS Optics websites, keep 100 Pratos non-clickable there, refresh Terrassi Villa showcase imagery site-wide and add MIA EVENTS & EXPERIENCES as partner 14.
 - [x] Curate the human Sitemap to main published pages only, excluding articles, open roles, location SEO pages, WIP destinations and its own route.
 - [x] Standardize Sitemap, WIP, Careers, career-role and Contact heroes on the homepage media-hero model.
 - [x] Make first-visit language detection regional-code aware and use the browser's ordered language preferences.

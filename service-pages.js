@@ -156,7 +156,7 @@
     const featureImages = {
       development: '/Images/Showcase1.webp', revamp: '/Images/Showcase2.webp', design: '/Images/Showcase3.webp',
       seo: '/Images/SEO_heroimage.webp', geo: '/Images/SEO_heroimage.webp', copywriting: '/Images/CTA_Question_Image.webp',
-      localisation: '/Images/CTA_Question_Image.webp', maintenance: '/Images/terrassivilla.jpg'
+      localisation: '/Images/CTA_Question_Image.webp', maintenance: '/Images/Terrassivilla_Image_Showcase_General-compressed.avif'
     };
 
     const activateGroup = (groupKey, preferredService) => {

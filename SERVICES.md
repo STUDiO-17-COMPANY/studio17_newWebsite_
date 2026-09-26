@@ -27,7 +27,7 @@ All routes use clean URLs, canonical metadata, the shared header/footer, and the
 
 The service selector follows the hero directly. Do not restore the removed generic introduction between them.
 
-The sales journey gives Terrassi Villa and PHÓS Optics one standalone semantic section each. The client layouts have no surrounding card border or separate surface colour. Terrassi Villa links to its published article; PHÓS Optics uses `/wip#for=phos-optics-case-study` until its dedicated case study is published. The following component gives SEO, GEO and portfolio work distinct explanations and routes rather than treating search visibility as a generic website inclusion.
+The sales journey gives Terrassi Villa and PHÓS Optics one standalone semantic section each. The client layouts have no surrounding card border or separate surface colour. Terrassi Villa exposes both its live website and published case study; PHÓS Optics links to its live website until a dedicated case study is published. The following component gives SEO, GEO and portfolio work distinct explanations and routes rather than treating search visibility as a generic website inclusion.
 
 Every service-page FAQ uses two independent column containers on desktop, not shared CSS grid rows. One answer may be open in each column, and opening another answer closes only its sibling in the same column without changing the opposite column's row height. This contract applies to Website, Website Development, Free Website, SEO, SEO Cyprus and SEO Limassol.
 
@@ -97,7 +97,7 @@ The SEO FAQ starts by answering what the service can include, then addresses tim
 
 - 100 Pratos links to `https://www.100pratos.pt/`.
 - PHÓS Optics links to `https://www.phosoptics.com/en`.
-- Terrassi Villa is marked in development and links to `/case-studies/terrassi-villa-accessible-hospitality-website-case-study`.
+- Terrassi Villa is marked live, uses the approved `Terrassivilla_Image_Showcase_General-compressed.avif` visual and links to both `https://www.terrassivilla.com/` and `/case-studies/terrassi-villa-accessible-hospitality-website-case-study` where the component supports both actions.
 
 Project images must keep descriptive alternative text, explicit dimensions, lazy loading, and the approved destination.
 

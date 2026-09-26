@@ -17,7 +17,7 @@ const html = read('home.template.html');
 
   const showcase = html.match(/<section class="website-work home-work-showcase"[\s\S]*?<\/section>/)?.[0] || '';
   assert.equal((showcase.match(/class="website-project-card(?: [^"]*)?"/g) || []).length, 4);
-  for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/terrassivilla.jpg', '/Images/rg-automotive-work.jpg']) assert.ok(showcase.includes(asset), asset);
+  for (const asset of ['/Images/100pratos_website.png', '/Images/phosoptics_website.png', '/Images/Terrassivilla_Image_Showcase_General-compressed.avif', '/Images/rg-automotive-work.jpg']) assert.ok(showcase.includes(asset), asset);
   for (const project of ['100 Pratos', 'PHÓS Optics', 'Terrassi Villa', 'RG Automotive']) assert.ok(showcase.includes(project), project);
   assert.match(showcase, /href="\/case-studies\/terrassi-villa-accessible-hospitality-website-case-study"[^>]*aria-label="Read the Terrassi Villa case study"/);
   assert.match(showcase, />Read case study <i data-lucide="arrow-up-right"/);
