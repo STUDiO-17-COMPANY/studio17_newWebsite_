@@ -2134,6 +2134,7 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 .website-capabilities .service-page-heading > p { color: #596477; }
 .website-service-selector { min-height: 538px; padding: 24px 24px 0; background: var(--ink); overflow: hidden; }
 .website-service-tabs { height: 56px; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px; }
+.social-media-service-tabs { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .website-service-tabs button { min-width: 0; min-height: 56px; border: 0; padding: 8px 10px; color: var(--ink); background: var(--paper); font: inherit; font-size: 16px; line-height: 1.2; cursor: pointer; transition: color .2s ease, background .2s ease, transform .2s var(--ease); }
 .website-service-tabs button:hover, .website-service-tabs button:focus-visible { color: var(--white); background: #174fbd; transform: translateY(-2px); }
 .website-service-tabs button[aria-selected="true"] { color: var(--white); background: var(--blue); font-weight: 700; }

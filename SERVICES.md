@@ -16,10 +16,17 @@
 - `/services/website-pricing` is the English, Greek and Russian package-comparison page linked from Website Development.
 - `/services/free-website` is the multilingual application page for the selected-business Free Website offer.
 - `/services/seo` is the international commercial SEO page.
+- `/services/social-media` is the English commercial Social Media service-family page.
 - `/seo/cyprus` is the Cyprus-wide SEO lead-generation page.
 - `/seo/limassol` is the Limassol local SEO lead-generation page.
 
 All routes use clean URLs, canonical metadata, the shared header/footer, and the approved five-link mobile menu. The catalogue, Website Development and Free Website pages support all six site languages. The main SEO page and both SEO location landing pages follow the current new-page scope: English, Greek and Russian only, with reciprocal `hreflang` links for those versions plus `x-default`.
+
+## Social Media service family
+
+`/services/social-media` is English-only until Studio 17 explicitly requests translations. Its journey follows the Website service-family visual system while keeping original Social Media content: hero, three differentiators, an outcome-led four-service selector, six recognisable business problems, a five-stage process, two low-friction starting paths, buying FAQs and a final recommendation CTA.
+
+The interactive selector groups Social Media Management and Automation under “Manage & automate”, with Growth Strategy and Community Management under “Grow & connect”. All four complete service descriptions remain in the initial HTML for search engines and assistive technology; JavaScript adds the image-led desktop stage, keyboard controls and compact mobile selects. Unpublished child services and the future pricing page keep precise WIP destinations. The category link itself must use `/services/social-media` everywhere once this page is published.
 
 ## Website service family
 

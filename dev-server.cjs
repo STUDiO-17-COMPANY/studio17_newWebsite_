@@ -3,7 +3,7 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
-const { buildSeo, getArticlePath, renderArticleMain } = require('./api/_article-render');
+const { buildSeo, getArticlePath, renderArticleMain } = require('./server/_article-render');
 const { renderHomePage } = require('./api/home-page');
 const { renderNewsPage } = require('./api/news-page');
 const demoArticle = require('./article-demo.cjs');
@@ -42,6 +42,7 @@ const cleanPages = new Map([
   ['/services/website-pricing', 'website-pricing.html'],
   ['/services/free-website', 'free-website.html'],
   ['/services/localization-and-translation', 'localization-and-translation.html'],
+  ['/services/social-media', 'social-media.html'],
   ['/services/seo', 'seo.html'],
   ['/seo/cyprus', 'seo-cyprus.html'],
   ['/seo/limassol', 'seo-limassol.html'],
@@ -73,6 +74,8 @@ const legacyPages = new Map([
   ['/free-website', '/services/free-website'],
   ['/localization-and-translation.html', '/services/localization-and-translation'],
   ['/localization-and-translation', '/services/localization-and-translation'],
+  ['/social-media.html', '/services/social-media'],
+  ['/social-media', '/services/social-media'],
   ['/seo.html', '/services/seo'],
   ['/seo', '/services/seo'],
   ['/seo-cyprus.html', '/seo/cyprus'],

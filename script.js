@@ -21,7 +21,7 @@
     {
       categoryKey: 'social',
       label: 'Social Media',
-      href: '/wip#for=social-media',
+      href: '/services/social-media',
       items: [
         ['socialManagement', 'Social Media management', '/wip#for=social-media-management'],
         ['socialAutomation', 'Social Media automation', '/wip#for=social-media-automation'],
@@ -104,7 +104,7 @@
     const hash = hashIndex >= 0 ? href.slice(hashIndex) : '';
     const withoutHash = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
     const [pathname, query = ''] = withoutHash.split('?');
-    const localPages = { '/wip': 'wip.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/services/localization-and-translation': 'localization-and-translation.html' };
+    const localPages = { '/wip': 'wip.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/services/localization-and-translation': 'localization-and-translation.html', '/services/social-media': 'social-media.html' };
     const target = location.protocol === 'file:' ? `${localPages[pathname] || pathname.replace(/^\//, '')}${query ? `?${query}` : ''}${hash}` : href;
     const url = new URL(target, location.href);
     const isWip = /(?:^|\/)wip(?:\.html)?$/.test(url.pathname);
@@ -142,7 +142,10 @@
           currentPath === '/services/seo' ||
           ['website-services.html', 'website-development.html', 'free-website.html', 'seo.html'].includes(currentPath)
         );
-        if (isWebsiteFamily) title.setAttribute('aria-current', 'page');
+        const isSocialMediaFamily = group.categoryKey === 'social' && (
+          currentPath === '/services/social-media' || currentPath === 'social-media.html'
+        );
+        if (isWebsiteFamily || isSocialMediaFamily) title.setAttribute('aria-current', 'page');
       }
       const list = document.createElement('ul');
       group.items.forEach(([itemKey, label, href]) => {

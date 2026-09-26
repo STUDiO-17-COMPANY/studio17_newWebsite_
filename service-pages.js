@@ -249,6 +249,171 @@
     activateGroup(groupForService(initialService).key, initialService);
   };
 
+  const enhanceSocialMediaServices = () => {
+    if (page !== 'socialMediaServices') return;
+    const selector = document.querySelector('.social-media-service-selector');
+    if (!selector || selector.dataset.enhanced === 'true') return;
+
+    const buttons = [...selector.querySelectorAll('[data-social-service]')];
+    const panels = [...selector.querySelectorAll('[data-social-service-panel]')];
+    const serviceSelect = selector.querySelector('[data-social-service-select]');
+    const serviceNav = selector.querySelector('.website-service-nav');
+    const serviceStage = selector.querySelector('.social-media-service-stage');
+    if (!buttons.length || !panels.length || !serviceSelect || !serviceNav || !serviceStage) return;
+
+    selector.dataset.enhanced = 'true';
+    const available = new Set(panels.map(panel => panel.dataset.socialServicePanel));
+    const groups = [
+      { key: 'operate', label: 'Manage & automate', services: ['management', 'automation'] },
+      { key: 'grow', label: 'Grow & connect', services: ['growth', 'community'] }
+    ];
+    const groupForService = service => groups.find(group => group.services.includes(service)) || groups[0];
+
+    selector.classList.add('service-panel', 'website-service-panel');
+    const tabs = document.createElement('div');
+    tabs.className = 'service-tabs website-service-tabs social-media-service-tabs';
+    tabs.setAttribute('role', 'tablist');
+    tabs.setAttribute('aria-label', 'Social media area');
+    groups.forEach((group, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('role', 'tab');
+      button.setAttribute('aria-selected', String(index === 0));
+      button.setAttribute('aria-controls', 'social-media-service-main');
+      button.dataset.socialServiceGroup = group.key;
+      button.textContent = group.label;
+      tabs.append(button);
+    });
+
+    const categoryField = document.createElement('label');
+    categoryField.className = 'service-mobile-field website-service-mobile website-service-mobile-category';
+    categoryField.innerHTML = `<span>Social media area</span><span class="service-mobile-select-control"><select data-social-service-group-select>${groups.map(group => `<option value="${group.key}">${group.label}</option>`).join('')}</select><i data-lucide="chevron-down" aria-hidden="true"></i></span>`;
+    const serviceField = selector.querySelector('.website-service-mobile');
+    serviceField?.classList.add('service-mobile-field', 'website-service-mobile-item');
+    serviceField?.querySelector(':scope > span:last-child')?.classList.add('service-mobile-select-control');
+    const mobileFields = document.createElement('div');
+    mobileFields.className = 'service-mobile-selector website-service-mobile-fields';
+    mobileFields.append(categoryField);
+    if (serviceField) mobileFields.append(serviceField);
+
+    const main = document.createElement('div');
+    main.className = 'service-main website-service-main';
+    main.id = 'social-media-service-main';
+    serviceNav.classList.add('industry-list');
+    serviceNav.querySelector('p')?.setAttribute('hidden', '');
+
+    const feature = document.createElement('article');
+    feature.className = 'service-feature website-service-feature social-media-service-feature';
+    feature.innerHTML = '<div class="service-photo" aria-hidden="true"><img src="/Images/news-social.webp" alt="" data-social-feature-image></div><div class="service-gradient" aria-hidden="true"></div><div class="service-copy"><p class="website-service-kicker" data-social-feature-kicker></p><h3 data-social-feature-title></h3><p data-social-feature-body></p><p class="service-result" data-social-feature-result></p></div><button class="image-control image-control-left" type="button" data-social-service-prev aria-label="Previous social media service"><i data-lucide="chevron-left" aria-hidden="true"></i></button><button class="image-control image-control-right" type="button" data-social-service-next aria-label="Next social media service"><i data-lucide="chevron-right" aria-hidden="true"></i></button><div class="service-bottom-links"><a class="design-link design-link-dark" data-social-feature-primary href="#"></a><a class="design-link design-link-dark" href="/contact?service=social-media">Talk to sales <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div><a class="case-link" data-social-feature-overlay href="#"><span>Explore service</span><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>';
+    serviceStage.hidden = true;
+    serviceStage.classList.add('website-service-templates');
+    main.append(serviceNav, feature);
+    selector.prepend(tabs, mobileFields);
+    selector.append(main, serviceStage);
+
+    const groupButtons = [...tabs.querySelectorAll('[data-social-service-group]')];
+    const groupSelect = categoryField.querySelector('[data-social-service-group-select]');
+    const featureImage = feature.querySelector('[data-social-feature-image]');
+    const featureKicker = feature.querySelector('[data-social-feature-kicker]');
+    const featureTitle = feature.querySelector('[data-social-feature-title]');
+    const featureBody = feature.querySelector('[data-social-feature-body]');
+    const featureResult = feature.querySelector('[data-social-feature-result]');
+    const featurePrimary = feature.querySelector('[data-social-feature-primary]');
+    const featureOverlay = feature.querySelector('[data-social-feature-overlay]');
+    const featureImages = {
+      management: '/Images/news-social.webp',
+      automation: '/Images/news-ai.webp',
+      growth: '/Images/rg-automotive-work.jpg',
+      community: '/Images/news-partnership.webp'
+    };
+
+    const activate = (service, syncGroup = true) => {
+      const next = available.has(service) ? service : panels[0]?.dataset.socialServicePanel;
+      if (!next) return;
+      if (syncGroup) activateGroup(groupForService(next).key, next);
+      buttons.forEach(button => {
+        const active = button.dataset.socialService === next;
+        button.setAttribute('aria-selected', String(active));
+        button.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach(panel => { panel.hidden = panel.dataset.socialServicePanel !== next; });
+      serviceSelect.value = next;
+      const panel = panels.find(item => item.dataset.socialServicePanel === next);
+      if (!panel) return;
+      const link = panel.querySelector('a');
+      feature.classList.add('is-changing');
+      if (featureKicker) featureKicker.textContent = panel.querySelector('.website-service-kicker')?.textContent || '';
+      if (featureTitle) featureTitle.textContent = panel.querySelector('h3')?.textContent || '';
+      if (featureBody) featureBody.textContent = panel.querySelector(':scope > p:not(.website-service-kicker)')?.textContent || '';
+      if (featureResult) featureResult.textContent = [...panel.querySelectorAll('li')].map(item => item.textContent.trim()).join(' · ');
+      if (featureImage) featureImage.src = featureImages[next] || featureImages.management;
+      if (featurePrimary && link) {
+        featurePrimary.href = link.getAttribute('href');
+        featurePrimary.innerHTML = link.innerHTML;
+      }
+      if (featureOverlay && link) featureOverlay.href = link.getAttribute('href');
+      window.setTimeout(() => feature.classList.remove('is-changing'), 140);
+    };
+
+    const activateGroup = (groupKey, preferredService) => {
+      const group = groups.find(item => item.key === groupKey) || groups[0];
+      groupButtons.forEach(button => {
+        const active = button.dataset.socialServiceGroup === group.key;
+        button.setAttribute('aria-selected', String(active));
+        button.tabIndex = active ? 0 : -1;
+      });
+      buttons.forEach(button => { button.hidden = !group.services.includes(button.dataset.socialService); });
+      [...serviceSelect.options].forEach(option => { option.hidden = !group.services.includes(option.value); });
+      if (groupSelect) groupSelect.value = group.key;
+      const nextService = group.services.includes(preferredService) ? preferredService : group.services[0];
+      activate(nextService, false);
+    };
+
+    panels.forEach((panel, index) => {
+      panel.id = `social-media-service-panel-${panel.dataset.socialServicePanel}`;
+      panel.setAttribute('role', 'tabpanel');
+      const button = buttons[index];
+      if (!button) return;
+      button.id = `social-media-service-tab-${button.dataset.socialService}`;
+      button.setAttribute('aria-controls', panel.id);
+      panel.setAttribute('aria-labelledby', button.id);
+    });
+    buttons.forEach(button => {
+      button.addEventListener('click', () => activate(button.dataset.socialService));
+      button.addEventListener('keydown', event => {
+        if (!['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const visibleButtons = buttons.filter(item => !item.hidden);
+        const index = visibleButtons.indexOf(button);
+        const targetIndex = event.key === 'Home' ? 0 : event.key === 'End' ? visibleButtons.length - 1 : (index + (event.key === 'ArrowDown' ? 1 : -1) + visibleButtons.length) % visibleButtons.length;
+        visibleButtons[targetIndex]?.focus();
+        activate(visibleButtons[targetIndex]?.dataset.socialService);
+      });
+    });
+    groupButtons.forEach((button, index) => {
+      button.addEventListener('click', () => activateGroup(button.dataset.socialServiceGroup));
+      button.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const targetIndex = event.key === 'Home' ? 0 : event.key === 'End' ? groupButtons.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + groupButtons.length) % groupButtons.length;
+        groupButtons[targetIndex]?.focus();
+        activateGroup(groupButtons[targetIndex]?.dataset.socialServiceGroup);
+      });
+    });
+    groupSelect?.addEventListener('change', event => activateGroup(event.target.value));
+    serviceSelect.addEventListener('change', event => activate(event.target.value));
+    const stepService = direction => {
+      const visibleButtons = buttons.filter(item => !item.hidden);
+      const currentIndex = visibleButtons.findIndex(item => item.getAttribute('aria-selected') === 'true');
+      const nextIndex = (currentIndex + direction + visibleButtons.length) % visibleButtons.length;
+      visibleButtons[nextIndex]?.click();
+    };
+    feature.querySelector('[data-social-service-prev]')?.addEventListener('click', () => stepService(-1));
+    feature.querySelector('[data-social-service-next]')?.addEventListener('click', () => stepService(1));
+    const initialService = buttons.find(button => button.getAttribute('aria-selected') === 'true')?.dataset.socialService || serviceSelect.value;
+    activateGroup(groupForService(initialService).key, initialService);
+  };
+
   const enhanceTwoColumnFaq = () => {
     document.querySelectorAll('.website-faq-list').forEach(list => {
       const details = [...list.querySelectorAll(':scope > details')];
@@ -336,7 +501,7 @@
       url.searchParams.delete('lang');
       if (language !== 'en') url.searchParams.set('lang', language);
       if (location.protocol === 'file:') {
-        const localPages = { '/': 'home.template.html', '/services': 'services.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/services/localization-and-translation': 'localization-and-translation.html', '/seo/cyprus': 'seo-cyprus.html', '/seo/limassol': 'seo-limassol.html', '/contact': 'contact.html', '/news': 'news.template.html', '/wip': 'wip.html' };
+        const localPages = { '/': 'home.template.html', '/services': 'services.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/services/localization-and-translation': 'localization-and-translation.html', '/services/social-media': 'social-media.html', '/seo/cyprus': 'seo-cyprus.html', '/seo/limassol': 'seo-limassol.html', '/contact': 'contact.html', '/news': 'news.template.html', '/wip': 'wip.html' };
         const localPath = localPages[url.pathname] || url.pathname.replace(/^\//, '');
         link.setAttribute('href', `${localPath}${url.search}${url.hash}`);
       } else {
@@ -507,7 +672,7 @@
   const normalisePageHeadingPunctuation = () => {
     if (document.body.classList.contains('seo-location-page')) removeTerminalHeadingPeriods('.seo-location-main h1, .seo-location-main h2');
     if (page === 'websiteDevelopment') removeTerminalHeadingPeriods('.website-development-main h1, .website-development-main h2');
-    if (page === 'websiteServices') removeTerminalHeadingPeriods('.website-services-main h1, .website-services-main h2');
+    if (page === 'websiteServices' || page === 'socialMediaServices') removeTerminalHeadingPeriods('.website-services-main h1, .website-services-main h2');
   };
 
   const normaliseWebsiteDevelopmentDesign = language => {
@@ -550,6 +715,7 @@
     enhanceSeoProofCarousel();
     enhanceSeoCapabilities();
     enhanceWebsiteServices();
+    enhanceSocialMediaServices();
     enhanceWebsiteProjects();
     enhanceTwoColumnFaq();
     window.lucide?.createIcons({ attrs: { 'stroke-width': 2 } });

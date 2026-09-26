@@ -37,6 +37,7 @@ const expectedRoutes = [
   '/services/free-website',
   '/services/localization-and-translation',
   '/services/seo',
+  '/services/social-media',
   '/services/website',
   '/services/website-development',
   '/team',

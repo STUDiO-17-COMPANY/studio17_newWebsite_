@@ -21,7 +21,7 @@ for (const group of groups) {
 }
 
 const requiredDestinations = [
-  '/wip#for=social-media', '/wip#for=content-creation', '/wip#for=advertisement', '/wip#for=by-industry', '/wip#for=events',
+  '/services/social-media', '/wip#for=content-creation', '/wip#for=advertisement', '/wip#for=by-industry', '/wip#for=events',
   '/services/website',
   '/services/website-development',
   '/wip#for=social-media-management', '/wip#for=social-media-automation', '/wip#for=growth-strategy', '/wip#for=community-management', '/wip#for=free-social-media-audit',

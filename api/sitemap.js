@@ -5,7 +5,7 @@ const { articleCacheControl, listPublishedArticles } = require('../server/_googl
 const { getArticlePath } = require('../server/_article-render');
 
 const SITE_URL = 'https://www.studio17.world';
-const STATIC_LASTMOD = '2026-09-19';
+const STATIC_LASTMOD = '2026-09-27';
 const ARTICLE_ARCHIVE_PAGE_SIZE = 9;
 const escapeXml = value => String(value || '')
   .replace(/&/g, '&amp;')
@@ -65,6 +65,7 @@ module.exports = async function sitemapHandler(request, response) {
       { loc: `${SITE_URL}/services/free-website`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/services/seo`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/services/localization-and-translation`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.8' },
+      { loc: `${SITE_URL}/services/social-media`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/seo/cyprus`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/seo/limassol`, lastmod: STATIC_LASTMOD, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/news`, lastmod: STATIC_LASTMOD, changefreq: 'daily', priority: '0.9' },

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-27 — Social Media service page
+
+- Added the English-only `/services/social-media` page using the Website service-family design system with original Social Media positioning, differentiators and conversion copy.
+- Added a keyboard-accessible, mobile-friendly selector for Social Media Management, Social Media Automation, Growth Strategy and Community Management while retaining all service content in the initial HTML.
+- Added six problem-led entry points, a five-stage delivery process, Free Social Media Audit and Strategy Session paths, nine buying FAQs and a recommendation-focused closing CTA.
+- Connected the clean route throughout the shared Services menu, catalogue, footers, human/XML sitemaps and `llms.txt`, while preserving precise WIP links for unfinished child services and pricing.
+
 ## 2026-09-26 — Website services proof and partner update
 
 - Reordered `/services/website` so the service-outcome selector follows the European proof grid and leads directly into the problem-identification section.

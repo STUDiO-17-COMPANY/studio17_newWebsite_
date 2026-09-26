@@ -19,7 +19,8 @@ const groups = [
     ['SEO Services', '/services/seo', 'SEO strategy, technical SEO, local SEO, content SEO and AI search visibility.'],
     ['SEO Agency Cyprus', '/seo/cyprus', 'SEO services for businesses in Cyprus.'],
     ['SEO Company Limassol', '/seo/limassol', 'SEO and local search services for businesses in Limassol.'],
-    ['Localization and Translation', '/services/localization-and-translation', 'Localization and translation services.']
+    ['Localization and Translation', '/services/localization-and-translation', 'Localization and translation services.'],
+    ['Social Media Services', '/services/social-media', 'Social media management, automation, growth strategy and community management.']
   ]]
 ];
 const optional = [

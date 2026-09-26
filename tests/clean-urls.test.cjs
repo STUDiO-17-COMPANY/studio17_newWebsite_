@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
-const htmlFiles = ['home.template.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'services.html', 'website-development.html', 'free-website.html', 'seo.html', 'seo-cyprus.html', 'seo-limassol.html', 'localization-and-translation.html', 'news.template.html', 'article.html', 'careers.html', 'career-role.html', 'privacy-policy.html', 'cookie-policy.html', 'terms.html'];
+const htmlFiles = ['home.template.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'services.html', 'website-development.html', 'free-website.html', 'seo.html', 'seo-cyprus.html', 'seo-limassol.html', 'localization-and-translation.html', 'social-media.html', 'news.template.html', 'article.html', 'careers.html', 'career-role.html', 'privacy-policy.html', 'cookie-policy.html', 'terms.html'];
 
 for (const file of htmlFiles) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
@@ -41,6 +41,7 @@ for (const section of ['insights', 'case-studies', 'news']) {
 assert.equal(configuration.rewrites.some(route => route.source === '/seo/cyprus' && route.destination === '/seo-cyprus'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/seo/limassol' && route.destination === '/seo-limassol'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/services/localization-and-translation' && route.destination === '/localization-and-translation'), true);
+assert.equal(configuration.rewrites.some(route => route.source === '/services/social-media' && route.destination === '/social-media'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/sitemap' && route.destination === '/api/sitemap-page'), true);
 assert.match(configuration.functions['api/*.js'].includeFiles, /api\/sitemap-template\.html/);
 assert.equal(configuration.rewrites.some(route => /\.html/.test(route.source) || /\.html/.test(route.destination)), false);
