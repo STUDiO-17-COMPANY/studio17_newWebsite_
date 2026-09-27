@@ -37,10 +37,10 @@
       items: [
         ['websiteDevelopment', 'Website development', '/services/website-development'],
         ['websiteRevamp', 'Website revamp', '/wip#for=website-revamp'],
-        [null, 'Website design', '/wip#for=website-design'],
+        ['websiteDesign', 'Website design', '/wip#for=website-design'],
         ['seo', 'SEO', '/services/seo'],
         ['geo', 'GEO', '/wip#for=geo'],
-        [null, 'Copywriting', '/wip#for=copywriting'],
+        ['copywriting', 'Copywriting', '/wip#for=copywriting'],
         ['localization', 'Localization and Translation', '/services/localization-and-translation'],
         ['maintenance', 'Maintenance', '/wip#for=maintenance'],
         ['freeWebsite', 'Free Website', '/services/free-website']
@@ -51,13 +51,13 @@
       label: 'Content creation',
       href: '/wip#for=content-creation',
       items: [
-        [null, 'Filming', '/wip#for=filming'],
-        [null, 'Photography', '/wip#for=photography'],
-        [null, 'Video editing', '/wip#for=video-editing'],
-        [null, 'Graphic design', '/wip#for=graphic-design'],
-        [null, 'Digital design', '/wip#for=digital-design'],
+        ['filming', 'Filming', '/wip#for=filming'],
+        ['photography', 'Photography', '/wip#for=photography'],
+        ['videoEditing', 'Video editing', '/wip#for=video-editing'],
+        ['graphicDesign', 'Graphic design', '/wip#for=graphic-design'],
+        ['digitalDesign', 'Digital design', '/wip#for=digital-design'],
         ['scripting', 'Scripting', '/wip#for=scripting'],
-        [null, 'AI generation', '/wip#for=ai-generation']
+        ['aiGeneration', 'AI generation', '/wip#for=ai-generation']
       ]
     },
     {
@@ -65,12 +65,12 @@
       label: 'Advertisement',
       href: '/wip#for=advertisement',
       items: [
-        [null, 'Meta ads', '/wip#for=meta-ads'],
-        [null, 'Google ads', '/wip#for=google-ads'],
+        ['metaAds', 'Meta ads', '/wip#for=meta-ads'],
+        ['googleAds', 'Google ads', '/wip#for=google-ads'],
         ['socialAds', 'Social Media ads', '/wip#for=social-media-ads'],
-        [null, 'Influencer ads', '/wip#for=influencer-ads'],
+        ['influencerAds', 'Influencer ads', '/wip#for=influencer-ads'],
         ['ugcCreators', 'UGC creators', '/wip#for=ugc-creators'],
-        ['emailAdvertising', 'Email ads', '/wip#for=email-ads']
+        ['emailAds', 'Email ads', '/wip#for=email-ads']
       ]
     },
     {
@@ -80,20 +80,21 @@
       items: [
         ['automotive', 'Automotive', '/wip#for=automotive'],
         ['restaurants', 'Restaurants', '/wip#for=restaurants'],
-        [null, 'Health care', '/wip#for=health-care'],
+        ['health', 'Health care', '/wip#for=health-care'],
         ['ecommerce', 'E-Commerce', '/wip#for=ecommerce'],
         ['influencers', 'Individual Influencers', '/wip#for=individual-influencers'],
         ['education', 'Education', '/wip#for=education'],
-        [null, 'Local Business', '/wip#for=local-business'],
-        [null, 'SMEs', '/wip#for=smes']
+        ['local', 'Local Business', '/wip#for=local-business'],
+        ['smes', 'SMEs', '/wip#for=smes']
       ]
     },
     {
+      categoryKey: 'events',
       label: 'Events',
       href: '/wip#for=events',
       items: [
-        [null, 'Presential Events', '/wip#for=presential-events'],
-        [null, 'Online Events', '/wip#for=online-events']
+        ['presentialEvents', 'Presential Events', '/wip#for=presential-events'],
+        ['onlineEvents', 'Online Events', '/wip#for=online-events']
       ]
     }
   ];
@@ -455,6 +456,26 @@
     }
   };
 
+  const serviceDestinations = Object.fromEntries(
+    servicesMegaMenu.flatMap(group => group.items).filter(([key]) => key).map(([key, , href]) => [key, href])
+  );
+  const serviceCategoryDestinations = {
+    social: '/services/social-media',
+    website: '/services/website',
+    content: '/services',
+    ads: '/services',
+    industry: '/services',
+    events: '/services'
+  };
+  const serviceContactDestinations = {
+    social: '/contact?service=social-media',
+    website: '/contact?service=website',
+    content: '/contact?service=content',
+    ads: '/contact?service=advertising',
+    industry: '/contact?service=other',
+    events: '/contact?service=other'
+  };
+
   const englishServices = {
     categoryLabels: {
       social: 'Social Media', website: 'Website', content: 'Content creation', ads: 'Advertisement', industry: 'By industry', events: 'Events'
@@ -601,6 +622,9 @@
   const serviceTitle = document.querySelector('.home-page [data-service-title]');
   const serviceBody = document.querySelector('.home-page [data-service-body]');
   const serviceResult = document.querySelector('.home-page [data-service-result]');
+  const servicePrimaryAction = document.querySelector('.home-page [data-service-primary]');
+  const serviceSecondaryAction = document.querySelector('.home-page [data-service-secondary]');
+  const serviceOverviewAction = document.querySelector('.home-page [data-service-overview]');
   const serviceList = document.querySelector('.home-page .industry-list');
   const serviceTabs = [...document.querySelectorAll('.home-page [data-service-tab]')];
   const serviceCategorySelect = document.querySelector('.home-page [data-service-category-select]');
@@ -627,8 +651,23 @@
       title: (featured?.title || formatServiceText(templates.title, label)).replace(/[.]$/u, ''),
       body: featured?.body || description,
       result: featured?.result || outcome,
-      image: schema.images?.[item] || schema.image
+      image: schema.images?.[item] || schema.image,
+      label,
+      destination: serviceDestinations[item] || serviceCategoryDestinations[category] || '/services',
+      categoryLabel: locale.categoryLabels?.[category] || englishServices.categoryLabels[category],
+      categoryDestination: serviceCategoryDestinations[category] || '/services',
+      contactDestination: serviceContactDestinations[category] || '/contact'
     };
+  };
+
+  const updateServiceAction = (link, label, href) => {
+    if (!link) return;
+    const textNode = [...link.childNodes].find(node => node.nodeType === Node.TEXT_NODE);
+    if (textNode) textNode.nodeValue = `${label} `;
+    link.setAttribute('href', localiseServicesMenuHref(href));
+    link.relList.remove('nofollow');
+    markWipLink(link, href);
+    link.setAttribute('aria-label', label);
   };
 
   let serviceRenderTimer;
@@ -640,6 +679,9 @@
       if (serviceBody) serviceBody.textContent = content.body;
       if (serviceResult) serviceResult.textContent = content.result;
       if (serviceImage) serviceImage.src = content.image;
+      updateServiceAction(servicePrimaryAction, content.label, content.destination);
+      updateServiceAction(serviceSecondaryAction, translateText('Talk to sales'), content.contactDestination);
+      updateServiceAction(serviceOverviewAction, content.categoryDestination === '/services' ? translateText('All services') : content.categoryLabel, content.categoryDestination);
       serviceFeature.classList.remove('is-changing');
     };
     if (instant) {

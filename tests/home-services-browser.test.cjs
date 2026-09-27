@@ -49,9 +49,33 @@ const services = {
     }
 
     if (width > 600) {
+      await page.locator('[data-service-tab="website"]').click();
+      await page.locator('.industry-list [data-service-item="websiteDevelopment"]').click();
+      await page.waitForTimeout(180);
+      assert.equal(await page.locator('[data-service-primary]').innerText(), 'Website Development');
+      assert.equal(await page.locator('[data-service-primary]').getAttribute('href'), '/services/website-development');
+      assert.equal(await page.locator('[data-service-secondary]').getAttribute('href'), '/contact?service=website');
+      assert.equal(await page.locator('[data-service-overview]').getAttribute('href'), '/services/website');
+
+      await page.locator('[data-service-tab="content"]').click();
+      await page.locator('.industry-list [data-service-item="digitalDesign"]').click();
+      await page.waitForTimeout(180);
+      assert.equal(await page.locator('[data-service-primary]').innerText(), 'Digital design');
+      assert.equal(await page.locator('[data-service-primary]').getAttribute('href'), '/wip#for=digital-design');
+      assert.equal(await page.locator('[data-service-secondary]').getAttribute('href'), '/contact?service=content');
+      assert.equal(await page.locator('[data-service-overview]').getAttribute('href'), '/services');
+
+      await page.locator('[data-service-tab="website"]').click();
+      await page.waitForTimeout(180);
+      assert.equal(await page.locator('[data-service-primary]').getAttribute('href'), '/services/website-development');
+
       await page.locator('[data-service-tab="social"]').click();
       await page.locator('.industry-list [data-service-item="socialAutomation"]').click();
+      await page.waitForTimeout(180);
       assert.equal(await page.locator('.industry-list [aria-selected="true"]').innerText(), 'Social Media Automation');
+      assert.equal(await page.locator('[data-service-primary]').getAttribute('href'), '/wip#for=social-media-automation');
+      assert.equal(await page.locator('[data-service-secondary]').getAttribute('href'), '/contact?service=social-media');
+      assert.equal(await page.locator('[data-service-overview]').getAttribute('href'), '/services/social-media');
       const controls = page.locator('.news-section .triangle-controls button');
       await page.locator('#hero-title').hover();
       assert.equal(await controls.nth(0).evaluate(element => getComputedStyle(element).color), await controls.nth(1).evaluate(element => getComputedStyle(element).color));
@@ -66,6 +90,15 @@ const services = {
         return matches;
       }), true);
       assert.equal(await page.locator('.testimonials-section .triangle-controls button').count(), 2);
+    }
+
+    if (width <= 600) {
+      await page.locator('[data-service-category-select]').selectOption('website');
+      await page.locator('[data-service-item-select]').selectOption('seo');
+      await page.waitForTimeout(180);
+      assert.equal(await page.locator('[data-service-primary]').getAttribute('href'), '/services/seo');
+      assert.equal(await page.locator('[data-service-secondary]').getAttribute('href'), '/contact?service=website');
+      assert.equal(await page.locator('[data-service-overview]').getAttribute('href'), '/services/website');
     }
 
     assert.equal(await page.locator('h1, h2, h3').evaluateAll(headings => headings.filter(heading => heading.textContent.trim().endsWith('.')).length), 0);

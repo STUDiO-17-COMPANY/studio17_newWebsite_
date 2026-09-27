@@ -80,3 +80,16 @@ test('selector rendering prioritizes item-specific descriptions and verified pro
   assert.match(script, /result: featured\?\.result \|\| outcome/);
   assert.match(script, /One dealership client grew from selling up to 4 cars per month to more than 10 cars per month/);
 });
+
+test('homepage service actions follow the selected service instead of static WIP links', () => {
+  const html = read('home.template.html');
+  const script = read('script.js');
+  for (const attribute of ['data-service-primary', 'data-service-secondary', 'data-service-overview']) assert.ok(html.includes(attribute), attribute);
+  assert.doesNotMatch(html, /wip#for=(?:digital-solutions|physical-solutions|case-studies)/);
+  assert.match(script, /const serviceDestinations = Object\.fromEntries/);
+  assert.match(script, /destination: serviceDestinations\[item\]/);
+  assert.match(script, /updateServiceAction\(servicePrimaryAction, content\.label, content\.destination\)/);
+  assert.match(script, /updateServiceAction\(serviceSecondaryAction, translateText\('Talk to sales'\), content\.contactDestination\)/);
+  assert.match(script, /updateServiceAction\(serviceOverviewAction,[\s\S]*?content\.categoryDestination\)/);
+  for (const key of expectedItems) assert.match(script, new RegExp(`\\['${key}',`), `Missing destination mapping for ${key}`);
+});

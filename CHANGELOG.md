@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-27 — Homepage service actions
+
+- Replaced the homepage service explorer's hardcoded Digital solutions, Physical solutions and generic case-study links with actions driven by the currently selected category and service.
+- Connected published Website Development, SEO, Localization, Free Website and category pages to their real routes; unfinished services retain precise, non-indexable WIP destinations.
+- Added a category-appropriate sales route and overview action for every service, including repeated cross-category switching on desktop and mobile.
+- Aligned all 36 shared mega-menu item keys with the homepage service model so labels, descriptions and destinations remain synchronized across languages.
+
 ## 2026-09-27 — Article right-rail image ratio
 
 - Restored every “Continue reading” card image to a fixed 16:9 media frame, independent of the source image's original orientation.
