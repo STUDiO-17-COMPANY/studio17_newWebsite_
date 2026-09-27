@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-27 — Article right-rail image ratio
+
+- Restored every “Continue reading” card image to a fixed 16:9 media frame, independent of the source image's original orientation.
+- Added contained cover cropping and a regression check so portrait uploads cannot stretch the right-column cards vertically again.
+
 ## 2026-09-27 — Social Media service page
 
 - Added the English-only `/services/social-media` page using the Website service-family design system with original Social Media positioning, differentiators and conversion copy.

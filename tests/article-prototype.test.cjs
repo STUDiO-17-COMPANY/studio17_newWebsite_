@@ -61,6 +61,7 @@ assert.match(rendered, /class="article-toc" data-article-toc open/);
 assert.match(rendered, /class="article-related-rail"/);
 assert.match(rendered, /class="article-rail-cta"/);
 assert.equal((rendered.match(/class="article-rail-card"/g) || []).length, 3);
+assert.equal((rendered.match(/class="article-rail-card-media"/g) || []).length, 3);
 assert.equal((rendered.match(/class="news-card"/g) || []).length, 4);
 assert.match(rendered, /data-related-carousel/);
 assert.match(rendered, /data-related-prev/);

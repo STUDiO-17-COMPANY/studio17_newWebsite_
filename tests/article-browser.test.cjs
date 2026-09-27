@@ -45,6 +45,8 @@ let activeBrowser;
       assert.equal(await page.locator('.article-related-rail').isVisible(), true);
       assert.equal(await page.locator('.article-rail-cta').isVisible(), true);
       assert.equal(await page.locator('.article-rail-card').count(), 3);
+      const railMediaRatios = await page.locator('.article-rail-card-media').evaluateAll(elements => elements.map(element => element.getBoundingClientRect().width / element.getBoundingClientRect().height));
+      assert.equal(railMediaRatios.every(ratio => Math.abs(ratio - (16 / 9)) < 0.02), true, `Right-rail article images must stay 16:9: ${railMediaRatios.join(', ')}`);
       assert.equal(await page.locator('[data-related-track] .news-card').count(), 4);
       assert.equal(await page.locator('[data-related-prev], [data-related-next]').count(), 2);
       assert.equal(await page.locator('#related-title').innerHTML(), 'Valuable <span>related information</span>');

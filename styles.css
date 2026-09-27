@@ -1509,7 +1509,9 @@ html[lang]:not([lang="en"]) .footer-bottom { min-height: 80px; padding-block: 14
 .article-rail-cta .solid-button > span { width: 30px; height: 30px; display: grid; flex: 0 0 30px; place-items: center; }
 .article-rail-cta .solid-button > span .lucide { display: block; margin: 0; }
 .article-rail-card { display: grid; border-bottom: 1px solid #dbe1ea; padding-block: 18px 20px; }
-.article-rail-card img { width: 100%; aspect-ratio: 16 / 9; margin-bottom: 14px; object-fit: cover; }
+.article-rail-card-media { width: 100%; aspect-ratio: 16 / 9; margin-bottom: 14px; overflow: hidden; background: #e4e8ef; }
+.article-rail-card-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .35s var(--ease); }
+.article-rail-card:hover .article-rail-card-media img, .article-rail-card:focus-visible .article-rail-card-media img { transform: scale(1.035); }
 .article-rail-card > span { margin-bottom: 7px; color: var(--blue); font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .article-rail-card h3 { margin: 0 0 9px; color: var(--ink); font-size: 17px; line-height: 1.22; letter-spacing: -.025em; transition: color .2s ease; }
 .article-rail-card small { color: #667084; font-size: 11px; line-height: 1.4; }
