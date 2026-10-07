@@ -100,5 +100,15 @@
   };
 
   retry?.addEventListener('click', loadRoles);
-  loadRoles();
+  if (Array.isArray(window.__STUDIO17_CAREERS__)) {
+    const roles = window.__STUDIO17_CAREERS__;
+    if (roles.length) {
+      setState('ready');
+      if (live) live.textContent = `${roles.length} open ${roles.length === 1 ? 'role' : 'roles'} loaded.`;
+    } else {
+      setState('empty');
+      if (live) live.textContent = "We don't have any roles open at the moment.";
+    }
+    refreshIcons();
+  } else loadRoles();
 })();

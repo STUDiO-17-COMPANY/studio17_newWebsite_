@@ -93,9 +93,13 @@ Use at least two columns and one data row. Keep tables to a maximum of 12 column
 
 The shared category field determines the public route automatically. If an article category changes, requests to its previous or otherwise mismatched category route receive a permanent redirect to the current route. Cards, related content, language links, canonical tags, `hreflang`, `llms.txt` and the XML sitemap all use the same category-aware route helper, preventing duplicate indexable URLs.
 
+Known spelling corrections also belong in the shared route helper. The original SEO-pricing slug `how-much-doe-seo-cost-in-cyprus-2026-pricing-guide` permanently redirects to the corrected `how-much-does-seo-cost-in-cyprus-2026-pricing-guide`; every generated canonical link uses the corrected form even though the Drive source can retain its historical slug.
+
 Article metadata includes a canonical URL, valid-language alternates, `Article` JSON-LD, publication/modified dates and the independent social image. Removed or incomplete articles return a non-indexable unavailable page.
 
 The reader uses a three-column layout on wide desktop screens: section navigation, a controlled-width article column and compact related-article cards. The complete related-article section remains at the end. On mobile, the repeated cover image is removed, metadata is condensed and the section navigation starts collapsed so readers reach the article substantially sooner.
+
+The server appends a compact “Relevant Studio 17 pages” block after the article body. Its two or three normal links are selected from existing article metadata and topic signals, providing useful routes into the relevant service, market or company pages without changing editorial copy or relying on JavaScript.
 
 Google Drive remains the editorial source, but normal homepage, archive, article, XML sitemap and `llms.txt` requests share one processed publication manifest in Vercel Runtime Cache. The fresh manifest lasts two minutes and each validated article plus a last-known-good manifest is retained for up to 30 days. A future article is stored in that manifest with a private release timestamp, so publication at 10:00 does not depend on a fresh Google Drive request, another deployment or an additional Vercel Function. A temporary Drive/Docs error therefore serves the last validated publication set instead of emptying public pages. Any failed document fetch aborts a refresh so a partial source response cannot accidentally remove live content.
 

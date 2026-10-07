@@ -16,7 +16,8 @@ assert.equal(questions.length, 20, 'FAQ should contain 20 search-oriented questi
 assert.equal(answers.length, 20, 'every FAQ question should have one answer');
 assert.match(faq, /<body class="faq-page">/);
 assert.match(faq, /rel="canonical" href="https:\/\/www\.studio17\.world\/faq"/);
-assert.match(faq, /hreflang="he" href="https:\/\/www\.studio17\.world\/faq\?lang=he"/);
+assert.equal((faq.match(/hreflang=/g) || []).length, 2);
+assert.doesNotMatch(faq, /hreflang="(?:pt-PT|es|el|ru|he)"/);
 assert.doesNotMatch(faq, /FAQPage|application\/ld\+json/, 'ineligible FAQ rich-result markup should not be added');
 
 for (const language of languages) {

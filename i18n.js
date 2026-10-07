@@ -201,7 +201,8 @@
     if (document.body.classList.contains('article-page')) return;
     const canonical = document.querySelector('[data-seo-canonical]');
     const openGraphUrl = document.querySelector('[data-seo-og-url]');
-    if (canonical) {
+    const isServerLocalised = document.documentElement.hasAttribute('data-server-localized');
+    if (canonical && isServerLocalised) {
       const url = new URL(location.href);
       url.hash = '';
       [...url.searchParams.keys()].forEach(key => {
@@ -211,6 +212,8 @@
       else url.searchParams.set('lang', language);
       canonical.href = url.href;
       if (openGraphUrl) openGraphUrl.content = url.href;
+    } else if (canonical && openGraphUrl) {
+      openGraphUrl.content = canonical.href;
     }
 
     const description = document.querySelector('meta[name="description"]')?.content || '';

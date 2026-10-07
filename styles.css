@@ -1529,6 +1529,13 @@ html[lang]:not([lang="en"]) .footer-bottom { min-height: 80px; padding-block: 14
 .article-body p a, .article-body li a, .article-body h2 a, .article-body h3 a { color: var(--blue); font-weight: 700; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 .article-body p a:hover, .article-body li a:hover, .article-body h2 a:hover, .article-body h3 a:hover { color: var(--ink); }
 .article-body p a:focus-visible, .article-body li a:focus-visible, .article-body h2 a:focus-visible, .article-body h3 a:focus-visible { border-radius: 2px; outline: 3px solid var(--blue); outline-offset: 3px; }
+.article-context-links { margin-top: 44px; border-top: 1px solid #cbd5e1; padding-top: 24px; }
+.article-context-links > p { margin-bottom: 14px; color: #64748b; font-size: 12px; font-weight: 800; letter-spacing: .08em; line-height: 1.3; text-transform: uppercase; }
+.article-context-links > div { display: flex; flex-wrap: wrap; gap: 10px; }
+.article-context-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; border: 1px solid var(--blue); padding: 9px 13px; color: var(--blue); font-size: 14px; font-weight: 750; line-height: 1.2; text-decoration: none; transition: color .2s ease, background-color .2s ease; }
+.article-context-links a:hover { color: var(--white); background: var(--blue); }
+.article-context-links a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.article-context-links svg { width: 16px; height: 16px; }
 .article-table-wrap { max-width: 100%; margin: 36px 0 44px; overflow-x: auto; border: 1px solid #cbd4e1; background: var(--paper); scrollbar-color: var(--blue) #dce3ee; scrollbar-width: thin; }
 .article-table-wrap:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .article-table { width: 100%; min-width: 680px; border-collapse: collapse; text-align: left; }

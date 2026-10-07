@@ -67,7 +67,7 @@ test('website pricing page compares the five packages accessibly', () => {
   assert.match(html, /<html lang="en" data-supported-languages="en,el,ru">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website-pricing"/);
   assert.match(html, /class="page-hero website-pricing-hero"[\s\S]*src="\/Images\/Team_heroimage\.webp"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 4);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 2);
   assert.match(html, /class="website-pricing-scroll" role="region"[^>]*tabindex="0"/);
   assert.equal((html.match(/class="website-pricing-group"/g) || []).length, 3);
   assert.equal((html.match(/<tr>/g) || []).length, 17);
@@ -99,8 +99,8 @@ test('website service-family page provides a distinct, translated decision journ
   const behavior = read('service-pages.js');
   assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
-  assert.match(html, /hreflang="he"/);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 2);
+  assert.doesNotMatch(html, /hreflang="(?:pt-PT|es|el|ru|he)"/);
   assert.doesNotMatch(html, /website-services-intro|Your website is one system/);
   assert.match(html, /data-service-page="websiteServices"/);
   assert.equal((html.match(/data-website-service="/g) || []).length, 8);
@@ -207,7 +207,7 @@ test('free website page is transparent, lead-ready and translated in all site la
   const css = read('styles.css');
   assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/free-website"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 2);
   assert.match(html, /data-service-page="freeWebsite"/);
   const sectionOrder = ['free-credibility-strip', 'free-showcase', 'free-website-fit', 'free-website-included', 'free-zero-statement', 'free-real-work', 'free-website-process', 'free-website-preparation', 'free-comparison', 'free-value', 'free-website-faq', 'free-website-cta'].map(className => html.search(new RegExp(`<section class="[^"]*${className}`)));
   assert.ok(sectionOrder.every((position, index) => position >= 0 && (index === 0 || position > sectionOrder[index - 1])), 'Free Website sections must follow the approved sales journey');
@@ -268,8 +268,8 @@ test('SEO page is an international, evidence-safe commercial service page', () =
   const css = read('styles.css');
   assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/seo"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
-  for (const language of ['x-default', 'en', 'pt-PT', 'es', 'el', 'ru', 'he']) assert.match(html, new RegExp(`hreflang="${language}"`));
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 2);
+  for (const language of ['x-default', 'en']) assert.match(html, new RegExp(`hreflang="${language}"`));
   assert.match(html, /<h1[^>]*><span>SEO services<\/span> that connect search demand to growth\.<\/h1>/);
   assert.match(html, /<div class="hero-media"[^>]*><img src="\/Images\/SEO_heroimage\.webp" alt="" width="1744" height="296">/);
   assert.equal((html.match(/class="seo-capability-grid"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<article>/g) || []).length, 9);

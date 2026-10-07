@@ -41,6 +41,19 @@ const makeUrl = ({ page = 1, query = '', category = '', locale = 'en' }) => {
 };
 const filterLink = (slug, label, active, locale) => `<a href="${escapeHtml(makeUrl({ category: slug, locale }))}#all-articles"${active ? ' aria-current="page"' : ''}>${escapeHtml(label)}</a>`;
 
+const renderAlternates = ({ page, locale }) => {
+  if (page > 1) {
+    const self = `${SITE_URL}${makeUrl({ page, locale })}`;
+    return locale === 'en'
+      ? `<link rel="alternate" hreflang="x-default" href="${self}"><link rel="alternate" hreflang="en" href="${self}">`
+      : `<link rel="alternate" hreflang="${escapeHtml(locale)}" href="${escapeHtml(self)}">`;
+  }
+  return [
+    `<link rel="alternate" hreflang="x-default" href="${SITE_URL}/news">`,
+    ...SUPPORTED_LOCALES.map(language => `<link rel="alternate" hreflang="${escapeHtml(language)}" href="${SITE_URL}${makeUrl({ locale: language })}">`)
+  ].join('');
+};
+
 const renderControls = ({ query, category, locale }) => {
   const ui = ARCHIVE_UI[locale] || ARCHIVE_UI.en;
   return `<div class="news-archive-tools"><form class="news-search" action="/news" method="get" role="search"><label class="sr-only" for="article-search">${escapeHtml(ui.searchLabel)}</label><input id="article-search" name="q" type="search" value="${escapeHtml(query)}" placeholder="${escapeHtml(ui.searchPlaceholder)}" maxlength="100">${locale !== 'en' ? `<input type="hidden" name="lang" value="${escapeHtml(locale)}">` : ''}<button type="submit">${escapeHtml(ui.search)} <i data-lucide="search" aria-hidden="true"></i></button></form><nav class="news-filters" aria-label="${escapeHtml(ui.filters)}">${filterLink('', ui.all, !category, locale)}${filterLink('insights', ui.insights, category === 'insights', locale)}${filterLink('case-studies', ui.caseStudies, category === 'case-studies', locale)}${filterLink('news', ui.news, category === 'news', locale)}</nav></div>`;
@@ -73,11 +86,12 @@ const renderNewsPage = ({ articles, page, query, category, locale }) => {
     !query && !category && page < totalPages ? `<link rel="next" href="${SITE_URL}${makeUrl({ page: page + 1, locale })}">` : ''
   ].filter(Boolean).join('\n');
   const body = template
-    .replace('<html lang="en">', `<html lang="${escapeHtml(locale)}"${locale === 'he' ? ' dir="rtl"' : ''}>`)
+    .replace('<html lang="en">', `<html lang="${escapeHtml(locale)}" data-server-localized${locale === 'he' ? ' dir="rtl"' : ''}>`)
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(title)}</title>`)
     .replace(/<meta name="robots" content="[^"]*">/, `<meta name="robots" content="${shouldNoIndex ? 'noindex,follow' : 'index,follow'}">`)
     .replace(/<link rel="canonical" href="[^"]*" data-seo-canonical>/, `<link rel="canonical" href="${escapeHtml(canonical)}" data-seo-canonical>`)
     .replace(/<meta property="og:url" content="[^"]*" data-seo-og-url>/, `<meta property="og:url" content="${escapeHtml(canonical)}" data-seo-og-url>`)
+    .replace('<!-- ARTICLE_ARCHIVE_ALTERNATES -->', renderAlternates({ page, locale }))
     .replace('<!-- ARTICLE_ARCHIVE_HEAD -->', adjacent)
     .replace('data-article-feed="archive" data-ssr-language="en"', `data-article-feed="archive" data-ssr-language="${escapeHtml(locale)}" data-archive-page="${page}"`)
     .replace('<!-- ARTICLE_ARCHIVE_CONTROLS -->', renderControls({ query, category, locale }))

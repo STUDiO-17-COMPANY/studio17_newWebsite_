@@ -3,7 +3,7 @@
 const { getCache } = require('@vercel/functions');
 const { BlobNotFoundError, head, put } = require('@vercel/blob');
 const sharp = require('sharp');
-const { getArticlePath } = require('./_article-paths');
+const { getArticlePath, getSourceArticleSlug } = require('./_article-paths');
 const {
   articleImageUrl,
   imageVersion,
@@ -613,15 +613,16 @@ const listPublishedArticles = async (request, locale = 'en') => {
 const getPublishedArticleBySlug = async (slug, locale, request) => {
   const cleanSlug = slugify(slug);
   if (!slug || cleanSlug !== slug) throw new ArticlesError('INVALID_ARTICLE_SLUG', 'The article link is invalid.', 400);
+  const sourceSlug = getSourceArticleSlug(cleanSlug);
   let manifest = await getPublishedManifest(request);
-  let manifestArticle = manifest.articles.find(candidate => candidate.slug === slug && isPublicationDue(candidate));
+  let manifestArticle = manifest.articles.find(candidate => candidate.slug === sourceSlug && isPublicationDue(candidate));
   if (!manifestArticle) throw new ArticlesError('ARTICLE_NOT_FOUND', 'This article is no longer available.', 404);
-  let article = await cacheGet(`article:v2:${slug}`);
+  let article = await cacheGet(`article:v2:${sourceSlug}`);
   if (!article) {
     const refreshed = await refreshPublishedArticles(request);
     manifest = refreshed.manifest;
-    manifestArticle = manifest.articles.find(candidate => candidate.slug === slug && isPublicationDue(candidate));
-    article = refreshed.articles.find(candidate => candidate.slug === slug && isPublicationDue(candidate));
+    manifestArticle = manifest.articles.find(candidate => candidate.slug === sourceSlug && isPublicationDue(candidate));
+    article = refreshed.articles.find(candidate => candidate.slug === sourceSlug && isPublicationDue(candidate));
   }
   if (!manifestArticle || !article) throw new ArticlesError('ARTICLE_NOT_FOUND', 'This article is no longer available.', 404);
   const selected = SUPPORTED_LOCALES.includes(locale) ? locale : 'en';

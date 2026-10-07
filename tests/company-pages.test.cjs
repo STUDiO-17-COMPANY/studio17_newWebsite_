@@ -14,7 +14,7 @@ test('Our Story publishes the complete approved seven-chapter narrative', () => 
   assert.equal((html.match(/class="story-chapter(?: [^"]*)?"/g) || []).length, 7);
   assert.match(html, /Most businesses did not have a lack of suppliers\. They had too many of them\./);
   assert.match(html, /That is what Studio 17 was created to do\./);
-  assert.equal((html.match(/hreflang=/g) || []).length, 7);
+  assert.equal((html.match(/hreflang=/g) || []).length, 2);
 });
 
 test('Team page identifies the approved team members and publishes only approved profile links', () => {
@@ -27,7 +27,7 @@ test('Team page identifies the approved team members and publishes only approved
   assert.match(html, /Business Developer[\s\S]*?Portugal[\s\S]*?Gil Barreto/);
   assert.match(html, /href="https:\/\/www\.linkedin\.com\/in\/natalia-ioannou-83527126b\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
   assert.equal((html.match(/linkedin\.com\/in\//gi) || []).length, 1);
-  assert.equal((html.match(/hreflang=/g) || []).length, 7);
+  assert.equal((html.match(/hreflang=/g) || []).length, 2);
 });
 
 test('company routes are available locally and included in XML and human sitemaps', () => {

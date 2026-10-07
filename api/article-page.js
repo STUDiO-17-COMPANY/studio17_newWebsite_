@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { getPublishedArticleBySlug } = require('../server/_google-articles');
 const { buildSeo, escapeHtml, getArticlePath, getArticleSection, renderArticleMain } = require('../server/_article-render');
+const { getCanonicalArticleSlug } = require('../server/_article-paths');
 
 let cachedTemplate = '';
 
@@ -29,8 +30,9 @@ module.exports = async function articlePageHandler(request, response) {
     const article = await getPublishedArticleBySlug(slug, locale, request);
     const requestedSection = typeof request.query?.section === 'string' ? request.query.section : '';
     const canonicalSection = getArticleSection(article.category);
-    if (requestedSection && requestedSection !== canonicalSection) {
-      response.statusCode = 308;
+    const canonicalSlug = getCanonicalArticleSlug(article.slug);
+    if ((requestedSection && requestedSection !== canonicalSection) || slug !== canonicalSlug) {
+      response.statusCode = 301;
       response.setHeader('Location', getArticlePath(article, locale));
       response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=300');
       response.end();

@@ -86,6 +86,11 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
   assert.match(page.body, /window\.__STUDIO17_ROLE__/);
   assert.doesNotMatch(page.body, /canonical[^>]+\?id=/i);
 
+  const listing = await call(careerPageHandler, '/api/career-page?listing=1');
+  assert.equal(listing.statusCode, 200);
+  assert.match(listing.body, /href="\/careers\/growth-strategist"/);
+  assert.match(listing.body, /window\.__STUDIO17_CAREERS__/);
+
   const missing = await call(careerPageHandler, '/api/career-page?slug=not-open');
   assert.equal(missing.statusCode, 404);
   assert.match(missing.body, /name="robots" content="noindex,follow"/);
@@ -104,9 +109,10 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/privacy-policy/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/cookie-policy/);
   assert.match(sitemap.body, /https:\/\/www\.studio17\.world\/terms/);
-  assert.match(sitemap.body, /<loc>https:\/\/www\.studio17\.world\/services\/website<\/loc>\s+<lastmod>2026-09-27<\/lastmod>/);
+  assert.match(sitemap.body, /<loc>https:\/\/www\.studio17\.world\/services\/website<\/loc>/);
+  assert.doesNotMatch(sitemap.body.match(/<url>\s+<loc>https:\/\/www\.studio17\.world\/services\/website<\/loc>[\s\S]*?<\/url>/)?.[0] || '', /<lastmod>/);
   assert.match(sitemap.body, /<loc>https:\/\/www\.studio17\.world\/careers\/growth-strategist<\/loc>\s+<lastmod>2026-08-02T12:00:00\.000Z<\/lastmod>/);
-  assert.equal([...sitemap.body.matchAll(/<url>[\s\S]*?<\/url>/g)].every(match => /<lastmod>[^<]+<\/lastmod>/.test(match[0])), true);
+  assert.doesNotMatch(sitemap.body, /<lastmod>2026-09-27<\/lastmod>/);
   assert.doesNotMatch(sitemap.body, /career-role\.html|\?id=/);
 
   console.log('SEO routing tests passed.');

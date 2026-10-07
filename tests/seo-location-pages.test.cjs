@@ -29,7 +29,7 @@ for (const page of pages) {
   assert.ok(title && description, `${page.file} requires a title and description`);
   assert.equal(h1Matches.length, 1, `${page.file} must have one H1`);
   assert.match(source, new RegExp(`<link rel="canonical" href="${canonical.replaceAll('/', '\\/')}"`));
-  assert.equal((source.match(/hreflang=/g) || []).length, 5, `${page.file} must expose x-default, EN, EL, RU and HE alternates`);
+  assert.equal((source.match(/hreflang=/g) || []).length, 2, `${page.file} must advertise only server-rendered alternates`);
   assert.match(source, new RegExp(`href="\\/contact\\?service=seo&amp;market=${page.market}"`));
   assert.match(source, /Get Your Free SEO Analysis/);
   assert.match(source, /Talk to Sales/);

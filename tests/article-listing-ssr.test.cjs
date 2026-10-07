@@ -39,6 +39,9 @@ test('News archive uses crawlable nine-card pagination', () => {
   assert.match(first.body, /href="\/news\/page\/2#all-articles" rel="next"/);
   assert.match(second.body, /<link rel="canonical" href="https:\/\/www\.studio17\.world\/news\/page\/2"/);
   assert.match(second.body, /rel="prev"/);
+  assert.match(second.body, /hreflang="x-default" href="https:\/\/www\.studio17\.world\/news\/page\/2"/);
+  assert.doesNotMatch(second.body, /hreflang="el"/);
+  assert.match(second.body, /<html lang="en" data-server-localized>/);
 });
 
 test('News search is server-rendered and cannot become an indexable results page', () => {
@@ -68,6 +71,10 @@ test('Vercel Hobby deployment stays within the 12-function limit', () => {
   assert.equal(
     config.rewrites.find(rewrite => rewrite.source === '/career-role')?.destination,
     '/api/career-page?legacy=1'
+  );
+  assert.equal(
+    config.rewrites.find(rewrite => rewrite.source === '/careers')?.destination,
+    '/api/career-page?listing=1'
   );
   assert.equal(fs.existsSync(path.join(root, 'index.html')), false, 'Static index.html would bypass the homepage renderer');
   assert.equal(fs.existsSync(path.join(root, 'news.html')), false, 'Static news.html would bypass the News renderer');

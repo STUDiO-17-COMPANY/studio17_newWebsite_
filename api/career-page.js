@@ -2,7 +2,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { CareersError, getPublishedRole, getPublishedRoleBySlug } = require('../server/_google-careers');
+const { CareersError, getPublishedRole, getPublishedRoleBySlug, listPublishedRoles } = require('../server/_google-careers');
 
 const SITE_URL = 'https://www.studio17.world';
 
@@ -100,6 +100,34 @@ const readTemplate = () => {
   return fs.readFileSync(templatePath, 'utf8');
 };
 
+const readCareersTemplate = () => {
+  const candidates = [
+    path.resolve(process.cwd(), 'careers.html'),
+    path.resolve(__dirname, '..', 'careers.html')
+  ];
+  const templatePath = candidates.find(candidate => fs.existsSync(candidate));
+  if (!templatePath) throw new Error('Careers template was not bundled.');
+  return fs.readFileSync(templatePath, 'utf8');
+};
+
+const renderRoleCard = role => `<article class="role-card reveal is-visible">
+  <div class="role-card-top"><p class="role-department">${escapeHtml(role.department)}</p><span class="role-card-mark" aria-hidden="true"><i data-lucide="briefcase-business"></i></span></div>
+  <h3>${escapeHtml(role.title)}</h3>
+  <p class="role-card-summary">${escapeHtml(role.summary)}</p>
+  <ul class="role-card-meta"><li><i data-lucide="map-pin" aria-hidden="true"></i>${escapeHtml(role.location)}</li><li><i data-lucide="laptop" aria-hidden="true"></i>${escapeHtml(role.workModel)}</li><li><i data-lucide="clock-3" aria-hidden="true"></i>${escapeHtml(role.employmentType)}</li></ul>
+  <a class="role-card-link" href="/careers/${encodeURIComponent(role.slug)}" data-force-language="en" aria-label="View ${escapeHtml(role.title)}">View role <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
+</article>`;
+
+const renderCareersListing = (template, roles) => {
+  const cards = roles.map(renderRoleCard).join('');
+  const bootstrap = `<script>window.__STUDIO17_CAREERS__=${safeJson(roles)};</script>`;
+  return template
+    .replace('<!-- CAREERS_ROLE_CARDS -->', cards)
+    .replace('data-roles-loading aria-hidden="true"', `data-roles-loading aria-hidden="true"${roles.length ? ' hidden' : ''}`)
+    .replace('data-roles-grid hidden', `data-roles-grid${roles.length ? '' : ' hidden'}`)
+    .replace('</head>', `${bootstrap}\n</head>`);
+};
+
 const replaceMetadata = (template, { title, description, robots, seo, bootstrap }) => template
   .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escapeHtml(description)}">`)
   .replace(/<meta name="robots" content="[^"]*">/, `<meta name="robots" content="${escapeHtml(robots)}">`)
@@ -125,6 +153,17 @@ module.exports = async function careerPageHandler(request, response) {
   }
 
   const url = new URL(request.url || '/', `https://${request.headers.host || 'www.studio17.world'}`);
+  if (url.searchParams.get('listing') === '1') {
+    try {
+      const result = await listPublishedRoles(request);
+      const html = renderCareersListing(readCareersTemplate(), result.roles);
+      sendHtml(response, 200, request.method === 'HEAD' ? '' : html, true);
+    } catch (error) {
+      console.error('Careers listing failed', error?.code || error?.message);
+      sendHtml(response, 503, request.method === 'HEAD' ? '' : readCareersTemplate());
+    }
+    return;
+  }
   if (url.searchParams.get('legacy') === '1') {
     let legacySlug = (url.searchParams.get('role') || '').toLowerCase();
     const id = url.searchParams.get('id') || '';

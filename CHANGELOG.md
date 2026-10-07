@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-07 — Indexing and crawlability hardening
+
+- Audited every XML-sitemap URL, the latest Search Console exclusion exports, robots directives, canonicals, redirects, server-rendered content, internal discovery and Googlebot responses.
+- Server-rendered the Careers vacancy cards and normal role links into the initial `/careers` response so open roles are no longer discoverable only through the XML sitemap or JavaScript.
+- Consolidated client-enhanced static language states onto their English canonical URLs and removed unsupported `hreflang` claims, while preserving independently rendered, self-canonical article translations.
+- Corrected the published SEO-pricing article typo from `how-much-doe-seo...` to `how-much-does-seo...` with one shared canonical slug rule and a permanent redirect from the old route.
+- Made News pagination alternates page-equivalent, replaced artificial static sitemap modification dates with source-backed dates, and added compact topic-relevant links to rendered articles.
+- Expanded the indexing audit and regression suite to cover robots, Googlebot access, sitemap integrity, exact canonicals, SSR Careers links, SSR News pagination and the retired typo URL.
+
 ## 2026-09-27 — Homepage service actions
 
 - Replaced the homepage service explorer's hardcoded Digital solutions, Physical solutions and generic case-study links with actions driven by the currently selected category and service.

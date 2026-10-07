@@ -30,7 +30,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/terms` (`terms.html`) — multilingual terms governing use of the public Studio 17 website.
 - `/news` and `/news/page/<number>` (`news.template.html`, rendered by `api/news-page.js`) — server-rendered multilingual archive for Insights, Case Studies and News, with nine articles per page, metadata search and category filtering.
 - `/insights/<article-slug>`, `/case-studies/<article-slug>` and `/news/<article-slug>` (`article.html` template) — category-aware, server-rendered multilingual article routes with permanent correction redirects for mismatched category URLs.
-- `/careers` (`careers.html`) — English-only Careers index with automatic Google Drive role listing.
+- `/careers` (`careers.html`, rendered by `api/career-page.js`) — English-only Careers index with server-rendered Google Drive role cards and crawlable vacancy links.
 - `/careers/<role-name>` (`career-role.html` template) — clean, server-rendered role route populated from the selected Google Doc.
 - `careers.js` / `career-role.js` — Careers loading, rendering and failure-state behavior.
 - `contact.js` / `api/contact.js` — contact-form interaction, validation and Resend delivery.
