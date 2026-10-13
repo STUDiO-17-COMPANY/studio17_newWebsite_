@@ -1764,6 +1764,28 @@ html[dir="rtl"] .article-related-track .news-card { direction: rtl; }
 .website-pricing-cta .cta-secondary-button { color: var(--ink); background: transparent; box-shadow: inset 0 0 0 1px var(--ink); }
 .website-pricing-cta .cta-secondary-button:hover, .website-pricing-cta .cta-secondary-button:focus-visible { color: var(--white); background: var(--ink); }
 
+/* Social media pricing */
+.social-media-pricing-page, .social-media-pricing-page .website-pricing-overview, .social-media-pricing-page .website-pricing-table-section { background: var(--paper); }
+.social-media-pricing-table { width: 100%; min-width: 900px; border-collapse: separate; border-spacing: 0; table-layout: fixed; color: var(--ink); }
+.social-media-pricing-table caption { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.social-media-pricing-table th, .social-media-pricing-table td { padding: 20px 18px; border-inline-end: 1px solid #d5dce7; border-bottom: 1px solid #d5dce7; text-align: start; vertical-align: top; font-size: 13px; line-height: 1.55; }
+.social-media-pricing-table tr > :last-child { border-inline-end: 0; }
+.social-media-pricing-table tbody tr:last-child > * { border-bottom: 0; }
+.social-media-pricing-table thead th { height: auto; padding-block: 18px; color: var(--white); background: var(--ink); font-size: 12px; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+.social-media-pricing-table thead th:first-child, .social-media-pricing-table tbody th[scope="row"] { width: 260px; position: sticky; inset-inline-start: 0; z-index: 2; }
+.social-media-pricing-table thead th:first-child { z-index: 3; }
+.social-media-pricing-table thead th:nth-child(2) { width: 500px; }
+.social-media-pricing-table thead th:nth-child(3) { width: 140px; }
+.social-media-pricing-table tbody th[scope="row"] { color: var(--ink); background: #eef2f7; font-weight: 800; }
+.social-media-pricing-table tbody td { color: #4d596d; background: var(--white); }
+.social-media-pricing-table tbody td:nth-child(3) { color: var(--ink); white-space: nowrap; font-size: 15px; font-weight: 750; }
+.social-media-pricing-table ul { display: grid; gap: 5px; margin: 0; padding: 0; list-style: none; }
+.social-media-pricing-table li { position: relative; padding-inline-start: 15px; }
+.social-media-pricing-table li::before { content: ""; position: absolute; inset-inline-start: 0; top: .72em; width: 5px; height: 5px; background: var(--blue); transform: translateY(-50%); }
+.social-media-pricing-table .social-media-pricing-group th { position: static; width: auto; padding: 15px 18px; color: var(--white); background: #253149; text-align: start; font-size: 12px; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+.social-media-pricing-cta .website-development-cta-media { aspect-ratio: 16 / 9; overflow: hidden; }
+.social-media-pricing-cta .website-development-cta-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 26%; }
+
 .website-work-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; }
 .website-project-card { min-width: 0; color: var(--ink); background: var(--white); }
 .website-development-main .website-project-card { background: transparent; }
@@ -2473,6 +2495,9 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .website-pricing-table { min-width: 1040px; }
   .website-pricing-table th, .website-pricing-table td { min-width: 154px; padding: 17px 13px; }
   .website-pricing-table thead th:first-child, .website-pricing-table tbody th[scope="row"] { width: 142px; min-width: 142px; }
+  .social-media-pricing-table { min-width: 800px; }
+  .social-media-pricing-table thead th:first-child, .social-media-pricing-table tbody th[scope="row"] { width: 190px; min-width: 190px; }
+  .social-media-pricing-table thead th:nth-child(2) { width: 460px; }
   .website-pricing-cta { min-height: 0; padding-block: 24px; }
   .website-pricing-cta .cta-grid { grid-template-columns: 1fr; gap: 32px; }
   .website-service-mobile-fields { grid-template-columns: 1fr; gap: 13px; }

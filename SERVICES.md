@@ -17,6 +17,7 @@
 - `/services/free-website` is the multilingual application page for the selected-business Free Website offer.
 - `/services/seo` is the international commercial SEO page.
 - `/services/social-media` is the English commercial Social Media service-family page.
+- `/services/social-media-pricing` is the English public Social Media service and pricing list.
 - `/seo/cyprus` is the Cyprus-wide SEO lead-generation page.
 - `/seo/limassol` is the Limassol local SEO lead-generation page.
 
@@ -26,7 +27,9 @@ All routes use clean URLs, canonical metadata, the shared header/footer, and the
 
 `/services/social-media` is English-only until Studio 17 explicitly requests translations. Its journey follows the Website service-family visual system while keeping original Social Media content: hero, three differentiators, an outcome-led four-service selector, six recognisable business problems, a five-stage process, two low-friction starting paths, buying FAQs and a final recommendation CTA.
 
-The interactive selector groups Social Media Management and Automation under “Manage & automate”, with Growth Strategy and Community Management under “Grow & connect”. All four complete service descriptions remain in the initial HTML for search engines and assistive technology; JavaScript adds the image-led desktop stage, keyboard controls and compact mobile selects. Unpublished child services and the future pricing page keep precise WIP destinations. The category link itself must use `/services/social-media` everywhere once this page is published.
+The interactive selector groups Social Media Management and Automation under “Manage & automate”, with Growth Strategy and Community Management under “Grow & connect”. All four complete service descriptions remain in the initial HTML for search engines and assistive technology; JavaScript adds the image-led desktop stage, keyboard controls and compact mobile selects. Unpublished child services keep precise WIP destinations. Pricing actions use `/services/social-media-pricing`, while the category link itself uses `/services/social-media`.
+
+The public pricing page is intentionally separate from the internal Sales Partner list. It publishes only the category, service name, customer-facing scope and price. Service codes, billing types, maintenance fields, price tolerances, minimum prices, pricing statuses and internal sales notes must never be copied to the website.
 
 ## Website service family
 

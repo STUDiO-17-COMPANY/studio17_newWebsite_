@@ -23,6 +23,7 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `/services/seo` (`seo.html`) — international SEO strategy and delivery page in English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew.
 - `/services/localization-and-translation` (`localization-and-translation.html`) — English service page connecting translation, website localization, multilingual SEO, technical language implementation and market-specific QA.
 - `/services/social-media` (`social-media.html`) — English service-family page for social media management, automation, growth strategy and community management, with problem-led guidance, process, entry paths and buying FAQs.
+- `/services/social-media-pricing` (`social-media-pricing.html`) — English public pricing list for Social Media strategy, content, management, paid social, UGC, AI content, automation and reporting.
 - `/seo/cyprus` (`seo-cyprus.html`) — Cyprus-wide commercial SEO landing page in English, Greek, Russian and Hebrew for organic, local, multilingual and AI-search enquiries.
 - `/seo/limassol` (`seo-limassol.html`) — Limassol local SEO landing page in English, Greek, Russian and Hebrew focused on Search, Maps, Google Business Profile and qualified local enquiries.
 - `/privacy-policy` (`privacy-policy.html`) — multilingual privacy information covering website, enquiry and analytics processing.

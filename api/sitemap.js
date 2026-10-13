@@ -68,6 +68,7 @@ module.exports = async function sitemapHandler(request, response) {
       { loc: `${SITE_URL}/services/seo`, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/services/localization-and-translation`, changefreq: 'monthly', priority: '0.8' },
       { loc: `${SITE_URL}/services/social-media`, changefreq: 'monthly', priority: '0.9' },
+      { loc: `${SITE_URL}/services/social-media-pricing`, changefreq: 'monthly', priority: '0.8' },
       { loc: `${SITE_URL}/seo/cyprus`, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/seo/limassol`, changefreq: 'monthly', priority: '0.9' },
       { loc: `${SITE_URL}/news`, lastmod: latestArticleDate, changefreq: 'daily', priority: '0.9' },

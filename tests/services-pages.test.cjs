@@ -376,6 +376,7 @@ test('clean routes and sitemaps include every published service page', () => {
   assert.ok(server.includes("['/services/seo', 'seo.html']"));
   assert.ok(server.includes("['/services/localization-and-translation', 'localization-and-translation.html']"));
   assert.ok(server.includes("['/services/social-media', 'social-media.html']"));
+  assert.ok(server.includes("['/services/social-media-pricing', 'social-media-pricing.html']"));
   assert.ok(vercel.includes('"source": "/services/website-development"'));
   assert.ok(vercel.includes('"source": "/services/website-pricing"'));
   assert.ok(vercel.includes('"source": "/services/website"'));
@@ -383,6 +384,7 @@ test('clean routes and sitemaps include every published service page', () => {
   assert.ok(vercel.includes('"source": "/services/seo"'));
   assert.ok(vercel.includes('"source": "/services/localization-and-translation"'));
   assert.ok(vercel.includes('"source": "/services/social-media"'));
+  assert.ok(vercel.includes('"source": "/services/social-media-pricing"'));
   assert.ok(sitemap.includes('`${SITE_URL}/services`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/website-development`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/website-pricing`'));
@@ -391,13 +393,14 @@ test('clean routes and sitemaps include every published service page', () => {
   assert.ok(sitemap.includes('`${SITE_URL}/services/seo`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/localization-and-translation`'));
   assert.ok(sitemap.includes('`${SITE_URL}/services/social-media`'));
+  assert.ok(sitemap.includes('`${SITE_URL}/services/social-media-pricing`'));
   assert.match(read('api/sitemap-template.html'), /href="\/services\/free-website">Free Website\s*<i/);
   assert.match(read('api/sitemap-template.html'), /href="\/services\/seo">SEO services\s*<i/);
   assert.match(read('api/sitemap-template.html'), /href="\/services\/localization-and-translation">Localization and Translation\s*<i/);
 });
 
 test('mobile menu remains limited to the approved five destinations', () => {
-  for (const file of ['services.html', 'website-services.html', 'website-development.html', 'website-pricing.html', 'free-website.html', 'seo.html', 'localization-and-translation.html', 'social-media.html']) {
+  for (const file of ['services.html', 'website-services.html', 'website-development.html', 'website-pricing.html', 'free-website.html', 'seo.html', 'localization-and-translation.html', 'social-media.html', 'social-media-pricing.html']) {
     const html = read(file);
     const menu = html.match(/<div class="mobile-menu"[\s\S]*?<\/div>\s*<\/header>/)?.[0] || '';
     assert.equal((menu.match(/<a /g) || []).length, 5, file);

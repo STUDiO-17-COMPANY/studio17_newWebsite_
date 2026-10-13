@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-13 — Social Media pricing page
+
+- Added the English-only `/services/social-media-pricing` page with 62 customer-facing services grouped across 10 social media categories.
+- Published only the category, service name, customer-facing scope and price; internal service codes, billing types, maintenance fields, tolerances, minimum prices, pricing statuses and Sales Partner notes remain private.
+- Replaced the Social Media hero and “Unbeatable Pricing” WIP destinations with the new page and added clean routing, local routing, sitemap and `llms.txt` discovery.
+- Added accessible horizontal scrolling, a sticky service column, mobile sizing, a sales CTA and regression coverage for content completeness and internal-field exclusion.
+
 ## 2026-10-07 — Indexing and crawlability hardening
 
 - Audited every XML-sitemap URL, the latest Search Console exclusion exports, robots directives, canonicals, redirects, server-rendered content, internal discovery and Googlebot responses.

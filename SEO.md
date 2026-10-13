@@ -20,6 +20,7 @@ This document is the maintenance contract for search visibility. It covers techn
 - Website Development: `https://www.studio17.world/services/website-development`
 - Website pricing comparison: `https://www.studio17.world/services/website-pricing`
 - Social Media services: `https://www.studio17.world/services/social-media`
+- Social Media pricing: `https://www.studio17.world/services/social-media-pricing`
 - SEO services: `https://www.studio17.world/services/seo`
 - SEO agency Cyprus: `https://www.studio17.world/seo/cyprus`
 - SEO company Limassol: `https://www.studio17.world/seo/limassol`
@@ -100,6 +101,7 @@ Studio 17 is not currently an eligible government or health authority for Google
 12. Confirm `/services/seo` returns HTTP 200, advertises only its English search canonical until translated SSR exists, appears in both sitemaps, and preselects SEO at `/contact?service=seo`.
 13. Confirm `/seo/cyprus` and `/seo/limassol` return HTTP 200, use unique metadata and location `Service` data, advertise only their English search canonicals until translated SSR exists, contain eight relevant FAQs, link to `/services/seo`, preserve both lead CTAs and appear in the XML sitemap without being listed in the curated human sitemap.
 14. Confirm `/services/social-media` returns HTTP 200, is English-only with `x-default` and `en` alternates, exposes four service descriptions in initial HTML, appears in both sitemaps and is linked from the shared Services menu and catalogue.
+15. Confirm `/services/social-media-pricing` returns HTTP 200, is English-only, exposes all public service rows in initial HTML, omits internal sales fields, and is linked from the Social Media hero and pricing differentiator.
 
 ## Files to update together
 

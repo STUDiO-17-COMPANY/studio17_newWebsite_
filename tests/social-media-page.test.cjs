@@ -15,7 +15,7 @@ test('social media page is an English-only canonical commercial page', () => {
   assert.equal((html.match(/hreflang=/g) || []).length, 2);
   assert.match(html, /<h1 id="social-media-title"><span>We Take Care<\/span> of Your Social Media<\/h1>/);
   assert.match(html, /Better Social Media Starts With a Clear Strategy/);
-  assert.match(html, /href="\/wip#for=social-media-pricing"[^>]*>Explore social media services/);
+  assert.match(html, /href="\/services\/social-media-pricing"[^>]*>Explore social media services/);
   assert.match(html, /href="\/contact\?service=social-media"[^>]*>Talk to Sales/);
 });
 
@@ -47,10 +47,28 @@ test('social media service metadata, enhancement and discovery are connected', (
   assert.match(servicePages, /enhanceSocialMediaServices\(\)/);
   assert.match(read('styles.css'), /\.social-media-service-tabs\s*\{[^}]*grid-template-columns:\s*repeat\(2,minmax\(0,1fr\)\)/);
   assert.match(read('vercel.json'), /"source": "\/services\/social-media", "destination": "\/social-media"/);
+  assert.match(read('vercel.json'), /"source": "\/services\/social-media-pricing", "destination": "\/social-media-pricing"/);
   assert.match(read('dev-server.cjs'), /\['\/services\/social-media', 'social-media\.html'\]/);
   assert.match(read('api/sitemap.js'), /`\$\{SITE_URL\}\/services\/social-media`/);
   assert.match(read('api/llms.js'), /\['Social Media Services', '\/services\/social-media'/);
   assert.match(read('script.js'), /href: '\/services\/social-media'/);
   assert.match(read('script.js'), /'\/services\/social-media': 'social-media\.html'/);
   assert.doesNotMatch(read('script.js'), /href: '\/wip#for=social-media'/);
+});
+
+test('social media pricing is public, complete and excludes internal sales fields', () => {
+  const pricing = read('social-media-pricing.html');
+  assert.match(pricing, /<html lang="en" data-supported-languages="en">/);
+  assert.match(pricing, /canonical" href="https:\/\/www\.studio17\.world\/services\/social-media-pricing"/);
+  assert.match(pricing, /class="website-pricing-scroll social-media-pricing-scroll" role="region"[^>]*tabindex="0"/);
+  assert.equal((pricing.match(/class="social-media-pricing-group"/g) || []).length, 10);
+  assert.equal((pricing.match(/<th scope="row">/g) || []).length, 62);
+  assert.match(pricing, /<th scope="col">Service<\/th><th scope="col">Scope<\/th><th scope="col">Price<\/th>/);
+  for (const category of ['Strategy', 'Brand &amp; Setup', 'Video &amp; Photo', 'Paid Advertising', 'Automation &amp; Data', 'Campaigns']) assert.ok(pricing.includes(category), category);
+  for (const service of ['Social Media Audit', 'Social Presence — Starter', 'Meta / TikTok Ads Management', 'AI Influencer Image', 'Social Analytics Dashboard', 'Automotive Single-Car Campaign']) assert.ok(pricing.includes(service), service);
+  for (const internal of ['Payment', 'Service Code', 'Billing type', 'Monthly maintenance', 'Price Tolerance', 'Minimum Price', 'Pricing status', 'Commission note', 'SOC-01', '225,00 €', 'PROPOSED — approval required']) assert.doesNotMatch(pricing, new RegExp(internal));
+  assert.match(pricing, /href="\/contact\?service=social-media"[\s\S]*href="\/services\/social-media"/);
+  assert.match(read('dev-server.cjs'), /\['\/services\/social-media-pricing', 'social-media-pricing\.html'\]/);
+  assert.match(read('api/sitemap.js'), /`\$\{SITE_URL\}\/services\/social-media-pricing`/);
+  assert.match(read('api/llms.js'), /\['Social Media Pricing', '\/services\/social-media-pricing'/);
 });

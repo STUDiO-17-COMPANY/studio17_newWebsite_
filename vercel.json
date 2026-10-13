@@ -25,6 +25,7 @@
     { "source": "/free-website", "destination": "/services/free-website", "permanent": true },
     { "source": "/localization-and-translation", "destination": "/services/localization-and-translation", "permanent": true },
     { "source": "/social-media", "destination": "/services/social-media", "permanent": true },
+    { "source": "/social-media-pricing", "destination": "/services/social-media-pricing", "permanent": true },
     { "source": "/seo-cyprus", "destination": "/seo/cyprus", "permanent": true },
     { "source": "/seo-limassol", "destination": "/seo/limassol", "permanent": true },
     { "source": "/seo", "destination": "/services/seo", "permanent": true }
@@ -41,6 +42,7 @@
     { "source": "/services/free-website", "destination": "/free-website" },
     { "source": "/services/localization-and-translation", "destination": "/localization-and-translation" },
     { "source": "/services/social-media", "destination": "/social-media" },
+    { "source": "/services/social-media-pricing", "destination": "/social-media-pricing" },
     { "source": "/services/seo", "destination": "/seo" },
     { "source": "/seo/cyprus", "destination": "/seo-cyprus" },
     { "source": "/seo/limassol", "destination": "/seo-limassol" },

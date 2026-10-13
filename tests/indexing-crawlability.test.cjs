@@ -12,7 +12,7 @@ const clientTranslatedPages = [
   'home.template.html', 'about.html', 'contact.html', 'faq.html', 'team.html', 'our-story.html',
   'privacy-policy.html', 'cookie-policy.html', 'terms.html', 'services.html', 'website-services.html',
   'website-development.html', 'website-pricing.html', 'free-website.html', 'seo.html',
-  'seo-cyprus.html', 'seo-limassol.html'
+  'seo-cyprus.html', 'seo-limassol.html', 'social-media-pricing.html'
 ];
 
 test('client-only language states consolidate without false hreflang alternates', () => {

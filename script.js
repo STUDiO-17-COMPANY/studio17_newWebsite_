@@ -105,7 +105,7 @@
     const hash = hashIndex >= 0 ? href.slice(hashIndex) : '';
     const withoutHash = hashIndex >= 0 ? href.slice(0, hashIndex) : href;
     const [pathname, query = ''] = withoutHash.split('?');
-    const localPages = { '/wip': 'wip.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/services/localization-and-translation': 'localization-and-translation.html', '/services/social-media': 'social-media.html' };
+    const localPages = { '/wip': 'wip.html', '/services/website': 'website-services.html', '/services/website-development': 'website-development.html', '/services/free-website': 'free-website.html', '/services/seo': 'seo.html', '/services/localization-and-translation': 'localization-and-translation.html', '/services/social-media': 'social-media.html', '/services/social-media-pricing': 'social-media-pricing.html' };
     const target = location.protocol === 'file:' ? `${localPages[pathname] || pathname.replace(/^\//, '')}${query ? `?${query}` : ''}${hash}` : href;
     const url = new URL(target, location.href);
     const isWip = /(?:^|\/)wip(?:\.html)?$/.test(url.pathname);
@@ -144,7 +144,7 @@
           ['website-services.html', 'website-development.html', 'free-website.html', 'seo.html'].includes(currentPath)
         );
         const isSocialMediaFamily = group.categoryKey === 'social' && (
-          currentPath === '/services/social-media' || currentPath === 'social-media.html'
+          currentPath === '/services/social-media' || currentPath === '/services/social-media-pricing' || ['social-media.html', 'social-media-pricing.html'].includes(currentPath)
         );
         if (isWebsiteFamily || isSocialMediaFamily) title.setAttribute('aria-current', 'page');
       }
