@@ -21,7 +21,8 @@ const partners = [
   ['11', 'Snapdrop', 'https://www.snappdrop.com'],
   ['12', 'Teaching Economics', 'https://www.instagram.com/teaching.economics/'],
   ['13', 'Miguel Labs', 'https://miguellabs.xyz/'],
-  ['14', 'MIA EVENTS &amp; EXPERIENCES', 'https://www.miaevents.company/']
+  ['14', 'MIA EVENTS &amp; EXPERIENCES', 'https://www.miaevents.company/'],
+  ['15', 'Farmácia do Lourel', 'https://farmaciadolourel.pt/']
 ];
 
 for (const [number, name, url] of partners) {
@@ -36,14 +37,17 @@ assert.equal((html.match(/data-partner="11"/g) || []).length, 4, 'partner-11 mus
 assert.equal((html.match(/data-partner="12"/g) || []).length, 4, 'partner-12 must appear once in every marquee set');
 assert.equal((html.match(/data-partner="13"/g) || []).length, 4, 'partner-13 must appear once in every marquee set');
 assert.equal((html.match(/data-partner="14"/g) || []).length, 4, 'partner-14 must appear once in every marquee set');
+assert.equal((html.match(/data-partner="15"/g) || []).length, 4, 'partner-15 must appear once in every marquee set');
 assert.equal((about.match(/data-partner="12"/g) || []).length, 2, 'About must include partner-12 in both marquee sets');
 assert.equal((about.match(/data-partner="13"/g) || []).length, 2, 'About must include partner-13 in both marquee sets');
 assert.equal((about.match(/data-partner="14"/g) || []).length, 2, 'About must include partner-14 in both marquee sets');
+assert.equal((about.match(/data-partner="15"/g) || []).length, 2, 'About must include partner-15 in both marquee sets');
 assert.equal((work.match(/data-partner="12"/g) || []).length, 2, 'Work must include partner-12 in both marquee sets');
 assert.equal((work.match(/data-partner="13"/g) || []).length, 2, 'Work must include partner-13 in both marquee sets');
 assert.equal((work.match(/data-partner="14"/g) || []).length, 2, 'Work must include partner-14 in both marquee sets');
-assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(13,/s, 'the partner grid must expose all thirteen partners in one row');
-assert.match(css, /--partner-row-width:\s*max\(1650px,/, 'the partner row must preserve logo width after adding partner-14');
+assert.equal((work.match(/data-partner="15"/g) || []).length, 2, 'Work must include partner-15 in both marquee sets');
+assert.match(css, /\.partner-set\s*\{[^}]*grid-template-columns:\s*repeat\(14,/s, 'the partner grid must expose all fourteen active partners in one row');
+assert.match(css, /--partner-row-width:\s*max\(1780px,/, 'the partner row must preserve logo width after adding partner-15');
 assert.doesNotMatch(html, /Lodgify|lodgify\.com|data-partner="06"/i, 'Lodgify must not appear in the partner carousel');
 
 assert.doesNotMatch(html, /partner-phos\.png/);

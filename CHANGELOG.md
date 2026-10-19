@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-19 — Farmácia do Lourel partner
+
+- Added Farmácia do Lourel as partner 15 to every partner marquee on the homepage, About page and Work page using the supplied logo and official website.
+- Preserved MIA EVENTS & EXPERIENCES as partner 14 and expanded the shared carousel grid without reducing the display width of existing logos.
+
 ## 2026-10-13 — Social Media pricing page
 
 - Added the English-only `/services/social-media-pricing` page with 62 customer-facing services grouped across 10 social media categories.
