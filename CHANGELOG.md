@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-20 — Farmácia do Lourel selected work
+
+- Added Farmácia do Lourel to the homepage and Work page using the approved showcase image and an accurate account-recovery and cybersecurity scope.
+- Reordered the homepage showcase to Terrassi Villa, PHÓS Optics, Farmácia do Lourel and Nerouppos Barber Shop, keeping exactly four projects and removing 100 Pratos and RG Automotive from that section.
+- Marked the Farmácia case study as coming soon without linking visitors to a placeholder route, and corrected every partner 15 logo reference to the refreshed asset.
+
 ## 2026-10-19 — Farmácia do Lourel partner
 
 - Added Farmácia do Lourel as partner 15 to every partner marquee on the homepage, About page and Work page using the supplied logo and official website.
