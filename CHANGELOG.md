@@ -2,6 +2,8 @@
 
 ## 2026-10-24 — Crawlable multilingual subdirectory architecture
 
+- Added explicit Vercel rewrites for the canonical trailing-slash language homepages (`/pt/`, `/es/`, `/el/`, `/ru/`, `/he/`) and corrected translated static-page catch-alls to use extensionless `cleanUrls` destinations, preventing platform 404s from the language switcher and `hreflang` URLs.
+- Added an exhaustive multilingual route-matrix regression test to the Vercel build. Every supported translated static page must now have generated HTML, the correct language, a self-referencing canonical, reciprocal `hreflang` metadata and a canonical language-switch URL before a deployment can succeed.
 - Consolidated the two legacy Careers JSON handlers into `career-page.js`, preserved their public API paths through rewrites and reduced the deployment to 11 total functions including Routing Middleware, below the Hobby-plan limit.
 - Corrected the Vercel Routing Middleware entrypoint to the platform-supported `proxy.ts` extension after production schema validation rejected `.mjs` before the build could start.
 - Replaced public `?lang=` states with clean `/pt/`, `/es/`, `/el/`, `/ru/` and `/he/` URLs while preserving every English URL.
