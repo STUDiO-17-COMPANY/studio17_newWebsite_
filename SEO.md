@@ -50,7 +50,7 @@ For a fully remote vacancy, add the exact heading `Applicant countries (SEO)` an
 - Use `https://www.studio17.world` consistently; do not mix apex and `www` URLs.
 - Public page URLs never expose `.html`; Vercel redirects legacy filenames to their extensionless canonical routes.
 - Published translations use language subdirectories: `/pt/`, `/es/`, `/el/`, `/ru/` and `/he/`; English remains unprefixed. Every advertised translation must provide translated initial HTML, the correct `<html lang>`, a self-referencing canonical and a reciprocal `hreflang` cluster. Do not publish client-only or partially translated alternatives.
-- Legacy `?lang=` page and article addresses permanently redirect through `proxy.mjs` to their clean equivalent. Do not create new public links, canonicals, alternates or sitemap entries containing the language query parameter.
+- Legacy `?lang=` page and article addresses permanently redirect through `proxy.ts` to their clean equivalent. Do not create new public links, canonicals, alternates or sitemap entries containing the language query parameter.
 - Static translations are generated at build time by `scripts/build-localized-pages.cjs`. Homepage, News archive and Google Drive article translations use the same route registry while retaining their server-rendered content pipeline.
 - Careers and role pages are English-only and must not advertise translated alternatives.
 - WIP pages stay `noindex,follow` until real, approved content replaces them.

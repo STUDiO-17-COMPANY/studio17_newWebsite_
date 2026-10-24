@@ -2,6 +2,7 @@
 
 ## 2026-10-24 — Crawlable multilingual subdirectory architecture
 
+- Corrected the Vercel Routing Middleware entrypoint to the platform-supported `proxy.ts` extension after production schema validation rejected `.mjs` before the build could start.
 - Replaced public `?lang=` states with clean `/pt/`, `/es/`, `/el/`, `/ru/` and `/he/` URLs while preserving every English URL.
 - Added build-time translated HTML, page-aware language availability, self-referencing canonicals, reciprocal `hreflang`, localized navigation and RTL output.
 - Migrated homepage, News pagination/search, article cards and Google Drive article translations to the same canonical language-path helper.

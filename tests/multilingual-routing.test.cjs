@@ -30,7 +30,7 @@ test('generated translations contain crawlable HTML, self canonicals and recipro
 
 test('Vercel uses build-time localized HTML and routing middleware without adding an API function', () => {
   const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
-  assert.equal(config.proxy.entrypoint, 'proxy.mjs');
+  assert.equal(config.proxy.entrypoint, 'proxy.ts');
   assert.match(config.buildCommand, /build-localized-pages\.cjs/);
   assert.equal(config.rewrites.some(rule => rule.source === '/es/news/:slug'), true);
   assert.equal(config.rewrites.some(rule => rule.source === '/he/:path*'), true);
