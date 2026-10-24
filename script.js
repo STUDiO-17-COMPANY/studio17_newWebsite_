@@ -428,31 +428,31 @@
   const serviceSchema = {
     social: {
       items: ['socialManagement', 'socialAutomation', 'growthStrategy', 'communityManagement', 'freeAudit'],
-      image: 'Images/news-social.webp'
+      image: '/Images/news-social.webp'
     },
     website: {
       items: ['websiteDevelopment', 'websiteRevamp', 'websiteDesign', 'seo', 'geo', 'copywriting', 'localization', 'maintenance', 'freeWebsite'],
-      image: 'Images/hero-team.webp'
+      image: '/Images/hero-team.webp'
     },
     content: {
       items: ['filming', 'photography', 'videoEditing', 'graphicDesign', 'digitalDesign', 'scripting', 'aiGeneration'],
-      image: 'Images/ai-hands.webp'
+      image: '/Images/ai-hands.webp'
     },
     ads: {
       items: ['metaAds', 'googleAds', 'socialAds', 'influencerAds', 'ugcCreators', 'emailAds'],
-      image: 'Images/news-billboard.webp'
+      image: '/Images/news-billboard.webp'
     },
     industry: {
       items: ['automotive', 'restaurants', 'health', 'ecommerce', 'influencers', 'education', 'local', 'smes'],
       images: {
-        automotive: 'Images/case-automotive.webp', restaurants: 'Images/news-social.webp', health: 'Images/news-partnership.webp',
-        ecommerce: 'Images/news-billboard.webp', influencers: 'Images/news-social.webp', education: 'Images/news-ai.webp',
-        local: 'Images/news-partnership.webp', smes: 'Images/hero-team.webp'
+        automotive: '/Images/case-automotive.webp', restaurants: '/Images/news-social.webp', health: '/Images/news-partnership.webp',
+        ecommerce: '/Images/news-billboard.webp', influencers: '/Images/news-social.webp', education: '/Images/news-ai.webp',
+        local: '/Images/news-partnership.webp', smes: '/Images/hero-team.webp'
       }
     },
     events: {
       items: ['presentialEvents', 'onlineEvents'],
-      image: 'Images/news-partnership.webp'
+      image: '/Images/news-partnership.webp'
     }
   };
 

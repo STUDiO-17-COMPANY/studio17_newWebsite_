@@ -2,6 +2,7 @@
 
 ## 2026-10-24 — Crawlable multilingual subdirectory architecture
 
+- Corrected the homepage service selector's JavaScript image registry to use root-relative `/Images/...` assets, preventing translated routes such as `/pt/` from requesting nonexistent `/pt/Images/...` files.
 - Added explicit Vercel rewrites for the canonical trailing-slash language homepages (`/pt/`, `/es/`, `/el/`, `/ru/`, `/he/`) and corrected translated static-page catch-alls to use extensionless `cleanUrls` destinations, preventing platform 404s from the language switcher and `hreflang` URLs.
 - Added an exhaustive multilingual route-matrix regression test to the Vercel build. Every supported translated static page must now have generated HTML, the correct language, a self-referencing canonical, reciprocal `hreflang` metadata and a canonical language-switch URL before a deployment can succeed.
 - Consolidated the two legacy Careers JSON handlers into `career-page.js`, preserved their public API paths through rewrites and reduced the deployment to 11 total functions including Routing Middleware, below the Hobby-plan limit.

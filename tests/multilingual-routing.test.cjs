@@ -111,6 +111,18 @@ test('every locale has complete Vercel rewrites for homes, archives and article 
   });
 });
 
+test('homepage service images remain root-relative on every language route', () => {
+  const clientSource = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
+  const serviceSchema = clientSource.match(/const serviceSchema = \{[\s\S]*?\n  \};\n\n  const serviceDestinations/)?.[0];
+  assert.ok(serviceSchema, 'The homepage service image registry must remain detectable');
+  assert.match(serviceSchema, /image: ['"]\/Images\//);
+  assert.doesNotMatch(
+    serviceSchema,
+    /(?:image:\s*|:\s*)['"]Images\//,
+    'Relative dynamic image paths resolve below /pt/, /es/, /el/, /ru/ and /he/ and return 404'
+  );
+});
+
 test('canonical localized home URLs resolve through explicit trailing-slash rewrites', () => {
   const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
   const expected = new Map([
