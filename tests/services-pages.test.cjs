@@ -64,10 +64,10 @@ test('website development page preserves commercial and portfolio requirements',
 test('website pricing page compares the five packages accessibly', () => {
   const html = read('website-pricing.html');
   const css = read('styles.css');
-  assert.match(html, /<html lang="en" data-supported-languages="en,el,ru">/);
+  assert.match(html, /<html[^>]*lang="en"[^>]*data-supported-languages="en,el,ru"/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website-pricing"/);
   assert.match(html, /class="page-hero website-pricing-hero"[\s\S]*src="\/Images\/Team_heroimage\.webp"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 2);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 4);
   assert.match(html, /class="website-pricing-scroll" role="region"[^>]*tabindex="0"/);
   assert.equal((html.match(/class="website-pricing-group"/g) || []).length, 3);
   assert.equal((html.match(/<tr>/g) || []).length, 17);
@@ -97,10 +97,9 @@ test('website service-family page provides a distinct, translated decision journ
   const html = read('website-services.html');
   const css = read('styles.css');
   const behavior = read('service-pages.js');
-  assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
+  assert.match(html, /<html[^>]*lang="en"[^>]*data-supported-languages="en,pt-PT,es,el,ru,he"/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 2);
-  assert.doesNotMatch(html, /hreflang="(?:pt-PT|es|el|ru|he)"/);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
   assert.doesNotMatch(html, /website-services-intro|Your website is one system/);
   assert.match(html, /data-service-page="websiteServices"/);
   assert.equal((html.match(/data-website-service="/g) || []).length, 8);
@@ -205,9 +204,9 @@ test('service-page FAQs use independent two-column accordion groups', () => {
 test('free website page is transparent, lead-ready and translated in all site languages', () => {
   const html = read('free-website.html');
   const css = read('styles.css');
-  assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
+  assert.match(html, /<html[^>]*lang="en"[^>]*data-supported-languages="en,pt-PT,es,el,ru,he"/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/free-website"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 2);
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
   assert.match(html, /data-service-page="freeWebsite"/);
   const sectionOrder = ['free-credibility-strip', 'free-showcase', 'free-website-fit', 'free-website-included', 'free-zero-statement', 'free-real-work', 'free-website-process', 'free-website-preparation', 'free-comparison', 'free-value', 'free-website-faq', 'free-website-cta'].map(className => html.search(new RegExp(`<section class="[^"]*${className}`)));
   assert.ok(sectionOrder.every((position, index) => position >= 0 && (index === 0 || position > sectionOrder[index - 1])), 'Free Website sections must follow the approved sales journey');
@@ -266,10 +265,10 @@ test('free website page is transparent, lead-ready and translated in all site la
 test('SEO page is an international, evidence-safe commercial service page', () => {
   const html = read('seo.html');
   const css = read('styles.css');
-  assert.match(html, /<html lang="en" data-supported-languages="en,pt-PT,es,el,ru,he">/);
+  assert.match(html, /<html[^>]*lang="en"[^>]*data-supported-languages="en,pt-PT,es,el,ru,he"/);
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/seo"/);
-  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 2);
-  for (const language of ['x-default', 'en']) assert.match(html, new RegExp(`hreflang="${language}"`));
+  assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 7);
+  for (const language of ['x-default', 'en', 'pt-PT', 'es', 'el', 'ru', 'he']) assert.match(html, new RegExp(`hreflang="${language}"`));
   assert.match(html, /<h1[^>]*><span>SEO services<\/span> that connect search demand to growth\.<\/h1>/);
   assert.match(html, /<div class="hero-media"[^>]*><img src="\/Images\/SEO_heroimage\.webp" alt="" width="1744" height="296">/);
   assert.equal((html.match(/class="seo-capability-grid"[\s\S]*?<\/div><\/div><\/section>/)?.[0].match(/<article>/g) || []).length, 9);
@@ -368,6 +367,7 @@ test('clean routes and sitemaps include every published service page', () => {
   const server = read('dev-server.cjs');
   const vercel = read('vercel.json');
   const sitemap = read('api/sitemap.js');
+  const routing = read('server/_language-routing.js');
   assert.ok(server.includes("['/services', 'services.html']"));
   assert.ok(server.includes("['/services/website', 'website-services.html']"));
   assert.ok(server.includes("['/services/website-development', 'website-development.html']"));
@@ -385,15 +385,8 @@ test('clean routes and sitemaps include every published service page', () => {
   assert.ok(vercel.includes('"source": "/services/localization-and-translation"'));
   assert.ok(vercel.includes('"source": "/services/social-media"'));
   assert.ok(vercel.includes('"source": "/services/social-media-pricing"'));
-  assert.ok(sitemap.includes('`${SITE_URL}/services`'));
-  assert.ok(sitemap.includes('`${SITE_URL}/services/website-development`'));
-  assert.ok(sitemap.includes('`${SITE_URL}/services/website-pricing`'));
-  assert.ok(sitemap.includes('`${SITE_URL}/services/website`'));
-  assert.ok(sitemap.includes('`${SITE_URL}/services/free-website`'));
-  assert.ok(sitemap.includes('`${SITE_URL}/services/seo`'));
-  assert.ok(sitemap.includes('`${SITE_URL}/services/localization-and-translation`'));
-  assert.ok(sitemap.includes('`${SITE_URL}/services/social-media`'));
-  assert.ok(sitemap.includes('`${SITE_URL}/services/social-media-pricing`'));
+  assert.ok(sitemap.includes('STATIC_PAGES'));
+  for (const route of ['/services', '/services/website-development', '/services/website-pricing', '/services/website', '/services/free-website', '/services/seo', '/services/localization-and-translation', '/services/social-media', '/services/social-media-pricing']) assert.ok(routing.includes(`route: '${route}'`), route);
   assert.match(read('api/sitemap-template.html'), /href="\/services\/free-website">Free Website\s*<i/);
   assert.match(read('api/sitemap-template.html'), /href="\/services\/seo">SEO services\s*<i/);
   assert.match(read('api/sitemap-template.html'), /href="\/services\/localization-and-translation">Localization and Translation\s*<i/);

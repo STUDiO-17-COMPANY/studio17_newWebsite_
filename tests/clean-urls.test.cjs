@@ -45,7 +45,8 @@ assert.equal(configuration.rewrites.some(route => route.source === '/services/so
 assert.equal(configuration.rewrites.some(route => route.source === '/services/social-media-pricing' && route.destination === '/social-media-pricing'), true);
 assert.equal(configuration.rewrites.some(route => route.source === '/sitemap' && route.destination === '/api/sitemap-page'), true);
 assert.match(configuration.functions['api/*.js'].includeFiles, /api\/sitemap-template\.html/);
-assert.equal(configuration.rewrites.some(route => /\.html/.test(route.source) || /\.html/.test(route.destination)), false);
+assert.equal(configuration.rewrites.some(route => /\.html/.test(route.source)), false);
+assert.equal(configuration.rewrites.some(route => /\.html/.test(route.destination) && !route.destination.startsWith('/_localized/')), false);
 
 const sitemapSource = fs.readFileSync(path.join(root, 'api', 'sitemap.js'), 'utf8');
 assert.doesNotMatch(sitemapSource, /SITE_URL}\/[a-z-]+\.html/);

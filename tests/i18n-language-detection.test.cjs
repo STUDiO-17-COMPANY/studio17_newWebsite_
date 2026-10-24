@@ -127,7 +127,7 @@ const detectLanguage = async ({
     pageLanguages: 'en,el,ru'
   });
   assert.equal(limitedPage.language, 'ru', 'a page-specific language scope should ignore unsupported URL languages and use the next supported preference');
-  assert.match(limitedPage.updatedUrl, /\?lang=ru$/, 'the address should be normalised to the language actually displayed');
+  assert.equal(limitedPage.updatedUrl, '/ru/', 'the address should be normalised to the clean language URL actually displayed');
 
   const preservedGlobalPreference = await detectLanguage({
     stored: 'pt-PT',

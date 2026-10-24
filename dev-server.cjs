@@ -7,6 +7,7 @@ const { buildSeo, getArticlePath, renderArticleMain } = require('./server/_artic
 const { renderHomePage } = require('./api/home-page');
 const { renderNewsPage } = require('./api/news-page');
 const demoArticle = require('./article-demo.cjs');
+const { legacyLanguageTarget, localePrefix, normaliseLocale, stripLocalePrefix, supportsLocale } = require('./server/_language-routing');
 
 const demoArticles = Array.from({ length: 12 }, (_, index) => ({
   slug: demoArticle.slug,
@@ -138,20 +139,31 @@ const sendHtml = (request, response, status, html) => {
 
 const server = http.createServer((request, response) => {
   const url = new URL(request.url || '/', 'http://localhost');
-  const pathname = decodeURIComponent(url.pathname).replace(/\/+$/, '') || '/';
+  const rawPathname = decodeURIComponent(url.pathname).replace(/\/+$/, '') || '/';
+  if (url.searchParams.has('lang')) {
+    const locale = normaliseLocale(url.searchParams.get('lang'));
+    url.pathname = legacyLanguageTarget(rawPathname, locale);
+    url.searchParams.delete('lang');
+    response.writeHead(301, { Location: `${url.pathname}${url.search}${url.hash}` });
+    response.end();
+    return;
+  }
+  const prefixed = stripLocalePrefix(rawPathname);
+  const locale = prefixed.locale;
+  const pathname = prefixed.pathname.replace(/\/+$/, '') || '/';
 
   if (pathname === '/llms.txt') {
     require('./api/llms')(request, response);
     return;
   }
 
-  if (legacyPages.has(pathname)) {
+  if (locale === 'en' && legacyPages.has(pathname)) {
     response.writeHead(308, { Location: `${legacyPages.get(pathname)}${url.search}` });
     response.end();
     return;
   }
   if (pathname === '/') {
-    sendHtml(request, response, 200, renderHomePage(demoArticles));
+    sendHtml(request, response, 200, renderHomePage(demoArticles, locale));
     return;
   }
   const newsPageMatch = pathname.match(/^\/news\/page\/(\d+)$/);
@@ -161,13 +173,19 @@ const server = http.createServer((request, response) => {
       page: newsPageMatch ? Number(newsPageMatch[1]) : Number(url.searchParams.get('page') || 1),
       query: url.searchParams.get('q') || '',
       category: url.searchParams.get('category') || '',
-      locale: url.searchParams.get('lang') || 'en'
+      locale
     });
     sendHtml(request, response, rendered.status, rendered.body);
     return;
   }
   if (cleanPages.has(pathname)) {
-    sendFile(response, cleanPages.get(pathname));
+    if (!supportsLocale(pathname, locale)) {
+      response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+      response.end('Not found');
+      return;
+    }
+    const generated = locale === 'en' ? null : path.join('_localized', localePrefix(locale), `${pathname.replace(/^\//, '')}.html`);
+    sendFile(response, generated || cleanPages.get(pathname));
     return;
   }
   if (pathname === '/insights/how-car-dealerships-can-increase-monthly-sales') {
@@ -175,7 +193,7 @@ const server = http.createServer((request, response) => {
     response.end();
     return;
   }
-  if (pathname === '/case-studies/how-car-dealerships-can-increase-monthly-sales') {
+  if (pathname === '/case-studies/how-car-dealerships-can-increase-monthly-sales' && locale === 'en') {
     sendDemoArticle(response);
     return;
   }

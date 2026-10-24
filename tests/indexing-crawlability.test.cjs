@@ -15,16 +15,16 @@ const clientTranslatedPages = [
   'seo-cyprus.html', 'seo-limassol.html', 'social-media-pricing.html'
 ];
 
-test('client-only language states consolidate without false hreflang alternates', () => {
+test('translated pages expose crawlable subdirectory alternates with self-canonical generated HTML', () => {
   for (const file of clientTranslatedPages) {
     const html = read(file);
     assert.match(html, /rel="canonical" href="https:\/\/www\.studio17\.world\//, `${file} needs a canonical`);
-    assert.doesNotMatch(html, /hreflang="(?:pt-PT|es|el|ru|he)"/, `${file} advertises a non-server-rendered language alternate`);
     assert.doesNotMatch(html, /rel="canonical"[^>]+\?lang=/, `${file} canonical must not include a client-state parameter`);
   }
-  const i18n = read('i18n.js');
-  assert.match(i18n, /hasAttribute\('data-server-localized'\)/);
-  assert.match(i18n, /canonical && isServerLocalised/);
+  const spanish = read(path.join('_localized', 'es', 'services', 'website-development.html'));
+  assert.match(spanish, /https:\/\/www\.studio17\.world\/es\/services\/website-development/);
+  assert.match(spanish, /hreflang="es"|hreflang="es"/);
+  assert.doesNotMatch(spanish, /\?lang=/);
 });
 
 test('real server-rendered article translations remain independently indexable', () => {

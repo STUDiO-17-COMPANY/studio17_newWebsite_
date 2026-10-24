@@ -4,18 +4,23 @@ const fs = require('fs');
 const path = require('path');
 const { articleCacheControl, articleCdnCacheControl, listPublishedArticles, SUPPORTED_LOCALES } = require('../server/_google-articles');
 const { escapeHtml, renderArticleCard } = require('../server/_article-listing');
+const { localizedPath, localePrefix, normaliseLocale } = require('../server/_language-routing');
 
 const SITE_URL = 'https://www.studio17.world';
 const PAGE_SIZE = 9;
-const template = fs.readFileSync(path.join(process.cwd(), 'news.template.html'), 'utf8');
+const readTemplate = locale => {
+  const prefix = localePrefix(locale);
+  const filename = prefix ? path.join(process.cwd(), '_localized', prefix, 'news.template.html') : path.join(process.cwd(), 'news.template.html');
+  return fs.readFileSync(filename, 'utf8');
+};
 const categoryMap = { insights: 'Insight', 'case-studies': 'Case Study', news: 'News' };
 const ARCHIVE_UI = {
-  en: { searchLabel: 'Search published articles', searchPlaceholder: 'Search articles', search: 'Search', filters: 'Filter articles', all: 'All', insights: 'Insights', caseStudies: 'Case Studies', news: 'News', pages: 'Article archive pages', previous: 'Previous', next: 'Next', empty: 'No published articles are available in this category.', noMatches: query => `No articles match “${query}”.` },
-  'pt-PT': { searchLabel: 'Pesquisar artigos publicados', searchPlaceholder: 'Pesquisar artigos', search: 'Pesquisar', filters: 'Filtrar artigos', all: 'Todos', insights: 'Perspetivas', caseStudies: 'Casos de estudo', news: 'Notícias', pages: 'Páginas do arquivo de artigos', previous: 'Anterior', next: 'Seguinte', empty: 'Não existem artigos publicados nesta categoria.', noMatches: query => `Nenhum artigo corresponde a “${query}”.` },
-  es: { searchLabel: 'Buscar artículos publicados', searchPlaceholder: 'Buscar artículos', search: 'Buscar', filters: 'Filtrar artículos', all: 'Todos', insights: 'Perspectivas', caseStudies: 'Casos de estudio', news: 'Noticias', pages: 'Páginas del archivo de artículos', previous: 'Anterior', next: 'Siguiente', empty: 'No hay artículos publicados en esta categoría.', noMatches: query => `Ningún artículo coincide con “${query}”.` },
-  el: { searchLabel: 'Αναζήτηση δημοσιευμένων άρθρων', searchPlaceholder: 'Αναζήτηση άρθρων', search: 'Αναζήτηση', filters: 'Φιλτράρισμα άρθρων', all: 'Όλα', insights: 'Απόψεις', caseStudies: 'Μελέτες περίπτωσης', news: 'Νέα', pages: 'Σελίδες αρχείου άρθρων', previous: 'Προηγούμενη', next: 'Επόμενη', empty: 'Δεν υπάρχουν δημοσιευμένα άρθρα σε αυτή την κατηγορία.', noMatches: query => `Δεν βρέθηκαν άρθρα για «${query}».` },
-  ru: { searchLabel: 'Поиск опубликованных статей', searchPlaceholder: 'Поиск статей', search: 'Найти', filters: 'Фильтр статей', all: 'Все', insights: 'Идеи', caseStudies: 'Кейсы', news: 'Новости', pages: 'Страницы архива статей', previous: 'Назад', next: 'Далее', empty: 'В этой категории пока нет опубликованных статей.', noMatches: query => `По запросу «${query}» ничего не найдено.` },
-  he: { searchLabel: 'חיפוש מאמרים שפורסמו', searchPlaceholder: 'חיפוש מאמרים', search: 'חיפוש', filters: 'סינון מאמרים', all: 'הכול', insights: 'תובנות', caseStudies: 'מקרי בוחן', news: 'חדשות', pages: 'עמודי ארכיון המאמרים', previous: 'הקודם', next: 'הבא', empty: 'אין מאמרים שפורסמו בקטגוריה זו.', noMatches: query => `לא נמצאו מאמרים עבור „${query}”.` }
+  en: { title: 'Insights, Case Studies & News', page: 'Page', searchLabel: 'Search published articles', searchPlaceholder: 'Search articles', search: 'Search', filters: 'Filter articles', all: 'All', insights: 'Insights', caseStudies: 'Case Studies', news: 'News', pages: 'Article archive pages', previous: 'Previous', next: 'Next', empty: 'No published articles are available in this category.', noMatches: query => `No articles match “${query}”.` },
+  'pt-PT': { title: 'Perspetivas, casos de estudo e notícias', page: 'Página', searchLabel: 'Pesquisar artigos publicados', searchPlaceholder: 'Pesquisar artigos', search: 'Pesquisar', filters: 'Filtrar artigos', all: 'Todos', insights: 'Perspetivas', caseStudies: 'Casos de estudo', news: 'Notícias', pages: 'Páginas do arquivo de artigos', previous: 'Anterior', next: 'Seguinte', empty: 'Não existem artigos publicados nesta categoria.', noMatches: query => `Nenhum artigo corresponde a “${query}”.` },
+  es: { title: 'Perspectivas, casos de estudio y noticias', page: 'Página', searchLabel: 'Buscar artículos publicados', searchPlaceholder: 'Buscar artículos', search: 'Buscar', filters: 'Filtrar artículos', all: 'Todos', insights: 'Perspectivas', caseStudies: 'Casos de estudio', news: 'Noticias', pages: 'Páginas del archivo de artículos', previous: 'Anterior', next: 'Siguiente', empty: 'No hay artículos publicados en esta categoría.', noMatches: query => `Ningún artículo coincide con “${query}”.` },
+  el: { title: 'Απόψεις, μελέτες περίπτωσης και νέα', page: 'Σελίδα', searchLabel: 'Αναζήτηση δημοσιευμένων άρθρων', searchPlaceholder: 'Αναζήτηση άρθρων', search: 'Αναζήτηση', filters: 'Φιλτράρισμα άρθρων', all: 'Όλα', insights: 'Απόψεις', caseStudies: 'Μελέτες περίπτωσης', news: 'Νέα', pages: 'Σελίδες αρχείου άρθρων', previous: 'Προηγούμενη', next: 'Επόμενη', empty: 'Δεν υπάρχουν δημοσιευμένα άρθρα σε αυτή την κατηγορία.', noMatches: query => `Δεν βρέθηκαν άρθρα για «${query}».` },
+  ru: { title: 'Идеи, кейсы и новости', page: 'Страница', searchLabel: 'Поиск опубликованных статей', searchPlaceholder: 'Поиск статей', search: 'Найти', filters: 'Фильтр статей', all: 'Все', insights: 'Идеи', caseStudies: 'Кейсы', news: 'Новости', pages: 'Страницы архива статей', previous: 'Назад', next: 'Далее', empty: 'В этой категории пока нет опубликованных статей.', noMatches: query => `По запросу «${query}» ничего не найдено.` },
+  he: { title: 'תובנות, מקרי בוחן וחדשות', page: 'עמוד', searchLabel: 'חיפוש מאמרים שפורסמו', searchPlaceholder: 'חיפוש מאמרים', search: 'חיפוש', filters: 'סינון מאמרים', all: 'הכול', insights: 'תובנות', caseStudies: 'מקרי בוחן', news: 'חדשות', pages: 'עמודי ארכיון המאמרים', previous: 'הקודם', next: 'הבא', empty: 'אין מאמרים שפורסמו בקטגוריה זו.', noMatches: query => `לא נמצאו מאמרים עבור „${query}”.` }
 };
 
 const queryValue = value => Array.isArray(value) ? value[0] : String(value || '');
@@ -33,8 +38,7 @@ const makeUrl = ({ page = 1, query = '', category = '', locale = 'en' }) => {
   const params = new URLSearchParams();
   if (query) params.set('q', query);
   if (category) params.set('category', category);
-  if (locale !== 'en') params.set('lang', locale);
-  const pathname = page > 1 && !query && !category ? `/news/page/${page}` : '/news';
+  const pathname = localizedPath(page > 1 && !query && !category ? `/news/page/${page}` : '/news', locale);
   if (page > 1 && (query || category)) params.set('page', String(page));
   const search = params.toString();
   return `${pathname}${search ? `?${search}` : ''}`;
@@ -43,10 +47,10 @@ const filterLink = (slug, label, active, locale) => `<a href="${escapeHtml(makeU
 
 const renderAlternates = ({ page, locale }) => {
   if (page > 1) {
-    const self = `${SITE_URL}${makeUrl({ page, locale })}`;
-    return locale === 'en'
-      ? `<link rel="alternate" hreflang="x-default" href="${self}"><link rel="alternate" hreflang="en" href="${self}">`
-      : `<link rel="alternate" hreflang="${escapeHtml(locale)}" href="${escapeHtml(self)}">`;
+    return [
+      `<link rel="alternate" hreflang="x-default" href="${SITE_URL}${makeUrl({ page, locale: 'en' })}">`,
+      ...SUPPORTED_LOCALES.map(language => `<link rel="alternate" hreflang="${escapeHtml(language)}" href="${SITE_URL}${makeUrl({ page, locale: language })}">`)
+    ].join('');
   }
   return [
     `<link rel="alternate" hreflang="x-default" href="${SITE_URL}/news">`,
@@ -56,7 +60,7 @@ const renderAlternates = ({ page, locale }) => {
 
 const renderControls = ({ query, category, locale }) => {
   const ui = ARCHIVE_UI[locale] || ARCHIVE_UI.en;
-  return `<div class="news-archive-tools"><form class="news-search" action="/news" method="get" role="search"><label class="sr-only" for="article-search">${escapeHtml(ui.searchLabel)}</label><input id="article-search" name="q" type="search" value="${escapeHtml(query)}" placeholder="${escapeHtml(ui.searchPlaceholder)}" maxlength="100">${locale !== 'en' ? `<input type="hidden" name="lang" value="${escapeHtml(locale)}">` : ''}<button type="submit">${escapeHtml(ui.search)} <i data-lucide="search" aria-hidden="true"></i></button></form><nav class="news-filters" aria-label="${escapeHtml(ui.filters)}">${filterLink('', ui.all, !category, locale)}${filterLink('insights', ui.insights, category === 'insights', locale)}${filterLink('case-studies', ui.caseStudies, category === 'case-studies', locale)}${filterLink('news', ui.news, category === 'news', locale)}</nav></div>`;
+  return `<div class="news-archive-tools"><form class="news-search" action="${escapeHtml(localizedPath('/news', locale))}" method="get" role="search"><label class="sr-only" for="article-search">${escapeHtml(ui.searchLabel)}</label><input id="article-search" name="q" type="search" value="${escapeHtml(query)}" placeholder="${escapeHtml(ui.searchPlaceholder)}" maxlength="100"><button type="submit">${escapeHtml(ui.search)} <i data-lucide="search" aria-hidden="true"></i></button></form><nav class="news-filters" aria-label="${escapeHtml(ui.filters)}">${filterLink('', ui.all, !category, locale)}${filterLink('insights', ui.insights, category === 'insights', locale)}${filterLink('case-studies', ui.caseStudies, category === 'case-studies', locale)}${filterLink('news', ui.news, category === 'news', locale)}</nav></div>`;
 };
 
 const renderPagination = ({ current, total, query, category, locale }) => {
@@ -77,20 +81,20 @@ const renderNewsPage = ({ articles, page, query, category, locale }) => {
   const cards = shown.length
     ? shown.map(article => renderArticleCard(article, locale)).join('')
     : `<div class="article-feed-state article-feed-empty"><p>${escapeHtml(query ? ui.noMatches(query) : ui.empty)}</p></div>`;
-  const canonicalPath = query || category ? '/news' : makeUrl({ page, locale });
+  const canonicalPath = query || category ? localizedPath('/news', locale) : makeUrl({ page, locale });
   const canonical = `${SITE_URL}${canonicalPath}`;
   const shouldNoIndex = Boolean(query || category || invalidPage);
-  const title = page > 1 && !query && !category ? `Insights, Case Studies & News — Page ${page} | Studio 17` : 'Insights, Case Studies & News | Studio 17';
+  const title = page > 1 && !query && !category ? `${ui.title} — ${ui.page} ${page} | Studio 17` : `${ui.title} | Studio 17`;
   const adjacent = [
     !query && !category && page > 1 ? `<link rel="prev" href="${SITE_URL}${makeUrl({ page: page - 1, locale })}">` : '',
     !query && !category && page < totalPages ? `<link rel="next" href="${SITE_URL}${makeUrl({ page: page + 1, locale })}">` : ''
   ].filter(Boolean).join('\n');
-  const body = template
-    .replace('<html lang="en">', `<html lang="${escapeHtml(locale)}" data-server-localized${locale === 'he' ? ' dir="rtl"' : ''}>`)
+  const body = readTemplate(locale)
+    .replace(/<html\b[^>]*>/, `<html lang="${escapeHtml(locale)}" data-server-localized${locale === 'he' ? ' dir="rtl"' : ''}>`)
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(title)}</title>`)
-    .replace(/<meta name="robots" content="[^"]*">/, `<meta name="robots" content="${shouldNoIndex ? 'noindex,follow' : 'index,follow'}">`)
-    .replace(/<link rel="canonical" href="[^"]*" data-seo-canonical>/, `<link rel="canonical" href="${escapeHtml(canonical)}" data-seo-canonical>`)
-    .replace(/<meta property="og:url" content="[^"]*" data-seo-og-url>/, `<meta property="og:url" content="${escapeHtml(canonical)}" data-seo-og-url>`)
+    .replace(/<meta\b(?=[^>]*name=["']robots["'])[^>]*>/i, `<meta name="robots" content="${shouldNoIndex ? 'noindex,follow' : 'index,follow'}">`)
+    .replace(/<link\b(?=[^>]*data-seo-canonical)[^>]*>/i, `<link rel="canonical" href="${escapeHtml(canonical)}" data-seo-canonical>`)
+    .replace(/<meta\b(?=[^>]*data-seo-og-url)[^>]*>/i, `<meta property="og:url" content="${escapeHtml(canonical)}" data-seo-og-url>`)
     .replace('<!-- ARTICLE_ARCHIVE_ALTERNATES -->', renderAlternates({ page, locale }))
     .replace('<!-- ARTICLE_ARCHIVE_HEAD -->', adjacent)
     .replace('data-article-feed="archive" data-ssr-language="en"', `data-article-feed="archive" data-ssr-language="${escapeHtml(locale)}" data-archive-page="${page}"`)
@@ -108,8 +112,7 @@ module.exports = async function newsPageHandler(request, response) {
     return;
   }
   try {
-    const localeValue = queryValue(request.query?.lang);
-    const locale = SUPPORTED_LOCALES.includes(localeValue) ? localeValue : 'en';
+    const locale = normaliseLocale(queryValue(request.query?.lang));
     const page = pageNumber(request.query?.page);
     const query = normaliseSearch(request.query?.q);
     const categoryValue = queryValue(request.query?.category);
@@ -126,9 +129,10 @@ module.exports = async function newsPageHandler(request, response) {
     response.end(request.method === 'HEAD' ? '' : rendered.body);
   } catch (error) {
     console.error('News archive rendering failed', error?.code || error?.message);
-    const body = template
+    const locale = normaliseLocale(queryValue(request.query?.lang));
+    const body = readTemplate(locale)
       .replace('<!-- ARTICLE_ARCHIVE_HEAD -->', '')
-      .replace('<!-- ARTICLE_ARCHIVE_CONTROLS -->', renderControls({ query: '', category: '', locale: 'en' }))
+      .replace('<!-- ARTICLE_ARCHIVE_CONTROLS -->', renderControls({ query: '', category: '', locale }))
       .replace('<!-- ARTICLE_ARCHIVE_FEED -->', '<div class="article-feed-state article-feed-error"><p>Articles are temporarily unavailable.</p></div>')
       .replace('<!-- ARTICLE_ARCHIVE_PAGINATION -->', '');
     response.statusCode = 503;

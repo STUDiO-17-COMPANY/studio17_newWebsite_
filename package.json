@@ -1,11 +1,16 @@
 {
   "private": true,
   "scripts": {
+    "build:locales": "node scripts/build-localized-pages.cjs",
+    "test:multilingual": "node scripts/build-localized-pages.cjs && node --test tests/multilingual-routing.test.cjs",
     "test:articles": "node --test tests/article-image-optimization.test.cjs tests/article-listing-ssr.test.cjs tests/articles-parser.test.cjs tests/article-prototype.test.cjs tests/llms.test.cjs"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",
     "@vercel/functions": "3.9.9",
     "sharp": "^0.35.4"
+  },
+  "devDependencies": {
+    "linkedom": "^0.18.14"
   }
 }

@@ -16,8 +16,7 @@ for (const [page, contract] of Object.entries(pages)) {
   const source = fs.readFileSync(path.join(root, contract.file), 'utf8');
   assert.match(source, new RegExp(`data-legal-page="${page}"`));
   assert.match(source, new RegExp(`rel="canonical" href="https://www\\.studio17\\.world${contract.route}"`));
-  for (const language of ['x-default', 'en']) assert.match(source, new RegExp(`hreflang="${language}"`));
-  assert.doesNotMatch(source, /hreflang="(?:pt-PT|es|el|ru|he)"/);
+  for (const language of ['x-default', 'en', 'pt-PT', 'es', 'el', 'ru', 'he']) assert.match(source, new RegExp(`hreflang="${language}"`));
   assert.match(source, /legal-locales\/locales\.js/);
   assert.match(source, /src="legal\.js"/);
   assert.match(source, /datetime="2026-08-14"/);

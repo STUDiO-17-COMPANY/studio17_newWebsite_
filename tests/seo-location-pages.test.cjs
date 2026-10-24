@@ -29,7 +29,7 @@ for (const page of pages) {
   assert.ok(title && description, `${page.file} requires a title and description`);
   assert.equal(h1Matches.length, 1, `${page.file} must have one H1`);
   assert.match(source, new RegExp(`<link rel="canonical" href="${canonical.replaceAll('/', '\\/')}"`));
-  assert.equal((source.match(/hreflang=/g) || []).length, 2, `${page.file} must advertise only server-rendered alternates`);
+  assert.equal((source.match(/hreflang=/g) || []).length, 5, `${page.file} must advertise x-default plus its four server-rendered languages`);
   assert.match(source, new RegExp(`href="\\/contact\\?service=seo&amp;market=${page.market}"`));
   assert.match(source, /Get Your Free SEO Analysis/);
   assert.match(source, /Talk to Sales/);
@@ -68,8 +68,10 @@ for (const page of pages) {
 }
 
 const sitemap = read(path.join('api', 'sitemap.js'));
-assert.match(sitemap, /SITE_URL}\/seo\/cyprus/);
-assert.match(sitemap, /SITE_URL}\/seo\/limassol/);
+assert.match(sitemap, /STATIC_PAGES/);
+const routing = read(path.join('server', '_language-routing.js'));
+assert.match(routing, /route: '\/seo\/cyprus'/);
+assert.match(routing, /route: '\/seo\/limassol'/);
 
 const seoServicePage = read('seo.html');
 assert.match(seoServicePage, /class="seo-market-directory"[\s\S]*?href="\/seo\/cyprus"[\s\S]*?href="\/seo\/limassol"/);

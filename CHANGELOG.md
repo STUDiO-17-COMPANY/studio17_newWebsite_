@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-24 — Crawlable multilingual subdirectory architecture
+
+- Replaced public `?lang=` states with clean `/pt/`, `/es/`, `/el/`, `/ru/` and `/he/` URLs while preserving every English URL.
+- Added build-time translated HTML, page-aware language availability, self-referencing canonicals, reciprocal `hreflang`, localized navigation and RTL output.
+- Migrated homepage, News pagination/search, article cards and Google Drive article translations to the same canonical language-path helper.
+- Added scoped permanent redirects for old language-query URLs through Vercel Routing Middleware without increasing the Hobby-plan Serverless Function count.
+- Expanded `sitemap.xml` generation to include published page and article language variants with reciprocal XML alternates.
+- Added multilingual route regression coverage and kept search/category result states non-indexable.
+
 ## 2026-10-20 — Farmácia do Lourel selected work
 
 - Added Farmácia do Lourel to the homepage and Work page using the approved showcase image and an accurate account-recovery and cybersecurity scope.

@@ -18,6 +18,8 @@
     he: 'he',
     iw: 'he'
   };
+  const languagePrefixes = { en: '', 'pt-PT': 'pt', es: 'es', el: 'el', ru: 'ru', he: 'he' };
+  const prefixLanguages = { pt: 'pt-PT', es: 'es', el: 'el', ru: 'ru', he: 'he' };
 
   const textRecords = [];
   const attributeRecords = [];
@@ -42,8 +44,8 @@
     return languageAliases[lower.split('-')[0]] || null;
   };
 
-  const pageSupportedLanguages = (document.documentElement.dataset?.supportedLanguages || '')
-    .split(',')
+  const articleLanguages = Array.isArray(window.__STUDIO17_ARTICLE_LANGUAGES__) ? window.__STUDIO17_ARTICLE_LANGUAGES__ : [];
+  const pageSupportedLanguages = (articleLanguages.length ? articleLanguages : (document.documentElement.dataset?.supportedLanguages || '').split(','))
     .map(language => normaliseLanguage(language))
     .filter(Boolean);
   const normalisePageLanguage = value => {
@@ -51,6 +53,11 @@
     if (!language) return null;
     return !pageSupportedLanguages.length || pageSupportedLanguages.includes(language) ? language : null;
   };
+  if (articleLanguages.length) {
+    document.querySelectorAll('.language-menu [data-lang]').forEach(control => {
+      if (!pageSupportedLanguages.includes(normaliseLanguage(control.dataset.lang))) control.remove();
+    });
+  }
 
   const getBrowserLanguage = () => {
     if (typeof navigator === 'undefined') return null;
@@ -63,11 +70,39 @@
     return null;
   };
 
+  const pathParts = location.pathname.split('/').filter(Boolean);
+  const pathLanguage = prefixLanguages[pathParts[0]?.toLowerCase()] || null;
+  const stripLanguagePrefix = pathname => {
+    const parts = pathname.split('/').filter(Boolean);
+    if (prefixLanguages[parts[0]?.toLowerCase()]) parts.shift();
+    return parts.length ? `/${parts.join('/')}` : '/';
+  };
+  const supportedLocalesByPath = pathname => {
+    const clean = stripLanguagePrefix(pathname).replace(/\/$/, '') || '/';
+    if (['/work', '/careers', '/services/localization-and-translation', '/services/social-media', '/services/social-media-pricing'].includes(clean) || clean.startsWith('/careers/')) return ['en'];
+    if (clean === '/services/website-pricing') return ['en', 'el', 'ru'];
+    if (clean === '/seo/cyprus' || clean === '/seo/limassol') return ['en', 'el', 'ru', 'he'];
+    return Object.keys(languages);
+  };
+  const languageAddress = (language, source = location.href) => {
+    const selected = normaliseLanguage(language) || 'en';
+    const url = new URL(source, location.origin);
+    const clean = stripLanguagePrefix(url.pathname);
+    const supported = supportedLocalesByPath(clean).includes(selected) ? selected : 'en';
+    const prefix = languagePrefixes[supported];
+    url.pathname = prefix ? `/${prefix}${clean === '/' ? '/' : clean}` : clean;
+    url.searchParams.delete('lang');
+    return `${url.pathname}${url.search}${url.hash}`;
+  };
+
   const forcedLanguage = normalisePageLanguage(document.documentElement.dataset?.forceLanguage);
-  const addressLanguage = normaliseLanguage(new URLSearchParams(location.search).get('lang'));
-  const unsupportedAddressLanguage = Boolean(addressLanguage && pageSupportedLanguages.length && !pageSupportedLanguages.includes(addressLanguage));
+  const queryLanguage = normaliseLanguage(new URLSearchParams(location.search).get('lang'));
+  const renderedLanguage = normalisePageLanguage(document.documentElement.dataset?.renderedLanguage);
+  const rawAddressLanguage = pathLanguage || queryLanguage || renderedLanguage;
+  const addressLanguage = normalisePageLanguage(rawAddressLanguage);
+  const unsupportedAddressLanguage = Boolean(rawAddressLanguage && !addressLanguage);
   const requestedLanguage = forcedLanguage
-    || normalisePageLanguage(addressLanguage)
+    || addressLanguage
     || normalisePageLanguage(getStoredLanguage())
     || getBrowserLanguage()
     || 'en';
@@ -119,12 +154,16 @@
       const query = queryIndex >= 0 ? withoutHash.slice(queryIndex + 1) : '';
       const parameters = new URLSearchParams(query);
       const linkLanguage = normaliseLanguage(anchor.dataset.forceLanguage) || language;
-      const isWipLink = page === '/wip' || page === 'wip.html';
+      const cleanPage = stripLanguagePrefix(page);
+      const isWipLink = cleanPage === '/wip' || cleanPage === 'wip.html';
       if (isWipLink) {
         parameters.delete('lang');
         anchor.relList.add('nofollow');
-      } else if (linkLanguage === 'en') parameters.delete('lang');
-      else parameters.set('lang', linkLanguage);
+      }
+      parameters.delete('lang');
+      const supportedLanguage = supportedLocalesByPath(cleanPage).includes(linkLanguage) ? linkLanguage : 'en';
+      const prefix = languagePrefixes[supportedLanguage];
+      page = prefix ? `/${prefix}${cleanPage === '/' ? '/' : cleanPage}` : cleanPage;
       const serialized = parameters.toString();
       anchor.setAttribute('href', `${page}${serialized ? `?${serialized}` : ''}${hash}`);
     });
@@ -189,30 +228,16 @@
   };
 
   const updateUrl = language => {
-    const url = new URL(location.href);
-    if (forcedLanguage === 'en') url.searchParams.delete('lang');
-    else if (forcedLanguage) url.searchParams.set('lang', forcedLanguage);
-    else if (language === 'en') url.searchParams.delete('lang');
-    else url.searchParams.set('lang', language);
-    history.replaceState({}, '', url);
+    if (location.protocol === 'file:') return;
+    const destination = languageAddress(forcedLanguage || language);
+    if (`${location.pathname}${location.search}${location.hash}` !== destination) history.replaceState({}, '', destination);
   };
 
   const updateSeoMetadata = language => {
     if (document.body.classList.contains('article-page')) return;
     const canonical = document.querySelector('[data-seo-canonical]');
     const openGraphUrl = document.querySelector('[data-seo-og-url]');
-    const isServerLocalised = document.documentElement.hasAttribute('data-server-localized');
-    if (canonical && isServerLocalised) {
-      const url = new URL(location.href);
-      url.hash = '';
-      [...url.searchParams.keys()].forEach(key => {
-        if (key !== 'lang') url.searchParams.delete(key);
-      });
-      if (language === 'en') url.searchParams.delete('lang');
-      else url.searchParams.set('lang', language);
-      canonical.href = url.href;
-      if (openGraphUrl) openGraphUrl.content = url.href;
-    } else if (canonical && openGraphUrl) {
+    if (canonical && openGraphUrl) {
       openGraphUrl.content = canonical.href;
     }
 
@@ -228,7 +253,7 @@
     const bundled = window.Studio17LocaleData?.[language];
     if (bundled) return bundled;
 
-    const response = await fetch(`locales/${languages[language].file}`);
+    const response = await fetch(`/locales/${languages[language].file}`);
     if (!response.ok) throw new Error(`Unable to load locale: ${language}`);
     return response.json();
   };
@@ -247,6 +272,7 @@
     updateSeoMetadata(normalised);
     closeLanguageMenu();
     window.dispatchEvent(new CustomEvent('studio17:languagechange', { detail: { language: normalised, data: currentData } }));
+    (window.queueMicrotask || (callback => Promise.resolve().then(callback)))(() => updateInternalLinks(normalised));
     return currentData;
   };
 
@@ -265,7 +291,14 @@
   menu?.addEventListener('click', event => {
     const button = event.target.closest('[data-lang]');
     if (!button) return;
-    setLanguage(button.dataset.lang).catch(() => closeLanguageMenu({ restoreFocus: true }));
+    const language = normalisePageLanguage(button.dataset.lang);
+    if (!language) return;
+    storeLanguage(language);
+    if (location.protocol !== 'file:') {
+      location.assign(button.dataset.languageUrl || languageAddress(language));
+      return;
+    }
+    setLanguage(language).catch(() => closeLanguageMenu({ restoreFocus: true }));
   });
 
   document.addEventListener('click', event => {
@@ -277,8 +310,10 @@
     if (event.key === 'Escape' && trigger?.getAttribute('aria-expanded') === 'true') closeLanguageMenu({ restoreFocus: true });
   });
 
-  const shouldNormaliseAddress = Boolean(forcedLanguage || unsupportedAddressLanguage);
+  const shouldNormaliseAddress = Boolean(forcedLanguage || queryLanguage || unsupportedAddressLanguage);
   const preserveUnsupportedPreference = Boolean(pageSupportedLanguages.length && (unsupportedAddressLanguage || (getStoredLanguage() && !normalisePageLanguage(getStoredLanguage()))));
+  const shouldNavigateToPreference = location.protocol !== 'file:' && !forcedLanguage && !pathLanguage && !queryLanguage && !document.documentElement.hasAttribute?.('data-server-localized') && requestedLanguage !== 'en';
+  if (shouldNavigateToPreference && typeof location.replace === 'function') location.replace(languageAddress(requestedLanguage));
   const ready = setLanguage(requestedLanguage, { updateAddress: shouldNormaliseAddress, persist: !preserveUnsupportedPreference })
     .catch(() => setLanguage('en', { updateAddress: shouldNormaliseAddress, persist: !preserveUnsupportedPreference }));
 

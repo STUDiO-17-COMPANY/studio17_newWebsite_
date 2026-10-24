@@ -10,7 +10,7 @@ const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 
 test('Work page publishes the approved English-only client journey', () => {
   const html = read('work.html');
-  assert.match(html, /<html lang="en" data-supported-languages="en">/);
+  assert.match(html, /<html[^>]*lang="en"[^>]*data-supported-languages="en"/);
   assert.match(html, /rel="canonical" href="https:\/\/www\.studio17\.world\/work"/);
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
   assert.match(html, /<body class="work-page">/);
@@ -42,7 +42,8 @@ test('Work is routed from shared navigation and discovery surfaces', () => {
   const sitemapPage = read('api/sitemap-template.html');
   const i18n = read('i18n.js');
   const english = JSON.parse(read('locales/en.json'));
-  assert.match(sitemap, /`\$\{SITE_URL\}\/work`/);
+  assert.match(sitemap, /STATIC_PAGES/);
+  assert.match(read('server/_language-routing.js'), /route: '\/work'/);
   assert.match(sitemapPage, /href="\/work"[^>]*>Selected work/);
   assert.match(i18n, /'\/work': 'work\.html'/);
   assert.match(i18n, /classList\.contains\('work-page'\)[\s\S]*?'work'/);

@@ -5,11 +5,15 @@ const path = require('node:path');
 const { getPublishedArticleBySlug } = require('../server/_google-articles');
 const { buildSeo, escapeHtml, getArticlePath, getArticleSection, renderArticleMain } = require('../server/_article-render');
 const { getCanonicalArticleSlug } = require('../server/_article-paths');
+const { localePrefix, normaliseLocale } = require('../server/_language-routing');
 
-let cachedTemplate = '';
+const cachedTemplates = new Map();
 
-const readTemplate = () => {
-  const candidates = [path.resolve(process.cwd(), 'article.html'), path.resolve(__dirname, '..', 'article.html')];
+const readTemplate = locale => {
+  const prefix = localePrefix(locale);
+  const candidates = prefix
+    ? [path.resolve(process.cwd(), '_localized', prefix, 'article.html'), path.resolve(__dirname, '..', '_localized', prefix, 'article.html')]
+    : [path.resolve(process.cwd(), 'article.html'), path.resolve(__dirname, '..', 'article.html')];
   const templatePath = candidates.find(candidate => fs.existsSync(candidate));
   if (!templatePath) throw new Error('Article template was not bundled.');
   return fs.readFileSync(templatePath, 'utf8');
@@ -26,7 +30,7 @@ module.exports = async function articlePageHandler(request, response) {
   }
   try {
     const slug = typeof request.query?.slug === 'string' ? request.query.slug : '';
-    const locale = typeof request.query?.lang === 'string' ? request.query.lang : 'en';
+    const locale = normaliseLocale(request.query?.lang);
     const article = await getPublishedArticleBySlug(slug, locale, request);
     const requestedSection = typeof request.query?.section === 'string' ? request.query.section : '';
     const canonicalSection = getArticleSection(article.category);
@@ -38,12 +42,12 @@ module.exports = async function articlePageHandler(request, response) {
       response.end();
       return;
     }
-    cachedTemplate ||= readTemplate();
-    const html = cachedTemplate
+    if (!cachedTemplates.has(locale)) cachedTemplates.set(locale, readTemplate(locale));
+    const html = cachedTemplates.get(locale)
       .replace('<!-- ARTICLE_SEO -->', buildSeo(article))
       .replace('<!-- ARTICLE_MAIN -->', renderArticleMain(article))
       .replace('</head>', `<script>window.__STUDIO17_ARTICLE_LANGUAGES__=${JSON.stringify(article.availableLanguages).replace(/</g, '\\u003c')};</script></head>`)
-      .replace('<html lang="en">', `<html lang="${escapeHtml(article.locale)}"${article.locale === 'he' ? ' dir="rtl"' : ''}>`);
+      .replace(/<html\b[^>]*>/, `<html lang="${escapeHtml(article.locale)}"${article.locale === 'he' ? ' dir="rtl"' : ''} data-server-localized>`);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
     response.setHeader('X-Content-Type-Options', 'nosniff');

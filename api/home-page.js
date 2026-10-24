@@ -4,11 +4,16 @@ const fs = require('fs');
 const path = require('path');
 const { articleCacheControl, articleCdnCacheControl, listPublishedArticles } = require('../server/_google-articles');
 const { renderArticleCard } = require('../server/_article-listing');
+const { localePrefix, normaliseLocale } = require('../server/_language-routing');
 
-const template = fs.readFileSync(path.join(process.cwd(), 'home.template.html'), 'utf8');
 const marker = '<!-- ARTICLE_HOME_FEED -->';
+const readTemplate = locale => {
+  const prefix = localePrefix(locale);
+  const filename = prefix ? path.join(process.cwd(), '_localized', prefix, 'home.template.html') : path.join(process.cwd(), 'home.template.html');
+  return fs.readFileSync(filename, 'utf8');
+};
 
-const renderHomePage = articles => template.replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, 'en')).join(''));
+const renderHomePage = (articles, locale = 'en') => readTemplate(locale).replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, locale)).join(''));
 
 module.exports = async function homePageHandler(request, response) {
   if (!['GET', 'HEAD'].includes(request.method)) {
@@ -18,8 +23,9 @@ module.exports = async function homePageHandler(request, response) {
     return;
   }
   try {
-    const payload = await listPublishedArticles(request, 'en');
-    const body = renderHomePage(payload.articles);
+    const locale = normaliseLocale(request.query?.lang);
+    const payload = await listPublishedArticles(request, locale);
+    const body = renderHomePage(payload.articles, locale);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
     response.setHeader('Cache-Control', articleCacheControl(payload));
@@ -28,7 +34,8 @@ module.exports = async function homePageHandler(request, response) {
     response.end(request.method === 'HEAD' ? '' : body);
   } catch (error) {
     console.error('Homepage article rendering failed', error?.code || error?.message);
-    const body = template.replace(marker, '<div class="article-feed-state article-feed-error"><p>Articles are temporarily unavailable.</p></div>');
+    const locale = normaliseLocale(request.query?.lang);
+    const body = readTemplate(locale).replace(marker, '<div class="article-feed-state article-feed-error"><p>Articles are temporarily unavailable.</p></div>');
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
     response.setHeader('Cache-Control', 'no-store');

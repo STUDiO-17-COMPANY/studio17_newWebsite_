@@ -2,6 +2,7 @@
 
 const SITE_URL = 'https://www.studio17.world';
 const { getArticlePath, getArticleSection } = require('./_article-paths');
+const { localizedPath } = require('./_language-routing');
 const { articleImageUrl } = require('./_article-image-url');
 const LANGUAGE_LABELS = { en: 'English', 'pt-PT': 'Português', es: 'Español', el: 'Ελληνικά', ru: 'Русский', he: 'עברית' };
 const CATEGORY_LABELS = {
@@ -156,7 +157,7 @@ const renderArticleMain = article => {
   const coverMarkup = `<figure class="article-cover reveal"><img src="${escapeAttribute(cover1280)}"${coverSrcset} sizes="(max-width: 800px) calc(100vw - 32px), 720px" width="1600" height="900" alt="${escapeAttribute(content.coverAlt)}" loading="lazy" decoding="async">${content.coverCaption ? `<figcaption>${escapeHtml(content.coverCaption)}</figcaption>` : ''}</figure>`;
   return `<main id="article-content"><article data-i18n-skip>
     <header class="article-hero"><div class="hero-media" aria-hidden="true"><img src="${escapeAttribute(cover1600)}"${coverSrcset} sizes="100vw" width="1600" height="900" alt="" loading="eager" fetchpriority="high" decoding="async"></div><div class="shell article-hero-grid">
-      <div class="article-heading reveal"><a class="article-back-link" href="/news${locale === 'en' ? '' : `?lang=${encodeURIComponent(locale)}`}"><i data-lucide="arrow-left" aria-hidden="true"></i>${escapeHtml(ui.back)}</a><p class="article-category">${escapeHtml((CATEGORY_LABELS[locale] || CATEGORY_LABELS.en)[article.category] || article.category)}</p><h1>${highlight(content.title, content.highlightedTitle)}</h1><p class="article-deck">${escapeHtml(content.summary)}</p></div>
+      <div class="article-heading reveal"><a class="article-back-link" href="${escapeAttribute(localizedPath('/news', locale))}"><i data-lucide="arrow-left" aria-hidden="true"></i>${escapeHtml(ui.back)}</a><p class="article-category">${escapeHtml((CATEGORY_LABELS[locale] || CATEGORY_LABELS.en)[article.category] || article.category)}</p><h1>${highlight(content.title, content.highlightedTitle)}</h1><p class="article-deck">${escapeHtml(content.summary)}</p></div>
       <div class="article-meta-panel reveal" data-delay="1"><dl class="article-meta"><div><dt>${escapeHtml(ui.published)}</dt><dd><time datetime="${escapeAttribute(article.publishedDate)}">${escapeHtml(formatDate(article.publishedDate, locale))}</time></dd></div><div><dt>${escapeHtml(ui.reading)}</dt><dd>${escapeHtml(ui.minutes(article.readTime))}</dd></div><div class="article-meta-author"><dt>${escapeHtml(ui.written)}</dt><dd>${authorVisual}<span class="article-author-copy"><strong>${escapeHtml(article.authorName)}</strong><span><span class="sr-only">${escapeHtml(ui.role)}: </span>${escapeHtml(article.authorRole)}</span></span></dd></div></dl><nav class="article-language-status" aria-label="Available article languages"><i data-lucide="languages" aria-hidden="true"></i>${languageLinks}</nav></div>
     </div></header>
     <div class="shell article-layout${hasRail ? ' has-related' : ''}"><aside class="article-sidebar" aria-label="${escapeAttribute(ui.contents)}"><div class="article-sidebar-inner"><details class="article-toc" data-article-toc open><summary><span>${escapeHtml(ui.contents)}</span><i data-lucide="chevron-down" aria-hidden="true"></i></summary><nav>${headings.map(item => `<a href="#${escapeAttribute(item.id)}">${escapeHtml(item.text)}</a>`).join('')}</nav></details><button class="article-share" type="button" data-article-share><i data-lucide="share-2" aria-hidden="true"></i><span>${escapeHtml(ui.share)}</span></button><p class="article-share-status" data-article-share-status role="status" aria-live="polite"></p></div></aside><div class="article-body">${renderBlocks(content.blocks, ui.table, coverMarkup, version)}${renderContextLinks(article)}</div>${hasRail ? `<aside class="article-related-rail"${hasRelated ? ' aria-labelledby="article-related-rail-title"' : ''}><div class="article-related-rail-inner">${hasSidebarCta ? renderSidebarCta(content) : ''}${hasRelated ? `<p id="article-related-rail-title">${escapeHtml(ui.continue)}</p>${article.related.slice(0, 3).map(item => renderRailCard(item, locale)).join('')}` : ''}</div></aside>` : ''}</div>
@@ -171,7 +172,10 @@ const buildSeo = article => {
   const shareImage = absoluteUrl(article.shareImage);
   const author = { '@type': 'Person', name: article.authorName };
   if (article.authorImage) author.image = absoluteUrl(article.authorImage);
-  const alternates = article.availableLanguages.map(locale => `<link rel="alternate" hreflang="${escapeAttribute(locale)}" href="${SITE_URL}${getArticlePath(article, locale)}">`).join('\n');
+  const alternates = [
+    `<link rel="alternate" hreflang="x-default" href="${SITE_URL}${getArticlePath(article, 'en')}">`,
+    ...article.availableLanguages.map(locale => `<link rel="alternate" hreflang="${escapeAttribute(locale)}" href="${SITE_URL}${getArticlePath(article, locale)}">`)
+  ].join('\n');
   const jsonLd = {
     '@context': 'https://schema.org', '@type': 'Article', headline: content.title,
     description: content.metaDescription, image: [absoluteUrl(article.coverImage)],

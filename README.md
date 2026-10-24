@@ -48,6 +48,9 @@ Studio 17 website built with semantic HTML, CSS and vanilla JavaScript. The impl
 - `analytics.js` — consent-first Google Analytics 4 loading, preferences and page-view handling.
 - `wip.js` — identifies and localizes the requested unfinished destination.
 - `i18n.js` — URL/saved/browser locale detection, regional-code normalization, language switching, persistence and RTL handling.
+- `server/_language-routing.js` — one canonical registry for supported page locales, clean language prefixes and legacy-language redirects.
+- `scripts/build-localized-pages.cjs` — build-time pre-rendering of translated HTML into ignored `_localized/` output; Vercel generates this directory during every deployment.
+- `proxy.mjs` — scoped Vercel Routing Middleware that permanently redirects legacy `?lang=` public URLs to clean language subdirectories while preserving unrelated query parameters.
 - `locales/` — English, Portuguese (Portugal), Spanish, Greek, Russian and Hebrew content files.
 - `locales/locales.js` — generated browser bundle that makes language switching work when the HTML files are opened directly.
 - `locales/build-bundle.cjs` — regenerates that bundle from the six canonical JSON files.
@@ -94,6 +97,8 @@ After editing any locale JSON file, regenerate the direct-file bundle:
 node locales/build-bundle.cjs
 node service-locales/build-bundle.cjs
 ```
+
+Translated production URLs use `/pt/`, `/es/`, `/el/`, `/ru/` and `/he/`; English keeps its existing unprefixed URLs. Run `npm run build:locales` after changing templates or translation data. Every generated page contains translated initial HTML, its own canonical, reciprocal `hreflang` links and localized internal navigation. The language switcher navigates between these documents instead of creating client-only `?lang=` states. Article translations use the same prefixes and remain sourced from the existing Google Docs publishing pipeline.
 
 ## Maintenance rules
 

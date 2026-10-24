@@ -14,7 +14,7 @@ test('Our Story publishes the complete approved seven-chapter narrative', () => 
   assert.equal((html.match(/class="story-chapter(?: [^"]*)?"/g) || []).length, 7);
   assert.match(html, /Most businesses did not have a lack of suppliers\. They had too many of them\./);
   assert.match(html, /That is what Studio 17 was created to do\./);
-  assert.equal((html.match(/hreflang=/g) || []).length, 2);
+  assert.equal((html.match(/hreflang=/g) || []).length, 7);
 });
 
 test('Team page identifies the approved team members and publishes only approved profile links', () => {
@@ -27,17 +27,19 @@ test('Team page identifies the approved team members and publishes only approved
   assert.match(html, /Business Developer[\s\S]*?Portugal[\s\S]*?Gil Barreto/);
   assert.match(html, /href="https:\/\/www\.linkedin\.com\/in\/natalia-ioannou-83527126b\/"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
   assert.equal((html.match(/linkedin\.com\/in\//gi) || []).length, 1);
-  assert.equal((html.match(/hreflang=/g) || []).length, 2);
+  assert.equal((html.match(/hreflang=/g) || []).length, 7);
 });
 
 test('company routes are available locally and included in XML and human sitemaps', () => {
   const server = read('dev-server.cjs');
   const xml = read('api/sitemap.js');
+  const routing = read('server/_language-routing.js');
   const human = read('api/sitemap-template.html');
   const i18n = read('i18n.js');
   for (const [route, file] of [['/our-story', 'our-story.html'], ['/team', 'team.html']]) {
     assert.ok(server.includes(`['${route}', '${file}']`));
-    assert.ok(xml.includes(`SITE_URL}${route}`));
+    assert.ok(xml.includes('STATIC_PAGES'));
+    assert.ok(routing.includes(`route: '${route}'`));
     assert.ok(human.includes(`href="${route}"`));
     assert.ok(i18n.includes(`'${route}': '${file}'`));
   }

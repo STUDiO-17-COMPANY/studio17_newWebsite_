@@ -40,7 +40,7 @@ test('News archive uses crawlable nine-card pagination', () => {
   assert.match(second.body, /<link rel="canonical" href="https:\/\/www\.studio17\.world\/news\/page\/2"/);
   assert.match(second.body, /rel="prev"/);
   assert.match(second.body, /hreflang="x-default" href="https:\/\/www\.studio17\.world\/news\/page\/2"/);
-  assert.doesNotMatch(second.body, /hreflang="el"/);
+  assert.match(second.body, /hreflang="el" href="https:\/\/www\.studio17\.world\/el\/news\/page\/2"/);
   assert.match(second.body, /<html lang="en" data-server-localized>/);
 });
 
