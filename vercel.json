@@ -54,6 +54,8 @@
     { "source": "/seo", "destination": "/services/seo", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/api/careers", "destination": "/api/career-page?format=json&listing=1" },
+    { "source": "/api/career-role", "destination": "/api/career-page?format=json" },
     { "source": "/llms.txt", "destination": "/api/llms" },
     { "source": "/pt", "destination": "/api/home-page?lang=pt-PT" },
     { "source": "/es", "destination": "/api/home-page?lang=es" },

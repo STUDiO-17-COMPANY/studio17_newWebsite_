@@ -64,10 +64,24 @@ test('News category filters work in the first HTML without JavaScript', () => {
 test('Vercel Hobby deployment stays within the 12-function limit', () => {
   const root = path.resolve(__dirname, '..');
   const apiFunctions = fs.readdirSync(path.join(root, 'api')).filter(name => name.endsWith('.js'));
-  assert.ok(apiFunctions.length <= 12, `Expected at most 12 API functions, found ${apiFunctions.length}`);
-  assert.equal(apiFunctions.some(name => name.startsWith('_')), false, 'Shared helpers must stay outside /api');
-
   const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
+  const routingMiddlewareFunctions = config.proxy?.entrypoint ? 1 : 0;
+  const deployableFunctions = apiFunctions.length + routingMiddlewareFunctions;
+  assert.ok(
+    deployableFunctions <= 12,
+    `Expected at most 12 deployable functions, found ${apiFunctions.length} API functions and ${routingMiddlewareFunctions} Routing Middleware function`
+  );
+  assert.equal(apiFunctions.some(name => name.startsWith('_')), false, 'Shared helpers must stay outside /api');
+  assert.equal(fs.existsSync(path.join(root, 'api', 'careers.js')), false);
+  assert.equal(fs.existsSync(path.join(root, 'api', 'career-role.js')), false);
+  assert.equal(
+    config.rewrites.find(rewrite => rewrite.source === '/api/careers')?.destination,
+    '/api/career-page?format=json&listing=1'
+  );
+  assert.equal(
+    config.rewrites.find(rewrite => rewrite.source === '/api/career-role')?.destination,
+    '/api/career-page?format=json'
+  );
   assert.equal(
     config.rewrites.find(rewrite => rewrite.source === '/career-role')?.destination,
     '/api/career-page?legacy=1'

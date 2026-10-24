@@ -20,8 +20,8 @@ Google Drive folder
     -> Google Workload Identity Federation
       -> dedicated read-only service account
     -> validates and parses Google Docs
-      -> /api/careers for listing cards
-      -> /api/career-role?id=<document-id> for one detail page
+      -> /api/careers for listing cards (rewritten to the consolidated career-page function)
+      -> /api/career-role?id=<document-id> for one detail page (rewritten to the same function)
         -> careers.html and career-role.html
 ```
 

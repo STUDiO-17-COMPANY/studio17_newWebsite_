@@ -1,8 +1,7 @@
 'use strict';
 
 const assert = require('node:assert/strict');
-const careersHandler = require('../api/careers');
-const careerRoleHandler = require('../api/career-role');
+const careerPageHandler = require('../api/career-page');
 
 const createResponse = () => {
   const headers = new Map();
@@ -37,7 +36,7 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
 
   const originalError = console.error;
   console.error = () => {};
-  const unconfigured = await call(careersHandler, '/api/careers');
+  const unconfigured = await call(careerPageHandler, '/api/career-page?format=json&listing=1');
   console.error = originalError;
   assert.equal(unconfigured.response.statusCode, 503);
   assert.equal(unconfigured.payload.error.code, 'CAREERS_NOT_CONFIGURED');
@@ -99,22 +98,22 @@ const paragraph = (text, style = 'NORMAL_TEXT', bullet = false) => ({
     return Response.json({ error: 'unexpected request' }, { status: 500 });
   };
 
-  const list = await call(careersHandler, '/api/careers', oidcHeaders);
+  const list = await call(careerPageHandler, '/api/career-page?format=json&listing=1', oidcHeaders);
   assert.equal(list.response.statusCode, 200);
   assert.equal(list.payload.roles.length, 1);
   assert.equal(list.payload.roles[0].title, 'Growth Strategist');
   assert.match(list.response.getHeader('vercel-cdn-cache-control'), /s-maxage=30/);
 
-  const detail = await call(careerRoleHandler, '/api/career-role?id=roleDocument123456', oidcHeaders);
+  const detail = await call(careerPageHandler, '/api/career-page?format=json&id=roleDocument123456', oidcHeaders);
   assert.equal(detail.response.statusCode, 200);
   assert.deepEqual(detail.payload.role.about, ['A practical role.']);
   assert.equal(detail.payload.role.equalOpportunity.length, 0);
 
-  const cleanDetail = await call(careerRoleHandler, '/api/career-role?slug=growth-strategist', oidcHeaders);
+  const cleanDetail = await call(careerPageHandler, '/api/career-page?format=json&slug=growth-strategist', oidcHeaders);
   assert.equal(cleanDetail.response.statusCode, 200);
   assert.equal(cleanDetail.payload.role.slug, 'growth-strategist');
 
-  const invalid = await call(careerRoleHandler, '/api/career-role?id=bad', oidcHeaders);
+  const invalid = await call(careerPageHandler, '/api/career-page?format=json&id=bad', oidcHeaders);
   assert.equal(invalid.response.statusCode, 400);
   assert.equal(invalid.payload.error.code, 'INVALID_ROLE_ID');
 

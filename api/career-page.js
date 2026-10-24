@@ -2,7 +2,14 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { CareersError, getPublishedRole, getPublishedRoleBySlug, listPublishedRoles } = require('../server/_google-careers');
+const {
+  CareersError,
+  getPublishedRole,
+  getPublishedRoleBySlug,
+  listPublishedRoles,
+  sendError,
+  sendJson
+} = require('../server/_google-careers');
 
 const SITE_URL = 'https://www.studio17.world';
 
@@ -145,6 +152,46 @@ const sendHtml = (response, status, html, cache = false) => {
   response.end(html);
 };
 
+const sendCareersApiResponse = async (request, response, url) => {
+  if (url.searchParams.get('listing') === '1') {
+    try {
+      const result = await listPublishedRoles(request);
+      sendJson(response, 200, {
+        roles: result.roles,
+        meta: {
+          language: 'en',
+          invalidRoleCount: result.invalidCount,
+          generatedAt: new Date().toISOString()
+        }
+      }, { cache: true });
+    } catch (error) {
+      console.error('Careers list failed', error?.code || error?.message);
+      sendError(response, error);
+    }
+    return;
+  }
+
+  const id = url.searchParams.get('id') || '';
+  const slug = url.searchParams.get('slug') || '';
+  if (!slug && !/^[A-Za-z0-9_-]{10,200}$/.test(id)) {
+    sendError(response, new CareersError('INVALID_ROLE_ID', 'The role link is invalid.', 400));
+    return;
+  }
+
+  try {
+    const role = slug
+      ? await getPublishedRoleBySlug(slug, request)
+      : await getPublishedRole(id, request);
+    sendJson(response, 200, {
+      role,
+      meta: { language: 'en', generatedAt: new Date().toISOString() }
+    }, { cache: true });
+  } catch (error) {
+    if (error?.status >= 500) console.error('Career role failed', slug || id, error?.code || error?.message);
+    sendError(response, error);
+  }
+};
+
 module.exports = async function careerPageHandler(request, response) {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
     response.setHeader('Allow', 'GET, HEAD');
@@ -153,6 +200,10 @@ module.exports = async function careerPageHandler(request, response) {
   }
 
   const url = new URL(request.url || '/', `https://${request.headers.host || 'www.studio17.world'}`);
+  if (url.searchParams.get('format') === 'json') {
+    await sendCareersApiResponse(request, response, url);
+    return;
+  }
   if (url.searchParams.get('listing') === '1') {
     try {
       const result = await listPublishedRoles(request);
