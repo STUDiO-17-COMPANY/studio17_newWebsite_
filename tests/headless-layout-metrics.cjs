@@ -22,12 +22,12 @@ const height = Number(process.argv[4] || 844);
         title: document.title,
         packages: document.querySelectorAll('.website-package-card').length,
         serviceRows: document.querySelectorAll('.service-row').length,
-        homeWorkCards: document.querySelectorAll('.home-work-showcase .website-project-card').length,
-        homeWorkColumns: getComputedStyle(document.querySelector('.home-work-showcase .website-work-grid')).gridTemplateColumns,
+        homeWorkCards: document.querySelectorAll('.home-portfolio-card').length,
+        homeWorkColumns: getComputedStyle(document.querySelector('.home-portfolio-grid')).gridTemplateColumns,
         oldAiSections: document.querySelectorAll('.ai-section').length,
         homeWorkHeading: document.querySelector('#home-work-title')?.textContent.trim() || '',
-        homeWorkMeta: [...document.querySelectorAll('.home-work-showcase .website-project-meta')].map(element => element.textContent.trim()),
-        homeWorkActions: [...document.querySelectorAll('.home-work-showcase .website-project-card > div > a')].map(element => element.textContent.trim()),
+        homeWorkMeta: [...document.querySelectorAll('.home-portfolio-tags')].map(element => element.textContent.trim()),
+        homeWorkActions: [...document.querySelectorAll('.home-portfolio-actions a')].map(element => element.textContent.trim()),
         homeWorkInternalLinks: [...document.querySelectorAll('.home-work-showcase a[href^="/"]')].map(link => link.getAttribute('href')),
         homeWorkImages: [...document.querySelectorAll('.home-work-showcase img')].map(image => ({
           src: image.getAttribute('src'), complete: image.complete, naturalWidth: image.naturalWidth

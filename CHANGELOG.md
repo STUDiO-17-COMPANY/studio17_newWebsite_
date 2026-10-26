@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-26 — Homepage portfolio redesign
+
+- Rebuilt the homepage portfolio as four large image-led project blocks for Terrassi Villa, PHÓS Optics, Farmácia do Lourel and Nerouppos Barber Shop.
+- Added concise project tags, hover and keyboard-focus details, direct project actions and an always-readable mobile presentation.
+- Renamed the section to “Our Portfolio” while retaining the route to the complete Work page and the six-language content contract.
+- Returned Contact to the standard header-link treatment instead of highlighting it as a primary button.
+
 ## 2026-10-26 — Contact header action
 
 - Added a prominent Contact button to the desktop and mobile header navigation across every page and server-rendered template.
