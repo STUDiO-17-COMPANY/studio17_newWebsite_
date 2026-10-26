@@ -392,12 +392,12 @@ test('clean routes and sitemaps include every published service page', () => {
   assert.match(read('api/sitemap-template.html'), /href="\/services\/localization-and-translation">Localization and Translation\s*<i/);
 });
 
-test('mobile menu remains limited to the approved five destinations', () => {
+test('mobile menu remains limited to the approved six destinations', () => {
   for (const file of ['services.html', 'website-services.html', 'website-development.html', 'website-pricing.html', 'free-website.html', 'seo.html', 'localization-and-translation.html', 'social-media.html', 'social-media-pricing.html']) {
     const html = read(file);
     const menu = html.match(/<div class="mobile-menu"[\s\S]*?<\/div>\s*<\/header>/)?.[0] || '';
-    assert.equal((menu.match(/<a /g) || []).length, 5, file);
-    for (const label of ['Services', 'Work', 'About', 'News', 'Careers']) assert.ok(menu.includes(`>${label}</a>`), `${file}: ${label}`);
+    assert.equal((menu.match(/<a /g) || []).length, 6, file);
+    for (const label of ['Services', 'Work', 'About', 'News', 'Careers', 'Contact']) assert.ok(menu.includes(`>${label}</a>`), `${file}: ${label}`);
     assert.ok(menu.includes('href="/services"'));
     assert.doesNotMatch(menu, /Sitemap|FAQ/);
   }

@@ -34,7 +34,7 @@ let activeBrowser;
 
       await page.locator('.menu-toggle').click();
       assert.equal(await page.locator('#mobile-menu').isVisible(), true, `${locale}/${width}: mobile menu`);
-      assert.equal(await page.locator('#mobile-menu nav > a').count(), 4, `${locale}/${width}: four non-Service top-level links`);
+      assert.equal(await page.locator('#mobile-menu nav > a').count(), 5, `${locale}/${width}: five non-Service top-level links`);
       assert.equal(await page.locator('.mobile-services-overview-link').count(), 1, `${locale}/${width}: Services top-level link`);
 
       const toggle = page.locator('.mobile-services-toggle');

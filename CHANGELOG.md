@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-26 — Contact header action
+
+- Added a prominent Contact button to the desktop and mobile header navigation across every page and server-rendered template.
+- Preserved translated labels, localized contact routes, keyboard focus styling and the active-page state on the Contact page.
+- Added navigation regression coverage so future templates cannot silently omit the Contact action.
+
 ## 2026-10-24 — Crawlable multilingual subdirectory architecture
 
 - Corrected the homepage service selector's JavaScript image registry to use root-relative `/Images/...` assets, preventing translated routes such as `/pt/` from requesting nonexistent `/pt/Images/...` files.

@@ -53,6 +53,9 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .nav-link { position: relative; border: 0; padding: 8px 0; background: transparent; font-size: 14px; font-weight: 800; text-transform: uppercase; cursor: pointer; }
 .nav-link::after { content: ""; position: absolute; right: 0; bottom: 2px; left: 0; height: 2px; background: var(--blue); transform: scaleX(0); transform-origin: right; transition: transform .25s var(--ease); }
 .nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+.header-contact-button { padding: 10px 16px; color: var(--white); background: var(--blue); transition: background .2s ease, transform .25s var(--ease), box-shadow .25s ease; }
+.header-contact-button::after { display: none; }
+.header-contact-button:hover, .header-contact-button:focus-visible { background: #003fc2; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(4,86,254,.22); }
 .nav-trigger { display: flex; align-items: center; gap: 8px; }
 .nav-square { display: grid; width: 24px; height: 24px; place-items: center; color: var(--white); background: var(--blue); transition: transform .25s var(--ease); }
 .nav-square .lucide { width: 17px; height: 17px; }
@@ -1304,6 +1307,8 @@ html[lang]:not([lang="en"]) .footer-bottom { min-height: 80px; padding-block: 14
   .mobile-menu[hidden] { display: none; }
   .mobile-menu nav { display: flex; flex-direction: column; }
   .mobile-menu nav > a, .mobile-services-primary-row > a { padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.14); font-size: clamp(28px,8vw,44px); font-weight: 700; letter-spacing: -.04em; }
+  .mobile-menu nav > .mobile-contact-button { margin-top: 20px; padding: 14px 18px; border-bottom: 0; color: var(--white); background: var(--blue); font-size: clamp(24px,7vw,36px); }
+  .mobile-menu nav > .mobile-contact-button:hover, .mobile-menu nav > .mobile-contact-button:focus-visible { background: #003fc2; }
   .mobile-services-menu { border-bottom: 1px solid rgba(255,255,255,.14); }
   .mobile-services-primary-row { display: grid; grid-template-columns: minmax(0,1fr) 54px; align-items: stretch; }
   .mobile-services-primary-row > a { min-width: 0; border-bottom: 0; }

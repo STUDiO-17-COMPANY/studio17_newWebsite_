@@ -71,7 +71,7 @@ let activeBrowser;
       assert.equal(await page.evaluate(() => document.querySelector('.article-table-wrap').scrollWidth > document.querySelector('.article-table-wrap').clientWidth), true);
       assert.equal(await page.evaluate(() => document.querySelector('.article-body').getBoundingClientRect().top + scrollY < 950), true);
       await page.locator('.menu-toggle').click();
-      assert.deepEqual(await page.locator('#mobile-menu .mobile-services-overview-link, #mobile-menu nav > a').allTextContents(), ['Services', 'Work', 'About', 'News', 'Careers']);
+      assert.deepEqual(await page.locator('#mobile-menu .mobile-services-overview-link, #mobile-menu nav > a').allTextContents(), ['Services', 'Work', 'About', 'News', 'Careers', 'Contact']);
     }
 
     if (width === 1440 || width === 390) {
