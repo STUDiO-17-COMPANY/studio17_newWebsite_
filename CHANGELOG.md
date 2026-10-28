@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-28 — Homepage agency comparison
+
+- Restored the shared 32px separation between the homepage services explorer and Portfolio section.
+- Added a responsive “Studio 17 vs. Other Marketing Agencies” comparison after the Portfolio, using accessible green approval and red limitation cues instead of a raw table.
+- Published the complete comparison copy in Portuguese, Spanish, Greek, Russian and Hebrew so every localized homepage remains complete in its initial HTML.
+
 ## 2026-10-28 — Homepage service alignment and stable header menus
 
 - Rebuilt the homepage service explorer around the same six categories and order used by the header: Websites, SEO & Visibility, Social Media, Content Creation, Paid Advertising and Events.
