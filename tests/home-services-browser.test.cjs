@@ -7,7 +7,7 @@ const { chromium } = require('playwright');
 
 const baseUrl = process.argv[2] || 'http://127.0.0.1:4173';
 const artifactDir = process.argv[3] || path.join(process.cwd(), 'test-artifacts', 'home-services');
-const categories = ['Social Media', 'Website', 'Content creation', 'Advertisement', 'By industry', 'Events'];
+const categories = ['Websites', 'SEO & Visibility', 'Social Media', 'Content Creation', 'Paid Advertising', 'Events'];
 const services = {
   social: ['Social Media Management', 'Social Media Automation', 'Growth strategy', 'Community management', 'Free Audit'],
   website: ['Website Development', 'Website Revamp', 'Website Design', 'SEO', 'GEO', 'Copywriting', 'Localization and Translation', 'Maintenance', 'Free Website'],

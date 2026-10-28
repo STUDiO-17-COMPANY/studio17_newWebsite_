@@ -56,6 +56,13 @@ assert.match(css, /a\.services-mega-title\[aria-current="page"\][^{]*\{[^}]*colo
 assert.match(script, /isWebsiteFamily[\s\S]*?title\.setAttribute\('aria-current', 'page'\)/);
 assert.match(script, /updateVisibilityMegaMenu/);
 assert.match(script, /updateMobileVisibilityMenu/);
+assert.match(script, /const title = document\.createElement\(group\.href \? 'a' : 'p'\)/, 'AI visibility headings must be links');
+assert.match(script, /overviewLink\.href = localiseServicesMenuHref\(group\.href\)/, 'mobile AI visibility groups need overview links');
+assert.match(script, /window\.addEventListener\('scroll',[\s\S]*?closeDesktopDropdown\(\);[\s\S]*?closeVisibilityDropdown\(\);[\s\S]*?passive: true/, 'desktop dropdowns must close on scroll');
+
+for (const destination of ['/services/seo', '/wip#for=ai-seo-geo', '/wip#for=business-visibility', '/services/localization-and-translation', '/wip#for=seo-audit']) {
+  assert.ok(visibilityMenu.includes(`href: '${destination}'`), `AI SEO & Visibility heading destination missing: ${destination}`);
+}
 
 for (const label of ['Technical SEO', 'Local SEO', 'SEO Content Strategy', 'International SEO', 'AI Visibility Monitoring', 'AI Competitor Analysis', 'Google Business Profile Management', 'Online Reputation Management', 'Digital PR & Link Building']) {
   assert.ok(visibilityMenu.includes(label), `${label} is missing from AI SEO & Visibility`);

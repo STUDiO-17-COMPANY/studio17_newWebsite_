@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-28 — Homepage service alignment and stable header menus
+
+- Rebuilt the homepage service explorer around the same six categories and order used by the header: Websites, SEO & Visibility, Social Media, Content Creation, Paid Advertising and Events.
+- Added distinct SEO, AI SEO/GEO and SEO audit explanations and connected every homepage action to its published page or precise WIP destination.
+- Made every AI SEO & Visibility category heading actionable on desktop and mobile, preserving published destinations and clearly routing planned capabilities.
+- Closed both desktop mega menus as soon as the page scrolls so they no longer float down over the website content.
+
 ## 2026-10-28 — Header service directories and translated hero fit
 
 - Reduced translated homepage hero typography and expanded its safe text width so longer Portuguese, Spanish, Greek, Russian and Hebrew copy remains balanced inside the artwork.

@@ -8,11 +8,11 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const expectedItems = [
+  'websiteDevelopment', 'websiteRevamp', 'websiteDesign', 'maintenance', 'freeWebsite',
+  'seo', 'aiSeoGeo', 'seoAudit', 'copywriting', 'localization',
   'socialManagement', 'socialAutomation', 'growthStrategy', 'communityManagement', 'freeAudit',
-  'websiteDevelopment', 'websiteRevamp', 'websiteDesign', 'seo', 'geo', 'copywriting', 'localization', 'maintenance', 'freeWebsite',
   'filming', 'photography', 'videoEditing', 'graphicDesign', 'digitalDesign', 'scripting', 'aiGeneration',
   'metaAds', 'googleAds', 'socialAds', 'influencerAds', 'ugcCreators', 'emailAds',
-  'automotive', 'restaurants', 'health', 'ecommerce', 'influencers', 'education', 'local', 'smes',
   'presentialEvents', 'onlineEvents'
 ];
 
@@ -37,7 +37,7 @@ test('every homepage service selector item has distinct sales content', () => {
     const outcome = services.outcomes[key];
     assert.ok(outcome.length >= 65, `${key} should provide a service-specific outcome`);
   }
-  assert.deepEqual(Object.keys(services.templates), ['industry', 'website', 'content', 'social', 'ads', 'events']);
+  assert.deepEqual(Object.keys(services.templates), ['industry', 'website', 'seoVisibility', 'content', 'social', 'ads', 'events']);
   for (const template of Object.values(services.templates)) {
     assert.ok(template.title.includes('{item}'));
     assert.ok(template.result.length >= 70);
@@ -73,7 +73,7 @@ test('mobile service discovery uses two synchronized selects instead of a wall o
 
 test('selector rendering prioritizes item-specific descriptions and verified proof', () => {
   const script = read('script.js');
-  assert.match(script, /getLanguage\?\.\(\) === 'en'[\s\S]*\? englishServices/);
+  assert.match(script, /getLanguage\?\.\(\) === 'en'\) return englishServices/);
   assert.match(script, /locale\.descriptions\?\.\[item\] \|\| englishServices\.descriptions\[item\]/);
   assert.match(script, /locale\.outcomes\?\.\[item\] \|\| englishServices\.outcomes\[item\]/);
   assert.match(script, /body: featured\?\.body \|\| description/);
@@ -86,7 +86,7 @@ test('homepage service actions follow the selected service instead of static WIP
   const script = read('script.js');
   for (const attribute of ['data-service-primary', 'data-service-secondary', 'data-service-overview']) assert.ok(html.includes(attribute), attribute);
   assert.doesNotMatch(html, /wip#for=(?:digital-solutions|physical-solutions|case-studies)/);
-  assert.match(script, /const serviceDestinations = Object\.fromEntries/);
+  assert.match(script, /const serviceDestinations = \{[\s\S]*Object\.fromEntries\(servicesMegaMenu/);
   assert.match(script, /destination: serviceDestinations\[item\]/);
   assert.match(script, /updateServiceAction\(servicePrimaryAction, content\.label, content\.destination\)/);
   assert.match(script, /updateServiceAction\(serviceSecondaryAction, translateText\('Talk to sales'\), content\.contactDestination\)/);

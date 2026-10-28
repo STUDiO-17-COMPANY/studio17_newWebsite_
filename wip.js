@@ -20,6 +20,7 @@
     articles: { label: 'Article pages' },
     automotive: { service: 'automotive' },
     'by-industry': { label: 'By industry' },
+    'business-visibility': { label: 'Business Visibility' },
     careers: { label: 'Careers' },
     'case-studies': { label: 'Case-study pages' },
     'clothing-stores': { service: 'fashion' },

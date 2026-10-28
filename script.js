@@ -95,6 +95,7 @@
   const visibilityMegaMenu = [
     {
       label: 'SEO',
+      href: '/services/seo',
       items: [
         ['SEO', '/services/seo'],
         ['Technical SEO', '/wip#for=technical-seo'],
@@ -105,6 +106,7 @@
     },
     {
       label: 'AI SEO & GEO',
+      href: '/wip#for=ai-seo-geo',
       items: [
         ['AI SEO & GEO', '/wip#for=ai-seo-geo'],
         ['AI Visibility Audit', '/wip#for=ai-visibility-audit'],
@@ -114,6 +116,7 @@
     },
     {
       label: 'Business Visibility',
+      href: '/wip#for=business-visibility',
       items: [
         ['Google Business Profile Management', '/wip#for=google-business-profile-management'],
         ['Online Reputation Management', '/wip#for=online-reputation-management'],
@@ -122,6 +125,7 @@
     },
     {
       label: 'Content & Localization',
+      href: '/services/localization-and-translation',
       items: [
         ['Copywriting', '/wip#for=copywriting'],
         ['Localization & Translation', '/services/localization-and-translation']
@@ -129,6 +133,7 @@
     },
     {
       label: 'Audits',
+      href: '/wip#for=seo-audit',
       items: [
         ['SEO Audit', '/wip#for=seo-audit'],
         ['AI Visibility Audit', '/wip#for=ai-visibility-audit']
@@ -270,9 +275,13 @@
     visibilityPanel.replaceChildren(...visibilityMegaMenu.map(group => {
       const section = document.createElement('section');
       section.className = 'services-mega-group';
-      const title = document.createElement('p');
+      const title = document.createElement(group.href ? 'a' : 'p');
       title.className = 'services-mega-title';
       title.textContent = headerCopy.visibility?.[group.label] || group.label;
+      if (group.href) {
+        title.href = localiseServicesMenuHref(group.href);
+        markWipLink(title, group.href);
+      }
       const list = document.createElement('ul');
       group.items.forEach(([label, href]) => {
         const item = document.createElement('li');
@@ -474,6 +483,16 @@
       list.id = listId;
       list.className = 'mobile-services-list';
       list.hidden = true;
+      if (group.href) {
+        const overviewItem = document.createElement('li');
+        const overviewLink = document.createElement('a');
+        overviewLink.className = 'mobile-services-category-overview';
+        overviewLink.href = localiseServicesMenuHref(group.href);
+        markWipLink(overviewLink, group.href);
+        overviewLink.textContent = `${headerCopy.visibility?.[group.label] || group.label} →`;
+        overviewItem.appendChild(overviewLink);
+        list.appendChild(overviewItem);
+      }
       group.items.forEach(([label, href]) => {
         const item = document.createElement('li');
         const link = document.createElement('a');
@@ -644,6 +663,11 @@
     if (visibilityPanel) visibilityPanel.hidden = !open;
   });
 
+  window.addEventListener('scroll', () => {
+    closeDesktopDropdown();
+    closeVisibilityDropdown();
+  }, { passive: true });
+
   document.addEventListener('click', event => {
     if (event.target.closest('.nav-dropdown')) return;
     closeDesktopDropdown();
@@ -658,13 +682,17 @@
   });
 
   const serviceSchema = {
+    website: {
+      items: ['websiteDevelopment', 'websiteRevamp', 'websiteDesign', 'maintenance', 'freeWebsite'],
+      image: '/Images/hero-team.webp'
+    },
+    seoVisibility: {
+      items: ['seo', 'aiSeoGeo', 'seoAudit', 'copywriting', 'localization'],
+      image: '/Images/SEO_heroimage.webp'
+    },
     social: {
       items: ['socialManagement', 'socialAutomation', 'growthStrategy', 'communityManagement', 'freeAudit'],
       image: '/Images/news-social.webp'
-    },
-    website: {
-      items: ['websiteDevelopment', 'websiteRevamp', 'websiteDesign', 'seo', 'geo', 'copywriting', 'localization', 'maintenance', 'freeWebsite'],
-      image: '/Images/hero-team.webp'
     },
     content: {
       items: ['filming', 'photography', 'videoEditing', 'graphicDesign', 'digitalDesign', 'scripting', 'aiGeneration'],
@@ -673,14 +701,6 @@
     ads: {
       items: ['metaAds', 'googleAds', 'socialAds', 'influencerAds', 'ugcCreators', 'emailAds'],
       image: '/Images/news-billboard.webp'
-    },
-    industry: {
-      items: ['automotive', 'restaurants', 'health', 'ecommerce', 'influencers', 'education', 'local', 'smes'],
-      images: {
-        automotive: '/Images/case-automotive.webp', restaurants: '/Images/news-social.webp', health: '/Images/news-partnership.webp',
-        ecommerce: '/Images/news-billboard.webp', influencers: '/Images/news-social.webp', education: '/Images/news-ai.webp',
-        local: '/Images/news-partnership.webp', smes: '/Images/hero-team.webp'
-      }
     },
     events: {
       items: ['presentialEvents', 'onlineEvents'],
@@ -701,25 +721,25 @@
     smes: '/wip#for=smes'
   };
   const serviceCategoryDestinations = {
-    social: '/services/social-media',
     website: '/services/website',
-    content: '/services',
-    ads: '/services',
-    industry: '/services',
-    events: '/services'
+    seoVisibility: '/services/seo',
+    social: '/services/social-media',
+    content: '/wip#for=content-creation',
+    ads: '/wip#for=advertisement',
+    events: '/wip#for=events'
   };
   const serviceContactDestinations = {
-    social: '/contact?service=social-media',
     website: '/contact?service=website',
+    seoVisibility: '/contact?service=seo',
+    social: '/contact?service=social-media',
     content: '/contact?service=content',
     ads: '/contact?service=advertising',
-    industry: '/contact?service=other',
     events: '/contact?service=other'
   };
 
   const englishServices = {
     categoryLabels: {
-      social: 'Social Media', website: 'Website', content: 'Content creation', ads: 'Advertisement', industry: 'By industry', events: 'Events'
+      website: 'Websites', seoVisibility: 'SEO & Visibility', social: 'Social Media', content: 'Content Creation', ads: 'Paid Advertising', events: 'Events'
     },
     controls: {
       category: 'Service area',
@@ -728,7 +748,7 @@
     itemLabels: {
       automotive: 'Automotive', restaurants: 'Restaurants', health: 'Health', ecommerce: 'E-Commerce', influencers: 'Individual Influencers',
       education: 'Education', local: 'Local Business', smes: 'SMEs',
-      websiteDevelopment: 'Website Development', websiteRevamp: 'Website Revamp', websiteDesign: 'Website Design', seo: 'SEO', geo: 'GEO',
+      websiteDevelopment: 'Website Development', websiteRevamp: 'Website Revamp', websiteDesign: 'Website Design', seo: 'SEO', aiSeoGeo: 'AI SEO & GEO', seoAudit: 'SEO Audit', geo: 'GEO',
       copywriting: 'Copywriting', localization: 'Localization and Translation', maintenance: 'Maintenance', freeWebsite: 'Free Website',
       filming: 'Filming', photography: 'Photography', videoEditing: 'Video editing', graphicDesign: 'Graphic design', digitalDesign: 'Digital design', scripting: 'Scripting', aiGeneration: 'AI Generation',
       socialManagement: 'Social Media Management', socialAutomation: 'Social Media Automation', growthStrategy: 'Growth strategy',
@@ -750,6 +770,8 @@
       websiteDesign: 'We shape page hierarchy, interface systems and responsive user journeys before development so every screen feels clear, distinctive and easy to use.',
       freeWebsite: 'Eligible small businesses can receive a focused starter website under our Free Website offer, with scope, requirements and ongoing costs confirmed before work begins.',
       seo: 'We improve site structure, on-page content, internal linking and technical signals so search engines understand the business and relevant customers can find it.',
+      aiSeoGeo: 'We strengthen entity clarity, expertise signals and answer-ready content so AI search systems can understand, verify and surface the business.',
+      seoAudit: 'We examine technical foundations, crawlability, content, local visibility and search demand to identify the highest-priority opportunities.',
       geo: 'We structure entities, expertise and answer-ready content so AI-powered search and answer engines can understand, trust and cite the business more easily.',
       copywriting: 'We write clear website copy around customer questions, commercial priorities and search intent so visitors understand the offer and know what to do next.',
       localization: 'We adapt language, tone, search intent, metadata and customer journeys for each market instead of simply translating words.',
@@ -791,6 +813,8 @@
       websiteDesign: 'Give development a tested visual and interaction direction that reduces ambiguity and improves the customer journey.',
       freeWebsite: 'Give an eligible business a credible starting point online with the agreed essentials clearly defined.',
       seo: 'Build stronger relevance and crawlability around the searches that matter to the business.',
+      aiSeoGeo: 'Make the business easier for AI-powered search and answer engines to understand, trust and reference.',
+      seoAudit: 'Leave with a prioritised SEO roadmap grounded in evidence rather than a generic checklist.',
       geo: 'Make expertise easier for AI answer engines to interpret, verify and reference.',
       copywriting: 'Turn complex offers into clear, persuasive pages that support search visibility and confident customer action.',
       localization: 'Give each market language and customer journey that feel native rather than copied.',
@@ -827,6 +851,11 @@
         title: '{item} that helps customers find, trust and contact you.',
         body: 'Strategy, user experience, content and development work together so the website supports real customer decisions.',
         result: 'You receive a clear, responsive and search-ready foundation built around the next customer action.'
+      },
+      seoVisibility: {
+        title: '{item} that helps the right customers discover your business',
+        body: 'Technical foundations, useful content, local signals and AI-readable expertise work together to improve meaningful visibility.',
+        result: 'You receive a focused search and visibility system connected to qualified discovery and measurable customer action.'
       },
       content: {
         title: '{item} created to earn attention and move people to act.',
@@ -873,11 +902,18 @@
   const serviceCategoryLabel = document.querySelector('.home-page [data-service-category-label]');
   const serviceItemLabel = document.querySelector('.home-page [data-service-item-label]');
   const selectedItems = Object.fromEntries(Object.entries(serviceSchema).map(([category, config]) => [category, config.items[0]]));
-  let activeCategory = 'social';
+  let activeCategory = 'website';
 
-  const getServiceLocale = () => window.Studio17I18n?.getLanguage?.() === 'en'
-    ? englishServices
-    : (window.Studio17I18n?.getData()?.services || englishServices);
+  const getServiceLocale = () => {
+    if (window.Studio17I18n?.getLanguage?.() === 'en') return englishServices;
+    const locale = window.Studio17I18n?.getData()?.services || {};
+    const headerCopy = getHeaderMenuTranslation();
+    return {
+      ...locale,
+      categoryLabels: { ...englishServices.categoryLabels, ...locale.categoryLabels, ...headerCopy.serviceCategories },
+      itemLabels: { ...englishServices.itemLabels, ...locale.itemLabels, ...headerCopy.serviceItems }
+    };
+  };
   const formatServiceText = (template, item) => (template || '').replaceAll('{item}', item);
 
   const getServiceContent = (category, item) => {
