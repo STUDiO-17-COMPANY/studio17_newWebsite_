@@ -2,6 +2,8 @@
 
 ## 2026-10-28 — Homepage audit conversion journey
 
+- Added dedicated desktop and mobile homepage hero artwork through a responsive picture source, with no hover zoom on any hero image.
+- Rebuilt both free-audit follow-up pages with the complete Studio 17 footer, corrected post-hero spacing, a practical “What happens next” panel and the latest six server-rendered articles.
 - Replaced the homepage hero image and alternative text in all six languages, removed the play control and published the approved revenue-focused message.
 - Added a progressive brand/company/business word rotation that preserves complete server-rendered copy and respects reduced-motion preferences.
 - Removed the automatic dark image overlay and made the rotating hero terms persistent between changes so the approved artwork and every word remain visible.

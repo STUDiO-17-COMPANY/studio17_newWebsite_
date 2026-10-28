@@ -37,16 +37,17 @@
 
   const content = isSocial ? {
     title: 'Get your free Social Media audit', subtitle: 'Show us where to look', description: 'Your social media profile is already filled in. Add your contact details and context so our team can review the right goals.',
-    formTitle: 'Request your free Social Media audit', formCopy: 'We will use these details to review your social media presence and contact you with practical next steps.', focus: 'Content, positioning, reach and conversion', label: 'Social media profile', service: 'social-media'
+    formTitle: 'Request your free Social Media audit', formCopy: 'We will use these details to review your social media presence and contact you with practical next steps.', nextReview: 'We review the social media profile you shared, including content, positioning, reach and the path from attention to enquiry.', focus: 'Content, positioning, reach and conversion', label: 'Social media profile', service: 'social-media'
   } : {
     title: 'Get your free website audit', subtitle: 'Tell us where to look', description: 'Your website is already filled in. Add your contact details and context so our team can review the right business goals.',
-    formTitle: 'Request your free website audit', formCopy: 'We will use these details to review your website and contact you with practical next steps.', focus: 'Visibility, UX, messaging and conversion', label: 'Website', service: 'website'
+    formTitle: 'Request your free website audit', formCopy: 'We will use these details to review your website and contact you with practical next steps.', nextReview: 'We review the website you shared, including visibility, mobile experience, messaging, speed and the path from visit to enquiry.', focus: 'Visibility, UX, messaging and conversion', label: 'Website', service: 'website'
   };
   document.querySelector('[data-audit-page-title]').textContent = content.title;
   document.querySelector('[data-audit-page-subtitle]').textContent = content.subtitle;
   document.querySelector('[data-audit-page-description]').textContent = content.description;
   document.querySelector('[data-audit-form-title]').textContent = content.formTitle;
   document.querySelector('[data-audit-form-copy]').textContent = content.formCopy;
+  document.querySelector('[data-audit-next-review]').textContent = content.nextReview;
   document.querySelector('[data-audit-focus]').textContent = content.focus;
   document.querySelector('[data-audit-target-label]').firstChild.nodeValue = `${content.label} `;
   document.title = `${content.title} | Studio 17`;

@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
-const { renderHomePage } = require('../api/home-page');
+const { renderAuditPage, renderHomePage } = require('../api/home-page');
 const { PAGE_SIZE, renderNewsPage } = require('../api/news-page');
 
 const articles = Array.from({ length: 14 }, (_, index) => {
@@ -25,6 +25,13 @@ test('homepage includes the latest six article cards in the initial HTML', () =>
   const html = renderHomePage(articles);
   assert.equal(cardCount(html), 6);
   assert.doesNotMatch(html, /Loading articles/);
+  assert.match(html, /href="\/case-studies\/article-1"/);
+});
+
+test('audit pages include the latest six article cards in the initial HTML', () => {
+  const html = renderAuditPage(articles);
+  assert.equal(cardCount(html), 6);
+  assert.match(html, /id="audit-news-track"/);
   assert.match(html, /href="\/case-studies\/article-1"/);
 });
 
