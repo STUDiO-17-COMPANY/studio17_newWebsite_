@@ -5,6 +5,7 @@
 - Replaced the homepage hero image and alternative text in all six languages, removed the play control and published the approved revenue-focused message.
 - Added a progressive brand/company/business word rotation that preserves complete server-rendered copy and respects reduced-motion preferences.
 - Removed the automatic dark image overlay and made the rotating hero terms persistent between changes so the approved artwork and every word remain visible.
+- Corrected the paragraph rotation key so “brands”, “companies” and “businesses” now update in sync, and replaced the homepage artwork with the new 1920 × 560 hero image.
 - Added Website and Social Media audit modes with immediate lead delivery through the existing contact endpoint and no additional Serverless Function.
 - Added focused follow-up URLs with prefilled audit targets, complete contact fields, a selectable international calling-code list and a country-aware default derived from Vercel request metadata.
 - Added deployment regression coverage for the hero, translated image descriptions, audit routes, form fields, email delivery and country lookup.
