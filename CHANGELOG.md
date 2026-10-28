@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-28 — Consistent social-sharing image
+
+- Set the approved Studio 17 general cover as the default Open Graph and X/Twitter image for every non-article page, including translated pages and dynamically rendered career pages.
+- Replaced the Work page's client-specific preview image so normal pages can no longer expose arbitrary page artwork when shared.
+- Preserved the Google Drive article workflow: published articles continue to use their own configured Social share image.
+- Added 1200 × 630 image metadata, a broadly compatible JPEG delivery copy and deployment regression coverage.
+
 ## 2026-10-26 — Homepage portfolio redesign
 
 - Rebuilt the homepage portfolio as four large image-led project blocks for Terrassi Villa, PHÓS Optics, Farmácia do Lourel and Nerouppos Barber Shop.

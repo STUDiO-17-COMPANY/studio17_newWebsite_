@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "buildCommand": "node scripts/sync-document-metadata.cjs && node scripts/build-localized-pages.cjs && node --test tests/multilingual-routing.test.cjs",
+  "buildCommand": "node scripts/sync-document-metadata.cjs && node scripts/build-localized-pages.cjs && node --test tests/default-og-image.test.cjs tests/multilingual-routing.test.cjs",
   "outputDirectory": ".",
   "proxy": {
     "entrypoint": "proxy.ts",

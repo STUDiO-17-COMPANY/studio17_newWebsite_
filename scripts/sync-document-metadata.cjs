@@ -6,13 +6,37 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const { DYNAMIC_TEMPLATES, STATIC_PAGES, localizedPath } = require('../server/_language-routing');
 const link = '<link rel="describedby" href="https://www.studio17.world/llms.txt">';
+const DEFAULT_SOCIAL_IMAGE = 'https://www.studio17.world/Images/general-OG-cover-image-compressed-2.jpg';
+const DEFAULT_SOCIAL_IMAGE_ALT = 'Studio 17 marketing, technology and creative work';
+const defaultSocialMetadata = [
+  `<meta property="og:image" content="${DEFAULT_SOCIAL_IMAGE}">`,
+  `<meta property="og:image:secure_url" content="${DEFAULT_SOCIAL_IMAGE}">`,
+  '<meta property="og:image:type" content="image/jpeg">',
+  '<meta property="og:image:width" content="1200">',
+  '<meta property="og:image:height" content="630">',
+  `<meta property="og:image:alt" content="${DEFAULT_SOCIAL_IMAGE_ALT}">`,
+  '<meta name="twitter:card" content="summary_large_image">',
+  `<meta name="twitter:image" content="${DEFAULT_SOCIAL_IMAGE}">`,
+  `<meta name="twitter:image:alt" content="${DEFAULT_SOCIAL_IMAGE_ALT}">`
+].join('\n  ');
+
+const addDefaultSocialMetadata = (source, name) => {
+  // Published articles supply their own Google Doc social-share image in _article-render.js.
+  if (name === 'article.html') return source;
+  const clean = source
+    .replace(/\s*<meta\b[^>]*property=["']og:image(?::[^"']+)?["'][^>]*>/gi, '')
+    .replace(/\s*<meta\b[^>]*name=["']twitter:image(?::[^"']+)?["'][^>]*>/gi, '')
+    .replace(/\s*<meta\b[^>]*name=["']twitter:card["'][^>]*>/gi, '');
+  return clean.replace('</head>', `\n  ${defaultSocialMetadata}\n</head>`);
+};
+
 for (const directory of [root, path.join(root, 'api')]) {
   for (const name of fs.readdirSync(directory).filter(name => name.endsWith('.html'))) {
     const file = path.join(directory, name);
     const source = fs.readFileSync(file, 'utf8');
     if (!source.includes('</head>')) continue;
     const clean = source.replace(/\s*<link\b[^>]*rel="describedby"[^>]*>/g, '');
-    const result = clean.replace('</head>', `\n  ${link}\n</head>`);
+    const result = addDefaultSocialMetadata(clean, name).replace('</head>', `\n  ${link}\n</head>`);
     if (result !== source) fs.writeFileSync(file, result);
   }
 }
