@@ -21,13 +21,9 @@
     let index = 0;
     window.setInterval(() => {
       index = (index + 1) % words.title.length;
-      rotateElements.forEach(element => element.classList.add('is-changing'));
-      window.setTimeout(() => {
-        rotateElements.forEach(element => {
-          element.textContent = words[element.dataset.heroWord][index];
-          element.classList.remove('is-changing');
-        });
-      }, 180);
+      rotateElements.forEach(element => {
+        element.textContent = words[element.dataset.heroWord][index];
+      });
     }, 3000);
   }
 

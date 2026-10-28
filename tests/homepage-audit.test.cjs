@@ -10,6 +10,8 @@ const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const home = parseHTML(read('home.template.html')).document;
 const audit = parseHTML(read('audit-contact.html')).document;
 const config = JSON.parse(read('vercel.json'));
+const styles = read('styles.css');
+const heroScript = read('homepage-audit.js');
 
 const hero = home.querySelector('.home-conversion-hero');
 assert.ok(hero, 'conversion hero should exist');
@@ -22,6 +24,8 @@ assert.ok(hero.querySelector('[data-hero-word="copy"]'));
 assert.ok(hero.querySelector('[data-hero-audit-form]'));
 assert.equal(hero.querySelectorAll('[data-audit-type]').length, 2);
 assert.ok(home.querySelector('script[src="homepage-audit.js"]'));
+assert.match(styles, /\.home-conversion-hero \.hero-media::after \{ background: transparent; \}/);
+assert.doesNotMatch(heroScript, /is-changing/);
 
 for (const selector of ['[name="firstName"]', '[name="lastName"]', '[name="email"]', '[name="company"]', '[name="auditTarget"]', '[name="countryCode"]', '[name="phoneNumber"]', '[name="comments"]']) {
   assert.ok(audit.querySelector(selector), `audit page is missing ${selector}`);
