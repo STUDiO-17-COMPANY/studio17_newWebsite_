@@ -3,8 +3,8 @@
   "direction": "rtl",
   "meta": {
     "home": {
-      "title": "סוכנות שיווק לפתרון הבעיות שלכם | נבנה לצמיחה מודרנית",
-      "description": "Studio 17 היא סוכנות שיווק אירופית שיוצרת אתרים, תוכן, מערכות דיגיטליות ופתרונות בינה מלאכותית לצמיחה עסקית מודרנית."
+      "title": "סוכנות שיווק דיגיטלי | SEO, רשתות חברתיות ופיתוח אתרים",
+      "description": "הצמיחו את המותג וההכנסות עם Studio 17 באמצעות שיווק דיגיטלי, SEO, נראות במנועי AI, רשתות חברתיות ופיתוח אתרים."
     },
     "sitemap": {
       "title": "מפת האתר — Studio 17",
@@ -40,6 +40,22 @@
     }
   },
   "strings": {
+    "&": "ו",
+    "Grow your": "הצמיחו את",
+    "brand": "המותג",
+    "& revenue with smarter digital marketing": "וההכנסות שלכם באמצעות שיווק דיגיטלי חכם יותר",
+    "revenue with smarter digital marketing": "ההכנסות שלכם באמצעות שיווק דיגיטלי חכם יותר",
+    "Grow your brand and revenue with smarter digital marketing": "הצמיחו את המותג וההכנסות שלכם באמצעות שיווק דיגיטלי חכם יותר",
+    "We help": "אנחנו עוזרים",
+    "brands": "למותגים",
+    "attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.": "למשוך את הקהל הנכון, לייצר לידים איכותיים ולהגדיל הכנסות באמצעות שיווק דיגיטלי מודרני, SEO, נראות במנועי AI, רשתות חברתיות ופיתוח אתרים.",
+    "Choose an audit type": "בחרו סוג בדיקה",
+    "Website audit": "בדיקת אתר",
+    "Social Media audit": "בדיקת רשתות חברתיות",
+    "Enter your website": "הזינו את כתובת האתר",
+    "Enter your Website": "הזינו את כתובת האתר",
+    "Get a free audit": "קבלו בדיקה חינמית",
+    "Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era.": "Studio 17 היא סוכנות בינלאומית לשיווק ולפיתוח אתרים, העובדת עם לקוחות בפורטוגל, קפריסין, צרפת, בריטניה וארצות הברית כדי ליצור חוויות דיגיטליות טובות יותר ולעזור לעסקים לצמוח בעידן הבינה המלאכותית.",
     "Not sure where to start?": "לא בטוחים מאיפה להתחיל?",
     "Open Studio 17 guidance": "פתיחת ההכוונה של Studio 17",
     "Close guidance": "סגירת ההכוונה",

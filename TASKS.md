@@ -11,6 +11,17 @@ This file is the shared development task list for `studio17_newWebsite_`. Keep i
 
 ## Current priorities
 
+### Homepage conversion redesign
+
+- [x] Replace the homepage hero media with `HomePage_heroimage` and publish the supplied language-specific alternative text.
+- [x] Remove the hero play control and replace the previous split message with the approved revenue-focused heading and copy.
+- [x] Add progressive, reduced-motion-safe brand/company/business wording without hiding the complete server-rendered SEO copy.
+- [x] Add the Website/Social Media free-audit selector, lead input, immediate email notification and focused follow-up form routes.
+- [x] Prefill the submitted website or social profile on the follow-up form and default the calling code from Vercel's country header while keeping it user-selectable.
+- [ ] Rework the header Services navigation after the final category, ordering and destination structure is approved.
+- [ ] Rework “Marketing solutions for how businesses grow today” and every corresponding service reference after the new service structure is approved.
+- [ ] Complete production QA for the new hero email delivery, both audit journeys, mobile layouts and all six localized homepages after deployment.
+
 - [x] Publish the English-only Social Media service-family page with the approved hero, differentiators, four-service selector, problem-led routes, process, low-friction entry paths, FAQs, clean routing and site-wide discovery links.
 - [x] Reorder the Website services decision journey, standardize its 16:9 proof cards and section spacing, connect launched Terrassi Villa and PHÓS Optics websites, keep 100 Pratos non-clickable there, refresh Terrassi Villa showcase imagery site-wide and add MIA EVENTS & EXPERIENCES as partner 14.
 - [x] Curate the human Sitemap to main published pages only, excluding articles, open roles, location SEO pages, WIP destinations and its own route.

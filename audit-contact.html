@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Request a free Studio 17 website or social media audit.">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#0f172a">
+  <title>Free Digital Audit | Studio 17</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Studio 17">
+  <meta property="og:title" content="Free Digital Audit | Studio 17">
+  <meta property="og:description" content="Request a free Studio 17 website or social media audit.">
+  <link rel="icon" type="image/png" href="/Images/FavIcon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="/Vendor/lucide.min.js" defer></script>
+  <script src="/script.js" defer></script>
+  <script src="/audit-contact.js" defer></script>
+
+  <meta property="og:image" content="https://www.studio17.world/Images/general-OG-cover-image-compressed-2.jpg">
+  <meta property="og:image:secure_url" content="https://www.studio17.world/Images/general-OG-cover-image-compressed-2.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Studio 17 marketing, technology and creative work">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.studio17.world/Images/general-OG-cover-image-compressed-2.jpg">
+  <meta name="twitter:image:alt" content="Studio 17 marketing, technology and creative work">
+
+  <link rel="describedby" href="https://www.studio17.world/llms.txt">
+</head>
+<body class="contact-page audit-contact-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="Studio 17 home"><img src="/Images/Studio%2017_logo_black.png" alt="Studio 17" width="118" height="33"></a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <div class="nav-dropdown"><button class="nav-link nav-trigger" type="button" aria-expanded="false">Services <span class="nav-square" aria-hidden="true"><i data-lucide="chevron-down"></i></span></button><div class="dropdown-panel" hidden></div></div>
+        <a class="nav-link" href="/work">Work</a><a class="nav-link" href="/about">About</a><a class="nav-link" href="/news">News</a><a class="nav-link" href="/careers">Careers</a><a class="nav-link" href="/contact">Contact</a>
+      </nav>
+      <div></div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i class="menu-open-icon" data-lucide="menu" aria-hidden="true"></i><i class="menu-close-icon" data-lucide="x" aria-hidden="true"></i></button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a href="/services">Services</a><a href="/work">Work</a><a href="/about">About</a><a href="/news">News</a><a href="/careers">Careers</a><a href="/contact">Contact</a></nav></div>
+  </header>
+
+  <main class="contact-main" id="main-content">
+    <section class="page-hero contact-hero audit-contact-hero" aria-labelledby="audit-page-title">
+      <div class="hero-media" aria-hidden="true"><img src="/Images/HomePage_heroimage.avif" alt=""></div>
+      <div class="shell page-hero-grid contact-hero-grid">
+        <div class="page-hero-title contact-title-block reveal"><h1 id="audit-page-title" data-audit-page-title>Get your free website audit</h1></div>
+        <div class="page-hero-copy contact-hero-copy reveal" data-delay="1">
+          <h2 data-audit-page-subtitle>Tell us where to look</h2>
+          <p data-audit-page-description>Your website is already filled in. Add your contact details and context so our team can review the right business goals.</p>
+          <a class="design-link design-link-dark" href="#audit-contact-form">Complete your request <span aria-hidden="true"><i data-lucide="arrow-down"></i></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section audit-contact-section" aria-labelledby="audit-form-title">
+      <div class="shell contact-layout">
+        <aside class="contact-details reveal">
+          <h2 id="audit-form-title" data-audit-form-title>Request your free website audit</h2>
+          <p data-audit-form-copy>We will use these details to review your website and contact you with practical next steps.</p>
+          <div class="contact-detail-card"><span aria-hidden="true"><i data-lucide="scan-search"></i></span><div><small>Focused review</small><strong data-audit-focus>Visibility, UX, messaging and conversion</strong></div></div>
+          <div class="contact-detail-card"><span aria-hidden="true"><i data-lucide="user-round-check"></i></span><div><small>Reviewed by</small><strong>The Studio 17 team</strong></div></div>
+          <p class="contact-privacy-note"><i data-lucide="shield-check" aria-hidden="true"></i><span>Your details are used only to review and respond to this request. <a href="/privacy-policy">Privacy policy</a></span></p>
+        </aside>
+
+        <div class="contact-form-card reveal" data-delay="1">
+          <form class="contact-form audit-detail-form" id="audit-contact-form" action="/api/contact" method="post" data-audit-contact-form novalidate>
+            <div class="contact-field-grid">
+              <label class="contact-field"><span>First name <b aria-hidden="true">*</b></span><input type="text" name="firstName" autocomplete="given-name" minlength="2" maxlength="60" required></label>
+              <label class="contact-field"><span>Last name <b aria-hidden="true">*</b></span><input type="text" name="lastName" autocomplete="family-name" minlength="2" maxlength="60" required></label>
+              <label class="contact-field"><span>Work email address <b aria-hidden="true">*</b></span><input type="email" name="email" autocomplete="email" maxlength="254" required></label>
+              <label class="contact-field"><span>Company <b aria-hidden="true">*</b></span><input type="text" name="company" autocomplete="organization" minlength="2" maxlength="120" required></label>
+              <label class="contact-field contact-field-wide"><span data-audit-target-label>Website <b aria-hidden="true">*</b></span><input type="text" name="auditTarget" maxlength="300" required></label>
+              <fieldset class="audit-phone-group contact-field-wide"><legend>Phone number <b aria-hidden="true">*</b></legend><div><label class="sr-only" for="audit-country-code">Country code</label><select id="audit-country-code" name="countryCode" aria-label="Country calling code" required></select><label class="sr-only" for="audit-phone">Phone number</label><input id="audit-phone" type="tel" name="phoneNumber" autocomplete="tel-national" maxlength="30" placeholder="Phone number" required></div></fieldset>
+            </div>
+            <label class="contact-field contact-message-field"><span>Comments or questions</span><textarea name="comments" rows="7" maxlength="3000" placeholder="Looking to get more leads? Frustrated with your current results? Planning something new? Tell us what’s going on."></textarea></label>
+            <label class="contact-consent"><input type="checkbox" name="consent" value="yes" required><span>I agree that Studio 17 may use these details to review my request and contact me.</span></label>
+            <label class="contact-honeypot" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            <div class="contact-form-footer">
+              <button class="solid-button contact-submit" type="submit" data-audit-contact-submit>Request my free audit <span aria-hidden="true"><i data-lucide="send"></i></span></button>
+              <p class="contact-form-status" data-audit-contact-status role="status" aria-live="polite" aria-atomic="true" hidden></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer audit-footer">
+    <div class="shell footer-bottom">
+      <img src="/Images/Studio%2017_logo_white.png" alt="Studio 17" width="131" height="26">
+      <p>© 2026 <a href="mailto:contact@studio17.world">H&amp;P DOMUS CREATIVE LTD.</a> All rights reserved.</p>
+      <a class="sitemap-link" href="/privacy-policy">Privacy policy</a>
+      <a class="sitemap-link" href="/contact">Contact</a>
+    </div>
+  </footer>
+</body>
+</html>

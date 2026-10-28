@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-28 — Homepage audit conversion journey
+
+- Replaced the homepage hero image and alternative text in all six languages, removed the play control and published the approved revenue-focused message.
+- Added a progressive brand/company/business word rotation that preserves complete server-rendered copy and respects reduced-motion preferences.
+- Added Website and Social Media audit modes with immediate lead delivery through the existing contact endpoint and no additional Serverless Function.
+- Added focused follow-up URLs with prefilled audit targets, complete contact fields, a selectable international calling-code list and a country-aware default derived from Vercel request metadata.
+- Added deployment regression coverage for the hero, translated image descriptions, audit routes, form fields, email delivery and country lookup.
+
 ## 2026-10-28 — Consistent social-sharing image
 
 - Set the approved Studio 17 general cover as the default Open Graph and X/Twitter image for every non-article page, including translated pages and dynamically rendered career pages.

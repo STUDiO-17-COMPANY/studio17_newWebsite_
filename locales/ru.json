@@ -3,8 +3,8 @@
   "direction": "ltr",
   "meta": {
     "home": {
-      "title": "Маркетинговое агентство для решения ваших задач | Создано для современного роста",
-      "description": "Studio 17 — европейское маркетинговое агентство, создающее сайты, контент, цифровые системы и решения с ИИ для современного бизнеса."
+      "title": "Агентство цифрового маркетинга | SEO, соцсети и веб-разработка",
+      "description": "Развивайте бренд и увеличивайте доход со Studio 17 с помощью цифрового маркетинга, SEO, видимости в ИИ, социальных сетей и веб-разработки."
     },
     "sitemap": {
       "title": "Карта сайта — Studio 17",
@@ -40,6 +40,22 @@
     }
   },
   "strings": {
+    "&": "и",
+    "Grow your": "Развивайте",
+    "brand": "бренд",
+    "& revenue with smarter digital marketing": "и увеличивайте доход с помощью умного цифрового маркетинга",
+    "revenue with smarter digital marketing": "увеличивайте доход с помощью умного цифрового маркетинга",
+    "Grow your brand and revenue with smarter digital marketing": "Развивайте бренд и увеличивайте доход с помощью умного цифрового маркетинга",
+    "We help": "Мы помогаем",
+    "brands": "брендам",
+    "attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.": "привлекать нужную аудиторию, получать качественные лиды и увеличивать доход с помощью современного цифрового маркетинга, SEO, видимости в ИИ, социальных сетей и веб-разработки.",
+    "Choose an audit type": "Выберите тип аудита",
+    "Website audit": "Аудит сайта",
+    "Social Media audit": "Аудит соцсетей",
+    "Enter your website": "Введите адрес сайта",
+    "Enter your Website": "Введите адрес сайта",
+    "Get a free audit": "Получить бесплатный аудит",
+    "Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era.": "Studio 17 — международное агентство маркетинга и веб-разработки, работающее с клиентами в Португалии, на Кипре, во Франции, Великобритании и США, создавая более эффективные цифровые решения и помогая бизнесу расти в эпоху искусственного интеллекта.",
     "Not sure where to start?": "Не знаете, с чего начать?",
     "Open Studio 17 guidance": "Открыть рекомендации Studio 17",
     "Close guidance": "Закрыть рекомендации",

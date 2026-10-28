@@ -5,8 +5,8 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Marketing Agency for your problems | Built for modern growth",
-        "description": "Studio 17 is a European marketing agency building websites, content, digital systems and AI solutions for modern business growth."
+        "title": "Digital Marketing Agency | SEO, Social Media & Web Development",
+        "description": "Grow your brand and revenue with Studio 17 through digital marketing, SEO, AI visibility, Social Media and web development."
       },
       "sitemap": {
         "title": "Sitemap — Studio 17",
@@ -219,8 +219,8 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Agência de marketing para os seus problemas | Criada para o crescimento moderno",
-        "description": "A Studio 17 é uma agência europeia de marketing que cria websites, conteúdos, sistemas digitais e soluções de IA para o crescimento de empresas modernas."
+        "title": "Agência de Marketing Digital | SEO, Redes Sociais e Desenvolvimento Web",
+        "description": "Faça crescer a sua marca e a receita com a Studio 17 através de marketing digital, SEO, visibilidade em IA, redes sociais e desenvolvimento web."
       },
       "sitemap": {
         "title": "Mapa do site — Studio 17",
@@ -256,6 +256,22 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "&": "e",
+      "Grow your": "Faça crescer a sua",
+      "brand": "marca",
+      "& revenue with smarter digital marketing": "e a receita com marketing digital mais inteligente",
+      "revenue with smarter digital marketing": "a receita com marketing digital mais inteligente",
+      "Grow your brand and revenue with smarter digital marketing": "Faça crescer a sua marca e a receita com marketing digital mais inteligente",
+      "We help": "Ajudamos",
+      "brands": "marcas",
+      "attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.": "a atrair o público certo, gerar leads qualificados e aumentar a receita através de marketing digital moderno, SEO, visibilidade em IA, redes sociais e desenvolvimento web.",
+      "Choose an audit type": "Escolha um tipo de auditoria",
+      "Website audit": "Auditoria ao website",
+      "Social Media audit": "Auditoria às redes sociais",
+      "Enter your website": "Introduza o seu website",
+      "Enter your Website": "Introduza o seu website",
+      "Get a free audit": "Obter uma auditoria gratuita",
+      "Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era.": "A Studio 17 é uma agência internacional de marketing e desenvolvimento de websites, que trabalha com clientes em Portugal, Chipre, França, Reino Unido e Estados Unidos para criar experiências digitais mais fortes e ajudar as empresas a crescer na era da inteligência artificial.",
       "Not sure where to start?": "Não sabe por onde começar?",
       "Open Studio 17 guidance": "Abrir orientação da Studio 17",
       "Close guidance": "Fechar orientação",
@@ -995,8 +1011,8 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Agencia de marketing para tus problemas | Creada para el crecimiento moderno",
-        "description": "Studio 17 es una agencia europea de marketing que crea sitios web, contenido, sistemas digitales y soluciones de IA para el crecimiento de empresas modernas."
+        "title": "Agencia de Marketing Digital | SEO, Redes Sociales y Desarrollo Web",
+        "description": "Haz crecer tu marca y tus ingresos con Studio 17 mediante marketing digital, SEO, visibilidad en IA, redes sociales y desarrollo web."
       },
       "sitemap": {
         "title": "Mapa del sitio — Studio 17",
@@ -1032,6 +1048,22 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "&": "y",
+      "Grow your": "Haz crecer tu",
+      "brand": "marca",
+      "& revenue with smarter digital marketing": "y tus ingresos con un marketing digital más inteligente",
+      "revenue with smarter digital marketing": "tus ingresos con un marketing digital más inteligente",
+      "Grow your brand and revenue with smarter digital marketing": "Haz crecer tu marca y tus ingresos con un marketing digital más inteligente",
+      "We help": "Ayudamos a",
+      "brands": "marcas",
+      "attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.": "a atraer a la audiencia adecuada, generar leads cualificados y aumentar los ingresos mediante marketing digital moderno, SEO, visibilidad en IA, redes sociales y desarrollo web.",
+      "Choose an audit type": "Elige un tipo de auditoría",
+      "Website audit": "Auditoría web",
+      "Social Media audit": "Auditoría de redes sociales",
+      "Enter your website": "Introduce tu sitio web",
+      "Enter your Website": "Introduce tu sitio web",
+      "Get a free audit": "Obtener una auditoría gratuita",
+      "Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era.": "Studio 17 es una agencia internacional de marketing y desarrollo web que trabaja con clientes en Portugal, Chipre, Francia, Reino Unido y Estados Unidos para crear experiencias digitales más sólidas y ayudar a las empresas a crecer en la era de la inteligencia artificial.",
       "Not sure where to start?": "¿No sabes por dónde empezar?",
       "Open Studio 17 guidance": "Abrir orientación de Studio 17",
       "Close guidance": "Cerrar orientación",
@@ -1704,8 +1736,8 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Εταιρεία μάρκετινγκ για τα προβλήματά σας | Σχεδιασμένο για σύγχρονη ανάπτυξη",
-        "description": "Η Studio 17 είναι μια ευρωπαϊκή εταιρεία μάρκετινγκ που δημιουργεί ιστοσελίδες, περιεχόμενο, ψηφιακά συστήματα και λύσεις ΤΝ."
+        "title": "Digital Marketing Agency | SEO, Social Media και Web Development",
+        "description": "Αναπτύξτε την επωνυμία και τα έσοδά σας με τη Studio 17 μέσω digital marketing, SEO, προβολής στην τεχνητή νοημοσύνη, social media και ανάπτυξης ιστοσελίδων."
       },
       "sitemap": {
         "title": "Χάρτης ιστοτόπου — Studio 17",
@@ -1741,6 +1773,22 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "&": "και",
+      "Grow your": "Αναπτύξτε την",
+      "brand": "επωνυμία",
+      "& revenue with smarter digital marketing": "και τα έσοδά σας με εξυπνότερο ψηφιακό μάρκετινγκ",
+      "revenue with smarter digital marketing": "τα έσοδά σας με εξυπνότερο ψηφιακό μάρκετινγκ",
+      "Grow your brand and revenue with smarter digital marketing": "Αναπτύξτε την επωνυμία και τα έσοδά σας με εξυπνότερο ψηφιακό μάρκετινγκ",
+      "We help": "Βοηθάμε",
+      "brands": "επωνυμίες",
+      "attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.": "να προσελκύουν το σωστό κοινό, να δημιουργούν ποιοτικές επαφές και να αυξάνουν τα έσοδα μέσω σύγχρονου digital marketing, SEO, προβολής στην τεχνητή νοημοσύνη, social media και ανάπτυξης ιστοσελίδων.",
+      "Choose an audit type": "Επιλέξτε τύπο ελέγχου",
+      "Website audit": "Έλεγχος ιστοσελίδας",
+      "Social Media audit": "Έλεγχος social media",
+      "Enter your website": "Εισαγάγετε την ιστοσελίδα σας",
+      "Enter your Website": "Εισαγάγετε την ιστοσελίδα σας",
+      "Get a free audit": "Λάβετε δωρεάν έλεγχο",
+      "Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era.": "Η Studio 17 είναι μια διεθνής εταιρεία μάρκετινγκ και ανάπτυξης ιστοσελίδων, που συνεργάζεται με πελάτες στην Πορτογαλία, την Κύπρο, τη Γαλλία, το Ηνωμένο Βασίλειο και τις ΗΠΑ, δημιουργώντας ισχυρότερες ψηφιακές εμπειρίες και βοηθώντας τις επιχειρήσεις να αναπτυχθούν στην εποχή της τεχνητής νοημοσύνης.",
       "Not sure where to start?": "Δεν ξέρετε από πού να ξεκινήσετε;",
       "Open Studio 17 guidance": "Άνοιγμα καθοδήγησης Studio 17",
       "Close guidance": "Κλείσιμο καθοδήγησης",
@@ -2413,8 +2461,8 @@ window.Studio17LocaleData = {
     "direction": "ltr",
     "meta": {
       "home": {
-        "title": "Маркетинговое агентство для решения ваших задач | Создано для современного роста",
-        "description": "Studio 17 — европейское маркетинговое агентство, создающее сайты, контент, цифровые системы и решения с ИИ для современного бизнеса."
+        "title": "Агентство цифрового маркетинга | SEO, соцсети и веб-разработка",
+        "description": "Развивайте бренд и увеличивайте доход со Studio 17 с помощью цифрового маркетинга, SEO, видимости в ИИ, социальных сетей и веб-разработки."
       },
       "sitemap": {
         "title": "Карта сайта — Studio 17",
@@ -2450,6 +2498,22 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "&": "и",
+      "Grow your": "Развивайте",
+      "brand": "бренд",
+      "& revenue with smarter digital marketing": "и увеличивайте доход с помощью умного цифрового маркетинга",
+      "revenue with smarter digital marketing": "увеличивайте доход с помощью умного цифрового маркетинга",
+      "Grow your brand and revenue with smarter digital marketing": "Развивайте бренд и увеличивайте доход с помощью умного цифрового маркетинга",
+      "We help": "Мы помогаем",
+      "brands": "брендам",
+      "attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.": "привлекать нужную аудиторию, получать качественные лиды и увеличивать доход с помощью современного цифрового маркетинга, SEO, видимости в ИИ, социальных сетей и веб-разработки.",
+      "Choose an audit type": "Выберите тип аудита",
+      "Website audit": "Аудит сайта",
+      "Social Media audit": "Аудит соцсетей",
+      "Enter your website": "Введите адрес сайта",
+      "Enter your Website": "Введите адрес сайта",
+      "Get a free audit": "Получить бесплатный аудит",
+      "Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era.": "Studio 17 — международное агентство маркетинга и веб-разработки, работающее с клиентами в Португалии, на Кипре, во Франции, Великобритании и США, создавая более эффективные цифровые решения и помогая бизнесу расти в эпоху искусственного интеллекта.",
       "Not sure where to start?": "Не знаете, с чего начать?",
       "Open Studio 17 guidance": "Открыть рекомендации Studio 17",
       "Close guidance": "Закрыть рекомендации",
@@ -3122,8 +3186,8 @@ window.Studio17LocaleData = {
     "direction": "rtl",
     "meta": {
       "home": {
-        "title": "סוכנות שיווק לפתרון הבעיות שלכם | נבנה לצמיחה מודרנית",
-        "description": "Studio 17 היא סוכנות שיווק אירופית שיוצרת אתרים, תוכן, מערכות דיגיטליות ופתרונות בינה מלאכותית לצמיחה עסקית מודרנית."
+        "title": "סוכנות שיווק דיגיטלי | SEO, רשתות חברתיות ופיתוח אתרים",
+        "description": "הצמיחו את המותג וההכנסות עם Studio 17 באמצעות שיווק דיגיטלי, SEO, נראות במנועי AI, רשתות חברתיות ופיתוח אתרים."
       },
       "sitemap": {
         "title": "מפת האתר — Studio 17",
@@ -3159,6 +3223,22 @@ window.Studio17LocaleData = {
       }
     },
     "strings": {
+      "&": "ו",
+      "Grow your": "הצמיחו את",
+      "brand": "המותג",
+      "& revenue with smarter digital marketing": "וההכנסות שלכם באמצעות שיווק דיגיטלי חכם יותר",
+      "revenue with smarter digital marketing": "ההכנסות שלכם באמצעות שיווק דיגיטלי חכם יותר",
+      "Grow your brand and revenue with smarter digital marketing": "הצמיחו את המותג וההכנסות שלכם באמצעות שיווק דיגיטלי חכם יותר",
+      "We help": "אנחנו עוזרים",
+      "brands": "למותגים",
+      "attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.": "למשוך את הקהל הנכון, לייצר לידים איכותיים ולהגדיל הכנסות באמצעות שיווק דיגיטלי מודרני, SEO, נראות במנועי AI, רשתות חברתיות ופיתוח אתרים.",
+      "Choose an audit type": "בחרו סוג בדיקה",
+      "Website audit": "בדיקת אתר",
+      "Social Media audit": "בדיקת רשתות חברתיות",
+      "Enter your website": "הזינו את כתובת האתר",
+      "Enter your Website": "הזינו את כתובת האתר",
+      "Get a free audit": "קבלו בדיקה חינמית",
+      "Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era.": "Studio 17 היא סוכנות בינלאומית לשיווק ולפיתוח אתרים, העובדת עם לקוחות בפורטוגל, קפריסין, צרפת, בריטניה וארצות הברית כדי ליצור חוויות דיגיטליות טובות יותר ולעזור לעסקים לצמוח בעידן הבינה המלאכותית.",
       "Not sure where to start?": "לא בטוחים מאיפה להתחיל?",
       "Open Studio 17 guidance": "פתיחת ההכוונה של Studio 17",
       "Close guidance": "סגירת ההכוונה",

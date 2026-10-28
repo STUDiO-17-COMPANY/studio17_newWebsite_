@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Studio 17 is a European marketing agency building websites, content, digital systems and AI solutions for modern business growth.">
+  <meta name="description" content="Grow your brand and revenue with Studio 17 through digital marketing, SEO, AI visibility, Social Media and web development.">
   <meta name="theme-color" content="#0f172a">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://www.studio17.world/" data-seo-canonical>
@@ -16,12 +16,12 @@
   <link rel="alternate" hreflang="he" href="https://www.studio17.world/he/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Studio 17">
-  <meta property="og:title" content="Marketing Agency for your problems | Built for modern growth">
-  <meta property="og:description" content="European marketing agency building websites, content, digital systems and AI solutions for modern business growth.">
+  <meta property="og:title" content="Digital Marketing Agency | SEO, Social Media &amp; Web Development">
+  <meta property="og:description" content="Grow your brand and revenue through digital marketing, SEO, AI visibility, Social Media and web development.">
   <meta property="og:url" content="https://www.studio17.world/" data-seo-og-url>
-  <meta name="twitter:title" content="Marketing Agency for your problems | Built for modern growth">
-  <meta name="twitter:description" content="European marketing agency building websites, content, digital systems and AI solutions for modern business growth.">
-  <title>Marketing Agency for your problems | Built for modern growth</title>
+  <meta name="twitter:title" content="Digital Marketing Agency | SEO, Social Media &amp; Web Development">
+  <meta name="twitter:description" content="Grow your brand and revenue through digital marketing, SEO, AI visibility, Social Media and web development.">
+  <title>Digital Marketing Agency | SEO, Social Media &amp; Web Development</title>
   <link rel="icon" type="image/png" href="Images/FavIcon.png">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="styles.css">
@@ -30,6 +30,7 @@
   <script src="i18n.js" defer></script>
   <script src="analytics.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="homepage-audit.js" defer></script>
   <script src="article-feed.js" defer></script>
   <script type="application/ld+json">
     {
@@ -132,20 +133,24 @@
   </header>
 
   <main id="main-content">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-media" aria-hidden="true"><img src="Images/hero-team.webp" alt=""></div>
-      <div class="shell hero-grid">
-        <div class="hero-title-block reveal">
-          <h1 id="hero-title">Marketing Agency for <br>your problems</h1>
-          <a class="media-play" href="/work" data-force-language="en" aria-label="Explore Studio 17 featured work"><i data-lucide="play" aria-hidden="true"></i></a>
-        </div>
-        <div class="hero-copy reveal" data-delay="1">
-          <h2>Built for modern growth</h2>
-          <p>We help brands and businesses stay relevant, communicate clearly and grow through marketing solutions built for the way people discover, trust and choose businesses today.</p>
-          <div class="hero-actions">
-            <a class="design-link design-link-dark" href="/work" data-force-language="en">View our work <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
-            <a class="design-link design-link-dark" href="/contact">Talk to Sales <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
-          </div>
+    <section class="hero home-conversion-hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-media"><img src="Images/HomePage_heroimage.avif" alt="Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era."></div>
+      <div class="shell hero-grid home-hero-grid">
+        <div class="home-hero-content reveal">
+          <h1 id="hero-title" aria-label="Grow your brand and revenue with smarter digital marketing">Grow your <span class="home-hero-rotating-word" data-hero-word="title">brand</span> &amp; revenue with smarter digital marketing</h1>
+          <p>We help <span class="home-hero-rotating-word" data-hero-word="copy">brands</span> attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.</p>
+          <form class="hero-audit" data-hero-audit-form novalidate>
+            <div class="hero-audit-toggle" role="group" aria-label="Choose an audit type">
+              <button type="button" data-audit-type="website" aria-pressed="true">Website audit</button>
+              <button type="button" data-audit-type="social-media" aria-pressed="false">Social Media audit</button>
+            </div>
+            <div class="hero-audit-entry">
+              <label class="sr-only" for="hero-audit-target" data-audit-label>Enter your website</label>
+              <input id="hero-audit-target" name="auditTarget" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder="Enter your Website" aria-describedby="hero-audit-status" required>
+              <button type="submit" data-hero-audit-submit>Get a free audit <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></button>
+            </div>
+            <p class="hero-audit-status" id="hero-audit-status" data-hero-audit-status role="status" aria-live="polite" hidden></p>
+          </form>
         </div>
       </div>
     </section>

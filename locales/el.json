@@ -3,8 +3,8 @@
   "direction": "ltr",
   "meta": {
     "home": {
-      "title": "Εταιρεία μάρκετινγκ για τα προβλήματά σας | Σχεδιασμένο για σύγχρονη ανάπτυξη",
-      "description": "Η Studio 17 είναι μια ευρωπαϊκή εταιρεία μάρκετινγκ που δημιουργεί ιστοσελίδες, περιεχόμενο, ψηφιακά συστήματα και λύσεις ΤΝ."
+      "title": "Digital Marketing Agency | SEO, Social Media και Web Development",
+      "description": "Αναπτύξτε την επωνυμία και τα έσοδά σας με τη Studio 17 μέσω digital marketing, SEO, προβολής στην τεχνητή νοημοσύνη, social media και ανάπτυξης ιστοσελίδων."
     },
     "sitemap": {
       "title": "Χάρτης ιστοτόπου — Studio 17",
@@ -40,6 +40,22 @@
     }
   },
   "strings": {
+    "&": "και",
+    "Grow your": "Αναπτύξτε την",
+    "brand": "επωνυμία",
+    "& revenue with smarter digital marketing": "και τα έσοδά σας με εξυπνότερο ψηφιακό μάρκετινγκ",
+    "revenue with smarter digital marketing": "τα έσοδά σας με εξυπνότερο ψηφιακό μάρκετινγκ",
+    "Grow your brand and revenue with smarter digital marketing": "Αναπτύξτε την επωνυμία και τα έσοδά σας με εξυπνότερο ψηφιακό μάρκετινγκ",
+    "We help": "Βοηθάμε",
+    "brands": "επωνυμίες",
+    "attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.": "να προσελκύουν το σωστό κοινό, να δημιουργούν ποιοτικές επαφές και να αυξάνουν τα έσοδα μέσω σύγχρονου digital marketing, SEO, προβολής στην τεχνητή νοημοσύνη, social media και ανάπτυξης ιστοσελίδων.",
+    "Choose an audit type": "Επιλέξτε τύπο ελέγχου",
+    "Website audit": "Έλεγχος ιστοσελίδας",
+    "Social Media audit": "Έλεγχος social media",
+    "Enter your website": "Εισαγάγετε την ιστοσελίδα σας",
+    "Enter your Website": "Εισαγάγετε την ιστοσελίδα σας",
+    "Get a free audit": "Λάβετε δωρεάν έλεγχο",
+    "Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era.": "Η Studio 17 είναι μια διεθνής εταιρεία μάρκετινγκ και ανάπτυξης ιστοσελίδων, που συνεργάζεται με πελάτες στην Πορτογαλία, την Κύπρο, τη Γαλλία, το Ηνωμένο Βασίλειο και τις ΗΠΑ, δημιουργώντας ισχυρότερες ψηφιακές εμπειρίες και βοηθώντας τις επιχειρήσεις να αναπτυχθούν στην εποχή της τεχνητής νοημοσύνης.",
     "Not sure where to start?": "Δεν ξέρετε από πού να ξεκινήσετε;",
     "Open Studio 17 guidance": "Άνοιγμα καθοδήγησης Studio 17",
     "Close guidance": "Κλείσιμο καθοδήγησης",

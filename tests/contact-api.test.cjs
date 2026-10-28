@@ -22,13 +22,14 @@ const createResponse = () => {
 };
 
 let requestNumber = 0;
-const call = async ({ method = 'POST', body = {}, origin = 'https://www.studio17.world', ip } = {}) => {
+const call = async ({ method = 'POST', body = {}, origin = 'https://www.studio17.world', ip, url = '/api/contact', country } = {}) => {
   const response = createResponse();
   requestNumber += 1;
   await contactHandler({
     method,
+    url,
     body,
-    headers: { origin, 'x-forwarded-for': ip || `192.0.2.${requestNumber}` }
+    headers: { origin, 'x-forwarded-for': ip || `192.0.2.${requestNumber}`, 'x-vercel-ip-country': country || '' }
   }, response);
   return { response, payload: JSON.parse(response.body) };
 };
@@ -57,9 +58,13 @@ const validSubmission = {
   try {
     const method = await call({ method: 'GET' });
     assert.equal(method.response.statusCode, 405);
-    assert.equal(method.response.getHeader('allow'), 'POST');
+    assert.equal(method.response.getHeader('allow'), 'GET, POST');
     assert.equal(method.response.getHeader('cache-control'), 'no-store');
     assert.equal(method.response.getHeader('x-content-type-options'), 'nosniff');
+
+    const location = await call({ method: 'GET', url: '/api/contact?mode=location', country: 'PT' });
+    assert.equal(location.response.statusCode, 200);
+    assert.deepEqual(location.payload, { ok: true, country: 'PT' });
 
     const origin = await call({ body: validSubmission, origin: 'https://malicious.example' });
     assert.equal(origin.response.statusCode, 403);
@@ -127,6 +132,24 @@ const validSubmission = {
     assert.deepEqual(sentRequest.body.tags, [
       { name: 'source', value: 'website-contact' },
       { name: 'language', value: 'pt-PT' },
+      { name: 'service', value: 'website' }
+    ]);
+
+    const quickAudit = await call({ body: {
+      mode: 'quick-audit',
+      auditType: 'website',
+      auditTarget: 'https://example.com',
+      language: 'en',
+      submissionId: 'quick-audit-submission'
+    } });
+    assert.equal(quickAudit.response.statusCode, 200);
+    const quickAuditRequest = sentRequests.at(-1);
+    assert.match(quickAuditRequest.body.subject, /Free website audit lead/);
+    assert.match(quickAuditRequest.body.text, /Target: https:\/\/example\.com/);
+    assert.equal(quickAuditRequest.body.reply_to, undefined);
+    assert.deepEqual(quickAuditRequest.body.tags, [
+      { name: 'source', value: 'homepage-audit' },
+      { name: 'language', value: 'en' },
       { name: 'service', value: 'website' }
     ]);
 

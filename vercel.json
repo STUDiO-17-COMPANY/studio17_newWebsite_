@@ -1,13 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "buildCommand": "node scripts/sync-document-metadata.cjs && node scripts/build-localized-pages.cjs && node --test tests/default-og-image.test.cjs tests/multilingual-routing.test.cjs",
+  "buildCommand": "node scripts/sync-document-metadata.cjs && node scripts/build-localized-pages.cjs && node --test tests/default-og-image.test.cjs tests/multilingual-routing.test.cjs tests/homepage-audit.test.cjs tests/contact-api.test.cjs",
   "outputDirectory": ".",
   "proxy": {
     "entrypoint": "proxy.ts",
     "matcher": [
       "/",
-      "/contact",
+      "/contact/:path*",
       "/faq",
       "/about",
       "/our-story",
@@ -57,6 +57,8 @@
     { "source": "/api/careers", "destination": "/api/career-page?format=json&listing=1" },
     { "source": "/api/career-role", "destination": "/api/career-page?format=json" },
     { "source": "/llms.txt", "destination": "/api/llms" },
+    { "source": "/contact/free-website-audit", "destination": "/audit-contact" },
+    { "source": "/contact/free-social-media-audit", "destination": "/audit-contact" },
     { "source": "/pt/", "destination": "/api/home-page?lang=pt-PT" },
     { "source": "/es/", "destination": "/api/home-page?lang=es" },
     { "source": "/el/", "destination": "/api/home-page?lang=el" },

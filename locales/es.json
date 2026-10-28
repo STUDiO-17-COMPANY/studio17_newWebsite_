@@ -3,8 +3,8 @@
   "direction": "ltr",
   "meta": {
     "home": {
-      "title": "Agencia de marketing para tus problemas | Creada para el crecimiento moderno",
-      "description": "Studio 17 es una agencia europea de marketing que crea sitios web, contenido, sistemas digitales y soluciones de IA para el crecimiento de empresas modernas."
+      "title": "Agencia de Marketing Digital | SEO, Redes Sociales y Desarrollo Web",
+      "description": "Haz crecer tu marca y tus ingresos con Studio 17 mediante marketing digital, SEO, visibilidad en IA, redes sociales y desarrollo web."
     },
     "sitemap": {
       "title": "Mapa del sitio — Studio 17",
@@ -40,6 +40,22 @@
     }
   },
   "strings": {
+    "&": "y",
+    "Grow your": "Haz crecer tu",
+    "brand": "marca",
+    "& revenue with smarter digital marketing": "y tus ingresos con un marketing digital más inteligente",
+    "revenue with smarter digital marketing": "tus ingresos con un marketing digital más inteligente",
+    "Grow your brand and revenue with smarter digital marketing": "Haz crecer tu marca y tus ingresos con un marketing digital más inteligente",
+    "We help": "Ayudamos a",
+    "brands": "marcas",
+    "attract the right audience, generate qualified leads, and grow revenue through modern digital marketing, SEO, AI visibility, Social Media and web development.": "a atraer a la audiencia adecuada, generar leads cualificados y aumentar los ingresos mediante marketing digital moderno, SEO, visibilidad en IA, redes sociales y desarrollo web.",
+    "Choose an audit type": "Elige un tipo de auditoría",
+    "Website audit": "Auditoría web",
+    "Social Media audit": "Auditoría de redes sociales",
+    "Enter your website": "Introduce tu sitio web",
+    "Enter your Website": "Introduce tu sitio web",
+    "Get a free audit": "Obtener una auditoría gratuita",
+    "Studio 17 international marketing agency and web development agency, working with clients across Portugal, Cyprus, France, the United Kingdom and the USA to build stronger digital experiences and help businesses grow in the AI era.": "Studio 17 es una agencia internacional de marketing y desarrollo web que trabaja con clientes en Portugal, Chipre, Francia, Reino Unido y Estados Unidos para crear experiencias digitales más sólidas y ayudar a las empresas a crecer en la era de la inteligencia artificial.",
     "Not sure where to start?": "¿No sabes por dónde empezar?",
     "Open Studio 17 guidance": "Abrir orientación de Studio 17",
     "Close guidance": "Cerrar orientación",

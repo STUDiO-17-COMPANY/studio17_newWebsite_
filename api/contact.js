@@ -12,6 +12,7 @@ const attempts = new Map();
 const allowedServices = new Set(['website', 'free-website', 'seo', 'content', 'social-media', 'advertising', 'digital-systems', 'ai-solutions', 'other']);
 const allowedBudgets = new Set(['not-sure', 'under-1k', '1k-3k', '3k-10k', '10k-plus']);
 const allowedLanguages = new Set(['en', 'pt-PT', 'es', 'el', 'ru', 'he']);
+const allowedAuditTypes = new Set(['website', 'social-media']);
 const serviceLabels = {
   website: 'Website',
   'free-website': 'Free Website application',
@@ -109,6 +110,22 @@ const validate = body => {
   return { valid, data };
 };
 
+const validateQuickAudit = body => {
+  const data = {
+    auditType: clean(body.auditType, 30),
+    auditTarget: clean(body.auditTarget, 300),
+    language: clean(body.language || 'en', 10),
+    submissionId: clean(body.submissionId, 100)
+  };
+  const looksLikeTarget = data.auditTarget.length >= 3
+    && data.auditTarget.length <= 300
+    && !/[\r\n<>]/.test(data.auditTarget);
+  return {
+    valid: allowedAuditTypes.has(data.auditType) && looksLikeTarget && allowedLanguages.has(data.language),
+    data
+  };
+};
+
 const allowedOrigin = request => {
   const origin = getHeader(request, 'origin');
   if (!origin) return true;
@@ -169,9 +186,49 @@ const emailText = data => [
   data.message
 ].filter(line => line !== '').join('\n');
 
+const quickAuditMarkup = data => `<!doctype html><html><body style="margin:0;background:#f1f5f9;font-family:Arial,sans-serif;color:#0f172a"><div style="max-width:680px;margin:0 auto;padding:32px 16px"><div style="background:#0f172a;color:#fff;padding:24px 28px"><strong style="font-size:22px">Studio 17</strong><p style="margin:8px 0 0;color:#cbd5e1">New free audit lead</p></div><div style="background:#fff;padding:28px"><p style="margin:0 0 8px;color:#64748b">Audit type</p><p style="margin:0 0 22px;font-size:18px;font-weight:700">${escapeHtml(data.auditType === 'website' ? 'Website audit' : 'Social Media audit')}</p><p style="margin:0 0 8px;color:#64748b">Submitted website or social profile</p><p style="margin:0;font-size:18px;font-weight:700;overflow-wrap:anywhere">${escapeHtml(data.auditTarget)}</p></div></div></body></html>`;
+
+const sendEmail = async ({ data, idempotencyId, payload, response }) => {
+  try {
+    const emailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'content-type': 'application/json',
+        'user-agent': 'Studio17-Website/1.0',
+        'idempotency-key': `contact/${idempotencyId}`
+      },
+      body: JSON.stringify(payload)
+    });
+    if (!emailResponse.ok) {
+      const errorPayload = await emailResponse.json().catch(() => ({}));
+      console.error('Contact email failed', emailResponse.status, errorPayload.name || errorPayload.error || 'RESEND_ERROR');
+      sendJson(response, 502, { ok: false, error: { code: 'EMAIL_DELIVERY_FAILED' } });
+      return false;
+    }
+    sendJson(response, 200, { ok: true });
+    return true;
+  } catch (error) {
+    console.error('Contact email unavailable', error?.name || 'NETWORK_ERROR');
+    sendJson(response, 502, { ok: false, error: { code: 'EMAIL_DELIVERY_FAILED' } });
+    return false;
+  }
+};
+
 module.exports = async function contactHandler(request, response) {
+  if (request.method === 'GET') {
+    const url = new URL(request.url || '/api/contact', 'https://www.studio17.world');
+    if (url.searchParams.get('mode') !== 'location') {
+      response.setHeader('Allow', 'GET, POST');
+      sendJson(response, 405, { ok: false, error: { code: 'METHOD_NOT_ALLOWED' } });
+      return;
+    }
+    const country = clean(getHeader(request, 'x-vercel-ip-country'), 2).toUpperCase();
+    sendJson(response, 200, { ok: true, country: /^[A-Z]{2}$/.test(country) ? country : '' });
+    return;
+  }
   if (request.method !== 'POST') {
-    response.setHeader('Allow', 'POST');
+    response.setHeader('Allow', 'GET, POST');
     sendJson(response, 405, { ok: false, error: { code: 'METHOD_NOT_ALLOWED' } });
     return;
   }
@@ -191,7 +248,37 @@ module.exports = async function contactHandler(request, response) {
     return;
   }
 
-  const { valid, data } = validate(body);
+  const isQuickAudit = body.mode === 'quick-audit';
+  const { valid, data } = isQuickAudit ? validateQuickAudit(body) : validate(body);
+  if (isQuickAudit) {
+    if (!valid) {
+      sendJson(response, 400, { ok: false, error: { code: 'INVALID_SUBMISSION' } });
+      return;
+    }
+    if (!process.env.RESEND_API_KEY) {
+      sendJson(response, 503, { ok: false, error: { code: 'CONTACT_NOT_CONFIGURED' } });
+      return;
+    }
+    const idempotencyId = /^[A-Za-z0-9-]{8,100}$/.test(data.submissionId) ? data.submissionId : crypto.randomUUID();
+    await sendEmail({
+      data,
+      idempotencyId,
+      response,
+      payload: {
+        from: CONTACT_FROM,
+        to: [CONTACT_TO],
+        subject: `Free ${data.auditType === 'website' ? 'website' : 'social media'} audit lead — ${data.auditTarget}`.slice(0, 180),
+        html: quickAuditMarkup(data),
+        text: `New Studio 17 free audit lead\n\nAudit type: ${data.auditType}\nTarget: ${data.auditTarget}\nWebsite language: ${data.language}`,
+        tags: [
+          { name: 'source', value: 'homepage-audit' },
+          { name: 'language', value: data.language },
+          { name: 'service', value: data.auditType }
+        ]
+      }
+    });
+    return;
+  }
   if (data.website) {
     sendJson(response, 200, { ok: true });
     return;
@@ -209,16 +296,11 @@ module.exports = async function contactHandler(request, response) {
     ? data.submissionId
     : crypto.randomUUID();
   const subjectSuffix = data.company ? ` — ${data.company}` : '';
-  try {
-    const emailResponse = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-        'content-type': 'application/json',
-        'user-agent': 'Studio17-Website/1.0',
-        'idempotency-key': `contact/${idempotencyId}`
-      },
-      body: JSON.stringify({
+  await sendEmail({
+    data,
+    idempotencyId,
+    response,
+    payload: {
         from: CONTACT_FROM,
         to: [CONTACT_TO],
         reply_to: data.email,
@@ -230,17 +312,6 @@ module.exports = async function contactHandler(request, response) {
           { name: 'language', value: data.language },
           { name: 'service', value: data.service }
         ]
-      })
-    });
-    if (!emailResponse.ok) {
-      const errorPayload = await emailResponse.json().catch(() => ({}));
-      console.error('Contact email failed', emailResponse.status, errorPayload.name || errorPayload.error || 'RESEND_ERROR');
-      sendJson(response, 502, { ok: false, error: { code: 'EMAIL_DELIVERY_FAILED' } });
-      return;
-    }
-    sendJson(response, 200, { ok: true });
-  } catch (error) {
-    console.error('Contact email unavailable', error?.name || 'NETWORK_ERROR');
-    sendJson(response, 502, { ok: false, error: { code: 'EMAIL_DELIVERY_FAILED' } });
-  }
+      }
+  });
 };
