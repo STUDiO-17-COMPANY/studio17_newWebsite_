@@ -19,36 +19,44 @@
   ];
   const servicesMegaMenu = [
     {
-      categoryKey: 'social',
-      label: 'Social Media',
-      href: '/services/social-media',
-      items: [
-        ['socialManagement', 'Social Media management', '/wip#for=social-media-management'],
-        ['socialAutomation', 'Social Media automation', '/wip#for=social-media-automation'],
-        ['growthStrategy', 'Growth strategy', '/wip#for=growth-strategy'],
-        ['communityManagement', 'Community management', '/wip#for=community-management'],
-        ['freeAudit', 'Free Audit', '/wip#for=free-social-media-audit']
-      ]
-    },
-    {
       categoryKey: 'website',
-      label: 'Website',
+      label: 'Websites',
       href: '/services/website',
       items: [
-        ['websiteDevelopment', 'Website development', '/services/website-development'],
-        ['websiteRevamp', 'Website revamp', '/wip#for=website-revamp'],
-        ['websiteDesign', 'Website design', '/wip#for=website-design'],
-        ['seo', 'SEO', '/services/seo'],
-        ['geo', 'GEO', '/wip#for=geo'],
-        ['copywriting', 'Copywriting', '/wip#for=copywriting'],
-        ['localization', 'Localization and Translation', '/services/localization-and-translation'],
-        ['maintenance', 'Maintenance', '/wip#for=maintenance'],
+        ['websiteDevelopment', 'Website Development', '/services/website-development'],
+        ['websiteRevamp', 'Website Revamp', '/wip#for=website-revamp'],
+        ['websiteDesign', 'Website Design', '/wip#for=website-design'],
+        ['maintenance', 'Website Maintenance', '/wip#for=website-maintenance'],
         ['freeWebsite', 'Free Website', '/services/free-website']
       ]
     },
     {
+      categoryKey: 'seoVisibility',
+      label: 'SEO & Visibility',
+      href: '/services/seo',
+      items: [
+        ['seo', 'SEO', '/services/seo'],
+        ['aiSeoGeo', 'AI SEO & GEO', '/wip#for=ai-seo-geo'],
+        ['seoAudit', 'SEO Audit', '/wip#for=seo-audit'],
+        ['copywriting', 'Copywriting', '/wip#for=copywriting'],
+        ['localization', 'Localization and Translation', '/services/localization-and-translation'],
+      ]
+    },
+    {
+      categoryKey: 'social',
+      label: 'Social Media',
+      href: '/services/social-media',
+      items: [
+        ['socialManagement', 'Social Media Management', '/wip#for=social-media-management'],
+        ['socialAutomation', 'Social Media Automation', '/wip#for=social-media-automation'],
+        ['growthStrategy', 'Growth Strategy', '/wip#for=growth-strategy'],
+        ['communityManagement', 'Community Management', '/wip#for=community-management'],
+        ['freeAudit', 'Free Social Media Audit', '/wip#for=free-social-media-audit']
+      ]
+    },
+    {
       categoryKey: 'content',
-      label: 'Content creation',
+      label: 'Content Creation',
       href: '/wip#for=content-creation',
       items: [
         ['filming', 'Filming', '/wip#for=filming'],
@@ -62,7 +70,7 @@
     },
     {
       categoryKey: 'ads',
-      label: 'Advertisement',
+      label: 'Paid Advertising',
       href: '/wip#for=advertisement',
       items: [
         ['metaAds', 'Meta ads', '/wip#for=meta-ads'],
@@ -70,22 +78,7 @@
         ['socialAds', 'Social Media ads', '/wip#for=social-media-ads'],
         ['influencerAds', 'Influencer ads', '/wip#for=influencer-ads'],
         ['ugcCreators', 'UGC creators', '/wip#for=ugc-creators'],
-        ['emailAds', 'Email ads', '/wip#for=email-ads']
-      ]
-    },
-    {
-      categoryKey: 'industry',
-      label: 'By Industry',
-      href: '/wip#for=by-industry',
-      items: [
-        ['automotive', 'Automotive', '/wip#for=automotive'],
-        ['restaurants', 'Restaurants', '/wip#for=restaurants'],
-        ['health', 'Health care', '/wip#for=health-care'],
-        ['ecommerce', 'E-Commerce', '/wip#for=ecommerce'],
-        ['influencers', 'Individual Influencers', '/wip#for=individual-influencers'],
-        ['education', 'Education', '/wip#for=education'],
-        ['local', 'Local Business', '/wip#for=local-business'],
-        ['smes', 'SMEs', '/wip#for=smes']
+        ['emailAds', 'Email Advertising', '/wip#for=email-advertising']
       ]
     },
     {
@@ -93,11 +86,111 @@
       label: 'Events',
       href: '/wip#for=events',
       items: [
-        ['presentialEvents', 'Presential Events', '/wip#for=presential-events'],
+        ['presentialEvents', 'In-Person Events', '/wip#for=in-person-events'],
         ['onlineEvents', 'Online Events', '/wip#for=online-events']
       ]
     }
   ];
+
+  const visibilityMegaMenu = [
+    {
+      label: 'SEO',
+      items: [
+        ['SEO', '/services/seo'],
+        ['Technical SEO', '/wip#for=technical-seo'],
+        ['Local SEO', '/wip#for=local-seo'],
+        ['SEO Content Strategy', '/wip#for=seo-content-strategy'],
+        ['International SEO', '/wip#for=international-seo']
+      ]
+    },
+    {
+      label: 'AI SEO & GEO',
+      items: [
+        ['AI SEO & GEO', '/wip#for=ai-seo-geo'],
+        ['AI Visibility Audit', '/wip#for=ai-visibility-audit'],
+        ['AI Visibility Monitoring', '/wip#for=ai-visibility-monitoring'],
+        ['AI Competitor Analysis', '/wip#for=ai-competitor-analysis']
+      ]
+    },
+    {
+      label: 'Business Visibility',
+      items: [
+        ['Google Business Profile Management', '/wip#for=google-business-profile-management'],
+        ['Online Reputation Management', '/wip#for=online-reputation-management'],
+        ['Digital PR & Link Building', '/wip#for=digital-pr-link-building']
+      ]
+    },
+    {
+      label: 'Content & Localization',
+      items: [
+        ['Copywriting', '/wip#for=copywriting'],
+        ['Localization & Translation', '/services/localization-and-translation']
+      ]
+    },
+    {
+      label: 'Audits',
+      items: [
+        ['SEO Audit', '/wip#for=seo-audit'],
+        ['AI Visibility Audit', '/wip#for=ai-visibility-audit']
+      ]
+    }
+  ];
+
+  const headerMenuTranslations = {
+    'pt-PT': {
+      visibilityTop: 'SEO com IA e Visibilidade',
+      serviceCategories: { website: 'Websites', seoVisibility: 'SEO e Visibilidade', social: 'Redes Sociais', content: 'Criação de Conteúdos', ads: 'Publicidade Paga', events: 'Eventos' },
+      serviceItems: { aiSeoGeo: 'SEO com IA e GEO', seoAudit: 'Auditoria SEO', maintenance: 'Manutenção de Websites', freeAudit: 'Auditoria Gratuita de Redes Sociais' },
+      visibility: { 'AI SEO & GEO': 'SEO com IA e GEO', 'Technical SEO': 'SEO Técnico', 'Local SEO': 'SEO Local', 'SEO Content Strategy': 'Estratégia de Conteúdo SEO', 'International SEO': 'SEO Internacional', 'AI Visibility Audit': 'Auditoria de Visibilidade em IA', 'AI Visibility Monitoring': 'Monitorização de Visibilidade em IA', 'AI Competitor Analysis': 'Análise de Concorrentes em IA', 'Business Visibility': 'Visibilidade Empresarial', 'Google Business Profile Management': 'Gestão do Perfil de Empresa no Google', 'Online Reputation Management': 'Gestão de Reputação Online', 'Digital PR & Link Building': 'Relações Públicas Digitais e Link Building', 'Content & Localization': 'Conteúdo e Localização', 'Localization & Translation': 'Localização e Tradução', Audits: 'Auditorias', 'SEO Audit': 'Auditoria SEO' }
+    },
+    es: {
+      visibilityTop: 'SEO con IA y Visibilidad',
+      serviceCategories: { website: 'Sitios Web', seoVisibility: 'SEO y Visibilidad', social: 'Redes Sociales', content: 'Creación de Contenido', ads: 'Publicidad de Pago', events: 'Eventos' },
+      serviceItems: { aiSeoGeo: 'SEO con IA y GEO', seoAudit: 'Auditoría SEO', maintenance: 'Mantenimiento Web', freeAudit: 'Auditoría Gratuita de Redes Sociales' },
+      visibility: { 'AI SEO & GEO': 'SEO con IA y GEO', 'Technical SEO': 'SEO Técnico', 'Local SEO': 'SEO Local', 'SEO Content Strategy': 'Estrategia de Contenido SEO', 'International SEO': 'SEO Internacional', 'AI Visibility Audit': 'Auditoría de Visibilidad en IA', 'AI Visibility Monitoring': 'Monitorización de Visibilidad en IA', 'AI Competitor Analysis': 'Análisis de Competidores en IA', 'Business Visibility': 'Visibilidad Empresarial', 'Google Business Profile Management': 'Gestión del Perfil de Empresa en Google', 'Online Reputation Management': 'Gestión de Reputación Online', 'Digital PR & Link Building': 'Relaciones Públicas Digitales y Link Building', 'Content & Localization': 'Contenido y Localización', 'Localization & Translation': 'Localización y Traducción', Audits: 'Auditorías', 'SEO Audit': 'Auditoría SEO' }
+    },
+    el: {
+      visibilityTop: 'AI SEO & Ορατότητα',
+      serviceCategories: { website: 'Ιστοσελίδες', seoVisibility: 'SEO & Ορατότητα', social: 'Κοινωνικά Δίκτυα', content: 'Δημιουργία Περιεχομένου', ads: 'Πληρωμένη Διαφήμιση', events: 'Εκδηλώσεις' },
+      serviceItems: { aiSeoGeo: 'AI SEO & GEO', seoAudit: 'Έλεγχος SEO', maintenance: 'Συντήρηση Ιστοσελίδων', freeAudit: 'Δωρεάν Έλεγχος Social Media' },
+      visibility: { 'Technical SEO': 'Τεχνικό SEO', 'Local SEO': 'Τοπικό SEO', 'SEO Content Strategy': 'Στρατηγική Περιεχομένου SEO', 'International SEO': 'Διεθνές SEO', 'AI Visibility Audit': 'Έλεγχος Ορατότητας AI', 'AI Visibility Monitoring': 'Παρακολούθηση Ορατότητας AI', 'AI Competitor Analysis': 'Ανάλυση Ανταγωνιστών AI', 'Business Visibility': 'Επιχειρηματική Ορατότητα', 'Google Business Profile Management': 'Διαχείριση Google Business Profile', 'Online Reputation Management': 'Διαχείριση Online Φήμης', 'Digital PR & Link Building': 'Digital PR & Link Building', 'Content & Localization': 'Περιεχόμενο & Τοπικοποίηση', 'Localization & Translation': 'Τοπικοποίηση & Μετάφραση', Audits: 'Έλεγχοι', 'SEO Audit': 'Έλεγχος SEO' }
+    },
+    ru: {
+      visibilityTop: 'AI SEO и Видимость',
+      serviceCategories: { website: 'Сайты', seoVisibility: 'SEO и Видимость', social: 'Социальные Сети', content: 'Создание Контента', ads: 'Платная Реклама', events: 'Мероприятия' },
+      serviceItems: { aiSeoGeo: 'AI SEO и GEO', seoAudit: 'SEO-аудит', maintenance: 'Поддержка Сайтов', freeAudit: 'Бесплатный Аудит Соцсетей' },
+      visibility: { 'AI SEO & GEO': 'AI SEO и GEO', 'Technical SEO': 'Техническое SEO', 'Local SEO': 'Локальное SEO', 'SEO Content Strategy': 'SEO-стратегия Контента', 'International SEO': 'Международное SEO', 'AI Visibility Audit': 'Аудит Видимости в ИИ', 'AI Visibility Monitoring': 'Мониторинг Видимости в ИИ', 'AI Competitor Analysis': 'Анализ Конкурентов в ИИ', 'Business Visibility': 'Видимость Бизнеса', 'Google Business Profile Management': 'Управление Профилем Компании Google', 'Online Reputation Management': 'Управление Онлайн-репутацией', 'Digital PR & Link Building': 'Digital PR и Линкбилдинг', 'Content & Localization': 'Контент и Локализация', 'Localization & Translation': 'Локализация и Перевод', Audits: 'Аудиты', 'SEO Audit': 'SEO-аудит' }
+    },
+    he: {
+      visibilityTop: 'AI SEO ונראות',
+      serviceCategories: { website: 'אתרים', seoVisibility: 'SEO ונראות', social: 'רשתות חברתיות', content: 'יצירת תוכן', ads: 'פרסום ממומן', events: 'אירועים' },
+      serviceItems: { aiSeoGeo: 'AI SEO ו-GEO', seoAudit: 'בדיקת SEO', maintenance: 'תחזוקת אתרים', freeAudit: 'בדיקת רשתות חברתיות ללא עלות' },
+      visibility: { 'AI SEO & GEO': 'AI SEO ו-GEO', 'Technical SEO': 'SEO טכני', 'Local SEO': 'SEO מקומי', 'SEO Content Strategy': 'אסטרטגיית תוכן SEO', 'International SEO': 'SEO בינלאומי', 'AI Visibility Audit': 'בדיקת נראות ב-AI', 'AI Visibility Monitoring': 'ניטור נראות ב-AI', 'AI Competitor Analysis': 'ניתוח מתחרים ב-AI', 'Business Visibility': 'נראות עסקית', 'Google Business Profile Management': 'ניהול פרופיל העסק ב-Google', 'Online Reputation Management': 'ניהול מוניטין מקוון', 'Digital PR & Link Building': 'יחסי ציבור דיגיטליים ובניית קישורים', 'Content & Localization': 'תוכן ולוקליזציה', 'Localization & Translation': 'לוקליזציה ותרגום', Audits: 'בדיקות', 'SEO Audit': 'בדיקת SEO' }
+    }
+  };
+
+  const getHeaderMenuTranslation = () => headerMenuTranslations[window.Studio17I18n?.getLanguage?.() || document.documentElement.lang] || {};
+
+  let visibilityDropdown;
+  let visibilityTrigger;
+  let visibilityPanel;
+  const ensureVisibilityDropdown = () => {
+    if (visibilityDropdown || !dropdown?.parentElement) return;
+    visibilityDropdown = document.createElement('div');
+    visibilityDropdown.className = 'nav-dropdown nav-visibility-dropdown';
+    visibilityTrigger = document.createElement('button');
+    visibilityTrigger.className = 'nav-link nav-trigger visibility-nav-trigger';
+    visibilityTrigger.type = 'button';
+    visibilityTrigger.setAttribute('aria-expanded', 'false');
+    visibilityTrigger.setAttribute('aria-controls', 'visibility-mega-menu');
+    visibilityTrigger.innerHTML = '<span data-visibility-nav-label>AI SEO &amp; Visibility</span><span class="nav-square" aria-hidden="true"><i data-lucide="chevron-down"></i></span>';
+    visibilityPanel = document.createElement('div');
+    visibilityPanel.id = 'visibility-mega-menu';
+    visibilityPanel.className = 'dropdown-panel visibility-mega-menu';
+    visibilityPanel.hidden = true;
+    visibilityDropdown.append(visibilityTrigger, visibilityPanel);
+    dropdown.parentElement.insertBefore(visibilityDropdown, dropdown);
+  };
 
   const localiseServicesMenuHref = href => {
     const language = window.Studio17I18n?.getLanguage?.() || 'en';
@@ -123,6 +216,7 @@
     const locale = window.Studio17I18n?.getData?.();
     const categories = locale?.services?.categoryLabels || {};
     const items = locale?.services?.itemLabels || {};
+    const headerCopy = getHeaderMenuTranslation();
     dropdownPanel.id = 'services-mega-menu';
     dropdownTrigger?.setAttribute('aria-controls', 'services-mega-menu');
     dropdownPanel.classList.add('services-mega-menu');
@@ -131,7 +225,7 @@
       section.className = 'services-mega-group';
       const title = document.createElement(group.href ? 'a' : 'p');
       title.className = 'services-mega-title';
-      title.textContent = (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
+      title.textContent = headerCopy.serviceCategories?.[group.categoryKey] || (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
       if (group.href) {
         title.href = localiseServicesMenuHref(group.href);
         markWipLink(title, group.href);
@@ -140,13 +234,17 @@
           currentPath === '/services/website' ||
           currentPath === '/services/website-development' ||
           currentPath === '/services/free-website' ||
+          ['website-services.html', 'website-development.html', 'free-website.html'].includes(currentPath)
+        );
+        const isSeoVisibilityFamily = group.categoryKey === 'seoVisibility' && (
           currentPath === '/services/seo' ||
-          ['website-services.html', 'website-development.html', 'free-website.html', 'seo.html'].includes(currentPath)
+          currentPath === '/services/localization-and-translation' ||
+          ['seo.html', 'localization-and-translation.html'].includes(currentPath)
         );
         const isSocialMediaFamily = group.categoryKey === 'social' && (
           currentPath === '/services/social-media' || currentPath === '/services/social-media-pricing' || ['social-media.html', 'social-media-pricing.html'].includes(currentPath)
         );
-        if (isWebsiteFamily || isSocialMediaFamily) title.setAttribute('aria-current', 'page');
+        if (isWebsiteFamily || isSeoVisibilityFamily || isSocialMediaFamily) title.setAttribute('aria-current', 'page');
       }
       const list = document.createElement('ul');
       group.items.forEach(([itemKey, label, href]) => {
@@ -154,7 +252,7 @@
         const link = document.createElement('a');
         link.href = localiseServicesMenuHref(href);
         markWipLink(link, href);
-        link.textContent = (itemKey && items[itemKey]) || translateText(label);
+        link.textContent = headerCopy.serviceItems?.[itemKey] || (itemKey && items[itemKey]) || translateText(label);
         if (itemKey === 'freeAudit' || itemKey === 'freeWebsite') link.classList.add('services-mega-offer');
         listItem.appendChild(link);
         list.appendChild(listItem);
@@ -164,14 +262,40 @@
     }));
   };
 
+  const updateVisibilityMegaMenu = () => {
+    ensureVisibilityDropdown();
+    if (!visibilityPanel || !visibilityTrigger) return;
+    const headerCopy = getHeaderMenuTranslation();
+    visibilityTrigger.querySelector('[data-visibility-nav-label]').textContent = headerCopy.visibilityTop || 'AI SEO & Visibility';
+    visibilityPanel.replaceChildren(...visibilityMegaMenu.map(group => {
+      const section = document.createElement('section');
+      section.className = 'services-mega-group';
+      const title = document.createElement('p');
+      title.className = 'services-mega-title';
+      title.textContent = headerCopy.visibility?.[group.label] || group.label;
+      const list = document.createElement('ul');
+      group.items.forEach(([label, href]) => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = localiseServicesMenuHref(href);
+        markWipLink(link, href);
+        link.textContent = headerCopy.visibility?.[label] || label;
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+      section.append(title, list);
+      return section;
+    }));
+    window.lucide?.createIcons?.({ attrs: { 'stroke-width': 2 } });
+  };
+
   const closeMobileServicesDirectory = () => {
-    const toggle = mobileMenu?.querySelector('.mobile-services-toggle');
-    const panel = mobileMenu?.querySelector('.mobile-services-panel');
-    if (toggle) {
+    mobileMenu?.querySelectorAll('.mobile-services-toggle').forEach(toggle => {
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', translateText('Show services'));
-    }
-    if (panel) panel.hidden = true;
+      const visibilityTitle = toggle.closest('.mobile-visibility-menu')?.querySelector('.mobile-visibility-primary')?.textContent;
+      toggle.setAttribute('aria-label', visibilityTitle ? `Show ${visibilityTitle}` : translateText('Show services'));
+    });
+    mobileMenu?.querySelectorAll('.mobile-services-panel').forEach(panel => { panel.hidden = true; });
     mobileMenu?.querySelectorAll('.mobile-services-category').forEach(button => button.setAttribute('aria-expanded', 'false'));
     mobileMenu?.querySelectorAll('.mobile-services-list').forEach(list => { list.hidden = true; });
   };
@@ -180,7 +304,7 @@
     const nav = mobileMenu?.querySelector('nav');
     if (!nav) return;
 
-    let menu = nav.querySelector('.mobile-services-menu');
+    let menu = nav.querySelector('.mobile-services-menu:not(.mobile-visibility-menu)');
     if (!menu) {
       const servicesLink = [...nav.children].find(element => {
         if (!element.matches('a')) return false;
@@ -224,6 +348,7 @@
     const locale = window.Studio17I18n?.getData?.();
     const categories = locale?.services?.categoryLabels || {};
     const items = locale?.services?.itemLabels || {};
+    const headerCopy = getHeaderMenuTranslation();
     const overviewLink = menu.querySelector('.mobile-services-overview-link');
     if (overviewLink) overviewLink.textContent = translateText('Services');
     const toggle = menu.querySelector('.mobile-services-toggle');
@@ -242,7 +367,7 @@
       button.setAttribute('aria-expanded', 'false');
       button.setAttribute('aria-controls', listId);
       const title = document.createElement('span');
-      const categoryTitle = (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
+      const categoryTitle = headerCopy.serviceCategories?.[group.categoryKey] || (group.categoryKey && categories[group.categoryKey]) || translateText(group.label);
       title.textContent = categoryTitle;
       const icon = document.createElement('i');
       icon.dataset.lucide = 'chevron-down';
@@ -268,7 +393,7 @@
         const link = document.createElement('a');
         link.href = localiseServicesMenuHref(href);
         markWipLink(link, href);
-        link.textContent = (itemKey && items[itemKey]) || translateText(label);
+        link.textContent = headerCopy.serviceItems?.[itemKey] || (itemKey && items[itemKey]) || translateText(label);
         if (itemKey === 'freeAudit' || itemKey === 'freeWebsite') link.classList.add('services-mega-offer');
         listItem.appendChild(link);
         list.appendChild(listItem);
@@ -282,6 +407,89 @@
         list.hidden = !opening;
       });
 
+      section.append(button, list);
+      return section;
+    }));
+    window.lucide?.createIcons?.({ attrs: { 'stroke-width': 2 } });
+  };
+
+  const updateMobileVisibilityMenu = () => {
+    const nav = mobileMenu?.querySelector('nav');
+    if (!nav) return;
+    const headerCopy = getHeaderMenuTranslation();
+    let menu = nav.querySelector('.mobile-visibility-menu');
+    if (!menu) {
+      menu = document.createElement('div');
+      menu.className = 'mobile-services-menu mobile-visibility-menu';
+      const primaryRow = document.createElement('div');
+      primaryRow.className = 'mobile-services-primary-row';
+      const mainButton = document.createElement('button');
+      mainButton.type = 'button';
+      mainButton.className = 'mobile-visibility-primary';
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'mobile-services-toggle mobile-visibility-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-controls', 'mobile-visibility-panel');
+      toggle.innerHTML = '<i data-lucide="chevron-down" aria-hidden="true"></i>';
+      const panel = document.createElement('div');
+      panel.id = 'mobile-visibility-panel';
+      panel.className = 'mobile-services-panel mobile-visibility-panel';
+      panel.hidden = true;
+      const setOpen = opening => {
+        toggle.setAttribute('aria-expanded', String(opening));
+        toggle.setAttribute('aria-label', `${opening ? 'Hide' : 'Show'} ${mainButton.textContent}`);
+        panel.hidden = !opening;
+        if (opening) panel.querySelector('.mobile-services-category')?.focus();
+      };
+      mainButton.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+      toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+      primaryRow.append(mainButton, toggle);
+      menu.append(primaryRow, panel);
+      nav.insertBefore(menu, nav.querySelector('.mobile-services-menu'));
+    }
+
+    const mainButton = menu.querySelector('.mobile-visibility-primary');
+    const toggle = menu.querySelector('.mobile-visibility-toggle');
+    const menuTitle = headerCopy.visibilityTop || 'AI SEO & Visibility';
+    mainButton.textContent = menuTitle;
+    toggle.setAttribute('aria-label', `${toggle.getAttribute('aria-expanded') === 'true' ? 'Hide' : 'Show'} ${menuTitle}`);
+    const panel = menu.querySelector('.mobile-visibility-panel');
+    panel.replaceChildren(...visibilityMegaMenu.map((group, groupIndex) => {
+      const section = document.createElement('section');
+      section.className = 'mobile-services-group';
+      const button = document.createElement('button');
+      const listId = `mobile-visibility-list-${groupIndex + 1}`;
+      button.type = 'button';
+      button.className = 'mobile-services-category';
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-controls', listId);
+      const title = document.createElement('span');
+      title.textContent = headerCopy.visibility?.[group.label] || group.label;
+      const icon = document.createElement('i');
+      icon.dataset.lucide = 'chevron-down';
+      icon.setAttribute('aria-hidden', 'true');
+      button.append(title, icon);
+      const list = document.createElement('ul');
+      list.id = listId;
+      list.className = 'mobile-services-list';
+      list.hidden = true;
+      group.items.forEach(([label, href]) => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = localiseServicesMenuHref(href);
+        markWipLink(link, href);
+        link.textContent = headerCopy.visibility?.[label] || label;
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+      button.addEventListener('click', () => {
+        const opening = button.getAttribute('aria-expanded') !== 'true';
+        panel.querySelectorAll('.mobile-services-category').forEach(other => other.setAttribute('aria-expanded', 'false'));
+        panel.querySelectorAll('.mobile-services-list').forEach(other => { other.hidden = true; });
+        button.setAttribute('aria-expanded', String(opening));
+        list.hidden = !opening;
+      });
       section.append(button, list);
       return section;
     }));
@@ -323,11 +531,15 @@
   };
 
   updateServicesMegaMenu();
+  updateVisibilityMegaMenu();
   updateMobileServicesMenu();
+  updateMobileVisibilityMenu();
   updateServiceFooterLinks();
   window.Studio17I18n?.ready?.then(() => {
     updateServicesMegaMenu();
+    updateVisibilityMegaMenu();
     updateMobileServicesMenu();
+    updateMobileVisibilityMenu();
     updateServiceFooterLinks();
   }).catch(() => {});
 
@@ -406,23 +618,43 @@
     if (restoreFocus) dropdownTrigger?.focus();
   };
 
+  const closeVisibilityDropdown = ({ restoreFocus = false } = {}) => {
+    visibilityTrigger?.setAttribute('aria-expanded', 'false');
+    visibilityDropdown?.classList.remove('is-open');
+    visibilityPanel?.classList.remove('is-open');
+    if (visibilityPanel) visibilityPanel.hidden = true;
+    if (restoreFocus) visibilityTrigger?.focus();
+  };
+
   dropdownTrigger?.addEventListener('click', () => {
     const open = dropdownTrigger.getAttribute('aria-expanded') !== 'true';
+    closeVisibilityDropdown();
     dropdownTrigger.setAttribute('aria-expanded', String(open));
     dropdown?.classList.toggle('is-open', open);
     dropdownPanel?.classList.toggle('is-open', open);
     if (dropdownPanel) dropdownPanel.hidden = !open;
   });
 
+  visibilityTrigger?.addEventListener('click', () => {
+    const open = visibilityTrigger.getAttribute('aria-expanded') !== 'true';
+    closeDesktopDropdown();
+    visibilityTrigger.setAttribute('aria-expanded', String(open));
+    visibilityDropdown?.classList.toggle('is-open', open);
+    visibilityPanel?.classList.toggle('is-open', open);
+    if (visibilityPanel) visibilityPanel.hidden = !open;
+  });
+
   document.addEventListener('click', event => {
     if (event.target.closest('.nav-dropdown')) return;
     closeDesktopDropdown();
+    closeVisibilityDropdown();
   });
 
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape') return;
     if (menuButton?.getAttribute('aria-expanded') === 'true') closeMobileMenu({ restoreFocus: true });
     if (dropdownTrigger?.getAttribute('aria-expanded') === 'true') closeDesktopDropdown({ restoreFocus: true });
+    if (visibilityTrigger?.getAttribute('aria-expanded') === 'true') closeVisibilityDropdown({ restoreFocus: true });
   });
 
   const serviceSchema = {
@@ -456,9 +688,18 @@
     }
   };
 
-  const serviceDestinations = Object.fromEntries(
-    servicesMegaMenu.flatMap(group => group.items).filter(([key]) => key).map(([key, , href]) => [key, href])
-  );
+  const serviceDestinations = {
+    ...Object.fromEntries(servicesMegaMenu.flatMap(group => group.items).filter(([key]) => key).map(([key, , href]) => [key, href])),
+    geo: '/wip#for=geo',
+    automotive: '/wip#for=automotive',
+    restaurants: '/wip#for=restaurants',
+    health: '/wip#for=health-care',
+    ecommerce: '/wip#for=ecommerce',
+    influencers: '/wip#for=individual-influencers',
+    education: '/wip#for=education',
+    local: '/wip#for=local-business',
+    smes: '/wip#for=smes'
+  };
   const serviceCategoryDestinations = {
     social: '/services/social-media',
     website: '/services/website',
@@ -809,7 +1050,9 @@
 
   window.addEventListener('studio17:languagechange', () => {
     updateServicesMegaMenu();
+    updateVisibilityMegaMenu();
     updateMobileServicesMenu();
+    updateMobileVisibilityMenu();
     updateServiceFooterLinks();
     renderServiceTabs();
     renderServiceList(activeCategory, selectedItems[activeCategory]);

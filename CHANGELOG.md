@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-28 — Header service directories and translated hero fit
+
+- Reduced translated homepage hero typography and expanded its safe text width so longer Portuguese, Spanish, Greek, Russian and Hebrew copy remains balanced inside the artwork.
+- Offset the two trusted-partner marquee rows so they begin at visibly different points instead of repeatedly presenting the same logos together.
+- Reorganized the Services directory into Websites, SEO & Visibility, Social Media, Content Creation, Paid Advertising and Events while preserving every published destination and routing unfinished services to precise WIP states.
+- Added a separate AI SEO & Visibility header directory before Services, with desktop and mobile navigation for SEO, AI/GEO, business visibility, content/localization and audit capabilities.
+- Added localized menu labels across all six website languages and regression coverage for menu order, destinations, mobile interaction and WIP mappings.
+
 ## 2026-10-28 — Homepage audit conversion journey
 
 - Added dedicated desktop and mobile homepage hero artwork through a responsive picture source, with no hover zoom on any hero image.

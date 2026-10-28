@@ -8,11 +8,13 @@ const root = path.resolve(__dirname, '..');
 const script = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 const menu = script.match(/const servicesMegaMenu = \[[\s\S]*?\n  \];/)?.[0] || '';
+const visibilityMenu = script.match(/const visibilityMegaMenu = \[[\s\S]*?\n  \];/)?.[0] || '';
 
 assert.ok(menu, 'shared Services mega-menu configuration is missing');
+assert.ok(visibilityMenu, 'shared AI SEO & Visibility mega-menu configuration is missing');
 assert.doesNotMatch(menu, /All services/i);
 
-const groups = ['Social Media', 'Website', 'Content creation', 'Advertisement', 'By Industry', 'Events'];
+const groups = ['Websites', 'SEO & Visibility', 'Social Media', 'Content Creation', 'Paid Advertising', 'Events'];
 let previous = -1;
 for (const group of groups) {
   const position = menu.indexOf(`label: '${group}'`);
@@ -21,15 +23,13 @@ for (const group of groups) {
 }
 
 const requiredDestinations = [
-  '/services/social-media', '/wip#for=content-creation', '/wip#for=advertisement', '/wip#for=by-industry', '/wip#for=events',
-  '/services/website',
-  '/services/website-development',
+  '/services/website', '/services/website-development', '/wip#for=website-revamp', '/wip#for=website-design', '/wip#for=website-maintenance', '/services/free-website',
+  '/services/seo', '/wip#for=ai-seo-geo', '/wip#for=seo-audit', '/wip#for=copywriting', '/services/localization-and-translation',
+  '/services/social-media',
   '/wip#for=social-media-management', '/wip#for=social-media-automation', '/wip#for=growth-strategy', '/wip#for=community-management', '/wip#for=free-social-media-audit',
-  '/wip#for=website-revamp', '/wip#for=website-design', '/services/free-website', '/services/seo', '/wip#for=geo', '/wip#for=copywriting', '/services/localization-and-translation', '/wip#for=maintenance',
   '/wip#for=filming', '/wip#for=photography', '/wip#for=video-editing', '/wip#for=graphic-design', '/wip#for=digital-design', '/wip#for=scripting', '/wip#for=ai-generation',
-  '/wip#for=meta-ads', '/wip#for=google-ads', '/wip#for=social-media-ads', '/wip#for=influencer-ads', '/wip#for=ugc-creators', '/wip#for=email-ads',
-  '/wip#for=automotive', '/wip#for=restaurants', '/wip#for=health-care', '/wip#for=ecommerce', '/wip#for=individual-influencers', '/wip#for=education', '/wip#for=local-business', '/wip#for=smes',
-  '/wip#for=presential-events', '/wip#for=online-events'
+  '/wip#for=meta-ads', '/wip#for=google-ads', '/wip#for=social-media-ads', '/wip#for=influencer-ads', '/wip#for=ugc-creators', '/wip#for=email-advertising',
+  '/wip#for=in-person-events', '/wip#for=online-events'
 ];
 for (const destination of requiredDestinations) assert.ok(menu.includes(destination), destination);
 for (const category of ['social', 'website']) {
@@ -39,6 +39,7 @@ for (const category of ['social', 'website']) {
 }
 
 assert.match(css, /\.services-mega-menu\s*\{[^}]*grid-template-columns:\s*repeat\(6,minmax\(0,1fr\)\)/);
+assert.match(css, /\.visibility-mega-menu\s*\{[^}]*grid-template-columns:\s*repeat\(5,minmax\(0,1fr\)\)/);
 assert.match(css, /\.dropdown-panel\s*\{[^}]*width:\s*min\(1360px,calc\(100vw - 48px\)\)/);
 assert.match(script, /studio17:languagechange[\s\S]*?updateServicesMegaMenu\(\)/);
 assert.match(script, /const updateMobileServicesMenu = \(\) =>/);
@@ -53,6 +54,12 @@ assert.match(css, /html\[dir="rtl"\] \.mobile-services-toggle/);
 assert.match(css, /a\.services-mega-offer\s*\{[^}]*background:\s*var\(--white\)/);
 assert.match(css, /a\.services-mega-title\[aria-current="page"\][^{]*\{[^}]*color:\s*var\(--ink\);[^}]*background:\s*var\(--white\)/);
 assert.match(script, /isWebsiteFamily[\s\S]*?title\.setAttribute\('aria-current', 'page'\)/);
+assert.match(script, /updateVisibilityMegaMenu/);
+assert.match(script, /updateMobileVisibilityMenu/);
+
+for (const label of ['Technical SEO', 'Local SEO', 'SEO Content Strategy', 'International SEO', 'AI Visibility Monitoring', 'AI Competitor Analysis', 'Google Business Profile Management', 'Online Reputation Management', 'Digital PR & Link Building']) {
+  assert.ok(visibilityMenu.includes(label), `${label} is missing from AI SEO & Visibility`);
+}
 
 for (const locale of ['pt-PT', 'es', 'el', 'ru', 'he']) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'locales', `${locale}.json`), 'utf8'));
