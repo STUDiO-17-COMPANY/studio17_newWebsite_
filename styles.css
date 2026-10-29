@@ -875,22 +875,23 @@ body.menu-open .anima { visibility: hidden; opacity: 0; pointer-events: none; }
 .agency-comparison { margin-top: var(--section-gap); padding-block: 32px; background: var(--paper); }
 .agency-comparison .design-heading { max-width: 920px; margin: 0 0 24px; }
 .agency-comparison .design-heading .agency-comparison-title-rest { color: var(--ink); background: transparent; }
-.agency-comparison-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
-.agency-comparison-panel { min-width: 0; border: 1px solid #cbd4e1; background: transparent; }
-.agency-comparison-panel > header { min-height: 112px; display: flex; align-items: center; gap: 18px; padding: 24px; border-bottom: 1px solid #cbd4e1; }
-.agency-comparison-panel h3 { margin: 0; color: var(--ink); font-size: clamp(25px,2.3vw,38px); line-height: 1.05; letter-spacing: -.045em; }
-.agency-comparison-icon { width: 50px; height: 50px; flex: 0 0 50px; display: grid; place-items: center; color: var(--white); }
-.agency-comparison-icon .lucide { width: 26px; height: 26px; stroke-width: 2.6; }
-.agency-comparison-studio .agency-comparison-icon { background: #11875d; }
-.agency-comparison-others .agency-comparison-icon { background: #c83b3b; }
-.agency-comparison-panel ul { display: grid; margin: 0; padding: 0; list-style: none; }
-.agency-comparison-panel li { min-height: 66px; display: grid; grid-template-columns: 26px minmax(0,1fr); gap: 14px; align-items: center; padding: 15px 24px; border-bottom: 1px solid #dbe2eb; color: #344054; font-size: 14px; font-weight: 650; line-height: 1.45; }
-.agency-comparison-panel li:last-child { border-bottom: 0; }
-.agency-comparison-panel li > .lucide { width: 21px; height: 21px; stroke-width: 2.8; }
-.agency-comparison-studio li > .lucide { color: #11875d; }
-.agency-comparison-others li > .lucide { color: #c83b3b; }
-.agency-comparison-studio { box-shadow: inset 0 4px 0 #11875d; }
-.agency-comparison-others { box-shadow: inset 0 4px 0 #c83b3b; }
+.agency-comparison-board { position: relative; border: 1px solid #cbd4e1; background: transparent; overflow: hidden; }
+.agency-comparison-board::before { content: ""; position: absolute; z-index: 2; top: 0; right: 0; left: 0; height: 4px; background: linear-gradient(90deg,#11875d 0 50%,#c83b3b 50% 100%); }
+.agency-comparison-head, .agency-comparison-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+.agency-comparison-head { min-height: 82px; border-bottom: 1px solid #cbd4e1; }
+.agency-comparison-head > div { display: flex; align-items: center; gap: 14px; padding: 17px 20px 15px; }
+.agency-comparison-head > div + div, .agency-comparison-cell + .agency-comparison-cell { border-inline-start: 1px solid #cbd4e1; }
+.agency-comparison-head h3 { margin: 0; color: var(--ink); font-size: clamp(22px,1.8vw,30px); line-height: 1.05; letter-spacing: -.04em; }
+.agency-comparison-icon { width: 40px; height: 40px; flex: 0 0 40px; display: grid; place-items: center; color: var(--white); }
+.agency-comparison-icon .lucide { width: 21px; height: 21px; stroke-width: 2.6; }
+.agency-comparison-head-studio .agency-comparison-icon { background: #11875d; }
+.agency-comparison-head-others .agency-comparison-icon { background: #c83b3b; }
+.agency-comparison-row + .agency-comparison-row { border-top: 1px solid #dbe2eb; }
+.agency-comparison-cell { min-width: 0; min-height: 50px; display: grid; grid-template-columns: 22px minmax(0,1fr); gap: 11px; align-items: center; padding: 10px 20px; color: #344054; font-size: 13px; font-weight: 650; line-height: 1.35; }
+.agency-comparison-cell > .lucide { width: 18px; height: 18px; stroke-width: 2.8; }
+.agency-comparison-studio > .lucide { color: #11875d; }
+.agency-comparison-others > .lucide { color: #c83b3b; }
+.agency-comparison-mobile-label { display: none; }
 .agency-comparison + .news-section { margin-top: var(--section-gap); }
 .news-page-hero .page-hero-title h1 span { color: var(--white); background: var(--blue); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .news-archive { padding-block: 92px 120px; background: var(--paper); }
@@ -2568,7 +2569,6 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .home-portfolio-card { min-height: 440px; aspect-ratio: auto; }
   .home-portfolio-card::before { background: linear-gradient(180deg,rgba(4,12,28,.72) 0%,rgba(4,12,28,.12) 34%,rgba(4,12,28,.94) 72%); }
   .home-portfolio-details { opacity: 1; transform: none; }
-  .agency-comparison-grid { grid-template-columns: 1fr; }
   .website-project-card { max-width: 680px; }
   .website-process ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .website-development-main .website-process ol { grid-template-columns: 1fr; }
@@ -2603,9 +2603,14 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
 
 @media (max-width: 600px) {
   .agency-comparison { padding-block: 24px; }
-  .agency-comparison-panel > header { min-height: 96px; padding: 20px; }
-  .agency-comparison-icon { width: 44px; height: 44px; flex-basis: 44px; }
-  .agency-comparison-panel li { min-height: 0; padding: 15px 18px; font-size: 13px; }
+  .agency-comparison-head { display: none; }
+  .agency-comparison-board::before { background: var(--blue); }
+  .agency-comparison-row { grid-template-columns: 1fr; }
+  .agency-comparison-row + .agency-comparison-row { border-top: 2px solid #cbd4e1; }
+  .agency-comparison-cell { min-height: 0; grid-template-columns: 20px minmax(0,1fr); padding: 13px 17px; font-size: 12.5px; }
+  .agency-comparison-cell + .agency-comparison-cell { border-top: 1px dashed #cbd4e1; border-inline-start: 0; }
+  .agency-comparison-mobile-label { display: block; grid-column: 2; margin-bottom: -7px; color: #687386; font-size: 9px; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+  .agency-comparison-cell > .lucide { grid-row: 1 / span 2; }
   .website-service-mobile-fields, .website-service-mobile { display: grid; }
   .website-development-cta { min-height: 0; padding-block: 24px; }
   .website-development-cta .cta-grid { grid-template-columns: 1fr; gap: 32px; }

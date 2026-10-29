@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-29 — Compact connected agency comparison
+
+- Reworked the homepage agency comparison from two separate tall cards into one connected board with aligned headers, directly paired rows and a shared centre divider.
+- Reduced header, row, icon and typography dimensions to match the homepage's established visual density.
+- Kept each comparison pair connected on mobile by stacking the positive and negative points inside one bordered row with compact context labels.
+
 ## 2026-10-28 — Homepage agency comparison
 
 - Restored the shared 32px separation between the homepage services explorer and Portfolio section.

@@ -25,16 +25,20 @@ test('homepage portfolio keeps the shared section gap and comparison follows it'
 test('agency comparison is complete, accessible and uses approved Lucide cues', () => {
   const { document } = parseHTML(read('home.template.html'));
   const section = document.querySelector('.agency-comparison');
-  const panels = [...section.querySelectorAll('.agency-comparison-panel')];
+  const board = section.querySelector('.agency-comparison-board');
+  const headings = [...board.querySelectorAll('.agency-comparison-head > div')];
+  const rows = [...board.querySelectorAll('.agency-comparison-row')];
 
   assert.equal(section.getAttribute('aria-labelledby'), 'agency-comparison-title');
-  assert.equal(panels.length, 2);
-  assert.equal(panels[0].querySelectorAll('li').length, 13);
-  assert.equal(panels[1].querySelectorAll('li').length, 13);
-  assert.equal(panels[0].querySelector('[data-lucide="thumbs-up"]')?.parentElement.getAttribute('aria-hidden'), 'true');
-  assert.equal(panels[1].querySelector('[data-lucide="x"]')?.parentElement.getAttribute('aria-hidden'), 'true');
-  assert.equal(panels[0].querySelector('ul').getAttribute('aria-label'), 'Studio 17 advantages');
-  assert.equal(panels[1].querySelector('ul').getAttribute('aria-label'), 'Common limitations of other marketing agencies');
+  assert.ok(board, 'connected comparison board missing');
+  assert.equal(headings.length, 2);
+  assert.equal(rows.length, 13);
+  for (const row of rows) assert.equal(row.querySelectorAll('.agency-comparison-cell').length, 2);
+  assert.equal(headings[0].querySelector('[data-lucide="thumbs-up"]')?.parentElement.getAttribute('aria-hidden'), 'true');
+  assert.equal(headings[1].querySelector('[data-lucide="x"]')?.parentElement.getAttribute('aria-hidden'), 'true');
+  assert.equal(board.querySelector('.agency-comparison-list').getAttribute('aria-labelledby'), 'studio17-advantages-title other-agencies-title');
+  assert.match(read('styles.css'), /\.agency-comparison-row\s*\{[^}]*grid-template-columns:\s*repeat\(2,minmax\(0,1fr\)\)/);
+  assert.match(read('styles.css'), /\.agency-comparison-cell \+ \.agency-comparison-cell\s*\{[^}]*border-inline-start:/);
 });
 
 test('comparison copy is available to every homepage language build', () => {
