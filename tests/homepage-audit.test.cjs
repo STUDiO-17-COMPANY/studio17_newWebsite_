@@ -28,6 +28,9 @@ assert.ok(home.querySelector('script[src="homepage-audit.js"]'));
 assert.match(styles, /\.home-conversion-hero \.hero-media::after \{ background: transparent; \}/);
 assert.doesNotMatch(styles, /(?:\.hero|\.page-hero|\.article-hero):hover \.hero-media img/);
 assert.doesNotMatch(heroScript, /is-changing/);
+assert.match(styles, /html\[lang\]:not\(\[lang="en"\]\) \.home-conversion-hero,[\s\S]*height: 500px;/);
+assert.match(styles, /html\[lang="he"\] \.home-conversion-hero \.home-hero-grid \{[\s\S]*direction: ltr;/);
+assert.match(styles, /html\[lang="he"\] \.home-hero-content \{[\s\S]*direction: rtl;[\s\S]*text-align: right;/);
 
 for (const selector of ['[name="firstName"]', '[name="lastName"]', '[name="email"]', '[name="company"]', '[name="auditTarget"]', '[name="countryCode"]', '[name="phoneNumber"]', '[name="comments"]']) {
   assert.ok(audit.querySelector(selector), `audit page is missing ${selector}`);

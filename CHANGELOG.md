@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-29 — Translated homepage hero sizing
+
+- Restored the approved 500px desktop hero canvas in Portuguese, Spanish, Greek, Russian and Hebrew instead of allowing translated copy to shorten the artwork.
+- Added language-aware headline sizing and safe content widths so longer translations remain on the dark text area without covering the people.
+- Gave Hebrew a dedicated RTL text flow inside the same left-side visual safe area, with correctly aligned audit controls.
+
 ## 2026-10-29 — Compact connected agency comparison
 
 - Reworked the homepage agency comparison from two separate tall cards into one connected board with aligned headers, directly paired rows and a shared centre divider.
