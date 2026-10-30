@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-30 — Inline testimonial arrows
+
+- Matched review-control arrows to the label size and colour, with transparent backgrounds and blue hover/focus states.
+- Hid platform-link arrows until hover or keyboard focus, inheriting Trustpilot green or Google blue.
+- Removed flex spacing between Google's coloured letters so the brand reads as one word.
+
 ## 2026-10-30 — Nested section rhythm and review CTA arrows
 
 - Extended the shared spacing rhythm to nested story chapters and website showcases, and removed redundant vertical space inside free-website and SEO location wrappers.

@@ -2888,10 +2888,15 @@ html body main > section:not(.hero):not(.page-hero):not(.article-hero):has(h2) {
 html body .testimonials-section .horizontal-track { height: auto; align-items: start; padding-bottom: 0; }
 html body .testimonial-card { height: auto; min-height: 294px; }
 .testimonial-actions { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 14px; }
-.testimonial-actions a, .testimonial-actions button,
-.testimonial-section-link a { display: inline-flex; align-items: center; gap: 8px; }
-.testimonial-action-arrow { display: inline-grid; width: 24px; height: 24px; flex: 0 0 24px; place-items: center; color: var(--white); background: var(--blue); }
-.testimonial-action-arrow .lucide { width: 16px; height: 16px; }
+.testimonial-actions a, .testimonial-actions button { display: inline-flex; align-items: center; gap: .4em; }
+.testimonial-action-arrow { display: inline-grid; width: 1em; height: 1em; flex: 0 0 1em; place-items: center; color: inherit; background: transparent; vertical-align: -.1em; }
+.testimonial-action-arrow .lucide { width: 1em; height: 1em; }
+.testimonial-section-link a { display: inline; white-space: nowrap; }
+.testimonial-section-link a > .testimonial-action-arrow { margin-inline-start: .3em; opacity: 0; visibility: hidden; transition: opacity .2s ease; }
+.testimonial-section-link a:hover > .testimonial-action-arrow,
+.testimonial-section-link a:focus-visible > .testimonial-action-arrow { opacity: 1; visibility: visible; }
+.reviews-google:hover > .testimonial-action-arrow,
+.reviews-google:focus-visible > .testimonial-action-arrow { color: #4285F4; }
 .testimonial-actions a, .testimonial-actions button { border: 0; padding: 0; color: var(--ink); background: transparent; font-size: 12px; font-weight: 800; cursor: pointer; transition: color .2s ease; }
 .testimonial-actions a:hover, .testimonial-actions button:hover,
 .testimonial-actions a:focus-visible, .testimonial-actions button:focus-visible { color: var(--blue); }

@@ -25,5 +25,8 @@ assert.doesNotMatch(testimonialSection, /Pantelis Petrou/);
 assert.match(testimonialSection, /href="https:\/\/miguellabs\.xyz\/"/);
 assert.doesNotMatch(testimonialSection, /Client name|Approved client feedback|\/work#testimonials/);
 assert.match(css, /\.testimonial-card \{[^}]*display:\s*flex;[^}]*height:\s*294px;/);
+assert.match(css, /\.testimonial-action-arrow \{[^}]*width: 1em;[^}]*color: inherit;[^}]*background: transparent;/);
+assert.match(css, /\.testimonial-section-link a \{ display: inline; white-space: nowrap;/);
+assert.match(css, /\.testimonial-section-link a > \.testimonial-action-arrow \{[^}]*opacity: 0; visibility: hidden;/);
 
 console.log('Homepage testimonial content tests passed.');
