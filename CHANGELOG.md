@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-30 — Review platform link reveal
+
+- Removed the final punctuation from the review-platform CTA and collapsed hidden arrows to zero width and zero margin.
+- Added an inline arrow reveal on hover/focus with RTL and reduced-motion support.
+
+## 2026-10-30 — Conditional original-review control
+
+- Only show the original-language toggle when a stored original exists and differs from the displayed review; keep source links available independently.
+
 ## 2026-10-30 — Inline testimonial arrows
 
 - Matched review-control arrows to the label size and colour, with transparent backgrounds and blue hover/focus states.

@@ -23,6 +23,10 @@ for (const language of ['pt', 'es', 'el', 'ru', 'he']) {
   const quote = card.querySelector(':scope > p');
   const translated = quote.textContent;
   const button = card.querySelector('button');
+  if (language === 'el') {
+    assert.equal(button, null, 'Greek original must not offer a redundant original-language control');
+    continue;
+  }
   button.dispatchEvent(new window.Event('click'));
   assert.ok(button.querySelector('.testimonial-action-arrow'));
   assert.equal(quote.lang, 'el');
@@ -30,5 +34,13 @@ for (const language of ['pt', 'es', 'el', 'ru', 'he']) {
   button.dispatchEvent(new window.Event('click'));
   assert.equal(quote.textContent, translated);
   assert.equal(card.querySelector('a').href, 'https://share.google/uubw1oWLCdYN3xs2M');
+}
+{
+  const { document, window } = parseHTML(fs.readFileSync(path.join(root, 'home.template.html'), 'utf8'));
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'testimonials.js'), 'utf8'), { document, window });
+  document.querySelectorAll('.testimonial-card:not([data-review="yiannos"])').forEach(card => {
+    assert.equal(card.querySelector('button'), null, 'Do not offer an unavailable or identical original');
+  });
+  assert.ok(document.querySelector('[data-review="yiannos"] button'));
 }
 console.log('Hero rotation and original-review controls passed for five languages.');

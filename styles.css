@@ -2892,9 +2892,19 @@ html body .testimonial-card { height: auto; min-height: 294px; }
 .testimonial-action-arrow { display: inline-grid; width: 1em; height: 1em; flex: 0 0 1em; place-items: center; color: inherit; background: transparent; vertical-align: -.1em; }
 .testimonial-action-arrow .lucide { width: 1em; height: 1em; }
 .testimonial-section-link a { display: inline; white-space: nowrap; }
-.testimonial-section-link a > .testimonial-action-arrow { margin-inline-start: .3em; opacity: 0; visibility: hidden; transition: opacity .2s ease; }
+.testimonial-section-link a > .testimonial-action-arrow { width: 0; margin-inline-start: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: width .25s var(--ease), margin-inline-start .25s var(--ease), opacity .2s ease, visibility .25s; }
+.testimonial-section-link a > .testimonial-action-arrow .lucide { transform: translateX(-.6em); transition: transform .25s var(--ease); }
+html[dir="rtl"] .testimonial-section-link a > .testimonial-action-arrow .lucide { transform: translateX(.6em); }
 .testimonial-section-link a:hover > .testimonial-action-arrow,
-.testimonial-section-link a:focus-visible > .testimonial-action-arrow { opacity: 1; visibility: visible; }
+.testimonial-section-link a:focus-visible > .testimonial-action-arrow { width: 1em; margin-inline-start: .3em; opacity: 1; visibility: visible; }
+.testimonial-section-link a:hover > .testimonial-action-arrow .lucide,
+.testimonial-section-link a:focus-visible > .testimonial-action-arrow .lucide,
+html[dir="rtl"] .testimonial-section-link a:hover > .testimonial-action-arrow .lucide,
+html[dir="rtl"] .testimonial-section-link a:focus-visible > .testimonial-action-arrow .lucide { transform: translateX(0); }
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-section-link a > .testimonial-action-arrow,
+  .testimonial-section-link a > .testimonial-action-arrow .lucide { transition: none; }
+}
 .reviews-google:hover > .testimonial-action-arrow,
 .reviews-google:focus-visible > .testimonial-action-arrow { color: #4285F4; }
 .testimonial-actions a, .testimonial-actions button { border: 0; padding: 0; color: var(--ink); background: transparent; font-size: 12px; font-weight: 800; cursor: pointer; transition: color .2s ease; }

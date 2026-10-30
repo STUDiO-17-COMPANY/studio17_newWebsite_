@@ -21,7 +21,7 @@
     const quote = card.querySelector(':scope > p');
     if (!quote) return;
     const translated = quote.textContent;
-    const original = card.dataset.review === 'yiannos' ? greek : quote.dataset.reviewOriginal || translated;
+    const original = card.dataset.review === 'yiannos' ? greek : quote.dataset.reviewOriginal;
     const language = card.dataset.review === 'yiannos' ? 'el' : quote.dataset.reviewLanguage || 'en';
     const actions = document.createElement('div');
     actions.className = 'testimonial-actions';
@@ -30,6 +30,11 @@
       source.replaceChildren(document.createTextNode(labels[0]));
       appendArrow(source);
       actions.append(source);
+    }
+    const normalize = value => (value || '').normalize('NFC').replace(/\s+/g, ' ').trim();
+    if (!original || normalize(original) === normalize(translated)) {
+      if (actions.childNodes.length) card.append(actions);
+      return;
     }
     const toggle = document.createElement('button');
     toggle.type = 'button';
