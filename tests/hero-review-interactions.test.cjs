@@ -6,6 +6,11 @@ const path = require('node:path');
 const root = path.join(__dirname, '..');
 for (const language of ['pt', 'es', 'el', 'ru', 'he']) {
   const { document, window } = parseHTML(fs.readFileSync(path.join(root, '_localized', language, 'home.template.html'), 'utf8'));
+  const platformCta = document.querySelector('[data-review-platform-cta]');
+  const locale = language === 'pt' ? 'pt-PT' : language;
+  const [prefix, conjunction] = require('../locales/review-platform-cta.json')[locale];
+  assert.equal(platformCta.textContent, `${prefix}Trustpilot${conjunction}Google`);
+  assert.equal(platformCta.querySelectorAll('.testimonial-action-arrow').length, 2);
   document.querySelector('[data-hero-audit-form]').remove();
   let rotate;
   vm.runInNewContext(fs.readFileSync(path.join(root, 'homepage-audit.js'), 'utf8'), {

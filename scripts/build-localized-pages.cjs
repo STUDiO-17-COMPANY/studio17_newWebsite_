@@ -180,6 +180,13 @@ const render = (definition, locale, dynamic = false) => {
   });
   const general = stores.Studio17LocaleData?.[locale] || {};
   applyGeneralTranslations(document, general);
+  const platformCta = document.querySelector('[data-review-platform-cta]');
+  if (platformCta) {
+    const translations = require('../locales/review-platform-cta.json');
+    const [prefix, conjunction] = translations[locale] || translations.en;
+    platformCta.firstChild.nodeValue = prefix;
+    platformCta.querySelector('.reviews-trustpilot').nextSibling.nodeValue = conjunction;
+  }
   const cleopatra = document.querySelector('[data-review="cleopatra"]');
   if (cleopatra) {
     const translations = require('../locales/cleopatra-review.json');

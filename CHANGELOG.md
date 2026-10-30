@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-30 — Localised review-platform CTA
+
+- Added explicit server-rendered Portuguese, Spanish, Greek, Russian and Hebrew copy for the split Trustpilot/Google CTA, preserving brand lettering, destinations and arrow animations.
+- Added regression assertions for the complete translated sentence in every generated homepage.
+
 ## 2026-10-30 — Review platform link reveal
 
 - Removed the final punctuation from the review-platform CTA and collapsed hidden arrows to zero width and zero margin.
