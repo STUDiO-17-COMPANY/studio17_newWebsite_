@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-30 — Nested section rhythm and review CTA arrows
+
+- Extended the shared spacing rhythm to nested story chapters and website showcases, and removed redundant vertical space inside free-website and SEO location wrappers.
+- Restored blue-square arrow icons on testimonial source/original controls and both review-platform links.
+- Replaced Pantelis Petrou with Cleopatra Guia's supplied Google review, including five translated versions and the original English text.
+
 ## 2026-10-30 — Shared spacing, stable hero and customer reviews
 
 - Standardised direct page sections to a 32px gap, with only 20px additional top padding for title-led sections; hero and footer retain their own layouts.

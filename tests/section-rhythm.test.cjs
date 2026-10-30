@@ -1,0 +1,12 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const css = fs.readFileSync(path.join(__dirname, '..', 'styles.css'), 'utf8');
+assert.match(css, /margin-block: 32px 0 !important;/);
+assert.match(css, /:has\(h2\)\s*\{\s*padding-top: 20px !important;/);
+assert.match(css, /html body \.story-content > \.story-chapter \{[^}]*padding-block: 20px 0;/);
+assert.match(css, /html body \.story-content > \.story-chapter:first-child \{ margin-top: 0;/);
+assert.match(css, /html body \.website-client-projects \{[^}]*gap: var\(--section-gap\);[^}]*padding-block: 0;/);
+assert.match(css, /html body \.free-zero-statement > \.shell \{ min-height: 0; padding-block: 0;/);
+assert.match(css, /html body \.seo-location-mid-cta > \.shell \{ min-height: 0; padding-block: 0;/);
+console.log('Shared and nested section rhythm regression checks passed.');

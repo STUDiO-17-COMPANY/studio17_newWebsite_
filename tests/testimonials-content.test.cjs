@@ -13,14 +13,15 @@ assert.match(testimonialSection, /Yiannos Costi/);
 assert.match(testimonialSection, /https:\/\/share.google\/uubw1oWLCdYN3xs2M/);
 assert.doesNotMatch(testimonialSection, /quote-icon|Learn more/);
 
-for (const name of ['Rita Braz', 'Pantelis Petrou', 'Miguel Ângelo', 'Natalia Ioannou']) {
+for (const name of ['Rita Braz', 'Cleopatra Guia', 'Miguel Ângelo', 'Natalia Ioannou']) {
   assert.match(testimonialSection, new RegExp(`<h3>${name}</h3>`));
 }
 
 assert.match(testimonialSection, /Owner of 100Pratos/);
 assert.match(testimonialSection, /Founder of Miguel Labs/);
 assert.match(testimonialSection, /href="https:\/\/www\.100pratos\.pt\/"/);
-assert.match(testimonialSection, /href="https:\/\/www\.trustpilot\.com\/reviews\/69bd096cfa469b4a641ef444"/);
+assert.match(testimonialSection, /href="https:\/\/share.google\/SKqCQxhCEHE5gDG5S"/);
+assert.doesNotMatch(testimonialSection, /Pantelis Petrou/);
 assert.match(testimonialSection, /href="https:\/\/miguellabs\.xyz\/"/);
 assert.doesNotMatch(testimonialSection, /Client name|Approved client feedback|\/work#testimonials/);
 assert.match(css, /\.testimonial-card \{[^}]*display:\s*flex;[^}]*height:\s*294px;/);

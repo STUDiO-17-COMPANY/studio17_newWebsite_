@@ -9,6 +9,13 @@
     ru: ['Источник отзыва', 'Посмотреть оригинал', 'Посмотреть перевод'],
     he: ['מקור הביקורת', 'הצגת המקור', 'הצגת התרגום']
   }[document.documentElement.lang] || ['Review font', 'View original', 'View translation'];
+  const appendArrow = control => {
+    const arrow = document.createElement('span');
+    arrow.className = 'testimonial-action-arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.innerHTML = '<i data-lucide="arrow-up-right"></i>';
+    control.append(arrow);
+  };
   document.querySelectorAll('.testimonial-card').forEach(card => {
     card.querySelector('.quote-icon')?.remove();
     const quote = card.querySelector(':scope > p');
@@ -21,11 +28,13 @@
     const source = card.querySelector(':scope > a');
     if (source) {
       source.replaceChildren(document.createTextNode(labels[0]));
+      appendArrow(source);
       actions.append(source);
     }
     const toggle = document.createElement('button');
     toggle.type = 'button';
     toggle.textContent = labels[1];
+    appendArrow(toggle);
     toggle.setAttribute('aria-pressed', 'false');
     toggle.addEventListener('click', () => {
       const showOriginal = toggle.getAttribute('aria-pressed') !== 'true';
@@ -35,8 +44,11 @@
       quote.dir = 'auto';
       toggle.setAttribute('aria-pressed', String(showOriginal));
       toggle.textContent = labels[showOriginal ? 2 : 1];
+      appendArrow(toggle);
+      window.lucide?.createIcons();
     });
     actions.append(toggle);
     card.append(actions);
   });
+  window.lucide?.createIcons();
 })();

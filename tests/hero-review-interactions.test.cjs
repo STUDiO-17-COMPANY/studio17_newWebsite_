@@ -18,12 +18,13 @@ for (const language of ['pt', 'es', 'el', 'ru', 'he']) {
       assert.equal([...element.children].filter(child => child.style.visibility === 'visible').length, 1);
     });
   }
-  vm.runInNewContext(fs.readFileSync(path.join(root, 'testimonials.js'), 'utf8'), { document });
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'testimonials.js'), 'utf8'), { document, window });
   const card = document.querySelector('[data-review="yiannos"]');
   const quote = card.querySelector(':scope > p');
   const translated = quote.textContent;
   const button = card.querySelector('button');
   button.dispatchEvent(new window.Event('click'));
+  assert.ok(button.querySelector('.testimonial-action-arrow'));
   assert.equal(quote.lang, 'el');
   assert.match(quote.textContent, /^Η συνεργασία/);
   button.dispatchEvent(new window.Event('click'));

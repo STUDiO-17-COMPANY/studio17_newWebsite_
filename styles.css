@@ -2888,6 +2888,10 @@ html body main > section:not(.hero):not(.page-hero):not(.article-hero):has(h2) {
 html body .testimonials-section .horizontal-track { height: auto; align-items: start; padding-bottom: 0; }
 html body .testimonial-card { height: auto; min-height: 294px; }
 .testimonial-actions { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 14px; }
+.testimonial-actions a, .testimonial-actions button,
+.testimonial-section-link a { display: inline-flex; align-items: center; gap: 8px; }
+.testimonial-action-arrow { display: inline-grid; width: 24px; height: 24px; flex: 0 0 24px; place-items: center; color: var(--white); background: var(--blue); }
+.testimonial-action-arrow .lucide { width: 16px; height: 16px; }
 .testimonial-actions a, .testimonial-actions button { border: 0; padding: 0; color: var(--ink); background: transparent; font-size: 12px; font-weight: 800; cursor: pointer; transition: color .2s ease; }
 .testimonial-actions a:hover, .testimonial-actions button:hover,
 .testimonial-actions a:focus-visible, .testimonial-actions button:focus-visible { color: var(--blue); }
@@ -2903,6 +2907,18 @@ html body .testimonial-card { height: auto; min-height: 294px; }
 .reviews-google:hover span:nth-child(5), .reviews-google:focus-visible span:nth-child(5) { color: #34A853; }
 
 /* Work page */
+/* Nested page sections must follow the same rhythm as direct main sections. */
+html body .story-content { display: flow-root; margin-top: var(--section-gap); }
+html body .story-content > .story-chapter { margin-block: var(--section-gap) 0; padding-block: 20px 0; }
+html body .story-content > .story-chapter:first-child { margin-top: 0; }
+html body .website-client-projects { display: grid; gap: var(--section-gap); margin-block: var(--section-gap) 0; padding-block: 0; }
+html body .website-client-projects > .website-case-study { margin-block: 0; }
+html body .website-client-project,
+html body .website-services-main .website-client-project { margin-block: var(--section-gap) 0; padding-block: 20px 0; }
+html body .website-case-study-copy { padding-block: 20px 0; }
+html body .free-zero-statement > .shell { min-height: 0; padding-block: 0; }
+html body .seo-location-mid-cta > .shell { min-height: 0; padding-block: 0; }
+
 .work-page,
 .work-main,
 .work-main > section:not(.page-hero) { background: var(--paper); }

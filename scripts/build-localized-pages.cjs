@@ -180,6 +180,11 @@ const render = (definition, locale, dynamic = false) => {
   });
   const general = stores.Studio17LocaleData?.[locale] || {};
   applyGeneralTranslations(document, general);
+  const cleopatra = document.querySelector('[data-review="cleopatra"]');
+  if (cleopatra) {
+    const translations = require('../locales/cleopatra-review.json');
+    if (translations[locale]) cleopatra.textContent = translations[locale];
+  }
   const yiannos = document.querySelector('[data-review="yiannos"] > p');
   if (yiannos) {
     const translations = require('../locales/yiannos-review.json');
