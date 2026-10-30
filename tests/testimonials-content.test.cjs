@@ -8,7 +8,10 @@ const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 
 const testimonialSection = html.match(/<section class="testimonials-section"[\s\S]*?<\/section>/)?.[0] || '';
 assert.ok(testimonialSection, 'Testimonials section is missing');
-assert.equal((testimonialSection.match(/<article class="testimonial-card">/g) || []).length, 4);
+assert.equal((testimonialSection.match(/<article class="testimonial-card"/g) || []).length, 5);
+assert.match(testimonialSection, /Yiannos Costi/);
+assert.match(testimonialSection, /https:\/\/share.google\/uubw1oWLCdYN3xs2M/);
+assert.doesNotMatch(testimonialSection, /quote-icon|Learn more/);
 
 for (const name of ['Rita Braz', 'Pantelis Petrou', 'Miguel Ângelo', 'Natalia Ioannou']) {
   assert.match(testimonialSection, new RegExp(`<h3>${name}</h3>`));

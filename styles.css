@@ -2869,6 +2869,39 @@ html[dir="rtl"] .website-faq-list details p { padding-right: 2px; padding-left: 
   .website-services-main .website-problem-grid a:nth-child(4) { grid-column: auto; }
 }
 
+/* Shared section rhythm — final authority across locales and breakpoints.
+   Hero and footer keep their own composition; title-led sections add only 20px. */
+html body main > section:not(.hero):not(.page-hero):not(.article-hero) {
+  height: auto !important;
+  min-height: 0 !important;
+  margin-block: 32px 0 !important;
+  padding-block: 0 !important;
+}
+html body main > section:not(.hero):not(.page-hero):not(.article-hero):has(h2) {
+  padding-top: 20px !important;
+}
+.home-hero-rotating-word { display: inline-grid; vertical-align: baseline; white-space: nowrap; }
+.hero-word-variant { grid-area: 1 / 1; text-align: center; }
+.testimonial-card .quote-icon { display: none; }
+.testimonial-person { margin-bottom: 16px; }
+.testimonial-person [aria-label="5 out of 5 stars"] { color: var(--blue); letter-spacing: .12em; }
+html body .testimonials-section .horizontal-track { height: auto; align-items: start; padding-bottom: 0; }
+html body .testimonial-card { height: auto; min-height: 294px; }
+.testimonial-actions { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 14px; }
+.testimonial-actions a, .testimonial-actions button { border: 0; padding: 0; color: var(--ink); background: transparent; font-size: 12px; font-weight: 800; cursor: pointer; transition: color .2s ease; }
+.testimonial-actions a:hover, .testimonial-actions button:hover,
+.testimonial-actions a:focus-visible, .testimonial-actions button:focus-visible { color: var(--blue); }
+.testimonial-section-link { justify-content: flex-start; }
+.testimonial-section-link p { margin: 0; font-weight: 700; }
+.testimonial-section-link a { transition: color .2s ease; }
+.reviews-trustpilot:hover, .reviews-trustpilot:focus-visible { color: #00B77F; }
+.reviews-google:hover span:nth-child(1), .reviews-google:focus-visible span:nth-child(1),
+.reviews-google:hover span:nth-child(4), .reviews-google:focus-visible span:nth-child(4) { color: #4285F4; }
+.reviews-google:hover span:nth-child(2), .reviews-google:focus-visible span:nth-child(2),
+.reviews-google:hover span:nth-child(6), .reviews-google:focus-visible span:nth-child(6) { color: #EA4335; }
+.reviews-google:hover span:nth-child(3), .reviews-google:focus-visible span:nth-child(3) { color: #FBBC05; }
+.reviews-google:hover span:nth-child(5), .reviews-google:focus-visible span:nth-child(5) { color: #34A853; }
+
 /* Work page */
 .work-page,
 .work-main,

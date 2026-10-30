@@ -174,8 +174,19 @@ const render = (definition, locale, dynamic = false) => {
   const source = read(definition.source);
   const stores = loadDataForTemplate(source);
   const { document } = parseHTML(source);
+  document.querySelectorAll('.testimonial-card > p').forEach(quote => {
+    quote.setAttribute('data-review-original', quote.textContent);
+    quote.setAttribute('data-review-language', 'en');
+  });
   const general = stores.Studio17LocaleData?.[locale] || {};
   applyGeneralTranslations(document, general);
+  const yiannos = document.querySelector('[data-review="yiannos"] > p');
+  if (yiannos) {
+    const translations = require('../locales/yiannos-review.json');
+    yiannos.setAttribute('data-review-original', translations.el);
+    yiannos.setAttribute('data-review-language', 'el');
+    if (translations[locale]) yiannos.textContent = translations[locale];
+  }
   const serviceMeta = applyKeyedTranslations(document, stores.Studio17ServiceLocaleData?.[locale], definition.page, 'data-service-key');
   const legalMeta = applyKeyedTranslations(document, stores.Studio17LegalLocaleData?.[locale], definition.page, 'data-legal-key');
   const metadata = serviceMeta || legalMeta || general.meta?.[definition.page] || null;

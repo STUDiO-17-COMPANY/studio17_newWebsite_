@@ -17,12 +17,26 @@
   };
 
   const rotateElements = [...document.querySelectorAll('[data-hero-word]')];
+  // Every variant occupies the same grid cell; hidden words still reserve space.
+  rotateElements.forEach(element => {
+    element.replaceChildren(...words[element.dataset.heroWord].map((word, index) => {
+      const variant = document.createElement('span');
+      variant.textContent = word;
+      variant.className = 'hero-word-variant';
+      variant.style.visibility = index ? 'hidden' : 'visible';
+      variant.setAttribute('aria-hidden', String(Boolean(index)));
+      return variant;
+    }));
+  });
   if (rotateElements.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     let index = 0;
     window.setInterval(() => {
       index = (index + 1) % words.title.length;
       rotateElements.forEach(element => {
-        element.textContent = words[element.dataset.heroWord][index];
+        [...element.children].forEach((variant, position) => {
+          variant.style.visibility = position === index ? 'visible' : 'hidden';
+          variant.setAttribute('aria-hidden', String(position !== index));
+        });
       });
     }, 3000);
   }

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-30 — Shared spacing, stable hero and customer reviews
+
+- Standardised direct page sections to a 32px gap, with only 20px additional top padding for title-led sections; hero and footer retain their own layouts.
+- Reserved the widest rotating hero word in an overlapping grid so word changes cannot reflow the title, paragraph or audit form.
+- Added Yiannos Costi's five-star Google review, original-language toggles, compact review actions and removed decorative quote icons.
+- Left-aligned the review-platform links with branded Trustpilot and Google hover colours.
+
 ## 2026-10-29 — Translated homepage hero sizing
 
 - Restored the approved 500px desktop hero canvas in Portuguese, Spanish, Greek, Russian and Hebrew instead of allowing translated copy to shorten the artwork.
