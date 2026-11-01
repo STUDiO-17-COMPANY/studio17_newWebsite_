@@ -153,7 +153,7 @@
 
       const query = queryIndex >= 0 ? withoutHash.slice(queryIndex + 1) : '';
       const parameters = new URLSearchParams(query);
-      const linkLanguage = normaliseLanguage(anchor.dataset.forceLanguage) || language;
+      const linkLanguage = normaliseLanguage(anchor.getAttribute('hreflang')) || normaliseLanguage(anchor.dataset.forceLanguage) || language;
       const cleanPage = stripLanguagePrefix(page);
       const isWipLink = cleanPage === '/wip' || cleanPage === 'wip.html';
       if (isWipLink) {

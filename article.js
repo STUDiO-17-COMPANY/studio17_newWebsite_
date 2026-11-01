@@ -39,16 +39,8 @@
     if (!availableLanguages.includes(button.dataset.lang)) button.hidden = true;
   });
 
-  document.querySelector('.article-page .language-menu')?.addEventListener('click', event => {
-    const button = event.target.closest('[data-lang]');
-    if (!button || !availableLanguages.includes(button.dataset.lang)) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    const url = new URL(location.href);
-    if (button.dataset.lang === 'en') url.searchParams.delete('lang');
-    else url.searchParams.set('lang', button.dataset.lang);
-    location.assign(url.href);
-  }, true);
+  // The shared language switcher handles canonical language-subdirectory URLs.
+  // Do not intercept it with the legacy ?lang= article navigation.
 
   const updateProgress = () => {
     if (!progress || !articleBody) return;

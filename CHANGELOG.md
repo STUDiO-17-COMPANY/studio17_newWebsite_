@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-01 — Article translation navigation
+
+- Preserved explicit hreflang destinations when localising internal links, so article language buttons open the selected translation instead of being rewritten to the current language.
+- Removed the obsolete article-header language interceptor so both controls use canonical language-subdirectory navigation.
+
 ## 2026-10-30 — Localised review-platform CTA
 
 - Added explicit server-rendered Portuguese, Spanish, Greek, Russian and Hebrew copy for the split Trustpilot/Google CTA, preserving brand lettering, destinations and arrow animations.
