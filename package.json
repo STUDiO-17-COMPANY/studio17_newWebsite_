@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build:locales": "node scripts/build-localized-pages.cjs",
+    "build:locales": "node scripts/build-service-directory.cjs && node service-locales/build-bundle.cjs && node scripts/build-localized-pages.cjs",
     "test:multilingual": "node scripts/build-localized-pages.cjs && node --test tests/multilingual-routing.test.cjs",
     "test:articles": "node --test tests/article-image-optimization.test.cjs tests/article-listing-ssr.test.cjs tests/articles-parser.test.cjs tests/article-prototype.test.cjs tests/llms.test.cjs"
   },

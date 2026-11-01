@@ -651,6 +651,7 @@
 
   const normaliseWebsiteFamilyCard = () => {
     if (page !== 'services') return;
+    if (document.querySelector('#directory-website')) return;
     const card = document.querySelector('.service-family-grid .service-family-card');
     if (!card) return;
     card.setAttribute('href', '/services/website');
@@ -668,6 +669,15 @@
       if (lastTextNode) lastTextNode.nodeValue = lastTextNode.nodeValue.replace(/\.\s*$/, '');
     });
   };
+
+  if (page === 'services') {
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href^="#directory-"]');
+      if (!link) return;
+      const category = document.getElementById(link.getAttribute('href').slice(1));
+      if (category?.matches('details')) category.open = true;
+    });
+  }
 
   const normalisePageHeadingPunctuation = () => {
     if (document.body.classList.contains('seo-location-page')) removeTerminalHeadingPeriods('.seo-location-main h1, .seo-location-main h2');

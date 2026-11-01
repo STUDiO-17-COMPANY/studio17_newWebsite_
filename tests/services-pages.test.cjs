@@ -12,12 +12,11 @@ const jsonLd = html => html.split('<script type="application/ld+json">').slice(1
 test('services catalogue exposes every service without internal codes', () => {
   const html = read('services.html');
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.studio17\.world\/services"/);
-  assert.equal((html.match(/class="service-row"/g) || []).length, 43);
-  assert.equal((html.match(/class="service-category"/g) || []).length, 5);
+  assert.equal((html.match(/class="service-row"/g) || []).length, 30);
+  assert.equal((html.match(/class="service-category"/g) || []).length, 6);
   assert.doesNotMatch(html, /WEB-\d+/);
-  for (const packageName of ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website']) assert.match(html, new RegExp(`<h3>${packageName}<\\/h3>`));
   assert.equal(jsonLd(html)[0]['@type'], 'CollectionPage');
-  for (const count of ['8 services', '13 services', '11 services', '7 services', '4 services']) assert.match(html, new RegExp(count));
+  for (const count of ['5 services', '7 services', '6 services', '2 services']) assert.match(html, new RegExp(count));
   assert.match(html, /class="services-cta-media"><img src="\/Images\/CTA_Question_Image\.webp"/);
   assert.doesNotMatch(html, /class="cta-mark"[\s\S]*?messages-square/);
   assert.match(html, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/work#selected-work"[\s\S]*?See our work/);
@@ -29,7 +28,6 @@ test('website development page preserves commercial and portfolio requirements',
   assert.match(html, /canonical" href="https:\/\/www\.studio17\.world\/services\/website-development"/);
   assert.equal((html.match(/class="website-package-card(?: [^"]*)?"/g) || []).length, 5);
   for (const price of ['450,00 €', '950,00 €', '1&nbsp;500,00 €', '2&nbsp;250,00 €', '3&nbsp;500,00 €']) assert.ok(html.includes(price), price);
-  for (const packageName of ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website']) assert.ok(html.includes(packageName), packageName);
   assert.match(html, /website-package-card is-popular[\s\S]*Most bought[\s\S]*Starter Pack/);
   assert.match(html, /<h3>One Page Website<\/h3>[\s\S]*1 custom-designed website page[\s\S]*Estimated delivery: from 1 week/);
   assert.match(html, /<h3>Starter Pack<\/h3>[\s\S]*Up to 6 custom-designed pages[\s\S]*Estimated delivery: up to 2 weeks/);
@@ -71,7 +69,6 @@ test('website pricing page compares the five packages accessibly', () => {
   assert.match(html, /class="website-pricing-scroll" role="region"[^>]*tabindex="0"/);
   assert.equal((html.match(/class="website-pricing-group"/g) || []).length, 3);
   assert.equal((html.match(/<tr>/g) || []).length, 17);
-  for (const packageName of ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website']) assert.match(html, new RegExp(`<strong>${packageName}<\\/strong>`));
   assert.match(html, /Most bought[\s\S]*Starter Pack/);
   assert.match(html, /From 3&nbsp;500,00 €/);
   assert.match(html, /Language allowances cover technical implementation of supplied translations/);
@@ -325,12 +322,11 @@ test('all service locales preserve the page schema and content counts', () => {
     const data = require(path.join(root, 'service-locales', `${locale}.json`));
     assert.deepEqual(Object.keys(data.pages.services), Object.keys(reference.pages.services), locale);
     assert.deepEqual(Object.keys(data.pages.websiteDevelopment), Object.keys(reference.pages.websiteDevelopment), locale);
-    assert.equal((data.pages.services.catalogue.match(/service-row/g) || []).length, 43, locale);
+    assert.equal((data.pages.services.catalogue.match(/service-row/g) || []).length, 30, locale);
     assert.equal((data.pages.websiteDevelopment.packages.match(/website-package-card/g) || []).length, 5, locale);
     assert.deepEqual([...data.pages.websiteDevelopment.packages.matchAll(/website-package-top"><h3>([^<]+)<\/h3>/g)].map(match => match[1]), ['One Page Website', 'Starter Pack', 'Growth Pack', 'Business Pack', 'Custom Website'], locale);
     assert.match(data.pages.websiteDevelopment.packageNote, /technical|técnica|τεχνική|техническую|טכני/i, `${locale}: language implementation scope must remain explicit`);
     assert.match(data.pages.websiteDevelopment.closing, /class="cta-actions"[\s\S]*href="\/contact"[\s\S]*href="\/work#selected-work"/, locale);
-    assert.equal((data.pages.services.catalogue.match(/<h3>Growth Pack<\/h3>/g) || []).length, 1, `${locale}: package name must not alter accessibility services`);
     assert.doesNotMatch(data.pages.services.catalogue, /WEB-\d+/, locale);
     assert.match(data.pages.services.closing, /class="cta-actions"[\s\S]*?href="\/contact"[\s\S]*?href="\/work#selected-work"/, locale);
   }

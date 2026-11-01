@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-01 — Services directory aligned with the header
+
+- Replaced outdated families and the website-only catalogue with six current service areas and all 30 header services.
+- Generated category order, labels and destinations from the header configuration, preserving published URLs and precise WIP destinations.
+- Updated all six language versions, removed the decorative hero icon and added compact linked service rows with the shared spacing rhythm.
+
 ## 2026-11-01 — Article translation navigation
 
 - Preserved explicit hreflang destinations when localising internal links, so article language buttons open the selected translation instead of being rewritten to the current language.

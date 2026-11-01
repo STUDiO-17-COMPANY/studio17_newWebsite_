@@ -2922,6 +2922,17 @@ html[dir="rtl"] .testimonial-section-link a:focus-visible > .testimonial-action-
 .reviews-google:hover span:nth-child(5), .reviews-google:focus-visible span:nth-child(5) { color: #34A853; }
 
 /* Work page */
+.services-main .service-family-card { min-height: 230px; }
+.services-main .service-category { scroll-margin-top: 24px; }
+.services-main .service-category summary > span { grid-template-columns: minmax(0,1fr) auto; }
+.services-main .service-directory-intro { grid-column: 1 / -1; margin: 0; padding: 16px 0; color: var(--ink); background: var(--paper); }
+.services-main .service-directory-intro a { display: inline-flex; align-items: center; gap: 8px; margin-inline-start: 12px; color: var(--blue); font-weight: 700; }
+.services-main .service-directory-intro .lucide { width: 1em; height: 1em; }
+.services-main .service-row { min-height: 70px; }
+.services-main .service-row h3 { margin: 0; }
+.services-main .service-row a { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.services-main .service-row a .lucide { width: 1em; height: 1em; }
+.services-main .service-row a:hover, .services-main .service-row a:focus-visible { color: var(--blue); }
 /* Nested page sections must follow the same rhythm as direct main sections. */
 html body .story-content { display: flow-root; margin-top: var(--section-gap); }
 html body .story-content > .story-chapter { margin-block: var(--section-gap) 0; padding-block: 20px 0; }
