@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-02 — FAQ search workspace and article discovery
+
+- Switched to the updated FAQ hero artwork with supporting text beneath the heading.
+- Moved Search above the three columns and matched desktop category/question heights, keeping additional questions inside a keyboard-accessible scrolling panel.
+- Limited accordions to one open answer at a time and added the shared latest-articles carousel after partner logos.
+- Reused the existing homepage server handler to render published article cards on FAQ routes without adding a serverless function.
+
 ## 2026-11-02 — FAQ layout aligned with Studio 17
 
 - Restored the shared image hero with the supplied FAQ artwork and removed the eyebrow from every FAQ route.

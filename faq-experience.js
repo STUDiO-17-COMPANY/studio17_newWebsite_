@@ -13,6 +13,7 @@
   const el = (tag, text, className) => { const node = document.createElement(tag); if (text) node.textContent = text; if (className) node.className = className; return node; };
   const card = record => {
     const details = el('details', '', 'faq-item'); details.id = record.id;
+    details.setAttribute('name', 'studio17-faq');
     const summary = el('summary'); summary.id = `${record.id}-question`; summary.setAttribute('aria-controls', `${record.id}-answer`);
     summary.append(el('span', record.question));
     const icon = el('i'); icon.dataset.lucide = 'plus'; icon.setAttribute('aria-hidden', 'true'); summary.append(icon);
@@ -71,7 +72,11 @@
     if (!data || !link || event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault(); categoryId = link.dataset.faqCategory; limit = 10; render(); save(true); track('faq_category_select');
   });
-  root.addEventListener('toggle', event => { if (event.target.matches('.faq-item') && event.target.open) track('faq_open', { faq_id: event.target.id }); }, true);
+  root.addEventListener('toggle', event => {
+    if (!event.target.matches('.faq-item') || !event.target.open) return;
+    results.querySelectorAll('.faq-item[open]').forEach(item => { if (item !== event.target) item.open = false; });
+    track('faq_open', { faq_id: event.target.id });
+  }, true);
   root.addEventListener('click', event => { const link = event.target.closest('[data-faq-cta]'); if (link) track('faq_cta_click', { faq_id: link.dataset.faqCta, faq_destination: new URL(link.href).pathname }); });
   const runSearch = (immediate = false) => {
     limit = 10; const found = render(); save(false); clearTimeout(timer);

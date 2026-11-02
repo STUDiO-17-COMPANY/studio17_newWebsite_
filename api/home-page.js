@@ -16,6 +16,12 @@ const readAuditTemplate = () => fs.readFileSync(path.join(process.cwd(), 'audit-
 
 const renderHomePage = (articles, locale = 'en') => readTemplate(locale).replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, locale)).join(''));
 const renderAuditPage = articles => readAuditTemplate().replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, 'en')).join(''));
+const readFaqTemplate = category => {
+  const approved = require('../faq-data/approved.json').categories;
+  if (category && !approved.some(item => item.id === category)) return null;
+  return fs.readFileSync(path.join(process.cwd(), category ? `faq/${category}.html` : 'faq.html'), 'utf8');
+};
+const renderFaqPage = (articles, category = '') => readFaqTemplate(category)?.replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, 'en')).join(''));
 
 module.exports = async function homePageHandler(request, response) {
   if (!['GET', 'HEAD'].includes(request.method)) {
@@ -24,11 +30,20 @@ module.exports = async function homePageHandler(request, response) {
     response.end();
     return;
   }
+  const isFaq = request.query?.view === 'faq';
+  const faqCategory = typeof request.query?.category === 'string' ? request.query.category : '';
+  if (isFaq && readFaqTemplate(faqCategory) === null) {
+    response.statusCode = 404;
+    response.setHeader('X-Robots-Tag', 'noindex');
+    response.end('Page not found');
+    return;
+  }
+  if (isFaq && typeof request.query?.q === 'string' && request.query.q.trim()) response.setHeader('X-Robots-Tag', 'noindex, follow');
   try {
     const isAudit = request.query?.view === 'audit';
-    const locale = isAudit ? 'en' : normaliseLocale(request.query?.lang);
+    const locale = isAudit || isFaq ? 'en' : normaliseLocale(request.query?.lang);
     const payload = await listPublishedArticles(request, locale);
-    const body = isAudit ? renderAuditPage(payload.articles) : renderHomePage(payload.articles, locale);
+    const body = isFaq ? renderFaqPage(payload.articles, faqCategory) : isAudit ? renderAuditPage(payload.articles) : renderHomePage(payload.articles, locale);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
     response.setHeader('Cache-Control', articleCacheControl(payload));
@@ -38,8 +53,8 @@ module.exports = async function homePageHandler(request, response) {
   } catch (error) {
     console.error('Homepage article rendering failed', error?.code || error?.message);
     const isAudit = request.query?.view === 'audit';
-    const locale = isAudit ? 'en' : normaliseLocale(request.query?.lang);
-    const template = isAudit ? readAuditTemplate() : readTemplate(locale);
+    const locale = isAudit || isFaq ? 'en' : normaliseLocale(request.query?.lang);
+    const template = isFaq ? readFaqTemplate(faqCategory) : isAudit ? readAuditTemplate() : readTemplate(locale);
     const body = template.replace(marker, '<div class="article-feed-state article-feed-error"><p>Articles are temporarily unavailable.</p></div>');
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
@@ -50,3 +65,4 @@ module.exports = async function homePageHandler(request, response) {
 
 module.exports.renderHomePage = renderHomePage;
 module.exports.renderAuditPage = renderAuditPage;
+module.exports.renderFaqPage = renderFaqPage;

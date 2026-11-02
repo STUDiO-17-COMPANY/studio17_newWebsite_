@@ -41,7 +41,10 @@ test('Q02/Q11–17/Q19/Q22/Q26: crawlable complete category HTML, approved copy 
   assert.equal(document.querySelector('h1').textContent, 'Your questions. Answered.');
   assert.equal(document.querySelector('input').getAttribute('placeholder'), 'Search a question, service, or topic...');
   assert.equal(document.querySelectorAll('.faq-topic-filters a').length, 13);
-  assert.ok(document.querySelector('.page-hero .hero-media img').getAttribute('src').includes('FAQ%20Hero%20Section-compressed.avif'));
+  assert.ok(document.querySelector('.page-hero .hero-media img').getAttribute('src').includes('faqsection_heroimage-compressed.avif'));
+  assert.ok(document.querySelector('.page-hero-title > .page-hero-copy'));
+  assert.ok(document.querySelector('.faq-experience > .faq-search'));
+  assert.ok(document.querySelector('.faq-questions-column[tabindex="0"]'));
   assert.equal(document.querySelector('.faq-experience-eyebrow'), null);
   assert.ok(document.querySelector('.faq-workspace > .faq-topic-filters'));
   assert.ok(document.querySelector('.faq-workspace > .faq-help'));
@@ -49,6 +52,7 @@ test('Q02/Q11–17/Q19/Q22/Q26: crawlable complete category HTML, approved copy 
   assert.ok(document.querySelector('[data-faq-more] [data-lucide="arrow-down"]'));
   assert.ok(document.querySelector('.faq-item summary [data-lucide="plus"]'));
   assert.ok(document.querySelector('.faq-trusted .partner-marquee'));
+  assert.ok(document.querySelector('.faq-trusted + .news-section [data-article-feed="home"]'));
   for (const record of data.records) assert.deepEqual(Object.keys(record).sort(), [...PUBLIC_FIELDS].sort());
   assert.doesNotMatch(read('faq-search.json'), /Source \/ Evidence|Editorial Notes|Verification Required|Owner Decisions|Demand Evidence|reviewed against current sources/);
   assert.ok(!data.categories.some(category => ['events', 'ai-solutions'].includes(category.id)));
@@ -170,9 +174,26 @@ test('Q05–10/Q23: UI state, full search, Load More, original IDs and consent',
   document.querySelector('[data-faq-more]').click();
   // Linkedom does not model non-bubbling native toggle capture; browser keyboard checks cover native details.
   const details = document.querySelector('.faq-item'); details.open = true; details.dispatchEvent(new window.Event('toggle', { bubbles: true }));
+  const second = document.querySelectorAll('.faq-item')[1]; second.open = true; second.setAttribute('open', ''); second.dispatchEvent(new window.Event('toggle', { bubbles: true }));
+  details.setAttribute('open', ''); details.dispatchEvent(new window.Event('toggle', { bubbles: true }));
+  assert.equal(second.open, false);
   details.querySelector('[data-faq-cta]').click();
   input.value = 'xxxnonsensezzz'; input.dispatchEvent(new window.Event('input'));
   await new Promise(resolve => setTimeout(resolve, 480));
   for (const event of ['faq_search', 'faq_zero_results', 'faq_category_select', 'faq_open', 'faq_load_more', 'faq_cta_click']) assert.ok(telemetry.some(args => args[1] === event), event);
   assert.ok(!JSON.stringify(telemetry).includes('xxxnonsensezzz'));
+});
+
+test('FAQ article section uses the shared published server-rendered feed without a new function', async () => {
+  const { renderFaqPage } = require('../api/home-page');
+  const article = { title: 'Published fixture', url: '/insights/published-fixture', category: 'Insight', summary: 'Existing summary', coverImage: '/Images/test.avif', coverAlt: 'Fixture', publishedDate: '2026-11-02', authorName: 'Studio 17', authorRole: 'Team' };
+  for (const category of ['', ...data.categories.map(item => item.id)]) {
+    const { document } = parseHTML(renderFaqPage([article], category));
+    assert.equal(document.querySelectorAll('.news-card').length, 1);
+    assert.equal(document.querySelector('.news-card a').href, article.url);
+  }
+  assert.equal(renderFaqPage([article], '../invalid'), undefined);
+  const config = JSON.parse(read('vercel.json'));
+  assert.ok(config.rewrites.some(rule => rule.source === '/faq' && rule.destination === '/api/home-page?view=faq'));
+  assert.ok(config.functions['api/*.js'].includeFiles.includes('faq/*.html'));
 });

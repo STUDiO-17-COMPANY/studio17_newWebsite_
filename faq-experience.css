@@ -1,10 +1,15 @@
 /* FAQ uses the shared hero, spacing and button primitives. */
 .faq-hero .hero-media img { object-position: center; }
-.faq-hero .page-hero-copy { display: flex; flex-direction: column; justify-content: center; padding-block: 28px; }
+.faq-hero .page-hero-grid { display: flex; height: auto; min-height: 296px; padding-block: 28px; }
+.faq-hero .page-hero-title { width: min(100%, 900px); padding: 0; }
+.faq-hero .page-hero-copy { display: flex; flex-direction: column; align-items: flex-start; padding: 0; margin-top: 20px; }
+.faq-hero .page-hero-copy > p { max-width: 780px; }
 .faq-hero .page-hero-copy > p { margin-bottom: 20px; }
-.faq-workspace { display: grid; grid-template-columns: 220px minmax(0,1fr) 260px; align-items: start; gap: 24px; }
-.faq-questions-column { min-width: 0; }
-.faq-topic-filters { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 4px; max-height: calc(100vh - 48px); overflow-y: auto; padding: 12px; background: var(--ink); }
+.faq-search { margin-bottom: 24px; }
+.faq-workspace { --faq-column-height: 660px; display: grid; grid-template-columns: 220px minmax(0,1fr) 260px; align-items: start; gap: 24px; }
+.faq-questions-column { min-width: 0; height: var(--faq-column-height); overflow-y: auto; scrollbar-gutter: stable; overscroll-behavior-y: contain; padding-right: 12px; }
+.faq-questions-column:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.faq-topic-filters { display: flex; flex-direction: column; gap: 4px; height: var(--faq-column-height); overflow-y: auto; padding: 12px; background: var(--ink); }
 .faq-topic-filters a { display: flex; min-height: 44px; align-items: center; padding: 9px 12px; color: var(--white); background: transparent; font-size: 14px; font-weight: 650; line-height: 1.4; }
 .faq-topic-filters a[aria-current], .faq-topic-filters a:hover, .faq-topic-filters a:focus-visible { color: var(--white); background: var(--blue); }
 .faq-search label { display: block; margin-bottom: 8px; font-weight: 750; }
@@ -15,7 +20,7 @@
 .faq-search-submit .lucide { width: 18px; height: 18px; }
 .faq-search-clear, .faq-empty button { border: 0; padding: 10px 0; color: var(--blue); background: transparent; font-weight: 700; cursor: pointer; }
 .faq-search-clear { flex: 1 0 100%; text-align: start; }
-.faq-result-count { margin-block: 20px 12px; color: #596477; font-size: 14px; }
+.faq-result-count { margin-block: 0 12px; color: #596477; font-size: 14px; }
 .faq-experience .faq-item { border-bottom: 1px solid #cbd3df; }
 .faq-experience .faq-item summary { min-height: 56px; gap: 18px; padding-block: 20px; }
 .faq-experience .faq-item summary > span { font-size: 19px; line-height: 1.35; }
@@ -42,7 +47,8 @@
 }
 @media(max-width: 900px) {
   .faq-workspace { grid-template-columns: minmax(0,1fr); }
-  .faq-topic-filters { grid-row: auto; position: static; flex-direction: row; max-height: none; overflow-x: auto; padding: 8px; }
+  .faq-topic-filters { grid-row: auto; flex-direction: row; height: auto; overflow-x: auto; padding: 8px; }
+  .faq-questions-column { height: clamp(360px, 65svh, 600px); }
   .faq-topic-filters a { flex: 0 0 auto; white-space: nowrap; }
   .faq-help { grid-column: auto; }
   .faq-hero .page-hero-copy { padding: 0; }

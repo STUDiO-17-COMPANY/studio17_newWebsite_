@@ -29,7 +29,7 @@
   "functions": {
     "api/*.js": {
       "maxDuration": 30,
-      "includeFiles": "{*.html,api/sitemap-template.html,_localized/**/*.html}"
+      "includeFiles": "{*.html,faq/*.html,api/sitemap-template.html,_localized/**/*.html}"
     }
   },
   "headers": [
@@ -63,6 +63,8 @@
     { "source": "/api/careers", "destination": "/api/career-page?format=json&listing=1" },
     { "source": "/api/career-role", "destination": "/api/career-page?format=json" },
     { "source": "/llms.txt", "destination": "/api/llms" },
+    { "source": "/faq", "destination": "/api/home-page?view=faq" },
+    { "source": "/faq/:category", "destination": "/api/home-page?view=faq&category=:category" },
     { "source": "/contact/free-website-audit", "destination": "/api/home-page?view=audit&type=website" },
     { "source": "/contact/free-social-media-audit", "destination": "/api/home-page?view=audit&type=social-media" },
     { "source": "/pt/", "destination": "/api/home-page?lang=pt-PT" },
