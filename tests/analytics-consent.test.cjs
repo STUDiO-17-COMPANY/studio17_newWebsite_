@@ -17,7 +17,7 @@ const consentStrings = [
 ];
 
 for (const file of htmlFiles) {
-  const source = fs.readFileSync(path.join(root, file), 'utf8');
+  const source = fs.readFileSync(path.join(root, file), 'utf8').replace(/src="\/(analytics|i18n|script)\.js"/g, 'src="$1.js"');
   assert.equal((source.match(/<script src="analytics\.js" defer><\/script>/g) || []).length, 1, `${file} must load the shared Analytics controller exactly once`);
   assert.ok(source.indexOf('src="i18n.js"') < source.indexOf('src="analytics.js"'), `${file} must initialise language support before Analytics consent copy`);
   assert.ok(source.indexOf('src="analytics.js"') < source.indexOf('src="script.js"'), `${file} must initialise Analytics consent before page interactions`);

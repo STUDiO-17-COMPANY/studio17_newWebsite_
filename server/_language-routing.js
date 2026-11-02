@@ -10,7 +10,8 @@ const ALL_LOCALES = [...SUPPORTED_LOCALES];
 const ENGLISH_ONLY = ['en'];
 const STATIC_PAGES = [
   { route: '/contact', source: 'contact.html', page: 'contact', locales: ALL_LOCALES },
-  { route: '/faq', source: 'faq.html', page: 'faq', locales: ALL_LOCALES },
+  { route: '/faq', source: 'faq.html', page: 'faq', locales: ENGLISH_ONLY },
+  ...require('../faq-data/approved.json').categories.map(category => ({ route: category.path, source: `${category.path.slice(1)}.html`, page: 'faq', locales: ENGLISH_ONLY })),
   { route: '/about', source: 'about.html', page: 'about', locales: ALL_LOCALES },
   { route: '/our-story', source: 'our-story.html', page: 'ourStory', locales: ALL_LOCALES },
   { route: '/team', source: 'team.html', page: 'team', locales: ALL_LOCALES },

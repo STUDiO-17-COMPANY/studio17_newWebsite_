@@ -1,0 +1,32 @@
+.faq-experience-intro { color: var(--ink); }
+.faq-experience-eyebrow { margin: 0 0 16px; color: var(--blue); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+.faq-experience-intro h1 { max-width: 1000px; margin: 0 0 20px; font-size: clamp(34px,5vw,64px); line-height: 1.06; letter-spacing: -.045em; }
+.faq-experience-description { max-width: 850px; margin: 0; color: #596477; font-size: 17px; line-height: 1.6; }
+.faq-search label { display: block; margin-bottom: 8px; font-weight: 750; }
+.faq-search-entry { display: flex; align-items: stretch; gap: 8px; max-width: 900px; }
+.faq-search input { width: 100%; min-width: 0; min-height: 56px; border: 1px solid #8995a7; padding: 14px 16px; background: var(--paper); color: var(--ink); }
+.faq-search button, .faq-empty button { border: 0; padding: 12px; color: var(--blue); background: transparent; font-weight: 700; cursor: pointer; }
+.faq-topic-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.faq-topic-filters a { display: flex; min-height: 44px; align-items: center; padding: 9px 14px; border: 1px solid #b4bfcd; color: var(--ink); background: transparent; font-size: 14px; font-weight: 650; }
+.faq-topic-filters a[aria-current], .faq-topic-filters a:hover { color: var(--white); border-color: var(--blue); background: var(--blue); }
+.faq-result-count { margin-block: 24px 12px; color: #596477; font-size: 14px; }
+.faq-experience .faq-item { border-bottom: 1px solid #cbd3df; }
+.faq-experience .faq-item summary { min-height: 56px; }
+.faq-experience .faq-answer p { white-space: pre-line; }
+.faq-context-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 18px; }
+.faq-context-links a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--blue); font-weight: 700; }
+.faq-context-links .lucide { width: 1em; height: 1em; }
+.faq-load-more { margin-top: 24px; }
+.faq-empty { padding-block: 20px 0; }
+.faq-empty div { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.faq-empty a { padding-block: 12px; color: var(--blue); font-weight: 700; }
+.faq-help p { margin-block: 16px 20px; }
+.faq-experience [hidden] { display: none !important; }
+@media(max-width: 600px) {
+  .faq-search-entry { flex-wrap: wrap; }
+  .faq-search-entry button { padding-inline: 0; }
+  .faq-experience .faq-item summary > span { font-size: 18px; }
+  .faq-context-links { flex-direction: column; gap: 4px; }
+  .faq-topic-filters a { font-size: 13px; padding-inline: 10px; }
+  .faq-help .solid-button { min-width: 0; width: 100%; }
+}

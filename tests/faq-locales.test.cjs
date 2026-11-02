@@ -9,16 +9,16 @@ const languages = ['en', 'pt-PT', 'es', 'el', 'ru', 'he'];
 const htmlFiles = ['home.template.html', 'api/sitemap-template.html', 'wip.html', 'contact.html', 'faq.html', 'about.html', 'team.html', 'our-story.html', 'work.html', 'services.html', 'website-development.html', 'free-website.html', 'seo.html', 'news.template.html', 'careers.html', 'career-role.html'];
 const faq = fs.readFileSync(path.join(root, 'faq.html'), 'utf8');
 
-const questions = [...faq.matchAll(/<summary><span>([^<]+)<\/span>/g)].map(match => match[1]);
-const answers = [...faq.matchAll(/<div class="faq-answer"><p>([^<]+)<\/p><\/div>/g)].map(match => match[1]);
-
-assert.equal(questions.length, 20, 'FAQ should contain 20 search-oriented questions');
-assert.equal(answers.length, 20, 'every FAQ question should have one answer');
-assert.match(faq, /<body class="faq-page">/);
-assert.match(faq, /rel="canonical" href="https:\/\/www\.studio17\.world\/faq"/);
-assert.equal((faq.match(/hreflang=/g) || []).length, 7);
-for (const language of ['en', 'pt-PT', 'es', 'el', 'ru', 'he']) assert.match(faq, new RegExp(`hreflang="${language}"`));
-assert.doesNotMatch(faq, /FAQPage|application\/ld\+json/, 'ineligible FAQ rich-result markup should not be added');
+const { parseHTML } = require('linkedom');
+const { document } = parseHTML(faq);
+assert.equal(document.querySelectorAll('.faq-item').length, 10);
+assert.equal(document.documentElement.dataset.supportedLanguages, 'en');
+assert.equal(document.querySelector('link[rel="canonical"]').href, 'https://www.studio17.world/faq');
+assert.equal(document.querySelectorAll('[hreflang]').length, 0);
+assert.doesNotMatch(faq, /FAQPage/);
+assert.equal(JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent)['@type'], 'BreadcrumbList');
+const { localesForPath } = require('../server/_language-routing');
+assert.deepEqual(localesForPath('/faq'), ['en']);
 
 for (const language of languages) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'locales', `${language}.json`), 'utf8'));
@@ -26,9 +26,7 @@ for (const language of languages) {
   assert.ok(data.meta.faq?.description, `${language} is missing the FAQ description`);
   if (language === 'en') continue;
   assert.ok(data.strings.FAQs, `${language} is missing the mobile/footer FAQ label`);
-  for (const key of [...questions, ...answers]) {
-    assert.ok(data.strings[key], `${language} is missing FAQ translation: ${key}`);
-  }
+
 }
 
 for (const file of htmlFiles) {
@@ -41,8 +39,9 @@ for (const file of htmlFiles) {
     '/work',
     '/about',
     '/news',
-    '/careers'
-  ], `${file} mobile navigation must contain only the five approved links in the approved order`);
+    '/careers',
+    '/contact'
+  ], `${file} mobile navigation must contain only the six approved links in the approved order`);
   assert.doesNotMatch(source, /href="\/wip#for=faqs"/, `${file} still sends FAQs to WIP`);
 }
 

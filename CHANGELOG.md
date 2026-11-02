@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-02 — Approved FAQ search and category experience
+
+- Imported 229 approved English FAQs from the supplied handoff with original IDs, exact answers and CTA pairs; private editorial fields are excluded.
+- Built the searchable FAQ hub and 12 static category documents with complete crawlable answers, unique metadata, self-canonicals and existing sitemap integration.
+- Added accessible accordions, category navigation/history, 10-at-a-time Load More, noindex search states and consent-gated analytics.
+- Added validated import/fallback/rollback tooling, tests and a QA report; verified 13 live CTA URLs and responsive local browser behaviour. No production deployment performed.
+
 ## 2026-11-01 — Services directory aligned with the header
 
 - Replaced outdated families and the website-only catalogue with six current service areas and all 30 header services.

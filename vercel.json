@@ -1,14 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "buildCommand": "node scripts/sync-document-metadata.cjs && node scripts/build-localized-pages.cjs && node --test tests/default-og-image.test.cjs tests/multilingual-routing.test.cjs tests/homepage-audit.test.cjs tests/contact-api.test.cjs",
+  "buildCommand": "node scripts/sync-document-metadata.cjs && node scripts/build-faq.cjs && node scripts/build-localized-pages.cjs && node --test tests/default-og-image.test.cjs tests/multilingual-routing.test.cjs tests/homepage-audit.test.cjs tests/contact-api.test.cjs tests/faq-system.test.cjs",
   "outputDirectory": ".",
   "proxy": {
     "entrypoint": "proxy.ts",
     "matcher": [
       "/",
       "/contact/:path*",
-      "/faq",
+      "/faq/:path*",
       "/about",
       "/our-story",
       "/team",
@@ -32,7 +32,13 @@
       "includeFiles": "{*.html,api/sitemap-template.html,_localized/**/*.html}"
     }
   },
+  "headers": [
+    { "source": "/faq", "has": [{ "type": "query", "key": "q", "value": ".+" }], "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }] },
+    { "source": "/faq/:path*", "has": [{ "type": "query", "key": "q", "value": ".+" }], "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }] }
+  ],
   "redirects": [
+    { "source": "/:locale(pt|es|el|ru|he)/faq", "destination": "/faq", "permanent": true },
+    { "source": "/:locale(pt|es|el|ru|he)/faq/:path*", "destination": "/faq/:path*", "permanent": true },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "studio17.world" }],

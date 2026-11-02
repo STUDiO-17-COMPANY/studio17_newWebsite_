@@ -79,6 +79,7 @@
   };
   const supportedLocalesByPath = pathname => {
     const clean = stripLanguagePrefix(pathname).replace(/\/$/, '') || '/';
+    if (clean === '/faq' || clean.startsWith('/faq/')) return ['en'];
     if (['/work', '/careers', '/services/localization-and-translation', '/services/social-media', '/services/social-media-pricing'].includes(clean) || clean.startsWith('/careers/')) return ['en'];
     if (clean === '/services/website-pricing') return ['en', 'el', 'ru'];
     if (clean === '/seo/cyprus' || clean === '/seo/limassol') return ['en', 'el', 'ru', 'he'];
@@ -204,6 +205,7 @@
               ? 'sitemap'
               : document.body.classList.contains('wip-page') ? 'wip' : 'home');
     const metadata = currentData.meta?.[page];
+    if (document.documentElement.hasAttribute('data-preserve-page-metadata')) return;
     if (metadata?.title) document.title = metadata.title;
     const description = document.querySelector('meta[name="description"]');
     if (description && metadata?.description) description.setAttribute('content', metadata.description);
