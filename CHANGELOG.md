@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-02 — FAQ layout aligned with Studio 17
+
+- Restored the shared image hero with the supplied FAQ artwork and removed the eyebrow from every FAQ route.
+- Added a desktop category sidebar, central questions/search and right-side contact panel, adapting to narrow screens.
+- Added an explicit Search submit button, rotating plus accordions and the standard Load More button arrow treatment.
+- Reused the homepage trusted-businesses component beneath the FAQ workspace without changing approved answers or links.
+
 ## 2026-11-02 — Vercel build command length fix
 
 - Moved the full build pipeline into the npm build script and shortened Vercel's buildCommand to npm run build, preserving every build guard.

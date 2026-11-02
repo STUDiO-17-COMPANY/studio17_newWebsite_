@@ -20,6 +20,12 @@ for (const category of [null, ...data.categories]) {
   document.documentElement.dir = 'ltr';
   document.body.setAttribute('data-faq-category', category?.id || '');
   document.querySelector('main').innerHTML = pageContent(data, category);
+  const trustedSource = parseHTML(fs.readFileSync(path.join(root, 'home.template.html'), 'utf8')).document.querySelector('section.trusted');
+  const trusted = trustedSource.cloneNode(true);
+  trusted.classList.add('faq-trusted');
+  trusted.setAttribute('aria-labelledby', 'faq-trusted-title');
+  trusted.querySelector('h2').id = 'faq-trusted-title';
+  document.querySelector('main').append(trusted);
   document.querySelectorAll('.language-menu [data-lang]:not([data-lang="en"])').forEach(node => node.remove());
   document.querySelectorAll('link[hreflang],script[type="application/ld+json"]').forEach(node => node.remove());
   const route = category?.path || '/faq';

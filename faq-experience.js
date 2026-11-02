@@ -15,7 +15,7 @@
     const details = el('details', '', 'faq-item'); details.id = record.id;
     const summary = el('summary'); summary.id = `${record.id}-question`; summary.setAttribute('aria-controls', `${record.id}-answer`);
     summary.append(el('span', record.question));
-    const icon = el('i'); icon.dataset.lucide = 'chevron-down'; icon.setAttribute('aria-hidden', 'true'); summary.append(icon);
+    const icon = el('i'); icon.dataset.lucide = 'plus'; icon.setAttribute('aria-hidden', 'true'); summary.append(icon);
     const panel = el('div', '', 'faq-answer'); panel.id = `${record.id}-answer`; panel.setAttribute('aria-labelledby', summary.id); panel.append(el('p', record.answer));
     if (record.ctas.length) {
       const links = el('nav', '', 'faq-context-links'); links.setAttribute('aria-label', 'Related services');
@@ -73,11 +73,13 @@
   });
   root.addEventListener('toggle', event => { if (event.target.matches('.faq-item') && event.target.open) track('faq_open', { faq_id: event.target.id }); }, true);
   root.addEventListener('click', event => { const link = event.target.closest('[data-faq-cta]'); if (link) track('faq_cta_click', { faq_id: link.dataset.faqCta, faq_destination: new URL(link.href).pathname }); });
-  input.addEventListener('input', () => {
+  const runSearch = (immediate = false) => {
     limit = 10; const found = render(); save(false); clearTimeout(timer);
-    timer = setTimeout(() => { track('faq_search', { query_length: input.value.trim().length, result_count: found }); if (!found) track('faq_zero_results'); }, 450);
-  });
-  root.querySelector('form').addEventListener('submit', event => event.preventDefault());
+    const announceSearch = () => { track('faq_search', { query_length: input.value.trim().length, result_count: found }); if (!found) track('faq_zero_results'); };
+    if (immediate) announceSearch(); else timer = setTimeout(announceSearch, 450);
+  };
+  input.addEventListener('input', () => runSearch());
+  root.querySelector('form').addEventListener('submit', event => { event.preventDefault(); runSearch(true); });
   const clear = () => { input.value = ''; limit = 10; render(); save(false); input.focus(); };
   root.querySelector('[data-faq-clear]').addEventListener('click', clear);
   root.querySelector('[data-faq-empty-clear]').addEventListener('click', clear);

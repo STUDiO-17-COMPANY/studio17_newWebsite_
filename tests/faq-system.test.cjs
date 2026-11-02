@@ -41,6 +41,14 @@ test('Q02/Q11–17/Q19/Q22/Q26: crawlable complete category HTML, approved copy 
   assert.equal(document.querySelector('h1').textContent, 'Your questions. Answered.');
   assert.equal(document.querySelector('input').getAttribute('placeholder'), 'Search a question, service, or topic...');
   assert.equal(document.querySelectorAll('.faq-topic-filters a').length, 13);
+  assert.ok(document.querySelector('.page-hero .hero-media img').getAttribute('src').includes('FAQ%20Hero%20Section-compressed.avif'));
+  assert.equal(document.querySelector('.faq-experience-eyebrow'), null);
+  assert.ok(document.querySelector('.faq-workspace > .faq-topic-filters'));
+  assert.ok(document.querySelector('.faq-workspace > .faq-help'));
+  assert.ok(document.querySelector('button[type="submit"] [data-lucide="search"]'));
+  assert.ok(document.querySelector('[data-faq-more] [data-lucide="arrow-down"]'));
+  assert.ok(document.querySelector('.faq-item summary [data-lucide="plus"]'));
+  assert.ok(document.querySelector('.faq-trusted .partner-marquee'));
   for (const record of data.records) assert.deepEqual(Object.keys(record).sort(), [...PUBLIC_FIELDS].sort());
   assert.doesNotMatch(read('faq-search.json'), /Source \/ Evidence|Editorial Notes|Verification Required|Owner Decisions|Demand Evidence|reviewed against current sources/);
   assert.ok(!data.categories.some(category => ['events', 'ai-solutions'].includes(category.id)));
