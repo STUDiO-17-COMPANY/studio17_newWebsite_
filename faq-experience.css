@@ -22,8 +22,9 @@
 .faq-search-clear { flex: 1 0 100%; text-align: start; }
 .faq-result-count { margin-block: 0 12px; color: #596477; font-size: 14px; }
 .faq-experience .faq-item { border-bottom: 1px solid #cbd3df; }
-.faq-experience .faq-item summary { min-height: 56px; gap: 18px; padding-block: 20px; }
-.faq-experience .faq-item summary > span { font-size: 19px; line-height: 1.35; }
+.faq-experience .faq-item summary { min-height: 56px; gap: 18px; padding-block: 20px; font-weight: 400; }
+.faq-experience .faq-item summary > span { font-size: 19px; line-height: 1.35; font-weight: 400; }
+.faq-experience .faq-item summary strong { font-weight: 700; }
 .faq-experience .faq-item summary > .lucide { width: 22px; height: 22px; color: var(--blue); transition: transform .25s var(--ease); }
 .faq-experience .faq-item[open] summary > .lucide { transform: rotate(45deg); }
 .faq-experience .faq-answer { padding-inline: 0; padding-bottom: 20px; }

@@ -15,7 +15,11 @@
     const details = el('details', '', 'faq-item'); details.id = record.id;
     details.setAttribute('name', 'studio17-faq');
     const summary = el('summary'); summary.id = `${record.id}-question`; summary.setAttribute('aria-controls', `${record.id}-answer`);
-    summary.append(el('span', record.question));
+    const question = el('span');
+    window.Studio17FaqSearch.highlightQuestion(record.question, input.value).forEach(segment => {
+      question.append(segment.matched ? el('strong', segment.text) : document.createTextNode(segment.text));
+    });
+    summary.append(question);
     const icon = el('i'); icon.dataset.lucide = 'plus'; icon.setAttribute('aria-hidden', 'true'); summary.append(icon);
     const panel = el('div', '', 'faq-answer'); panel.id = `${record.id}-answer`; panel.setAttribute('aria-labelledby', summary.id); panel.append(el('p', record.answer));
     if (record.ctas.length) {

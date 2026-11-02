@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-02 — Focused FAQ search emphasis
+
+- Made FAQ questions regular-weight by default, including open answers.
+- Bold only matching question words or exact phrases during search, sharing related pricing terms with the search engine.
+- Preserve original question text and answers, with text-node rendering and whole-word highlight boundaries.
+
 ## 2026-11-02 — FAQ search workspace and article discovery
 
 - Switched to the updated FAQ hero artwork with supporting text beneath the heading.

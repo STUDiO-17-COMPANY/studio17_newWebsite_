@@ -13,6 +13,20 @@ const search = require('../faq-search-engine');
 const { importFaq, saveSnapshot, PUBLIC_FIELDS } = require('../server/_faq-import.cjs');
 const { questionHtml } = require('../server/_faq-render.cjs');
 
+test('FAQ search highlights only matching words, related pricing terms and exact phrases', () => {
+  const bold = (question, query) => search.highlightQuestion(question, query).filter(segment => segment.matched).map(segment => segment.text);
+  assert.deepEqual(bold('How much does a website cost?', ''), []);
+  assert.deepEqual(bold('How much does a website cost?', 'price'), ['cost']);
+  assert.deepEqual(bold('What are the prices and fees?', 'cost'), ['prices', 'fees']);
+  assert.deepEqual(bold('Can customers see this?', 'cost'), []);
+  assert.deepEqual(bold('What is included in a one-page website?', 'one page website'), ['one-page website']);
+  assert.deepEqual(bold('What is WEBSITE localisation?', 'website'), ['WEBSITE']);
+  assert.deepEqual(bold('How does café marketing work?', 'cafe'), ['café']);
+  const question = '<img src=x onerror=alert(1)> — website?';
+  assert.equal(search.highlightQuestion(question, 'website').map(segment => segment.text).join(''), question);
+  assert.deepEqual(bold('How does SEO work?', '<script>'), []);
+});
+
 test('Q02/Q11–17/Q19/Q22/Q26: crawlable complete category HTML, approved copy and safe dataset', () => {
   assert.equal(data.records.length, 229); assert.equal(data.categories.length, 12);
   const all = new Set();
@@ -38,6 +52,7 @@ test('Q02/Q11–17/Q19/Q22/Q26: crawlable complete category HTML, approved copy 
   assert.equal(all.size, 229);
   const { document } = parseHTML(read('faq.html'));
   assert.equal(document.querySelectorAll('.faq-item').length, 10);
+  assert.equal(document.querySelectorAll('.faq-item summary strong').length, 0);
   assert.equal(document.querySelector('h1').textContent, 'Your questions. Answered.');
   assert.equal(document.querySelector('input').getAttribute('placeholder'), 'Search a question, service, or topic...');
   assert.equal(document.querySelectorAll('.faq-topic-filters a').length, 13);
@@ -153,6 +168,13 @@ test('Q05–10/Q23: UI state, full search, Load More, original IDs and consent',
   vm.runInNewContext(read('faq-experience.js'), context);
   await new Promise(resolve => setTimeout(resolve, 10));
   assert.equal(document.querySelectorAll('.faq-item').length, 10);
+  const highlightInput = document.querySelector('input');
+  highlightInput.value = 'price'; highlightInput.dispatchEvent(new window.Event('input'));
+  assert.ok(document.querySelector('.faq-item summary strong'));
+  assert.equal(document.querySelector('.faq-item summary strong').textContent.toLowerCase(), 'cost');
+  assert.equal(document.querySelectorAll('.faq-answer strong').length, 0);
+  document.querySelector('[data-faq-clear]').click();
+  assert.equal(document.querySelectorAll('.faq-item summary strong').length, 0);
   document.querySelector('[data-faq-more]').click();
   assert.equal(document.querySelectorAll('.faq-item').length, 20);
   assert.equal(new Set([...document.querySelectorAll('.faq-item')].map(node => node.id)).size, 20);
