@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-02 — Vercel build command length fix
+
+- Moved the full build pipeline into the npm build script and shortened Vercel's buildCommand to npm run build, preserving every build guard.
+- Added a regression check for Vercel's 256-character command limit.
+
 ## 2026-11-02 — Approved FAQ search and category experience
 
 - Imported 229 approved English FAQs from the supplied handoff with original IDs, exact answers and CTA pairs; private editorial fields are excluded.

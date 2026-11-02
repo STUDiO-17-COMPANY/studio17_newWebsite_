@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "build": "node scripts/sync-document-metadata.cjs && node scripts/build-faq.cjs && node scripts/build-localized-pages.cjs && node --test tests/default-og-image.test.cjs tests/multilingual-routing.test.cjs tests/homepage-audit.test.cjs tests/contact-api.test.cjs tests/faq-system.test.cjs",
     "build:locales": "node scripts/build-service-directory.cjs && node service-locales/build-bundle.cjs && node scripts/build-faq.cjs && node scripts/build-localized-pages.cjs",
     "build:faq": "node scripts/build-faq.cjs",
     "test:faq": "node --test tests/faq-system.test.cjs",

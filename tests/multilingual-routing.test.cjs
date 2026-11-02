@@ -65,8 +65,12 @@ test('every supported translated static route has a generated, self-canonical do
 test('Vercel uses build-time localized HTML and routing middleware without adding an API function', () => {
   const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
   assert.equal(config.proxy.entrypoint, 'proxy.ts');
-  assert.match(config.buildCommand, /build-localized-pages\.cjs/);
-  assert.match(config.buildCommand, /multilingual-routing\.test\.cjs/, 'Vercel must run the multilingual route guard before deployment');
+  const scripts = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).scripts;
+  const buildCommand = config.buildCommand === 'npm run build' ? scripts.build : config.buildCommand;
+  assert.ok(config.buildCommand.length <= 256, 'Vercel buildCommand must fit its schema limit');
+  assert.match(buildCommand, /build-localized-pages\.cjs/);
+  assert.match(buildCommand, /multilingual-routing\.test\.cjs/, 'Vercel must run the multilingual route guard before deployment');
+  assert.match(buildCommand, /faq-system\.test\.cjs/, 'FAQ publication checks remain in the build');
   assert.equal(config.rewrites.some(rule => rule.source === '/es/news/:slug'), true);
   assert.equal(
     config.rewrites.find(rule => rule.source === '/he/:path*')?.destination,
