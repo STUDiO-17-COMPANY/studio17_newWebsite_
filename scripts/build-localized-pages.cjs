@@ -7,6 +7,7 @@ const { parseHTML } = require('linkedom');
 const {
   DYNAMIC_TEMPLATES,
   STATIC_PAGES,
+  isPendingSeoLocale,
   localePrefix,
   localesForPath,
   localizedPath,
@@ -85,7 +86,7 @@ const localizeHref = (href, locale, forcedLocale) => {
   if (!href || !href.startsWith('/') || href.startsWith('//')) return href;
   const url = new URL(href, SITE_URL);
   const selected = forcedLocale || locale;
-  const destination = supportsLocale(url.pathname, selected) ? localizedPath(url.pathname, selected) : url.pathname;
+  const destination = supportsLocale(url.pathname, selected) || isPendingSeoLocale(url.pathname, selected) ? localizedPath(url.pathname, selected) : url.pathname;
   return `${destination}${url.search}${url.hash}`;
 };
 

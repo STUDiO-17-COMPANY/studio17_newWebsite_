@@ -37,6 +37,7 @@
     { "source": "/faq/:path*", "has": [{ "type": "query", "key": "q", "value": ".+" }], "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }] }
   ],
   "redirects": [
+    { "source": "/:locale(pt|es|el|ru)/services/:service(seo|seo-strategy)", "destination": "/:locale/wip?for=:service", "permanent": false },
     { "source": "/:locale(pt|es|el|ru|he)/faq", "destination": "/faq", "permanent": true },
     { "source": "/:locale(pt|es|el|ru|he)/faq/:path*", "destination": "/faq/:path*", "permanent": true },
     {
@@ -57,7 +58,9 @@
     { "source": "/social-media-pricing", "destination": "/services/social-media-pricing", "permanent": true },
     { "source": "/seo-cyprus", "destination": "/seo/cyprus", "permanent": true },
     { "source": "/seo-limassol", "destination": "/seo/limassol", "permanent": true },
-    { "source": "/seo", "destination": "/services/seo", "permanent": true }
+    { "source": "/seo", "destination": "/services/seo", "permanent": true },
+    { "source": "/seo-overview", "destination": "/services/seo", "permanent": true },
+    { "source": "/seo-strategy", "destination": "/services/seo-strategy", "permanent": true }
   ],
   "rewrites": [
     { "source": "/api/careers", "destination": "/api/career-page?format=json&listing=1" },
@@ -118,7 +121,8 @@
     { "source": "/services/localization-and-translation", "destination": "/localization-and-translation" },
     { "source": "/services/social-media", "destination": "/social-media" },
     { "source": "/services/social-media-pricing", "destination": "/social-media-pricing" },
-    { "source": "/services/seo", "destination": "/seo" },
+    { "source": "/services/seo", "destination": "/api/home-page?view=seo" },
+    { "source": "/services/seo-strategy", "destination": "/seo-strategy" },
     { "source": "/seo/cyprus", "destination": "/seo-cyprus" },
     { "source": "/seo/limassol", "destination": "/seo-limassol" },
     { "source": "/sitemap", "destination": "/api/sitemap-page" },

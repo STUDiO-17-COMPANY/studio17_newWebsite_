@@ -82,6 +82,8 @@
     if (clean === '/faq' || clean.startsWith('/faq/')) return ['en'];
     if (['/work', '/careers', '/services/localization-and-translation', '/services/social-media', '/services/social-media-pricing'].includes(clean) || clean.startsWith('/careers/')) return ['en'];
     if (clean === '/services/website-pricing') return ['en', 'el', 'ru'];
+    if (clean === '/services/seo') return ['en', 'he'];
+    if (clean === '/services/seo-strategy') return ['en'];
     if (clean === '/seo/cyprus' || clean === '/seo/limassol') return ['en', 'el', 'ru', 'he'];
     return Object.keys(languages);
   };
@@ -162,7 +164,8 @@
         anchor.relList.add('nofollow');
       }
       parameters.delete('lang');
-      const supportedLanguage = supportedLocalesByPath(cleanPage).includes(linkLanguage) ? linkLanguage : 'en';
+      const pendingSeo = /^\/services\/seo(?:-strategy)?$/.test(cleanPage) && ['pt-PT', 'es', 'el', 'ru'].includes(linkLanguage);
+      const supportedLanguage = pendingSeo || supportedLocalesByPath(cleanPage).includes(linkLanguage) ? linkLanguage : 'en';
       const prefix = languagePrefixes[supportedLanguage];
       page = prefix ? `/${prefix}${cleanPage === '/' ? '/' : cleanPage}` : cleanPage;
       const serialized = parameters.toString();
@@ -293,6 +296,10 @@
   menu?.addEventListener('click', event => {
     const button = event.target.closest('[data-lang]');
     if (!button) return;
+    if (button.dataset.pendingLanguageUrl && location.protocol !== 'file:') {
+      location.assign(button.dataset.pendingLanguageUrl);
+      return;
+    }
     const language = normalisePageLanguage(button.dataset.lang);
     if (!language) return;
     storeLanguage(language);

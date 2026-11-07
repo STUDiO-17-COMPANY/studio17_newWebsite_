@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-07 — English SEO overview
+
+- Rebuilt the SEO overview at `/services/seo` and separated the detailed strategy page.
+- Updated both header menus and added localized pending-page links back to the English versions.
+- Kept existing Hebrew content available; new page development excludes Hebrew.
+
 ## 2026-11-02 — Focused FAQ search emphasis
 
 - Made FAQ questions regular-weight by default, including open answers.

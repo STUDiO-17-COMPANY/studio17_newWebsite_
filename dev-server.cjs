@@ -4,10 +4,10 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const { buildSeo, getArticlePath, renderArticleMain } = require('./server/_article-render');
-const { renderHomePage } = require('./api/home-page');
+const { renderHomePage, renderSeoPage, renderAuditPage, renderFaqPage } = require('./api/home-page');
 const { renderNewsPage } = require('./api/news-page');
 const demoArticle = require('./article-demo.cjs');
-const { legacyLanguageTarget, localePrefix, normaliseLocale, stripLocalePrefix, supportsLocale } = require('./server/_language-routing');
+const { isPendingSeoLocale, legacyLanguageTarget, localePrefix, normaliseLocale, stripLocalePrefix, supportsLocale } = require('./server/_language-routing');
 
 const demoArticles = Array.from({ length: 12 }, (_, index) => ({
   slug: demoArticle.slug,
@@ -46,6 +46,7 @@ const cleanPages = new Map([
   ['/services/social-media', 'social-media.html'],
   ['/services/social-media-pricing', 'social-media-pricing.html'],
   ['/services/seo', 'seo.html'],
+  ['/services/seo-strategy', 'seo-strategy.html'],
   ['/seo/cyprus', 'seo-cyprus.html'],
   ['/seo/limassol', 'seo-limassol.html'],
   ['/news', 'news.template.html'],
@@ -151,6 +152,23 @@ const server = http.createServer((request, response) => {
   const prefixed = stripLocalePrefix(rawPathname);
   const locale = prefixed.locale;
   const pathname = prefixed.pathname.replace(/\/+$/, '') || '/';
+  if (isPendingSeoLocale(pathname, locale)) {
+    response.writeHead(307, { Location: '/' + localePrefix(locale) + '/wip?for=' + pathname.split('/').pop() });
+    response.end();
+    return;
+  }
+  if (locale === 'en' && pathname === '/services/seo') {
+    sendHtml(request, response, 200, renderSeoPage(demoArticles));
+    return;
+  }
+  if (locale === 'en' && /^\/contact\/free-(?:website|social-media)-audit$/.test(pathname)) {
+    sendHtml(request, response, 200, renderAuditPage(demoArticles));
+    return;
+  }
+  if (locale === 'en' && /^\/faq(?:\/[a-z-]+)?$/.test(pathname)) {
+    const html = renderFaqPage(demoArticles, pathname.split('/')[2] || '');
+    if (html) { sendHtml(request, response, 200, html); return; }
+  }
 
   if (pathname === '/llms.txt') {
     require('./api/llms')(request, response);

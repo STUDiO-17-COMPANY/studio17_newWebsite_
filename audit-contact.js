@@ -9,6 +9,7 @@
   const target = form.elements.namedItem('auditTarget');
   const countrySelect = form.elements.namedItem('countryCode');
   const params = new URLSearchParams(location.search);
+  const isSeo = !isSocial && params.get('intent') === 'seo';
   const countries = [
     ['CY', '+357', 'Cyprus'], ['PT', '+351', 'Portugal'], ['GR', '+30', 'Greece'], ['GB', '+44', 'United Kingdom'], ['US', '+1', 'United States'],
     ['ES', '+34', 'Spain'], ['FR', '+33', 'France'], ['DE', '+49', 'Germany'], ['IT', '+39', 'Italy'], ['NL', '+31', 'Netherlands'],
@@ -38,6 +39,9 @@
   const content = isSocial ? {
     title: 'Get your free Social Media audit', subtitle: 'Show us where to look', description: 'Your social media profile is already filled in. Add your contact details and context so our team can review the right goals.',
     formTitle: 'Request your free Social Media audit', formCopy: 'We will use these details to review your social media presence and contact you with practical next steps.', nextReview: 'We review the social media profile you shared, including content, positioning, reach and the path from attention to enquiry.', focus: 'Content, positioning, reach and conversion', label: 'Social media profile', service: 'social-media'
+  } : isSeo ? {
+    title: 'Get your free SEO audit', subtitle: 'Find what is holding your website back', description: 'Share your website and business goals so we can identify where to improve your search visibility.',
+    formTitle: 'Request your free SEO audit', formCopy: 'We will review your website and contact you with practical SEO next steps.', nextReview: 'We look for technical, content and search visibility opportunities on the website you share.', focus: 'Technical SEO, content and organic visibility', label: 'Website', service: 'seo'
   } : {
     title: 'Get your free website audit', subtitle: 'Tell us where to look', description: 'Your website is already filled in. Add your contact details and context so our team can review the right business goals.',
     formTitle: 'Request your free website audit', formCopy: 'We will use these details to review your website and contact you with practical next steps.', nextReview: 'We review the website you shared, including visibility, mobile experience, messaging, speed and the path from visit to enquiry.', focus: 'Visibility, UX, messaging and conversion', label: 'Website', service: 'website'

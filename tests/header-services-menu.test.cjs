@@ -24,7 +24,7 @@ for (const group of groups) {
 
 const requiredDestinations = [
   '/services/website', '/services/website-development', '/wip#for=website-revamp', '/wip#for=website-design', '/wip#for=website-maintenance', '/services/free-website',
-  '/services/seo', '/wip#for=ai-seo-geo', '/wip#for=seo-audit', '/wip#for=copywriting', '/services/localization-and-translation',
+  '/services/seo', '/services/seo-strategy', '/wip#for=ai-visibility', '/wip#for=geo', '/contact/free-website-audit?intent=seo', '/wip#for=copywriting', '/services/localization-and-translation',
   '/services/social-media',
   '/wip#for=social-media-management', '/wip#for=social-media-automation', '/wip#for=growth-strategy', '/wip#for=community-management', '/wip#for=free-social-media-audit',
   '/wip#for=filming', '/wip#for=photography', '/wip#for=video-editing', '/wip#for=graphic-design', '/wip#for=digital-design', '/wip#for=scripting', '/wip#for=ai-generation',
@@ -60,7 +60,7 @@ assert.match(script, /const title = document\.createElement\(group\.href \? 'a' 
 assert.match(script, /overviewLink\.href = localiseServicesMenuHref\(group\.href\)/, 'mobile AI visibility groups need overview links');
 assert.match(script, /window\.addEventListener\('scroll',[\s\S]*?closeDesktopDropdown\(\);[\s\S]*?closeVisibilityDropdown\(\);[\s\S]*?passive: true/, 'desktop dropdowns must close on scroll');
 
-for (const destination of ['/services/seo', '/wip#for=ai-seo-geo', '/wip#for=business-visibility', '/services/localization-and-translation', '/wip#for=seo-audit']) {
+for (const destination of ['/services/seo', '/wip#for=ai-visibility', '/wip#for=business-visibility', '/services/localization-and-translation', '/contact/free-website-audit?intent=seo']) {
   assert.ok(visibilityMenu.includes(`href: '${destination}'`), `AI SEO & Visibility heading destination missing: ${destination}`);
 }
 

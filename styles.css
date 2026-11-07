@@ -752,6 +752,7 @@ body.menu-open .anima { visibility: hidden; opacity: 0; pointer-events: none; }
 .wip-destination strong { font-size: 16px; }
 .wip-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 13px; }
 .wip-actions .solid-button { min-width: 190px; min-height: 42px; padding-block: 9px; font-size: 14px; }
+.wip-actions [hidden], .wip-status[hidden] { display: none; }
 .wip-status { margin-top: var(--section-gap); padding: 66px 0 72px; }
 .wip-status-heading { display: grid; grid-template-columns: 1fr 430px; align-items: end; gap: 48px; margin-bottom: 32px; }
 .wip-status-heading p { margin: 0; color: #596477; font-size: 15px; line-height: 1.55; }

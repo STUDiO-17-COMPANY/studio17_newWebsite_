@@ -35,9 +35,10 @@
       label: 'SEO & Visibility',
       href: '/services/seo',
       items: [
-        ['seo', 'SEO', '/services/seo'],
-        ['aiSeoGeo', 'AI SEO & GEO', '/wip#for=ai-seo-geo'],
-        ['seoAudit', 'SEO Audit', '/wip#for=seo-audit'],
+        ['seo', 'SEO', '/services/seo-strategy'],
+        ['aiVisibility', 'AI Visibility', '/wip#for=ai-visibility'],
+        ['geo', 'GEO', '/wip#for=geo'],
+        ['seoAudit', 'SEO Audit', '/contact/free-website-audit?intent=seo'],
         ['copywriting', 'Copywriting', '/wip#for=copywriting'],
         ['localization', 'Localization and Translation', '/services/localization-and-translation'],
       ]
@@ -94,10 +95,10 @@
 
   const visibilityMegaMenu = [
     {
-      label: 'SEO',
+      label: 'SEO Services',
       href: '/services/seo',
       items: [
-        ['SEO', '/services/seo'],
+        ['SEO', '/services/seo-strategy'],
         ['Technical SEO', '/wip#for=technical-seo'],
         ['Local SEO', '/wip#for=local-seo'],
         ['SEO Content Strategy', '/wip#for=seo-content-strategy'],
@@ -105,10 +106,11 @@
       ]
     },
     {
-      label: 'AI SEO & GEO',
-      href: '/wip#for=ai-seo-geo',
+      label: 'AI Visibility',
+      href: '/wip#for=ai-visibility',
       items: [
-        ['AI SEO & GEO', '/wip#for=ai-seo-geo'],
+        ['AI Visibility', '/wip#for=ai-visibility'],
+        ['GEO', '/wip#for=geo'],
         ['AI Visibility Audit', '/wip#for=ai-visibility-audit'],
         ['AI Visibility Monitoring', '/wip#for=ai-visibility-monitoring'],
         ['AI Competitor Analysis', '/wip#for=ai-competitor-analysis']
@@ -133,9 +135,9 @@
     },
     {
       label: 'Audits',
-      href: '/wip#for=seo-audit',
+      href: '/contact/free-website-audit?intent=seo',
       items: [
-        ['SEO Audit', '/wip#for=seo-audit'],
+        ['SEO Audit', '/contact/free-website-audit?intent=seo'],
         ['AI Visibility Audit', '/wip#for=ai-visibility-audit']
       ]
     }
@@ -143,25 +145,25 @@
 
   const headerMenuTranslations = {
     'pt-PT': {
-      visibilityTop: 'SEO com IA e Visibilidade',
+      visibilityTop: 'Visibilidade em IA e SEO',
       serviceCategories: { website: 'Websites', seoVisibility: 'SEO e Visibilidade', social: 'Redes Sociais', content: 'Criação de Conteúdos', ads: 'Publicidade Paga', events: 'Eventos' },
       serviceItems: { aiSeoGeo: 'SEO com IA e GEO', seoAudit: 'Auditoria SEO', maintenance: 'Manutenção de Websites', freeAudit: 'Auditoria Gratuita de Redes Sociais' },
       visibility: { 'AI SEO & GEO': 'SEO com IA e GEO', 'Technical SEO': 'SEO Técnico', 'Local SEO': 'SEO Local', 'SEO Content Strategy': 'Estratégia de Conteúdo SEO', 'International SEO': 'SEO Internacional', 'AI Visibility Audit': 'Auditoria de Visibilidade em IA', 'AI Visibility Monitoring': 'Monitorização de Visibilidade em IA', 'AI Competitor Analysis': 'Análise de Concorrentes em IA', 'Business Visibility': 'Visibilidade Empresarial', 'Google Business Profile Management': 'Gestão do Perfil de Empresa no Google', 'Online Reputation Management': 'Gestão de Reputação Online', 'Digital PR & Link Building': 'Relações Públicas Digitais e Link Building', 'Content & Localization': 'Conteúdo e Localização', 'Localization & Translation': 'Localização e Tradução', Audits: 'Auditorias', 'SEO Audit': 'Auditoria SEO' }
     },
     es: {
-      visibilityTop: 'SEO con IA y Visibilidad',
+      visibilityTop: 'Visibilidad en IA y SEO',
       serviceCategories: { website: 'Sitios Web', seoVisibility: 'SEO y Visibilidad', social: 'Redes Sociales', content: 'Creación de Contenido', ads: 'Publicidad de Pago', events: 'Eventos' },
       serviceItems: { aiSeoGeo: 'SEO con IA y GEO', seoAudit: 'Auditoría SEO', maintenance: 'Mantenimiento Web', freeAudit: 'Auditoría Gratuita de Redes Sociales' },
       visibility: { 'AI SEO & GEO': 'SEO con IA y GEO', 'Technical SEO': 'SEO Técnico', 'Local SEO': 'SEO Local', 'SEO Content Strategy': 'Estrategia de Contenido SEO', 'International SEO': 'SEO Internacional', 'AI Visibility Audit': 'Auditoría de Visibilidad en IA', 'AI Visibility Monitoring': 'Monitorización de Visibilidad en IA', 'AI Competitor Analysis': 'Análisis de Competidores en IA', 'Business Visibility': 'Visibilidad Empresarial', 'Google Business Profile Management': 'Gestión del Perfil de Empresa en Google', 'Online Reputation Management': 'Gestión de Reputación Online', 'Digital PR & Link Building': 'Relaciones Públicas Digitales y Link Building', 'Content & Localization': 'Contenido y Localización', 'Localization & Translation': 'Localización y Traducción', Audits: 'Auditorías', 'SEO Audit': 'Auditoría SEO' }
     },
     el: {
-      visibilityTop: 'AI SEO & Ορατότητα',
+      visibilityTop: 'Ορατότητα στην ΤΝ και SEO',
       serviceCategories: { website: 'Ιστοσελίδες', seoVisibility: 'SEO & Ορατότητα', social: 'Κοινωνικά Δίκτυα', content: 'Δημιουργία Περιεχομένου', ads: 'Πληρωμένη Διαφήμιση', events: 'Εκδηλώσεις' },
       serviceItems: { aiSeoGeo: 'AI SEO & GEO', seoAudit: 'Έλεγχος SEO', maintenance: 'Συντήρηση Ιστοσελίδων', freeAudit: 'Δωρεάν Έλεγχος Social Media' },
       visibility: { 'Technical SEO': 'Τεχνικό SEO', 'Local SEO': 'Τοπικό SEO', 'SEO Content Strategy': 'Στρατηγική Περιεχομένου SEO', 'International SEO': 'Διεθνές SEO', 'AI Visibility Audit': 'Έλεγχος Ορατότητας AI', 'AI Visibility Monitoring': 'Παρακολούθηση Ορατότητας AI', 'AI Competitor Analysis': 'Ανάλυση Ανταγωνιστών AI', 'Business Visibility': 'Επιχειρηματική Ορατότητα', 'Google Business Profile Management': 'Διαχείριση Google Business Profile', 'Online Reputation Management': 'Διαχείριση Online Φήμης', 'Digital PR & Link Building': 'Digital PR & Link Building', 'Content & Localization': 'Περιεχόμενο & Τοπικοποίηση', 'Localization & Translation': 'Τοπικοποίηση & Μετάφραση', Audits: 'Έλεγχοι', 'SEO Audit': 'Έλεγχος SEO' }
     },
     ru: {
-      visibilityTop: 'AI SEO и Видимость',
+      visibilityTop: 'Видимость в ИИ и SEO',
       serviceCategories: { website: 'Сайты', seoVisibility: 'SEO и Видимость', social: 'Социальные Сети', content: 'Создание Контента', ads: 'Платная Реклама', events: 'Мероприятия' },
       serviceItems: { aiSeoGeo: 'AI SEO и GEO', seoAudit: 'SEO-аудит', maintenance: 'Поддержка Сайтов', freeAudit: 'Бесплатный Аудит Соцсетей' },
       visibility: { 'AI SEO & GEO': 'AI SEO и GEO', 'Technical SEO': 'Техническое SEO', 'Local SEO': 'Локальное SEO', 'SEO Content Strategy': 'SEO-стратегия Контента', 'International SEO': 'Международное SEO', 'AI Visibility Audit': 'Аудит Видимости в ИИ', 'AI Visibility Monitoring': 'Мониторинг Видимости в ИИ', 'AI Competitor Analysis': 'Анализ Конкурентов в ИИ', 'Business Visibility': 'Видимость Бизнеса', 'Google Business Profile Management': 'Управление Профилем Компании Google', 'Online Reputation Management': 'Управление Онлайн-репутацией', 'Digital PR & Link Building': 'Digital PR и Линкбилдинг', 'Content & Localization': 'Контент и Локализация', 'Localization & Translation': 'Локализация и Перевод', Audits: 'Аудиты', 'SEO Audit': 'SEO-аудит' }
@@ -188,7 +190,7 @@
     visibilityTrigger.type = 'button';
     visibilityTrigger.setAttribute('aria-expanded', 'false');
     visibilityTrigger.setAttribute('aria-controls', 'visibility-mega-menu');
-    visibilityTrigger.innerHTML = '<span data-visibility-nav-label>AI SEO &amp; Visibility</span><span class="nav-square" aria-hidden="true"><i data-lucide="chevron-down"></i></span>';
+    visibilityTrigger.innerHTML = '<span data-visibility-nav-label>AI Visibility and SEO</span><span class="nav-square" aria-hidden="true"><i data-lucide="chevron-down"></i></span>';
     visibilityPanel = document.createElement('div');
     visibilityPanel.id = 'visibility-mega-menu';
     visibilityPanel.className = 'dropdown-panel visibility-mega-menu';
@@ -271,7 +273,7 @@
     ensureVisibilityDropdown();
     if (!visibilityPanel || !visibilityTrigger) return;
     const headerCopy = getHeaderMenuTranslation();
-    visibilityTrigger.querySelector('[data-visibility-nav-label]').textContent = headerCopy.visibilityTop || 'AI SEO & Visibility';
+    visibilityTrigger.querySelector('[data-visibility-nav-label]').textContent = headerCopy.visibilityTop || 'AI Visibility and SEO';
     visibilityPanel.replaceChildren(...visibilityMegaMenu.map(group => {
       const section = document.createElement('section');
       section.className = 'services-mega-group';
@@ -460,7 +462,7 @@
 
     const mainButton = menu.querySelector('.mobile-visibility-primary');
     const toggle = menu.querySelector('.mobile-visibility-toggle');
-    const menuTitle = headerCopy.visibilityTop || 'AI SEO & Visibility';
+    const menuTitle = headerCopy.visibilityTop || 'AI Visibility and SEO';
     mainButton.textContent = menuTitle;
     toggle.setAttribute('aria-label', `${toggle.getAttribute('aria-expanded') === 'true' ? 'Hide' : 'Show'} ${menuTitle}`);
     const panel = menu.querySelector('.mobile-visibility-panel');

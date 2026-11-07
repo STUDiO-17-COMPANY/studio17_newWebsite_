@@ -14,6 +14,7 @@
     'ai-systems': { label: 'AI systems' },
     'ai-generation': { label: 'AI generation' },
     'ai-seo-geo': { label: 'AI SEO & GEO' },
+    'ai-visibility': { label: 'AI Visibility' },
     'ai-visibility-audit': { label: 'AI Visibility Audit' },
     'ai-visibility-monitoring': { label: 'AI Visibility Monitoring' },
     'ai-competitor-analysis': { label: 'AI Competitor Analysis' },
@@ -35,6 +36,7 @@
     'digital-systems': { label: 'Digital systems' },
     'digital-pr-link-building': { label: 'Digital PR & Link Building' },
     ecommerce: { service: 'ecommerce' },
+    'ecommerce-seo': { label: 'Ecommerce SEO' },
     education: { service: 'education' },
     'email-ads': { service: 'emailAdvertising' },
     'email-advertising': { label: 'Email Advertising' },
@@ -89,6 +91,8 @@
     'presential-events': { label: 'Presential Events' },
     geo: { service: 'geo' },
     seo: { service: 'seo' },
+    'seo-strategy': { label: 'SEO Strategy & Management' },
+    'seo-consulting': { label: 'SEO Consulting' },
     'seo-audit': { label: 'SEO Audit' },
     'seo-content-strategy': { label: 'SEO Content Strategy' },
     'technical-seo': { label: 'Technical SEO' },
@@ -109,12 +113,34 @@
     history.replaceState({}, '', url);
   }
 
+  const englishPages = { seo: '/services/seo', 'seo-strategy': '/services/seo-strategy' };
+  const pendingCopy = {
+    'pt-PT': ['Ainda não disponível em português', 'A equipa portuguesa ainda não desenvolveu esta página.', 'Ver página em inglês'],
+    es: ['Aún no disponible en español', 'El equipo español aún no ha desarrollado esta página.', 'Ver página en inglés'],
+    el: ['Δεν είναι ακόμη διαθέσιμη στα ελληνικά', 'Η ελληνική ομάδα δεν έχει ακόμη αναπτύξει αυτή τη σελίδα.', 'Προβολή σελίδας στα αγγλικά'],
+    ru: ['Пока недоступно на русском', 'Русскоязычная команда ещё не подготовила эту страницу.', 'Открыть страницу на английском']
+  };
+  const heading = document.querySelector('[data-wip-heading]');
+  const description = document.querySelector('[data-wip-description]');
+  const englishLink = document.querySelector('[data-wip-english]');
+  const status = document.querySelector('.wip-status');
+  const original = [heading.textContent, description.textContent];
   const renderTarget = () => {
     const requested = new URLSearchParams(location.hash.replace(/^#/, '')).get('for') || 'generic';
-    const destination = destinations[requested] || destinations.generic;
+    const destination = Object.hasOwn(destinations, requested) ? destinations[requested] : destinations.generic;
     const locale = window.Studio17I18n?.getData();
     const serviceLabel = destination.service ? locale?.services?.itemLabels?.[destination.service] : null;
     target.textContent = serviceLabel || window.Studio17I18n?.translate(destination.label) || destination.label;
+    const copy = pendingCopy[document.documentElement.lang];
+    const english = Object.hasOwn(englishPages, requested) ? englishPages[requested] : null;
+    heading.textContent = copy?.[0] || window.Studio17I18n?.translate(original[0]) || original[0];
+    description.textContent = copy?.[1] || window.Studio17I18n?.translate(original[1]) || original[1];
+    englishLink.hidden = !copy || !english;
+    if (copy && english) {
+      englishLink.href = english;
+      englishLink.textContent = copy[2];
+    } else englishLink.removeAttribute('href');
+    if (status) status.hidden = Boolean(copy);
   };
 
   window.addEventListener('hashchange', renderTarget);
