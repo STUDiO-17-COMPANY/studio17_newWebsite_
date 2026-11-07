@@ -41,18 +41,30 @@ test('SEO overview includes the full brief and distinct SEO strategy destination
   assert.match(fs.readFileSync('seo-strategy.html', 'utf8'), /rel="canonical" href="https:\/\/www\.studio17\.world\/services\/seo-strategy"/);
 });
 
-test('SEO translations remain pending with locale-safe English fallback and legacy Hebrew preserved', () => {
+test('SEO overview is translated and indexable in four locales; strategy remains pending and Hebrew keeps its legacy layout', () => {
   const config = require('../vercel.json');
+  const copy = require('../locales/seo-overview.cjs');
   for (const [language, prefix] of [['pt-PT', 'pt'], ['es', 'es'], ['el', 'el'], ['ru', 'ru']]) {
-    for (const route of ['/services/seo', '/services/seo-strategy']) {
-      assert.equal(routing.supportsLocale(route, language), false);
-      assert.equal(routing.isPendingSeoLocale(route, language), true);
-      assert.equal(routing.legacyLanguageTarget(route, language), '/' + prefix + route);
-    }
+    const url = '/' + prefix + '/services/seo';
+    assert.equal(routing.supportsLocale('/services/seo', language), true);
+    assert.equal(routing.isPendingSeoLocale('/services/seo', language), false);
+    assert.equal(routing.legacyLanguageTarget('/services/seo', language), url);
+    assert.equal(routing.isPendingSeoLocale('/services/seo-strategy', language), true);
+    const { document } = parseHTML(renderSeoPage([], language));
+    assert.equal(document.documentElement.lang, language);
+    assert.equal(document.querySelector('link[rel="canonical"]').href, 'https://www.studio17.world' + url);
+    assert.equal(document.querySelector('h1').getAttribute('aria-label'), copy[language].hero[0] + ' Google');
+    assert.equal(document.querySelector('[data-local-seo-form] label').textContent, copy[language].city[0]);
+    assert.equal(document.querySelectorAll('.website-faq-column details').length, 8);
+    assert.equal(document.querySelectorAll('[data-pending-language-url]').length, 0);
+    assert.ok(config.rewrites.some(rule => rule.source === url && rule.destination === '/api/home-page?view=seo&lang=' + language));
   }
   assert.equal(routing.supportsLocale('/services/seo', 'he'), true);
   assert.equal(routing.supportsLocale('/services/seo-strategy', 'he'), false);
-  assert.ok(config.redirects.some(rule => rule.destination === '/:locale/wip?for=:service' && rule.permanent === false));
+  assert.ok(config.redirects.some(rule => rule.destination === '/:locale/wip?for=seo-strategy' && rule.permanent === false));
+  const he = parseHTML(fs.readFileSync('_localized/he/services/seo.html', 'utf8')).document;
+  assert.equal(he.querySelector('.seo-overview'), null);
+  assert.ok(he.querySelector('.seo-service-main'));
   assert.ok(config.rewrites.some(rule => rule.source === '/services/seo' && rule.destination === '/api/home-page?view=seo'));
   assert.match(fs.readFileSync('_localized/pt/wip.html', 'utf8'), /noindex/);
 });

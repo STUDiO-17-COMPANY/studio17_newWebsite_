@@ -37,7 +37,7 @@
     { "source": "/faq/:path*", "has": [{ "type": "query", "key": "q", "value": ".+" }], "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }] }
   ],
   "redirects": [
-    { "source": "/:locale(pt|es|el|ru)/services/:service(seo|seo-strategy)", "destination": "/:locale/wip?for=:service", "permanent": false },
+    { "source": "/:locale(pt|es|el|ru)/services/seo-strategy", "destination": "/:locale/wip?for=seo-strategy", "permanent": false },
     { "source": "/:locale(pt|es|el|ru|he)/faq", "destination": "/faq", "permanent": true },
     { "source": "/:locale(pt|es|el|ru|he)/faq/:path*", "destination": "/faq/:path*", "permanent": true },
     {
@@ -106,6 +106,10 @@
     { "source": "/el/news/:slug", "destination": "/api/article-page?lang=el&slug=:slug&section=news" },
     { "source": "/ru/news/:slug", "destination": "/api/article-page?lang=ru&slug=:slug&section=news" },
     { "source": "/he/news/:slug", "destination": "/api/article-page?lang=he&slug=:slug&section=news" },
+    { "source": "/pt/services/seo", "destination": "/api/home-page?view=seo&lang=pt-PT" },
+    { "source": "/es/services/seo", "destination": "/api/home-page?view=seo&lang=es" },
+    { "source": "/el/services/seo", "destination": "/api/home-page?view=seo&lang=el" },
+    { "source": "/ru/services/seo", "destination": "/api/home-page?view=seo&lang=ru" },
     { "source": "/pt/:path*", "destination": "/_localized/pt/:path*" },
     { "source": "/es/:path*", "destination": "/_localized/es/:path*" },
     { "source": "/el/:path*", "destination": "/_localized/el/:path*" },

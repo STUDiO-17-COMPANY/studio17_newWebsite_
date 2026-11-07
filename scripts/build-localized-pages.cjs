@@ -172,7 +172,8 @@ const setHeadMetadata = (document, { route, locale, pageLocales, metadata, dynam
 };
 
 const render = (definition, locale, dynamic = false) => {
-  const source = read(definition.source);
+  const legacyHebrew = locale === 'he' && definition.legacyHebrewSource;
+  const source = read(legacyHebrew || definition.source);
   const stores = loadDataForTemplate(source);
   const { document } = parseHTML(source);
   document.querySelectorAll('.testimonial-card > p').forEach(quote => {
@@ -200,9 +201,11 @@ const render = (definition, locale, dynamic = false) => {
     yiannos.setAttribute('data-review-language', 'el');
     if (translations[locale]) yiannos.textContent = translations[locale];
   }
-  const serviceMeta = applyKeyedTranslations(document, stores.Studio17ServiceLocaleData?.[locale], definition.page, 'data-service-key');
+  const serviceMeta = applyKeyedTranslations(document, stores.Studio17ServiceLocaleData?.[locale], legacyHebrew ? 'seo' : definition.page, 'data-service-key');
   const legalMeta = applyKeyedTranslations(document, stores.Studio17LegalLocaleData?.[locale], definition.page, 'data-legal-key');
-  const metadata = serviceMeta || legalMeta || general.meta?.[definition.page] || null;
+  const metadata = definition.page === 'seoOverview' && !legacyHebrew
+    ? require('./_localize-seo-overview.cjs')(document, locale)
+    : serviceMeta || legalMeta || general.meta?.[definition.page] || null;
   updateResourcesAndLinks(document, locale);
   setHeadMetadata(document, { route: definition.route, locale, pageLocales: definition.locales, metadata, dynamic });
   return `<!doctype html>\n${document.toString()}`;

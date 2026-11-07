@@ -13,11 +13,12 @@ const readTemplate = locale => {
   return fs.readFileSync(filename, 'utf8');
 };
 const readAuditTemplate = () => fs.readFileSync(path.join(process.cwd(), 'audit-contact.html'), 'utf8');
-const readSeoTemplate = () => fs.readFileSync(path.join(process.cwd(), 'seo-overview.html'), 'utf8');
+const seoLocale = locale => ['pt-PT', 'es', 'el', 'ru'].includes(locale) ? locale : 'en';
+const readSeoTemplate = (locale = 'en') => fs.readFileSync(path.join(process.cwd(), seoLocale(locale) === 'en' ? 'seo-overview.html' : `_localized/${localePrefix(locale)}/services/seo.html`), 'utf8');
 
 const renderHomePage = (articles, locale = 'en') => readTemplate(locale).replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, locale)).join(''));
 const renderAuditPage = articles => readAuditTemplate().replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, 'en')).join(''));
-const renderSeoPage = articles => readSeoTemplate().replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, 'en')).join(''));
+const renderSeoPage = (articles, locale = 'en') => readSeoTemplate(locale).replace(marker, articles.slice(0, 6).map(article => renderArticleCard(article, seoLocale(locale))).join(''));
 const readFaqTemplate = category => {
   const approved = require('../faq-data/approved.json').categories;
   if (category && !approved.some(item => item.id === category)) return null;
@@ -44,9 +45,9 @@ module.exports = async function homePageHandler(request, response) {
   if (isFaq && typeof request.query?.q === 'string' && request.query.q.trim()) response.setHeader('X-Robots-Tag', 'noindex, follow');
   try {
     const isAudit = request.query?.view === 'audit';
-    const locale = isAudit || isFaq || isSeo ? 'en' : normaliseLocale(request.query?.lang);
+    const locale = isAudit || isFaq ? 'en' : isSeo ? seoLocale(normaliseLocale(request.query?.lang)) : normaliseLocale(request.query?.lang);
     const payload = await listPublishedArticles(request, locale);
-    const body = isSeo ? renderSeoPage(payload.articles) : isFaq ? renderFaqPage(payload.articles, faqCategory) : isAudit ? renderAuditPage(payload.articles) : renderHomePage(payload.articles, locale);
+    const body = isSeo ? renderSeoPage(payload.articles, locale) : isFaq ? renderFaqPage(payload.articles, faqCategory) : isAudit ? renderAuditPage(payload.articles) : renderHomePage(payload.articles, locale);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
     response.setHeader('Cache-Control', articleCacheControl(payload));
@@ -56,8 +57,8 @@ module.exports = async function homePageHandler(request, response) {
   } catch (error) {
     console.error('Homepage article rendering failed', error?.code || error?.message);
     const isAudit = request.query?.view === 'audit';
-    const locale = isAudit || isFaq || isSeo ? 'en' : normaliseLocale(request.query?.lang);
-    const template = isSeo ? readSeoTemplate() : isFaq ? readFaqTemplate(faqCategory) : isAudit ? readAuditTemplate() : readTemplate(locale);
+    const locale = isAudit || isFaq ? 'en' : isSeo ? seoLocale(normaliseLocale(request.query?.lang)) : normaliseLocale(request.query?.lang);
+    const template = isSeo ? readSeoTemplate(locale) : isFaq ? readFaqTemplate(faqCategory) : isAudit ? readAuditTemplate() : readTemplate(locale);
     const body = template.replace(marker, '<div class="article-feed-state article-feed-error"><p>Articles are temporarily unavailable.</p></div>');
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');

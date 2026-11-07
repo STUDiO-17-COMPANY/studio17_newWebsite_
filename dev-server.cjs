@@ -157,8 +157,8 @@ const server = http.createServer((request, response) => {
     response.end();
     return;
   }
-  if (locale === 'en' && pathname === '/services/seo') {
-    sendHtml(request, response, 200, renderSeoPage(demoArticles));
+  if (locale !== 'he' && pathname === '/services/seo') {
+    sendHtml(request, response, 200, renderSeoPage(demoArticles, locale));
     return;
   }
   if (locale === 'en' && /^\/contact\/(?:free-(?:website|social-media)-audit|local-seo)$/.test(pathname)) {

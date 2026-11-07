@@ -20,7 +20,7 @@ const STATIC_PAGES = [
   { route: '/services/website-development', source: 'website-development.html', page: 'websiteDevelopment', locales: ALL_LOCALES },
   { route: '/services/website-pricing', source: 'website-pricing.html', page: 'websitePricing', locales: ['en', 'el', 'ru'] },
   { route: '/services/free-website', source: 'free-website.html', page: 'freeWebsite', locales: ALL_LOCALES },
-  { route: '/services/seo', source: 'seo.html', page: 'seo', locales: ['en', 'he'] },
+  { route: '/services/seo', source: 'seo-overview.html', page: 'seoOverview', locales: ALL_LOCALES, legacyHebrewSource: 'seo.html' },
   { route: '/services/seo-strategy', source: 'seo-strategy.html', page: 'seoStrategy', locales: ENGLISH_ONLY },
   { route: '/seo/cyprus', source: 'seo-cyprus.html', page: 'seoCyprus', locales: ['en', 'el', 'ru', 'he'] },
   { route: '/seo/limassol', source: 'seo-limassol.html', page: 'seoLimassol', locales: ['en', 'el', 'ru', 'he'] },
@@ -84,7 +84,7 @@ const localesForPath = pathname => {
 
 const supportsLocale = (pathname, locale) => localesForPath(pathname).includes(normaliseLocale(locale));
 const isPendingSeoLocale = (pathname, locale) =>
-  /^\/services\/seo(?:-strategy)?$/.test(stripLocalePrefix(pathname).pathname) &&
+  stripLocalePrefix(pathname).pathname === '/services/seo-strategy' &&
   ['pt-PT', 'es', 'el', 'ru'].includes(normaliseLocale(locale));
 const legacyLanguageTarget = (pathname, locale) => (supportsLocale(pathname, locale) || isPendingSeoLocale(pathname, locale))
   ? localizedPath(pathname, locale)

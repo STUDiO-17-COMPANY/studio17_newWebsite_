@@ -65,8 +65,10 @@
       button.textContent = button.dataset.auditType === 'website' ? words.websiteAudit : words.socialAudit;
     });
     input.inputMode = website ? 'url' : 'text';
-    input.placeholder = website ? words.website : words.social;
-    label.textContent = website ? words.websiteLabel : words.socialLabel;
+    if (!isSeo) {
+      input.placeholder = website ? words.website : words.social;
+      label.textContent = website ? words.websiteLabel : words.socialLabel;
+    }
     setStatus('');
   };
 

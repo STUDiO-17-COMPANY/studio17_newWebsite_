@@ -49,8 +49,9 @@
   }
   const benefits = document.querySelector('[data-seo-benefits]');
   const action = document.querySelector('[data-seo-benefit-label]');
+  const defaultAction = action?.textContent;
   if (benefits && action) benefits.addEventListener('toggle', () => {
-    action.textContent = benefits.querySelector('details[open]')?.dataset.action || 'Talk about your SEO goals';
+    action.textContent = benefits.querySelector('details[open]')?.dataset.action || defaultAction;
   }, true);
   const finalImage = document.querySelector('[data-seo-final-image]');
   if (finalImage) {
@@ -73,7 +74,7 @@
       const city = input.value.trim();
       status.hidden = false;
       if (!/\p{L}/u.test(city) || !/^[\p{L}\p{M}\p{N} .,'’()\-]+$/u.test(city) || city.length > 100) {
-        status.textContent = 'Please enter a valid city name.';
+        status.textContent = cityForm.dataset.invalid || 'Please enter a valid city name.';
         input.focus();
         return;
       }
@@ -82,20 +83,20 @@
         submissionId = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
       }
       submit.disabled = true;
-      status.textContent = 'Sending your city…';
+      status.textContent = cityForm.dataset.sending || 'Sending your city…';
       try {
         const response = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ mode: 'quick-audit', auditType: 'local-seo', auditTarget: city, language: 'en', submissionId })
+          body: JSON.stringify({ mode: 'quick-audit', auditType: 'local-seo', auditTarget: city, language: document.documentElement.lang || 'en', submissionId })
         });
         if (!response.ok || !(await response.json()).ok) throw new Error('City enquiry unavailable');
         location.assign('/contact/local-seo?' + new URLSearchParams({ city }));
       } catch {
-        status.textContent = 'We couldn’t send your city. Try again or continue to the contact form.';
+        status.textContent = cityForm.dataset.error || 'We couldn’t send your city. Try again or continue to the contact form.';
         const fallback = document.createElement('a');
         fallback.href = '/contact/local-seo?' + new URLSearchParams({ city });
-        fallback.textContent = ' Open Local SEO contact form';
+        fallback.textContent = ' ' + (cityForm.dataset.fallback || 'Open Local SEO contact form');
         status.append(fallback);
         submit.disabled = false;
       }

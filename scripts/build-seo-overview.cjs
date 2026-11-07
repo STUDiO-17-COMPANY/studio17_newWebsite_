@@ -6,6 +6,7 @@ const { parseHTML } = require('linkedom');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const { escape } = require('../server/_faq-render.cjs');
+const { ALL_LOCALES, localizedPath } = require('../server/_language-routing');
 const pending = slug => '/wip#for=' + slug;
 const services = [
   ['SEO', 'SEO strategy & management', 'Get found by the people searching for what you offer. We combine keyword research, on-page optimisation, technical improvements and ongoing performance analysis to grow organic visibility and generate qualified leads.', 'Boost your search visibility', '/services/seo-strategy', 'SEO.webp'],
@@ -36,7 +37,7 @@ const save = (document, filename, title, route, description, languages) => {
   document.querySelector('link[rel="canonical"]').href = url;
   document.querySelectorAll('link[hreflang], script[type="application/ld+json"]').forEach(node => node.remove());
   if (route === '/services/seo') {
-    for (const [language, href] of [['en', url], ['he', 'https://www.studio17.world/he/services/seo'], ['x-default', url]]) {
+    for (const [language, href] of [...ALL_LOCALES.map(language => [language, 'https://www.studio17.world' + localizedPath(route, language)]), ['x-default', url]]) {
       const alternate = document.createElement('link');
       alternate.rel = 'alternate'; alternate.hreflang = language; alternate.href = href;
       document.head.append(alternate);
@@ -75,12 +76,13 @@ overview.head.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="/seo
 const setupLanguageMenu = (document, slug) => {
   document.querySelectorAll('.language-menu [data-lang]').forEach(button => {
     const locale = { 'pt-PT': 'pt', es: 'es', el: 'el', ru: 'ru' }[button.dataset.lang];
-    if (locale) button.dataset.pendingLanguageUrl = '/' + locale + '/wip?for=' + slug;
+    if (locale && slug === 'seo') button.dataset.languageUrl = '/' + locale + '/services/seo';
+    else if (locale) button.dataset.pendingLanguageUrl = '/' + locale + '/wip?for=' + slug;
     if (button.dataset.lang === 'he') button.remove();
   });
 };
 setupLanguageMenu(overview, 'seo');
-save(overview, 'seo-overview.html', 'SEO Services & AI Visibility | Studio 17', '/services/seo', 'Get found in organic search with Studio 17. Explore local, technical, international and ecommerce SEO, content strategy and AI visibility. Request a free SEO audit.', 'en');
+save(overview, 'seo-overview.html', 'SEO Services & AI Visibility | Studio 17', '/services/seo', 'Get found in organic search with Studio 17. Explore local, technical, international and ecommerce SEO, content strategy and AI visibility. Request a free SEO audit.', ALL_LOCALES.filter(locale => locale !== 'he').join(','));
 const strategy = parseHTML(template).document;
 setupLanguageMenu(strategy, 'seo-strategy');
 strategy.querySelector('h1').textContent = 'SEO strategy & management';
