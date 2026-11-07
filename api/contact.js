@@ -12,7 +12,8 @@ const attempts = new Map();
 const allowedServices = new Set(['website', 'free-website', 'seo', 'content', 'social-media', 'advertising', 'digital-systems', 'ai-solutions', 'other']);
 const allowedBudgets = new Set(['not-sure', 'under-1k', '1k-3k', '3k-10k', '10k-plus']);
 const allowedLanguages = new Set(['en', 'pt-PT', 'es', 'el', 'ru', 'he']);
-const allowedAuditTypes = new Set(['website', 'social-media']);
+const quickAuditLabels = { website: 'Website audit', 'social-media': 'Social Media audit', 'local-seo': 'Local SEO' };
+const allowedAuditTypes = new Set(Object.keys(quickAuditLabels));
 const serviceLabels = {
   website: 'Website',
   'free-website': 'Free Website application',
@@ -121,7 +122,9 @@ const validateQuickAudit = body => {
     && data.auditTarget.length <= 300
     && !/[\r\n<>]/.test(data.auditTarget);
   return {
-    valid: allowedAuditTypes.has(data.auditType) && looksLikeTarget && allowedLanguages.has(data.language),
+    valid: allowedAuditTypes.has(data.auditType) && allowedLanguages.has(data.language) && (data.auditType === 'local-seo'
+      ? data.auditTarget.length <= 100 && /\p{L}/u.test(data.auditTarget) && /^[\p{L}\p{M}\p{N} .,'’()\-]+$/u.test(data.auditTarget)
+      : looksLikeTarget),
     data
   };
 };
@@ -186,7 +189,7 @@ const emailText = data => [
   data.message
 ].filter(line => line !== '').join('\n');
 
-const quickAuditMarkup = data => `<!doctype html><html><body style="margin:0;background:#f1f5f9;font-family:Arial,sans-serif;color:#0f172a"><div style="max-width:680px;margin:0 auto;padding:32px 16px"><div style="background:#0f172a;color:#fff;padding:24px 28px"><strong style="font-size:22px">Studio 17</strong><p style="margin:8px 0 0;color:#cbd5e1">New free audit lead</p></div><div style="background:#fff;padding:28px"><p style="margin:0 0 8px;color:#64748b">Audit type</p><p style="margin:0 0 22px;font-size:18px;font-weight:700">${escapeHtml(data.auditType === 'website' ? 'Website audit' : 'Social Media audit')}</p><p style="margin:0 0 8px;color:#64748b">Submitted website or social profile</p><p style="margin:0;font-size:18px;font-weight:700;overflow-wrap:anywhere">${escapeHtml(data.auditTarget)}</p></div></div></body></html>`;
+const quickAuditMarkup = data => `<!doctype html><html><body style="margin:0;background:#f1f5f9;font-family:Arial,sans-serif;color:#0f172a"><div style="max-width:680px;margin:0 auto;padding:32px 16px"><div style="background:#0f172a;color:#fff;padding:24px 28px"><strong style="font-size:22px">Studio 17</strong><p style="margin:8px 0 0;color:#cbd5e1">${data.auditType === 'local-seo' ? 'New Local SEO lead' : 'New free audit lead'}</p></div><div style="background:#fff;padding:28px"><p style="margin:0 0 8px;color:#64748b">Audit type</p><p style="margin:0 0 22px;font-size:18px;font-weight:700">${escapeHtml(quickAuditLabels[data.auditType])}</p><p style="margin:0 0 8px;color:#64748b">${data.auditType === 'local-seo' ? 'Submitted city' : 'Submitted website or social profile'}</p><p style="margin:0;font-size:18px;font-weight:700;overflow-wrap:anywhere">${escapeHtml(data.auditTarget)}</p></div></div></body></html>`;
 
 const sendEmail = async ({ data, idempotencyId, payload, response }) => {
   try {
@@ -267,11 +270,11 @@ module.exports = async function contactHandler(request, response) {
       payload: {
         from: CONTACT_FROM,
         to: [CONTACT_TO],
-        subject: `Free ${data.auditType === 'website' ? 'website' : 'social media'} audit lead — ${data.auditTarget}`.slice(0, 180),
+        subject: (data.auditType === 'local-seo' ? `Local SEO lead — ${data.auditTarget}` : `Free ${data.auditType === 'website' ? 'website' : 'social media'} audit lead — ${data.auditTarget}`).slice(0, 180),
         html: quickAuditMarkup(data),
-        text: `New Studio 17 free audit lead\n\nAudit type: ${data.auditType}\nTarget: ${data.auditTarget}\nWebsite language: ${data.language}`,
+        text: `New Studio 17 ${data.auditType === 'local-seo' ? 'Local SEO' : 'free audit'} lead\n\nService: ${quickAuditLabels[data.auditType]}\n${data.auditType === 'local-seo' ? 'City' : 'Target'}: ${data.auditTarget}\nWebsite language: ${data.language}`,
         tags: [
-          { name: 'source', value: 'homepage-audit' },
+          { name: 'source', value: data.auditType === 'local-seo' ? 'seo-overview' : 'homepage-audit' },
           { name: 'language', value: data.language },
           { name: 'service', value: data.auditType }
         ]

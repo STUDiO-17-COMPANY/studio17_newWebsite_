@@ -9,6 +9,7 @@
   const target = form.elements.namedItem('auditTarget');
   const countrySelect = form.elements.namedItem('countryCode');
   const params = new URLSearchParams(location.search);
+  const isLocalSeo = location.pathname.replace(/\/$/, '') === '/contact/local-seo';
   const isSeo = !isSocial && params.get('intent') === 'seo';
   const countries = [
     ['CY', '+357', 'Cyprus'], ['PT', '+351', 'Portugal'], ['GR', '+30', 'Greece'], ['GB', '+44', 'United Kingdom'], ['US', '+1', 'United States'],
@@ -36,7 +37,10 @@
     countrySelect.append(option);
   });
 
-  const content = isSocial ? {
+  const content = isLocalSeo ? {
+    title: 'Talk to us about Local SEO', subtitle: 'Reach customers in your city', description: 'Tell us where you want to be found and what you’d like to improve.',
+    formTitle: 'Request a Local SEO consultation', formCopy: 'Share your contact details and tell us about your business so we can recommend the right next step.', nextReview: 'We review your local search presence and opportunities to reach nearby customers.', focus: 'Google Search, Google Maps and local visibility', label: 'City', service: 'seo'
+  } : isSocial ? {
     title: 'Get your free Social Media audit', subtitle: 'Show us where to look', description: 'Your social media profile is already filled in. Add your contact details and context so our team can review the right goals.',
     formTitle: 'Request your free Social Media audit', formCopy: 'We will use these details to review your social media presence and contact you with practical next steps.', nextReview: 'We review the social media profile you shared, including content, positioning, reach and the path from attention to enquiry.', focus: 'Content, positioning, reach and conversion', label: 'Social media profile', service: 'social-media'
   } : isSeo ? {
@@ -55,7 +59,11 @@
   document.querySelector('[data-audit-focus]').textContent = content.focus;
   document.querySelector('[data-audit-target-label]').firstChild.nodeValue = `${content.label} `;
   document.title = `${content.title} | Studio 17`;
-  target.value = params.get('target') || '';
+  target.value = isLocalSeo ? (params.get('city') || '').slice(0, 100) : params.get('target') || '';
+  if (isLocalSeo) {
+    target.maxLength = 100;
+    target.autocomplete = 'address-level2';
+  }
 
   fetch('/api/contact?mode=location', { headers: { accept: 'application/json' } })
     .then(response => response.ok ? response.json() : null)
@@ -88,7 +96,7 @@
       phone: `${values.countryCode} ${values.phoneNumber}`.trim(),
       service: content.service,
       budget: 'not-sure',
-      message: `${content.label}: ${values.auditTarget}\n\nComments or questions:\n${details}`,
+      message: `${isLocalSeo ? 'Local SEO enquiry\n' : ''}${content.label}: ${values.auditTarget}\n\nComments or questions:\n${details}`,
       language: 'en',
       consent: values.consent,
       website: values.website,
@@ -101,7 +109,7 @@
       const response = await fetch('/api/contact', { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify(payload) });
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.ok) throw new Error('SEND_FAILED');
-      showStatus('Thank you. Your free audit request has been sent to Studio 17.', 'success');
+      showStatus(isLocalSeo ? 'Thank you. Your Local SEO enquiry has been sent to Studio 17.' : 'Thank you. Your free audit request has been sent to Studio 17.', 'success');
       [...form.elements].forEach(element => { element.disabled = true; });
     } catch {
       showStatus('The form is temporarily unavailable. Please try again or email contact@studio17.world.', 'error');

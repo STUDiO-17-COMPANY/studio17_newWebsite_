@@ -69,6 +69,7 @@
     { "source": "/faq", "destination": "/api/home-page?view=faq" },
     { "source": "/faq/:category", "destination": "/api/home-page?view=faq&category=:category" },
     { "source": "/contact/free-website-audit", "destination": "/api/home-page?view=audit&type=website" },
+    { "source": "/contact/local-seo", "destination": "/api/home-page?view=audit&type=local-seo" },
     { "source": "/contact/free-social-media-audit", "destination": "/api/home-page?view=audit&type=social-media" },
     { "source": "/pt/", "destination": "/api/home-page?lang=pt-PT" },
     { "source": "/es/", "destination": "/api/home-page?lang=es" },

@@ -23,8 +23,9 @@ const clients = home.querySelector('section.trusted').cloneNode(true);
 const marquees = clients.querySelectorAll('.partner-marquee');
 Array.from(marquees).slice(1).forEach(row => row.remove());
 const articles = home.querySelector('section.news-section').cloneNode(true);
+const localSeoForm = '<form data-local-seo-form action="/contact/local-seo" method="get"><label for="local-seo-city">Looking for Local SEO? Tell us your city</label><div class="hero-audit-entry"><input id="local-seo-city" type="search" name="city" placeholder="Enter your city" maxlength="100" required><button type="submit">Continue <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></button></div><p data-local-seo-status role="status" hidden></p><p class="local-seo-privacy">We’ll send your city to Studio 17. <a href="/privacy-policy">Privacy policy</a></p></form>';
 const serviceMarkup = '<nav class="seo-service-tabs" aria-label="SEO services">' + services.map(([name], index) => '<a href="#seo-option-' + index + '">' + escape(name) + '</a>').join('') + '</nav>' + services.map(([, title, description, action, href, image], index) =>
-  '<article class="seo-overview-split seo-service-option" id="seo-option-' + index + '"><div><h3>' + escape(title) + '</h3><p>' + escape(description) + '</p><div class="seo-overview-actions"><a class="solid-button" href="' + href + '">' + escape(action) + '</a><a class="design-link" href="/contact?service=seo">Talk to Sales →</a></div></div><img src="/Images/' + image + '" alt="" loading="lazy"></article>'
+  '<article class="seo-overview-split seo-service-option" id="seo-option-' + index + '"><div><h3>' + escape(title) + '</h3><p>' + escape(description) + '</p>' + (index === 1 ? localSeoForm : '<div class="seo-overview-actions"><a class="solid-button" href="' + href + '">' + escape(action) + '</a><a class="design-link" href="/contact?service=seo">Talk to Sales</a></div>') + '</div><img src="/Images/' + image + '" alt="" loading="lazy"></article>'
 ).join('');
 
 const save = (document, filename, title, route, description, languages) => {
@@ -53,6 +54,23 @@ overview.querySelector('main').innerHTML = read('seo-overview-content.inc')
   .replace('<!-- SEO_CLIENTS -->', clients.outerHTML)
   .replace('<!-- SEO_SERVICES -->', serviceMarkup)
   .replace('<!-- SEO_ARTICLES -->', articles.outerHTML);
+const faq = overview.querySelector('.website-faq .website-faq-list');
+const questions = [...faq.children];
+faq.replaceChildren();
+for (let offset = 0; offset < questions.length; offset += 4) {
+  const column = overview.createElement('div');
+  column.className = 'website-faq-column';
+  questions.slice(offset, offset + 4).forEach(question => {
+    question.setAttribute('name', 'seo-overview-faq-' + offset);
+    column.append(question);
+  });
+  faq.append(column);
+}
+overview.querySelectorAll('main a.solid-button, main a.design-link').forEach(link => {
+  if (link.querySelector('[data-lucide="arrow-up-right"]')) return;
+  if (!link.children.length) link.textContent = link.textContent.replace(/\s*→\s*$/, '');
+  link.insertAdjacentHTML('beforeend', ' <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>');
+});
 overview.head.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="/seo-overview.css"><script defer src="/seo-overview.js"></script><script defer src="/article-feed.js"></script>');
 const setupLanguageMenu = (document, slug) => {
   document.querySelectorAll('.language-menu [data-lang]').forEach(button => {

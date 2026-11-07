@@ -153,6 +153,16 @@ const validSubmission = {
       { name: 'service', value: 'website' }
     ]);
 
+    const localSeoBody = { mode: 'quick-audit', auditType: 'local-seo', auditTarget: 'São Paulo', language: 'en', submissionId: 'local-seo-test-123' };
+    const localSeo = await call({ body: localSeoBody });
+    assert.equal(localSeo.response.statusCode, 200);
+    assert.match(sentRequests.at(-1).body.subject, /Local SEO lead — São Paulo/);
+    assert.match(sentRequests.at(-1).body.text, /City: São Paulo/);
+    const sentBeforeInvalidCity = sentRequests.length;
+    const invalidCity = await call({ body: { ...localSeoBody, auditTarget: '<script>' } });
+    assert.equal(invalidCity.response.statusCode, 400);
+    assert.equal(sentRequests.length, sentBeforeInvalidCity);
+
     const localeRequests = [];
     global.fetch = async (url, options) => {
       localeRequests.push(JSON.parse(options.body));

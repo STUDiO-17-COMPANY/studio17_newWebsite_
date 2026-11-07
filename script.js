@@ -190,7 +190,7 @@
     visibilityTrigger.type = 'button';
     visibilityTrigger.setAttribute('aria-expanded', 'false');
     visibilityTrigger.setAttribute('aria-controls', 'visibility-mega-menu');
-    visibilityTrigger.innerHTML = '<span data-visibility-nav-label>AI Visibility and SEO</span><span class="nav-square" aria-hidden="true"><i data-lucide="chevron-down"></i></span>';
+    visibilityTrigger.innerHTML = '<span data-visibility-nav-label>AI Visibility &amp; SEO</span><span class="nav-square" aria-hidden="true"><i data-lucide="chevron-down"></i></span>';
     visibilityPanel = document.createElement('div');
     visibilityPanel.id = 'visibility-mega-menu';
     visibilityPanel.className = 'dropdown-panel visibility-mega-menu';
@@ -273,7 +273,7 @@
     ensureVisibilityDropdown();
     if (!visibilityPanel || !visibilityTrigger) return;
     const headerCopy = getHeaderMenuTranslation();
-    visibilityTrigger.querySelector('[data-visibility-nav-label]').textContent = headerCopy.visibilityTop || 'AI Visibility and SEO';
+    visibilityTrigger.querySelector('[data-visibility-nav-label]').textContent = headerCopy.visibilityTop || 'AI Visibility & SEO';
     visibilityPanel.replaceChildren(...visibilityMegaMenu.map(group => {
       const section = document.createElement('section');
       section.className = 'services-mega-group';
@@ -462,7 +462,7 @@
 
     const mainButton = menu.querySelector('.mobile-visibility-primary');
     const toggle = menu.querySelector('.mobile-visibility-toggle');
-    const menuTitle = headerCopy.visibilityTop || 'AI Visibility and SEO';
+    const menuTitle = headerCopy.visibilityTop || 'AI Visibility & SEO';
     mainButton.textContent = menuTitle;
     toggle.setAttribute('aria-label', `${toggle.getAttribute('aria-expanded') === 'true' ? 'Hide' : 'Show'} ${menuTitle}`);
     const panel = menu.querySelector('.mobile-visibility-panel');

@@ -161,7 +161,7 @@ const server = http.createServer((request, response) => {
     sendHtml(request, response, 200, renderSeoPage(demoArticles));
     return;
   }
-  if (locale === 'en' && /^\/contact\/free-(?:website|social-media)-audit$/.test(pathname)) {
+  if (locale === 'en' && /^\/contact\/(?:free-(?:website|social-media)-audit|local-seo)$/.test(pathname)) {
     sendHtml(request, response, 200, renderAuditPage(demoArticles));
     return;
   }
