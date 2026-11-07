@@ -12,7 +12,7 @@ const attempts = new Map();
 const allowedServices = new Set(['website', 'free-website', 'seo', 'content', 'social-media', 'advertising', 'digital-systems', 'ai-solutions', 'other']);
 const allowedBudgets = new Set(['not-sure', 'under-1k', '1k-3k', '3k-10k', '10k-plus']);
 const allowedLanguages = new Set(['en', 'pt-PT', 'es', 'el', 'ru', 'he']);
-const quickAuditLabels = { website: 'Website audit', 'social-media': 'Social Media audit', 'local-seo': 'Local SEO' };
+const quickAuditLabels = { website: 'Website audit', 'social-media': 'Social Media audit', seo: 'SEO audit', 'local-seo': 'Local SEO' };
 const allowedAuditTypes = new Set(Object.keys(quickAuditLabels));
 const serviceLabels = {
   website: 'Website',
@@ -124,7 +124,7 @@ const validateQuickAudit = body => {
   return {
     valid: allowedAuditTypes.has(data.auditType) && allowedLanguages.has(data.language) && (data.auditType === 'local-seo'
       ? data.auditTarget.length <= 100 && /\p{L}/u.test(data.auditTarget) && /^[\p{L}\p{M}\p{N} .,'’()\-]+$/u.test(data.auditTarget)
-      : looksLikeTarget),
+      : looksLikeTarget && (data.auditType !== 'seo' || /^(?:https?:\/\/)?(?:[a-z0-9-]+\.)+[a-z]{2,}(?:[/?#]\S*)?$/i.test(data.auditTarget))),
     data
   };
 };
@@ -270,11 +270,11 @@ module.exports = async function contactHandler(request, response) {
       payload: {
         from: CONTACT_FROM,
         to: [CONTACT_TO],
-        subject: (data.auditType === 'local-seo' ? `Local SEO lead — ${data.auditTarget}` : `Free ${data.auditType === 'website' ? 'website' : 'social media'} audit lead — ${data.auditTarget}`).slice(0, 180),
+        subject: (data.auditType === 'local-seo' ? `Local SEO lead — ${data.auditTarget}` : `Free ${data.auditType === 'seo' ? 'SEO audit' : quickAuditLabels[data.auditType].toLowerCase()} lead — ${data.auditTarget}`).slice(0, 180),
         html: quickAuditMarkup(data),
         text: `New Studio 17 ${data.auditType === 'local-seo' ? 'Local SEO' : 'free audit'} lead\n\nService: ${quickAuditLabels[data.auditType]}\n${data.auditType === 'local-seo' ? 'City' : 'Target'}: ${data.auditTarget}\nWebsite language: ${data.language}`,
         tags: [
-          { name: 'source', value: data.auditType === 'local-seo' ? 'seo-overview' : 'homepage-audit' },
+          { name: 'source', value: ['local-seo', 'seo'].includes(data.auditType) ? 'seo-overview' : 'homepage-audit' },
           { name: 'language', value: data.language },
           { name: 'service', value: data.auditType }
         ]

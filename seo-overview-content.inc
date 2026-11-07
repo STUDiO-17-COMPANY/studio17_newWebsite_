@@ -2,19 +2,20 @@
   <div class="hero-media"><picture><source media="(max-width: 600px)" srcset="/Images/HeroImage_SEOServices_Mobile.avif"><img src="/Images/HeroImage_SEOServices_Desktop.avif" alt="Studio 17 team member representing professional SEO services" fetchpriority="high"></picture></div>
   <div class="shell hero-grid home-hero-grid">
     <div class="home-hero-content">
-      <h1 id="seo-overview-title">Get found on <span class="seo-engine" data-seo-engine>Google</span></h1>
+      <h1 id="seo-overview-title" aria-label="Get found on Google">Get found on <span class="home-hero-rotating-word" data-seo-engine>Google</span></h1>
       <p>Make your business easier to find in organic search. Whether you work with Studio 17 or not, a free SEO audit gives you a clear starting point for improving your visibility.</p>
-      <form class="hero-audit seo-audit-form" action="/contact/free-website-audit" method="get">
+      <form class="hero-audit seo-audit-form" data-hero-audit-form="seo" action="/contact/free-website-audit" method="get">
         <input type="hidden" name="intent" value="seo">
-        <label class="sr-only" for="seo-audit-target">Your website</label>
-        <div class="hero-audit-entry"><input id="seo-audit-target" name="target" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder="Enter your website" required><button type="submit">Get your free SEO audit <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></button></div>
+        <label class="sr-only" for="seo-audit-target" data-audit-label>Your website</label>
+        <div class="hero-audit-entry"><input id="seo-audit-target" name="target" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder="Enter your website" aria-describedby="seo-audit-status" required><button type="submit" data-hero-audit-submit>Get your free SEO audit <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></button></div>
+        <p class="hero-audit-status" id="seo-audit-status" data-hero-audit-status role="status" hidden></p>
       </form>
     </div>
   </div>
 </section>
 <section class="shell seo-overview-block website-services-main" aria-label="Our SEO approach">
   <div class="website-method-grid">
-    <a href="#seo-ai-title"><h3>AI and SEO together</h3><p>Strengthen your visibility across Google and AI-powered search experiences.</p><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
+    <a href="/wip#for=ai-visibility" rel="nofollow"><h3>AI and SEO together</h3><p>Strengthen your visibility across Google and AI-powered search experiences.</p><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
     <a href="#seo-benefits-title"><h3>Long-term organic growth</h3><p>Build lasting search visibility and attract potential customers beyond paid advertising.</p><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
     <a href="#seo-roadmap-title"><h3>Built around your business</h3><p>Shape your SEO strategy around your goals, industry, competitors and target markets.</p><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
   </div>
@@ -47,20 +48,15 @@
     <li><img src="/Images/Terrassivilla_Image_Showcase_General-compressed.avif" alt="" loading="lazy"><div><span>05</span><h3>Growth strategy</h3><p>Define next steps and goals to help your business scale.</p></div></li>
   </ol>
 </section>
-<section class="shell seo-overview-block seo-overview-split seo-ai-feature" aria-labelledby="seo-ai-title">
-  <div><h2 class="design-heading" id="seo-ai-title"><span>Get your business</span> recommended by AI</h2><p>People use ChatGPT, Claude, Gemini and Perplexity to ask questions, compare products and discover businesses. Make your business easier to understand and reference as customers decide who to choose.</p><a class="solid-button" href="/wip#for=ai-visibility" rel="nofollow">AI Visibility services</a></div>
-  <img src="/Images/ai-visibility-%26-generative-engine-optimization-compressed.avif" alt="Studio 17 SEO specialist presenting an AI visibility strategy across ChatGPT, Claude, Gemini, and Google Search on a digital display" loading="lazy">
-</section>
 <section class="shell seo-overview-block" aria-labelledby="seo-results-title">
   <h2 class="design-heading" id="seo-results-title"><span>Results</span> &amp; case studies</h2>
   <p>See how our work helps businesses improve discovery and create more opportunities for growth.</p>
   <p><strong>Last month · October 2026</strong> — Real search performance data from Studio 17 clients.</p>
   <dl class="seo-metrics"><div><dt>Total clicks</dt><dd>160,432 <small>+18.4%</small></dd></div><div><dt>Total impressions</dt><dd>1.8M <small>+24.6%</small></dd></div><div><dt>Average CTR</dt><dd>8.9% <small>+1.2 pp</small></dd></div><div><dt>Average position</dt><dd>2.0 <small>From 3.4</small></dd></div></dl>
   <div class="seo-case-grid">
-    <article class="news-card"><a href="/case-studies/terrassi-villa-accessible-hospitality-website-case-study"><div class="news-image"><img src="/Images/Terrassivilla_Image_Showcase_General-compressed.avif" alt="Terrassi Villa website" loading="lazy"><span>Case Study</span></div><h3>Terrassi Villa</h3><p>An accessible, multilingual website for a hospitality business in the Azores.</p></a></article>
-    <article class="news-card"><a href="/case-studies/nerouppos-barber-shop-google-reviews-nfc"><div class="news-image"><img src="/Images/NeuropposBarberShop.webp" alt="Nerouppos Barber Shop NFC review activation" loading="lazy"><span>Case Study</span></div><h3>Nerouppos Barber Shop</h3><p>An in-person NFC system that makes it easier for customers to leave a Google review.</p></a></article>
+    <article class="news-card"><a href="/case-studies/terrassi-villa-accessible-hospitality-website-case-study"><div class="news-image"><img src="/Images/Terrassivilla_Image_Showcase_General-compressed.avif" alt="Terrassi Villa website" loading="lazy"><span>Case Study</span></div><div class="seo-case-caption"><h3>Terrassi Villa</h3><p>An accessible, multilingual website for a hospitality business in the Azores.</p></div></a></article>
+    <article class="news-card"><a href="/case-studies/nerouppos-barber-shop-google-reviews-nfc"><div class="news-image"><img src="/Images/NeuropposBarberShop.webp" alt="Nerouppos Barber Shop NFC review activation" loading="lazy"><span>Case Study</span></div><div class="seo-case-caption"><h3>Nerouppos Barber Shop</h3><p>An in-person NFC system that makes it easier for customers to leave a Google review.</p></div></a></article>
   </div>
-  <a class="design-link" href="/news?category=case-studies#all-articles">See all case studies →</a>
 </section>
 <section class="shell seo-overview-block website-faq" aria-labelledby="seo-overview-faq-title">
   <h2 class="design-heading" id="seo-overview-faq-title"><span>SEO FAQs</span></h2>

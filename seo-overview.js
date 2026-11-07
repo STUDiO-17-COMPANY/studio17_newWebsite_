@@ -4,6 +4,7 @@
     const names = ['Google', 'Bing', 'Yahoo', 'DuckDuckGo', 'Ecosia'];
     const variants = names.map((name, index) => {
       const word = document.createElement('span');
+      word.className = 'hero-word-variant';
       word.textContent = name;
       word.style.visibility = index ? 'hidden' : 'visible';
       return word;

@@ -20,6 +20,9 @@ test('SEO overview includes the full brief and distinct SEO strategy destination
   assert.deepEqual([...document.querySelectorAll('.website-faq-column')].map(column => column.querySelectorAll('details').length), [4, 4]);
   assert.equal(document.querySelectorAll('.news-section .news-card').length, 6);
   assert.equal(document.querySelectorAll('.seo-case-grid .news-card').length, 2);
+  assert.equal(document.querySelectorAll('.seo-case-caption h3').length, 2);
+  assert.equal(document.querySelector('main a[href="/news?category=case-studies#all-articles"]'), null);
+  assert.equal(document.querySelector('#seo-ai-title'), null);
   assert.equal(document.querySelectorAll('.seo-metrics dd').length, 4);
   assert.match(document.querySelector('#seo-results-title').parentElement.textContent, /October 2026.*Real search performance data/);
   assert.equal(document.querySelector('.seo-dashboard'), null);
@@ -29,6 +32,9 @@ test('SEO overview includes the full brief and distinct SEO strategy destination
   assert.ok(document.querySelector('.closing-cta .solid-button [data-lucide="arrow-up-right"]'));
   assert.ok(document.querySelector('.seo-service-option a[href="/services/seo-strategy"]'));
   assert.ok(document.querySelector('.seo-audit-form input[name="intent"][value="seo"]'));
+  assert.ok(document.querySelector('.seo-audit-form[data-hero-audit-form="seo"] [data-hero-audit-submit]'));
+  assert.ok(document.querySelector('script[src="/homepage-audit.js"]'));
+  assert.ok(document.querySelector('h1 .home-hero-rotating-word'));
   assert.ok(document.querySelectorAll('img[src^="/Images/"]').length > 0);
   for (const img of document.querySelectorAll('img[src^="/Images/"]')) assert.ok(fs.existsSync(decodeURIComponent(img.getAttribute('src').slice(1))), img.getAttribute('src'));
   assert.match(fs.readFileSync('seo-strategy.html', 'utf8'), /rel="canonical" href="https:\/\/www\.studio17\.world\/services\/seo-strategy"/);

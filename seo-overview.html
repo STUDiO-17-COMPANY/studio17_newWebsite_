@@ -25,7 +25,7 @@
   <meta name="twitter:image:alt" content="Studio 17 marketing, technology and creative work">
 
   <link rel="describedby" href="https://www.studio17.world/llms.txt">
-<link rel="stylesheet" href="/seo-overview.css"><script defer src="/seo-overview.js"></script><script defer src="/article-feed.js"></script><link href="https://www.studio17.world/services/seo" hreflang="en" rel="alternate"><link href="https://www.studio17.world/he/services/seo" hreflang="he" rel="alternate"><link href="https://www.studio17.world/services/seo" hreflang="x-default" rel="alternate"></head>
+<link rel="stylesheet" href="/seo-overview.css"><script defer src="/homepage-audit.js"></script><script defer src="/seo-overview.js"></script><script defer src="/article-feed.js"></script><link href="https://www.studio17.world/services/seo" hreflang="en" rel="alternate"><link href="https://www.studio17.world/he/services/seo" hreflang="he" rel="alternate"><link href="https://www.studio17.world/services/seo" hreflang="x-default" rel="alternate"></head>
 <body class="seo-service-page" data-service-page="seo">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header" data-header=""><div class="shell header-inner"><a class="brand" href="/" aria-label="Studio 17 home"><img src="/Images/Studio%2017_logo_black.png" alt="Studio 17" width="118" height="33"></a><nav class="desktop-nav" aria-label="Primary navigation"><div class="nav-dropdown"><button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-current="page">Services <span class="nav-square" aria-hidden="true"><i data-lucide="chevron-down"></i></span></button><div class="dropdown-panel" hidden></div></div><a class="nav-link" href="/work" data-force-language="en">Work</a><a class="nav-link" href="/about">About</a><a class="nav-link" href="/news">News</a><a class="nav-link" href="/careers" data-force-language="en">Careers</a><a class="nav-link header-contact-button" href="/contact">Contact</a></nav><div class="language-switcher" data-language-switcher=""><button class="language-control" type="button" aria-expanded="false" aria-controls="language-menu" aria-label="Change website language"><i class="translate-icon" data-lucide="languages" aria-hidden="true"></i><span data-language-code="">EN</span><i class="language-chevron" data-lucide="chevron-down" aria-hidden="true"></i></button><div class="language-menu" id="language-menu" aria-label="Available languages" hidden><button type="button" data-lang="en" lang="en"><span>English</span><small>EN</small></button><button data-pending-language-url="/el/wip?for=seo" type="button" data-lang="el" lang="el"><span>Ελληνικά</span><small>EL</small></button><button data-pending-language-url="/ru/wip?for=seo" type="button" data-lang="ru" lang="ru"><span>Русский</span><small>RU</small></button><button data-pending-language-url="/pt/wip?for=seo" type="button" data-lang="pt-PT" lang="pt-PT"><span>Português</span><small>PT</small></button><button data-pending-language-url="/es/wip?for=seo" type="button" data-lang="es" lang="es"><span>Español</span><small>ES</small></button></div></div><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i class="menu-open-icon" data-lucide="menu" aria-hidden="true"></i><i class="menu-close-icon" data-lucide="x" aria-hidden="true"></i></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a href="/services" aria-current="page">Services</a><a href="/work" data-force-language="en">Work</a><a href="/about">About</a><a href="/news">News</a><a href="/careers" data-force-language="en">Careers</a><a class="mobile-contact-button" href="/contact">Contact</a></nav></div></header>
@@ -34,19 +34,20 @@
   <div class="hero-media"><picture><source media="(max-width: 600px)" srcset="/Images/HeroImage_SEOServices_Mobile.avif"><img src="/Images/HeroImage_SEOServices_Desktop.avif" alt="Studio 17 team member representing professional SEO services" fetchpriority="high"></picture></div>
   <div class="shell hero-grid home-hero-grid">
     <div class="home-hero-content">
-      <h1 id="seo-overview-title">Get found on <span class="seo-engine" data-seo-engine="">Google</span></h1>
+      <h1 id="seo-overview-title" aria-label="Get found on Google">Get found on <span class="home-hero-rotating-word" data-seo-engine="">Google</span></h1>
       <p>Make your business easier to find in organic search. Whether you work with Studio 17 or not, a free SEO audit gives you a clear starting point for improving your visibility.</p>
-      <form class="hero-audit seo-audit-form" action="/contact/free-website-audit" method="get">
+      <form class="hero-audit seo-audit-form" data-hero-audit-form="seo" action="/contact/free-website-audit" method="get">
         <input type="hidden" name="intent" value="seo">
-        <label class="sr-only" for="seo-audit-target">Your website</label>
-        <div class="hero-audit-entry"><input id="seo-audit-target" name="target" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder="Enter your website" required><button type="submit">Get your free SEO audit <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></button></div>
+        <label class="sr-only" for="seo-audit-target" data-audit-label="">Your website</label>
+        <div class="hero-audit-entry"><input id="seo-audit-target" name="target" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder="Enter your website" aria-describedby="seo-audit-status" required><button type="submit" data-hero-audit-submit="">Get your free SEO audit <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></button></div>
+        <p class="hero-audit-status" id="seo-audit-status" data-hero-audit-status="" role="status" hidden></p>
       </form>
     </div>
   </div>
 </section>
 <section class="shell seo-overview-block website-services-main" aria-label="Our SEO approach">
   <div class="website-method-grid">
-    <a href="#seo-ai-title"><h3>AI and SEO together</h3><p>Strengthen your visibility across Google and AI-powered search experiences.</p><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
+    <a href="/wip#for=ai-visibility" rel="nofollow"><h3>AI and SEO together</h3><p>Strengthen your visibility across Google and AI-powered search experiences.</p><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
     <a href="#seo-benefits-title"><h3>Long-term organic growth</h3><p>Build lasting search visibility and attract potential customers beyond paid advertising.</p><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
     <a href="#seo-roadmap-title"><h3>Built around your business</h3><p>Shape your SEO strategy around your goals, industry, competitors and target markets.</p><span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
   </div>
@@ -105,20 +106,15 @@
     <li><img src="/Images/Terrassivilla_Image_Showcase_General-compressed.avif" alt="" loading="lazy"><div><span>05</span><h3>Growth strategy</h3><p>Define next steps and goals to help your business scale.</p></div></li>
   </ol>
 </section>
-<section class="shell seo-overview-block seo-overview-split seo-ai-feature" aria-labelledby="seo-ai-title">
-  <div><h2 class="design-heading" id="seo-ai-title"><span>Get your business</span> recommended by AI</h2><p>People use ChatGPT, Claude, Gemini and Perplexity to ask questions, compare products and discover businesses. Make your business easier to understand and reference as customers decide who to choose.</p><a class="solid-button" href="/wip#for=ai-visibility" rel="nofollow">AI Visibility services <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a></div>
-  <img src="/Images/ai-visibility-%26-generative-engine-optimization-compressed.avif" alt="Studio 17 SEO specialist presenting an AI visibility strategy across ChatGPT, Claude, Gemini, and Google Search on a digital display" loading="lazy">
-</section>
 <section class="shell seo-overview-block" aria-labelledby="seo-results-title">
   <h2 class="design-heading" id="seo-results-title"><span>Results</span> &amp; case studies</h2>
   <p>See how our work helps businesses improve discovery and create more opportunities for growth.</p>
   <p><strong>Last month · October 2026</strong> — Real search performance data from Studio 17 clients.</p>
   <dl class="seo-metrics"><div><dt>Total clicks</dt><dd>160,432 <small>+18.4%</small></dd></div><div><dt>Total impressions</dt><dd>1.8M <small>+24.6%</small></dd></div><div><dt>Average CTR</dt><dd>8.9% <small>+1.2 pp</small></dd></div><div><dt>Average position</dt><dd>2.0 <small>From 3.4</small></dd></div></dl>
   <div class="seo-case-grid">
-    <article class="news-card"><a href="/case-studies/terrassi-villa-accessible-hospitality-website-case-study"><div class="news-image"><img src="/Images/Terrassivilla_Image_Showcase_General-compressed.avif" alt="Terrassi Villa website" loading="lazy"><span>Case Study</span></div><h3>Terrassi Villa</h3><p>An accessible, multilingual website for a hospitality business in the Azores.</p></a></article>
-    <article class="news-card"><a href="/case-studies/nerouppos-barber-shop-google-reviews-nfc"><div class="news-image"><img src="/Images/NeuropposBarberShop.webp" alt="Nerouppos Barber Shop NFC review activation" loading="lazy"><span>Case Study</span></div><h3>Nerouppos Barber Shop</h3><p>An in-person NFC system that makes it easier for customers to leave a Google review.</p></a></article>
+    <article class="news-card"><a href="/case-studies/terrassi-villa-accessible-hospitality-website-case-study"><div class="news-image"><img src="/Images/Terrassivilla_Image_Showcase_General-compressed.avif" alt="Terrassi Villa website" loading="lazy"><span>Case Study</span></div><div class="seo-case-caption"><h3>Terrassi Villa</h3><p>An accessible, multilingual website for a hospitality business in the Azores.</p></div></a></article>
+    <article class="news-card"><a href="/case-studies/nerouppos-barber-shop-google-reviews-nfc"><div class="news-image"><img src="/Images/NeuropposBarberShop.webp" alt="Nerouppos Barber Shop NFC review activation" loading="lazy"><span>Case Study</span></div><div class="seo-case-caption"><h3>Nerouppos Barber Shop</h3><p>An in-person NFC system that makes it easier for customers to leave a Google review.</p></div></a></article>
   </div>
-  <a class="design-link" href="/news?category=case-studies#all-articles">See all case studies <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>
 </section>
 <section class="shell seo-overview-block website-faq" aria-labelledby="seo-overview-faq-title">
   <h2 class="design-heading" id="seo-overview-faq-title"><span>SEO FAQs</span></h2>

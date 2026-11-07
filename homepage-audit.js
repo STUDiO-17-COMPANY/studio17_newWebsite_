@@ -43,7 +43,8 @@
 
   const form = document.querySelector('[data-hero-audit-form]');
   if (!form) return;
-  const input = form.elements.namedItem('auditTarget');
+  const isSeo = form.dataset.heroAuditForm === 'seo';
+  const input = form.elements.namedItem(isSeo ? 'target' : 'auditTarget');
   const label = form.querySelector('[data-audit-label]');
   const submit = form.querySelector('[data-hero-audit-submit]');
   const status = form.querySelector('[data-hero-audit-status]');
@@ -58,7 +59,7 @@
 
   const setAuditType = type => {
     auditType = type;
-    const website = type === 'website';
+    const website = type !== 'social-media';
     toggles.forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.auditType === type));
       button.textContent = button.dataset.auditType === 'website' ? words.websiteAudit : words.socialAudit;
@@ -70,14 +71,15 @@
   };
 
   toggles.forEach(button => button.addEventListener('click', () => setAuditType(button.dataset.auditType)));
-  setAuditType('website');
+  setAuditType(isSeo ? 'seo' : 'website');
 
   form.addEventListener('submit', async event => {
     event.preventDefault();
+    if (submit.disabled) return;
     const target = input.value.trim();
     const websiteValid = /^(?:https?:\/\/)?(?:[a-z0-9-]+\.)+[a-z]{2,}(?:[/?#]\S*)?$/i.test(target);
     const socialValid = /^(?:https?:\/\/\S+|@?[a-z0-9._-]{2,})$/i.test(target);
-    if (target.length < 3 || /[<>\r\n]/.test(target) || (auditType === 'website' ? !websiteValid : !socialValid)) {
+    if (target.length < 3 || /[<>\r\n]/.test(target) || (auditType === 'social-media' ? !socialValid : !websiteValid)) {
       input.setAttribute('aria-invalid', 'true');
       setStatus(words.invalid, 'error');
       input.focus();
@@ -97,8 +99,8 @@
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.ok) throw new Error('AUDIT_SEND_FAILED');
-      const destination = auditType === 'website' ? '/contact/free-website-audit' : '/contact/free-social-media-audit';
-      location.assign(`${destination}?target=${encodeURIComponent(target)}`);
+      const destination = auditType === 'social-media' ? '/contact/free-social-media-audit' : '/contact/free-website-audit';
+      location.assign(`${destination}?target=${encodeURIComponent(target)}${isSeo ? '&intent=seo' : ''}`);
     } catch {
       setStatus(words.unavailable, 'error');
       submit.disabled = false;

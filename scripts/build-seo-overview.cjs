@@ -71,7 +71,7 @@ overview.querySelectorAll('main a.solid-button, main a.design-link').forEach(lin
   if (!link.children.length) link.textContent = link.textContent.replace(/\s*→\s*$/, '');
   link.insertAdjacentHTML('beforeend', ' <span aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>');
 });
-overview.head.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="/seo-overview.css"><script defer src="/seo-overview.js"></script><script defer src="/article-feed.js"></script>');
+overview.head.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="/seo-overview.css"><script defer src="/homepage-audit.js"></script><script defer src="/seo-overview.js"></script><script defer src="/article-feed.js"></script>');
 const setupLanguageMenu = (document, slug) => {
   document.querySelectorAll('.language-menu [data-lang]').forEach(button => {
     const locale = { 'pt-PT': 'pt', es: 'es', el: 'el', ru: 'ru' }[button.dataset.lang];

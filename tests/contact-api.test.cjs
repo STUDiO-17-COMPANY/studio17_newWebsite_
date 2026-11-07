@@ -162,6 +162,15 @@ const validSubmission = {
     const invalidCity = await call({ body: { ...localSeoBody, auditTarget: '<script>' } });
     assert.equal(invalidCity.response.statusCode, 400);
     assert.equal(sentRequests.length, sentBeforeInvalidCity);
+    const seoAuditBody = { mode: 'quick-audit', auditType: 'seo', auditTarget: 'example.com/seo', language: 'en', submissionId: 'seo-audit-test-123' };
+    const seoAudit = await call({ body: seoAuditBody });
+    assert.equal(seoAudit.response.statusCode, 200);
+    assert.match(sentRequests.at(-1).body.subject, /Free SEO audit lead — example\.com\/seo/);
+    assert.match(sentRequests.at(-1).body.text, /Target: example\.com\/seo/);
+    const sentBeforeInvalidWebsite = sentRequests.length;
+    const invalidSeoAudit = await call({ body: { ...seoAuditBody, auditTarget: 'not a website' } });
+    assert.equal(invalidSeoAudit.response.statusCode, 400);
+    assert.equal(sentRequests.length, sentBeforeInvalidWebsite);
 
     const localeRequests = [];
     global.fetch = async (url, options) => {
