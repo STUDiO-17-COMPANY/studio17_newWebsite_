@@ -13,6 +13,7 @@ test('SEO overview includes the full brief and distinct SEO strategy destination
   assert.equal(document.querySelector('link[rel="canonical"]').getAttribute('href'), 'https://www.studio17.world/services/seo');
   assert.equal(document.querySelectorAll('.partner-marquee').length, 1);
   assert.equal(document.querySelectorAll('.seo-service-option').length, 8);
+  assert.equal(document.querySelectorAll('div.seo-service-option').length, 8, 'Service panels must use a container that permits role="tabpanel"');
   assert.equal(document.querySelectorAll('[data-seo-benefits] details:not([open])').length, 5);
   assert.equal(document.querySelectorAll('.seo-roadmap li').length, 5);
   assert.equal(document.querySelectorAll('.seo-case-grid article').length, 2);
